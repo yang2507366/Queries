@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "QueriesViewController.h"
 
 @implementation AppDelegate
 
@@ -22,6 +23,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    self.window.rootViewController =
+        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
+    
     return YES;
 }
 

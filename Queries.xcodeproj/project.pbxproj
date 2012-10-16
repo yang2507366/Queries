@@ -16,6 +16,13 @@
 		3E63396E162D8C3A00B63328 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E63396D162D8C3A00B63328 /* Default.png */; };
 		3E633970162D8C3A00B63328 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E63396F162D8C3A00B63328 /* Default@2x.png */; };
 		3E633972162D8C3A00B63328 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E633971162D8C3A00B63328 /* Default-568h@2x.png */; };
+		3E63397B162D8CD500B63328 /* QueriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63397A162D8CD500B63328 /* QueriesViewController.m */; };
+		3E63397F162D8CF300B63328 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63397E162D8CF300B63328 /* BaseViewController.m */; };
+		3E633982162D8DB400B63328 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633981162D8DB400B63328 /* BaseTableViewController.m */; };
+		3E63398B162D91DA00B63328 /* GiveRightsOfOrientationBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */; };
+		3E63398F162D933900B63328 /* GridViewIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63398E162D933900B63328 /* GridViewIcon.m */; };
+		3E633992162D958B00B63328 /* GridViewTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewTableViewHelper.m */; };
+		3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E633994162D9F6C00B63328 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +39,19 @@
 		3E63396D162D8C3A00B63328 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3E63396F162D8C3A00B63328 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3E633971162D8C3A00B63328 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3E633979162D8CD500B63328 /* QueriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueriesViewController.h; sourceTree = "<group>"; };
+		3E63397A162D8CD500B63328 /* QueriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QueriesViewController.m; sourceTree = "<group>"; };
+		3E63397D162D8CF300B63328 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		3E63397E162D8CF300B63328 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		3E633980162D8DB400B63328 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		3E633981162D8DB400B63328 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		3E633989162D91DA00B63328 /* GiveRightsOfOrientationBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiveRightsOfOrientationBack.h; sourceTree = "<group>"; };
+		3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiveRightsOfOrientationBack.m; sourceTree = "<group>"; };
+		3E63398D162D933900B63328 /* GridViewIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewIcon.h; sourceTree = "<group>"; };
+		3E63398E162D933900B63328 /* GridViewIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewIcon.m; sourceTree = "<group>"; };
+		3E633990162D958B00B63328 /* GridViewTableViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewTableViewHelper.h; sourceTree = "<group>"; };
+		3E633991162D958B00B63328 /* GridViewTableViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewTableViewHelper.m; sourceTree = "<group>"; };
+		3E633994162D9F6C00B63328 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */,
 				3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */,
 				3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */,
 				3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */,
@@ -51,6 +72,8 @@
 		3E63394C162D8C3900B63328 = {
 			isa = PBXGroup;
 			children = (
+				3E633993162D9F5800B63328 /* AddInFrameworks */,
+				3E633987162D915700B63328 /* Libraries */,
 				3E633961162D8C3900B63328 /* Queries */,
 				3E63395A162D8C3900B63328 /* Frameworks */,
 				3E633958162D8C3900B63328 /* Products */,
@@ -78,6 +101,8 @@
 		3E633961162D8C3900B63328 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
+				3E63398C162D92E300B63328 /* GridView */,
+				3E633978162D8C6A00B63328 /* ViewControllers */,
 				3E63396A162D8C3900B63328 /* AppDelegate.h */,
 				3E63396B162D8C3A00B63328 /* AppDelegate.m */,
 				3E633962162D8C3900B63328 /* Supporting Files */,
@@ -97,6 +122,64 @@
 				3E633971162D8C3A00B63328 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3E633978162D8C6A00B63328 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E63397C162D8CDA00B63328 /* Base */,
+				3E633979162D8CD500B63328 /* QueriesViewController.h */,
+				3E63397A162D8CD500B63328 /* QueriesViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3E63397C162D8CDA00B63328 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3E63397D162D8CF300B63328 /* BaseViewController.h */,
+				3E63397E162D8CF300B63328 /* BaseViewController.m */,
+				3E633980162D8DB400B63328 /* BaseTableViewController.h */,
+				3E633981162D8DB400B63328 /* BaseTableViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		3E633987162D915700B63328 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3E633988162D916600B63328 /* Additions */,
+			);
+			name = Libraries;
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		3E633988162D916600B63328 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				3E633989162D91DA00B63328 /* GiveRightsOfOrientationBack.h */,
+				3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		3E63398C162D92E300B63328 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				3E63398D162D933900B63328 /* GridViewIcon.h */,
+				3E63398E162D933900B63328 /* GridViewIcon.m */,
+				3E633990162D958B00B63328 /* GridViewTableViewHelper.h */,
+				3E633991162D958B00B63328 /* GridViewTableViewHelper.m */,
+			);
+			name = GridView;
+			sourceTree = "<group>";
+		};
+		3E633993162D9F5800B63328 /* AddInFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E633994162D9F6C00B63328 /* QuartzCore.framework */,
+			);
+			name = AddInFrameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +249,12 @@
 			files = (
 				3E633968162D8C3900B63328 /* main.m in Sources */,
 				3E63396C162D8C3A00B63328 /* AppDelegate.m in Sources */,
+				3E63397B162D8CD500B63328 /* QueriesViewController.m in Sources */,
+				3E63397F162D8CF300B63328 /* BaseViewController.m in Sources */,
+				3E633982162D8DB400B63328 /* BaseTableViewController.m in Sources */,
+				3E63398B162D91DA00B63328 /* GiveRightsOfOrientationBack.m in Sources */,
+				3E63398F162D933900B63328 /* GridViewIcon.m in Sources */,
+				3E633992162D958B00B63328 /* GridViewTableViewHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
