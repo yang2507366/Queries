@@ -97,7 +97,7 @@
             UIView *view = [[[UIView alloc] init] autorelease];
             CGFloat width = _iconWidth - (i == self.numberOfColumns - 1 ? 0 : 1);
             view.frame = CGRectMake((spacingWidth + _iconWidth) * i, 0, width, _iconHeight - 1);
-            view.backgroundColor = [UIColor lightGrayColor];
+            view.backgroundColor = [UIColor blackColor];
             
             [cell.contentView addSubview:view];
         }
