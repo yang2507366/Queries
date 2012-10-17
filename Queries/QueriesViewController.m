@@ -29,8 +29,6 @@
                               [[[GridViewIcon alloc] initWithTitle:@"Grid1" icon:nil] autorelease],
                               nil];
     gridHelper.gridViewIcons = gridViewIcons;
-    gridHelper.iconWidth = 50.0f;
-    gridHelper.forceSquare = NO;
     
     self.tableView.delegate = gridHelper;
     self.tableView.dataSource = gridHelper;

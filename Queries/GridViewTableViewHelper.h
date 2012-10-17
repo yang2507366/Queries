@@ -13,9 +13,5 @@
 - (id)initWithNumberOfColumns:(NSInteger)columns;
 
 @property(nonatomic, retain)NSArray *gridViewIcons;
-@property(nonatomic, assign)NSInteger numberOfColumns;
-@property(nonatomic, assign)CGFloat iconWidth;
-@property(nonatomic, assign)CGFloat iconHeight;
-@property(nonatomic, assign)BOOL forceSquare;
 
 @end

@@ -12,6 +12,10 @@
 @interface GridViewTableViewHelper ()
 
 @property(nonatomic, copy)NSString *identifier;
+@property(nonatomic, assign)BOOL forceSquare;
+@property(nonatomic, assign)NSInteger numberOfColumns;
+@property(nonatomic, assign)CGFloat iconWidth;
+@property(nonatomic, assign)CGFloat iconHeight;
 
 @end
 
@@ -36,6 +40,7 @@
 {
     self = [super init];
     
+    self.forceSquare = YES;
     self.numberOfColumns = columns;
     [self updateIdentifier];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -90,10 +95,9 @@
         
         for(NSInteger i = 0; i < self.numberOfColumns; ++i){
             UIView *view = [[[UIView alloc] init] autorelease];
-            view.frame = CGRectMake((spacingWidth + _iconWidth) * i, 0, _iconWidth, _iconHeight);
-            view.layer.borderWidth = 1.0f;
-            view.layer.borderColor = [UIColor whiteColor].CGColor;
-            view.backgroundColor = [UIColor blackColor];
+            CGFloat width = _iconWidth - (i == self.numberOfColumns - 1 ? 0 : 1);
+            view.frame = CGRectMake((spacingWidth + _iconWidth) * i, 0, width, _iconHeight - 1);
+            view.backgroundColor = [UIColor lightGrayColor];
             
             [cell.contentView addSubview:view];
         }
