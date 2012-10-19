@@ -24,8 +24,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.window.rootViewController =
-        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
+    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
     
     return YES;
 }

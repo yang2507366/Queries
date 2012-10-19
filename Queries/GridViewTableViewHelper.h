@@ -8,10 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@class GridViewTableViewHelper;
+
+@protocol GridViewTableViewHelperDelegate <NSObject>
+
+- (NSInteger)numberOfItemsOfGridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper;
+- (void)gridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper configureView:(UIView *)view atIndex:(NSInteger)index;
+
+@end
+
 @interface GridViewTableViewHelper : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-- (id)initWithNumberOfColumns:(NSInteger)columns;
+@property(nonatomic, assign)id<GridViewTableViewHelperDelegate> delegate;
+@property(nonatomic, readonly)NSInteger numberOfColumns;
 
-@property(nonatomic, retain)NSArray *gridViewIcons;
+- (id)initWithNumberOfColumns:(NSInteger)columns;
 
 @end

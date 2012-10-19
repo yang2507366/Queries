@@ -13,7 +13,6 @@
 
 @property(nonatomic, copy)NSString *identifier;
 @property(nonatomic, assign)BOOL forceSquare;
-@property(nonatomic, assign)NSInteger numberOfColumns;
 @property(nonatomic, assign)CGFloat iconWidth;
 @property(nonatomic, assign)CGFloat iconHeight;
 
@@ -23,7 +22,6 @@
 
 - (void)dealloc
 {
-    self.gridViewIcons = nil;
     self.identifier = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
@@ -41,7 +39,7 @@
     self = [super init];
     
     self.forceSquare = YES;
-    self.numberOfColumns = columns;
+    _numberOfColumns = columns;
     [self updateIdentifier];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChangeNotification:)
@@ -56,6 +54,7 @@
     static NSString *identifierForLandscapeScreen = @"landscape";
     static NSString *identifierForPortrait = @"portrait";
     self.identifier = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? identifierForLandscapeScreen : identifierForPortrait;
+    self.identifier = [NSString stringWithFormat:@"%@%@", self, self.identifier];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,18 +67,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(_iconWidth == 0){
-        _iconWidth = CGRectGetWidth(tableView.frame) / self.numberOfColumns;
+    if([self.delegate respondsToSelector:@selector(numberOfItemsOfGridViewTableViewHelper:)]){
+        NSInteger numberOfIcons = [self.delegate numberOfItemsOfGridViewTableViewHelper:self];
+        if(_iconWidth == 0){
+            _iconWidth = CGRectGetWidth(tableView.frame) / self.numberOfColumns;
+        }
+        if(self.forceSquare){
+            _iconWidth = CGRectGetWidth(tableView.frame) / self.numberOfColumns;
+            _iconHeight = _iconWidth;
+        }
+        NSInteger numberOfRows = numberOfIcons / self.numberOfColumns;
+        if(numberOfIcons % self.numberOfColumns != 0){
+            ++numberOfRows;
+        }
+        return numberOfRows;
     }
-    if(self.forceSquare){
-        _iconWidth = CGRectGetWidth(tableView.frame) / self.numberOfColumns;
-        _iconHeight = _iconWidth;
-    }
-    NSInteger numberOfRows = self.gridViewIcons.count / self.numberOfColumns;
-    if(self.gridViewIcons.count % self.numberOfColumns != 0){
-        ++numberOfRows;
-    }
-    return numberOfRows;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,11 +98,30 @@
         
         for(NSInteger i = 0; i < self.numberOfColumns; ++i){
             UIView *view = [[[UIView alloc] init] autorelease];
-            CGFloat width = _iconWidth - (i == self.numberOfColumns - 1 ? 0 : 1);
-            view.frame = CGRectMake((spacingWidth + _iconWidth) * i, 0, width, _iconHeight - 1);
-            view.backgroundColor = [UIColor blackColor];
+            view.frame = CGRectMake((spacingWidth + _iconWidth) * i, 0, _iconWidth, _iconHeight);
+            view.backgroundColor = [UIColor clearColor];
+            view.tag = i;
             
             [cell.contentView addSubview:view];
+        }
+    }
+    NSInteger tmpNumOfColumns = _numberOfColumns;
+    if([self.delegate respondsToSelector:@selector(gridViewTableViewHelper:configureView:atIndex:)]){
+        if(indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1
+           && [self.delegate numberOfItemsOfGridViewTableViewHelper:self] % _numberOfColumns != 0){
+            tmpNumOfColumns = [self.delegate numberOfItemsOfGridViewTableViewHelper:self] % _numberOfColumns;
+        }
+        NSArray *subviews = [cell.contentView subviews];
+        for(NSInteger i = 0; i < tmpNumOfColumns; ++i){
+            UIView *view = [subviews objectAtIndex:i];
+            view.hidden = NO;
+            [self.delegate gridViewTableViewHelper:self configureView:view atIndex:indexPath.row * _numberOfColumns + view.tag];
+        }
+        if(tmpNumOfColumns < _numberOfColumns){
+            for(NSInteger i = tmpNumOfColumns; i < _numberOfColumns; ++i){
+                UIView *view = [subviews objectAtIndex:i];
+                view.hidden = YES;
+            }
         }
     }
     
