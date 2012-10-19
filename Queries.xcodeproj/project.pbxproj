@@ -25,6 +25,17 @@
 		3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D0C33163192FD00C3FDCE /* SystemUtils.m */; };
 		3EE3B2A21631987F00C77F85 /* MemoryTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A11631987F00C77F85 /* MemoryTracer.m */; };
 		3EE3B2A51631A36F00C77F85 /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A41631A36F00C77F85 /* img.png */; };
+		3EE3B2AC1631B58200C77F85 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AB1631B58200C77F85 /* Toast.m */; };
+		3EE3B2BD1631B5DA00C77F85 /* CodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AE1631B5DA00C77F85 /* CodeUtils.m */; };
+		3EE3B2BE1631B5DA00C77F85 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B01631B5DA00C77F85 /* CommonUtils.m */; };
+		3EE3B2BF1631B5DA00C77F85 /* DelayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B21631B5DA00C77F85 /* DelayController.m */; };
+		3EE3B2C01631B5DA00C77F85 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */; };
+		3EE3B2C11631B5DA00C77F85 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B61631B5DA00C77F85 /* Singleton.m */; };
+		3EE3B2C21631B5DA00C77F85 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */; };
+		3EE3B2C31631B5DA00C77F85 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BA1631B5DA00C77F85 /* Timer.m */; };
+		3EE3B2C41631B5DA00C77F85 /* DialogTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */; };
+		3EE3B2CD1631B64D00C77F85 /* DataBaseKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2CB1631B64D00C77F85 /* DataBaseKeyValueManager.m */; };
+		3EE3B2CF1631B67300C77F85 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EE3B2CE1631B67300C77F85 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +68,28 @@
 		3EE3B2A01631987F00C77F85 /* MemoryTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryTracer.h; sourceTree = "<group>"; };
 		3EE3B2A11631987F00C77F85 /* MemoryTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryTracer.m; sourceTree = "<group>"; };
 		3EE3B2A41631A36F00C77F85 /* img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img.png; sourceTree = "<group>"; };
+		3EE3B2AA1631B58200C77F85 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
+		3EE3B2AB1631B58200C77F85 /* Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toast.m; sourceTree = "<group>"; };
+		3EE3B2AD1631B5DA00C77F85 /* CodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeUtils.h; sourceTree = "<group>"; };
+		3EE3B2AE1631B5DA00C77F85 /* CodeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeUtils.m; sourceTree = "<group>"; };
+		3EE3B2AF1631B5DA00C77F85 /* CommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtils.h; sourceTree = "<group>"; };
+		3EE3B2B01631B5DA00C77F85 /* CommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtils.m; sourceTree = "<group>"; };
+		3EE3B2B11631B5DA00C77F85 /* DelayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayController.h; sourceTree = "<group>"; };
+		3EE3B2B21631B5DA00C77F85 /* DelayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayController.m; sourceTree = "<group>"; };
+		3EE3B2B31631B5DA00C77F85 /* KeyboardState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
+		3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
+		3EE3B2B51631B5DA00C77F85 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		3EE3B2B61631B5DA00C77F85 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
+		3EE3B2B71631B5DA00C77F85 /* TaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
+		3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
+		3EE3B2B91631B5DA00C77F85 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
+		3EE3B2BA1631B5DA00C77F85 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
+		3EE3B2BB1631B5DA00C77F85 /* DialogTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTools.h; sourceTree = "<group>"; };
+		3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTools.m; sourceTree = "<group>"; };
+		3EE3B2CA1631B64D00C77F85 /* DataBaseKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseKeyValueManager.h; sourceTree = "<group>"; };
+		3EE3B2CB1631B64D00C77F85 /* DataBaseKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseKeyValueManager.m; sourceTree = "<group>"; };
+		3EE3B2CC1631B64D00C77F85 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueManager.h; sourceTree = "<group>"; };
+		3EE3B2CE1631B67300C77F85 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE3B2CF1631B67300C77F85 /* libsqlite3.dylib in Frameworks */,
 				3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */,
 				3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */,
 				3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */,
@@ -106,8 +140,6 @@
 		3E633961162D8C3900B63328 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
-				3E9D0C31163192EF00C3FDCE /* Utils */,
-				3E63398C162D92E300B63328 /* UIComponents */,
 				3E633978162D8C6A00B63328 /* ViewControllers */,
 				3E63396A162D8C3900B63328 /* AppDelegate.h */,
 				3E63396B162D8C3A00B63328 /* AppDelegate.m */,
@@ -155,6 +187,8 @@
 		3E633987162D915700B63328 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3E9D0C31163192EF00C3FDCE /* Utils */,
+				3E63398C162D92E300B63328 /* UIComponents */,
 				3E633988162D916600B63328 /* Additions */,
 			);
 			name = Libraries;
@@ -173,6 +207,8 @@
 		3E63398C162D92E300B63328 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				3EE3B2AA1631B58200C77F85 /* Toast.h */,
+				3EE3B2AB1631B58200C77F85 /* Toast.m */,
 				3E633990162D958B00B63328 /* GridViewTableViewHelper.h */,
 				3E633991162D958B00B63328 /* GridViewTableViewHelper.m */,
 				3EE3B2A01631987F00C77F85 /* MemoryTracer.h */,
@@ -184,6 +220,7 @@
 		3E633993162D9F5800B63328 /* AddInFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EE3B2CE1631B67300C77F85 /* libsqlite3.dylib */,
 				3E633994162D9F6C00B63328 /* QuartzCore.framework */,
 			);
 			name = AddInFrameworks;
@@ -192,10 +229,37 @@
 		3E9D0C31163192EF00C3FDCE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3EE3B2C51631B5E600C77F85 /* KeyValueManager */,
+				3EE3B2AD1631B5DA00C77F85 /* CodeUtils.h */,
+				3EE3B2AE1631B5DA00C77F85 /* CodeUtils.m */,
+				3EE3B2AF1631B5DA00C77F85 /* CommonUtils.h */,
+				3EE3B2B01631B5DA00C77F85 /* CommonUtils.m */,
+				3EE3B2B11631B5DA00C77F85 /* DelayController.h */,
+				3EE3B2B21631B5DA00C77F85 /* DelayController.m */,
+				3EE3B2B31631B5DA00C77F85 /* KeyboardState.h */,
+				3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */,
+				3EE3B2B51631B5DA00C77F85 /* Singleton.h */,
+				3EE3B2B61631B5DA00C77F85 /* Singleton.m */,
+				3EE3B2B71631B5DA00C77F85 /* TaskQueue.h */,
+				3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */,
+				3EE3B2B91631B5DA00C77F85 /* Timer.h */,
+				3EE3B2BA1631B5DA00C77F85 /* Timer.m */,
+				3EE3B2BB1631B5DA00C77F85 /* DialogTools.h */,
+				3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */,
 				3E9D0C32163192FD00C3FDCE /* SystemUtils.h */,
 				3E9D0C33163192FD00C3FDCE /* SystemUtils.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		3EE3B2C51631B5E600C77F85 /* KeyValueManager */ = {
+			isa = PBXGroup;
+			children = (
+				3EE3B2CA1631B64D00C77F85 /* DataBaseKeyValueManager.h */,
+				3EE3B2CB1631B64D00C77F85 /* DataBaseKeyValueManager.m */,
+				3EE3B2CC1631B64D00C77F85 /* KeyValueManager.h */,
+			);
+			name = KeyValueManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +337,16 @@
 				3E633992162D958B00B63328 /* GridViewTableViewHelper.m in Sources */,
 				3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */,
 				3EE3B2A21631987F00C77F85 /* MemoryTracer.m in Sources */,
+				3EE3B2AC1631B58200C77F85 /* Toast.m in Sources */,
+				3EE3B2BD1631B5DA00C77F85 /* CodeUtils.m in Sources */,
+				3EE3B2BE1631B5DA00C77F85 /* CommonUtils.m in Sources */,
+				3EE3B2BF1631B5DA00C77F85 /* DelayController.m in Sources */,
+				3EE3B2C01631B5DA00C77F85 /* KeyboardState.m in Sources */,
+				3EE3B2C11631B5DA00C77F85 /* Singleton.m in Sources */,
+				3EE3B2C21631B5DA00C77F85 /* TaskQueue.m in Sources */,
+				3EE3B2C31631B5DA00C77F85 /* Timer.m in Sources */,
+				3EE3B2C41631B5DA00C77F85 /* DialogTools.m in Sources */,
+				3EE3B2CD1631B64D00C77F85 /* DataBaseKeyValueManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
