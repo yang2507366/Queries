@@ -207,12 +207,12 @@
 		3E63398C162D92E300B63328 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				3EE3B2BB1631B5DA00C77F85 /* DialogTools.h */,
+				3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */,
 				3EE3B2AA1631B58200C77F85 /* Toast.h */,
 				3EE3B2AB1631B58200C77F85 /* Toast.m */,
 				3E633990162D958B00B63328 /* GridViewTableViewHelper.h */,
 				3E633991162D958B00B63328 /* GridViewTableViewHelper.m */,
-				3EE3B2A01631987F00C77F85 /* MemoryTracer.h */,
-				3EE3B2A11631987F00C77F85 /* MemoryTracer.m */,
 			);
 			name = UIComponents;
 			sourceTree = "<group>";
@@ -244,10 +244,10 @@
 				3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */,
 				3EE3B2B91631B5DA00C77F85 /* Timer.h */,
 				3EE3B2BA1631B5DA00C77F85 /* Timer.m */,
-				3EE3B2BB1631B5DA00C77F85 /* DialogTools.h */,
-				3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */,
 				3E9D0C32163192FD00C3FDCE /* SystemUtils.h */,
 				3E9D0C33163192FD00C3FDCE /* SystemUtils.m */,
+				3EE3B2A01631987F00C77F85 /* MemoryTracer.h */,
+				3EE3B2A11631987F00C77F85 /* MemoryTracer.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
