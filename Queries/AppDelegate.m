@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "QueriesViewController.h"
+#import "MemoryTracer.h"
 
 @implementation AppDelegate
 
@@ -18,13 +19,17 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+{   
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
+    [MemoryTracer start];
+    
+    self.window.rootViewController =
+        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
+//    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
     
     return YES;
 }

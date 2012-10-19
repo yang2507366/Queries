@@ -21,15 +21,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor darkGrayColor];
-    self.gridHelper = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:4] autorelease];
+    
+    self.gridHelper = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:2] autorelease];
     self.gridHelper.delegate = self;
     
-    self.gridHelperLandscape = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:6] autorelease];
+    self.gridHelperLandscape = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:3] autorelease];
     self.gridHelperLandscape.delegate = self;
-    
-    self.tableView.delegate = self.gridHelper;
-    self.tableView.dataSource = self.gridHelper;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
@@ -60,7 +57,7 @@
 #pragma mark - GridViewTableViewHelperDelegate
 - (NSInteger)numberOfItemsOfGridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper
 {
-    return 1199;
+    return 30;
 }
 
 - (void)gridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper configureView:(UIView *)view atIndex:(NSInteger)index
@@ -79,10 +76,10 @@
         btn.frame = view.bounds;
         btn.tag = 1002;
         [btn addTarget:self action:@selector(onBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
-//        [btn setBackgroundColor:[UIColor blackColor]];
+        [btn setBackgroundColor:[UIColor clearColor]];
         [view addSubview:btn];
     }
-    label.text = [NSString stringWithFormat:@"%d", index];
+    label.text = [NSString stringWithFormat:@"%d", index + 1];
     [btn setTitle:label.text forState:UIControlStateNormal];
 }
 
