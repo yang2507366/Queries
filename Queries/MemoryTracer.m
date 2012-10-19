@@ -76,7 +76,6 @@
     UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject];
     [window bringSubviewToFront:self.displayLabel];
     self.displayLabel.text = [NSString stringWithFormat:@"%uk", ([SystemUtils bytesOfMemoryUsed] - self.bytesMemoryOfStartup) / 1024];
-    NSLog(@"%@", self.displayLabel.text);
     if(self.tracing){
         [self performSelector:@selector(trace) withObject:nil afterDelay:0.50f];
     }
