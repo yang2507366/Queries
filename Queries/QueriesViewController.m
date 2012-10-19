@@ -39,7 +39,7 @@
         self.tableView.dataSource = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? self.gridHelperLandscape : self.gridHelper;
         [self.tableView reloadData];
     }
-    
+
     return YES;
 }
 
@@ -77,6 +77,7 @@
         btn.tag = 1002;
         [btn addTarget:self action:@selector(onBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
         [btn setBackgroundColor:[UIColor clearColor]];
+        [btn setBackgroundImage:[UIImage imageNamed:@"icon.png"] forState:UIControlStateNormal];
         [view addSubview:btn];
     }
     label.text = [NSString stringWithFormat:@"%d", index + 1];
