@@ -91,6 +91,8 @@
     if(!cell){
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.identifier] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.contentView.multipleTouchEnabled = NO;
+        
         CGFloat spacingWidth = 0;
         if(!self.forceSquare && _numberOfColumns > 1){
             spacingWidth = (CGRectGetWidth(tableView.frame) - _numberOfColumns * _iconWidth) / (_numberOfColumns - 1);

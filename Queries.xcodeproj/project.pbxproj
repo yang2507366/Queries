@@ -24,7 +24,7 @@
 		3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E633994162D9F6C00B63328 /* QuartzCore.framework */; };
 		3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D0C33163192FD00C3FDCE /* SystemUtils.m */; };
 		3EE3B2A21631987F00C77F85 /* MemoryTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A11631987F00C77F85 /* MemoryTracer.m */; };
-		3EE3B2A51631A36F00C77F85 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A41631A36F00C77F85 /* icon.png */; };
+		3EE3B2A51631A36F00C77F85 /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A41631A36F00C77F85 /* img.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +56,7 @@
 		3E9D0C33163192FD00C3FDCE /* SystemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemUtils.m; sourceTree = "<group>"; };
 		3EE3B2A01631987F00C77F85 /* MemoryTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryTracer.h; sourceTree = "<group>"; };
 		3EE3B2A11631987F00C77F85 /* MemoryTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryTracer.m; sourceTree = "<group>"; };
-		3EE3B2A41631A36F00C77F85 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		3EE3B2A41631A36F00C77F85 /* img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +119,7 @@
 		3E633962162D8C3900B63328 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3EE3B2A41631A36F00C77F85 /* icon.png */,
+				3EE3B2A41631A36F00C77F85 /* img.png */,
 				3E633963162D8C3900B63328 /* Queries-Info.plist */,
 				3E633964162D8C3900B63328 /* InfoPlist.strings */,
 				3E633967162D8C3900B63328 /* main.m */,
@@ -253,7 +253,7 @@
 				3E63396E162D8C3A00B63328 /* Default.png in Resources */,
 				3E633970162D8C3A00B63328 /* Default@2x.png in Resources */,
 				3E633972162D8C3A00B63328 /* Default-568h@2x.png in Resources */,
-				3EE3B2A51631A36F00C77F85 /* icon.png in Resources */,
+				3EE3B2A51631A36F00C77F85 /* img.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
+    self.tableView.multipleTouchEnabled = NO;
 }
 
 - (BOOL)shouldAutorotate
@@ -57,7 +58,7 @@
 #pragma mark - GridViewTableViewHelperDelegate
 - (NSInteger)numberOfItemsOfGridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper
 {
-    return 30;
+    return 30000;
 }
 
 - (void)gridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper configureView:(UIView *)view atIndex:(NSInteger)index
@@ -72,12 +73,13 @@
         label.backgroundColor = [UIColor clearColor];
         [view addSubview:label];
         
-        btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = view.bounds;
         btn.tag = 1002;
         [btn addTarget:self action:@selector(onBtnTapped:) forControlEvents:UIControlEventTouchUpInside];
         [btn setBackgroundColor:[UIColor clearColor]];
-        [btn setBackgroundImage:[UIImage imageNamed:@"icon.png"] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"img.png"] forState:UIControlStateNormal];
         [view addSubview:btn];
     }
     label.text = [NSString stringWithFormat:@"%d", index + 1];
