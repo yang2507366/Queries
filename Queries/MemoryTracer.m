@@ -88,33 +88,36 @@
 - (void)updateDisplayLabelLocation
 {
     UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    
+    CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+    if(UIInterfaceOrientationIsLandscape(interfaceOrientation)){
+        statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.width;
+    }
     if(interfaceOrientation == UIInterfaceOrientationPortrait){
         self.displayLabel.transform = CGAffineTransformMakeRotation(0.0f);
         
         CGRect tmpRect = self.displayLabel.frame;
         tmpRect.origin.x = [UIScreen mainScreen].bounds.size.width - tmpRect.size.width;
-        tmpRect.origin.y = 20;
+        tmpRect.origin.y = statusBarHeight;
         self.displayLabel.frame = tmpRect;
     }else if(interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
         self.displayLabel.transform = CGAffineTransformMakeRotation(180.0f * M_PI / 180.0f);
         
         CGRect tmpRect = self.displayLabel.frame;
         tmpRect.origin.x = 0;
-        tmpRect.origin.y = [UIScreen mainScreen].bounds.size.height - tmpRect.size.height - 20;
+        tmpRect.origin.y = [UIScreen mainScreen].bounds.size.height - tmpRect.size.height - statusBarHeight;
         self.displayLabel.frame = tmpRect;
     }else if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft){
         self.displayLabel.transform = CGAffineTransformMakeRotation(270.0f * M_PI / 180.0f);
         
         CGRect tmpRect = self.displayLabel.frame;
-        tmpRect.origin.x = 20;
+        tmpRect.origin.x = statusBarHeight;
         tmpRect.origin.y = 0;
         self.displayLabel.frame = tmpRect;
     }else if(interfaceOrientation == UIInterfaceOrientationLandscapeRight){
         self.displayLabel.transform = CGAffineTransformMakeRotation(90.0f * M_PI / 180.0f);
         
         CGRect tmpRect = self.displayLabel.frame;
-        tmpRect.origin.x = [UIScreen mainScreen].bounds.size.width - tmpRect.size.width - 20;
+        tmpRect.origin.x = [UIScreen mainScreen].bounds.size.width - tmpRect.size.width - statusBarHeight;
         tmpRect.origin.y = [UIScreen mainScreen].bounds.size.height - tmpRect.size.height;
         self.displayLabel.frame = tmpRect;
     }
