@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ScirptInteraction.h"
+#import "ScriptInteraction.h"
 #import "LuaScriptInvokeFilter.h"
 
 @interface LuaScriptInteraction : NSObject <ScriptInteraction>

@@ -7,6 +7,7 @@
 //
 
 #import "LuaHTTPRequest.h"
+#import "HTTPRequest.h"
 
 @implementation LuaHTTPRequest
 
@@ -35,29 +36,25 @@
 
 + (NSString *)requestWithLuaState:(id<ScriptInteraction>)script urlString:(NSString *)urlString callbackLuaFunctionName:(NSString *)luaFunctionName
 {
-    NSString *identifierForUrl = [NSString stringWithFormat:@"%d", (NSInteger)urlString];
-    [[self.class sharedRequestList] addObject:identifierForUrl];
+    NSString *requestId = [NSString stringWithFormat:@"%d", (NSInteger)urlString];
+    [[self.class sharedRequestList] addObject:requestId];
     
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSOperationQueue *queue = [[[NSOperationQueue alloc] init] autorelease];
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:queue completionHandler:^(NSURLResponse *res, NSData *data, NSError *err) {
-        NSHTTPURLResponse *response = (id)res;
-        if(response.statusCode == 200){
-            NSString *responseStr = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    [HTTPRequest requestWithURLString:urlString identifier:requestId completion:^(NSString *responseStr, NSError *error) {
+        if(error){
+            if([self.class requestExists:requestId]){
+                [script callFunction:luaFunctionName callback:nil parameters:@"", error.localizedDescription, nil];
+            }
+        }else{
             if(responseStr.length == 0){
                 responseStr = @"";
             }
-            if([self.class requestExists:identifierForUrl]){
+            if([self.class requestExists:requestId]){
                 [script callFunction:luaFunctionName callback:nil parameters:responseStr, @"", nil];
-            }
-        }else{
-            if([self.class requestExists:identifierForUrl]){
-                [script callFunction:luaFunctionName callback:nil parameters:@"", err.localizedDescription, nil];
             }
         }
     }];
     
-    return identifierForUrl;
+    return requestId;
 }
 
 + (void)cancelRequestWithRequestId:(NSString *)requestId

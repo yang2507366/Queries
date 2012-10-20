@@ -43,7 +43,7 @@
     self.script = script;
     _L = lua_open();
     luaL_openlibs(_L);
-//    self.scriptInvokeFilter = [[UnicodeScriptInvokeFilter new] autorelease];
+    self.scriptInvokeFilter = [[UnicodeScriptInvokeFilter new] autorelease];
     
     return self;
 }

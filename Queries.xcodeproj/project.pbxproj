@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3E06D5AE1632C2490013DCF7 /* LuaInvoker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5AD1632C2490013DCF7 /* LuaInvoker.m */; };
+		3E06D5B21632C94A0013DCF7 /* ViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5B11632C94A0013DCF7 /* ViewControllerManager.m */; };
+		3E06D5C21632E2880013DCF7 /* ProviderPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C11632E2880013DCF7 /* ProviderPool.m */; };
+		3E06D5C51632E3650013DCF7 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C41632E3650013DCF7 /* HTTPRequest.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395F162D8C3900B63328 /* CoreGraphics.framework */; };
@@ -78,6 +81,13 @@
 /* Begin PBXFileReference section */
 		3E06D5AC1632C2490013DCF7 /* LuaInvoker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaInvoker.h; sourceTree = "<group>"; };
 		3E06D5AD1632C2490013DCF7 /* LuaInvoker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaInvoker.m; sourceTree = "<group>"; };
+		3E06D5B01632C94A0013DCF7 /* ViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerManager.h; sourceTree = "<group>"; };
+		3E06D5B11632C94A0013DCF7 /* ViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerManager.m; sourceTree = "<group>"; };
+		3E06D5BB1632E1D80013DCF7 /* HTTPGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPGetRequest.h; sourceTree = "<group>"; };
+		3E06D5C01632E2880013DCF7 /* ProviderPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderPool.h; sourceTree = "<group>"; };
+		3E06D5C11632E2880013DCF7 /* ProviderPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderPool.m; sourceTree = "<group>"; };
+		3E06D5C31632E3650013DCF7 /* HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequest.h; sourceTree = "<group>"; };
+		3E06D5C41632E3650013DCF7 /* HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequest.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E63395B162D8C3900B63328 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3E63395D162D8C3900B63328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -191,7 +201,7 @@
 		3EE3B3071632324200C77F85 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
 		3EE3B3081632324200C77F85 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		3EE3B3091632324200C77F85 /* print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = print.c; sourceTree = "<group>"; };
-		3EE3B329163232EE00C77F85 /* ScirptInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScirptInteraction.h; sourceTree = "<group>"; };
+		3EE3B329163232EE00C77F85 /* ScriptInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptInteraction.h; sourceTree = "<group>"; };
 		3EE3B32B163235E800C77F85 /* LuaScriptInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptInteraction.h; sourceTree = "<group>"; };
 		3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaScriptInteraction.m; sourceTree = "<group>"; };
 		3EE3B32F16323DC800C77F85 /* test.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.lua; sourceTree = "<group>"; };
@@ -213,6 +223,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E06D5B71632E1670013DCF7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3E06D5C01632E2880013DCF7 /* ProviderPool.h */,
+				3E06D5C11632E2880013DCF7 /* ProviderPool.m */,
+				3E06D5BB1632E1D80013DCF7 /* HTTPGetRequest.h */,
+				3E06D5C31632E3650013DCF7 /* HTTPRequest.h */,
+				3E06D5C41632E3650013DCF7 /* HTTPRequest.m */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		3E63394C162D8C3900B63328 = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +315,7 @@
 		3E633987162D915700B63328 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3E06D5B71632E1670013DCF7 /* Network */,
 				3E9D0C31163192EF00C3FDCE /* Utils */,
 				3E63398C162D92E300B63328 /* UIComponents */,
 				3E633988162D916600B63328 /* Additions */,
@@ -360,13 +383,15 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		3EE36D6E1632AA5200BB5D02 /* Functions */ = {
+		3EE36D6E1632AA5200BB5D02 /* FunctionImplementation */ = {
 			isa = PBXGroup;
 			children = (
 				3EE36D6F1632AA7F00BB5D02 /* LuaHTTPRequest.h */,
 				3EE36D701632AA7F00BB5D02 /* LuaHTTPRequest.m */,
+				3E06D5B01632C94A0013DCF7 /* ViewControllerManager.h */,
+				3E06D5B11632C94A0013DCF7 /* ViewControllerManager.m */,
 			);
-			name = Functions;
+			name = FunctionImplementation;
 			sourceTree = "<group>";
 		};
 		3EE3B2C51631B5E600C77F85 /* KeyValueManager */ = {
@@ -443,7 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE3B32A163235D600C77F85 /* Lua */,
-				3EE3B329163232EE00C77F85 /* ScirptInteraction.h */,
+				3EE3B329163232EE00C77F85 /* ScriptInteraction.h */,
 			);
 			name = ScirptInteraction;
 			sourceTree = "<group>";
@@ -451,7 +476,7 @@
 		3EE3B32A163235D600C77F85 /* Lua */ = {
 			isa = PBXGroup;
 			children = (
-				3EE36D6E1632AA5200BB5D02 /* Functions */,
+				3EE36D6E1632AA5200BB5D02 /* FunctionImplementation */,
 				3EE3B32B163235E800C77F85 /* LuaScriptInteraction.h */,
 				3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */,
 				3EE36D6616324A9400BB5D02 /* LuaScriptInvokeFilter.h */,
@@ -597,6 +622,9 @@
 				3EE36D711632AA7F00BB5D02 /* LuaHTTPRequest.m in Sources */,
 				3EE36D781632B2CE00BB5D02 /* LuaScriptManager.m in Sources */,
 				3E06D5AE1632C2490013DCF7 /* LuaInvoker.m in Sources */,
+				3E06D5B21632C94A0013DCF7 /* ViewControllerManager.m in Sources */,
+				3E06D5C21632E2880013DCF7 /* ProviderPool.m in Sources */,
+				3E06D5C51632E3650013DCF7 /* HTTPRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

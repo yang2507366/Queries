@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ScirptInteraction.h"
+#import "ScriptInteraction.h"
 
 @interface LuaHTTPRequest : NSObject
 

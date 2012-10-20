@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "QueriesViewController.h"
 #import "MemoryTracer.h"
-#import "ScirptInteraction.h"
+#import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
 #import "LuaScriptManager.h"
 
@@ -38,6 +38,7 @@
                                                  encoding:NSUTF8StringEncoding error:nil];
     id<ScriptInteraction> scriptInvoker = [[[LuaScriptInteraction alloc] initWithScript:script] autorelease];
     [scriptInvoker callFunction:@"sendHttpRequest" callback:nil parameters:@"http://dict.cn", nil];
+    [scriptInvoker callFunction:@"initUIComponents" callback:nil parameters:nil];
     
     return YES;
 }
