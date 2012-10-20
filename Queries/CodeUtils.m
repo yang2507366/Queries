@@ -123,6 +123,9 @@ static char *customHexList = "ASDFGHJKLZXCVBNM";
     while(true){
         beginRange = [string rangeOfString:@"[b;]" options:NSCaseInsensitiveSearch range:endRange];
         if(beginRange.location == NSNotFound){
+            if(endRange.location == 0){
+                [allString appendString:string];
+            }
             break;
         }
         NSString *en = [string substringWithRange:NSMakeRange(endRange.location, beginRange.location - endRange.location)];

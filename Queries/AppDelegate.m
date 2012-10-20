@@ -11,6 +11,7 @@
 #import "MemoryTracer.h"
 #import "ScirptInteraction.h"
 #import "LuaScriptInteraction.h"
+#import "LuaScriptManager.h"
 
 @implementation AppDelegate
 
@@ -36,9 +37,7 @@
     NSString *script = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"lua"]
                                                  encoding:NSUTF8StringEncoding error:nil];
     id<ScriptInteraction> scriptInvoker = [[[LuaScriptInteraction alloc] initWithScript:script] autorelease];
-    [scriptInvoker callFunction:@"printString" callback:^(NSString *returnValue, NSString *errorMsg) {
-        NSLog(@"%@, %@", returnValue, errorMsg);
-    } parameters:@"111", @"222中文传输", nil];
+    [scriptInvoker callFunction:@"sendHttpRequest" callback:nil parameters:@"http://dict.cn", nil];
     
     return YES;
 }

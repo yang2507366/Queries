@@ -12,6 +12,7 @@
 #import "lauxlib.h"
 #import "UnicodeScriptInvokeFilter.h"
 #import "LuaFunctions.h"
+#import "LuaScriptManager.h"
 
 @interface LuaScriptInteraction () {
     char *_scriptChars;
@@ -42,7 +43,7 @@
     self.script = script;
     _L = lua_open();
     luaL_openlibs(_L);
-    self.scriptInvokeFilter = [[UnicodeScriptInvokeFilter new] autorelease];
+//    self.scriptInvokeFilter = [[UnicodeScriptInvokeFilter new] autorelease];
     
     return self;
 }
@@ -80,7 +81,10 @@
     if(result == 0){
         const char *returnValue = lua_tostring(_L, -1);
         if(callback){
-            NSString *returnString = [NSString stringWithUTF8String:returnValue];
+            NSString *returnString = @"";
+            if(returnValue){
+                returnString = [NSString stringWithUTF8String:returnValue];
+            }
             if(self.scriptInvokeFilter){
                 returnString = [self.scriptInvokeFilter filterReturnValue:returnString];
             }
@@ -115,6 +119,7 @@
     if(_script){
         _scriptChars = malloc(_script.length * sizeof(char));
         strcpy(_scriptChars, [_script UTF8String]);
+        [[LuaScriptManager sharedManager] addScript:_script];
     }else{
         _scriptChars = NULL;
     }

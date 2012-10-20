@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E06D5AE1632C2490013DCF7 /* LuaInvoker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5AD1632C2490013DCF7 /* LuaInvoker.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395F162D8C3900B63328 /* CoreGraphics.framework */; };
@@ -25,6 +26,8 @@
 		3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D0C33163192FD00C3FDCE /* SystemUtils.m */; };
 		3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
 		3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */; };
+		3EE36D711632AA7F00BB5D02 /* LuaHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D701632AA7F00BB5D02 /* LuaHTTPRequest.m */; };
+		3EE36D781632B2CE00BB5D02 /* LuaScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D771632B2CE00BB5D02 /* LuaScriptManager.m */; };
 		3EE3B2A21631987F00C77F85 /* MemoryTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A11631987F00C77F85 /* MemoryTracer.m */; };
 		3EE3B2A51631A36F00C77F85 /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A41631A36F00C77F85 /* img.png */; };
 		3EE3B2AC1631B58200C77F85 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AB1631B58200C77F85 /* Toast.m */; };
@@ -73,6 +76,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E06D5AC1632C2490013DCF7 /* LuaInvoker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaInvoker.h; sourceTree = "<group>"; };
+		3E06D5AD1632C2490013DCF7 /* LuaInvoker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaInvoker.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E63395B162D8C3900B63328 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3E63395D162D8C3900B63328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +109,10 @@
 		3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnicodeScriptInvokeFilter.m; sourceTree = "<group>"; };
 		3EE36D6B163255F200BB5D02 /* LuaFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaFunctions.h; sourceTree = "<group>"; };
 		3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaFunctions.m; sourceTree = "<group>"; };
+		3EE36D6F1632AA7F00BB5D02 /* LuaHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaHTTPRequest.h; sourceTree = "<group>"; };
+		3EE36D701632AA7F00BB5D02 /* LuaHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaHTTPRequest.m; sourceTree = "<group>"; };
+		3EE36D761632B2CD00BB5D02 /* LuaScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptManager.h; sourceTree = "<group>"; };
+		3EE36D771632B2CE00BB5D02 /* LuaScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaScriptManager.m; sourceTree = "<group>"; };
 		3EE3B2A01631987F00C77F85 /* MemoryTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryTracer.h; sourceTree = "<group>"; };
 		3EE3B2A11631987F00C77F85 /* MemoryTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryTracer.m; sourceTree = "<group>"; };
 		3EE3B2A41631A36F00C77F85 /* img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img.png; sourceTree = "<group>"; };
@@ -351,6 +360,15 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		3EE36D6E1632AA5200BB5D02 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				3EE36D6F1632AA7F00BB5D02 /* LuaHTTPRequest.h */,
+				3EE36D701632AA7F00BB5D02 /* LuaHTTPRequest.m */,
+			);
+			name = Functions;
+			sourceTree = "<group>";
+		};
 		3EE3B2C51631B5E600C77F85 /* KeyValueManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +451,7 @@
 		3EE3B32A163235D600C77F85 /* Lua */ = {
 			isa = PBXGroup;
 			children = (
+				3EE36D6E1632AA5200BB5D02 /* Functions */,
 				3EE3B32B163235E800C77F85 /* LuaScriptInteraction.h */,
 				3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */,
 				3EE36D6616324A9400BB5D02 /* LuaScriptInvokeFilter.h */,
@@ -440,6 +459,10 @@
 				3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */,
 				3EE36D6B163255F200BB5D02 /* LuaFunctions.h */,
 				3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */,
+				3E06D5AC1632C2490013DCF7 /* LuaInvoker.h */,
+				3E06D5AD1632C2490013DCF7 /* LuaInvoker.m */,
+				3EE36D761632B2CD00BB5D02 /* LuaScriptManager.h */,
+				3EE36D771632B2CE00BB5D02 /* LuaScriptManager.m */,
 			);
 			name = Lua;
 			sourceTree = "<group>";
@@ -571,6 +594,9 @@
 				3EE3B32D163235E800C77F85 /* LuaScriptInteraction.m in Sources */,
 				3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */,
 				3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */,
+				3EE36D711632AA7F00BB5D02 /* LuaHTTPRequest.m in Sources */,
+				3EE36D781632B2CE00BB5D02 /* LuaScriptManager.m in Sources */,
+				3E06D5AE1632C2490013DCF7 /* LuaInvoker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

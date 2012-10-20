@@ -69,7 +69,7 @@
 #pragma mark - GridViewTableViewHelperDelegate
 - (NSInteger)numberOfItemsOfGridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper
 {
-    return 30000;
+    return 22;
 }
 
 - (void)gridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper configureView:(UIView *)view atIndex:(NSInteger)index

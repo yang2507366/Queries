@@ -1,12 +1,14 @@
-function printString(str1, str2)
-    if str1 then
-        print(str1);
-    end
-    if str2 then
-        print(str2);
-        print(string.len(str2));
-        print(string.sub(str2, 1, 4));
-    end
-    
-    return "return string from lua"..str2;
+function sendHttpRequest(urlString)
+    requestId = http_request(scriptId(), urlString, "httpCallback");
+    print("requestId:"..requestId);
+    http_request_cancel(requestId);
+end
+
+function httpCallback(responseStr, errStr)
+    print("response:"..responseStr);
+    print("error:"..errStr);
+end
+
+function scriptId()
+    return "test.lua";
 end
