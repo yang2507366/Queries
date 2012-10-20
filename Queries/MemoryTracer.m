@@ -41,18 +41,7 @@
 {
     self = [super init];
     
-    self.bytesMemoryOfStartup = [SystemUtils bytesOfMemoryUsed];
-    
-    self.displayLabel = [[[UILabel alloc] init] autorelease];
-    self.displayLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.50f];
-    self.displayLabel.textColor = [UIColor whiteColor];
-    self.displayLabel.textAlignment = NSTextAlignmentCenter;
-    self.displayLabel.font = [UIFont systemFontOfSize:12.0f];
-    self.displayLabel.frame = CGRectMake(0, 0, 40, _displayLabel.font.lineHeight);
-    self.displayLabel.adjustsFontSizeToFitWidth = YES;
-    [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self.displayLabel];
-    
-    [self updateDisplayLabelLocation];
+    [self mark];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(interfaceOrientationDidChangeNotification:)
@@ -62,8 +51,26 @@
     return self;
 }
 
+- (void)mark
+{
+    self.bytesMemoryOfStartup = [SystemUtils bytesOfMemoryUsed];
+}
+
 - (void)start
 {
+    self.displayLabel = [[[UILabel alloc] init] autorelease];
+    self.displayLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.50f];
+    self.displayLabel.textColor = [UIColor whiteColor];
+    self.displayLabel.textAlignment = NSTextAlignmentCenter;
+    self.displayLabel.font = [UIFont systemFontOfSize:12.0f];
+    self.displayLabel.frame = CGRectMake(0, 0, 40, _displayLabel.font.lineHeight);
+    self.displayLabel.adjustsFontSizeToFitWidth = YES;
+    if(!self.displayLabel.superview){
+        [[[[UIApplication sharedApplication] windows] lastObject] addSubview:self.displayLabel];
+    }
+    
+    [self updateDisplayLabelLocation];
+    
     self.displayLabel.hidden = NO;
     self.tracing = YES;
     [self trace];
@@ -78,6 +85,10 @@
 - (void)trace
 {
     UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject];
+    if(window != self.displayLabel.superview){
+        [self.displayLabel removeFromSuperview];
+        [window addSubview:self.displayLabel];
+    }
     [window bringSubviewToFront:self.displayLabel];
     self.displayLabel.text = [NSString stringWithFormat:@"%uk", ([SystemUtils bytesOfMemoryUsed] - self.bytesMemoryOfStartup) / 1024];
     if(self.tracing){
@@ -126,6 +137,12 @@
 - (void)interfaceOrientationDidChangeNotification:(NSNotification *)notification
 {
     [self updateDisplayLabelLocation];
+}
+
++ (void)mark
+{
+    MemoryTracer *instance = [MemoryTracer sharedInstance];
+    [instance mark];
 }
 
 + (void)start

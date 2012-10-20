@@ -21,11 +21,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
     
-    self.gridHelper = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:2] autorelease];
+    NSInteger numberOfPortraitColumns = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 3 : 2;
+    self.gridHelper = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:numberOfPortraitColumns] autorelease];
     self.gridHelper.delegate = self;
     
-    self.gridHelperLandscape = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:3] autorelease];
+    NSInteger numberOfLandscapeColumns = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 4 : 3;
+    self.gridHelperLandscape = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:numberOfLandscapeColumns] autorelease];
     self.gridHelperLandscape.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -47,6 +50,14 @@
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    self.tableView.delegate = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? self.gridHelperLandscape : self.gridHelper;
+    self.tableView.dataSource = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? self.gridHelperLandscape : self.gridHelper;
+    [self.tableView reloadData];
+    return YES;
 }
 
 #pragma mark - events

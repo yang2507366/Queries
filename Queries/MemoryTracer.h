@@ -10,6 +10,7 @@
 
 @interface MemoryTracer : NSObject
 
++ (void)mark;
 + (void)start;
 + (void)stop;
 

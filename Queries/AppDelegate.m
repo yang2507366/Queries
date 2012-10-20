@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "QueriesViewController.h"
 #import "MemoryTracer.h"
+#import "ScirptInteraction.h"
+#import "LuaScriptInteraction.h"
 
 @implementation AppDelegate
 
@@ -19,19 +21,24 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{   
+{
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
     [MemoryTracer start];
     
     self.window.rootViewController =
         [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
 //    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
+    
+    NSString *script = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"lua"]
+                                                 encoding:NSUTF8StringEncoding error:nil];
+    id<ScriptInteraction> scriptInvoker = [[[LuaScriptInteraction alloc] initWithScript:script] autorelease];
+    [scriptInvoker callFunction:@"printString" callback:^(NSString *returnValue, NSString *errorMsg) {
+        NSLog(@"%@, %@", returnValue, errorMsg);
+    } parameters:@"111", @"222中文传输", nil];
     
     return YES;
 }
