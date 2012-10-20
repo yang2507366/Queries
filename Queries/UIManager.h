@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ScriptInteraction.h"
 
-@interface ViewControllerManager : NSObject
+@interface UIManager : NSObject
 
 + (NSString *)rootViewControllerId;
 + (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId;

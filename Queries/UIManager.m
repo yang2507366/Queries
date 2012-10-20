@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "ViewControllerManager.h"
+#import "UIManager.h"
 #import "Singleton.h"
 #import "DialogTools.h"
 
@@ -78,7 +78,7 @@
 
 @end
 
-@implementation ViewControllerManager
+@implementation UIManager
 
 + (NSMutableDictionary *)controlPool
 {

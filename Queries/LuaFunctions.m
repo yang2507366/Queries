@@ -11,7 +11,7 @@
 #import "LuaHTTPRequest.h"
 #import "LuaScriptManager.h"
 #import "LuaScriptInteraction.h"
-#import "ViewControllerManager.h"
+#import "UIManager.h"
 #import "CodeUtils.h"
 
 NSString *readParamValue(lua_State *L, int location)
@@ -69,7 +69,7 @@ int ui_create_button(lua_State *L)
     NSLog(@"ui_create_button:%@", title);
     id<ScriptInteraction> si = [[LuaScriptInteraction alloc] initWithScript:
                                 [[LuaScriptManager sharedManager] scriptForIdentifier:scriptId]];
-    NSString *buttonId = [ViewControllerManager createButtonWithTitle:title
+    NSString *buttonId = [UIManager createButtonWithTitle:title
                                                     scriptInteraction:si
                                                      callbackFuncName:callback];
     lua_pushstring(L, [buttonId UTF8String]);
@@ -78,7 +78,7 @@ int ui_create_button(lua_State *L)
 
 int ui_root_view_controller_id(lua_State *L)
 {
-    lua_pushstring(L, [[ViewControllerManager rootViewControllerId] UTF8String]);
+    lua_pushstring(L, [[UIManager rootViewControllerId] UTF8String]);
     return 1;
 }
 
@@ -86,7 +86,7 @@ int ui_add_subview_to_view_controller(lua_State *L)
 {
     NSString *viewId = readParamValue(L, 1);
     NSString *viewControllerId = readParamValue(L, 2);
-    [ViewControllerManager addSubViewWithViewId:viewId
+    [UIManager addSubViewWithViewId:viewId
                                 viewControllerId:viewControllerId];
     return 0;
 }
@@ -96,7 +96,7 @@ int ui_set_view_frame(lua_State *L)
     NSString *viewId = readParamValue(L, 1);
     NSString *frame = readParamValue(L, 2);
     
-    [ViewControllerManager setViewFrameWithViewId:viewId
+    [UIManager setViewFrameWithViewId:viewId
                                             frame:frame];
     
     return 0;
@@ -105,7 +105,7 @@ int ui_set_view_frame(lua_State *L)
 int ui_get_view_frame(lua_State *L)
 {
     NSString *viewId = readParamValue(L, 1);
-    CGRect frame = [ViewControllerManager frameOfViewWithViewId:viewId];
+    CGRect frame = [UIManager frameOfViewWithViewId:viewId];
     lua_pushnumber(L, frame.origin.x);
     lua_pushnumber(L, frame.origin.y);
     lua_pushnumber(L, frame.size.width);
@@ -119,7 +119,7 @@ int ui_alert(lua_State *L)
     NSString *title = readParamValue(L, 2);
     NSString *msg = readParamValue(L, 3);
     NSString *funcName = readParamValue(L, 4);
-    [ViewControllerManager alertWithTitle:title message:msg
+    [UIManager alertWithTitle:title message:msg
                         scriptInteraction:getScriptInteraction(scriptId)
                          callbackFuncName:funcName];
     return 0;
