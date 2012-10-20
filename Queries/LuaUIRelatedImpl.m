@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "UIManager.h"
+#import "LuaUIRelatedImpl.h"
 #import "Singleton.h"
 #import "DialogTools.h"
 
@@ -78,7 +78,7 @@
 
 @end
 
-@implementation UIManager
+@implementation LuaUIRelatedImpl
 
 + (NSMutableDictionary *)controlPool
 {
