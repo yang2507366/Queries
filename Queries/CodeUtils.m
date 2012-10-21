@@ -117,6 +117,9 @@ static char *customHexList = "ASDFGHJKLZXCVBNM";
 
 + (NSString *)decodeAllChinese:(NSString *)string
 {
+    if(string.length == 0){
+        return @"";
+    }
     NSMutableString *allString = [NSMutableString string];
     NSRange beginRange;
     NSRange endRange = NSMakeRange(0, string.length);
@@ -125,6 +128,8 @@ static char *customHexList = "ASDFGHJKLZXCVBNM";
         if(beginRange.location == NSNotFound){
             if(endRange.location == 0){
                 [allString appendString:string];
+            }else if(endRange.location != string.length){
+                [allString appendString:[string substringFromIndex:endRange.location]];
             }
             break;
         }

@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LuaObjectManager : NSObject
+@interface LuaObjectManagerLegacy : NSObject
 
 + (NSString *)addObject:(id)object;
++ (void)removeObjectWithObjectId:(NSString *)objectId;
 + (id)objectForId:(NSString *)objectId;
 
 @end

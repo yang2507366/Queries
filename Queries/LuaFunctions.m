@@ -13,6 +13,7 @@
 #import "LuaScriptInteraction.h"
 #import "LuaUIRelatedImpl.h"
 #import "CodeUtils.h"
+#import "CallScriptImpl.h"
 
 NSString *readParamValue(lua_State *L, int location)
 {
@@ -30,8 +31,7 @@ NSString *readParamValue(lua_State *L, int location)
 
 id<ScriptInteraction>getScriptInteraction(NSString *scriptId)
 {
-    NSString *script = [LuaApplication scriptWithScriptId:scriptId];
-    id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:script]  autorelease];
+    id<ScriptInteraction> si = [LuaApplication programWithScriptId:scriptId];
     
     return si;
 }
@@ -139,6 +139,15 @@ int ui_set_root_view_controller(lua_State *L)
     return 0;
 }
 
+#pragma mark - script
+int script_run_script_id(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    BOOL success = [CallScriptImpl callScriptWithScriptId:scriptId];
+    lua_pushstring(L, success ? "1" : "0");
+    return 1;
+}
+
 #pragma mark - system
 void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *L))
 {
@@ -158,6 +167,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_alert", ui_alert);
     pushFunctionToLua(L, "ui_create_view_controller", ui_create_view_controller);
     pushFunctionToLua(L, "ui_set_root_view_controller", ui_set_root_view_controller);
+    pushFunctionToLua(L, "script_run_script_id", script_run_script_id);
 }
 
 

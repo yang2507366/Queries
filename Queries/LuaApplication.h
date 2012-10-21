@@ -7,13 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ScriptInteraction.h"
 
 @interface LuaApplication : NSObject
 
 + (void)run;
 + (void)runOnWindow:(UIWindow *)window;
 + (UIWindow *)window;
++ (id<ScriptInteraction>)programWithScriptId:(NSString *)scriptId;
++ (id<ScriptInteraction>)restartProgramWithScriptId:(NSString *)scritId;
 + (NSString *)originalScriptWithScriptId:(NSString *)scriptId;
 + (NSString *)scriptWithScriptId:(NSString *)scriptId;
++ (id<ScriptInteraction>)scriptInteractionForScriptId:(NSString *)scriptId;
 
 @end

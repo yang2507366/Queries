@@ -31,7 +31,7 @@
     if(_L){
         lua_close(_L);
     }
-    
+    NSLog(@"%@", self);
     [super dealloc];
 }
 
@@ -42,6 +42,9 @@
     self.script = script;
     _L = lua_open();
     luaL_openlibs(_L);
+    if(_scriptChars){
+        luaL_dostring(_L, _scriptChars);
+    }
     self.scriptInvokeFilter = [[UnicodeScriptInvokeFilter new] autorelease];
     
     return self;
@@ -56,7 +59,6 @@
         return;
     }
     
-    luaL_dostring(_L, _scriptChars);
     lua_getglobal(_L, [funcName UTF8String]);
     
     initFuntions(_L);

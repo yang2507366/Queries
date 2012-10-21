@@ -23,19 +23,6 @@
     [super dealloc];
 }
 
-- (NSString *)deleteScriptImportBlocks:(NSString *)script
-{
-    NSRange functionRange = [script rangeOfString:@"function"];
-    if(functionRange.location == NSNotFound){
-        functionRange.location = script.length;
-    }
-    NSString *importSentenses = [script substringToIndex:functionRange.location];
-    if(importSentenses.length != 0){
-        script = [script substringFromIndex:functionRange.location];
-    }
-    return script;
-}
-
 - (NSString *)importWithScriptId:(NSString *)scriptId originalScript:(NSString *)originalScript
 {
     NSLog(@"importing:%@", scriptId);
@@ -52,9 +39,16 @@
 
 - (NSString *)check:(NSString *)script scriptId:(NSString *)scriptId
 {
-    NSRange functionRange = [script rangeOfString:@"function"];
-    if(functionRange.location == NSNotFound){
-        functionRange.location = script.length;
+    NSRange functionRange = [script rangeOfString:@"import" options:NSBackwardsSearch];
+    if(functionRange.location != NSNotFound){
+        functionRange = [script rangeOfString:@";"
+                                      options:NSCaseInsensitiveSearch
+                                        range:NSMakeRange(functionRange.location, script.length - functionRange.location)];
+        if(functionRange.location != NSNotFound){
+            functionRange.location += 1;
+        }
+    }else{
+        functionRange = NSMakeRange(0, 0);
     }
     NSString *importSentenses = [script substringToIndex:functionRange.location];
     if(importSentenses.length != 0){

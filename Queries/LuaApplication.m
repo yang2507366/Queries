@@ -13,11 +13,13 @@
 #import "UnicodeChecker.h"
 #import "SelfSupportChecker.h"
 #import "ImportSupportChecker.h"
+#import "CodeUtils.h"
 
 @interface LuaApplication ()
 
 @property(nonatomic, retain)NSMutableDictionary *originalScriptDictionary;
 @property(nonatomic, retain)NSMutableDictionary *runnableScriptDictionary;
+@property(nonatomic, retain)NSMutableDictionary *runningProgramDictionary;
 @property(nonatomic, retain)NSArray *scriptCheckers;
 
 @property(nonatomic, retain)UIWindow *window;
@@ -41,6 +43,7 @@
 {
     self.originalScriptDictionary = nil;
     self.runnableScriptDictionary = nil;
+    self.runningProgramDictionary = nil;
     self.scriptCheckers = nil;
     self.window = nil;
     [super dealloc];
@@ -52,6 +55,7 @@
     
     self.originalScriptDictionary = [NSMutableDictionary dictionary];
     self.runnableScriptDictionary = [NSMutableDictionary dictionary];
+    self.runningProgramDictionary = [NSMutableDictionary dictionary];
     self.scriptCheckers = [NSArray arrayWithObjects:
                            [[[ImportSupportChecker alloc] init] autorelease],
                            [[[UnicodeChecker alloc] init] autorelease],
@@ -101,13 +105,39 @@
     return [self.runnableScriptDictionary objectForKey:scriptId];
 }
 
++ (void)setProgram:(id<ScriptInteraction>)si forScriptId:(NSString *)scriptId
+{
+    [[[self.class sharedManager] runningProgramDictionary] setObject:si forKey:scriptId];
+}
+
++ (id<ScriptInteraction>)programWithScriptId:(NSString *)scriptId
+{
+    id<ScriptInteraction> program = [[[self sharedManager] runningProgramDictionary] objectForKey:scriptId];
+    if(!program){
+        NSLog(@"create script interaction for:%@", scriptId);
+        program = [[[LuaScriptInteraction alloc] initWithScript:[self scriptWithScriptId:scriptId]] autorelease];
+        [self setProgram:program forScriptId:scriptId];
+    }
+    return program;
+}
+
++ (id<ScriptInteraction>)restartProgramWithScriptId:(NSString *)scritId
+{
+    [[[self sharedManager] runningProgramDictionary] removeObjectForKey:scritId];
+    
+    return [self programWithScriptId:scritId];
+}
+
 + (void)run
 {
     [self.class loadLuaScripts];
     
-    id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:[self.class mainScript]] autorelease];
+    LuaScriptInteraction *si = [self programWithScriptId:lua_main_file];
     [si callFunction:@"main" callback:^(NSString *returnValue, NSString *error) {
-        NSLog(@"lua running:%@, %@", returnValue, error);
+        NSLog(@"lua main:%@, %@", returnValue, error);
+        if(error.length != 0){
+            NSLog(@"%@", [CodeUtils decodeAllChinese:si.script]);
+        }
     } parameters:nil];
 }
 
@@ -120,11 +150,6 @@
 + (UIWindow *)window
 {
     return [[self.class sharedManager] window];
-}
-
-+ (NSString *)mainScript
-{
-    return [[[self sharedManager] runnableScriptDictionary] objectForKey:lua_main_file];
 }
 
 + (void)loadLuaScripts

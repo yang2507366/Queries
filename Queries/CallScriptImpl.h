@@ -10,4 +10,6 @@
 
 @interface CallScriptImpl : NSObject
 
++ (BOOL)callScriptWithScriptId:(NSString *)scriptId;
+
 @end

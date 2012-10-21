@@ -9,3 +9,4 @@
 #define script_id_function_name     @"__script_id__()"
 #define lua_self                    @"_lua_self"
 #define lua_main_file               @"main.lua"
+#define lua_main_function           @"main"

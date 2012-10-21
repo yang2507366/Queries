@@ -6,9 +6,41 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaObjectManager.h"
+#import "LuaObjectManagerLegacy.h"
 
-@implementation LuaObjectManager
+@interface ObjectWrapper : NSObject
+
+@property(nonatomic, assign)NSInteger referenceCount;
+@property(nonatomic, retain)NSObject *object;
+
+@end
+
+@implementation ObjectWrapper
+
+- (void)dealloc
+{
+    NSLog(@"recycle object:%d", (NSInteger)self.object);
+    self.object = nil;
+    [super dealloc];
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    self.referenceCount = 1;
+    
+    return self;
+}
+
+- (BOOL)recyclable
+{
+    return self.referenceCount == 0;
+}
+
+@end
+
+@implementation LuaObjectManagerLegacy
 
 + (NSMutableDictionary *)objectPool
 {
@@ -23,17 +55,38 @@
     return instance;
 }
 
++ (ObjectWrapper *)objectWrapperWithObjectId:(NSString *)objectId
+{
+    ObjectWrapper *tmpWrapper = [[self objectPool] objectForKey:objectId];
+    return tmpWrapper;
+}
+
 + (NSString *)addObject:(id)object
 {
     NSString *controlId = [NSString stringWithFormat:@"%d", (NSInteger)object];
-    [[self objectPool] setObject:object forKey:controlId];
+    ObjectWrapper *objectWrapper = [[[ObjectWrapper alloc] init] autorelease];
+    objectWrapper.object = object;
+    [[self objectPool] setObject:objectWrapper forKey:controlId];
     
     return controlId;
 }
 
++ (void)removeObjectWithObjectId:(NSString *)objectId
+{
+    ObjectWrapper *tmpWrapper = [self objectWrapperWithObjectId:objectId];
+    tmpWrapper.referenceCount = 0;
+}
+
 + (id)objectForId:(NSString *)objectId
 {
-    return [[self objectPool] objectForKey:objectId];
+    ObjectWrapper *tmpWrapper = [self objectWrapperWithObjectId:objectId];
+    if(!tmpWrapper){
+        return nil;
+    }
+    if(tmpWrapper.referenceCount == 0){
+        NSLog(@"try to get dealloc object:%@", tmpWrapper.object);
+    }
+    return [self objectWrapperWithObjectId:objectId].object;
 }
 
 @end
