@@ -9,107 +9,33 @@
 #import "LuaUIRelatedImpl.h"
 #import "Singleton.h"
 #import "DialogTools.h"
-
-@interface EventObject : NSObject
-
-@property(nonatomic, retain)id<ScriptInteraction> si;
-@property(nonatomic, copy)NSString *funcName;
-@property(nonatomic, copy)NSString *viewId;
-
-@end
-
-@implementation EventObject
-
-- (void)dealloc
-{
-    self.si = nil;
-    self.funcName = nil;
-    self.viewId = nil;
-    [super dealloc];
-}
-
-@end
-
-@interface EventProxy : Singleton
-
-@property(nonatomic, retain)NSMutableDictionary *eventDict;
-- (void)event:(id)source;
-
-@end
-
-@implementation EventProxy
-
-@synthesize eventDict;
-
-- (void)dealloc
-{
-    self.eventDict = nil;
-    [super dealloc];
-}
-
-- (id)init
-{
-    self = [super init];
-    
-    self.eventDict = [NSMutableDictionary dictionary];
-    
-    return self;
-}
-
-- (NSString *)identifierForObject:(NSString *)obj
-{
-    return [NSString stringWithFormat:@"%d", (NSInteger)obj];
-}
-
-- (void)addEventSource:(id)eventSource scriptInteraction:(id<ScriptInteraction>)si funcName:(NSString *)funcName viewId:(NSString *)viewId
-{
-    EventObject *eo = [[[EventObject alloc] init] autorelease];
-    eo.si = si;
-    eo.funcName = funcName;
-    eo.viewId = viewId;
-    [self.eventDict setObject:eo forKey:[self identifierForObject:eventSource]];
-}
-
-- (void)event:(id)source
-{
-    EventObject *eo = [self.eventDict objectForKey:[self identifierForObject:source]];
-    [eo.si callFunction:eo.funcName callback:nil parameters:eo.viewId, nil];
-}
-
-@end
+#import "ViewControllerImpl.h"
+#import "LuaApplication.h"
+#import "LuaRelatedObjectManager.h"
+#import "EventProxy.h"
 
 @implementation LuaUIRelatedImpl
 
-+ (NSMutableDictionary *)controlPool
++ (NSString *)addControl:(id)control
 {
-    static NSMutableDictionary *instance = nil;
-    
-    @synchronized(self.class){
-        if(instance == nil){
-            instance = [[NSMutableDictionary dictionary] retain];
-        }
-    }
-    
-    return instance;
+    return [LuaRelatedObjectManager addObject:control];
 }
 
-+ (NSString *)rootViewControllerId
++ (id)controlWithId:(NSString *)controlId
 {
-    NSString *tmpId = @"rootViewController";
-    if(![[self controlPool] objectForKey:tmpId]){
-        UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject];
-        UIViewController *rootVC = window.rootViewController;
-        
-        [[self controlPool] setObject:rootVC forKey:tmpId];
-    }
-    
-    return tmpId;
+    return [LuaRelatedObjectManager objectForId:controlId];
+}
+
++ (void)setRootViewControllerWithId:(NSString *)viewControllerId
+{
+    UIViewController *vc = [self controlWithId:viewControllerId];
+    [LuaApplication window].rootViewController = vc;
 }
 
 + (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId
 {
-    UIViewController *targetVC = [[self controlPool] objectForKey:viewControllerId];
-    [targetVC.view addSubview:[[self controlPool] objectForKey:viewId]];
+    UIViewController *targetVC = [self controlWithId:viewControllerId];
+    [targetVC.view addSubview:[self controlWithId:viewId]];
 }
 
 + (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId
@@ -118,26 +44,36 @@
 }
 
 + (NSString *)createViewControllerWithTitle:(NSString *)title
+                          scriptInteraction:(id<ScriptInteraction>)si
+                            viewDidLoadFunc:(NSString *)viewDidLoadFunc
+                         viewWillAppearFunc:(NSString *)viewWillAppearFunc
 {
-    return nil;
+    ViewControllerImpl *vc = [[[ViewControllerImpl alloc] init] autorelease];
+    NSString *cid = [self addControl:vc];
+    vc.viewDidLoadBlock = ^(void){
+        [si callFunction:viewDidLoadFunc callback:nil parameters:cid, nil];
+    };
+    vc.viewWillAppearBlock = ^(void){
+        [si callFunction:viewWillAppearFunc callback:nil parameters:cid, nil];
+    };
+    return cid;
 }
 
 + (NSString *)createButtonWithTitle:(NSString *)title scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
-    button.frame = CGRectMake(0, 20, 80, 40);
+    button.frame = CGRectMake(0, 0, 80, 40);
     [button setTitle:title forState:UIControlStateNormal];
     [button addTarget:[EventProxy sharedInstance] action:@selector(event:) forControlEvents:UIControlEventTouchUpInside];
-    NSString *buttonId = [NSString stringWithFormat:@"%d", (NSInteger)button];
+    NSString *buttonId = [self addControl:button];
     [[EventProxy sharedInstance] addEventSource:button scriptInteraction:si funcName:funcName viewId:buttonId];
-    [[self controlPool] setObject:button forKey:buttonId];
     return buttonId;
 }
 
 + (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame
 {
-    UIView *view = [[self controlPool] objectForKey:viewId];
+    UIView *view = [self controlWithId:viewId];
     NSArray *frameInfo = [frame componentsSeparatedByString:@","];
     if(view && frameInfo.count == 4){
         CGRect tmpRect = CGRectMake([frameInfo[0] floatValue], [frameInfo[1] floatValue], [frameInfo[2] floatValue], [frameInfo[3] floatValue]);
@@ -147,7 +83,7 @@
 
 + (CGRect)frameOfViewWithViewId:(NSString *)viewId
 {
-    UIView *view = [[self controlPool] objectForKey:viewId];
+    UIView *view = [self controlWithId:viewId];
     return view.frame;
 }
 

@@ -6,9 +6,8 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#ifndef Queries_LuaScriptChecker_h
-#define Queries_LuaScriptChecker_h
+@protocol LuaScriptChecker <NSObject>
 
+- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId;
 
-
-#endif
+@end

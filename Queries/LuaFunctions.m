@@ -9,7 +9,7 @@
 #include "LuaFunctions.h"
 #include <stdio.h>
 #import "LuaHTTPRequestImpl.h"
-#import "LuaScriptManager.h"
+#import "LuaApplication.h"
 #import "LuaScriptInteraction.h"
 #import "LuaUIRelatedImpl.h"
 #import "CodeUtils.h"
@@ -30,7 +30,7 @@ NSString *readParamValue(lua_State *L, int location)
 
 id<ScriptInteraction>getScriptInteraction(NSString *scriptId)
 {
-    NSString *script = [[LuaScriptManager sharedManager] scriptForIdentifier:scriptId];
+    NSString *script = [LuaApplication scriptWithScriptId:scriptId];
     id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:script]  autorelease];
     
     return si;
@@ -43,8 +43,7 @@ int http_request(lua_State *L)
     NSString *url = readParamValue(L, 2);
     NSString *callbackFuncName = readParamValue(L, 3);
     NSLog(@"http_request:%@, %@, %@", scriptId, url, callbackFuncName);
-    LuaScriptInteraction *si = [[LuaScriptInteraction alloc] initWithScript:
-                                [[LuaScriptManager sharedManager] scriptForIdentifier:scriptId]];
+    LuaScriptInteraction *si = getScriptInteraction(scriptId);
     NSString *requestId = [LuaHTTPRequestImpl requestWithLuaState:si urlString:url
                                       callbackLuaFunctionName:callbackFuncName];
     lua_pushstring(L, [requestId UTF8String]);
@@ -67,18 +66,11 @@ int ui_create_button(lua_State *L)
     NSString *title = readParamValue(L, 2);
     NSString *callback = readParamValue(L, 3);
     NSLog(@"ui_create_button:%@", title);
-    id<ScriptInteraction> si = [[LuaScriptInteraction alloc] initWithScript:
-                                [[LuaScriptManager sharedManager] scriptForIdentifier:scriptId]];
+    id<ScriptInteraction> si = getScriptInteraction(scriptId);
     NSString *buttonId = [LuaUIRelatedImpl createButtonWithTitle:title
                                                     scriptInteraction:si
                                                      callbackFuncName:callback];
     lua_pushstring(L, [buttonId UTF8String]);
-    return 1;
-}
-
-int ui_root_view_controller_id(lua_State *L)
-{
-    lua_pushstring(L, [[LuaUIRelatedImpl rootViewControllerId] UTF8String]);
     return 1;
 }
 
@@ -125,6 +117,28 @@ int ui_alert(lua_State *L)
     return 0;
 }
 
+int ui_create_view_controller(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    NSString *title = readParamValue(L, 2);
+    NSString *viewDidLoadFunc = readParamValue(L, 3);
+    NSString *viewWillAppearFunc = readParamValue(L, 4);
+    
+    NSString *vcId = [LuaUIRelatedImpl createViewControllerWithTitle:title
+                                                   scriptInteraction:getScriptInteraction(scriptId)
+                                                     viewDidLoadFunc:viewDidLoadFunc
+                                                  viewWillAppearFunc:viewWillAppearFunc];
+    lua_pushstring(L, [vcId UTF8String]);
+    return 1;
+}
+
+int ui_set_root_view_controller(lua_State *L)
+{
+    NSString *viewControllerId = readParamValue(L, 1);
+    [LuaUIRelatedImpl setRootViewControllerWithId:viewControllerId];
+    return 0;
+}
+
 #pragma mark - system
 void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *L))
 {
@@ -138,11 +152,12 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "http_request", http_request);
     pushFunctionToLua(L, "http_request_cancel", http_request_cancel);
     pushFunctionToLua(L, "ui_create_button", ui_create_button);
-    pushFunctionToLua(L, "ui_root_view_controller_id", ui_root_view_controller_id);
     pushFunctionToLua(L, "ui_add_subview_to_view_controller", ui_add_subview_to_view_controller);
     pushFunctionToLua(L, "ui_set_view_frame", ui_set_view_frame);
     pushFunctionToLua(L, "ui_get_view_frame", ui_get_view_frame);
     pushFunctionToLua(L, "ui_alert", ui_alert);
+    pushFunctionToLua(L, "ui_create_view_controller", ui_create_view_controller);
+    pushFunctionToLua(L, "ui_set_root_view_controller", ui_set_root_view_controller);
 }
 
 

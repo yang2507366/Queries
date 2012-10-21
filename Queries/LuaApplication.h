@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LuaScriptManager : NSObject
+@interface LuaApplication : NSObject
 
-+ (id)sharedManager;
-
-- (NSString *)scriptForIdentifier:(NSString *)identifier;
-- (void)addScript:(NSString *)script;
++ (void)run;
++ (void)runOnWindow:(UIWindow *)window;
++ (UIWindow *)window;
++ (NSString *)originalScriptWithScriptId:(NSString *)scriptId;
++ (NSString *)scriptWithScriptId:(NSString *)scriptId;
 
 @end

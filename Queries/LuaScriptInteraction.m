@@ -12,7 +12,6 @@
 #import "lauxlib.h"
 #import "UnicodeScriptInvokeFilter.h"
 #import "LuaFunctions.h"
-#import "LuaScriptManager.h"
 
 @interface LuaScriptInteraction () {
     char *_scriptChars;
@@ -119,7 +118,6 @@
     if(_script){
         _scriptChars = malloc(_script.length * sizeof(char));
         strcpy(_scriptChars, [_script UTF8String]);
-        [[LuaScriptManager sharedManager] addScript:_script];
     }else{
         _scriptChars = NULL;
     }

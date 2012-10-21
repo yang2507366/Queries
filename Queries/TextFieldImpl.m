@@ -10,4 +10,9 @@
 
 @implementation TextFieldImpl
 
++ (NSString *)createTextFieldWithFrame:(CGRect)frame
+{
+    return nil;
+}
+
 @end

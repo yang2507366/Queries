@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#ifndef Queries_LuaConstants_h
-#define Queries_LuaConstants_h
-
-
-
-#endif
+#define script_id_function_name     @"__script_id__()"
+#define lua_self                    @"_lua_self"
+#define lua_main_file               @"main.lua"

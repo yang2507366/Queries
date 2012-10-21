@@ -10,4 +10,7 @@
 
 @interface LuaRelatedObjectManager : NSObject
 
++ (NSString *)addObject:(id)object;
++ (id)objectForId:(NSString *)objectId;
+
 @end

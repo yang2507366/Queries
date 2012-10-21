@@ -7,7 +7,13 @@
 //
 
 #import "UnicodeChecker.h"
+#import "CodeUtils.h"
 
 @implementation UnicodeChecker
+
+- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
+{
+    return [CodeUtils encodeAllChinese:script];
+}
 
 @end

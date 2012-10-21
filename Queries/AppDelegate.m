@@ -11,7 +11,7 @@
 #import "MemoryTracer.h"
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
-#import "LuaScriptManager.h"
+#import "LuaApplication.h"
 
 @implementation AppDelegate
 
@@ -30,15 +30,11 @@
     
     [MemoryTracer start];
     
-    self.window.rootViewController =
-        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
+//    self.window.rootViewController =
+//        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
 //    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
     
-    NSString *script = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"lua"]
-                                                 encoding:NSUTF8StringEncoding error:nil];
-    id<ScriptInteraction> scriptInvoker = [[[LuaScriptInteraction alloc] initWithScript:script] autorelease];
-    [scriptInvoker callFunction:@"sendHttpRequest" callback:nil parameters:@"http://dict.cn", nil];
-    [scriptInvoker callFunction:@"initUIComponents" callback:nil parameters:nil];
+    [LuaApplication runOnWindow:self.window];
     
     return YES;
 }

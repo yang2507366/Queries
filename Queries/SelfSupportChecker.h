@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LuaScriptChecker.h"
 
-@interface SelfSupportChecker : NSObject
+@interface SelfSupportChecker : NSObject <LuaScriptChecker>
 
 @end
