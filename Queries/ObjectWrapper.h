@@ -10,4 +10,9 @@
 
 @interface ObjectWrapper : NSObject
 
++ (id)newObjectWrapperWithObject:(id)object;
+
+@property(nonatomic, assign)NSInteger referenceCount;
+@property(nonatomic, retain)NSObject *object;
+
 @end

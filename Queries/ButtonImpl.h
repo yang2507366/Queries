@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ScriptInteraction.h"
 
 @interface ButtonImpl : NSObject
 
++ (NSString *)createButtonWithTitle:(NSString *)title
+                  scriptInteraction:(id<ScriptInteraction>)si
+                   callbackFuncName:(NSString *)funcName
+                           scriptId:(NSString *)scriptId;
++ (NSString *)createWithScriptId:(NSString *)scriptId
+                              si:(id<ScriptInteraction>)si
+                           title:(NSString *)title
+                           frame:(CGRect)frame
+                   eventFuncName:(NSString *)eventFuncName;
 @end

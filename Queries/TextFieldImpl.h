@@ -10,6 +10,6 @@
 
 @interface TextFieldImpl : NSObject
 
-+ (NSString *)createTextFieldWithFrame:(CGRect)frame;
++ (NSString *)createTextFieldWithScriptId:(NSString *)scriptId frame:(CGRect)frame;
 
 @end

@@ -6,39 +6,39 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaUIRelatedImpl.h"
+#import "UIRelatedImpl.h"
 #import "Singleton.h"
 #import "DialogTools.h"
 #import "ViewControllerImpl.h"
 #import "LuaApplication.h"
-#import "LuaObjectManagerLegacy.h"
 #import "EventProxy.h"
+#import "LuaGroupedObjectManager.h"
 
-@implementation LuaUIRelatedImpl
+@implementation UIRelatedImpl
 
-+ (NSString *)addControl:(id)control
++ (NSString *)addObject:(id)object group:(NSString *)group
 {
-    return [LuaObjectManagerLegacy addObject:control];
+    return [LuaGroupedObjectManager addObject:object group:group];
 }
 
-+ (id)controlWithId:(NSString *)controlId
++ (id)getObjectWithObjectId:(NSString *)objectId group:(NSString *)group
 {
-    return [LuaObjectManagerLegacy objectForId:controlId];
+    return [LuaGroupedObjectManager getObjectWithId:objectId group:group];
 }
 
-+ (void)setRootViewControllerWithId:(NSString *)viewControllerId
++ (void)setRootViewControllerWithId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
 {
-    UIViewController *vc = [self controlWithId:viewControllerId];
+    UIViewController *vc = [self getObjectWithObjectId:viewControllerId group:scriptId];
     [LuaApplication window].rootViewController = vc;
 }
 
-+ (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId
++ (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
 {
-    UIViewController *targetVC = [self controlWithId:viewControllerId];
-    [targetVC.view addSubview:[self controlWithId:viewId]];
+    UIViewController *targetVC = [self getObjectWithObjectId:viewControllerId group:scriptId];
+    [targetVC.view addSubview:[self getObjectWithObjectId:viewId group:scriptId]];
 }
 
-+ (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId
++ (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId scriptId:(NSString *)scriptId
 {
     
 }
@@ -47,9 +47,10 @@
                           scriptInteraction:(id<ScriptInteraction>)si
                             viewDidLoadFunc:(NSString *)viewDidLoadFunc
                          viewWillAppearFunc:(NSString *)viewWillAppearFunc
+                                   scriptId:(NSString *)scriptId
 {
     ViewControllerImpl *vc = [[[ViewControllerImpl alloc] init] autorelease];
-    NSString *cid = [self addControl:vc];
+    NSString *cid = [self addObject:vc group:scriptId];
     vc.viewDidLoadBlock = ^(void){
         [si callFunction:viewDidLoadFunc callback:nil parameters:cid, nil];
     };
@@ -59,21 +60,9 @@
     return cid;
 }
 
-+ (NSString *)createButtonWithTitle:(NSString *)title scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName
++ (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId
 {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
-    button.frame = CGRectMake(0, 0, 80, 40);
-    [button setTitle:title forState:UIControlStateNormal];
-    [button addTarget:[EventProxy sharedInstance] action:@selector(event:) forControlEvents:UIControlEventTouchUpInside];
-    NSString *buttonId = [self addControl:button];
-    [[EventProxy sharedInstance] addEventSource:button scriptInteraction:si funcName:funcName viewId:buttonId];
-    return buttonId;
-}
-
-+ (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame
-{
-    UIView *view = [self controlWithId:viewId];
+    UIView *view = [self getObjectWithObjectId:viewId group:scriptId];
     NSArray *frameInfo = [frame componentsSeparatedByString:@","];
     if(view && frameInfo.count == 4){
         CGRect tmpRect = CGRectMake([frameInfo[0] floatValue], [frameInfo[1] floatValue], [frameInfo[2] floatValue], [frameInfo[3] floatValue]);
@@ -81,9 +70,9 @@
     }
 }
 
-+ (CGRect)frameOfViewWithViewId:(NSString *)viewId
++ (CGRect)frameOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId
 {
-    UIView *view = [self controlWithId:viewId];
+    UIView *view = [self getObjectWithObjectId:viewId group:scriptId];
     return view.frame;
 }
 

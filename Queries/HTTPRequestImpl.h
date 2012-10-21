@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ScriptInteraction.h"
 
-@interface LuaHTTPRequestImpl : NSObject
+@interface HTTPRequestImpl : NSObject
 
 + (NSString *)requestWithLuaState:(id<ScriptInteraction>)script urlString:(NSString *)urlString callbackLuaFunctionName:(NSString *)luaFunctionName;
 + (void)cancelRequestWithRequestId:(NSString *)requestId;

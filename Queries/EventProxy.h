@@ -18,7 +18,9 @@
 
 @end
 
-@interface EventProxy : Singleton
+@interface EventProxy : NSObject
+
++ (id)sharedInstance;
 
 @property(nonatomic, retain)NSMutableDictionary *eventDict;
 - (void)event:(id)source;

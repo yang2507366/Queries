@@ -10,4 +10,7 @@
 
 @interface RuntimeImpl : NSObject
 
++ (void)recycleObjectWithScriptId:(NSString *)scriptId;
++ (NSString *)invokeObjectMethodWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId methodName:(NSString *)methodName;
+
 @end

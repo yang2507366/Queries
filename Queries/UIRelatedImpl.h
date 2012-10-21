@@ -9,24 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "ScriptInteraction.h"
 
-@interface LuaUIRelatedImpl : NSObject
+@interface UIRelatedImpl : NSObject
 
-+ (void)setRootViewControllerWithId:(NSString *)viewControllerId;
++ (void)setRootViewControllerWithId:(NSString *)viewControllerId scriptId:(NSString *)scriptId;
 
-+ (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId;
++ (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId scriptId:(NSString *)scriptId;
 
-+ (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId;
++ (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId scriptId:(NSString *)scriptId;
 
 + (NSString *)createViewControllerWithTitle:(NSString *)title
                           scriptInteraction:(id<ScriptInteraction>)si
                             viewDidLoadFunc:(NSString *)viewDidLoadFunc
-                         viewWillAppearFunc:(NSString *)viewWillAppearFunc;
+                         viewWillAppearFunc:(NSString *)viewWillAppearFunc
+                                   scriptId:(NSString *)scriptId;
 
-+ (NSString *)createButtonWithTitle:(NSString *)title scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName;
++ (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId;
 
-+ (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame;
-
-+ (CGRect)frameOfViewWithViewId:(NSString *)viewId;
++ (CGRect)frameOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId;
 
 + (void)alertWithTitle:(NSString *)title message:(NSString *)msg scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName;
 

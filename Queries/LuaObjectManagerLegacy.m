@@ -7,38 +7,7 @@
 //
 
 #import "LuaObjectManagerLegacy.h"
-
-@interface ObjectWrapper : NSObject
-
-@property(nonatomic, assign)NSInteger referenceCount;
-@property(nonatomic, retain)NSObject *object;
-
-@end
-
-@implementation ObjectWrapper
-
-- (void)dealloc
-{
-    NSLog(@"recycle object:%d", (NSInteger)self.object);
-    self.object = nil;
-    [super dealloc];
-}
-
-- (id)init
-{
-    self = [super init];
-    
-    self.referenceCount = 1;
-    
-    return self;
-}
-
-- (BOOL)recyclable
-{
-    return self.referenceCount == 0;
-}
-
-@end
+#import "ObjectWrapper.h"
 
 @implementation LuaObjectManagerLegacy
 

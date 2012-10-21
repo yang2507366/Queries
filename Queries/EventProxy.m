@@ -24,6 +24,19 @@
 
 @synthesize eventDict;
 
++ (id)sharedInstance
+{
+    static id instance = nil;
+    
+    @synchronized(instance){
+        if(instance == nil){
+            instance = [[self alloc] init];
+        }
+    }
+    
+    return instance;
+}
+
 - (void)dealloc
 {
     self.eventDict = nil;

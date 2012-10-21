@@ -7,12 +7,19 @@
 //
 
 #import "TextFieldImpl.h"
+#import "LuaGroupedObjectManager.h"
 
 @implementation TextFieldImpl
 
-+ (NSString *)createTextFieldWithFrame:(CGRect)frame
++ (NSString *)createTextFieldWithScriptId:(NSString *)scriptId frame:(CGRect)frame
 {
-    return nil;
+    UITextField *tmpTextField = [[[UITextField alloc] initWithFrame:frame] autorelease];
+    tmpTextField.borderStyle = UITextBorderStyleRoundedRect;
+    tmpTextField.returnKeyType = UIReturnKeyDone;
+    tmpTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    tmpTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    tmpTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    return [LuaGroupedObjectManager addObject:tmpTextField group:scriptId];
 }
 
 @end

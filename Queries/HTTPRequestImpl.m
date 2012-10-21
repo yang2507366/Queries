@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaHTTPRequestImpl.h"
+#import "HTTPRequestImpl.h"
 #import "HTTPRequest.h"
 
-@implementation LuaHTTPRequestImpl
+@implementation HTTPRequestImpl
 
 + (NSMutableArray *)sharedRequestList
 {

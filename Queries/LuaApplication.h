@@ -18,6 +18,5 @@
 + (id<ScriptInteraction>)restartProgramWithScriptId:(NSString *)scritId;
 + (NSString *)originalScriptWithScriptId:(NSString *)scriptId;
 + (NSString *)scriptWithScriptId:(NSString *)scriptId;
-+ (id<ScriptInteraction>)scriptInteractionForScriptId:(NSString *)scriptId;
 
 @end
