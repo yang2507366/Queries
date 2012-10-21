@@ -105,7 +105,7 @@
 {
     [self.class loadLuaScripts];
     
-    id<ScriptInteraction> si = [[LuaScriptInteraction alloc] initWithScript:[self.class mainScript]];
+    id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:[self.class mainScript]] autorelease];
     [si callFunction:@"main" callback:^(NSString *returnValue, NSString *error) {
         NSLog(@"lua running:%@, %@", returnValue, error);
     } parameters:nil];

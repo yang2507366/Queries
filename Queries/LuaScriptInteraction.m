@@ -51,7 +51,7 @@
 {
     if(!_scriptChars){
         if(callback){
-            callback(nil, @"error script cannot be NULL");
+            callback(nil, [NSString stringWithFormat:@"call function:%@ error, script cannot be NULL", funcName]);
         }
         return;
     }

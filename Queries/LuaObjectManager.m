@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaRelatedObjectManager.h"
+#import "LuaObjectManager.h"
 
-@implementation LuaRelatedObjectManager
+@implementation LuaObjectManager
 
 + (NSMutableDictionary *)objectPool
 {

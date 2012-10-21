@@ -33,7 +33,7 @@
 		3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */; };
 		3EC0BAA31633CB060074D22B /* ViewControllerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */; };
 		3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */; };
-		3EC0BAA91633EA200074D22B /* LuaRelatedObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA81633EA1F0074D22B /* LuaRelatedObjectManager.m */; };
+		3EC0BAA91633EA200074D22B /* LuaObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA81633EA1F0074D22B /* LuaObjectManager.m */; };
 		3EC0BAAC1633EAFD0074D22B /* EventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAAB1633EAFD0074D22B /* EventProxy.m */; };
 		3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
 		3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */; };
@@ -135,8 +135,8 @@
 		3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerImpl.m; sourceTree = "<group>"; };
 		3EC0BAA41633E99F0074D22B /* TextFieldImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldImpl.h; sourceTree = "<group>"; };
 		3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldImpl.m; sourceTree = "<group>"; };
-		3EC0BAA71633EA1F0074D22B /* LuaRelatedObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaRelatedObjectManager.h; sourceTree = "<group>"; };
-		3EC0BAA81633EA1F0074D22B /* LuaRelatedObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaRelatedObjectManager.m; sourceTree = "<group>"; };
+		3EC0BAA71633EA1F0074D22B /* LuaObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaObjectManager.h; sourceTree = "<group>"; };
+		3EC0BAA81633EA1F0074D22B /* LuaObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaObjectManager.m; sourceTree = "<group>"; };
 		3EC0BAAA1633EAFC0074D22B /* EventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProxy.h; sourceTree = "<group>"; };
 		3EC0BAAB1633EAFD0074D22B /* EventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventProxy.m; sourceTree = "<group>"; };
 		3EE36D6616324A9400BB5D02 /* LuaScriptInvokeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptInvokeFilter.h; sourceTree = "<group>"; };
@@ -432,8 +432,8 @@
 				3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */,
 				3EC0BAA41633E99F0074D22B /* TextFieldImpl.h */,
 				3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */,
-				3EC0BAA71633EA1F0074D22B /* LuaRelatedObjectManager.h */,
-				3EC0BAA81633EA1F0074D22B /* LuaRelatedObjectManager.m */,
+				3EC0BAA71633EA1F0074D22B /* LuaObjectManager.h */,
+				3EC0BAA81633EA1F0074D22B /* LuaObjectManager.m */,
 				3EC0BAAA1633EAFC0074D22B /* EventProxy.h */,
 				3EC0BAAB1633EAFD0074D22B /* EventProxy.m */,
 			);
@@ -681,7 +681,7 @@
 				3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */,
 				3EC0BAA31633CB060074D22B /* ViewControllerImpl.m in Sources */,
 				3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */,
-				3EC0BAA91633EA200074D22B /* LuaRelatedObjectManager.m in Sources */,
+				3EC0BAA91633EA200074D22B /* LuaObjectManager.m in Sources */,
 				3EC0BAAC1633EAFD0074D22B /* EventProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,19 +11,19 @@
 #import "DialogTools.h"
 #import "ViewControllerImpl.h"
 #import "LuaApplication.h"
-#import "LuaRelatedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "EventProxy.h"
 
 @implementation LuaUIRelatedImpl
 
 + (NSString *)addControl:(id)control
 {
-    return [LuaRelatedObjectManager addObject:control];
+    return [LuaObjectManager addObject:control];
 }
 
 + (id)controlWithId:(NSString *)controlId
 {
-    return [LuaRelatedObjectManager objectForId:controlId];
+    return [LuaObjectManager objectForId:controlId];
 }
 
 + (void)setRootViewControllerWithId:(NSString *)viewControllerId
