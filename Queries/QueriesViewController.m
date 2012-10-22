@@ -63,7 +63,7 @@
 #pragma mark - events
 - (void)onBtnTapped:(UIButton *)btn
 {
-    NSLog(@"%@", btn.currentTitle);
+    D_Log(@"%@", btn.currentTitle);
 }
 
 #pragma mark - GridViewTableViewHelperDelegate

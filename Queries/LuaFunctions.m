@@ -69,7 +69,7 @@ int http_request(lua_State *L)
     NSString *scriptId = luaStringParam(L, 1);
     NSString *url = luaStringParam(L, 2);
     NSString *callbackFuncName = luaStringParam(L, 3);
-    NSLog(@"http_request:%@, %@, %@", scriptId, url, callbackFuncName);
+    D_Log(@"http_request:%@, %@, %@", scriptId, url, callbackFuncName);
     LuaScriptInteraction *si = scriptInteractionForScriptId(scriptId);
     NSString *requestId = [HTTPRequestImpl requestWithLuaState:si urlString:url
                                        callbackLuaFunctionName:callbackFuncName];
@@ -80,7 +80,7 @@ int http_request(lua_State *L)
 int http_cancel(lua_State *L)
 {
     NSString *requestId = luaStringParam(L, 1);
-    NSLog(@"http_request_cancel:%@", requestId);
+    D_Log(@"http_request_cancel:%@", requestId);
     [HTTPRequestImpl cancelRequestWithRequestId:requestId];
     
     return 0;
@@ -93,7 +93,6 @@ int ui_createButton(lua_State *L)
     NSString *title = luaStringParam(L, 2);
     NSString *frame = luaStringParam(L, 3);
     NSString *callback = luaStringParam(L, 4);
-    NSLog(@"ui_create_button:%@", title);
     id<ScriptInteraction> si = scriptInteractionForScriptId(scriptId);
     NSString *buttonId = [ButtonImpl createWithScriptId:scriptId si:si title:title frame:luaRect(frame) eventFuncName:callback];
     pushString(L, buttonId);
@@ -349,7 +348,25 @@ int runtime_invokeObjectProperty_get(lua_State *L)
     return 1;
 }
 
+int runtime_getPropertyOfObject(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *propertyName = luaStringParam(L, 3);
+    NSString *propertyId = [RuntimeImpl propertyIdOfObjectWithScriptId:scriptId objectId:objectId propertyName:propertyName];
+    pushString(L, propertyId);
+    return 1;
+}
+
 #pragma mark - system
+int nslog(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *log = luaStringParam(L, 2);
+    NSLog(@"*[%@] %@", scriptId, log);
+    return 0;
+}
+
 void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *L))
 {
     lua_pushstring(L, functionName);
@@ -359,6 +376,8 @@ void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *
 
 void initFuntions(lua_State *L)
 {
+    pushFunctionToLua(L, "nslog", nslog);
+    
     pushFunctionToLua(L, "http_request", http_request);
     pushFunctionToLua(L, "http_cancel", http_cancel);
     
@@ -388,6 +407,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "runtime_invokeObjectMethod_setValueAndGetValue", runtime_invokeObjectMethod_setValueAndGetValue);
     pushFunctionToLua(L, "runtime_invokeObjectProperty_set", runtime_invokeObjectProperty_set);
     pushFunctionToLua(L, "runtime_invokeObjectProperty_get", runtime_invokeObjectProperty_get);
+    pushFunctionToLua(L, "runtime_getPropertyOfObject", runtime_getPropertyOfObject);
 }
 
 

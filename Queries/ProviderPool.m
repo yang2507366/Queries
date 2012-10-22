@@ -66,7 +66,7 @@
 
 - (void)providerDidRemove:(id<ProviderPoolable>)provider
 {
-    NSLog(@"%@", provider);
+    D_Log(@"%@", provider);
 }
 
 #pragma mark - SharedPool

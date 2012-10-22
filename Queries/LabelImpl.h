@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LabelImpl : NSObject
+@interface LabelImpl : UILabel
 
 + (NSString *)createLabelWithScriptId:(NSString *)scriptId text:(NSString *)text frame:(CGRect)frame;
 

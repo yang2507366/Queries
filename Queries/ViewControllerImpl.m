@@ -19,7 +19,7 @@
 {
     self.viewDidLoadBlock = nil;
     self.viewWillAppearBlock = nil;
-    NSLog(@"ViewControllerImpl::dealloc:%d", (NSInteger)self);
+    D_Log(@"%d", (NSInteger)self);
     [super dealloc];
 }
 

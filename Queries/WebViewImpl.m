@@ -21,7 +21,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"%@ dealloc", self);
+    D_Log(@"%d", (NSInteger)self);
     self.shouldStartBlock = nil;
     self.didLoadBlock = nil;
     self.didErrorBlock = nil;

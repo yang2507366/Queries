@@ -25,14 +25,14 @@
 
 - (NSString *)importWithScriptId:(NSString *)scriptId originalScript:(NSString *)originalScript
 {
-    NSLog(@"importing:%@", scriptId);
+    D_Log(@"importing:%@", scriptId);
     NSString *importScript = [LuaApplication originalScriptWithScriptId:scriptId];
     if(importScript.length != 0){
-        NSLog(@"import success:%@", scriptId);
+        D_Log(@"import success:%@", scriptId);
         importScript = [self check:importScript scriptId:scriptId];
         originalScript = [NSString stringWithFormat:@"%@\n%@", originalScript, importScript];
     }else{
-        NSLog(@"import error, not found:%@", scriptId);
+        D_Log(@"import error, not found:%@", scriptId);
     }
     return originalScript;
 }
@@ -65,7 +65,7 @@
                     if(![importScriptId isEqualToString:self.sourceScriptId]){
                         script = [self importWithScriptId:importScriptId originalScript:script];
                     }else{
-                        NSLog(@"crossing import:%@->%@", scriptId, importScriptId);
+                        D_Log(@"crossing import:%@->%@", scriptId, importScriptId);
                     }
                 }
             }

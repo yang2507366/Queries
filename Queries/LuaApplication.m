@@ -116,7 +116,7 @@
 {
     id<ScriptInteraction> program = [[[self sharedManager] runningProgramDictionary] objectForKey:scriptId];
     if(!program){
-        NSLog(@"create script interaction for:%@", scriptId);
+        D_Log(@"create script interaction for:%@", scriptId);
         program = [[[LuaScriptInteraction alloc] initWithScript:[self scriptWithScriptId:scriptId]] autorelease];
         [self setProgram:program forScriptId:scriptId];
     }
@@ -136,9 +136,9 @@
     
     LuaScriptInteraction *si = [self programWithScriptId:lua_main_file];
     [si callFunction:@"main" callback:^(NSString *returnValue, NSString *error) {
-        NSLog(@"lua main:%@, %@", returnValue, error);
+        D_Log(@"lua main:%@, %@", returnValue, error);
         if(error.length != 0){
-            NSLog(@"%@", [CodeUtils decodeAllChinese:si.script]);
+            D_Log(@"%@", [CodeUtils decodeAllChinese:si.script]);
         }
     } parameters:nil];
 }

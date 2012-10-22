@@ -21,7 +21,7 @@
 {
     id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
-        NSLog(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
+        D_Log(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return;
     }
     SEL targetSelector = NSSelectorFromString(methodName);
@@ -37,7 +37,7 @@
 {
     id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
-        NSLog(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
+        D_Log(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return;
     }
     SEL targetSelector = NSSelectorFromString(methodName);
@@ -53,7 +53,7 @@
 {
     id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
-        NSLog(@"invokeObjectMethodGetValueWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
+        D_Log(@"invokeObjectMethodGetValueWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return @"";
     }
     id returnValue = nil;
@@ -82,7 +82,7 @@
 {
     id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
-        NSLog(@"invokeObjectPropertyGetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
+        D_Log(@"invokeObjectPropertyGetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
     }
     
     objc_property_t property = [self getObjc_property_tWithObject:obj propertyName:propertyName];
@@ -90,7 +90,7 @@
         RTProperty *tmpProperty = [[[RTProperty alloc] initWithProperty:property] autorelease];
         return [tmpProperty getStringFromTargetObject:obj];
     }else{
-        NSLog(@"property:%@ not found", propertyName);
+        D_Log(@"property:%@ not found", propertyName);
     }
     
     return @"";
@@ -103,7 +103,7 @@
 {
     id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
-        NSLog(@"invokeObjectPropertySetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
+        D_Log(@"invokeObjectPropertySetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
     }
     objc_property_t property = [self getObjc_property_tWithObject:obj propertyName:propertyName];
     if(property){
@@ -111,7 +111,7 @@
         [tmpProperty setWithString:value targetObject:obj];
         
     }else{
-        NSLog(@"property:%@ not found", propertyName);
+        D_Log(@"property:%@ not found", propertyName);
     }
 }
 
@@ -121,6 +121,33 @@
     if(targetClass){
         id object = [[[targetClass alloc] init] autorelease];
         return [LuaGroupedObjectManager addObject:object group:scriptId];
+    }
+    return nil;
+}
+
++ (NSString *)propertyIdOfObjectWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId propertyName:(NSString *)propertyName
+{
+    id targetObject = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    
+    if(targetObject){
+        SEL propertySelector = NSSelectorFromString(propertyName);
+        if([targetObject respondsToSelector:propertySelector]){
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[targetObject methodSignatureForSelector:propertySelector]];
+            invocation.target = targetObject;
+            invocation.selector = propertySelector;
+            [invocation invoke];
+            id property = nil;
+            [invocation getReturnValue:&property];
+            if(property){
+                NSString *propertyObjectId = [LuaGroupedObjectManager containsObject:property group:scriptId];
+                if(propertyObjectId.length != 0){
+                    return propertyObjectId;
+                }else{
+                    D_Log(@"add property object:%d", (NSInteger)property);
+                    return [LuaGroupedObjectManager addObject:property group:scriptId];
+                }
+            }
+        }
     }
     return nil;
 }

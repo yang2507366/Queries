@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TextFieldImpl : NSObject
+@interface TextFieldImpl : UITextField
 
 + (NSString *)createTextFieldWithScriptId:(NSString *)scriptId frame:(CGRect)frame;
 

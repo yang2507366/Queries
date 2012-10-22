@@ -9,12 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ScriptInteraction.h"
 
-@interface ButtonImpl : NSObject
+@interface ButtonImpl : UIButton
 
-+ (NSString *)createButtonWithTitle:(NSString *)title
-                  scriptInteraction:(id<ScriptInteraction>)si
-                   callbackFuncName:(NSString *)funcName
-                           scriptId:(NSString *)scriptId;
 + (NSString *)createWithScriptId:(NSString *)scriptId
                               si:(id<ScriptInteraction>)si
                            title:(NSString *)title

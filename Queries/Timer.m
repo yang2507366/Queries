@@ -31,12 +31,12 @@
 - (void)run
 {
     @autoreleasepool{
-//        NSLog(@"timer start, %@", [NSThread currentThread]);
+//        D_Log(@"timer start, %@", [NSThread currentThread]);
         while(_running){
             [self performSelectorOnMainThread:@selector(notifyRunning) withObject:nil waitUntilDone:YES];
             [NSThread sleepForTimeInterval:_timeInterval];
         }
-//        NSLog(@"timer stop, %@", [NSThread currentThread]);
+//        D_Log(@"timer stop, %@", [NSThread currentThread]);
     }
 }
 

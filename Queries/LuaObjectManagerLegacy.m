@@ -53,7 +53,7 @@
         return nil;
     }
     if(tmpWrapper.referenceCount == 0){
-        NSLog(@"try to get dealloc object:%@", tmpWrapper.object);
+        D_Log(@"try to get dealloc object:%@", tmpWrapper.object);
     }
     return [self objectWrapperWithObjectId:objectId].object;
 }

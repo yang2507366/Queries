@@ -11,9 +11,15 @@
 
 @implementation LabelImpl
 
+- (void)dealloc
+{
+    D_Log(@"%d", (NSInteger)self);
+    [super dealloc];
+}
+
 + (NSString *)createLabelWithScriptId:(NSString *)scriptId text:(NSString *)text frame:(CGRect)frame
 {
-    UILabel *tmpLabel = [[[UILabel alloc] init] autorelease];
+    UILabel *tmpLabel = [[[LabelImpl alloc] init] autorelease];
     tmpLabel.font = [UIFont systemFontOfSize:14.0f];
     tmpLabel.text = text;
     tmpLabel.backgroundColor = [UIColor clearColor];

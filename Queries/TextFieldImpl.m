@@ -11,9 +11,15 @@
 
 @implementation TextFieldImpl
 
+- (void)dealloc
+{
+    D_Log(@"%d", (NSInteger)self);
+    [super dealloc];
+}
+
 + (NSString *)createTextFieldWithScriptId:(NSString *)scriptId frame:(CGRect)frame
 {
-    UITextField *tmpTextField = [[[UITextField alloc] initWithFrame:frame] autorelease];
+    UITextField *tmpTextField = [[[TextFieldImpl alloc] initWithFrame:frame] autorelease];
     tmpTextField.borderStyle = UITextBorderStyleRoundedRect;
     tmpTextField.returnKeyType = UIReturnKeyDone;
     tmpTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;

@@ -34,5 +34,6 @@
                                       value:(NSString *)value;
 
 + (NSString *)createObjectWithScriptId:(NSString *)scriptId objectClassName:(NSString *)className;
++ (NSString *)propertyIdOfObjectWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId propertyName:(NSString *)propertyName;
 
 @end

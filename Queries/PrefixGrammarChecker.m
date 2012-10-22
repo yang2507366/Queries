@@ -44,7 +44,7 @@
                 continue;
             }
         }
-        NSLog(@"PrefixGrammarChecker::checkScript:%@ encounter:%@, but not find '(' left bracket, sytax error?",
+        D_Log(@"PrefixGrammarChecker::checkScript:%@ encounter:%@, but not find '(' left bracket, sytax error?",
               NSStringFromClass(self.class), lua_prefix_grammar);
         return script;
     }

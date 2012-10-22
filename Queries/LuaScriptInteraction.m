@@ -31,7 +31,7 @@
     if(_L){
         lua_close(_L);
     }
-    NSLog(@"%@", self);
+    D_Log(@"%@", self);
     [super dealloc];
 }
 
@@ -155,7 +155,7 @@
     }else if(result == LUA_ERRERR){
         errorMsg = @"lua errerr";
     }
-    NSLog(@"callFunction:%@, error:%@", funcName, errorMsg);
+    D_Log(@"callFunction:%@, error:%@", funcName, errorMsg);
     return @"";
 }
 

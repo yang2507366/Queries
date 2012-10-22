@@ -69,7 +69,7 @@
     BOOL dbExists = [[NSFileManager defaultManager] fileExistsAtPath:dbFilePath];
     if(sqlite3_open([dbFilePath UTF8String], &_db) == SQLITE_OK){
         if(!dbExists){
-            NSLog(@"create cache:%@", self.dbName);
+            D_Log(@"create cache:%@", self.dbName);
             const char *sql_create_table = {
                 "create table default_table("
                 "uid INTEGER primary key AUTOINCREMENT,"
@@ -78,9 +78,9 @@
                 ")"
             };
             if(sqlite3_exec(_db, sql_create_table, NULL, NULL, NULL) == SQLITE_OK){
-                NSLog(@"create table for cache:%@ succeed", self.dbName);
+                D_Log(@"create table for cache:%@ succeed", self.dbName);
             }else{
-                NSLog(@"create table for cache:%@ failed", self.dbName);
+                D_Log(@"create table for cache:%@ failed", self.dbName);
             }
         }
     }
@@ -105,7 +105,7 @@
 //        NSLog(@"%@", sql);
     }
     if(errMsg){
-        NSLog(@"%@", [NSString stringWithUTF8String:errMsg]);
+        D_Log(@"%@", [NSString stringWithUTF8String:errMsg]);
     }
 }
 

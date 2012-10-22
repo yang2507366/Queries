@@ -13,7 +13,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"%@ dealloc", self);
+    D_Log(@"%d", (NSInteger)self);
     [super dealloc];
 }
 
@@ -27,7 +27,7 @@
         
         return [LuaGroupedObjectManager addObject:impl group:scriptId];
     }else{
-        NSLog(@"create navigationController error, null rootViewController:%@", rootViewControllerId);
+        D_Log(@"create navigationController error, null rootViewController:%@", rootViewControllerId);
     }
     return nil;
 }
