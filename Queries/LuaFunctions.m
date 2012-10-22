@@ -20,6 +20,7 @@
 #import "LabelImpl.h"
 #import "ViewControllerImpl.h"
 #import "NavigationControllerImpl.h"
+#import "WebViewImpl.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -201,6 +202,32 @@ int ui_createLabel(lua_State *L)
     return 1;
 }
 
+int ui_createWebView(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    CGRect frame = luaRect(luaStringParam(L, 2));
+    NSString *shouldStartFunc = luaStringParam(L, 3);
+    NSString *didLoadFunc = luaStringParam(L, 4);
+    NSString *didErrorFunc = luaStringParam(L, 5);
+    NSString *objId = [WebViewImpl createWebViewWithScriptId:scriptId
+                                                          si:scriptInteractionForScriptId(scriptId)
+                                                       frame:frame
+                                             shouldStartFunc:shouldStartFunc
+                                                 didLoadFunc:didLoadFunc
+                                                didErrorFunc:didErrorFunc];
+    pushString(L, objId);
+    return 1;
+}
+
+int ui_webViewLoadURL(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *webViewId = luaStringParam(L, 2);
+    NSString *urlString = luaStringParam(L, 3);
+    [WebViewImpl loadRequestWithScriptId:scriptId webViewId:webViewId urlString:urlString];
+    return 0;
+}
+
 #pragma mark - string
 int ustring_substring(lua_State *L)
 {
@@ -345,6 +372,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_createNavigationController", ui_createNavigationController);
     pushFunctionToLua(L, "ui_createTextField", ui_createTextField);
     pushFunctionToLua(L, "ui_createLabel", ui_createLabel);
+    pushFunctionToLua(L, "ui_createWebView", ui_createWebView);
+    pushFunctionToLua(L, "ui_webViewLoadURL", ui_webViewLoadURL);
     
     pushFunctionToLua(L, "ustring_find", ustring_find);
     pushFunctionToLua(L, "ustring_length", ustring_length);
