@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ScriptInteraction.h"
 
 @interface ViewControllerImpl : UIViewController
 
@@ -15,5 +16,11 @@
 
 - (id)initWithViewDidLoadBlock:(void(^)())viewDidLoadBlock
            viewWillAppearBlock:(void(^)())viewWillAppearBlock;
+
++ (NSString *)createViewControllerWithScriptId:(NSString *)scriptId
+                                            si:(id<ScriptInteraction>)si
+                                         title:(NSString *)title
+                               viewDidLoadFunc:(NSString *)viewDidLoadFunc
+                            viewWillAppearFunc:(NSString *)viewWillAppearFunc;
 
 @end

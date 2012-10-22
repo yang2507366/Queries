@@ -18,9 +18,11 @@
 #import "TextFieldImpl.h"
 #import "ButtonImpl.h"
 #import "LabelImpl.h"
+#import "ViewControllerImpl.h"
+#import "NavigationControllerImpl.h"
 
 #pragma mark - common
-NSString *luaParam(lua_State *L, int location)
+NSString *luaStringParam(lua_State *L, int location)
 {
     const char *paramValue = lua_tostring(L, location);
     NSString *paramString = @"";
@@ -63,9 +65,9 @@ id<ScriptInteraction>scriptInteractionForScriptId(NSString *scriptId)
 #pragma mark - network
 int http_request(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *url = luaParam(L, 2);
-    NSString *callbackFuncName = luaParam(L, 3);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *url = luaStringParam(L, 2);
+    NSString *callbackFuncName = luaStringParam(L, 3);
     NSLog(@"http_request:%@, %@, %@", scriptId, url, callbackFuncName);
     LuaScriptInteraction *si = scriptInteractionForScriptId(scriptId);
     NSString *requestId = [HTTPRequestImpl requestWithLuaState:si urlString:url
@@ -74,9 +76,9 @@ int http_request(lua_State *L)
     return 1;
 }
 
-int http_request_cancel(lua_State *L)
+int http_cancel(lua_State *L)
 {
-    NSString *requestId = luaParam(L, 1);
+    NSString *requestId = luaStringParam(L, 1);
     NSLog(@"http_request_cancel:%@", requestId);
     [HTTPRequestImpl cancelRequestWithRequestId:requestId];
     
@@ -84,12 +86,12 @@ int http_request_cancel(lua_State *L)
 }
 
 #pragma mark - UI
-int ui_create_button(lua_State *L)
+int ui_createButton(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *title = luaParam(L, 2);
-    NSString *frame = luaParam(L, 3);
-    NSString *callback = luaParam(L, 4);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *title = luaStringParam(L, 2);
+    NSString *frame = luaStringParam(L, 3);
+    NSString *callback = luaStringParam(L, 4);
     NSLog(@"ui_create_button:%@", title);
     id<ScriptInteraction> si = scriptInteractionForScriptId(scriptId);
     NSString *buttonId = [ButtonImpl createWithScriptId:scriptId si:si title:title frame:luaRect(frame) eventFuncName:callback];
@@ -97,22 +99,22 @@ int ui_create_button(lua_State *L)
     return 1;
 }
 
-int ui_add_subview_to_view_controller(lua_State *L)
+int ui_addSubviewToViewController(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *viewId = luaParam(L, 2);
-    NSString *viewControllerId = luaParam(L, 3);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *viewId = luaStringParam(L, 2);
+    NSString *viewControllerId = luaStringParam(L, 3);
     [UIRelatedImpl addSubViewWithViewId:viewId
                        viewControllerId:viewControllerId
                                scriptId:scriptId];
     return 0;
 }
 
-int ui_set_view_frame(lua_State *L)
+int ui_setViewFrame(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *viewId = luaParam(L, 2);
-    NSString *frame = luaParam(L, 3);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *viewId = luaStringParam(L, 2);
+    NSString *frame = luaStringParam(L, 3);
     
     [UIRelatedImpl setViewFrameWithViewId:viewId
                                     frame:frame
@@ -121,10 +123,10 @@ int ui_set_view_frame(lua_State *L)
     return 0;
 }
 
-int ui_get_view_frame(lua_State *L)
+int ui_getViewFrame(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *viewId = luaParam(L, 2);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *viewId = luaStringParam(L, 2);
     CGRect frame = [UIRelatedImpl frameOfViewWithViewId:viewId scriptId:scriptId];
     lua_pushnumber(L, frame.origin.x);
     lua_pushnumber(L, frame.origin.y);
@@ -135,43 +137,56 @@ int ui_get_view_frame(lua_State *L)
 
 int ui_alert(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *title = luaParam(L, 2);
-    NSString *msg = luaParam(L, 3);
-    NSString *funcName = luaParam(L, 4);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *title = luaStringParam(L, 2);
+    NSString *msg = luaStringParam(L, 3);
+    NSString *funcName = luaStringParam(L, 4);
     [UIRelatedImpl alertWithTitle:title message:msg
                         scriptInteraction:scriptInteractionForScriptId(scriptId)
                          callbackFuncName:funcName];
     return 0;
 }
 
-int ui_create_view_controller(lua_State *L)
+int ui_createViewController(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *title = luaParam(L, 2);
-    NSString *viewDidLoadFunc = luaParam(L, 3);
-    NSString *viewWillAppearFunc = luaParam(L, 4);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *title = luaStringParam(L, 2);
+    NSString *viewDidLoadFunc = luaStringParam(L, 3);
+    NSString *viewWillAppearFunc = luaStringParam(L, 4);
     
-    NSString *vcId = [UIRelatedImpl createViewControllerWithTitle:title
-                                                scriptInteraction:scriptInteractionForScriptId(scriptId)
-                                                  viewDidLoadFunc:viewDidLoadFunc
-                                               viewWillAppearFunc:viewWillAppearFunc scriptId:scriptId];
+    NSString *vcId = [ViewControllerImpl createViewControllerWithScriptId:scriptId
+                                                                       si:scriptInteractionForScriptId(scriptId)
+                                                                    title:title
+                                                          viewDidLoadFunc:viewDidLoadFunc
+                                                       viewWillAppearFunc:viewWillAppearFunc];
     pushString(L, vcId);
     return 1;
 }
 
-int ui_set_root_view_controller(lua_State *L)
+int ui_createNavigationController(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *viewControllerId = luaParam(L, 2);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *rootViewControllerId = luaStringParam(L, 2);
+    
+    NSString *vcId = [NavigationControllerImpl createNavigationControllerWithScriptId:scriptId
+                                                                                   si:scriptInteractionForScriptId(scriptId)
+                                                                 rootViewControllerId:rootViewControllerId];
+    pushString(L, vcId);
+    return 1;
+}
+
+int ui_setRootViewController(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *viewControllerId = luaStringParam(L, 2);
     [UIRelatedImpl setRootViewControllerWithId:viewControllerId scriptId:scriptId];
     return 0;
 }
 
 int ui_createTextField(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *frame = luaParam(L, 2);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *frame = luaStringParam(L, 2);
     NSString *objId = [TextFieldImpl createTextFieldWithScriptId:scriptId frame:luaRect(frame)];
     lua_pushstring(L, [objId UTF8String]);
     return 1;
@@ -179,54 +194,98 @@ int ui_createTextField(lua_State *L)
 
 int ui_createLabel(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *text = luaParam(L, 2);
-    CGRect frame = luaRect(luaParam(L, 3));
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *text = luaStringParam(L, 2);
+    CGRect frame = luaRect(luaStringParam(L, 3));
     pushString(L, [LabelImpl createLabelWithScriptId:scriptId text:text frame:frame]);
     return 1;
 }
 
-#pragma mark - script
-int script_run_script_id(lua_State *L)
+#pragma mark - string
+int ustring_substring(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
+    NSString *string = luaStringParam(L, 1);
+    NSString *beginIndex = luaStringParam(L, 2);
+    NSString *length = luaStringParam(L, 3);
+    
+    NSString *resultString = @"";
+    if(string.length != 0 && beginIndex.length != 0 && length > 0){
+        NSInteger begin = [beginIndex intValue];
+        NSInteger legnth = [length intValue];
+        if(begin > 0 && length > 0){
+            resultString = [string substringWithRange:NSMakeRange(begin, legnth)];
+        }
+    }
+    pushString(L, resultString);
+    return 1;
+}
+
+int ustring_length(lua_State *L)
+{
+    NSString *string = luaStringParam(L, 1);
+    lua_pushnumber(L, [string length]);
+    return 1;
+}
+
+int ustring_find(lua_State *L)
+{
+    NSString *string = luaStringParam(L, 1);
+    NSString *targetStr = luaStringParam(L, 2);
+    NSInteger fromIndex = lua_tointeger(L, 3);
+    NSInteger reverse = lua_toboolean(L, 4);
+    
+    NSInteger location = -1;
+    if(string.length > 0 && targetStr.length > 0 && fromIndex > -1 && fromIndex < string.length){
+        NSRange tmpRange = [string rangeOfString:targetStr
+                                         options:reverse ? NSBackwardsSearch : NSCaseInsensitiveSearch
+                                           range:NSMakeRange(fromIndex, string.length - fromIndex)];
+        location = tmpRange.location == NSNotFound ? -1 : tmpRange.location;
+    }
+    lua_pushnumber(L, location);
+    return 1;
+}
+
+#pragma mark - script
+int script_runScriptWithId(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
     BOOL success = [CallScriptImpl callScriptWithScriptId:scriptId];
     pushString(L, success ? @"1" : @"0");
     return 1;
 }
 
 #pragma mark - runtime
-int runtime_recycle(lua_State *L)
+int runtime_recycleCurrentScript(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
+    NSString *scriptId = luaStringParam(L, 1);
     [RuntimeImpl recycleObjectWithScriptId:scriptId];
     return 0;
 }
 
 int runtime_invokeObjectMethod(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *objectId = luaParam(L, 2);
-    NSString *methodName = luaParam(L, 3);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
     [RuntimeImpl invokeObjectMethodWithScriptId:scriptId objectId:objectId methodName:methodName];
     return 0;
 }
 
 int runtime_invokeOjectMethod_setValue(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *objectId = luaParam(L, 2);
-    NSString *methodName = luaParam(L, 3);
-    NSString *value = luaParam(L, 4);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
+    NSString *value = luaStringParam(L, 4);
     [RuntimeImpl invokeObjectMethodSetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:value];
     return 0;
 }
 
 int runtime_invokeObjectMethod_getValue(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *objectId = luaParam(L, 2);
-    NSString *methodName = luaParam(L, 3);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
     NSString *returnValue = [RuntimeImpl invokeObjectMethodGetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:nil];
     pushString(L, returnValue);
     return 1;
@@ -234,10 +293,10 @@ int runtime_invokeObjectMethod_getValue(lua_State *L)
 
 int runtime_invokeObjectMethod_setValueAndGetValue(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *objectId = luaParam(L, 2);
-    NSString *methodName = luaParam(L, 3);
-    NSString *value = luaParam(L, 4);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
+    NSString *value = luaStringParam(L, 4);
     NSString *returnValue = [RuntimeImpl invokeObjectMethodGetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:value];
     pushString(L, returnValue);
     return 1;
@@ -245,19 +304,19 @@ int runtime_invokeObjectMethod_setValueAndGetValue(lua_State *L)
 
 int runtime_invokeObjectProperty_set(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *objectId = luaParam(L, 2);
-    NSString *propertyName = luaParam(L, 3);
-    NSString *value = luaParam(L, 4);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *propertyName = luaStringParam(L, 3);
+    NSString *value = luaStringParam(L, 4);
     [RuntimeImpl invokeObjectPropertySetWithScriptId:scriptId objectId:objectId propertyName:propertyName value:value];
     return 0;
 }
 
 int runtime_invokeObjectProperty_get(lua_State *L)
 {
-    NSString *scriptId = luaParam(L, 1);
-    NSString *objectId = luaParam(L, 2);
-    NSString *propertyName = luaParam(L, 3);
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *propertyName = luaStringParam(L, 3);
     NSString *returnValue = [RuntimeImpl invokeObjectPropertyGetWithScriptId:scriptId objectId:objectId propertyName:propertyName];
     pushString(L, returnValue);
     return 1;
@@ -274,21 +333,26 @@ void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *
 void initFuntions(lua_State *L)
 {
     pushFunctionToLua(L, "http_request", http_request);
-    pushFunctionToLua(L, "http_request_cancel", http_request_cancel);
+    pushFunctionToLua(L, "http_cancel", http_cancel);
     
-    pushFunctionToLua(L, "ui_create_button", ui_create_button);
-    pushFunctionToLua(L, "ui_add_subview_to_view_controller", ui_add_subview_to_view_controller);
-    pushFunctionToLua(L, "ui_set_view_frame", ui_set_view_frame);
-    pushFunctionToLua(L, "ui_get_view_frame", ui_get_view_frame);
+    pushFunctionToLua(L, "ui_createButton", ui_createButton);
+    pushFunctionToLua(L, "ui_addSubviewToViewController", ui_addSubviewToViewController);
+    pushFunctionToLua(L, "ui_setViewFrame", ui_setViewFrame);
+    pushFunctionToLua(L, "ui_getViewFrame", ui_getViewFrame);
     pushFunctionToLua(L, "ui_alert", ui_alert);
-    pushFunctionToLua(L, "ui_create_view_controller", ui_create_view_controller);
-    pushFunctionToLua(L, "ui_set_root_view_controller", ui_set_root_view_controller);
+    pushFunctionToLua(L, "ui_createViewController", ui_createViewController);
+    pushFunctionToLua(L, "ui_setRootViewController", ui_setRootViewController);
+    pushFunctionToLua(L, "ui_createNavigationController", ui_createNavigationController);
     pushFunctionToLua(L, "ui_createTextField", ui_createTextField);
     pushFunctionToLua(L, "ui_createLabel", ui_createLabel);
     
-    pushFunctionToLua(L, "script_run_script_id", script_run_script_id);
+    pushFunctionToLua(L, "ustring_find", ustring_find);
+    pushFunctionToLua(L, "ustring_length", ustring_length);
+    pushFunctionToLua(L, "ustring_substring", ustring_substring);
     
-    pushFunctionToLua(L, "runtime_recycle", runtime_recycle);
+    pushFunctionToLua(L, "script_runScriptWithId", script_runScriptWithId);
+    
+    pushFunctionToLua(L, "runtime_recycleCurrentScript", runtime_recycleCurrentScript);
     pushFunctionToLua(L, "runtime_invokeObjectMethod", runtime_invokeObjectMethod);
     pushFunctionToLua(L, "runtime_invokeOjectMethod_setValue", runtime_invokeOjectMethod_setValue);
     pushFunctionToLua(L, "runtime_invokeObjectMethod_getValue", runtime_invokeObjectMethod_getValue);

@@ -13,6 +13,7 @@
 #import "UnicodeChecker.h"
 #import "SelfSupportChecker.h"
 #import "ImportSupportChecker.h"
+#import "PrefixGrammarChecker.h"
 #import "CodeUtils.h"
 
 @interface LuaApplication ()
@@ -59,6 +60,7 @@
     self.scriptCheckers = [NSArray arrayWithObjects:
                            [[[ImportSupportChecker alloc] init] autorelease],
                            [[[UnicodeChecker alloc] init] autorelease],
+                           [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
                            nil];
     

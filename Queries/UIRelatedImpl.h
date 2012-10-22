@@ -17,12 +17,6 @@
 
 + (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId scriptId:(NSString *)scriptId;
 
-+ (NSString *)createViewControllerWithTitle:(NSString *)title
-                          scriptInteraction:(id<ScriptInteraction>)si
-                            viewDidLoadFunc:(NSString *)viewDidLoadFunc
-                         viewWillAppearFunc:(NSString *)viewWillAppearFunc
-                                   scriptId:(NSString *)scriptId;
-
 + (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId;
 
 + (CGRect)frameOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId;

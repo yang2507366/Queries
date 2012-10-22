@@ -1,23 +1,24 @@
-import test.lua;
-
 viewController = "viewController";
 button = "button";
 
 function main()
-    viewController = ui_create_view_controller(_lua_self, "title", "viewDidLoad", "");
+    viewController = ios::ui::createViewController("title", "viewDidLoad", "", true);
     print("viewController:"..viewController);
-    ui_set_root_view_controller(_lua_self, viewController);
+    ios::ui::setRootViewController(ios::ui::createNavigationController(viewController));
 end
 
 function viewDidLoad()
-    button = ui_create_button(_lua_self, "点击跳转", "20, 20, 100, 40", "onButtonTapped");
-    print(viewController);
-    ui_add_subview_to_view_controller(_lua_self, button, viewController);
+    button = ios::ui::createButton("点击跳转"..viewController, "20, 20, 200, 40", "onButtonTapped");
+    ios::ui::addSubviewToViewController(button, viewController);
+    ios::ui::alert("警告", "当前控制器id:"..viewController, "alertDone");
 end
 
 -- events
 function onButtonTapped()
-    print(button);
-    runtime_recycle(_lua_self);
-    script_run_script_id("get_dict_main.lua");
+    ios::script::runScriptWithId("main.lua");
+    ios::runtime::recycleCurrentScript();
+end
+
+function alertDone()
+    ios::ui::alert("..");
 end

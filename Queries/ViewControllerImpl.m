@@ -7,6 +7,7 @@
 //
 
 #import "ViewControllerImpl.h"
+#import "LuaGroupedObjectManager.h"
 
 @interface ViewControllerImpl ()
 
@@ -47,6 +48,24 @@
     if(self.viewWillAppearBlock){
         self.viewWillAppearBlock();
     }
+}
+
++ (NSString *)createViewControllerWithScriptId:(NSString *)scriptId
+                                            si:(id<ScriptInteraction>)si
+                                         title:(NSString *)title
+                               viewDidLoadFunc:(NSString *)viewDidLoadFunc
+                            viewWillAppearFunc:(NSString *)viewWillAppearFunc
+{
+    ViewControllerImpl *vc = [[[ViewControllerImpl alloc] init] autorelease];
+    vc.title = title;
+    NSString *cid = [LuaGroupedObjectManager addObject:vc group:scriptId];
+    vc.viewDidLoadBlock = ^(void){
+        [si callFunction:viewDidLoadFunc callback:nil parameters:cid, nil];
+    };
+    vc.viewWillAppearBlock = ^(void){
+        [si callFunction:viewWillAppearFunc callback:nil parameters:cid, nil];
+    };
+    return cid;
 }
 
 @end

@@ -51,7 +51,7 @@
     [self.groupDictionary removeObjectForKey:group];
 }
 
-- (id)getObjectWithId:(NSString *)objectId group:(NSString *)group
+- (id)objectWithId:(NSString *)objectId group:(NSString *)group
 {
     NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
     if(objectDictionary){
@@ -86,10 +86,10 @@
     [[self sharedInstance] removeGroup:group];
 }
 
-+ (NSString *)getObjectWithId:(NSString *)objectId group:(NSString *)group
++ (NSString *)objectWithId:(NSString *)objectId group:(NSString *)group
 {
     NSLog(@"get with object id:%@, group:%@", objectId, group);
-    return [[self sharedInstance] getObjectWithId:objectId group:group];
+    return [[self sharedInstance] objectWithId:objectId group:group];
 }
 
 @end

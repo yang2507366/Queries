@@ -19,7 +19,7 @@
 
 + (void)invokeObjectMethodWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId methodName:(NSString *)methodName
 {
-    id obj = [LuaGroupedObjectManager getObjectWithId:objectId group:scriptId];
+    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         NSLog(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return;
@@ -35,7 +35,7 @@
                             methodName:(NSString *)methodName
                                  value:(NSString *)value
 {
-    id obj = [LuaGroupedObjectManager getObjectWithId:objectId group:scriptId];
+    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         NSLog(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return;
@@ -51,7 +51,7 @@
                                           methodName:(NSString *)methodName
                                                value:(NSString *)value
 {
-    id obj = [LuaGroupedObjectManager getObjectWithId:objectId group:scriptId];
+    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         NSLog(@"invokeObjectMethodGetValueWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return @"";
@@ -80,7 +80,7 @@
                                          objectId:(NSString *)objectId
                                      propertyName:(NSString *)propertyName
 {
-    id obj = [LuaGroupedObjectManager getObjectWithId:objectId group:scriptId];
+    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         NSLog(@"invokeObjectPropertyGetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
     }
@@ -101,7 +101,7 @@
                                propertyName:(NSString *)propertyName
                                       value:(NSString *)value
 {
-    id obj = [LuaGroupedObjectManager getObjectWithId:objectId group:scriptId];
+    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         NSLog(@"invokeObjectPropertySetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
     }

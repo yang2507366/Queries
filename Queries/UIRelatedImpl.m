@@ -9,7 +9,6 @@
 #import "UIRelatedImpl.h"
 #import "Singleton.h"
 #import "DialogTools.h"
-#import "ViewControllerImpl.h"
 #import "LuaApplication.h"
 #import "EventProxy.h"
 #import "LuaGroupedObjectManager.h"
@@ -23,7 +22,7 @@
 
 + (id)getObjectWithObjectId:(NSString *)objectId group:(NSString *)group
 {
-    return [LuaGroupedObjectManager getObjectWithId:objectId group:group];
+    return [LuaGroupedObjectManager objectWithId:objectId group:group];
 }
 
 + (void)setRootViewControllerWithId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
@@ -41,23 +40,6 @@
 + (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId scriptId:(NSString *)scriptId
 {
     
-}
-
-+ (NSString *)createViewControllerWithTitle:(NSString *)title
-                          scriptInteraction:(id<ScriptInteraction>)si
-                            viewDidLoadFunc:(NSString *)viewDidLoadFunc
-                         viewWillAppearFunc:(NSString *)viewWillAppearFunc
-                                   scriptId:(NSString *)scriptId
-{
-    ViewControllerImpl *vc = [[[ViewControllerImpl alloc] init] autorelease];
-    NSString *cid = [self addObject:vc group:scriptId];
-    vc.viewDidLoadBlock = ^(void){
-        [si callFunction:viewDidLoadFunc callback:nil parameters:cid, nil];
-    };
-    vc.viewWillAppearBlock = ^(void){
-        [si callFunction:viewWillAppearFunc callback:nil parameters:cid, nil];
-    };
-    return cid;
 }
 
 + (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId

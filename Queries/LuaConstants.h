@@ -10,3 +10,5 @@
 #define lua_self                    @"_lua_self"
 #define lua_main_file               @"main.lua"
 #define lua_main_function           @"main"
+#define lua_prefix_grammar          @"ios::"
+#define lua_method_separator        @"::"
