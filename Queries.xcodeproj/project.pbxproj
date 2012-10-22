@@ -11,6 +11,8 @@
 		3E06D5B21632C94A0013DCF7 /* UIRelatedImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5B11632C94A0013DCF7 /* UIRelatedImpl.m */; };
 		3E06D5C21632E2880013DCF7 /* ProviderPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C11632E2880013DCF7 /* ProviderPool.m */; };
 		3E06D5C51632E3650013DCF7 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C41632E3650013DCF7 /* HTTPRequest.m */; };
+		3E094F041634E469006F90A9 /* RTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F011634E469006F90A9 /* RTProperty.m */; };
+		3E094F051634E469006F90A9 /* RuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F031634E469006F90A9 /* RuntimeUtils.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395F162D8C3900B63328 /* CoreGraphics.framework */; };
@@ -102,6 +104,10 @@
 		3E06D5C11632E2880013DCF7 /* ProviderPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderPool.m; sourceTree = "<group>"; };
 		3E06D5C31632E3650013DCF7 /* HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequest.h; sourceTree = "<group>"; };
 		3E06D5C41632E3650013DCF7 /* HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequest.m; sourceTree = "<group>"; };
+		3E094F001634E469006F90A9 /* RTProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTProperty.h; sourceTree = "<group>"; };
+		3E094F011634E469006F90A9 /* RTProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTProperty.m; sourceTree = "<group>"; };
+		3E094F021634E469006F90A9 /* RuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeUtils.h; sourceTree = "<group>"; };
+		3E094F031634E469006F90A9 /* RuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuntimeUtils.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E63395B162D8C3900B63328 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3E63395D162D8C3900B63328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -277,6 +283,17 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
+		3E094EFE1634E462006F90A9 /* RuntimeUtils */ = {
+			isa = PBXGroup;
+			children = (
+				3E094F001634E469006F90A9 /* RTProperty.h */,
+				3E094F011634E469006F90A9 /* RTProperty.m */,
+				3E094F021634E469006F90A9 /* RuntimeUtils.h */,
+				3E094F031634E469006F90A9 /* RuntimeUtils.m */,
+			);
+			name = RuntimeUtils;
+			sourceTree = "<group>";
+		};
 		3E63394C162D8C3900B63328 = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +418,7 @@
 		3E9D0C31163192EF00C3FDCE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3E094EFE1634E462006F90A9 /* RuntimeUtils */,
 				3EE3B3281632326A00C77F85 /* ScirptInteraction */,
 				3EE3B2C51631B5E600C77F85 /* KeyValueManager */,
 				3EE3B2AD1631B5DA00C77F85 /* CodeUtils.h */,
@@ -717,6 +735,8 @@
 				3E8C4542163438CC00468A7E /* ObjectWrapper.m in Sources */,
 				3E8C454516343DE700468A7E /* RuntimeImpl.m in Sources */,
 				3E8C45481634497300468A7E /* ButtonImpl.m in Sources */,
+				3E094F041634E469006F90A9 /* RTProperty.m in Sources */,
+				3E094F051634E469006F90A9 /* RuntimeUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

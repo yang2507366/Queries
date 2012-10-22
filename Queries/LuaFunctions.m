@@ -187,6 +187,66 @@ int runtime_recycle(lua_State *L)
     return 0;
 }
 
+int runtime_invokeObjectMethod(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    NSString *objectId = readParamValue(L, 2);
+    NSString *methodName = readParamValue(L, 3);
+    [RuntimeImpl invokeObjectMethodWithScriptId:scriptId objectId:objectId methodName:methodName];
+    return 0;
+}
+
+int runtime_invokeOjectMethod_setValue(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    NSString *objectId = readParamValue(L, 2);
+    NSString *methodName = readParamValue(L, 3);
+    NSString *value = readParamValue(L, 4);
+    [RuntimeImpl invokeObjectMethodSetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:value];
+    return 0;
+}
+
+int runtime_invokeObjectMethod_getValue(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    NSString *objectId = readParamValue(L, 2);
+    NSString *methodName = readParamValue(L, 3);
+    NSString *returnValue = [RuntimeImpl invokeObjectMethodGetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:nil];
+    lua_pushstring(L, [returnValue UTF8String]);
+    return 1;
+}
+
+int runtime_invokeObjectMethod_setValueAndGetValue(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    NSString *objectId = readParamValue(L, 2);
+    NSString *methodName = readParamValue(L, 3);
+    NSString *value = readParamValue(L, 4);
+    NSString *returnValue = [RuntimeImpl invokeObjectMethodGetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:value];
+    lua_pushstring(L, [returnValue UTF8String]);
+    return 1;
+}
+
+int runtime_invokeObjectProperty_set(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    NSString *objectId = readParamValue(L, 2);
+    NSString *propertyName = readParamValue(L, 3);
+    NSString *value = readParamValue(L, 4);
+    [RuntimeImpl invokeObjectPropertySetWithScriptId:scriptId objectId:objectId propertyName:propertyName value:value];
+    return 0;
+}
+
+int runtime_invokeObjectProperty_get(lua_State *L)
+{
+    NSString *scriptId = readParamValue(L, 1);
+    NSString *objectId = readParamValue(L, 2);
+    NSString *propertyName = readParamValue(L, 3);
+    NSString *returnValue = [RuntimeImpl invokeObjectPropertyGetWithScriptId:scriptId objectId:objectId propertyName:propertyName];
+    lua_pushstring(L, [returnValue UTF8String]);
+    return 1;
+}
+
 #pragma mark - system
 void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *L))
 {
@@ -209,6 +269,12 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "script_run_script_id", script_run_script_id);
     pushFunctionToLua(L, "runtime_recycle", runtime_recycle);
     pushFunctionToLua(L, "ui_createTextField", ui_createTextField);
+    pushFunctionToLua(L, "runtime_invokeObjectMethod", runtime_invokeObjectMethod);
+    pushFunctionToLua(L, "runtime_invokeOjectMethod_setValue", runtime_invokeOjectMethod_setValue);
+    pushFunctionToLua(L, "runtime_invokeObjectMethod_getValue", runtime_invokeObjectMethod_getValue);
+    pushFunctionToLua(L, "runtime_invokeObjectMethod_setValueAndGetValue", runtime_invokeObjectMethod_setValueAndGetValue);
+    pushFunctionToLua(L, "runtime_invokeObjectProperty_set", runtime_invokeObjectProperty_set);
+    pushFunctionToLua(L, "runtime_invokeObjectProperty_get", runtime_invokeObjectProperty_get);
 }
 
 
