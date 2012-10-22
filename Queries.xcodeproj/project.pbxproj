@@ -13,6 +13,7 @@
 		3E06D5C51632E3650013DCF7 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C41632E3650013DCF7 /* HTTPRequest.m */; };
 		3E094F041634E469006F90A9 /* RTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F011634E469006F90A9 /* RTProperty.m */; };
 		3E094F051634E469006F90A9 /* RuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F031634E469006F90A9 /* RuntimeUtils.m */; };
+		3E094F0C1634F145006F90A9 /* LabelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F0B1634F145006F90A9 /* LabelImpl.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395F162D8C3900B63328 /* CoreGraphics.framework */; };
@@ -108,6 +109,8 @@
 		3E094F011634E469006F90A9 /* RTProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTProperty.m; sourceTree = "<group>"; };
 		3E094F021634E469006F90A9 /* RuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeUtils.h; sourceTree = "<group>"; };
 		3E094F031634E469006F90A9 /* RuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuntimeUtils.m; sourceTree = "<group>"; };
+		3E094F0A1634F145006F90A9 /* LabelImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelImpl.h; sourceTree = "<group>"; };
+		3E094F0B1634F145006F90A9 /* LabelImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelImpl.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E63395B162D8C3900B63328 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3E63395D162D8C3900B63328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -473,6 +476,8 @@
 				3E8C454416343DE600468A7E /* RuntimeImpl.m */,
 				3E8C45461634497200468A7E /* ButtonImpl.h */,
 				3E8C45471634497200468A7E /* ButtonImpl.m */,
+				3E094F0A1634F145006F90A9 /* LabelImpl.h */,
+				3E094F0B1634F145006F90A9 /* LabelImpl.m */,
 			);
 			name = impl;
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				3E8C45481634497300468A7E /* ButtonImpl.m in Sources */,
 				3E094F041634E469006F90A9 /* RTProperty.m in Sources */,
 				3E094F051634E469006F90A9 /* RuntimeUtils.m in Sources */,
+				3E094F0C1634F145006F90A9 /* LabelImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
