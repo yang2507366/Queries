@@ -33,4 +33,6 @@
                                propertyName:(NSString *)propertyName
                                       value:(NSString *)value;
 
++ (NSString *)createObjectWithScriptId:(NSString *)scriptId objectClassName:(NSString *)className;
+
 @end

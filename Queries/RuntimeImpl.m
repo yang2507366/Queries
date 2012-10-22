@@ -115,4 +115,14 @@
     }
 }
 
++ (NSString *)createObjectWithScriptId:(NSString *)scriptId objectClassName:(NSString *)className
+{
+    Class targetClass = NSClassFromString(className);
+    if(targetClass){
+        id object = [[[targetClass alloc] init] autorelease];
+        return [LuaGroupedObjectManager addObject:object group:scriptId];
+    }
+    return nil;
+}
+
 @end
