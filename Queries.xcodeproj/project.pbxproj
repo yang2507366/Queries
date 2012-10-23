@@ -18,6 +18,7 @@
 		3E094F0C1634F145006F90A9 /* LabelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F0B1634F145006F90A9 /* LabelImpl.m */; };
 		3E094F1716351532006F90A9 /* NavigationControllerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1616351531006F90A9 /* NavigationControllerImpl.m */; };
 		3E094F1A16351CEA006F90A9 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
+		3E4EBD241636FDCA00629387 /* UIBarButtonItemImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395F162D8C3900B63328 /* CoreGraphics.framework */; };
@@ -54,7 +55,6 @@
 		3EE36D711632AA7F00BB5D02 /* HTTPRequestImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */; };
 		3EE36D781632B2CE00BB5D02 /* LuaApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D771632B2CE00BB5D02 /* LuaApplication.m */; };
 		3EE3B2A21631987F00C77F85 /* MemoryTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A11631987F00C77F85 /* MemoryTracer.m */; };
-		3EE3B2A51631A36F00C77F85 /* img.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A41631A36F00C77F85 /* img.png */; };
 		3EE3B2AC1631B58200C77F85 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AB1631B58200C77F85 /* Toast.m */; };
 		3EE3B2BD1631B5DA00C77F85 /* CodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AE1631B5DA00C77F85 /* CodeUtils.m */; };
 		3EE3B2BE1631B5DA00C77F85 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B01631B5DA00C77F85 /* CommonUtils.m */; };
@@ -122,6 +122,8 @@
 		3E094F1616351531006F90A9 /* NavigationControllerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationControllerImpl.m; sourceTree = "<group>"; };
 		3E094F1816351CEA006F90A9 /* PrefixGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixGrammarChecker.h; sourceTree = "<group>"; };
 		3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefixGrammarChecker.m; sourceTree = "<group>"; };
+		3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBarButtonItemImpl.h; sourceTree = "<group>"; };
+		3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBarButtonItemImpl.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E63395B162D8C3900B63328 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3E63395D162D8C3900B63328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,7 +192,6 @@
 		3EE36D771632B2CE00BB5D02 /* LuaApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaApplication.m; sourceTree = "<group>"; };
 		3EE3B2A01631987F00C77F85 /* MemoryTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryTracer.h; sourceTree = "<group>"; };
 		3EE3B2A11631987F00C77F85 /* MemoryTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryTracer.m; sourceTree = "<group>"; };
-		3EE3B2A41631A36F00C77F85 /* img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img.png; sourceTree = "<group>"; };
 		3EE3B2AA1631B58200C77F85 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
 		3EE3B2AB1631B58200C77F85 /* Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toast.m; sourceTree = "<group>"; };
 		3EE3B2AD1631B5DA00C77F85 /* CodeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeUtils.h; sourceTree = "<group>"; };
@@ -354,7 +355,6 @@
 		3E633962162D8C3900B63328 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3EE3B2A41631A36F00C77F85 /* img.png */,
 				3E633963162D8C3900B63328 /* Queries-Info.plist */,
 				3E633964162D8C3900B63328 /* InfoPlist.strings */,
 				3E633967162D8C3900B63328 /* main.m */,
@@ -474,7 +474,7 @@
 			name = LuaScriptChecker;
 			sourceTree = "<group>";
 		};
-		3EE36D6E1632AA5200BB5D02 /* impl */ = {
+		3EE36D6E1632AA5200BB5D02 /* ios_impl */ = {
 			isa = PBXGroup;
 			children = (
 				3EE36D6F1632AA7F00BB5D02 /* HTTPRequestImpl.h */,
@@ -501,8 +501,10 @@
 				3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */,
 				3ED0C7821635502700A3E33F /* ArrayImpl.h */,
 				3ED0C7831635502700A3E33F /* ArrayImpl.m */,
+				3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */,
+				3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */,
 			);
-			name = impl;
+			name = ios_impl;
 			sourceTree = "<group>";
 		};
 		3EE3B2C51631B5E600C77F85 /* KeyValueManager */ = {
@@ -588,9 +590,9 @@
 			isa = PBXGroup;
 			children = (
 				3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */,
-				3EE36D6E1632AA5200BB5D02 /* impl */,
 				3EE36D6B163255F200BB5D02 /* LuaFunctions.h */,
 				3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */,
+				3EE36D6E1632AA5200BB5D02 /* ios_impl */,
 				3EC0BAA71633EA1F0074D22B /* LuaObjectManagerLegacy.h */,
 				3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */,
 				3EC0BAAA1633EAFC0074D22B /* EventProxy.h */,
@@ -678,7 +680,6 @@
 				3E63396E162D8C3A00B63328 /* Default.png in Resources */,
 				3E633970162D8C3A00B63328 /* Default@2x.png in Resources */,
 				3E633972162D8C3A00B63328 /* Default-568h@2x.png in Resources */,
-				3EE3B2A51631A36F00C77F85 /* img.png in Resources */,
 				3EC0BA911633AEC30074D22B /* main.lua in Resources */,
 				3E0359371635390A0051DABA /* doc.txt in Resources */,
 			);
@@ -769,6 +770,7 @@
 				3E0359351635322B0051DABA /* WebViewImpl.m in Sources */,
 				3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */,
 				3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */,
+				3E4EBD241636FDCA00629387 /* UIBarButtonItemImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

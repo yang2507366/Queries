@@ -71,6 +71,30 @@
     return [NSString stringWithFormat:@"%@", returnValue];
 }
 
++ (NSString *)invokeObjectMethodGetObjectIdWithScriptId:(NSString *)scriptId
+                                               objectId:(NSString *)objectId
+                                             methodName:(NSString *)methodName
+{
+    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    if(!obj){
+        D_Log(@"invokeObjectMethodGetObjectIdWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
+        return @"";
+    }
+    id returnValue = nil;
+    SEL targetSelector = NSSelectorFromString(methodName);
+    if([obj respondsToSelector:targetSelector]){
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[obj methodSignatureForSelector:targetSelector]];
+        invocation.target = obj;
+        invocation.selector = targetSelector;
+        [invocation invoke];
+        [invocation getReturnValue:&returnValue];
+        if(returnValue){
+            return [LuaGroupedObjectManager addObject:returnValue group:scriptId];
+        }
+    }
+    return @"";
+}
+
 + (objc_property_t)getObjc_property_tWithObject:(id<NSObject>)object propertyName:(NSString *)propertyName
 {
     return class_getProperty(object.class, [propertyName UTF8String]);

@@ -15,6 +15,7 @@
 + (void)runOnWindow:(UIWindow *)window;
 + (UIWindow *)window;
 + (id<ScriptInteraction>)programWithScriptId:(NSString *)scriptId;
++ (void)removeProgramWithScriptId:(NSString *)scriptId;
 + (id<ScriptInteraction>)restartProgramWithScriptId:(NSString *)scritId;
 + (NSString *)originalScriptWithScriptId:(NSString *)scriptId;
 + (NSString *)scriptWithScriptId:(NSString *)scriptId;

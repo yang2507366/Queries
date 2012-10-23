@@ -34,7 +34,12 @@
 + (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
 {
     UIViewController *targetVC = [self getObjectWithObjectId:viewControllerId group:scriptId];
-    [targetVC.view addSubview:[self getObjectWithObjectId:viewId group:scriptId]];
+    if([targetVC isKindOfClass:[UIViewController class]]){
+        UIView *targetView = [self getObjectWithObjectId:viewId group:scriptId];
+        [targetVC.view addSubview:targetView];
+    }else{
+        D_Log(@"not UIViewController:%@", viewControllerId);
+    }
 }
 
 + (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId scriptId:(NSString *)scriptId
@@ -56,6 +61,35 @@
 {
     UIView *view = [self getObjectWithObjectId:viewId group:scriptId];
     return view.frame;
+}
+
++ (CGRect)boundsOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId
+{
+    UIView *view = [self getObjectWithObjectId:viewId group:scriptId];
+    return view.bounds;
+}
+
++ (NSString *)viewForTagWithScriptId:(NSString *)scriptId viewId:(NSString *)viewId tag:(NSInteger)tag
+{
+    UIView *view = [self getObjectWithObjectId:viewId group:scriptId];
+    
+    if([view isKindOfClass:[UIView class]]){
+        UIView *targetView = [view viewWithTag:tag];
+        if(targetView){
+            return [LuaGroupedObjectManager addObject:targetView group:scriptId];
+        }
+    }
+    
+    return @"";
+}
+
++ (void)addSubviewToViewWithScriptId:(NSString *)scriptId viewId:(NSString *)viewId toViewId:(NSString *)toViewId
+{
+    UIView *view = [self getObjectWithObjectId:viewId group:scriptId];
+    UIView *toView = [self getObjectWithObjectId:toViewId group:scriptId];
+    if(view && toView && [view isKindOfClass:[UIView class]] && [toView isKindOfClass:[UIView class]]){
+        [toView addSubview:view];
+    }
 }
 
 + (void)alertWithTitle:(NSString *)title message:(NSString *)msg scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName

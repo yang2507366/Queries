@@ -20,6 +20,10 @@
 + (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId;
 
 + (CGRect)frameOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId;
++ (CGRect)boundsOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId;
+
++ (NSString *)viewForTagWithScriptId:(NSString *)scriptId viewId:(NSString *)viewId tag:(NSInteger)tag;
++ (void)addSubviewToViewWithScriptId:(NSString *)scriptId viewId:(NSString *)viewId toViewId:(NSString *)toViewId;
 
 + (void)alertWithTitle:(NSString *)title message:(NSString *)msg scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName;
 

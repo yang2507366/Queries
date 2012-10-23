@@ -1,48 +1,35 @@
 viewController = nil;
-button = nil;
-webView = nil;
-shouldLoad = nil;
 
 function main()
-    viewController = ios::ui::createViewController("title", "viewDidLoad", "", true);
-    ios::runtime::invokeObjectProperty_set(viewController, "title", "中文标题");
-    ios::nslog("viewController:"..viewController);
-    ios::ui::setRootViewController(ios::ui::createNavigationController(viewController));
+    viewController = ui::createViewController("表", "viewDidLoad", "", true);
+    ui::setRootViewController(ui::createNavigationController(viewController));
 end
 
 function viewDidLoad()
-    ios::nslog("viewDidLoad:"..viewController);
-    button = ios::ui::createButton("点击跳转"..viewController, "20, 20, 200, 40", "onButtonTapped");
-    ios::ui::addSubviewToViewController(button, viewController);
-
-    webView = ios::ui::createWebView("10 ,100, 320, 320", "webViewShouldStart", "webViewDidLoad");
-    ios::ui::addSubviewToViewController(webView, viewController);
-    ios::ui::webViewLoadURL(webView, "http://www.baidu.com");
+    navigationItem = obj::propertyOfObject(viewController, "navigationItem");
+    obj::invokePropertySet(navigationItem, "title", "新标题");
+    rightItem = obj::invokeMethodGetObject(navigationItem, "rightBarButtonItem");
+    print("rightItem:"..rightItem);
+    ui::addSubviewToViewController(ui::createTableView(ui::getViewBounds(obj::propertyOfObject(viewController, "view")), "numberOfRows", "wrapCell", "didSelectCell"), viewController);
 end
 
-
--- events
-function onButtonTapped()
-    local viewId = ios::runtime::getPropertyOfObject(viewController, "view");
-    x, y, width, height = ios::ui::getViewFrame(viewId);
-    ios::nslog(x..", "..y..", "..width..", "..height);
-    ios::ui::setViewFrame(webView, x..", "..y..", "..width..", "..height);
-    --ios::script::runScriptWithId("main.lua");
-    ios::runtime::recycleCurrentScript();
+function numberOfRows()
+    return "100";
 end
 
-function alertDone()
-    ios::ui::alert("..");
-end
-
-function webViewShouldStart()
-    if shouldLoad ~= nil then
-        return "0";
+function wrapCell(cellId, index)
+    textLabel = obj::propertyOfObject(cellId, "textLabel");
+    local label = ui::viewForTag(cellId, 1001);
+    if label == "" then
+        label = obj::createObjectWithClassName("UILabel");
+        obj::invokePropertySet(label, "tag", "1001");
+        contentView = obj::propertyOfObject(cellId, "contentView");
+        ui::setViewFrame(label, "20, 10, 200, 20");
+        ui::addSubview(contentView, label);
     end
-    shouldLoad = "";
-    return "1";
+    obj::invokePropertySet(label, "text", "行 - "..index + 1);
 end
 
-function webViewDidLoad()
---    ios::ui::alert("webViewDidLoad");
+function didSelectCell(index)
+    print("cell:"..index);
 end

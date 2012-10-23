@@ -123,10 +123,14 @@
     return program;
 }
 
++ (void)removeProgramWithScriptId:(NSString *)scriptId
+{
+    [[[self sharedManager] runningProgramDictionary] removeObjectForKey:scriptId];
+}
+
 + (id<ScriptInteraction>)restartProgramWithScriptId:(NSString *)scritId
 {
-    [[[self sharedManager] runningProgramDictionary] removeObjectForKey:scritId];
-    
+    [self removeProgramWithScriptId:scritId];
     return [self programWithScriptId:scritId];
 }
 

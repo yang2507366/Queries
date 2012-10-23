@@ -8,8 +8,8 @@
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 #endif
 
-#define D_Log(format, ...) NSLog((@"%s " format), __PRETTY_FUNCTION__, ##__VA_ARGS__);
-//#define D_Log(...)
+//#define D_Log(format, ...) NSLog((@"%s >" format), __PRETTY_FUNCTION__, ##__VA_ARGS__);
+#define D_Log(...)
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
