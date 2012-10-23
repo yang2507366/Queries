@@ -67,9 +67,10 @@ id<ScriptInteraction>scriptInteractionForScriptId(NSString *scriptId)
 int http_request(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *url = luaStringParam(L, 2);
     NSString *callbackFuncName = luaStringParam(L, 3);
-    D_Log(@"http_request:%@, %@, %@", scriptId, url, callbackFuncName);
+    
     LuaScriptInteraction *si = scriptInteractionForScriptId(scriptId);
     NSString *requestId = [HTTPRequestImpl requestWithLuaState:si urlString:url
                                        callbackLuaFunctionName:callbackFuncName];
@@ -80,7 +81,7 @@ int http_request(lua_State *L)
 int http_cancel(lua_State *L)
 {
     NSString *requestId = luaStringParam(L, 1);
-    D_Log(@"http_request_cancel:%@", requestId);
+    
     [HTTPRequestImpl cancelRequestWithRequestId:requestId];
     
     return 0;
@@ -90,9 +91,11 @@ int http_cancel(lua_State *L)
 int ui_createButton(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *title = luaStringParam(L, 2);
     NSString *frame = luaStringParam(L, 3);
     NSString *callback = luaStringParam(L, 4);
+    
     id<ScriptInteraction> si = scriptInteractionForScriptId(scriptId);
     NSString *buttonId = [ButtonImpl createWithScriptId:scriptId si:si title:title frame:luaRect(frame) eventFuncName:callback];
     pushString(L, buttonId);
@@ -102,8 +105,10 @@ int ui_createButton(lua_State *L)
 int ui_addSubviewToViewController(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *viewId = luaStringParam(L, 2);
     NSString *viewControllerId = luaStringParam(L, 3);
+    
     [UIRelatedImpl addSubViewWithViewId:viewId
                        viewControllerId:viewControllerId
                                scriptId:scriptId];
@@ -113,6 +118,7 @@ int ui_addSubviewToViewController(lua_State *L)
 int ui_setViewFrame(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *viewId = luaStringParam(L, 2);
     NSString *frame = luaStringParam(L, 3);
     
@@ -126,7 +132,9 @@ int ui_setViewFrame(lua_State *L)
 int ui_getViewFrame(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *viewId = luaStringParam(L, 2);
+    
     CGRect frame = [UIRelatedImpl frameOfViewWithViewId:viewId scriptId:scriptId];
     lua_pushnumber(L, frame.origin.x);
     lua_pushnumber(L, frame.origin.y);
@@ -138,9 +146,11 @@ int ui_getViewFrame(lua_State *L)
 int ui_alert(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *title = luaStringParam(L, 2);
     NSString *msg = luaStringParam(L, 3);
     NSString *funcName = luaStringParam(L, 4);
+    
     [UIRelatedImpl alertWithTitle:title message:msg
                         scriptInteraction:scriptInteractionForScriptId(scriptId)
                          callbackFuncName:funcName];
@@ -150,6 +160,7 @@ int ui_alert(lua_State *L)
 int ui_createViewController(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *title = luaStringParam(L, 2);
     NSString *viewDidLoadFunc = luaStringParam(L, 3);
     NSString *viewWillAppearFunc = luaStringParam(L, 4);
@@ -166,6 +177,7 @@ int ui_createViewController(lua_State *L)
 int ui_createNavigationController(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *rootViewControllerId = luaStringParam(L, 2);
     
     NSString *vcId = [NavigationControllerImpl createNavigationControllerWithScriptId:scriptId
@@ -178,7 +190,9 @@ int ui_createNavigationController(lua_State *L)
 int ui_setRootViewController(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *viewControllerId = luaStringParam(L, 2);
+    
     [UIRelatedImpl setRootViewControllerWithId:viewControllerId scriptId:scriptId];
     return 0;
 }
@@ -186,7 +200,9 @@ int ui_setRootViewController(lua_State *L)
 int ui_createTextField(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *frame = luaStringParam(L, 2);
+    
     NSString *objId = [TextFieldImpl createTextFieldWithScriptId:scriptId frame:luaRect(frame)];
     lua_pushstring(L, [objId UTF8String]);
     return 1;
@@ -195,8 +211,10 @@ int ui_createTextField(lua_State *L)
 int ui_createLabel(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *text = luaStringParam(L, 2);
     CGRect frame = luaRect(luaStringParam(L, 3));
+    
     pushString(L, [LabelImpl createLabelWithScriptId:scriptId text:text frame:frame]);
     return 1;
 }
@@ -204,10 +222,12 @@ int ui_createLabel(lua_State *L)
 int ui_createWebView(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     CGRect frame = luaRect(luaStringParam(L, 2));
     NSString *shouldStartFunc = luaStringParam(L, 3);
     NSString *didLoadFunc = luaStringParam(L, 4);
     NSString *didErrorFunc = luaStringParam(L, 5);
+    
     NSString *objId = [WebViewImpl createWebViewWithScriptId:scriptId
                                                           si:scriptInteractionForScriptId(scriptId)
                                                        frame:frame
@@ -221,8 +241,10 @@ int ui_createWebView(lua_State *L)
 int ui_webViewLoadURL(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *webViewId = luaStringParam(L, 2);
     NSString *urlString = luaStringParam(L, 3);
+    
     [WebViewImpl loadRequestWithScriptId:scriptId webViewId:webViewId urlString:urlString];
     return 0;
 }
@@ -231,6 +253,7 @@ int ui_webViewLoadURL(lua_State *L)
 int ustring_substring(lua_State *L)
 {
     NSString *string = luaStringParam(L, 1);
+    
     NSString *beginIndex = luaStringParam(L, 2);
     NSString *length = luaStringParam(L, 3);
     
@@ -250,12 +273,14 @@ int ustring_length(lua_State *L)
 {
     NSString *string = luaStringParam(L, 1);
     lua_pushnumber(L, [string length]);
+    
     return 1;
 }
 
 int ustring_find(lua_State *L)
 {
     NSString *string = luaStringParam(L, 1);
+    
     NSString *targetStr = luaStringParam(L, 2);
     NSInteger fromIndex = lua_tointeger(L, 3);
     NSInteger reverse = lua_toboolean(L, 4);
@@ -275,6 +300,7 @@ int ustring_find(lua_State *L)
 int script_runScriptWithId(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     BOOL success = [CallScriptImpl callScriptWithScriptId:scriptId];
     pushString(L, success ? @"1" : @"0");
     return 1;
@@ -284,75 +310,91 @@ int script_runScriptWithId(lua_State *L)
 int runtime_recycleCurrentScript(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     [RuntimeImpl recycleObjectWithScriptId:scriptId];
     return 0;
 }
 
-int runtime_invokeObjectMethod(lua_State *L)
+#pragma mark - obj
+int obj_invokeInstanceMethod(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *objectId = luaStringParam(L, 2);
     NSString *methodName = luaStringParam(L, 3);
+    
     [RuntimeImpl invokeObjectMethodWithScriptId:scriptId objectId:objectId methodName:methodName];
     return 0;
 }
 
-int runtime_invokeOjectMethod_setValue(lua_State *L)
+int obj_invokeInstanceMethodSetValue(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *objectId = luaStringParam(L, 2);
     NSString *methodName = luaStringParam(L, 3);
     NSString *value = luaStringParam(L, 4);
+    
     [RuntimeImpl invokeObjectMethodSetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:value];
     return 0;
 }
 
-int runtime_invokeObjectMethod_getValue(lua_State *L)
+int obj_invokeInstanceMethodGetValue(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *objectId = luaStringParam(L, 2);
     NSString *methodName = luaStringParam(L, 3);
+    
     NSString *returnValue = [RuntimeImpl invokeObjectMethodGetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:nil];
     pushString(L, returnValue);
     return 1;
 }
 
-int runtime_invokeObjectMethod_setValueAndGetValue(lua_State *L)
+int obj_invokeInstanceMethodSetValueAndGetValue(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *objectId = luaStringParam(L, 2);
     NSString *methodName = luaStringParam(L, 3);
     NSString *value = luaStringParam(L, 4);
+    
     NSString *returnValue = [RuntimeImpl invokeObjectMethodGetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:value];
     pushString(L, returnValue);
     return 1;
 }
 
-int runtime_invokeObjectProperty_set(lua_State *L)
+int obj_invokePropertySet(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *objectId = luaStringParam(L, 2);
     NSString *propertyName = luaStringParam(L, 3);
     NSString *value = luaStringParam(L, 4);
+    
     [RuntimeImpl invokeObjectPropertySetWithScriptId:scriptId objectId:objectId propertyName:propertyName value:value];
     return 0;
 }
 
-int runtime_invokeObjectProperty_get(lua_State *L)
+int obj_invokePropertyGet(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *objectId = luaStringParam(L, 2);
     NSString *propertyName = luaStringParam(L, 3);
+    
     NSString *returnValue = [RuntimeImpl invokeObjectPropertyGetWithScriptId:scriptId objectId:objectId propertyName:propertyName];
     pushString(L, returnValue);
     return 1;
 }
 
-int runtime_getPropertyOfObject(lua_State *L)
+int obj_propertyOfObject(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *objectId = luaStringParam(L, 2);
     NSString *propertyName = luaStringParam(L, 3);
+    
     NSString *propertyId = [RuntimeImpl propertyIdOfObjectWithScriptId:scriptId objectId:objectId propertyName:propertyName];
     pushString(L, propertyId);
     return 1;
@@ -362,7 +404,9 @@ int runtime_getPropertyOfObject(lua_State *L)
 int nslog(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
+    
     NSString *log = luaStringParam(L, 2);
+    
     NSLog(@"*[%@] %@", scriptId, log);
     return 0;
 }
@@ -376,38 +420,102 @@ void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *
 
 void initFuntions(lua_State *L)
 {
-    pushFunctionToLua(L, "nslog", nslog);
-    
+#pragma mark -
+#pragma mark - -NSLog
+#pragma mark - ios::NSLog
+    pushFunctionToLua(L, "NSLog", nslog);
+#pragma mark -
+#pragma mark - -http
+#pragma mark - ios::http::request
     pushFunctionToLua(L, "http_request", http_request);
+#pragma mark - ios::http::cancel
     pushFunctionToLua(L, "http_cancel", http_cancel);
-    
+#pragma mark -
+#pragma mark - -ui
+#pragma mark - ios::ui::createButton
     pushFunctionToLua(L, "ui_createButton", ui_createButton);
+#pragma mark - ios::ui::addSubviewToViewController
     pushFunctionToLua(L, "ui_addSubviewToViewController", ui_addSubviewToViewController);
+#pragma mark - ios::ui::setViewFrame
     pushFunctionToLua(L, "ui_setViewFrame", ui_setViewFrame);
+#pragma mark - ios::ui::getViewFrame
     pushFunctionToLua(L, "ui_getViewFrame", ui_getViewFrame);
+#pragma mark - ios::ui::alert
     pushFunctionToLua(L, "ui_alert", ui_alert);
+#pragma mark - ios::ui::createViewController
     pushFunctionToLua(L, "ui_createViewController", ui_createViewController);
+#pragma mark - ios::ui::setRootViewController
     pushFunctionToLua(L, "ui_setRootViewController", ui_setRootViewController);
+#pragma mark - ios::ui::createNavigationController
     pushFunctionToLua(L, "ui_createNavigationController", ui_createNavigationController);
-    pushFunctionToLua(L, "ui_createTextField", ui_createTextField);
+#pragma mark - ios::ui::createNavigationController
+    pushFunctionToLua(L, "ui_createNavigationController", ui_createTextField);
+#pragma mark - ios::ui::createLabel
     pushFunctionToLua(L, "ui_createLabel", ui_createLabel);
+#pragma mark - ios::ui::createWebView
     pushFunctionToLua(L, "ui_createWebView", ui_createWebView);
+#pragma mark - ios::ui::webViewLoadURL
     pushFunctionToLua(L, "ui_webViewLoadURL", ui_webViewLoadURL);
-    
+#pragma mark -
+#pragma mark - -ustring
+#pragma mark - ios::ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
+#pragma mark - ios::ustring::length
     pushFunctionToLua(L, "ustring_length", ustring_length);
+#pragma mark - ios::ustring::substring
     pushFunctionToLua(L, "ustring_substring", ustring_substring);
-    
+#pragma mark -
+#pragma mark - -script
+#pragma mark - ios::script::runScriptWithId
     pushFunctionToLua(L, "script_runScriptWithId", script_runScriptWithId);
-    
+#pragma mark -
+#pragma mark - -runtime
+#pragma mark - ios::runtime::recycleCurrentScript
     pushFunctionToLua(L, "runtime_recycleCurrentScript", runtime_recycleCurrentScript);
-    pushFunctionToLua(L, "runtime_invokeObjectMethod", runtime_invokeObjectMethod);
-    pushFunctionToLua(L, "runtime_invokeOjectMethod_setValue", runtime_invokeOjectMethod_setValue);
-    pushFunctionToLua(L, "runtime_invokeObjectMethod_getValue", runtime_invokeObjectMethod_getValue);
-    pushFunctionToLua(L, "runtime_invokeObjectMethod_setValueAndGetValue", runtime_invokeObjectMethod_setValueAndGetValue);
-    pushFunctionToLua(L, "runtime_invokeObjectProperty_set", runtime_invokeObjectProperty_set);
-    pushFunctionToLua(L, "runtime_invokeObjectProperty_get", runtime_invokeObjectProperty_get);
-    pushFunctionToLua(L, "runtime_getPropertyOfObject", runtime_getPropertyOfObject);
+#pragma mark -
+#pragma mark - -obj
+#pragma mark - ios::obj::invokeInstanceMethod
+    /**
+     调用无参数和返回值的实例方法，
+     调用实例：ios::obj::invokeInstanceMethod(objId, methodName);
+     */
+    pushFunctionToLua(L, "obj_invokeInstanceMethod", obj_invokeInstanceMethod);
+#pragma mark - ios::obj::invokeInstanceMethodSetValue
+    /**
+     调用一个字符串参数，无返回值的实例方法(该方法的类型可以是除结构体之外的任意类型，系统会自动将lua传入的字符串转换成目标类型)，
+     调用实例：ios::obj::invokeInstanceMethodSetValue(objId, methodName, value);
+     */
+    pushFunctionToLua(L, "obj_invokeInstanceMethodSetValue", obj_invokeInstanceMethodSetValue);
+#pragma mark - ios::obj::obj_invokeInstanceMethodGetValue
+    /**
+     调用无参数，一个字符串返回值的实例方法（该方法的返回值是除结构体之外的任意类型，系统会自动将目标类型转换成一个字符串类型），
+     调用实例：value = ios::obj::invokeInstanceMethodGetValue(objId, methodName)
+     */
+    pushFunctionToLua(L, "obj_invokeInstanceMethodGetValue", obj_invokeInstanceMethodGetValue);
+#pragma mark - ios::obj::invokeInstanceMethodSetValueAndGetValue
+    /**
+     调用有一个字符串参数，一个字符串返回值的实例方法（方法返回值和参数描述参考上述两个函数），
+     调用实例：value = ios::obj::invokeInstanceMethodSetValueAndGetValue(objId, methodName, value);
+     */
+    pushFunctionToLua(L, "obj_invokeInstanceMethodSetValueAndGetValue", obj_invokeInstanceMethodSetValueAndGetValue);    
+#pragma mark - ios::obj::invokePropertySet
+    /**
+     调用对象的property set方法，参数为一个字符串，系统会自动转化成目标类型
+     调用实例：ios::obj::invokePropertySet(objId, propertyName, value);
+     */
+    pushFunctionToLua(L, "obj_invokePropertySet", obj_invokePropertySet);
+#pragma mark - ios::obj::invokePropertyGet
+    /**
+     调用对象的property get方法，不管返回值为什么类型，系统都会自动转换并且返回一个字符串
+     调用实例：value = ios::obj::invokePropertyGet(objId, propertyName);
+     */
+    pushFunctionToLua(L, "obj_invokePropertyGet", obj_invokePropertyGet);
+#pragma mark - ios::obj::propertyOfObject
+    /**
+     获取对象的property对应的对象id，该property的数据类型必须是id类型
+     调用实例：propertyId = ios::obj::propertyOfObject(objId, propertyName);
+     */
+    pushFunctionToLua(L, "obj_propertyOfObject", obj_propertyOfObject);
 }
 
 
