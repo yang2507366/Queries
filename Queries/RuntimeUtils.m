@@ -76,6 +76,8 @@
     }
     [desc appendString:@"}"];
     
+    free(property_list);
+    
     return desc;
 }
 

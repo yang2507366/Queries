@@ -50,7 +50,13 @@
         const char *cname = property_getName(property);
         const char *cattributes = property_getAttributes(property);
         
+        if(name){
+            [name release];
+        }
         name = [[NSString stringWithFormat:@"%s", cname] retain];
+        if(attributes){
+            [attributes release];
+        }
         attributes = [[NSString stringWithFormat:@"%s", cattributes] retain];
         
         NSArray *attributeList = [self.attributes componentsSeparatedByString:@","];
