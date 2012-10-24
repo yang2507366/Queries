@@ -17,6 +17,13 @@
     [super dealloc];
 }
 
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated
+{
+    UIViewController *viewController = [super popViewControllerAnimated:animated];
+    
+    return viewController;
+}
+
 + (NSString *)createNavigationControllerWithScriptId:(NSString *)scriptId
                                                   si:(id<ScriptInteraction>)si
                                 rootViewControllerId:(NSString *)rootViewControllerId

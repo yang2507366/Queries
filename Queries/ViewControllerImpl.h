@@ -14,6 +14,9 @@
 @property(nonatomic, copy)void(^viewDidLoadBlock)();
 @property(nonatomic, copy)void(^viewWillAppearBlock)();
 
+@property(nonatomic, copy)NSString *group;
+@property(nonatomic, copy)NSString *objectId;
+
 - (id)initWithViewDidLoadBlock:(void(^)())viewDidLoadBlock
            viewWillAppearBlock:(void(^)())viewWillAppearBlock;
 

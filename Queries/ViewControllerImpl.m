@@ -17,9 +17,14 @@
 
 - (void)dealloc
 {
+    D_Log(@"%d", (NSInteger)self);
+    
     self.viewDidLoadBlock = nil;
     self.viewWillAppearBlock = nil;
-    D_Log(@"%d", (NSInteger)self);
+    
+    self.group = nil;
+    self.objectId = nil;
+    
     [super dealloc];
 }
 
@@ -59,6 +64,8 @@
     ViewControllerImpl *vc = [[[ViewControllerImpl alloc] init] autorelease];
     vc.title = title;
     NSString *cid = [LuaGroupedObjectManager addObject:vc group:scriptId];
+    vc.objectId = cid;
+    vc.group = scriptId;
     vc.viewDidLoadBlock = ^(void){
         [si callFunction:viewDidLoadFunc callback:nil parameters:cid, nil];
     };
