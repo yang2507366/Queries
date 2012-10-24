@@ -12,3 +12,5 @@
 #define lua_main_function           @"main"
 #define lua_prefix_grammar          @"ios::"
 #define lua_method_separator        @"::"
+#define lua_obj_prefix              @"_obj_"
+#define lua_dot_grammar             @"->"

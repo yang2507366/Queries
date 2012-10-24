@@ -19,6 +19,8 @@
 		3E094F1716351532006F90A9 /* NavigationControllerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1616351531006F90A9 /* NavigationControllerImpl.m */; };
 		3E094F1A16351CEA006F90A9 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
 		3E4EBD241636FDCA00629387 /* UIBarButtonItemImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */; };
+		3E4EBD261638143400629387 /* tableViewDemo.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E4EBD251638143400629387 /* tableViewDemo.lua */; };
+		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395F162D8C3900B63328 /* CoreGraphics.framework */; };
@@ -124,6 +126,9 @@
 		3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefixGrammarChecker.m; sourceTree = "<group>"; };
 		3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBarButtonItemImpl.h; sourceTree = "<group>"; };
 		3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBarButtonItemImpl.m; sourceTree = "<group>"; };
+		3E4EBD251638143400629387 /* tableViewDemo.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tableViewDemo.lua; sourceTree = "<group>"; };
+		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
+		3E4EBD28163814BD00629387 /* DotGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotGrammarChecker.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E63395B162D8C3900B63328 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3E63395D162D8C3900B63328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -470,6 +475,8 @@
 				3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */,
 				3E094F1816351CEA006F90A9 /* PrefixGrammarChecker.h */,
 				3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */,
+				3E4EBD27163814BC00629387 /* DotGrammarChecker.h */,
+				3E4EBD28163814BD00629387 /* DotGrammarChecker.m */,
 			);
 			name = LuaScriptChecker;
 			sourceTree = "<group>";
@@ -621,6 +628,7 @@
 			children = (
 				3EC0BA901633AEC30074D22B /* main.lua */,
 				3E0359361635390A0051DABA /* doc.txt */,
+				3E4EBD251638143400629387 /* tableViewDemo.lua */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -682,6 +690,7 @@
 				3E633972162D8C3A00B63328 /* Default-568h@2x.png in Resources */,
 				3EC0BA911633AEC30074D22B /* main.lua in Resources */,
 				3E0359371635390A0051DABA /* doc.txt in Resources */,
+				3E4EBD261638143400629387 /* tableViewDemo.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +780,7 @@
 				3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */,
 				3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */,
 				3E4EBD241636FDCA00629387 /* UIBarButtonItemImpl.m in Sources */,
+				3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

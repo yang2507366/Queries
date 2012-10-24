@@ -8,6 +8,7 @@
 
 #import "LuaGroupedObjectManager.h"
 #import "ObjectWrapper.h"
+#import "LuaConstants.h"
 
 @interface LuaGroupedObjectManager ()
 
@@ -35,7 +36,7 @@
 #pragma mark - instance methods
 - (NSString *)idForObject:(id)object
 {
-    return [NSString stringWithFormat:@"%d", (NSInteger)object];
+    return [NSString stringWithFormat:@"%@%d", lua_obj_prefix,(NSInteger)object];
 }
 
 - (NSString *)addObject:(id)object group:(NSString *)group
