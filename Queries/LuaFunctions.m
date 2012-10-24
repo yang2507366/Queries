@@ -309,7 +309,10 @@ int ui_createBarButtonItem(lua_State *L)
     NSString *title = luaStringParam(L, 2);
     NSString *tapFunc = luaStringParam(L, 3);
     
-    
+    pushString(L, [UIBarButtonItemImpl createBarButtonItemWithScriptId:scriptId
+                                                                    si:scriptInteractionForScriptId(scriptId)
+                                                                 title:title
+                                                          callbackFunc:tapFunc]);
     return 1;
 }
 
@@ -413,6 +416,11 @@ int obj_invokeMethodGetValue(lua_State *L)
     NSString *returnValue = [RuntimeImpl invokeObjectMethodGetStringWithScriptId:scriptId objectId:objectId methodName:methodName value:nil];
     pushString(L, returnValue);
     return 1;
+}
+
+int obj_invokeMethodSetObject(lua_State *L)
+{
+    return 0;
 }
 
 int obj_invokeMethodGetObject(lua_State *L)
@@ -611,6 +619,11 @@ void initFuntions(lua_State *L)
      调用实例：ui::createTableView("0, 0, 320, 480", "numberOfRowsFunc", "wrapCellFunc");
      */
     pushFunctionToLua(L, "ui_createTableView", ui_createTableView);
+#pragma mark = ui::createBarButtonItem
+    /**
+     调用示例：ui::createBarButtonItem("title", "callbackFunc");
+     */
+    pushFunctionToLua(L, "ui_createBarButtonItem", ui_createBarButtonItem);
 #pragma mark - ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
 #pragma mark - ustring::length

@@ -8,8 +8,8 @@ end
 function viewDidLoad()
     navigationItem = obj::propertyOfObject(viewController, "navigationItem");
     obj::invokePropertySet(navigationItem, "title", "新标题");
-    rightItem = obj::invokeMethodGetObject(navigationItem, "rightBarButtonItem");
-    print("rightItem:"..rightItem);
+    rightItem = obj::createBarButtonItem("更新", "");
+    obj::invokePropertySet(navigationItem, "rightBarButtonItem", rightItem);
     ui::addSubviewToViewController(ui::createTableView(ui::getViewBounds(obj::propertyOfObject(viewController, "view")), "numberOfRows", "wrapCell", "didSelectCell"), viewController);
 end
 
