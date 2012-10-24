@@ -8,9 +8,10 @@ end
 function viewDidLoad()
     navigationItem = obj::propertyOfObject(viewController, "navigationItem");
     obj::invokePropertySet(navigationItem, "title", "新标题");
-    rightItem = obj::createBarButtonItem("更新", "");
-    obj::invokePropertySet(navigationItem, "rightBarButtonItem", rightItem);
-    ui::addSubviewToViewController(ui::createTableView(ui::getViewBounds(obj::propertyOfObject(viewController, "view")), "numberOfRows", "wrapCell", "didSelectCell"), viewController);
+    rightItem = ui::createBarButtonItem("更新", "rightBarButtonItemTapped");
+    obj::invokeMethodSetObject(navigationItem, "setRightBarButtonItem", rightItem);
+    ui::addSubviewToViewController(ui::createTableView(
+        ui::getViewBounds(obj::propertyOfObject(viewController, "view")), "numberOfRows", "wrapCell", "didSelectCell"), viewController);
 end
 
 function numberOfRows()
@@ -31,5 +32,9 @@ function wrapCell(cellId, index)
 end
 
 function didSelectCell(index)
-    print("cell:"..index);
+    print("cell:"..index + 1);
+end
+
+function rightBarButtonItemTapped()
+    print("rightBarButtonItemTapped");
 end

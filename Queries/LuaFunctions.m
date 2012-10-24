@@ -420,6 +420,14 @@ int obj_invokeMethodGetValue(lua_State *L)
 
 int obj_invokeMethodSetObject(lua_State *L)
 {
+    NSString *scriptId = luaStringParam(L, 1);
+    
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
+    NSString *valueObjectId = luaStringParam(L, 4);
+    
+    [RuntimeImpl invokeObjectMethodSetObjectIdWithScriptId:scriptId objectId:objectId methodName:methodName valueObjectId:valueObjectId];
+    
     return 0;
 }
 
@@ -537,6 +545,12 @@ void initFuntions(lua_State *L)
      调用实例：value = obj::invokeMethodGetValue(objId, methodName)
      */
     pushFunctionToLua(L, "obj_invokeMethodGetValue", obj_invokeMethodGetValue);
+#pragma mark - obj::invokeMethodSetObject
+    /**
+     调用对象实例指定方法名的方法，该方法有一个id类型的参数，无返回值
+     调用示例：obj::invokeMethodSetObject(obj, "setObject", valueObj);
+     */
+    pushFunctionToLua(L, "obj_invokeMethodSetObject", obj_invokeMethodSetObject);
 #pragma mark - obj::invokeMethodGetObject
     /**
      调用对象的实例方法，并且返回一个对象的id，

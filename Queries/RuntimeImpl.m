@@ -95,6 +95,19 @@
     return @"";
 }
 
++ (void)invokeObjectMethodSetObjectIdWithScriptId:(NSString *)scriptId
+                                         objectId:(NSString *)objectId
+                                       methodName:(NSString *)methodName
+                                    valueObjectId:(NSString *)valueObjectId
+{
+    id targetObj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id valueTargetObj = [LuaGroupedObjectManager objectWithId:valueObjectId group:scriptId];
+    SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@:", methodName]);
+    if([targetObj respondsToSelector:selector]){
+        [targetObj performSelector:selector withObject:valueTargetObj];
+    }
+}
+
 + (objc_property_t)getObjc_property_tWithObject:(id<NSObject>)object propertyName:(NSString *)propertyName
 {
     return class_getProperty(object.class, [propertyName UTF8String]);

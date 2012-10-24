@@ -26,6 +26,10 @@
 + (NSString *)invokeObjectMethodGetObjectIdWithScriptId:(NSString *)scriptId
                                                objectId:(NSString *)objectId
                                              methodName:(NSString *)methodName;
++ (void)invokeObjectMethodSetObjectIdWithScriptId:(NSString *)scriptId
+                                         objectId:(NSString *)objectId
+                                       methodName:(NSString *)methodName
+                                    valueObjectId:(NSString *)valueObjectId;
 
 + (NSString *)invokeObjectPropertyGetWithScriptId:(NSString *)scriptId
                                          objectId:(NSString *)objectId
