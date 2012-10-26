@@ -5,8 +5,8 @@ function main()
     function tmpVC:viewDidLoad(vcId)
         NSLog("viewController:"..vcId);
     end
-    local ncId = tmpVC:setAsRootViewController();
-    
-    local vc2 = ViewController:new();
-    runtime::invokeMethod(ncId, "pushViewController:animated:", vc2:id(), "1");
+    function tmpVC:viewWillAppear(vcId)
+        NSLog("viewWillAppear:"..vcId);
+    end
+    tmpVC:setAsRootViewController();
 end
