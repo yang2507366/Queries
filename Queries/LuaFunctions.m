@@ -23,6 +23,7 @@
 #import "WebViewImpl.h"
 #import "TableViewImpl.h"
 #import "UIBarButtonItemImpl.h"
+#import "MethodInvokerForLua.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -197,12 +198,14 @@ int ui_createViewController(lua_State *L)
     NSString *title = luaStringParam(L, 2);
     NSString *viewDidLoadFunc = luaStringParam(L, 3);
     NSString *viewWillAppearFunc = luaStringParam(L, 4);
+    NSString *viewDidPopedFunc = luaStringParam(L, 5);
     
     NSString *vcId = [ViewControllerImpl createViewControllerWithScriptId:scriptId
                                                                        si:scriptInteractionForScriptId(scriptId)
                                                                     title:title
                                                           viewDidLoadFunc:viewDidLoadFunc
-                                                       viewWillAppearFunc:viewWillAppearFunc];
+                                                       viewWillAppearFunc:viewWillAppearFunc
+                                                         viewDidPopedFunc:viewDidPopedFunc];
     pushString(L, vcId);
     return 1;
 }
@@ -227,6 +230,11 @@ int ui_setRootViewController(lua_State *L)
     NSString *viewControllerId = luaStringParam(L, 2);
     
     [UIRelatedImpl setRootViewControllerWithId:viewControllerId scriptId:scriptId];
+    return 0;
+}
+
+int ui_pushViewControllerToNavigationController(lua_State *L)
+{
     return 0;
 }
 
@@ -380,6 +388,22 @@ int runtime_recycleCurrentScript(lua_State *L)
     
     [RuntimeImpl recycleObjectWithScriptId:scriptId];
     return 0;
+}
+
+int runtime_invokeMethod(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
+    
+    int numOfArgs = lua_gettop(L);
+    NSMutableArray *params = [NSMutableArray array];
+    for(int i = 4; i <= numOfArgs; ++i){
+        [params addObject:luaStringParam(L, i)];
+    }
+    NSString *returnValue = [MethodInvokerForLua invokeWithGroup:scriptId objectId:objectId methodName:methodName parameters:params];
+    pushString(L, returnValue);
+    return 1;
 }
 
 #pragma mark - obj
@@ -587,6 +611,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "obj_createObjectWithClassName", obj_createObjectWithClassName);
 #pragma mark - runtime::recycleCurrentScript
     pushFunctionToLua(L, "runtime_recycleCurrentScript", runtime_recycleCurrentScript);
+#pragma amrk - runtime::invokeMethod
+    pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
 #pragma mark - script::runScriptWithId
     pushFunctionToLua(L, "script_runScriptWithId", script_runScriptWithId);
 #pragma mark - ui::createButton

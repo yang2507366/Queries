@@ -13,8 +13,9 @@
 
 @end
 
-@interface MethodInvoker : NSObject
+@interface MethodInvokerForLua : NSObject
 
 + (NSString *)invokeWithObject:(id)object methodName:(NSString *)methodName parameters:(NSString *)firstParameter, ...;
++ (NSString *)invokeWithGroup:(NSString *)group objectId:(NSString *)objectId methodName:(NSString *)methodName parameters:(NSArray *)parameters;
 
 @end

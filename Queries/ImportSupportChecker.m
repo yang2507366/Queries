@@ -46,6 +46,8 @@
                                         range:NSMakeRange(functionRange.location, script.length - functionRange.location)];
         if(functionRange.location != NSNotFound){
             functionRange.location += 1;
+        }else{
+            functionRange = NSMakeRange(0, 0);
         }
     }else{
         functionRange = NSMakeRange(0, 0);

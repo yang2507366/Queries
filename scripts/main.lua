@@ -1,9 +1,12 @@
-import VC.lua;
+import UIKit.lua;
 
 function main()
-    local tmpVC = VC:new();
+    local tmpVC = ViewController:new();
     function tmpVC:viewDidLoad(vcId)
         NSLog("viewController:"..vcId);
     end
-    tmpVC:setAsRootViewController();
+    local ncId = tmpVC:setAsRootViewController();
+    
+    local vc2 = ViewController:new();
+    runtime::invokeMethod(ncId, "pushViewController:animated:", vc2:id(), "1");
 end

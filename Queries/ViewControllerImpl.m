@@ -21,6 +21,7 @@
     
     self.viewDidLoadBlock = nil;
     self.viewWillAppearBlock = nil;
+    self.viewShouldPopBlock = nil;
     
     self.group = nil;
     self.objectId = nil;
@@ -55,11 +56,37 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (BOOL)shouldPopFromNavigationController
+{
+    if(self.viewShouldPopBlock){
+        return self.viewShouldPopBlock();
+    }
+    return YES;
+}
+
+- (void)viewDidPopFromNavigationController
+{
+    if(self.viewDidPopedBlock){
+        self.viewDidPopedBlock();
+    }
+}
+
 + (NSString *)createViewControllerWithScriptId:(NSString *)scriptId
                                             si:(id<ScriptInteraction>)si
                                          title:(NSString *)title
                                viewDidLoadFunc:(NSString *)viewDidLoadFunc
                             viewWillAppearFunc:(NSString *)viewWillAppearFunc
+                              viewDidPopedFunc:(NSString *)viewDidPopedFunc
 {
     ViewControllerImpl *vc = [[[ViewControllerImpl alloc] init] autorelease];
     vc.title = title;
@@ -72,7 +99,14 @@
         } parameters:cid, nil];
     };
     vc.viewWillAppearBlock = ^(void){
-        [si callFunction:viewWillAppearFunc callback:nil parameters:cid, nil];
+        if(viewWillAppearFunc.length != 0){
+            [si callFunction:viewWillAppearFunc callback:nil parameters:cid, nil];
+        }
+    };
+    vc.viewDidPopedBlock = ^{
+        if(viewDidPopedFunc.length != 0){
+            [si callFunction:viewDidPopedFunc parameters:cid, nil];
+        }
     };
     return cid;
 }
