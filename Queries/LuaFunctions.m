@@ -504,11 +504,9 @@ int obj_createObjectWithClassName(lua_State *L)
 #pragma mark - system
 int nslog(lua_State *L)
 {
-    NSString *scriptId = luaStringParam(L, 1);
+    NSString *log = luaStringParam(L, 1);
     
-    NSString *log = luaStringParam(L, 2);
-    
-    NSLog(@"*[%@] %@", scriptId, log);
+    NSLog(@"%@", log);
     return 0;
 }
 

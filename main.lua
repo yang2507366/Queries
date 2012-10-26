@@ -1,13 +1,13 @@
 viewController = nil;
+titleList = {"手机号码查询", "Google翻译"};
 
 function main()
-    viewController = ui::createViewController("表", "viewDidLoad", "", true);
+    viewController = ui::createViewController("查查查", "viewDidLoad", "", true);
     ui::setRootViewController(ui::createNavigationController(viewController));
 end
 
 function viewDidLoad()
     navigationItem = obj::propertyOfObject(viewController, "navigationItem");
-    obj::invokePropertySet(navigationItem, "title", "新标题");
     rightItem = ui::createBarButtonItem("更新", "rightBarButtonItemTapped");
     obj::invokeMethodSetObject(navigationItem, "setRightBarButtonItem", rightItem);
     ui::addSubviewToViewController(ui::createTableView(
@@ -15,7 +15,7 @@ function viewDidLoad()
 end
 
 function numberOfRows()
-    return "100";
+    return "2";
 end
 
 function wrapCell(cellId, index)
@@ -25,14 +25,15 @@ function wrapCell(cellId, index)
         label = obj::createObjectWithClassName("UILabel");
         obj::invokePropertySet(label, "tag", "1001");
         contentView = obj::propertyOfObject(cellId, "contentView");
-        ui::setViewFrame(label, "20, 10, 200, 20");
+        ui::setViewFrame(label, "10, 10, 200, 20");
         ui::addSubview(contentView, label);
     end
-    obj::invokePropertySet(label, "text", "行 - "..index + 1);
+    nindex = tonumber(index) + 1;
+    obj::invokePropertySet(label, "text", titleList[nindex]);
 end
 
 function didSelectCell(index)
-    print("cell:"..index + 1);
+    NSLog(titleList[tonumber(index) + 1]);
 end
 
 function rightBarButtonItemTapped()
