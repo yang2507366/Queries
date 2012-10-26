@@ -67,7 +67,9 @@
     vc.objectId = cid;
     vc.group = scriptId;
     vc.viewDidLoadBlock = ^(void){
-        [si callFunction:viewDidLoadFunc callback:nil parameters:cid, nil];
+        [si callFunction:viewDidLoadFunc callback:^(NSString *returnValue, NSString *error){
+            D_Log(@"%@, %@", returnValue, error);
+        } parameters:cid, nil];
     };
     vc.viewWillAppearBlock = ^(void){
         [si callFunction:viewWillAppearFunc callback:nil parameters:cid, nil];
