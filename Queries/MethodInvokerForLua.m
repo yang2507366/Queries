@@ -182,7 +182,7 @@
             }else if(ctype == '@'){//id
                 id obj;
                 [invocation getReturnValue:&obj];
-                return [self objectIdOfObject:obj];
+                return obj;
             }else if(ctype == '#'){//Class
                 Class class;
                 [invocation getReturnValue:&class];
@@ -235,6 +235,15 @@
             if(ctype == 'c'){//char
                 if(tmpParam.length != 0){
                     char c = [tmpParam characterAtIndex:0];
+                    
+                    if(tmpParam.length == 2 || tmpParam.length == 3){
+                        tmpParam = [tmpParam lowercaseString];
+                        if([tmpParam isEqualToString:@"yes"]){
+                            c = YES;
+                        }else if([tmpParam isEqualToString:@"no"]){
+                            c = NO;
+                        }
+                    }
                     argumentData = &c;
                 }
             }else if(ctype == 'i'){//integer
@@ -389,6 +398,46 @@
             }else if(ctype == '?'){//unknown
             }
         }
+    }
+    return @"";
+}
+
++ (NSString *)createObjectWithGroup:(NSString *)group
+                          className:(NSString *)className
+                     initMethodName:(NSString *)initMethodName
+                         parameters:(NSArray *)parameters
+{
+    Class class = NSClassFromString(className);
+    id object = [[class alloc] autorelease];
+    if(object){
+        NSString *objId = [LuaGroupedObjectManager addObject:object group:group];
+        NSString *resultObjId = [self invokeWithGroup:group objectId:objId methodName:initMethodName parameters:parameters];
+        if(resultObjId.length == 0){
+            [LuaGroupedObjectManager removeObjectWithId:objId group:group];
+        }
+        
+        return resultObjId;
+    }
+    
+    return @"";
+}
+
++ (NSString *)invokeClassMethodWithGroup:(NSString *)group
+                               className:(NSString *)className
+                              methodName:(NSString *)methodName
+                              parameters:(NSArray *)parameters
+{
+    Class class = NSClassFromString(className);
+    SEL selector = NSSelectorFromString(methodName);
+    if(class && selector){
+        id object = class;
+        NSString *objId = [LuaGroupedObjectManager addObject:object group:group];
+        NSString *resultObjId = [self invokeWithGroup:group objectId:objId methodName:methodName parameters:parameters];
+        if(resultObjId.length == 0){
+            [LuaGroupedObjectManager removeObjectWithId:objId group:group];
+        }
+        
+        return resultObjId;
     }
     return @"";
 }

@@ -12,6 +12,8 @@
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
 #import "LuaApplication.h"
+#import "MethodInvokerForLua.h"
+#import "LuaGroupedObjectManager.h"
 
 @implementation AppDelegate
 
@@ -35,6 +37,23 @@
 //    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
     
     [LuaApplication runOnWindow:self.window];
+    
+//    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
+//                                                       className:@"UIColor"
+//                                                  initMethodName:@"initWithRed:green:blue:alpha:"
+//                                                      parameters:[NSArray arrayWithObjects:@"1.0f", @"0.0f", @"0.0f", @"1.0f", nil]];
+//    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
+//                                                       className:@"LabelImpl"
+//                                                  initMethodName:@"init"
+//                                                      parameters:[NSArray array]];
+//    
+//    NSLog(@"objId:%@", objId);
+//    UIColor *targetObject = [LuaGroupedObjectManager objectWithId:objId group:@"test"];
+//    NSLog(@"targetObject:%@", targetObject);
+//    [LuaGroupedObjectManager removeObjectWithId:objId group:@"test"];
+//    NSString *objId = [MethodInvokerForLua invokeClassMethodWithGroup:@"test" className:@"UIColor" methodName:@"blueColor" parameters:nil];
+//    UIColor *targetObject = [LuaGroupedObjectManager objectWithId:objId group:@"test"];
+//    NSLog(@"targetObject:%@", targetObject);
     
     return YES;
 }

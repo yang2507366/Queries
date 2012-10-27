@@ -298,13 +298,15 @@ int ui_createTableView(lua_State *L)
     NSString *numOfRowsFunc = luaStringParam(L, 3);
     NSString *wrapCellFunc = luaStringParam(L, 4);
     NSString *didSelectFunc = luaStringParam(L, 5);
+    NSString *heightForRowFunc = luaStringParam(L, 6);
     
     NSString *tableViewId = [TableViewImpl createTableViewWithScriptId:scriptId
                                                                     si:scriptInteractionForScriptId(scriptId)
                                                                  frame:frame
                                                       numberOfRowsFunc:numOfRowsFunc
                                                           wrapCellFunc:wrapCellFunc
-                                                         didSelectFunc:didSelectFunc];
+                                                         didSelectFunc:didSelectFunc
+                                                      heightForRowFunc:heightForRowFunc];
     pushString(L, tableViewId);
     
     return 1;
@@ -402,6 +404,43 @@ int runtime_invokeMethod(lua_State *L)
         [params addObject:luaStringParam(L, i)];
     }
     NSString *returnValue = [MethodInvokerForLua invokeWithGroup:scriptId objectId:objectId methodName:methodName parameters:params];
+    pushString(L, returnValue);
+    return 1;
+}
+
+int runtime_createObject(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *className = luaStringParam(L, 2);
+    NSString *initMethodName = luaStringParam(L, 3);
+    
+    int numOfArgs = lua_gettop(L);
+    NSMutableArray *params = [NSMutableArray array];
+    for(int i = 4; i <= numOfArgs; ++i){
+        [params addObject:luaStringParam(L, i)];
+    }
+    
+    NSString *returnValue = [MethodInvokerForLua createObjectWithGroup:scriptId
+                                                             className:className
+                                                        initMethodName:initMethodName
+                                                            parameters:params];
+    pushString(L, returnValue);
+    return 1;
+}
+
+int runtime_invokeClassMethod(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *className = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
+    
+    int numOfArgs = lua_gettop(L);
+    NSMutableArray *params = [NSMutableArray array];
+    for(int i = 4; i <= numOfArgs; ++i){
+        [params addObject:luaStringParam(L, i)];
+    }
+    
+    NSString *returnValue = [MethodInvokerForLua invokeClassMethodWithGroup:scriptId className:className methodName:methodName parameters:params];
     pushString(L, returnValue);
     return 1;
 }
@@ -611,6 +650,10 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "obj_createObjectWithClassName", obj_createObjectWithClassName);
 #pragma mark - runtime::recycleCurrentScript
     pushFunctionToLua(L, "runtime_recycleCurrentScript", runtime_recycleCurrentScript);
+#pragma mark - runtime::createObject
+    pushFunctionToLua(L, "runtime_createObject", runtime_createObject);
+#pragma mark - runtime::invokeClassMethod
+    pushFunctionToLua(L, "runtime_invokeClassMethod", runtime_invokeClassMethod);
 #pragma amrk - runtime::invokeMethod
     pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
 #pragma mark - script::runScriptWithId

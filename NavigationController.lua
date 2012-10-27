@@ -2,15 +2,15 @@ NavigationController = {};
 NavigationController.__index = NavigationController;
 
 function NavigationController:new(viewController)
-    if viewController.objectId == nil then
+    if viewController.id == nil then
         return nil;
     end
-    local nc = {};
+    local nc = ObjectCreate(ui::createNavigationController(viewController.id));
     setmetatable(nc, NavigationController);
-    nc.objectId = ui::createNavigationController(viewController.objectId);
+
     return nc;
 end
 
 function NavigationController:setAsRootViewController()
-    ui::setRootViewController(self.objectId);
+    ui::setRootViewController(self.id);
 end

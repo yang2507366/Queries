@@ -41,20 +41,32 @@
 
 - (NSString *)addObject:(id)object group:(NSString *)group
 {
+    D_Log(@"add object:%d, group:%@", (NSInteger)object, group);
     NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
     if(!objectDictionary){
         objectDictionary = [NSMutableDictionary dictionary];
         [self.groupDictionary setObject:objectDictionary forKey:group];
     }
     NSString *objectId = [self idForObject:object];
+    if([self containsObject:object group:group].length != 0){
+        D_Log(@"%@ exists", objectId);
+    }
     [objectDictionary setObject:[ObjectWrapper newObjectWrapperWithObject:object] forKey:objectId];
-    
     return objectId;
 }
 
 - (void)removeGroup:(NSString *)group
 {
     [self.groupDictionary removeObjectForKey:group];
+}
+
+- (void)removeObjectWithId:(NSString *)objectId group:(NSString *)group
+{
+    NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
+    if(objectDictionary){
+        [objectDictionary removeObjectForKey:objectId];
+        D_Log(@"removeObjectWithId:%@", objectId);
+    }
 }
 
 - (NSString *)containsObject:(id)object group:(NSString *)group
@@ -94,13 +106,17 @@
 
 + (NSString *)addObject:(id)object group:(NSString *)group
 {
-    D_Log(@"add object:%d, group:%@", (NSInteger)object, group);
     return [[self sharedInstance] addObject:object group:group];
 }
 
 + (void)removeGroup:(NSString *)group
 {
     [[self sharedInstance] removeGroup:group];
+}
+
++ (void)removeObjectWithId:(NSString *)objectId group:(NSString *)group
+{
+    [[self sharedInstance] removeObjectWithId:objectId group:group];
 }
 
 + (NSString *)containsObject:(id)object group:(NSString *)group

@@ -17,5 +17,13 @@
 
 + (NSString *)invokeWithObject:(id)object methodName:(NSString *)methodName parameters:(NSString *)firstParameter, ...;
 + (NSString *)invokeWithGroup:(NSString *)group objectId:(NSString *)objectId methodName:(NSString *)methodName parameters:(NSArray *)parameters;
++ (NSString *)createObjectWithGroup:(NSString *)group
+                          className:(NSString *)className
+                     initMethodName:(NSString *)initMethodName
+                         parameters:(NSArray *)parameters;
++ (NSString *)invokeClassMethodWithGroup:(NSString *)group
+                               className:(NSString *)className
+                              methodName:(NSString *)methodName
+                              parameters:(NSArray *)parameters;
 
 @end

@@ -13,6 +13,7 @@
 
 + (NSString *)addObject:(id)object group:(NSString *)group;
 + (void)removeGroup:(NSString *)group;
++ (void)removeObjectWithId:(NSString *)objectId group:(NSString *)group;
 + (NSString *)containsObject:(id)object group:(NSString *)group;
 + (id)objectWithId:(NSString *)objectId group:(NSString *)group;
 
