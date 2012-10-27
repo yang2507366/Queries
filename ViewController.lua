@@ -1,6 +1,6 @@
-import EventProxy.lua;
+import ViewControllerEventProxy.lua;
 
-ViewController = {};
+local ViewController = {};
 ViewController.__index = ViewController;
 
 function ViewController:new(title)
@@ -18,13 +18,13 @@ function ViewController:new(title)
 end
 
 -- events
-function ViewController:viewDidLoad(vcId)
+function ViewController:viewDidLoad()
 end
 
-function ViewController:viewWillAppear(vcId)
+function ViewController:viewWillAppear()
 end
 
-function ViewController:viewDidPop(vcId)
+function ViewController:viewDidPop()
     
 end
 
@@ -34,4 +34,8 @@ function ViewController:id()
 end
 function ViewController:setAsRootViewController()
     ui::setRootViewController(self:id());
+end
+
+function ViewController:addSubview(subview)
+    ui::addSubviewToViewController(subview.objectId, self:id());
 end

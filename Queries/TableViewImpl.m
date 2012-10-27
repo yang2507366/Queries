@@ -73,8 +73,9 @@
 {
     TableViewImpl *impl = [[[TableViewImpl alloc] initWithFrame:frame style:UITableViewStylePlain] autorelease];
     impl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    NSString *tableViewId = [LuaGroupedObjectManager addObject:impl group:scriptId];
     [impl setNumberOfRowsBlock:^NSInteger{
-        NSString *numOfRows = [si callFunction:numberOfRowsFunc parameters:nil];
+        NSString *numOfRows = [si callFunction:numberOfRowsFunc parameters:tableViewId, nil];
         return [numOfRows intValue];
     }];
     [impl setWrapCellBlock:^(UITableViewCell *cell, NSInteger index) {
@@ -82,13 +83,13 @@
         if(!cellId){
             cellId = [LuaGroupedObjectManager addObject:cell group:scriptId];
         }
-        [si callFunction:wrapCellFunc parameters:cellId, [NSString stringWithFormat:@"%d", index], nil];
+        [si callFunction:wrapCellFunc parameters:tableViewId, cellId, [NSString stringWithFormat:@"%d", index], nil];
     }];
     [impl setDidSelectCellBlock:^(NSInteger index) {
-        [si callFunction:didSelectFunc parameters:[NSString stringWithFormat:@"%d", index], nil];
+        [si callFunction:didSelectFunc parameters:tableViewId, [NSString stringWithFormat:@"%d", index], nil];
     }];
     
-    return [LuaGroupedObjectManager addObject:impl group:scriptId];
+    return tableViewId;
 }
 
 @end

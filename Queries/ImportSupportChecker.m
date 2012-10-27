@@ -12,6 +12,7 @@
 @interface ImportSupportChecker ()
 
 @property(nonatomic, copy)NSString *sourceScriptId;
+@property(nonatomic, retain)NSMutableArray *fileListImported;
 
 @end
 
@@ -20,17 +21,23 @@
 - (void)dealloc
 {
     self.sourceScriptId = nil;
+    self.fileListImported = nil;
     [super dealloc];
 }
 
 - (NSString *)importWithScriptId:(NSString *)scriptId originalScript:(NSString *)originalScript
 {
+    if([self.fileListImported indexOfObject:scriptId] != NSNotFound){
+        D_Log(@"script:%@ already imported", scriptId);
+        return originalScript;
+    }
     D_Log(@"importing:%@", scriptId);
     NSString *importScript = [LuaApplication originalScriptWithScriptId:scriptId];
     if(importScript.length != 0){
         D_Log(@"import success:%@", scriptId);
         importScript = [self check:importScript scriptId:scriptId];
-        originalScript = [NSString stringWithFormat:@"%@\n%@", originalScript, importScript];
+        originalScript = [NSString stringWithFormat:@"\n-- **********imported %@\n%@\n%@", scriptId, importScript, originalScript];
+        [self.fileListImported addObject:scriptId];
     }else{
         D_Log(@"import error, not found:%@", scriptId);
     }
@@ -79,6 +86,8 @@
 - (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
 {
     self.sourceScriptId = scriptId;
+    self.fileListImported = [NSMutableArray array];
+    
     return [self check:script scriptId:scriptId];
 }
 
