@@ -12,6 +12,7 @@
 #import "lauxlib.h"
 #import "UnicodeScriptInvokeFilter.h"
 #import "LuaFunctions.h"
+#import "LuaApplication.h"
 
 @interface LuaScriptInteraction () {
     char *_scriptChars;
@@ -35,6 +36,20 @@
     [super dealloc];
 }
 
+int get_module(lua_State *L)
+{
+    const char *cModName = luaL_checkstring(L, 1);
+    if(strlen(cModName) != 0){
+        NSString *modName = [NSString stringWithFormat:@"%s.lua", cModName];
+        NSString *script = [LuaApplication requireScriptWithScriptId:modName];
+        if(script.length != 0){
+            const char *cscript = [script UTF8String];
+            luaL_loadbuffer(L, cscript, [script length], cModName);
+        }
+    }
+    return 1;
+}
+
 - (id)initWithScript:(NSString *)script
 {
     self = [super init];
@@ -42,6 +57,10 @@
     self.script = script;
     _L = lua_open();
     luaL_openlibs(_L);
+    
+    lua_register(_L, "get_module", get_module);
+    luaL_dostring(_L, "table.insert(package.loaders, get_module)");
+    
     if(_scriptChars){
         luaL_dostring(_L, _scriptChars);
     }

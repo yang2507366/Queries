@@ -19,5 +19,6 @@
 + (id<ScriptInteraction>)restartProgramWithScriptId:(NSString *)scritId;
 + (NSString *)originalScriptWithScriptId:(NSString *)scriptId;
 + (NSString *)scriptWithScriptId:(NSString *)scriptId;
++ (NSString *)requireScriptWithScriptId:(NSString *)scriptId;
 
 @end

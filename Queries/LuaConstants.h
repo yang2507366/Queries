@@ -14,3 +14,4 @@
 #define lua_method_separator        @"::"
 #define lua_obj_prefix              @"_obj_"
 #define lua_dot_grammar             @"->"
+#define lua_object_file             @"Object.lua"

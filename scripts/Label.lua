@@ -1,5 +1,6 @@
-Label = {};
-Label.__index = Label;
+import Object.lua;
+
+Label = Object:new();
 
 function Label:new(title)
     if title == nil then
@@ -12,6 +13,7 @@ end
 
 function Label:get(labelId)
     local label = ObjectCreate(labelId);
+    self.__index = self;
 	setmetatable(label, Label);
 	
 	return label;

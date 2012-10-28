@@ -1,31 +1,24 @@
-import Recyclable.lua;
-import Utils.lua;
+require "Recyclable"
+require "Utils"
 
-local Object = {};
-Object.__index = Object;
-Object.id = "";
+Object = {};
 
 function Object:new(objectId)
+	self.__index = self;
     local obj = {};
     setmetatable(obj, Object);
     if objectId ~= nil then
-        obj.id = objectId;
+        obj.objectId = objectId;
     end
     
     return obj;
 end
 
--- functions
-function ObjectCreate(objectId)
-    return Object:new(objectId);
+-- instance methods
+function Object:id()
+    return self.objectId;
 end
 
-function ObjectRelease(object)
-    if object.id then
-        ObjectReleaseById(object.id);
-    end
-end
-
-function ObjectReleaseById(objectId)
-    recycleObjectById(objectId);
+function Object:release()
+    recycleObjectById(self:id());
 end

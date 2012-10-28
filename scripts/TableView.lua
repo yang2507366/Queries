@@ -1,5 +1,5 @@
-import TableViewEventProxy.lua;
-import TableViewCell.lua;
+require "TableViewEventProxy"
+require "TableViewCell"
 
 TableView = {};
 TableView.__index = TableView;

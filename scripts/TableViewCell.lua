@@ -1,4 +1,4 @@
-local TableViewCell = {};
+TableViewCell = {};
 TableViewCell.__index = TableViewCell;
 
 TableViewCell.reuseIdentifier = "";

@@ -58,7 +58,7 @@
     self.runnableScriptDictionary = [NSMutableDictionary dictionary];
     self.runningProgramDictionary = [NSMutableDictionary dictionary];
     self.scriptCheckers = [NSArray arrayWithObjects:
-                           [[[ImportSupportChecker alloc] init] autorelease],
+//                           [[[ImportSupportChecker alloc] init] autorelease],
                            [[[UnicodeChecker alloc] init] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
@@ -86,6 +86,7 @@
     for(NSString *scriptId in allScriptIds){
         [self processScriptWithScriptId:scriptId script:[self originalScriptWithScriptId:scriptId]];
     }
+    
 }
 
 - (void)processScriptWithScriptId:(NSString *)scriptId script:(NSString *)script
@@ -186,6 +187,18 @@
 + (NSString *)scriptWithScriptId:(NSString *)identifier
 {
     return [[LuaApplication sharedManager] scriptWithScriptId:identifier];
+}
+
++ (NSString *)requireScriptWithScriptId:(NSString *)scriptId
+{
+    NSString *script = [self scriptWithScriptId:scriptId];
+    if(script.length != 0){
+        NSRange beginRange = [script rangeOfString:@"function" options:NSBackwardsSearch];
+        if(beginRange.location != NSNotFound){
+            script = [script substringToIndex:beginRange.location - 1];
+        }
+    }
+    return script;
 }
 
 @end

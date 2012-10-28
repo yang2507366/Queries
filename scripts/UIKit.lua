@@ -1,4 +1,3 @@
-import Object.lua;
 import ViewController.lua;
 import NavigationController.lua;
 import NavigationItem.lua;

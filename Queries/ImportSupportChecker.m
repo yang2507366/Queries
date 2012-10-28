@@ -8,11 +8,13 @@
 
 #import "ImportSupportChecker.h"
 #import "LuaApplication.h"
+#import "LuaConstants.h"
 
 @interface ImportSupportChecker ()
 
 @property(nonatomic, copy)NSString *sourceScriptId;
 @property(nonatomic, retain)NSMutableArray *fileListImported;
+@property(nonatomic, assign)BOOL hasObjectLua;
 
 @end
 
@@ -22,6 +24,7 @@
 {
     self.sourceScriptId = nil;
     self.fileListImported = nil;
+    
     [super dealloc];
 }
 
@@ -36,8 +39,13 @@
     if(importScript.length != 0){
         D_Log(@"import success:%@", scriptId);
         importScript = [self check:importScript scriptId:scriptId];
-        originalScript = [NSString stringWithFormat:@"\n-- **********imported %@\n%@\n%@", scriptId, importScript, originalScript];
-        [self.fileListImported addObject:scriptId];
+        if([scriptId isEqualToString:lua_object_file]){
+            self.hasObjectLua = YES;
+        }else{
+            originalScript = [NSString stringWithFormat:@"\n-- ********** %@\n%@\n%@", scriptId, importScript, originalScript];
+            [self.fileListImported addObject:scriptId];
+        }
+        
     }else{
         D_Log(@"import error, not found:%@", scriptId);
     }
@@ -87,8 +95,15 @@
 {
     self.sourceScriptId = scriptId;
     self.fileListImported = [NSMutableArray array];
+    NSString *resultScript = [self check:script scriptId:scriptId];
+    if(self.hasObjectLua){
+        NSString *objectLuaSource = [LuaApplication originalScriptWithScriptId:lua_object_file];
+        resultScript = [NSString stringWithFormat:@"%@\n%@", objectLuaSource, resultScript];
+        self.fileListImported = [NSMutableArray array];
+        resultScript = [self check:resultScript scriptId:scriptId];
+    }
     
-    return [self check:script scriptId:scriptId];
+    return resultScript;
 }
 
 @end

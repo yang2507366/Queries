@@ -1,25 +1,34 @@
-import ViewControllerEventProxy.lua;
+require "Object"
+require "ViewControllerEventProxy"
 
-local ViewController = {};
+ViewController = Object:new();
 ViewController.__index = ViewController;
 
-function ViewController:new(title)
-    if title == nil then
+function ViewController:createWithTitle(title)
+	if title == nil then
         title = "无标题";
     end
-    
+    print("viewcontroller:new");
     local objectId = ui::createViewController(title, "_global_viewDidLoad", "_global_viewWillAppear", "_global_viewDidPop");
     
-    local vc = ObjectCreate(objectId);
+    local vc = Object:new(objectId);
     setmetatable(vc, ViewController);
 
     vc.title = title;
     
-    _global_view_did_load_event_table[vc.id] = vc;
-    _global_view_will_appear_event_table[vc.id] = vc;
-    _global_view_did_pop_event_table[vc.id] = vc;
+    _global_view_did_load_event_table[vc:id()] = vc;
+    _global_view_will_appear_event_table[vc:id()] = vc;
+    _global_view_did_pop_event_table[vc:id()] = vc;
 
     return vc;
+end
+
+function ViewController:proto()
+	local vc = Object:new();
+	setmetatable(vc, ViewController);
+	print("proto");
+	
+	return vc;
 end
 
 -- events
@@ -34,8 +43,8 @@ function ViewController:viewDidPop()
 end
 
 -- instance methods
-function ViewController:setAsRootViewController()
-    ui::setRootViewController(self.id);
+function ViewController:setAsRoot()
+    ui::setRootViewController(self:id());
 end
 
 function ViewController:addSubview(subview)
