@@ -17,7 +17,6 @@
 		3E094F0C1634F145006F90A9 /* LabelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F0B1634F145006F90A9 /* LabelImpl.m */; };
 		3E094F1716351532006F90A9 /* NavigationControllerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1616351531006F90A9 /* NavigationControllerImpl.m */; };
 		3E094F1A16351CEA006F90A9 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
-		3E314898163BE93A00FCF0B4 /* Object.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E314897163BE93A00FCF0B4 /* Object.lua */; };
 		3E45B9A9163A893800E19133 /* UIKit.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E45B9A8163A893800E19133 /* UIKit.lua */; };
 		3E45B9AE163A896F00E19133 /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E45B9AB163A896F00E19133 /* doc.txt */; };
 		3E45B9AF163A896F00E19133 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E45B9AC163A896F00E19133 /* main.lua */; };
@@ -51,14 +50,8 @@
 		3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */; };
 		3EC0BAA91633EA200074D22B /* LuaObjectManagerLegacy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */; };
 		3EC0BAAC1633EAFD0074D22B /* EventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAAB1633EAFD0074D22B /* EventProxy.m */; };
-		3EC2CBB7163CAAEC00E83E10 /* NavigationItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBB6163CAAEC00E83E10 /* NavigationItem.lua */; };
-		3EC2CBBA163CB47500E83E10 /* BarButtonItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBB9163CB47400E83E10 /* BarButtonItem.lua */; };
-		3EC2CBBC163CBE4200E83E10 /* Utils.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBBB163CBE4200E83E10 /* Utils.lua */; };
-		3EC2CBBE163CC23C00E83E10 /* BarButtonItemEventProxy.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBBD163CC23C00E83E10 /* BarButtonItemEventProxy.lua */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
-		3EDC6252163ABB55006F7893 /* ViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC6251163ABB55006F7893 /* ViewController.lua */; };
-		3EDC6254163ABB7A006F7893 /* ViewControllerEventProxy.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC6253163ABB7A006F7893 /* ViewControllerEventProxy.lua */; };
 		3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
 		3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */; };
 		3EE36D711632AA7F00BB5D02 /* HTTPRequestImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */; };
@@ -107,11 +100,6 @@
 		3EE3B3271632324300C77F85 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B3091632324200C77F85 /* print.c */; };
 		3EE3B32D163235E800C77F85 /* LuaScriptInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */; };
 		3EF86915163ACC1700E41ED6 /* MethodInvokerForLua.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF86914163ACC1700E41ED6 /* MethodInvokerForLua.m */; };
-		3EF8691B163AD8D400E41ED6 /* Recyclable.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8691A163AD8D400E41ED6 /* Recyclable.lua */; };
-		3EF8691F163ADA4300E41ED6 /* TableView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8691E163ADA4300E41ED6 /* TableView.lua */; };
-		3EF86925163BDFB200E41ED6 /* NavigationController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EF86924163BDFB200E41ED6 /* NavigationController.lua */; };
-		3EF8692A163BE61600E41ED6 /* TableViewEventProxy.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EF86929163BE61600E41ED6 /* TableViewEventProxy.lua */; };
-		3EF8692C163BE67A00E41ED6 /* TableViewCell.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8692B163BE67A00E41ED6 /* TableViewCell.lua */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,7 +124,6 @@
 		3E094F1616351531006F90A9 /* NavigationControllerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationControllerImpl.m; sourceTree = "<group>"; };
 		3E094F1816351CEA006F90A9 /* PrefixGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixGrammarChecker.h; sourceTree = "<group>"; };
 		3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefixGrammarChecker.m; sourceTree = "<group>"; };
-		3E314897163BE93A00FCF0B4 /* Object.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Object.lua; sourceTree = "<group>"; };
 		3E45B9A8163A893800E19133 /* UIKit.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIKit.lua; path = scripts/UIKit.lua; sourceTree = "<group>"; };
 		3E45B9AB163A896F00E19133 /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doc.txt; path = scripts/doc.txt; sourceTree = "<group>"; };
 		3E45B9AC163A896F00E19133 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.lua; path = scripts/main.lua; sourceTree = "<group>"; };
@@ -196,16 +183,10 @@
 		3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaObjectManagerLegacy.m; sourceTree = "<group>"; };
 		3EC0BAAA1633EAFC0074D22B /* EventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProxy.h; sourceTree = "<group>"; };
 		3EC0BAAB1633EAFD0074D22B /* EventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventProxy.m; sourceTree = "<group>"; };
-		3EC2CBB6163CAAEC00E83E10 /* NavigationItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NavigationItem.lua; sourceTree = "<group>"; };
-		3EC2CBB9163CB47400E83E10 /* BarButtonItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarButtonItem.lua; sourceTree = "<group>"; };
-		3EC2CBBB163CBE4200E83E10 /* Utils.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Utils.lua; sourceTree = "<group>"; };
-		3EC2CBBD163CC23C00E83E10 /* BarButtonItemEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarButtonItemEventProxy.lua; sourceTree = "<group>"; };
 		3ED0C77E16354F2D00A3E33F /* TableViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewImpl.h; sourceTree = "<group>"; };
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
 		3ED0C7831635502700A3E33F /* ArrayImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayImpl.m; sourceTree = "<group>"; };
-		3EDC6251163ABB55006F7893 /* ViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewController.lua; sourceTree = "<group>"; };
-		3EDC6253163ABB7A006F7893 /* ViewControllerEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewControllerEventProxy.lua; sourceTree = "<group>"; };
 		3EE36D6616324A9400BB5D02 /* LuaScriptInvokeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptInvokeFilter.h; sourceTree = "<group>"; };
 		3EE36D6816324B9000BB5D02 /* UnicodeScriptInvokeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeScriptInvokeFilter.h; sourceTree = "<group>"; };
 		3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnicodeScriptInvokeFilter.m; sourceTree = "<group>"; };
@@ -297,11 +278,6 @@
 		3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaScriptInteraction.m; sourceTree = "<group>"; };
 		3EF86913163ACC1700E41ED6 /* MethodInvokerForLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodInvokerForLua.h; sourceTree = "<group>"; };
 		3EF86914163ACC1700E41ED6 /* MethodInvokerForLua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodInvokerForLua.m; sourceTree = "<group>"; };
-		3EF8691A163AD8D400E41ED6 /* Recyclable.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Recyclable.lua; sourceTree = "<group>"; };
-		3EF8691E163ADA4300E41ED6 /* TableView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TableView.lua; sourceTree = "<group>"; };
-		3EF86924163BDFB200E41ED6 /* NavigationController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NavigationController.lua; sourceTree = "<group>"; };
-		3EF86929163BE61600E41ED6 /* TableViewEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TableViewEventProxy.lua; sourceTree = "<group>"; };
-		3EF8692B163BE67A00E41ED6 /* TableViewCell.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TableViewCell.lua; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -666,16 +642,7 @@
 		3EF86917163AD36300E41ED6 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				3EC2CBB9163CB47400E83E10 /* BarButtonItem.lua */,
-				3EC2CBBD163CC23C00E83E10 /* BarButtonItemEventProxy.lua */,
-				3EF86924163BDFB200E41ED6 /* NavigationController.lua */,
-				3EC2CBB6163CAAEC00E83E10 /* NavigationItem.lua */,
-				3EF8691E163ADA4300E41ED6 /* TableView.lua */,
-				3EF8692B163BE67A00E41ED6 /* TableViewCell.lua */,
-				3EF86929163BE61600E41ED6 /* TableViewEventProxy.lua */,
 				3E45B9A8163A893800E19133 /* UIKit.lua */,
-				3EDC6251163ABB55006F7893 /* ViewController.lua */,
-				3EDC6253163ABB7A006F7893 /* ViewControllerEventProxy.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -691,9 +658,6 @@
 		3EF86919163AD8B900E41ED6 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				3E314897163BE93A00FCF0B4 /* Object.lua */,
-				3EF8691A163AD8D400E41ED6 /* Recyclable.lua */,
-				3EC2CBBB163CBE4200E83E10 /* Utils.lua */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -756,18 +720,6 @@
 				3E45B9A9163A893800E19133 /* UIKit.lua in Resources */,
 				3E45B9AE163A896F00E19133 /* doc.txt in Resources */,
 				3E45B9AF163A896F00E19133 /* main.lua in Resources */,
-				3EDC6252163ABB55006F7893 /* ViewController.lua in Resources */,
-				3EDC6254163ABB7A006F7893 /* ViewControllerEventProxy.lua in Resources */,
-				3EF8691B163AD8D400E41ED6 /* Recyclable.lua in Resources */,
-				3EF8691F163ADA4300E41ED6 /* TableView.lua in Resources */,
-				3EF86925163BDFB200E41ED6 /* NavigationController.lua in Resources */,
-				3EF8692A163BE61600E41ED6 /* TableViewEventProxy.lua in Resources */,
-				3EF8692C163BE67A00E41ED6 /* TableViewCell.lua in Resources */,
-				3E314898163BE93A00FCF0B4 /* Object.lua in Resources */,
-				3EC2CBB7163CAAEC00E83E10 /* NavigationItem.lua in Resources */,
-				3EC2CBBA163CB47500E83E10 /* BarButtonItem.lua in Resources */,
-				3EC2CBBC163CBE4200E83E10 /* Utils.lua in Resources */,
-				3EC2CBBE163CC23C00E83E10 /* BarButtonItemEventProxy.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
