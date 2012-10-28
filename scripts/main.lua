@@ -28,6 +28,7 @@ function main()
         
         local textLabel = cell:textLabel();
         textLabel:setText("rowIndex - "..rowIndex + 1); 
+        setViewBackgroundColor(textLabel, 255, 0, 0, 1);
         
         return cell;
     end
@@ -45,9 +46,11 @@ function main()
     ni:setTitle("titie");
     local ri = BarButtonItem:new();
     ri:setTitle("推进");
+    ri:setStyle(2);
     function ri:tapped()
         local nvc = ViewController:new("new vc");
         local label = Label:new("TestLabel");
+        setViewBackgroundColor(label, 255, 0, 0, 1);
         nvc:addSubview(label);
         function nvc:viewDidPop()
             recycle();

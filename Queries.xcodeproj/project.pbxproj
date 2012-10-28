@@ -63,6 +63,7 @@
 		3EC2CBD5163CCD2D00E83E10 /* ViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBCC163CCD2D00E83E10 /* ViewController.lua */; };
 		3EC2CBD6163CCD2D00E83E10 /* ViewControllerEventProxy.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBCD163CCD2D00E83E10 /* ViewControllerEventProxy.lua */; };
 		3EC2CBDA163CF78B00E83E10 /* Label.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBD9163CF78B00E83E10 /* Label.lua */; };
+		3EC2CBDE163CFF8600E83E10 /* View.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBDD163CFF8500E83E10 /* View.lua */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
 		3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
@@ -209,6 +210,7 @@
 		3EC2CBCC163CCD2D00E83E10 /* ViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ViewController.lua; path = scripts/ViewController.lua; sourceTree = "<group>"; };
 		3EC2CBCD163CCD2D00E83E10 /* ViewControllerEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ViewControllerEventProxy.lua; path = scripts/ViewControllerEventProxy.lua; sourceTree = "<group>"; };
 		3EC2CBD9163CF78B00E83E10 /* Label.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Label.lua; path = scripts/Label.lua; sourceTree = "<group>"; };
+		3EC2CBDD163CFF8500E83E10 /* View.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = View.lua; path = scripts/View.lua; sourceTree = "<group>"; };
 		3ED0C77E16354F2D00A3E33F /* TableViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewImpl.h; sourceTree = "<group>"; };
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
@@ -679,6 +681,7 @@
 				3E45B9A8163A893800E19133 /* UIKit.lua */,
 				3EC2CBCC163CCD2D00E83E10 /* ViewController.lua */,
 				3EC2CBCD163CCD2D00E83E10 /* ViewControllerEventProxy.lua */,
+				3EC2CBDD163CFF8500E83E10 /* View.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				3EC2CBD5163CCD2D00E83E10 /* ViewController.lua in Resources */,
 				3EC2CBD6163CCD2D00E83E10 /* ViewControllerEventProxy.lua in Resources */,
 				3EC2CBDA163CF78B00E83E10 /* Label.lua in Resources */,
+				3EC2CBDE163CFF8600E83E10 /* View.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

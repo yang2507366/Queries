@@ -19,6 +19,10 @@ function BarButtonItem:setTitle(title)
     runtime::invokeMethod(self.id, "setTitle:", title);
 end
 
+function BarButtonItem:setStyle(style)
+	runtime::invokeMethod(self.id, "setStyle:", style);
+end
+
 function BarButtonItem:tapped()
     
 end
