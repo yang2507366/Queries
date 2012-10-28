@@ -45,7 +45,7 @@ function main()
     function ri:tapped()
         local nvc = ViewController:new("new vc");
         function nvc:viewDidPop()
-            ObjectRelease(nvc);
+            recycle();
         end
         tmpVC:navigationController():pushViewController(nvc, true);
     end
