@@ -32,7 +32,7 @@ function main()
         if rowIndex % 2 == 0 then
             return 100;
         end
-        return 40;
+        return 70;
     end
     tmpVC:addSubview(tableView);
     tableView:setRowHeight(100);
