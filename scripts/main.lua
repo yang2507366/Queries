@@ -13,7 +13,7 @@ function main()
 
     local tableView = TableView:new();
     function tableView:numberOfRows()
-        return 10;
+        return 1000;
     end
     function tableView:didSelectRowAtIndex(rowIndex)
         NSLog("rowIndex"..rowIndex);
@@ -26,7 +26,7 @@ function main()
             cell = TableViewCell:new(identifier);
         end
         
-        return cell.id;
+        return cell;
     end
     function tableView:heightForRowAtIndex(rowIndex)
         if rowIndex % 2 == 0 then
@@ -37,5 +37,18 @@ function main()
     tmpVC:addSubview(tableView);
     tableView:setRowHeight(100);
     tableView:reloadData();
-    tableView:deselectRow(0);
+    
+    local ni = tmpVC:navigationItem();
+    ni:setTitle("titie");
+    local ri = BarButtonItem:new();
+    ri:setTitle("推进");
+    function ri:tapped()
+        local nvc = ViewController:new("new vc");
+        function nvc:viewDidPop()
+            ObjectRelease(nvc);
+        end
+        tmpVC:navigationController():pushViewController(nvc, true);
+    end
+    ni:setRightBarButtonItem(ri);
+    ObjectRelease(ni);
 end

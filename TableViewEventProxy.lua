@@ -8,7 +8,7 @@ function _global_tableView_numberOfRows(tableViewId)
 end
 
 function _global_tableView_cellForRowAtIndex(tableViewId, rowIndex)
-    return tableView_cellForRowAtIndex[tableViewId]:cellForRowAtIndex(rowIndex);
+    return tableView_cellForRowAtIndex[tableViewId]:cellForRowAtIndex(rowIndex).id;
 end
 
 function _global_tableView_didSelectCell(tableViewId, rowIndex)

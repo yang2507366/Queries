@@ -17,6 +17,11 @@
     [LuaGroupedObjectManager removeGroup:scriptId];
 }
 
++ (void)recycleObjectWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId
+{
+    [LuaGroupedObjectManager removeObjectWithId:objectId group:scriptId];
+}
+
 + (void)invokeObjectMethodWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId methodName:(NSString *)methodName
 {
     id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];

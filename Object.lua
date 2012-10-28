@@ -1,3 +1,6 @@
+import Recyclable.lua;
+import Utils.lua;
+
 local Object = {};
 Object.__index = Object;
 Object.id = "";
@@ -14,4 +17,14 @@ end
 
 function ObjectCreate(objectId)
     return Object:new(objectId);
+end
+
+function ObjectRelease(object)
+    if object.id then
+        ObjectReleaseById(object.id);
+    end
+end
+
+function ObjectReleaseById(objectId)
+    recycleObjectById(objectId);
 end

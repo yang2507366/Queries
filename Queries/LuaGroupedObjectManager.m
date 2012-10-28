@@ -41,18 +41,21 @@
 
 - (NSString *)addObject:(id)object group:(NSString *)group
 {
-    D_Log(@"add object:%d, group:%@", (NSInteger)object, group);
     NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
     if(!objectDictionary){
         objectDictionary = [NSMutableDictionary dictionary];
         [self.groupDictionary setObject:objectDictionary forKey:group];
     }
-    NSString *objectId = [self idForObject:object];
-    if([self containsObject:object group:group].length != 0){
-        D_Log(@"%@ exists", objectId);
+    NSString *containObjectId = [self containsObject:object group:group];
+    if(containObjectId.length != 0){
+        D_Log(@"%@ exists", containObjectId);
+        return containObjectId;
+    }else{
+        D_Log(@"add object:%d:%@, group:%@", (NSInteger)object, object, group);
+        NSString *objectId = [self idForObject:object];
+        [objectDictionary setObject:[ObjectWrapper newObjectWrapperWithObject:object] forKey:objectId];
+        return objectId;
     }
-    [objectDictionary setObject:[ObjectWrapper newObjectWrapperWithObject:object] forKey:objectId];
-    return objectId;
 }
 
 - (void)removeGroup:(NSString *)group

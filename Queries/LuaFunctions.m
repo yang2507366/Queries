@@ -24,6 +24,9 @@
 #import "TableViewImpl.h"
 #import "UIBarButtonItemImpl.h"
 #import "MethodInvokerForLua.h"
+#import "LuaConstants.h"
+#import "LuaGroupedObjectManager.h"
+#import "RuntimeUtils.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -235,6 +238,16 @@ int ui_setRootViewController(lua_State *L)
 
 int ui_pushViewControllerToNavigationController(lua_State *L)
 {
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *vcId = luaStringParam(L, 2);
+    NSString *ncId = luaStringParam(L, 3);
+    BOOL animated = lua_toboolean(L, 4);
+    
+    [UIRelatedImpl pushViewControlerToNaviationControllerWithScriptId:scriptId
+                                                     viewControllerId:vcId
+                                               navigationControllerId:ncId
+                                                             animated:animated];
+    
     return 0;
 }
 
@@ -389,6 +402,15 @@ int runtime_recycleCurrentScript(lua_State *L)
     NSString *scriptId = luaStringParam(L, 1);
     
     [RuntimeImpl recycleObjectWithScriptId:scriptId];
+    return 0;
+}
+
+int runtime_recycleObjectById(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    
+    [RuntimeImpl recycleObjectWithScriptId:scriptId objectId:objectId];
     return 0;
 }
 
@@ -573,6 +595,41 @@ int nslog(lua_State *L)
     return 0;
 }
 
+int utils_printObject(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *log = luaStringParam(L, 2);
+    
+    id targetObject = log;
+    if([log hasPrefix:lua_obj_prefix]){
+        id tmpObject = [LuaGroupedObjectManager objectWithId:log group:scriptId];
+        if(tmpObject){
+            targetObject = tmpObject;
+        }
+    }
+    
+    NSLog(@"%@", targetObject);
+    
+    return 0;
+}
+
+int utils_printObjectDescription(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *log = luaStringParam(L, 2);
+    
+    id targetObject = log;
+    if([log hasPrefix:lua_obj_prefix]){
+        id tmpObject = [LuaGroupedObjectManager objectWithId:log group:scriptId];
+        if(tmpObject){
+            targetObject = tmpObject;
+        }
+    }
+    
+    NSLog(@"%@", [RuntimeUtils descriptionOfObject:targetObject]);
+    return 0;
+}
+
 void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *L))
 {
     lua_pushstring(L, functionName);
@@ -650,6 +707,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "obj_createObjectWithClassName", obj_createObjectWithClassName);
 #pragma mark - runtime::recycleCurrentScript
     pushFunctionToLua(L, "runtime_recycleCurrentScript", runtime_recycleCurrentScript);
+#pragma mark - runtime::recycleObjectById
+    pushFunctionToLua(L, "runtime_recycleObjectById", runtime_recycleObjectById);
 #pragma mark - runtime::createObject
     pushFunctionToLua(L, "runtime_createObject", runtime_createObject);
 #pragma mark - runtime::invokeClassMethod
@@ -684,6 +743,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_createViewController", ui_createViewController);
 #pragma mark - ui::setRootViewController
     pushFunctionToLua(L, "ui_setRootViewController", ui_setRootViewController);
+#pragma mark - ui::pushViewControllerToNavigationController
+    pushFunctionToLua(L, "ui_pushViewControllerToNavigationController", ui_pushViewControllerToNavigationController);
 #pragma mark - ui::createNavigationController
     pushFunctionToLua(L, "ui_createNavigationController", ui_createNavigationController);
 #pragma mark - ui::createNavigationController
@@ -700,7 +761,7 @@ void initFuntions(lua_State *L)
      调用实例：ui::createTableView("0, 0, 320, 480", "numberOfRowsFunc", "wrapCellFunc");
      */
     pushFunctionToLua(L, "ui_createTableView", ui_createTableView);
-#pragma mark = ui::createBarButtonItem
+#pragma mark - ui::createBarButtonItem
     /**
      调用示例：ui::createBarButtonItem("title", "callbackFunc");
      */
@@ -711,6 +772,10 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ustring_length", ustring_length);
 #pragma mark - ustring::substring
     pushFunctionToLua(L, "ustring_substring", ustring_substring);
+#pragma mark - utils::printObject
+    pushFunctionToLua(L, "utils_printObject", utils_printObject);
+#pragma mark - utils::printObjectDescription
+    pushFunctionToLua(L, "utils_printObjectDescription", utils_printObjectDescription);
 }
 
 

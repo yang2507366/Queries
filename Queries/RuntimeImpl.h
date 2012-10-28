@@ -11,6 +11,7 @@
 @interface RuntimeImpl : NSObject
 
 + (void)recycleObjectWithScriptId:(NSString *)scriptId;
++ (void)recycleObjectWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId;
 
 + (void)invokeObjectMethodWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId methodName:(NSString *)methodName;
 

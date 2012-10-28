@@ -15,7 +15,10 @@
 
 + (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId scriptId:(NSString *)scriptId;
 
-+ (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId scriptId:(NSString *)scriptId;
++ (void)pushViewControlerToNaviationControllerWithScriptId:(NSString *)scriptId
+                                          viewControllerId:(NSString *)vcId
+                                    navigationControllerId:(NSString *)ncId
+                                                  animated:(BOOL)animated;
 
 + (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId;
 

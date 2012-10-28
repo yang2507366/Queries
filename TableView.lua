@@ -77,6 +77,7 @@ end
 function TableView:deselectRow(rowIndex)
     local indexPath = runtime::invokeClassMethod("NSIndexPath", "indexPathForRow:inSection:", rowIndex, 0);
     runtime::invokeMethod(self.id, "deselectRowAtIndexPath:animated:", indexPath, "YES");
+    ObjectReleaseById(indexPath);
 end
 
 

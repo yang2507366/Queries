@@ -14,6 +14,10 @@
 
 @property(nonatomic, copy)void(^tapEventBlock)();
 
+@property(nonatomic, copy)NSString *btnId;
+@property(nonatomic, retain)id<ScriptInteraction> si;
+@property(nonatomic, copy)NSString *callbackFunc;
+
 @end
 
 @implementation UIBarButtonItemImpl
@@ -22,6 +26,10 @@
 {
     D_Log(@"%d", (NSInteger)self);
     self.tapEventBlock = nil;
+    
+    self.btnId = nil;
+    self.si = nil;
+    self.callbackFunc = nil;
     [super dealloc];
 }
 
@@ -43,6 +51,9 @@
     if(self.tapEventBlock){
         self.tapEventBlock();
     }
+    if(self.si && self.btnId && self.callbackFunc){
+        [self.si callFunction:_callbackFunc parameters:_btnId, nil];
+    }
 }
 
 + (NSString *)createBarButtonItemWithScriptId:(NSString *)scriptId
@@ -51,11 +62,11 @@
                                  callbackFunc:(NSString *)callbackFunc
 {
     UIBarButtonItemImpl *btn = [[[UIBarButtonItemImpl alloc] initWithTitle:title tapEventBlock:nil] autorelease];
-    
+
     NSString *btnId = [LuaGroupedObjectManager addObject:btn group:scriptId];
-    [btn setTapEventBlock:^{
-        [si callFunction:callbackFunc parameters:btnId, nil];
-    }];
+    btn.si = si;
+    btn.callbackFunc = callbackFunc;
+    btn.btnId = btnId;
     [[EventProxy sharedInstance] addEventSource:btn scriptInteraction:si funcName:callbackFunc viewId:btnId];
     return btnId;
 }

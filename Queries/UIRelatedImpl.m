@@ -42,9 +42,16 @@
     }
 }
 
-+ (void)pushViewControllerWithId:(NSString *)viewControllerId sourceViewControllerId:(NSString *)sourceViewControllerId scriptId:(NSString *)scriptId
++ (void)pushViewControlerToNaviationControllerWithScriptId:(NSString *)scriptId
+                                          viewControllerId:(NSString *)vcId
+                                    navigationControllerId:(NSString *)ncId
+                                                  animated:(BOOL)animated
 {
-    
+    UIViewController *vc = [LuaGroupedObjectManager objectWithId:vcId group:scriptId];
+    UINavigationController *nc= [LuaGroupedObjectManager objectWithId:ncId group:scriptId];
+    if([vc isKindOfClass:[UIViewController class]] && [nc isKindOfClass:[UINavigationController class]]){
+        [nc pushViewController:vc animated:animated];
+    }
 }
 
 + (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId

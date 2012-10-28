@@ -5,7 +5,7 @@ ViewController.__index = ViewController;
 
 function ViewController:new(title)
     if title == nil then
-        title = "Untitled";
+        title = "无标题";
     end
     
     local objectId = ui::createViewController(title, "_global_viewDidLoad", "_global_viewWillAppear", "_global_viewDidPop");
@@ -40,4 +40,16 @@ end
 
 function ViewController:addSubview(subview)
     ui::addSubviewToViewController(subview.id, self.id);
+end
+
+function ViewController:navigationItem()
+    local nid = runtime::invokeMethod(self.id, "navigationItem");
+    local ni = NavigationItem:new(nid);
+    return ni;
+end
+
+function ViewController:navigationController()
+    local ncid = runtime::invokeMethod(self.id, "navigationController");
+    local nc = NavigationController:get(ncid);
+    return nc;
 end

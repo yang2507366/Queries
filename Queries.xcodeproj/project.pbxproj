@@ -51,6 +51,10 @@
 		3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */; };
 		3EC0BAA91633EA200074D22B /* LuaObjectManagerLegacy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */; };
 		3EC0BAAC1633EAFD0074D22B /* EventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAAB1633EAFD0074D22B /* EventProxy.m */; };
+		3EC2CBB7163CAAEC00E83E10 /* NavigationItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBB6163CAAEC00E83E10 /* NavigationItem.lua */; };
+		3EC2CBBA163CB47500E83E10 /* BarButtonItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBB9163CB47400E83E10 /* BarButtonItem.lua */; };
+		3EC2CBBC163CBE4200E83E10 /* Utils.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBBB163CBE4200E83E10 /* Utils.lua */; };
+		3EC2CBBE163CC23C00E83E10 /* BarButtonItemEventProxy.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBBD163CC23C00E83E10 /* BarButtonItemEventProxy.lua */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
 		3EDC6252163ABB55006F7893 /* ViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EDC6251163ABB55006F7893 /* ViewController.lua */; };
@@ -192,6 +196,10 @@
 		3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaObjectManagerLegacy.m; sourceTree = "<group>"; };
 		3EC0BAAA1633EAFC0074D22B /* EventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProxy.h; sourceTree = "<group>"; };
 		3EC0BAAB1633EAFD0074D22B /* EventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventProxy.m; sourceTree = "<group>"; };
+		3EC2CBB6163CAAEC00E83E10 /* NavigationItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NavigationItem.lua; sourceTree = "<group>"; };
+		3EC2CBB9163CB47400E83E10 /* BarButtonItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarButtonItem.lua; sourceTree = "<group>"; };
+		3EC2CBBB163CBE4200E83E10 /* Utils.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Utils.lua; sourceTree = "<group>"; };
+		3EC2CBBD163CC23C00E83E10 /* BarButtonItemEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarButtonItemEventProxy.lua; sourceTree = "<group>"; };
 		3ED0C77E16354F2D00A3E33F /* TableViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewImpl.h; sourceTree = "<group>"; };
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
@@ -658,14 +666,16 @@
 		3EF86917163AD36300E41ED6 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3EC2CBB9163CB47400E83E10 /* BarButtonItem.lua */,
+				3EC2CBBD163CC23C00E83E10 /* BarButtonItemEventProxy.lua */,
+				3EF86924163BDFB200E41ED6 /* NavigationController.lua */,
+				3EC2CBB6163CAAEC00E83E10 /* NavigationItem.lua */,
+				3EF8691E163ADA4300E41ED6 /* TableView.lua */,
+				3EF8692B163BE67A00E41ED6 /* TableViewCell.lua */,
+				3EF86929163BE61600E41ED6 /* TableViewEventProxy.lua */,
 				3E45B9A8163A893800E19133 /* UIKit.lua */,
 				3EDC6251163ABB55006F7893 /* ViewController.lua */,
 				3EDC6253163ABB7A006F7893 /* ViewControllerEventProxy.lua */,
-				3EF86924163BDFB200E41ED6 /* NavigationController.lua */,
-				3EF8691E163ADA4300E41ED6 /* TableView.lua */,
-				3EF86929163BE61600E41ED6 /* TableViewEventProxy.lua */,
-				3EF8692B163BE67A00E41ED6 /* TableViewCell.lua */,
-				3E314897163BE93A00FCF0B4 /* Object.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -681,7 +691,9 @@
 		3EF86919163AD8B900E41ED6 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				3E314897163BE93A00FCF0B4 /* Object.lua */,
 				3EF8691A163AD8D400E41ED6 /* Recyclable.lua */,
+				3EC2CBBB163CBE4200E83E10 /* Utils.lua */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -752,6 +764,10 @@
 				3EF8692A163BE61600E41ED6 /* TableViewEventProxy.lua in Resources */,
 				3EF8692C163BE67A00E41ED6 /* TableViewCell.lua in Resources */,
 				3E314898163BE93A00FCF0B4 /* Object.lua in Resources */,
+				3EC2CBB7163CAAEC00E83E10 /* NavigationItem.lua in Resources */,
+				3EC2CBBA163CB47500E83E10 /* BarButtonItem.lua in Resources */,
+				3EC2CBBC163CBE4200E83E10 /* Utils.lua in Resources */,
+				3EC2CBBE163CC23C00E83E10 /* BarButtonItemEventProxy.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
