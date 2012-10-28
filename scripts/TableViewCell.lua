@@ -14,6 +14,7 @@ function TableViewCell:new(reuseIdentifier)
     return cell;
 end
 
+-- instance methods
 function TableViewCell:reusable(cellId)
     if cellId == nil then
         return nil;
@@ -22,4 +23,10 @@ function TableViewCell:reusable(cellId)
     setmetatable(cell, TableViewCell);
     
     return cell;
+end
+
+function TableViewCell:textLabel()
+	local textLabelId = runtime::invokeMethod(self.id, "textLabel");
+	
+	return Label:get(textLabelId);
 end

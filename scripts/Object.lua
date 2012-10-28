@@ -15,6 +15,7 @@ function Object:new(objectId)
     return obj;
 end
 
+-- functions
 function ObjectCreate(objectId)
     return Object:new(objectId);
 end

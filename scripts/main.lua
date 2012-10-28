@@ -26,6 +26,9 @@ function main()
             cell = TableViewCell:new(identifier);
         end
         
+        local textLabel = cell:textLabel();
+        textLabel:setText("rowIndex - "..rowIndex + 1); 
+        
         return cell;
     end
     function tableView:heightForRowAtIndex(rowIndex)
@@ -44,6 +47,8 @@ function main()
     ri:setTitle("推进");
     function ri:tapped()
         local nvc = ViewController:new("new vc");
+        local label = Label:new("TestLabel");
+        nvc:addSubview(label);
         function nvc:viewDidPop()
             recycle();
         end
