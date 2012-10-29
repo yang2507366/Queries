@@ -19,6 +19,10 @@ function Object:id()
     return self.objectId;
 end
 
+function Object:setId(objectId)
+	self.objectId = objectId;
+end
+
 function Object:release()
     recycleObjectById(self:id());
 end

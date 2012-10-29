@@ -2,14 +2,14 @@ require "Object"
 require "ViewController"
 
 NavigationController = ViewController:new();
-NavigationController.__index = NavigationController;
 
 function NavigationController:createWithRootViewController(rootVC)
+	self.__index = self;
 	if rootVC then
 		local ncId = ui::createNavigationController(rootVC:id());
-		print(ncId);
+		
 		local nc = ViewController:new(ncId);
-		setmetatable(nc, NavigationController);
+		setmetatable(nc, self);
 		
 		return nc;
 	end

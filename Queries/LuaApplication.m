@@ -117,8 +117,9 @@
 {
     id<ScriptInteraction> program = [[[self sharedManager] runningProgramDictionary] objectForKey:scriptId];
     if(!program){
-        D_Log(@"create script interaction for:%@", scriptId);
-        program = [[[LuaScriptInteraction alloc] initWithScript:[self scriptWithScriptId:scriptId]] autorelease];
+        NSString *script = [self scriptWithScriptId:scriptId];
+//        D_Log(@"create script interaction for:%@\n%@", scriptId, script);
+        program = [[[LuaScriptInteraction alloc] initWithScript:script] autorelease];
         [self setProgram:program forScriptId:scriptId];
     }
     return program;
