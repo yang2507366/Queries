@@ -2,6 +2,6 @@ function recycle()
     runtime::recycleCurrentScript();
 end
 
-function releaseById(objectId)
+function releaseObjectById(objectId)
     runtime::recycleObjectById(objectId);
 end

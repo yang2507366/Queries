@@ -1,5 +1,6 @@
 require "Recyclable"
 require "Utils"
+require "AutoreleasePool"
 
 Object = {};
 
@@ -26,5 +27,11 @@ function Object:setId(objectId)
 end
 
 function Object:release()
-    releaseById(self:id());
+    releaseObjectById(self:id());
+end
+
+function Object:autorelease()
+    _autorelease_pool_addObject(self);
+    
+    return self;
 end

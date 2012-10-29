@@ -46,6 +46,8 @@
 		3E9FFDAE163E48CB000B630E /* UIViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E9FFDAD163E48CB000B630E /* UIViewController.lua */; };
 		3EA29A25163E4A82005CAF98 /* UINavigationController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA29A24163E4A82005CAF98 /* UINavigationController.lua */; };
 		3EA29A28163E547E005CAF98 /* UIView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA29A27163E547E005CAF98 /* UIView.lua */; };
+		3EA29A36163E7559005CAF98 /* UIColor.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA29A35163E7559005CAF98 /* UIColor.lua */; };
+		3EA29A39163E7AA2005CAF98 /* AutoreleasePool.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA29A38163E7AA2005CAF98 /* AutoreleasePool.lua */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */; };
@@ -190,6 +192,8 @@
 		3E9FFDAD163E48CB000B630E /* UIViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIViewController.lua; path = scripts/UIViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EA29A24163E4A82005CAF98 /* UINavigationController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UINavigationController.lua; path = scripts/UINavigationController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EA29A27163E547E005CAF98 /* UIView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIView.lua; path = scripts/UIView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EA29A35163E7559005CAF98 /* UIColor.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIColor.lua; path = scripts/UIColor.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EA29A38163E7AA2005CAF98 /* AutoreleasePool.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoreleasePool.lua; path = scripts/AutoreleasePool.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -513,6 +517,7 @@
 				3E9FFDAD163E48CB000B630E /* UIViewController.lua */,
 				3EA29A24163E4A82005CAF98 /* UINavigationController.lua */,
 				3EA29A27163E547E005CAF98 /* UIView.lua */,
+				3EA29A35163E7559005CAF98 /* UIColor.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -726,6 +731,7 @@
 				3EC2CBBF163CCD1D00E83E10 /* Object.lua */,
 				3EC2CBC0163CCD1D00E83E10 /* Recyclable.lua */,
 				3EC2CBC1163CCD1D00E83E10 /* Utils.lua */,
+				3EA29A38163E7AA2005CAF98 /* AutoreleasePool.lua */,
 			);
 			name = System;
 			sourceTree = "<group>";
@@ -808,6 +814,8 @@
 				3E9FFDAE163E48CB000B630E /* UIViewController.lua in Resources */,
 				3EA29A25163E4A82005CAF98 /* UINavigationController.lua in Resources */,
 				3EA29A28163E547E005CAF98 /* UIView.lua in Resources */,
+				3EA29A36163E7559005CAF98 /* UIColor.lua in Resources */,
+				3EA29A39163E7AA2005CAF98 /* AutoreleasePool.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

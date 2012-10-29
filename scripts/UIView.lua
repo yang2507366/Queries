@@ -1,4 +1,5 @@
 require "Object"
+require "UIColor"
 
 UIView = Object:new();
 UIView.__index = UIView;
@@ -36,11 +37,9 @@ function UIView:frame()
     return frame;
 end
 
-function UIView:setBackgroundColor(red, green, blue, alpha)
-	local color = runtime::invokeClassMethod("UIColor", "colorWithRed:green:blue:alpha:",
-                                             tostring(red / 255), tostring(green / 255), tostring(blue / 255), tostring(alpha));
-	runtime::invokeMethod(self:id(), "setBackgroundColor:", color);
-	releaseById(color);
+function UIView:setBackgroundColor(color)
+	runtime::invokeMethod(self:id(), "setBackgroundColor:", color:id());
+    color:release();
 end
 
 function UIView:addSubview(subview)
