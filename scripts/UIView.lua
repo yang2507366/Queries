@@ -39,7 +39,6 @@ end
 
 function UIView:setBackgroundColor(color)
 	runtime::invokeMethod(self:id(), "setBackgroundColor:", color:id());
-    color:release();
 end
 
 function UIView:addSubview(subview)

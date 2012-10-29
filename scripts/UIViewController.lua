@@ -36,15 +36,15 @@ end
 
 -- event
 function UIViewController:viewDidLoad()
-    print("UIViewController:viewDidLoad");
+    
 end
 
 function UIViewController:viewWillAppear()
-    print("UIViewController:viewWillAppear");
+    
 end
 
 function UIViewController:viewDidPop()
-    print("UIViewController:viewDidPop");
+    
 end
 
 -- event proxy

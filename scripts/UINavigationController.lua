@@ -16,6 +16,5 @@ function UINavigationController:createWithRootViewController(rootVc)
 end
 
 function UINavigationController:pushViewController(vc, animated)
-    print(vc);
     ui::pushViewControllerToNavigationController(vc:id(), self:id(), animated);
 end
