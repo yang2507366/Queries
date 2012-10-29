@@ -1,3 +1,3 @@
-require "TestSubObject"
+require "Human"
 
 Man = Human:new();

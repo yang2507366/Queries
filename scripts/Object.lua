@@ -1,5 +1,5 @@
-require "Recyclable"
-require "Utils"
+--require "Recyclable"
+--require "Utils"
 
 Object = {};
 
@@ -24,5 +24,5 @@ function Object:setId(objectId)
 end
 
 function Object:release()
-    recycleObjectById(self:id());
+    --recycleObjectById(self:id());
 end

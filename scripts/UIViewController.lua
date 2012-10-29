@@ -9,7 +9,8 @@ function UIViewController:createWithTitle(title)
 		title = "Untitled";
 	end
 	
-	local vcId = ui::createViewController(title);
+--	local vcId = ui::createViewController(title);
+	local vcId = "vcid";
 	local vc = Object:new(vcId);
 	setmetatable(vc, self);
 	

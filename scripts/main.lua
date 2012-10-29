@@ -8,7 +8,7 @@ function main()
 	a:speak();
 	local h = Human:createWithId("USA");
 	h:speak();
-	h:run();
+    h:run();
 	local m = Man:createWithId("Man");
 	m:speak();
 end
