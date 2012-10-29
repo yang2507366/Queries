@@ -69,6 +69,20 @@ id<ScriptInteraction>scriptInteractionForScriptId(NSString *scriptId)
     return si;
 }
 
+#pragma mark - math
+int math_operator_or(lua_State *L)
+{
+    int numberOfParams = lua_gettop(L);
+    
+    int result = lua_tonumber(L, 1);
+    for(int i = 2; i <= numberOfParams; ++i){
+        result = result | lua_tointeger(L, i);
+    }
+    lua_pushinteger(L, result);
+    
+    return 1;
+}
+
 #pragma mark - network
 int http_request(lua_State *L)
 {
@@ -643,6 +657,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "http_request", http_request);
 #pragma mark - http::cancel
     pushFunctionToLua(L, "http_cancel", http_cancel);
+#pragma mark - math::operator_or
+    pushFunctionToLua(L, "math_operator_or", math_operator_or);
 #pragma mark - NSLog
     pushFunctionToLua(L, "NSLog", nslog);
 #pragma mark - obj::invokeMethod

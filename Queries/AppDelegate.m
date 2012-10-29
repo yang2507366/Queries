@@ -55,6 +55,10 @@
 //    UIColor *targetObject = [LuaGroupedObjectManager objectWithId:objId group:@"test"];
 //    NSLog(@"targetObject:%@", targetObject);
     
+//    for(int i = 0; i < 6; ++i){
+//        NSLog(@"%d", 1 << i);
+//    }
+    
     return YES;
 }
 

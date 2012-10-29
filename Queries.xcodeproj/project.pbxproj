@@ -43,6 +43,9 @@
 		3E8C454516343DE700468A7E /* RuntimeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C454416343DE600468A7E /* RuntimeImpl.m */; };
 		3E8C45481634497300468A7E /* ButtonImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C45471634497200468A7E /* ButtonImpl.m */; };
 		3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D0C33163192FD00C3FDCE /* SystemUtils.m */; };
+		3E9FFDAE163E48CB000B630E /* UIViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E9FFDAD163E48CB000B630E /* UIViewController.lua */; };
+		3EA29A25163E4A82005CAF98 /* UINavigationController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA29A24163E4A82005CAF98 /* UINavigationController.lua */; };
+		3EA29A28163E547E005CAF98 /* UIView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA29A27163E547E005CAF98 /* UIView.lua */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */; };
@@ -99,7 +102,6 @@
 		3ED77340163E2DD000E5C9A9 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77320163E2DD000E5C9A9 /* lvm.c */; };
 		3ED77341163E2DD000E5C9A9 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77322163E2DD000E5C9A9 /* lzio.c */; };
 		3ED77342163E2DD000E5C9A9 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77324163E2DD000E5C9A9 /* print.c */; };
-		3ED77345163E31E500E5C9A9 /* UIViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED77344163E31E500E5C9A9 /* UIViewController.lua */; };
 		3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
 		3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */; };
 		3EE36D711632AA7F00BB5D02 /* HTTPRequestImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */; };
@@ -144,7 +146,7 @@
 		3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefixGrammarChecker.m; sourceTree = "<group>"; };
 		3E45B9A8163A893800E19133 /* UIKit.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIKit.lua; path = scripts/UIKit.lua; sourceTree = "<group>"; };
 		3E45B9AB163A896F00E19133 /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doc.txt; path = scripts/doc.txt; sourceTree = "<group>"; };
-		3E45B9AC163A896F00E19133 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.lua; path = scripts/main.lua; sourceTree = "<group>"; };
+		3E45B9AC163A896F00E19133 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.lua; path = scripts/main.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBarButtonItemImpl.h; sourceTree = "<group>"; };
 		3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBarButtonItemImpl.m; sourceTree = "<group>"; };
 		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
@@ -185,6 +187,9 @@
 		3E8C45471634497200468A7E /* ButtonImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonImpl.m; sourceTree = "<group>"; };
 		3E9D0C32163192FD00C3FDCE /* SystemUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemUtils.h; sourceTree = "<group>"; };
 		3E9D0C33163192FD00C3FDCE /* SystemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemUtils.m; sourceTree = "<group>"; };
+		3E9FFDAD163E48CB000B630E /* UIViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIViewController.lua; path = scripts/UIViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EA29A24163E4A82005CAF98 /* UINavigationController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UINavigationController.lua; path = scripts/UINavigationController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EA29A27163E547E005CAF98 /* UIView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIView.lua; path = scripts/UIView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -201,17 +206,17 @@
 		3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaObjectManagerLegacy.m; sourceTree = "<group>"; };
 		3EC0BAAA1633EAFC0074D22B /* EventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProxy.h; sourceTree = "<group>"; };
 		3EC0BAAB1633EAFD0074D22B /* EventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventProxy.m; sourceTree = "<group>"; };
-		3EC2CBBF163CCD1D00E83E10 /* Object.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Object.lua; path = scripts/Object.lua; sourceTree = "<group>"; };
+		3EC2CBBF163CCD1D00E83E10 /* Object.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Object.lua; path = scripts/Object.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC2CBC0163CCD1D00E83E10 /* Recyclable.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Recyclable.lua; path = scripts/Recyclable.lua; sourceTree = "<group>"; };
-		3EC2CBC1163CCD1D00E83E10 /* Utils.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Utils.lua; path = scripts/Utils.lua; sourceTree = "<group>"; };
+		3EC2CBC1163CCD1D00E83E10 /* Utils.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Utils.lua; path = scripts/Utils.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC2CBC5163CCD2C00E83E10 /* BarButtonItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BarButtonItem.lua; path = scripts/BarButtonItem.lua; sourceTree = "<group>"; };
 		3EC2CBC6163CCD2C00E83E10 /* BarButtonItemEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BarButtonItemEventProxy.lua; path = scripts/BarButtonItemEventProxy.lua; sourceTree = "<group>"; };
 		3EC2CBC7163CCD2C00E83E10 /* NavigationController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NavigationController.lua; path = scripts/NavigationController.lua; sourceTree = "<group>"; };
-		3EC2CBC8163CCD2C00E83E10 /* NavigationItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NavigationItem.lua; path = scripts/NavigationItem.lua; sourceTree = "<group>"; };
+		3EC2CBC8163CCD2C00E83E10 /* NavigationItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NavigationItem.lua; path = scripts/NavigationItem.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC2CBC9163CCD2C00E83E10 /* TableView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TableView.lua; path = scripts/TableView.lua; sourceTree = "<group>"; };
 		3EC2CBCA163CCD2C00E83E10 /* TableViewCell.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TableViewCell.lua; path = scripts/TableViewCell.lua; sourceTree = "<group>"; };
 		3EC2CBCB163CCD2D00E83E10 /* TableViewEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TableViewEventProxy.lua; path = scripts/TableViewEventProxy.lua; sourceTree = "<group>"; };
-		3EC2CBCC163CCD2D00E83E10 /* ViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ViewController.lua; path = scripts/ViewController.lua; sourceTree = "<group>"; };
+		3EC2CBCC163CCD2D00E83E10 /* ViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ViewController.lua; path = scripts/ViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC2CBCD163CCD2D00E83E10 /* ViewControllerEventProxy.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ViewControllerEventProxy.lua; path = scripts/ViewControllerEventProxy.lua; sourceTree = "<group>"; };
 		3EC2CBD9163CF78B00E83E10 /* Label.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Label.lua; path = scripts/Label.lua; sourceTree = "<group>"; };
 		3EC2CBDD163CFF8500E83E10 /* View.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = View.lua; path = scripts/View.lua; sourceTree = "<group>"; };
@@ -275,7 +280,6 @@
 		3ED77322163E2DD000E5C9A9 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
 		3ED77323163E2DD000E5C9A9 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		3ED77324163E2DD000E5C9A9 /* print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = print.c; sourceTree = "<group>"; };
-		3ED77344163E31E500E5C9A9 /* UIViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIViewController.lua; path = scripts/UIViewController.lua; sourceTree = "<group>"; };
 		3EE36D6616324A9400BB5D02 /* LuaScriptInvokeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptInvokeFilter.h; sourceTree = "<group>"; };
 		3EE36D6816324B9000BB5D02 /* UnicodeScriptInvokeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeScriptInvokeFilter.h; sourceTree = "<group>"; };
 		3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnicodeScriptInvokeFilter.m; sourceTree = "<group>"; };
@@ -503,6 +507,16 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		3E9FFDAC163E48B6000B630E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3E9FFDAD163E48CB000B630E /* UIViewController.lua */,
+				3EA29A24163E4A82005CAF98 /* UINavigationController.lua */,
+				3EA29A27163E547E005CAF98 /* UIView.lua */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
 		3EC0BA941633B1840074D22B /* LuaScriptChecker */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,12 +594,14 @@
 			path = "lua-5.1";
 			sourceTree = "<group>";
 		};
-		3ED77343163E31C300E5C9A9 /* UIKit */ = {
+		3ED77346163E40CF00E5C9A9 /* test */ = {
 			isa = PBXGroup;
 			children = (
-				3ED77344163E31E500E5C9A9 /* UIViewController.lua */,
+				3ED77289163E1E9E00E5C9A9 /* Animal.lua */,
+				3ED7728B163E1EAB00E5C9A9 /* Human.lua */,
+				3ED7728D163E25B900E5C9A9 /* Man.lua */,
 			);
-			name = UIKit;
+			name = test;
 			sourceTree = "<group>";
 		};
 		3EE36D6E1632AA5200BB5D02 /* ios_impl */ = {
@@ -667,14 +683,12 @@
 		3EE3B32E16323DB000C77F85 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				3E9FFDAC163E48B6000B630E /* UIKit */,
+				3ED77346163E40CF00E5C9A9 /* test */,
 				3EF86918163AD37300E41ED6 /* doc */,
 				3EF86919163AD8B900E41ED6 /* System */,
 				3EF86917163AD36300E41ED6 /* UIKitLegacy */,
-				3ED77343163E31C300E5C9A9 /* UIKit */,
 				3E45B9AC163A896F00E19133 /* main.lua */,
-				3ED77289163E1E9E00E5C9A9 /* Animal.lua */,
-				3ED7728B163E1EAB00E5C9A9 /* Human.lua */,
-				3ED7728D163E25B900E5C9A9 /* Man.lua */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -791,7 +805,9 @@
 				3ED7728A163E1E9E00E5C9A9 /* Animal.lua in Resources */,
 				3ED7728C163E1EAB00E5C9A9 /* Human.lua in Resources */,
 				3ED7728E163E25B900E5C9A9 /* Man.lua in Resources */,
-				3ED77345163E31E500E5C9A9 /* UIViewController.lua in Resources */,
+				3E9FFDAE163E48CB000B630E /* UIViewController.lua in Resources */,
+				3EA29A25163E4A82005CAF98 /* UINavigationController.lua in Resources */,
+				3EA29A28163E547E005CAF98 /* UIView.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

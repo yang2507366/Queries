@@ -1,12 +1,14 @@
---require "Recyclable"
---require "Utils"
+require "Recyclable"
+require "Utils"
 
 Object = {};
 
 function Object:new(objectId)
-	self.__index = self;
     local obj = {};
-    setmetatable(obj, Object);
+    
+    setmetatable(obj, self);
+    self.__index = self;
+    
     if objectId ~= nil then
         obj.objectId = objectId;
     end
@@ -24,5 +26,5 @@ function Object:setId(objectId)
 end
 
 function Object:release()
-    --recycleObjectById(self:id());
+    releaseById(self:id());
 end
