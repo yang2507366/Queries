@@ -1,6 +1,6 @@
-require "TestObject"
-require "TestSubObject"
-require "TestSubSubObject"
+require "Animal"
+require "Human"
+require "Man"
 
 function main()
 	local a = Animal:createWithId("pig");

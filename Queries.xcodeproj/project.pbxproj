@@ -66,9 +66,9 @@
 		3EC2CBDE163CFF8600E83E10 /* View.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBDD163CFF8500E83E10 /* View.lua */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
-		3ED7728A163E1E9E00E5C9A9 /* TestObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED77289163E1E9E00E5C9A9 /* TestObject.lua */; };
-		3ED7728C163E1EAB00E5C9A9 /* TestSubObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7728B163E1EAB00E5C9A9 /* TestSubObject.lua */; };
-		3ED7728E163E25B900E5C9A9 /* TestSubSubObject.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7728D163E25B900E5C9A9 /* TestSubSubObject.lua */; };
+		3ED7728A163E1E9E00E5C9A9 /* Animal.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED77289163E1E9E00E5C9A9 /* Animal.lua */; };
+		3ED7728C163E1EAB00E5C9A9 /* Human.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7728B163E1EAB00E5C9A9 /* Human.lua */; };
+		3ED7728E163E25B900E5C9A9 /* Man.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7728D163E25B900E5C9A9 /* Man.lua */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
 		3ED77326163E2DD000E5C9A9 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F2163E2DD000E5C9A9 /* lauxlib.c */; };
 		3ED77327163E2DD000E5C9A9 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F4163E2DD000E5C9A9 /* lbaselib.c */; };
@@ -218,9 +218,9 @@
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
 		3ED0C7831635502700A3E33F /* ArrayImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayImpl.m; sourceTree = "<group>"; };
-		3ED77289163E1E9E00E5C9A9 /* TestObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestObject.lua; path = scripts/TestObject.lua; sourceTree = "<group>"; };
-		3ED7728B163E1EAB00E5C9A9 /* TestSubObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestSubObject.lua; path = scripts/TestSubObject.lua; sourceTree = "<group>"; };
-		3ED7728D163E25B900E5C9A9 /* TestSubSubObject.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestSubSubObject.lua; path = scripts/TestSubSubObject.lua; sourceTree = "<group>"; };
+		3ED77289163E1E9E00E5C9A9 /* Animal.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Animal.lua; path = scripts/Animal.lua; sourceTree = "<group>"; };
+		3ED7728B163E1EAB00E5C9A9 /* Human.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Human.lua; path = scripts/Human.lua; sourceTree = "<group>"; };
+		3ED7728D163E25B900E5C9A9 /* Man.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Man.lua; path = scripts/Man.lua; sourceTree = "<group>"; };
 		3ED772F0163E2DD000E5C9A9 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
 		3ED772F1163E2DD000E5C9A9 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
 		3ED772F2163E2DD000E5C9A9 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
@@ -661,9 +661,9 @@
 				3EF86919163AD8B900E41ED6 /* System */,
 				3EF86917163AD36300E41ED6 /* UIKit */,
 				3E45B9AC163A896F00E19133 /* main.lua */,
-				3ED77289163E1E9E00E5C9A9 /* TestObject.lua */,
-				3ED7728B163E1EAB00E5C9A9 /* TestSubObject.lua */,
-				3ED7728D163E25B900E5C9A9 /* TestSubSubObject.lua */,
+				3ED77289163E1E9E00E5C9A9 /* Animal.lua */,
+				3ED7728B163E1EAB00E5C9A9 /* Human.lua */,
+				3ED7728D163E25B900E5C9A9 /* Man.lua */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -777,9 +777,9 @@
 				3EC2CBD6163CCD2D00E83E10 /* ViewControllerEventProxy.lua in Resources */,
 				3EC2CBDA163CF78B00E83E10 /* Label.lua in Resources */,
 				3EC2CBDE163CFF8600E83E10 /* View.lua in Resources */,
-				3ED7728A163E1E9E00E5C9A9 /* TestObject.lua in Resources */,
-				3ED7728C163E1EAB00E5C9A9 /* TestSubObject.lua in Resources */,
-				3ED7728E163E25B900E5C9A9 /* TestSubSubObject.lua in Resources */,
+				3ED7728A163E1E9E00E5C9A9 /* Animal.lua in Resources */,
+				3ED7728C163E1EAB00E5C9A9 /* Human.lua in Resources */,
+				3ED7728E163E25B900E5C9A9 /* Man.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
