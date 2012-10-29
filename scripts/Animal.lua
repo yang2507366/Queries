@@ -14,7 +14,7 @@ end
 function Animal:createWithId(aid)
     self.__index = self;
     
-    local tmp = Animal:new();
+    local tmp = self:new();
     setmetatable(tmp, self);
     
     self:setId(aid);

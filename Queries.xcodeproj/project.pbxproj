@@ -99,6 +99,7 @@
 		3ED77340163E2DD000E5C9A9 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77320163E2DD000E5C9A9 /* lvm.c */; };
 		3ED77341163E2DD000E5C9A9 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77322163E2DD000E5C9A9 /* lzio.c */; };
 		3ED77342163E2DD000E5C9A9 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77324163E2DD000E5C9A9 /* print.c */; };
+		3ED77345163E31E500E5C9A9 /* UIViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED77344163E31E500E5C9A9 /* UIViewController.lua */; };
 		3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
 		3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */; };
 		3EE36D711632AA7F00BB5D02 /* HTTPRequestImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */; };
@@ -274,6 +275,7 @@
 		3ED77322163E2DD000E5C9A9 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
 		3ED77323163E2DD000E5C9A9 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		3ED77324163E2DD000E5C9A9 /* print.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = print.c; sourceTree = "<group>"; };
+		3ED77344163E31E500E5C9A9 /* UIViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIViewController.lua; path = scripts/UIViewController.lua; sourceTree = "<group>"; };
 		3EE36D6616324A9400BB5D02 /* LuaScriptInvokeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptInvokeFilter.h; sourceTree = "<group>"; };
 		3EE36D6816324B9000BB5D02 /* UnicodeScriptInvokeFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeScriptInvokeFilter.h; sourceTree = "<group>"; };
 		3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnicodeScriptInvokeFilter.m; sourceTree = "<group>"; };
@@ -578,6 +580,14 @@
 			path = "lua-5.1";
 			sourceTree = "<group>";
 		};
+		3ED77343163E31C300E5C9A9 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3ED77344163E31E500E5C9A9 /* UIViewController.lua */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
 		3EE36D6E1632AA5200BB5D02 /* ios_impl */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,7 +669,8 @@
 			children = (
 				3EF86918163AD37300E41ED6 /* doc */,
 				3EF86919163AD8B900E41ED6 /* System */,
-				3EF86917163AD36300E41ED6 /* UIKit */,
+				3EF86917163AD36300E41ED6 /* UIKitLegacy */,
+				3ED77343163E31C300E5C9A9 /* UIKit */,
 				3E45B9AC163A896F00E19133 /* main.lua */,
 				3ED77289163E1E9E00E5C9A9 /* Animal.lua */,
 				3ED7728B163E1EAB00E5C9A9 /* Human.lua */,
@@ -668,7 +679,7 @@
 			name = Scripts;
 			sourceTree = "<group>";
 		};
-		3EF86917163AD36300E41ED6 /* UIKit */ = {
+		3EF86917163AD36300E41ED6 /* UIKitLegacy */ = {
 			isa = PBXGroup;
 			children = (
 				3EC2CBD9163CF78B00E83E10 /* Label.lua */,
@@ -684,7 +695,7 @@
 				3EC2CBCD163CCD2D00E83E10 /* ViewControllerEventProxy.lua */,
 				3EC2CBDD163CFF8500E83E10 /* View.lua */,
 			);
-			name = UIKit;
+			name = UIKitLegacy;
 			sourceTree = "<group>";
 		};
 		3EF86918163AD37300E41ED6 /* doc */ = {
@@ -780,6 +791,7 @@
 				3ED7728A163E1E9E00E5C9A9 /* Animal.lua in Resources */,
 				3ED7728C163E1EAB00E5C9A9 /* Human.lua in Resources */,
 				3ED7728E163E25B900E5C9A9 /* Man.lua in Resources */,
+				3ED77345163E31E500E5C9A9 /* UIViewController.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
