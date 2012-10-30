@@ -31,7 +31,7 @@ function Object:release()
 end
 
 function Object:autorelease()
-    print("autorelease:"..self:id());
+    dp("autorelease:"..self:id());
     local success = _autorelease_pool_addObject(self);
     if success == false then
         print("autorelease failed, no pool around");

@@ -3,8 +3,13 @@ require "Utils"
 AutoreleasePool = {};
 AutoreleasePool.__index = AutoreleasePool;
 
-function AutoreleasePool:new()
+function AutoreleasePool:new(name)
     local pool = {};
+    
+    if name == nil then
+        name = "untitled";
+    end
+    pool.name = name;
     
     setmetatable(pool, self);
     
@@ -12,13 +17,13 @@ function AutoreleasePool:new()
 end
 
 function AutoreleasePool:add(object)
---    print("add:"..tostring(self)..", "..object:id());
+    dp("add:<"..self.name.."> "..object:id());
     table.insert(self, object);
 end
 
 function AutoreleasePool:drain()
     for i = 1, #self do
---        print("drain:"..tostring(self)..", "..self[i]:id());
+        dp("drain:<"..self.name.."> "..self[i]:id());
         self[i]:release();
     end
 end
@@ -38,11 +43,11 @@ function _autorelease_pool_popCurrent()
 end
 
 function print_pool_list()
-    print("---------print_pool_list");
+    dp("---------print_pool_list");
     for i = 1, #_pool_list do
         print("pool "..i.." :"..tostring(_pool_list[i]));
     end
-    print("*********print_pool_list");
+    dp("*********print_pool_list");
 end
 
 -- add object to top most pool
@@ -56,8 +61,8 @@ function _autorelease_pool_addObject(object)
 end
 
 -- add new pool to stack
-function autorelease_pool_new()
-    local newPool = AutoreleasePool:new();
+function autorelease_pool_new(name)
+    local newPool = AutoreleasePool:new(name);
     _pool_list[#_pool_list + 1] = newPool;
     
 --    print_pool_list();

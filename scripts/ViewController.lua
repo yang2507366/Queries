@@ -1,3 +1,4 @@
+require "Utils"
 require "Object"
 require "ViewControllerEventProxy"
 
@@ -16,7 +17,7 @@ function ViewController:createWithTitle(title)
     
     vc.title = title;
     
-    print(vc:id());
+    dp(vc:id());
     _global_view_did_load_event_table[vc:id()] = vc;
     _global_view_will_appear_event_table[vc:id()] = vc;
     _global_view_did_pop_event_table[vc:id()] = vc;

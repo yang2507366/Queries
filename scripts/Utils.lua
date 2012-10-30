@@ -14,6 +14,10 @@ function pd(object)
     end
 end
 
+function dp(str)
+    print(str);
+end
+
 -- print table
 local print = print
 local tconcat = table.concat

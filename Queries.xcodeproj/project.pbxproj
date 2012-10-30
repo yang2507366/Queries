@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E027995163F64C800586EC8 /* AutoreleasePoolChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E027994163F64C800586EC8 /* AutoreleasePoolChecker.m */; };
 		3E0359351635322B0051DABA /* WebViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0359341635322B0051DABA /* WebViewImpl.m */; };
 		3E06D5AE1632C2490013DCF7 /* LuaInvoker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5AD1632C2490013DCF7 /* LuaInvoker.m */; };
 		3E06D5B21632C94A0013DCF7 /* UIRelatedImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5B11632C94A0013DCF7 /* UIRelatedImpl.m */; };
@@ -125,6 +126,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E027993163F64C800586EC8 /* AutoreleasePoolChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoreleasePoolChecker.h; sourceTree = "<group>"; };
+		3E027994163F64C800586EC8 /* AutoreleasePoolChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoreleasePoolChecker.m; sourceTree = "<group>"; };
 		3E0359331635322B0051DABA /* WebViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewImpl.h; sourceTree = "<group>"; };
 		3E0359341635322B0051DABA /* WebViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewImpl.m; sourceTree = "<group>"; };
 		3E06D5AC1632C2490013DCF7 /* LuaInvoker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaInvoker.h; sourceTree = "<group>"; };
@@ -535,6 +538,8 @@
 				3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */,
 				3E4EBD27163814BC00629387 /* DotGrammarChecker.h */,
 				3E4EBD28163814BD00629387 /* DotGrammarChecker.m */,
+				3E027993163F64C800586EC8 /* AutoreleasePoolChecker.h */,
+				3E027994163F64C800586EC8 /* AutoreleasePoolChecker.m */,
 			);
 			name = LuaScriptChecker;
 			sourceTree = "<group>";
@@ -907,6 +912,7 @@
 				3ED77340163E2DD000E5C9A9 /* lvm.c in Sources */,
 				3ED77341163E2DD000E5C9A9 /* lzio.c in Sources */,
 				3ED77342163E2DD000E5C9A9 /* print.c in Sources */,
+				3E027995163F64C800586EC8 /* AutoreleasePoolChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

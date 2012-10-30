@@ -14,6 +14,7 @@
 #import "SelfSupportChecker.h"
 #import "ImportSupportChecker.h"
 #import "PrefixGrammarChecker.h"
+#import "AutoreleasePoolChecker.h"
 #import "CodeUtils.h"
 
 @interface LuaApplication ()
@@ -62,6 +63,7 @@
                            [[[UnicodeChecker alloc] init] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
+                           [[AutoreleasePoolChecker new] autorelease],
                            nil];
     
     return self;
