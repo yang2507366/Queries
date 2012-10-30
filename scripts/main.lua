@@ -26,10 +26,12 @@ function main()
         label:setFont(font);
         vc2:view():addSubview(label);
         
-        local label2 = UILabel:new("label2"):autorelease();
-        label2:setFrame(0, 40, 200, 17);
+        local label2 = UILabel:new("label2122111212233243242332rj32rm32om23rmowomioiewriewrewmremweowrmowemewr4ewew"):autorelease();
+--        label2:setAutoresizingMask(view:autoresizingMask());
+        label2:setFrame(0, 40, 200, label2:heightOfText(200));
+        label2:setNumberOfLines(0);
         vc2:view():addSubview(label2);
-        label2:setFont(label:font());
+        
         label2:setBackgroundColor(UIColor:createWithRGB(0, 255, 0):autorelease());
         
         print(label2:font():lineHeight());

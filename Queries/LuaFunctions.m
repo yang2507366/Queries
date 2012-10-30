@@ -354,6 +354,20 @@ int ui_createBarButtonItem(lua_State *L)
     return 1;
 }
 
+int ui_heightOfLabelText(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    
+    NSString *objectId = luaStringParam(L, 2);
+    CGFloat width = lua_tonumber(L, 3);
+    
+    UILabel *label = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    CGSize size = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(width, 100000)];
+    
+    lua_pushnumber(L, size.height);
+    return 1;
+}
+
 #pragma mark - string
 int ustring_substring(lua_State *L)
 {
@@ -783,6 +797,8 @@ void initFuntions(lua_State *L)
      调用示例：ui::createBarButtonItem("title", "callbackFunc");
      */
     pushFunctionToLua(L, "ui_createBarButtonItem", ui_createBarButtonItem);
+#pragma mark - ui::heightOfLabelText
+    pushFunctionToLua(L, "ui_heightOfLabelText", ui_heightOfLabelText);
 #pragma mark - ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
 #pragma mark - ustring::length

@@ -69,9 +69,6 @@
 		3EC2CBDA163CF78B00E83E10 /* Label.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBD9163CF78B00E83E10 /* Label.lua */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
-		3ED7728A163E1E9E00E5C9A9 /* Animal.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED77289163E1E9E00E5C9A9 /* Animal.lua */; };
-		3ED7728C163E1EAB00E5C9A9 /* Human.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7728B163E1EAB00E5C9A9 /* Human.lua */; };
-		3ED7728E163E25B900E5C9A9 /* Man.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED7728D163E25B900E5C9A9 /* Man.lua */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
 		3ED77326163E2DD000E5C9A9 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F2163E2DD000E5C9A9 /* lauxlib.c */; };
 		3ED77327163E2DD000E5C9A9 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F4163E2DD000E5C9A9 /* lbaselib.c */; };
@@ -225,9 +222,6 @@
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
 		3ED0C7831635502700A3E33F /* ArrayImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayImpl.m; sourceTree = "<group>"; };
-		3ED77289163E1E9E00E5C9A9 /* Animal.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Animal.lua; path = scripts/Animal.lua; sourceTree = "<group>"; };
-		3ED7728B163E1EAB00E5C9A9 /* Human.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Human.lua; path = scripts/Human.lua; sourceTree = "<group>"; };
-		3ED7728D163E25B900E5C9A9 /* Man.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Man.lua; path = scripts/Man.lua; sourceTree = "<group>"; };
 		3ED772F0163E2DD000E5C9A9 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
 		3ED772F1163E2DD000E5C9A9 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
 		3ED772F2163E2DD000E5C9A9 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
@@ -600,16 +594,6 @@
 			path = "lua-5.1";
 			sourceTree = "<group>";
 		};
-		3ED77346163E40CF00E5C9A9 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				3ED77289163E1E9E00E5C9A9 /* Animal.lua */,
-				3ED7728B163E1EAB00E5C9A9 /* Human.lua */,
-				3ED7728D163E25B900E5C9A9 /* Man.lua */,
-			);
-			name = test;
-			sourceTree = "<group>";
-		};
 		3EE36D6E1632AA5200BB5D02 /* ios_impl */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,7 +674,6 @@
 			isa = PBXGroup;
 			children = (
 				3E9FFDAC163E48B6000B630E /* UIKit */,
-				3ED77346163E40CF00E5C9A9 /* test */,
 				3EF86918163AD37300E41ED6 /* doc */,
 				3EF86919163AD8B900E41ED6 /* System */,
 				3EF86917163AD36300E41ED6 /* UIKitLegacy */,
@@ -799,9 +782,6 @@
 				3EC2CBD3163CCD2D00E83E10 /* TableViewCell.lua in Resources */,
 				3EC2CBD4163CCD2D00E83E10 /* TableViewEventProxy.lua in Resources */,
 				3EC2CBDA163CF78B00E83E10 /* Label.lua in Resources */,
-				3ED7728A163E1E9E00E5C9A9 /* Animal.lua in Resources */,
-				3ED7728C163E1EAB00E5C9A9 /* Human.lua in Resources */,
-				3ED7728E163E25B900E5C9A9 /* Man.lua in Resources */,
 				3E9FFDAE163E48CB000B630E /* UIViewController.lua in Resources */,
 				3EA29A25163E4A82005CAF98 /* UINavigationController.lua in Resources */,
 				3EA29A28163E547E005CAF98 /* UIView.lua in Resources */,

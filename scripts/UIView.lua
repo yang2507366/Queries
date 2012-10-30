@@ -55,3 +55,6 @@ function UIView:setAutoresizingMask(mask)
     runtime::invokeMethod(self:id(), "setAutoresizingMask:", mask);
 end
 
+function UIView:autoresizingMask()
+    return runtime::invokeMethod(self:id(), "autoresizingMask");
+end

@@ -29,3 +29,13 @@ function UILabel:font()
     
     return UIFont:get(fontId);
 end
+
+function UILabel:heightOfText(width)
+    local height = ui::heightOfLabelText(self:id(), width);
+    
+    return height;
+end
+
+function UILabel:setNumberOfLines(numberOfLines)
+    runtime::invokeMethod(self:id(), "setNumberOfLines:", numberOfLines);
+end
