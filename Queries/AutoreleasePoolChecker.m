@@ -112,6 +112,7 @@ typedef enum{
     if([scriptId isEqualToString:@"AutoreleasePool.lua"]){
         return script;
     }
+    NSLog(@"****************************%@", scriptId);
     NSString *endString = @"end";
     NSMutableArray *stack = [NSMutableArray array];
     NSArray *checkList = [NSArray arrayWithObjects:
@@ -140,7 +141,7 @@ typedef enum{
             minStackInfo = positionList[0];
         }else{
             minStackInfo = positionList[miniValidPosition];
-            NSLog(@"minStackInfo:%@", minStackInfo);
+//            NSLog(@"minStackInfo:%@", minStackInfo);
             for(NSInteger i = 0; i < positionList.count; ++i){
                 StackInfo *si = positionList[i];
                 if(si.position != -1 && si.position < minStackInfo.position){
@@ -153,14 +154,19 @@ typedef enum{
             break;
         }
         if(minStackInfo.position != -1 && minStackInfo.position < endPosition){
+            if(minStackInfo.type == StackInfoTypeDo){
+                // handle do
+            }
+            // push
             [stack addObject:minStackInfo];
-            NSLog(@"push:%@, %@", minStackInfo, scriptId);
+//            NSLog(@"push:%@, %@", minStackInfo, scriptId);
             fromIndex = minStackInfo.position + minStackInfo.checkString.length;
         }else{
             StackInfo *lastObj = [[stack lastObject] retain];
             
-            NSLog(@"pop:%@, %@", lastObj, scriptId);
+//            NSLog(@"pop:%@, %@", lastObj, scriptId);
             if(stack.count != 0){
+                // pop
                 [stack removeObjectAtIndex:stack.count - 1];
             }else{
                 NSLog(@"error found:%@", script);
@@ -169,7 +175,7 @@ typedef enum{
             if(lastObj.type == StackInfoTypeFunction){
                 //                NSLog(@"%@, %@", lastObj, scriptId);
                 NSInteger leftBracketPosition = [script find:@"(" fromIndex:lastObj.position];
-                NSLog(@"%@", [script substringWithBeginIndex:lastObj.position endIndex:leftBracketPosition]);
+//                NSLog(@"%@", [script substringWithBeginIndex:lastObj.position endIndex:leftBracketPosition]);
                 NSLog(@"%@", [script substringWithBeginIndex:lastObj.position endIndex:endPosition + endString.length]);
             }
             [lastObj release];
