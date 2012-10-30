@@ -1,5 +1,15 @@
 require "Utils"
 
+-- public methods
+function ap_new()
+    autorelease_pool_new();
+end
+
+function ap_release()
+    autorelease_pool_drain();
+end
+
+-- common implementation
 AutoreleasePool = {};
 AutoreleasePool.__index = AutoreleasePool;
 
@@ -10,7 +20,7 @@ function AutoreleasePool:new(name)
         name = "untitled";
     end
     pool.name = name;
-    print(name);
+    
     setmetatable(pool, self);
     
     return pool;

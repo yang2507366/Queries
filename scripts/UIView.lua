@@ -37,6 +37,12 @@ function UIView:frame()
     return frame;
 end
 
+function UIView:bounds()
+    local bds = ui::getViewBounds(self:id());
+    
+    return bds;
+end
+
 function UIView:setBackgroundColor(color)
 	runtime::invokeMethod(self:id(), "setBackgroundColor:", color:id());
 end

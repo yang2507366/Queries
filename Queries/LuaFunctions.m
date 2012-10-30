@@ -224,6 +224,7 @@ int ui_createViewController(lua_State *L)
                                                        viewWillAppearFunc:viewWillAppearFunc
                                                          viewDidPopedFunc:viewDidPopedFunc];
     pushString(L, vcId);
+    
     return 1;
 }
 

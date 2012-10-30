@@ -21,7 +21,7 @@
 
 - (NSString *)substringWithBeginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex
 {
-    if(endIndex > beginIndex){
+    if(endIndex >= beginIndex){
         return [self substringWithRange:NSMakeRange(beginIndex, endIndex - beginIndex)];
     }
     return nil;
@@ -105,14 +105,39 @@ typedef enum{
 
 @end
 
+@interface FunctionPosition : NSObject
+
+@property(nonatomic, assign)NSInteger beginIndex;
+@property(nonatomic, assign)NSInteger endIndex;
+
+@end
+
+@implementation FunctionPosition
+
+@synthesize beginIndex;
+@synthesize endIndex;
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%d, %d", beginIndex, endIndex];
+}
+
+@end
+
 @implementation AutoreleasePoolChecker
+
+- (BOOL)isAlphbelt:(char)c
+{
+    return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122);
+}
 
 - (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
 {
     if([scriptId isEqualToString:@"AutoreleasePool.lua"]){
         return script;
     }
-    NSLog(@"****************************%@", scriptId);
+//    NSLog(@"****************************%@", scriptId);
+    NSMutableArray *functionPositionList = [NSMutableArray array];
     NSString *endString = @"end";
     NSMutableArray *stack = [NSMutableArray array];
     NSArray *checkList = [NSArray arrayWithObjects:
@@ -123,6 +148,7 @@ typedef enum{
                           [[[StackInfo alloc] initWithType:StackInfoTypeDo] autorelease],
                           nil];
     NSInteger fromIndex = 0;
+    StackInfo *lastStackInfo = nil;
     while(YES){
         StackInfo *minStackInfo = nil;
         NSMutableArray *positionList = [NSMutableArray array];
@@ -156,10 +182,29 @@ typedef enum{
         if(minStackInfo.position != -1 && minStackInfo.position < endPosition){
             if(minStackInfo.type == StackInfoTypeDo){
                 // handle do
+                char preChar = -1;
+                if(minStackInfo.position - 1 >= 0){
+                    preChar = [script characterAtIndex:minStackInfo.position - 1];
+                }
+                char nextChar = -1;
+                if(minStackInfo.position + 1 < script.length){
+                    nextChar = [script characterAtIndex:nextChar];
+                }
+                
+                if((lastStackInfo && (lastStackInfo.type == StackInfoTypeFor || lastStackInfo.type == StackInfoTypeWhile))
+                   || [self isAlphbelt:preChar]
+                   || [self isAlphbelt:nextChar]){
+                    D_Log(@"skip do:%@", [script substringToIndex:minStackInfo.position]);
+                }else{
+                    [stack addObject:minStackInfo];
+                    lastStackInfo = minStackInfo;
+                }
+            }else{
+                // push
+                [stack addObject:minStackInfo];
+                lastStackInfo = minStackInfo;
+//                NSLog(@"push:%@, %@", minStackInfo, scriptId);
             }
-            // push
-            [stack addObject:minStackInfo];
-//            NSLog(@"push:%@, %@", minStackInfo, scriptId);
             fromIndex = minStackInfo.position + minStackInfo.checkString.length;
         }else{
             StackInfo *lastObj = [[stack lastObject] retain];
@@ -168,24 +213,45 @@ typedef enum{
             if(stack.count != 0){
                 // pop
                 [stack removeObjectAtIndex:stack.count - 1];
+                lastStackInfo = nil;
             }else{
                 NSLog(@"error found:%@", script);
             }
             
             if(lastObj.type == StackInfoTypeFunction){
-                //                NSLog(@"%@, %@", lastObj, scriptId);
-                NSInteger leftBracketPosition = [script find:@"(" fromIndex:lastObj.position];
+//                NSLog(@"%@, %@", lastObj, scriptId);
+//                NSInteger leftBracketPosition = [script find:@"(" fromIndex:lastObj.position];
 //                NSLog(@"%@", [script substringWithBeginIndex:lastObj.position endIndex:leftBracketPosition]);
                 NSLog(@"%@", [script substringWithBeginIndex:lastObj.position endIndex:endPosition + endString.length]);
+                FunctionPosition *fp = [[[FunctionPosition alloc] init] autorelease];
+                fp.beginIndex = lastObj.position;
+                fp.endIndex = endPosition + endString.length;
+                [functionPositionList addObject:fp];
             }
             [lastObj release];
             fromIndex = endPosition + endString.length;
         }
-//        if(minStackInfo.position == -1){
-//            NSLog(@"stack:%@", stack);
-//            break;
-//        }
     }
+    NSLog(@"%@, %@", scriptId, functionPositionList);
+//    NSMutableString *resultScript = [NSMutableString string];
+//    if(functionPositionList.count != 0){
+//        NSInteger beginIndex = 0;
+//        NSInteger endIndex = 0;
+//        for(FunctionPosition *fp in functionPositionList){
+//            endIndex = fp.beginIndex;
+//            [resultScript appendString:[script substringWithBeginIndex:beginIndex endIndex:endIndex]];
+//            // add function to resultScript
+//            [resultScript appendString:[script substringWithBeginIndex:fp.beginIndex endIndex:fp.endIndex]];
+//            // end
+//            beginIndex = fp.endIndex;
+//        }
+//        NSLog(@"%d, %d", beginIndex, script.length);
+//        if(beginIndex != script.length){
+//            [resultScript appendString:[script substringWithBeginIndex:beginIndex endIndex:script.length]];
+//        }
+//    }else{
+//        [resultScript appendString:script];
+//    }
     
     return script;
 }

@@ -61,7 +61,7 @@
     self.scriptCheckers = [NSArray arrayWithObjects:
 //                           [[[ImportSupportChecker alloc] init] autorelease],
                            [[[UnicodeChecker alloc] init] autorelease],
-                           [[AutoreleasePoolChecker new] autorelease],
+//                           [[AutoreleasePoolChecker new] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
                            nil];
