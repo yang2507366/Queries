@@ -23,7 +23,7 @@ function Object:id()
 end
 
 function Object:setId(objectId)
-	self.objectId = objectId;
+    self.objectId = objectId;
 end
 
 function Object:release()

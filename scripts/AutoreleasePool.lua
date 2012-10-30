@@ -10,7 +10,7 @@ function AutoreleasePool:new(name)
         name = "untitled";
     end
     pool.name = name;
-    
+    print(name);
     setmetatable(pool, self);
     
     return pool;
