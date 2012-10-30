@@ -8,5 +8,7 @@ function Human:speak()
 end
 
 function Human:run()
-	print("human run:"..self:id());
+    if true then
+        print("human run:"..self:id());
+    end
 end

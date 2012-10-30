@@ -152,9 +152,6 @@ typedef enum{
         if(endPosition == -1){
             break;
         }
-        if([scriptId isEqualToString:@"NavigationController.lua"]){
-            NSLog(@"");
-        }
         if(minStackInfo.position != -1 && minStackInfo.position < endPosition){
             [stack addObject:minStackInfo];
             NSLog(@"push:%@, %@", minStackInfo, scriptId);
@@ -178,10 +175,10 @@ typedef enum{
             [lastObj release];
             fromIndex = endPosition + endString.length;
         }
-        if(minStackInfo.position == -1){
-            NSLog(@"stack:%@", stack);
-            break;
-        }
+//        if(minStackInfo.position == -1){
+//            NSLog(@"stack:%@", stack);
+//            break;
+//        }
     }
     
     return script;
