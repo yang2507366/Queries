@@ -140,6 +140,7 @@ typedef enum{
             minStackInfo = positionList[0];
         }else{
             minStackInfo = positionList[miniValidPosition];
+            NSLog(@"minStackInfo:%@", minStackInfo);
             for(NSInteger i = 0; i < positionList.count; ++i){
                 StackInfo *si = positionList[i];
                 if(si.position != -1 && si.position < minStackInfo.position){
