@@ -1,5 +1,6 @@
 require "Object"
 require "UIView"
+require "UINavigationItem"
 
 UIViewController = Object:new();
 UIViewController.__index = UIViewController;
@@ -32,6 +33,12 @@ function UIViewController:view()
     local viewId = runtime::invokeMethod(self:id(), "view");
 
     return UIView:get(viewId);
+end
+
+function UIViewController:navigationItem()
+    local naviItemId = runtime::invokeMethod(self:id(), "navigationItem");
+    
+    return UINavigationItem:get(naviItemId);
 end
 
 -- event

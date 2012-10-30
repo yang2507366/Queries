@@ -50,6 +50,8 @@
 		3EA29A39163E7AA2005CAF98 /* AutoreleasePool.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA29A38163E7AA2005CAF98 /* AutoreleasePool.lua */; };
 		3EA309BF164017920013A6D1 /* UILabel.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309BE164017920013A6D1 /* UILabel.lua */; };
 		3EA309C116401A700013A6D1 /* UIFont.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309C016401A700013A6D1 /* UIFont.lua */; };
+		3EA309C31640241A0013A6D1 /* UINavigationItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309C21640241A0013A6D1 /* UINavigationItem.lua */; };
+		3EA309C5164024F30013A6D1 /* UIBarButtonItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309C4164024F30013A6D1 /* UIBarButtonItem.lua */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */; };
@@ -192,6 +194,8 @@
 		3EA29A38163E7AA2005CAF98 /* AutoreleasePool.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AutoreleasePool.lua; path = scripts/AutoreleasePool.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EA309BE164017920013A6D1 /* UILabel.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UILabel.lua; path = scripts/UILabel.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EA309C016401A700013A6D1 /* UIFont.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIFont.lua; path = scripts/UIFont.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EA309C21640241A0013A6D1 /* UINavigationItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UINavigationItem.lua; path = scripts/UINavigationItem.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EA309C4164024F30013A6D1 /* UIBarButtonItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIBarButtonItem.lua; path = scripts/UIBarButtonItem.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -511,6 +515,8 @@
 				3EA29A35163E7559005CAF98 /* UIColor.lua */,
 				3EA309BE164017920013A6D1 /* UILabel.lua */,
 				3EA309C016401A700013A6D1 /* UIFont.lua */,
+				3EA309C21640241A0013A6D1 /* UINavigationItem.lua */,
+				3EA309C4164024F30013A6D1 /* UIBarButtonItem.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -789,6 +795,8 @@
 				3EA29A39163E7AA2005CAF98 /* AutoreleasePool.lua in Resources */,
 				3EA309BF164017920013A6D1 /* UILabel.lua in Resources */,
 				3EA309C116401A700013A6D1 /* UIFont.lua in Resources */,
+				3EA309C31640241A0013A6D1 /* UINavigationItem.lua in Resources */,
+				3EA309C5164024F30013A6D1 /* UIBarButtonItem.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

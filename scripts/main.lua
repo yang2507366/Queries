@@ -7,6 +7,7 @@ require "UIView"
 require "UIColor"
 require "UILabel"
 require "UIFont"
+require "UIBarButtonItem"
 
 function main()
     ap_new();
@@ -31,6 +32,11 @@ function main()
         label2:setFrame(0, 40, 200, label2:heightOfText(200));
         label2:setNumberOfLines(0);
         vc2:view():addSubview(label2);
+        
+        local naviItem = vc2:navigationItem();
+        local barBtn = UIBarButtonItem:createWithTitle("button");
+        print(barBtn);
+        naviItem:setRightBarButtonItem(barBtn);
         
         label2:setBackgroundColor(UIColor:createWithRGB(0, 255, 0):autorelease());
         
