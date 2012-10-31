@@ -4,6 +4,7 @@ UIBarButtonItem = {};
 UIBarButtonItem.__index = UIBarButtonItem;
 setmetatable(UIBarButtonItem, Object);
 
+-- constructor
 function UIBarButtonItem:createWithTitle(title)
     if title == nil then
         title = "Untitled";
@@ -23,10 +24,12 @@ function UIBarButtonItem:get(buttonItemId)
     return buttonItem;
 end
 
+-- instance methods
 function UIBarButtonItem:setTitle(title)
     runtime::invokeMethod(self.id, "setTitle:", title);
 end
 
+-- event
 function UIBarButtonItem:tapped()
     
 end

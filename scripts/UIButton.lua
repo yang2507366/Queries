@@ -13,6 +13,7 @@ UIButtonTypeInfoLight = 3;
 UIButtonTypeInfoDark = 4;
 UIButtonTypeContactAdd = 5;
 
+-- constructor
 function UIButton:createWithTitle(title)
     return UIButton:create(title, UIButtonTypeRoundedRect);
 end

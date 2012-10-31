@@ -4,6 +4,7 @@ UIColor = {};
 UIColor.__index = UIColor;
 setmetatable(UIColor, Object);
 
+-- constructor
 function UIColor:createWithRGBA(red, green, blue, alpha)
     local colorId = runtime::invokeClassMethod("UIColor", "colorWithRed:green:blue:alpha:",
                                                tostring(red / 255), tostring(green / 255), tostring(blue / 255), tostring(alpha));

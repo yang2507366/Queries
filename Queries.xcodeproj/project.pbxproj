@@ -20,6 +20,7 @@
 		3E094F1A16351CEA006F90A9 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
 		3E2D04341640DDDA00EDCFDA /* UIButton.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D04331640DDDA00EDCFDA /* UIButton.lua */; };
 		3E2D043B1640F3BD00EDCFDA /* UITableViewCell.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */; };
+		3E2D043D1640F79E00EDCFDA /* UITableView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D043C1640F79E00EDCFDA /* UITableView.lua */; };
 		3E45B9AE163A896F00E19133 /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E45B9AB163A896F00E19133 /* doc.txt */; };
 		3E45B9AF163A896F00E19133 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E45B9AC163A896F00E19133 /* main.lua */; };
 		3E4EBD241636FDCA00629387 /* UIBarButtonItemImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */; };
@@ -150,6 +151,7 @@
 		3E2D04331640DDDA00EDCFDA /* UIButton.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIButton.lua; path = scripts/UIButton.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E2D04391640E84200EDCFDA /* Implementable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Implementable.h; sourceTree = "<group>"; };
 		3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITableViewCell.lua; path = scripts/UITableViewCell.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3E2D043C1640F79E00EDCFDA /* UITableView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITableView.lua; path = scripts/UITableView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E45B9AB163A896F00E19133 /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doc.txt; path = scripts/doc.txt; sourceTree = "<group>"; };
 		3E45B9AC163A896F00E19133 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = main.lua; path = scripts/main.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBarButtonItemImpl.h; sourceTree = "<group>"; };
@@ -363,14 +365,6 @@
 			name = RuntimeUtils;
 			sourceTree = "<group>";
 		};
-		3E2D04351640E7CD00EDCFDA /* UIKitImpl */ = {
-			isa = PBXGroup;
-			children = (
-				3E2D04391640E84200EDCFDA /* Implementable.h */,
-			);
-			name = UIKitImpl;
-			sourceTree = "<group>";
-		};
 		3E63394C162D8C3900B63328 = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +526,7 @@
 				3EA309C4164024F30013A6D1 /* UIBarButtonItem.lua */,
 				3E2D04331640DDDA00EDCFDA /* UIButton.lua */,
 				3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */,
+				3E2D043C1640F79E00EDCFDA /* UITableView.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -615,7 +610,7 @@
 			path = "lua-5.1";
 			sourceTree = "<group>";
 		};
-		3EE36D6E1632AA5200BB5D02 /* ios_impl */ = {
+		3EE36D6E1632AA5200BB5D02 /* UIKitImpl */ = {
 			isa = PBXGroup;
 			children = (
 				3EE36D6F1632AA7F00BB5D02 /* HTTPRequestImpl.h */,
@@ -645,7 +640,7 @@
 				3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */,
 				3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */,
 			);
-			name = ios_impl;
+			name = UIKitImpl;
 			sourceTree = "<group>";
 		};
 		3EE3B2C51631B5E600C77F85 /* KeyValueManager */ = {
@@ -661,13 +656,13 @@
 		3EE3B3281632326A00C77F85 /* Lua */ = {
 			isa = PBXGroup;
 			children = (
-				3E2D04351640E7CD00EDCFDA /* UIKitImpl */,
 				3EF86913163ACC1700E41ED6 /* MethodInvokerForLua.h */,
 				3EF86914163ACC1700E41ED6 /* MethodInvokerForLua.m */,
+				3E2D04391640E84200EDCFDA /* Implementable.h */,
 				3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */,
 				3EE36D6B163255F200BB5D02 /* LuaFunctions.h */,
 				3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */,
-				3EE36D6E1632AA5200BB5D02 /* ios_impl */,
+				3EE36D6E1632AA5200BB5D02 /* UIKitImpl */,
 				3EC0BAA71633EA1F0074D22B /* LuaObjectManagerLegacy.h */,
 				3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */,
 				3EC0BAAA1633EAFC0074D22B /* EventProxy.h */,
@@ -815,6 +810,7 @@
 				3EA309C5164024F30013A6D1 /* UIBarButtonItem.lua in Resources */,
 				3E2D04341640DDDA00EDCFDA /* UIButton.lua in Resources */,
 				3E2D043B1640F3BD00EDCFDA /* UITableViewCell.lua in Resources */,
+				3E2D043D1640F79E00EDCFDA /* UITableView.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,6 +5,7 @@ UILabel = {};
 UILabel.__index = UILabel;
 setmetatable(UILabel, UIView);
 
+-- constructor
 function UILabel:new(title)
     if title == nil then
         title = "";
@@ -18,6 +19,16 @@ function UILabel:get(labelId)
     setmetatable(label, self);
     
     return label;
+end
+
+-- instance methods
+function UILabel:setText(text)
+    runtime::invokeMethod(self:id(), "setText:", text);
+end
+
+function UILabel:text()
+    local strId = runtime::invokeMethod(self:id(), "text");
+    return strId;
 end
 
 function UILabel:setFont(font)

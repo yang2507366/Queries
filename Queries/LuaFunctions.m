@@ -178,8 +178,11 @@ int ui_getViewBounds(lua_State *L)
     NSString *viewId = luaStringParam(L, 2);
     
     CGRect frame = [UIRelatedImpl boundsOfViewWithViewId:viewId scriptId:scriptId];
-    pushString(L, [NSString stringWithFormat:@"%f, %f, %f, %f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height]);
-    return 1;
+    lua_pushnumber(L, frame.origin.x);
+    lua_pushnumber(L, frame.origin.y);
+    lua_pushnumber(L, frame.size.width);
+    lua_pushnumber(L, frame.size.height);
+    return 4;
 }
 
 int ui_viewForTag(lua_State *L)

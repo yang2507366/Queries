@@ -5,6 +5,7 @@ UINavigationItem = {};
 UINavigationItem.__index = UINavigationItem;
 setmetatable(UINavigationItem, Object);
 
+-- constructor
 function UINavigationItem:get(naviItemId)
     local naviItem = Object:new(naviItemId);
     setmetatable(naviItem, self);
@@ -12,6 +13,7 @@ function UINavigationItem:get(naviItemId)
     return naviItem;
 end
 
+-- instance methods
 function UINavigationItem:setTitle(title)
     runtime::invokeMethod(self:id(), "setTitle:", title);
 end

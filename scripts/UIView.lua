@@ -5,7 +5,7 @@ UIView = {};
 UIView.__index = UIView;
 setmetatable(UIView, Object);
 
--- constants
+-- constant
 UIViewAutoresizingNone = 0;
 UIViewAutoresizingFlexibleLeftMargin = 1;
 UIViewAutoresizingFlexibleWidth = 2;
@@ -21,7 +21,7 @@ UIControlStateSelected = 4;
 UIControlStateApplication = 0x00FF0000;
 UIControlStateReserved = 0xFF000000;
 
--- instance methods
+-- constructor
 function UIView:create()
     local viewId = runtime::createObject("UIView", "init");
     return self:get(viewId);
@@ -34,6 +34,7 @@ function UIView:get(viewId)
     return view;
 end
 
+-- instance methods
 function UIView:setFrame(x, y, width, height)
     local frame = x..","..y..","..width..","..height;
     ui::setViewFrame(self:id(), frame);
@@ -45,9 +46,9 @@ function UIView:frame()
 end
 
 function UIView:bounds()
-    local bds = ui::getViewBounds(self:id());
+    local x, y, width, height = ui::getViewBounds(self:id());
     
-    return bds;
+    return x, y, width, height;
 end
 
 function UIView:setBackgroundColor(color)

@@ -4,6 +4,7 @@ UINavigationController = {};
 UINavigationController.__index = UINavigationController;
 setmetatable(UINavigationController, UIViewController);
 
+-- constructor
 function UINavigationController:createWithRootViewController(rootVc)
     if rootVc ~= nil then
         local ncId = ui::createNavigationController(rootVc:id());
@@ -21,6 +22,7 @@ function UINavigationController:get(ncId)
     return nc;
 end
 
+-- instance methods
 function UINavigationController:pushViewController(vc, animated)
     ui::pushViewControllerToNavigationController(vc:id(), self:id(), animated);
 end

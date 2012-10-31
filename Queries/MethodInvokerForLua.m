@@ -377,8 +377,12 @@
                 id obj;
                 [invocation getReturnValue:&obj];
                 if(obj){
-                    NSString *objId = [LuaGroupedObjectManager addObject:obj group:group];
-                    return objId;
+                    if([obj isKindOfClass:NSString.class]){
+                        return obj;
+                    }else{
+                        NSString *objId = [LuaGroupedObjectManager addObject:obj group:group];
+                        return objId;
+                    }
                 }
                 return obj;//*************************************
             }else if(ctype == '#'){//Class

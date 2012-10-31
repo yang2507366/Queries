@@ -4,6 +4,7 @@ UIFont = {};
 UIFont.__index = UIFont;
 setmetatable(UIFont, Object);
 
+-- constructor
 function UIFont:createWithFontSize(fontSize)
     local fontId = runtime::invokeClassMethod("UIFont", "systemFontOfSize:", fontSize);
     
@@ -23,6 +24,7 @@ function UIFont:get(fontId)
     return font;
 end
 
+-- instance methods
 function UIFont:lineHeight()
     return runtime::invokeMethod(self:id(), "lineHeight");
 end

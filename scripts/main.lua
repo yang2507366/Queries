@@ -9,6 +9,8 @@ require "UILabel"
 require "UIFont"
 require "UIBarButtonItem"
 require "UIButton"
+require "UITableView"
+require "UITableViewCell"
 
 function main()
     ap_new();
@@ -51,7 +53,33 @@ function main()
         
         ap_release();
     end
-    nc:pushViewController(vc2, "YES");
+    function vc:viewDidLoad()
+        local tableView = UITableView:create();
+        tableView:setFrame(vc:view():bounds());
+        vc:view():addSubview(tableView);
+        
+        function tableView:heightOfRowAtIndex()
+            return 100;
+        end
+        
+        function tableView:numberOfRows()
+            return 100;
+        end
+        
+        function tableView:cellForRowAtIndex(rowIndex)
+            local cell = tableView:dequeueReusableCellWithIdentifier("id");
+            if cell == nil then
+                cell = UITableViewCell:create("id");
+            end
+            cell:textLabel():setText("row - "..rowIndex);
+            print(cell:textLabel():text());
+            return cell;
+        end
+        
+        function tableView:didSelectCellAtIndex(rowIndex)
+            nc:pushViewController(vc2, "YES");
+        end
+    end
     
     nc:setAsRootViewController();
     ap_release();
