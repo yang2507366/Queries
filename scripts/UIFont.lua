@@ -1,6 +1,6 @@
 require "Object"
 
-UIFont = Object:new();
+UIFont = {};
 UIFont.__index = UIFont;
 setmetatable(UIFont, Object);
 

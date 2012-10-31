@@ -2,7 +2,7 @@ require "Object"
 require "UIView"
 require "UINavigationItem"
 
-UIViewController = Object:new();
+UIViewController = {};
 UIViewController.__index = UIViewController;
 setmetatable(UIViewController, Object);
 
@@ -11,12 +11,18 @@ function UIViewController:createWithTitle(title)
         title = "Untitled";
     end
     local vcId = ui::createViewController(title, "_global_viewDidLoad", "_global_viewWillAppear", "_global_viewDidPop");
-    local vc = Object:new(vcId);
-    setmetatable(vc, self);
+    local vc = self:get(vcId);
     
     _global_view_did_load_event_table[vcId] = vc;
     _global_view_will_appear_event_table[vcId] = vc;
     _global_view_did_pop_event_table[vcId] = vc;
+    
+    return vc;
+end
+
+function UIViewController:get(vcId)
+    local vc = Object:new(vcId);
+    setmetatable(vc, self);
     
     return vc;
 end

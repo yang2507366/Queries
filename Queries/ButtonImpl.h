@@ -16,4 +16,5 @@
                            title:(NSString *)title
                            frame:(CGRect)frame
                    eventFuncName:(NSString *)eventFuncName;
++ (NSString *)createWithScriptId:(NSString *)scriptId si:(id<ScriptInteraction>)si type:(UIButtonType)type tappedFunc:(NSString *)tappedFunc;
 @end

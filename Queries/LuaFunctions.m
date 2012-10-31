@@ -112,12 +112,11 @@ int ui_createButton(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
     
-    NSString *title = luaStringParam(L, 2);
-    NSString *frame = luaStringParam(L, 3);
-    NSString *callback = luaStringParam(L, 4);
+    NSUInteger type = lua_tointeger(L, 2);
+    NSString *tappedFunc = luaStringParam(L, 3);
     
     id<ScriptInteraction> si = scriptInteractionForScriptId(scriptId);
-    NSString *buttonId = [ButtonImpl createWithScriptId:scriptId si:si title:title frame:luaRect(frame) eventFuncName:callback];
+    NSString *buttonId = [ButtonImpl createWithScriptId:scriptId si:si type:type tappedFunc:tappedFunc];
     pushString(L, buttonId);
     return 1;
 }

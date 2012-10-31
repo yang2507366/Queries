@@ -1,7 +1,7 @@
 require "UIView"
 require "UIFont"
 
-UILabel = UIView:new();
+UILabel = {};
 UILabel.__index = UILabel;
 setmetatable(UILabel, UIView);
 

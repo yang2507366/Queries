@@ -1,7 +1,7 @@
 require "Object"
 require "UIColor"
 
-UIView = Object:new();
+UIView = {};
 UIView.__index = UIView;
 setmetatable(UIView, Object);
 
@@ -13,6 +13,13 @@ UIViewAutoresizingFlexibleRightMargin = 4;
 UIViewAutoresizingFlexibleTopMargin = 8;
 UIViewAutoresizingFlexibleHeight = 16;
 UIViewAutoresizingFlexibleBottomMargin = 32;
+
+UIControlStateNormal = 0;
+UIControlStateHighlighted = 1;
+UIControlStateDisabled = 2;
+UIControlStateSelected = 4;
+UIControlStateApplication = 0x00FF0000;
+UIControlStateReserved = 0xFF000000;
 
 -- instance methods
 function UIView:create()
@@ -45,6 +52,11 @@ end
 
 function UIView:setBackgroundColor(color)
 	runtime::invokeMethod(self:id(), "setBackgroundColor:", color:id());
+end
+
+function UIView:backgroundColor()
+    local colorId = runtime::invokeMethod(self:id(), "backgroundColor");
+    return UIColor:get(colorId);
 end
 
 function UIView:addSubview(subview)

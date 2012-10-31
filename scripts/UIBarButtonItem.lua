@@ -1,6 +1,6 @@
 require "Object"
 
-UIBarButtonItem = Object:new();
+UIBarButtonItem = {};
 UIBarButtonItem.__index = UIBarButtonItem;
 setmetatable(UIBarButtonItem, Object);
 

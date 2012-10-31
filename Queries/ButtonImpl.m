@@ -36,4 +36,16 @@
     return buttonId;
 }
 
++ (NSString *)createWithScriptId:(NSString *)scriptId si:(id<ScriptInteraction>)si type:(UIButtonType)type tappedFunc:(NSString *)tappedFunc
+{
+    UIButton *button = [UIButton buttonWithType:type];
+    
+    NSString *buttonId = [LuaGroupedObjectManager addObject:button group:scriptId];
+    
+    [button addTarget:[EventProxy sharedInstance] action:@selector(event:) forControlEvents:UIControlEventTouchUpInside];
+    [[EventProxy sharedInstance] addEventSource:button scriptInteraction:si funcName:tappedFunc viewId:buttonId];
+    
+    return buttonId;
+}
+
 @end

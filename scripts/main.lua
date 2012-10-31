@@ -8,6 +8,7 @@ require "UIColor"
 require "UILabel"
 require "UIFont"
 require "UIBarButtonItem"
+require "UIButton"
 
 function main()
     ap_new();
@@ -42,8 +43,11 @@ function main()
         
         label2:setBackgroundColor(UIColor:createWithRGB(0, 255, 0):autorelease());
         
-        print(label2:font():lineHeight());
-        print(label2:bounds());
+        local button = UIButton:create("BUTTON", UIButtonTypeRoundRect);
+        button:setFrame(100, 200, 100, 40);
+        button:setBackgroundColor(label2:backgroundColor());
+        button:titleLabel():setFont(UIFont:createWithFontSize(12):autorelease());
+        vc2:view():addSubview(button);
         
         ap_release();
     end

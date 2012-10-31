@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#define script_id_function_name     @"__script_id__()"
+#define script_id_function_name     @"_script_id()"
 #define lua_self                    @"_lua_self"
 #define lua_main_file               @"main.lua"
 #define lua_main_function           @"main"

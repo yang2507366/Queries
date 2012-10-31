@@ -1,7 +1,7 @@
 require "Object"
 require "UIBarButtonItem"
 
-UINavigationItem = Object:new();
+UINavigationItem = {};
 UINavigationItem.__index = UINavigationItem;
 setmetatable(UINavigationItem, Object);
 
