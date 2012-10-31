@@ -34,6 +34,13 @@
     [super dealloc];
 }
 
+//- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier
+//{
+//    id cell = [super dequeueReusableCellWithIdentifier:identifier];
+//    NSLog(@"cell:%@, %@", identifier, cell);
+//    return cell;
+//}
+
 #pragma mark - UITableViewDelegate & UITableViewDataSource
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

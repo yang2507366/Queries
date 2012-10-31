@@ -10,7 +10,7 @@ function UITableViewCell:create(reuseIdentifier)
     if reuseIdentifier == nil then
         return nil;
     end
-    local cellId = runtime::createObject("UITableViewCell", "initWithStyle:reuseIdentifier:", "1", self.reuseIdentifier);
+    local cellId = runtime::createObject("UITableViewCell", "initWithStyle:reuseIdentifier:", "1", reuseIdentifier);
     
     return self:get(cellId);
 end

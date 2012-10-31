@@ -68,14 +68,12 @@ function main()
         
         function tableView:cellForRowAtIndex(rowIndex)
             ap_new();
-            local cell = tableView:dequeueReusableCellWithIdentifier("id_d");
+            local cell = tableView:dequeueReusableCellWithIdentifier("id");
             if cell == nil then
-                cell = UITableViewCell:create("id_d");
-            else
-                print("resuable cell:"..cell:id());
+                cell = UITableViewCell:create("id");
             end
             cell:textLabel():setText("row - "..rowIndex);
-            print(cell:textLabel():text());
+            
             ap_release();
             return cell;
         end
