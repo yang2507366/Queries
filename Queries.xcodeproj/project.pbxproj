@@ -55,6 +55,7 @@
 		3EA309C116401A700013A6D1 /* UIFont.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309C016401A700013A6D1 /* UIFont.lua */; };
 		3EA309C31640241A0013A6D1 /* UINavigationItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309C21640241A0013A6D1 /* UINavigationItem.lua */; };
 		3EA309C5164024F30013A6D1 /* UIBarButtonItem.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309C4164024F30013A6D1 /* UIBarButtonItem.lua */; };
+		3EA309CD164145FB0013A6D1 /* QuiresListViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */; };
@@ -203,6 +204,7 @@
 		3EA309C016401A700013A6D1 /* UIFont.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIFont.lua; path = scripts/UIFont.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EA309C21640241A0013A6D1 /* UINavigationItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UINavigationItem.lua; path = scripts/UINavigationItem.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EA309C4164024F30013A6D1 /* UIBarButtonItem.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIBarButtonItem.lua; path = scripts/UIBarButtonItem.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QuiresListViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -531,6 +533,14 @@
 			name = UIKit;
 			sourceTree = "<group>";
 		};
+		3EA309CA164145D80013A6D1 /* Quires */ = {
+			isa = PBXGroup;
+			children = (
+				3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */,
+			);
+			name = Quires;
+			sourceTree = "<group>";
+		};
 		3EC0BA941633B1840074D22B /* LuaScriptChecker */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,6 +700,7 @@
 		3EE3B32E16323DB000C77F85 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				3EA309CA164145D80013A6D1 /* Quires */,
 				3E9FFDAC163E48B6000B630E /* UIKit */,
 				3EF86918163AD37300E41ED6 /* doc */,
 				3EF86919163AD8B900E41ED6 /* System */,
@@ -811,6 +822,7 @@
 				3E2D04341640DDDA00EDCFDA /* UIButton.lua in Resources */,
 				3E2D043B1640F3BD00EDCFDA /* UITableViewCell.lua in Resources */,
 				3E2D043D1640F79E00EDCFDA /* UITableView.lua in Resources */,
+				3EA309CD164145FB0013A6D1 /* QuiresListViewController.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
