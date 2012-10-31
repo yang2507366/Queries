@@ -27,13 +27,13 @@ function AutoreleasePool:new(name)
 end
 
 function AutoreleasePool:add(object)
---    dp("add:<"..self.name.."> "..object:id());
+    dp("add:<"..self.name.."> "..object:id());
     table.insert(self, object);
 end
 
 function AutoreleasePool:drain()
     for i = 1, #self do
---        dp("drain:<"..self.name.."> "..self[i]:id());
+        dp("drain:<"..self.name.."> "..self[i]:id());
         self[i]:release();
     end
 end

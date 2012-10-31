@@ -1,5 +1,6 @@
 require "UIView"
 require "UITableViewCell"
+require "Recyclable"
 
 UITableView = {};
 UITableView.__index = UITableView;
@@ -52,6 +53,12 @@ end
 
 function UITableView:reloadData()
     runtime::invokeMethod(self:id(), "reloadData");
+end
+
+function UITableView:deselectRow(rowIndex)
+    local indexPathId = runtime::invokeClassMethod("NSIndexPath", "indexPathForRow:inSection:", rowIndex, 0);
+    runtime::invokeMethod(self:id(), "deselectRowAtIndexPath:animated:", indexPathId, "YES");
+    releaseObjectById(indexPathId);
 end
 
 -- event

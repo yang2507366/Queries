@@ -67,16 +67,19 @@ function main()
         end
         
         function tableView:cellForRowAtIndex(rowIndex)
+            ap_new();
             local cell = tableView:dequeueReusableCellWithIdentifier("id");
             if cell == nil then
                 cell = UITableViewCell:create("id");
             end
             cell:textLabel():setText("row - "..rowIndex);
             print(cell:textLabel():text());
+            ap_release();
             return cell;
         end
         
         function tableView:didSelectCellAtIndex(rowIndex)
+            tableView:deselectRow(rowIndex);
             nc:pushViewController(vc2, "YES");
         end
     end
