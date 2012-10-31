@@ -6,7 +6,7 @@ UILabel.__index = UILabel;
 setmetatable(UILabel, UIView);
 
 -- constructor
-function UILabel:new(title)
+function UILabel:createWithTitle(title)
     if title == nil then
         title = "";
     end

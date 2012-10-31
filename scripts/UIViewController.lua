@@ -47,6 +47,11 @@ function UIViewController:navigationItem()
     return UINavigationItem:get(naviItemId);
 end
 
+function UIViewController:navigationController()
+    local ncId = runtime::invokeMethod(self:id(), "navigationController");
+    return UINavigationController:get(ncId);
+end
+
 -- event
 function UIViewController:viewDidLoad()
     

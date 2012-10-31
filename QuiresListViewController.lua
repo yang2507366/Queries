@@ -1,6 +1,5 @@
-require "UIViewController"
-require "UITableView"
-require "UITableViewCell"
+require "UIKit"
+require "QueryMobileNumberViewController"
 
 kTitleSearchMobileNumber = "搜索手机号码";
 kTitleSearchWord = "搜索单词";
@@ -22,32 +21,32 @@ function QuiresListViewController:viewDidLoad()
     
     local identifier = "id_";
     function self.tableView:cellForRowAtIndex(index)
+        ap_new();
         local cell = self:dequeueReusableCellWithIdentifier(identifier);
         if cell == nil then
             cell = UITableViewCell:create(identifier);
         end
         cell:textLabel():setText(kTitleList[index + 1]);
         
+        ap_release();
         return cell;
     end
     
+    local currentNC = self:navigationController();
     function self.tableView:didSelectCellAtIndex(rowIndex)
         self:deselectRow(rowIndex);
         local index = rowIndex + 1;
         if kTitleList[index] == kTitleSearchMobileNumber then
             po(kTitleSearchMobileNumber);
+            
+            local vc = QueryMobileNumberViewController:createWithTitle(kTitleSearchMobileNumber);
+            function vc:viewDidPop()
+                vc:release();
+            end
+            
+            currentNC:pushViewController(vc, true);
         elseif kTitleList[index] == kTitleSearchWord then
             po(kTitleSearchWord);
         end
     end
-end
-
-function main()
-    ap_new();
-    
-    local quiresListVC = QuiresListViewController:createWithTitle("Quires");
-    local nc = UINavigationController:createWithRootViewController(quiresListVC);
-    nc:setAsRootViewController();
-    
-    ap_release();
 end

@@ -7,7 +7,7 @@ setmetatable(UINavigationItem, Object);
 
 -- constructor
 function UINavigationItem:get(naviItemId)
-    local naviItem = Object:new(naviItemId);
+    local naviItem = Object:create(naviItemId);
     setmetatable(naviItem, self);
     
     return naviItem;

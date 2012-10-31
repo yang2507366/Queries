@@ -27,11 +27,26 @@ function Object:setId(objectId)
 end
 
 function Object:release()
-    releaseObjectById(self:id());
+--    releaseObjectById(self:id());
+    local recycled = runtime::releaseObject(self:id());
+    if recycled then
+        self:dealloc();
+    end
+end
+
+function Object:retain()
+    runtime::retainObject(self:id());
+end
+
+function Object:retainCount()
+    
+end
+
+function Object:dealloc()
+    print("dealloc:"..self:id());
 end
 
 function Object:autorelease()
---    dp("autorelease:"..self:id());
     local success = _autorelease_pool_addObject(self);
     if success == false then
         print("error, autorelease failed, no pool around");

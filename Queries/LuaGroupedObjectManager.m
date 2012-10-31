@@ -80,7 +80,7 @@
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
         return tmp == nil ? nil : objectId;
     }
-    return NO;
+    return nil;
 }
 
 - (id)objectWithId:(NSString *)objectId group:(NSString *)group
@@ -91,6 +91,33 @@
         return tmp.object;
     }
     return nil;
+}
+
+- (void)retainObjectWithId:(NSString *)objectId group:(NSString *)group
+{
+    NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
+    if(objectDictionary){
+        ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
+        if(tmp){
+            tmp.referenceCount++;
+        }
+    }
+}
+
+- (BOOL)releaseObjectWithId:(NSString *)objectId group:(NSString *)group
+{
+    NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
+    if(objectDictionary){
+        ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
+        if(tmp){
+            tmp.referenceCount--;
+            if(tmp.referenceCount == 0){
+                [self removeObjectWithId:objectId group:group];
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 
 #pragma mark - class methods
@@ -131,6 +158,16 @@
 {
     D_Log(@"get with object id:%@, group:%@", objectId, group);
     return [[self sharedInstance] objectWithId:objectId group:group];
+}
+
++ (void)retainObjectWithId:(NSString *)objectId group:(NSString *)group
+{
+    [[self sharedInstance] retainObjectWithId:objectId group:group];
+}
+
++ (BOOL)releaseObjectWithId:(NSString *)objectId group:(NSString *)group
+{
+    return [[self sharedInstance] releaseObjectWithId:objectId group:group];
 }
 
 @end

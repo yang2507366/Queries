@@ -17,4 +17,7 @@
 + (NSString *)containsObject:(id)object group:(NSString *)group;
 + (id)objectWithId:(NSString *)objectId group:(NSString *)group;
 
++ (void)retainObjectWithId:(NSString *)objectId group:(NSString *)group;
++ (BOOL)releaseObjectWithId:(NSString *)objectId group:(NSString *)group;
+
 @end

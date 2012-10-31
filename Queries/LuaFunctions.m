@@ -499,6 +499,25 @@ int runtime_invokeClassMethod(lua_State *L)
     return 1;
 }
 
+int runtime_retainObject(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    
+    [LuaGroupedObjectManager retainObjectWithId:objectId group:scriptId];
+    return 0;
+}
+
+int runtime_releaseObject(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *objectId = luaStringParam(L, 2);
+    
+    BOOL recycled = [LuaGroupedObjectManager releaseObjectWithId:objectId group:scriptId];
+    lua_pushboolean(L, recycled ? 1 : 0);
+    return 1;
+}
+
 #pragma mark - obj
 int obj_invokeMethod(lua_State *L)
 {
@@ -747,6 +766,10 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "runtime_createObject", runtime_createObject);
 #pragma mark - runtime::invokeClassMethod
     pushFunctionToLua(L, "runtime_invokeClassMethod", runtime_invokeClassMethod);
+#pragma mark - runtime::retainObject
+    pushFunctionToLua(L, "runtime_retainObject", runtime_retainObject);
+#pragma mark - runtime_releaseObject
+    pushFunctionToLua(L, "runtime_releaseObject", runtime_releaseObject);
 #pragma amrk - runtime::invokeMethod
     pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
 #pragma mark - script::runScriptWithId

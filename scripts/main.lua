@@ -1,6 +1,6 @@
-require "AutoreleasePool"
+require "System"
+require "UIKit"
 require "QuiresListViewController"
-require "UINavigationController"
 
 function main()
     ap_new();
