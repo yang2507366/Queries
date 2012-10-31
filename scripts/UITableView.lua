@@ -42,7 +42,7 @@ end
 
 -- instance method
 function UITableView:dequeueReusableCellWithIdentifier(identifier)
-    local cellId = runtime::invokeMethod(self:id(), "dequeueReusableCellWithIdentifier", identifier);
+    local cellId = runtime::invokeMethod(self:id(), "dequeueReusableCellWithIdentifier:", identifier);
     if string.len(cellId) == 0 then
         return nil;
     end
