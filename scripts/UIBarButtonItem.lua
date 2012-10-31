@@ -28,7 +28,7 @@ function UIBarButtonItem:setTitle(title)
 end
 
 function UIBarButtonItem:tapped()
-    print("tapped");
+    
 end
 
 -- event proxy

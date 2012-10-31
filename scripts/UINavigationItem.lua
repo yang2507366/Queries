@@ -9,7 +9,7 @@ function UINavigationItem:get(naviItemId)
     local naviItem = Object:new(naviItemId);
     setmetatable(naviItem, self);
     
-    return self;
+    return naviItem;
 end
 
 function UINavigationItem:setTitle(title)
