@@ -35,7 +35,6 @@ function main()
         
         local naviItem = vc2:navigationItem();
         local barBtn = UIBarButtonItem:createWithTitle("button");
-        print(barBtn);
         naviItem:setRightBarButtonItem(barBtn);
         
         label2:setBackgroundColor(UIColor:createWithRGB(0, 255, 0):autorelease());

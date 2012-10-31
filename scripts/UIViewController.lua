@@ -37,7 +37,6 @@ end
 
 function UIViewController:navigationItem()
     local naviItemId = runtime::invokeMethod(self:id(), "navigationItem");
-    
     return UINavigationItem:get(naviItemId);
 end
 

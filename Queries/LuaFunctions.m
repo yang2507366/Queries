@@ -454,7 +454,7 @@ int runtime_invokeMethod(lua_State *L)
     for(int i = 4; i <= numOfArgs; ++i){
         [params addObject:luaStringParam(L, i)];
     }
-    UINavigationItem
+    
     NSString *returnValue = [MethodInvokerForLua invokeWithGroup:scriptId objectId:objectId methodName:methodName parameters:params];
     pushString(L, returnValue);
     return 1;

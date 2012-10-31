@@ -23,6 +23,5 @@ function UINavigationItem:rightBarButtonItem()
 end
 
 function UINavigationItem:setRightBarButtonItem(buttonItem)
-    print(buttonItem:id());
     runtime::invokeMethod(self:id(), "setRightBarButtonItem:", buttonItem:id());
 end
