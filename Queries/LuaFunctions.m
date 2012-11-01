@@ -46,7 +46,7 @@ NSString *luaStringParam(lua_State *L, int location)
 CGRect luaRect(NSString *frame)
 {
     NSArray *attrs = [frame componentsSeparatedByString:@","];
-    CGRect tmpRect = CGRectMake(0, 0, 80, 30);
+    CGRect tmpRect = CGRectZero;
     if(attrs.count == 4){
         tmpRect.origin.x = [attrs[0] floatValue];
         tmpRect.origin.y = [attrs[1] floatValue];
