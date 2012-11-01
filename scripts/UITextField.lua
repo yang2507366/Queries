@@ -21,7 +21,7 @@ function UITextField:get(textFieldId)
     local textField = UIView:new(textFieldId);
     setmetatable(textField, self);
     
-    return textField;
+    return textField:autorelease();
 end
 
 function UITextField:setClearButtonMode(mode)

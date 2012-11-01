@@ -13,7 +13,7 @@
 
 - (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
 {
-    return [CodeUtils encodeAllChinese:script];
+    return [CodeUtils encodeUnicode:script];
 }
 
 @end

@@ -146,7 +146,7 @@
     [si callFunction:@"main" callback:^(NSString *returnValue, NSString *error) {
         D_Log(@"lua main:%@, %@", returnValue, error);
         if(error.length != 0){
-            D_Log(@"%@", [CodeUtils decodeAllChinese:si.script]);
+            D_Log(@"%@", [CodeUtils decodeUnicode:si.script]);
         }
     } parameters:nil];
 }

@@ -11,6 +11,7 @@ QuiresListViewController.__index = QuiresListViewController;
 setmetatable(QuiresListViewController, UIViewController);
 
 function QuiresListViewController:viewDidLoad()
+    ap_new();
     listTableView = UITableView:create():retain();
     listTableView:setFrame(self:view():bounds());
     self:view():addSubview(listTableView);
@@ -23,12 +24,12 @@ function QuiresListViewController:viewDidLoad()
     function listTableView:cellForRowAtIndex(index)
         local cell = self:dequeueReusableCellWithIdentifier(identifier);
         if cell == nil then
-            cell = UITableViewCell:create(identifier):retain();
+            cell = UITableViewCell:create(identifier);
         end
         ap_new();
         cell:textLabel():setText(kTitleList[index + 1]);
         ap_release();
-        return cell:autorelease();
+        return cell;
     end
     
     local currentNC = self:navigationController():retain();
@@ -48,4 +49,5 @@ function QuiresListViewController:viewDidLoad()
             po(kTitleSearchWord);
         end
     end
+    ap_release();
 end

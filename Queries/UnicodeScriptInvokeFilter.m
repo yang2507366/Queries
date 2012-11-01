@@ -15,14 +15,14 @@
 - (NSString *)filterParameter:(NSString *)parameter
 {
     if([CommonUtils stringContainsChinese:parameter]){
-        parameter = [CodeUtils encodeAllChinese:parameter];
+        parameter = [CodeUtils encodeUnicode:parameter];
     }
     return parameter;
 }
 
 - (NSString *)filterReturnValue:(NSString *)returnValue
 {
-    return [CodeUtils decodeAllChinese:returnValue];
+    return [CodeUtils decodeUnicode:returnValue];
 }
 
 @end

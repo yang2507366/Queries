@@ -42,14 +42,14 @@
     [HTTPRequest requestWithURLString:urlString identifier:requestId completion:^(NSString *responseStr, NSError *error) {
         if(error){
             if([self.class requestExists:requestId]){
-                [script callFunction:luaFunctionName callback:nil parameters:@"", error.localizedDescription, nil];
+                [script callFunction:luaFunctionName callback:nil parameters:requestId, @"", error.localizedDescription, nil];
             }
         }else{
             if(responseStr.length == 0){
                 responseStr = @"";
             }
             if([self.class requestExists:requestId]){
-                [script callFunction:luaFunctionName callback:nil parameters:responseStr, @"", nil];
+                [script callFunction:luaFunctionName callback:nil parameters:requestId, responseStr, @"", nil];
             }
         }
     }];

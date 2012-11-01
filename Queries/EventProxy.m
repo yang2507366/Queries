@@ -69,7 +69,9 @@
 - (void)event:(id)source
 {
     EventObject *eo = [self.eventDict objectForKey:[self identifierForObject:source]];
-    [eo.si callFunction:eo.funcName callback:nil parameters:eo.viewId, nil];
+    if(eo){
+        [eo.si callFunction:eo.funcName callback:nil parameters:eo.viewId, nil];
+    }
 }
 
 @end

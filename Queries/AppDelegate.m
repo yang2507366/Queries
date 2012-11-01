@@ -14,6 +14,7 @@
 #import "LuaApplication.h"
 #import "MethodInvokerForLua.h"
 #import "LuaGroupedObjectManager.h"
+#import "CodeUtils.h"
 
 @implementation AppDelegate
 

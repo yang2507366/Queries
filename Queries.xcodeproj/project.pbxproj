@@ -70,6 +70,8 @@
 		3EC2CBC2163CCD1D00E83E10 /* Object.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBBF163CCD1D00E83E10 /* Object.lua */; };
 		3EC2CBC3163CCD1D00E83E10 /* Recyclable.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBC0163CCD1D00E83E10 /* Recyclable.lua */; };
 		3EC2CBC4163CCD1D00E83E10 /* Utils.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBC1163CCD1D00E83E10 /* Utils.lua */; };
+		3EC357B81642C242009611C8 /* HTTPRequest.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC357B71642C242009611C8 /* HTTPRequest.lua */; };
+		3EC357BA1642C757009611C8 /* Network.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC357B91642C757009611C8 /* Network.lua */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
@@ -225,6 +227,8 @@
 		3EC2CBBF163CCD1D00E83E10 /* Object.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Object.lua; path = scripts/Object.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC2CBC0163CCD1D00E83E10 /* Recyclable.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Recyclable.lua; path = scripts/Recyclable.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC2CBC1163CCD1D00E83E10 /* Utils.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Utils.lua; path = scripts/Utils.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EC357B71642C242009611C8 /* HTTPRequest.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HTTPRequest.lua; path = scripts/HTTPRequest.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EC357B91642C757009611C8 /* Network.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Network.lua; path = scripts/Network.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3ED0C77E16354F2D00A3E33F /* TableViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewImpl.h; sourceTree = "<group>"; };
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
@@ -558,6 +562,15 @@
 			name = LuaScriptChecker;
 			sourceTree = "<group>";
 		};
+		3EC357B51642C21A009611C8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3EC357B71642C242009611C8 /* HTTPRequest.lua */,
+				3EC357B91642C757009611C8 /* Network.lua */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 		3ED772EF163E2DD000E5C9A9 /* lua-5.1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +711,7 @@
 		3EE3B32E16323DB000C77F85 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				3EC357B51642C21A009611C8 /* Network */,
 				3EA309CA164145D80013A6D1 /* Quires */,
 				3E9FFDAC163E48B6000B630E /* UIKit */,
 				3EF86918163AD37300E41ED6 /* doc */,
@@ -803,6 +817,8 @@
 				3E79D45516416CE00096A727 /* QueryMobileNumberViewController.lua in Resources */,
 				3E0892FF164219FD00066181 /* UITextField.lua in Resources */,
 				3E08930216421A1B00066181 /* main.lua in Resources */,
+				3EC357B81642C242009611C8 /* HTTPRequest.lua in Resources */,
+				3EC357BA1642C757009611C8 /* Network.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

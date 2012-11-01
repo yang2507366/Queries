@@ -11,7 +11,7 @@
 
 @implementation CodeUtils
 
-static char *customHexList = "ASDFGHJKLZXCVBNM";
+static char *customHexList = "0123456789abcdef";
 
 + (char)customHexCharForByte:(unsigned char )c
 {
@@ -138,6 +138,54 @@ static char *customHexList = "ASDFGHJKLZXCVBNM";
         beginRange.location += 4;
         beginRange.length = string.length - beginRange.location;
         endRange = [string rangeOfString:@"[e;]" options:NSCaseInsensitiveSearch range:beginRange];
+        NSString *cn = [string substringWithRange:NSMakeRange(beginRange.location, endRange.location - beginRange.location)];
+        cn = [CodeUtils stringDecodedWithString:cn];
+        [allString appendString:cn];
+        endRange.location += 4;
+        endRange.length = string.length - endRange.location;
+    }
+    return allString;
+}
+
++ (NSString *)encodeUnicode:(NSString *)string
+{
+    NSMutableString *allString = [NSMutableString string];
+    for(NSInteger i = 0; i < string.length; i++){
+        const unsigned short ch = [string characterAtIndex:i];
+        NSString *chStr = [string substringWithRange:NSMakeRange(i, 1)];
+        if(ch > 255){
+            [allString appendFormat:@"[u]%@[/u]", [CodeUtils encodeWithString:chStr]];
+        }else{
+            [allString appendString:chStr];
+        }
+    }
+    
+    return allString;
+}
+
++ (NSString *)decodeUnicode:(NSString *)string
+{
+    if(string.length == 0){
+        return @"";
+    }
+    NSMutableString *allString = [NSMutableString string];
+    NSRange beginRange;
+    NSRange endRange = NSMakeRange(0, string.length);
+    while(true){
+        beginRange = [string rangeOfString:@"[u]" options:NSCaseInsensitiveSearch range:endRange];
+        if(beginRange.location == NSNotFound){
+            if(endRange.location == 0){
+                [allString appendString:string];
+            }else if(endRange.location != string.length){
+                [allString appendString:[string substringFromIndex:endRange.location]];
+            }
+            break;
+        }
+        NSString *en = [string substringWithRange:NSMakeRange(endRange.location, beginRange.location - endRange.location)];
+        [allString appendString:en];
+        beginRange.location += 3;
+        beginRange.length = string.length - beginRange.location;
+        endRange = [string rangeOfString:@"[/u]" options:NSCaseInsensitiveSearch range:beginRange];
         NSString *cn = [string substringWithRange:NSMakeRange(beginRange.location, endRange.location - beginRange.location)];
         cn = [CodeUtils stringDecodedWithString:cn];
         [allString appendString:cn];

@@ -31,7 +31,7 @@ function UIView:get(viewId)
     local view = Object:new(viewId);
     setmetatable(view, self);
     
-    return view;
+    return view:autorelease();
 end
 
 -- instance methods
@@ -70,4 +70,12 @@ end
 
 function UIView:autoresizingMask()
     return runtime::invokeMethod(self:id(), "autoresizingMask");
+end
+
+function UIView:resignFirstResponder()
+    runtime::invokeMethod(self:id(), "resignFirstResponder");
+end
+
+function UIView:becomeFirstResponder()
+    runtime::invokeMethod(self:id(), "becomeFirstResponder");
 end

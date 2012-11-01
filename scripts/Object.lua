@@ -3,6 +3,7 @@ require "Utils"
 require "AutoreleasePool"
 
 Object = {};
+Object.isKeep = false;
 
 function Object:new(objectId)
     local obj = {};
@@ -39,6 +40,10 @@ function Object:retain()
     return self;
 end
 
+function Object:keep()
+    self.isKeep = true;
+end
+
 function Object:retainCount()
     
 end
@@ -48,6 +53,10 @@ function Object:dealloc()
 end
 
 function Object:autorelease()
+    if self.isKeep then
+        print("keep object");
+        return self;
+    end
     local success = _autorelease_pool_addObject(self);
     if success == false then
         print("error, autorelease failed, no pool around");

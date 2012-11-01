@@ -8,6 +8,7 @@
 
 #import "TextFieldImpl.h"
 #import "LuaGroupedObjectManager.h"
+#import "EventProxy.h"
 
 @implementation TextFieldImpl
 
@@ -25,6 +26,7 @@
     tmpTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     tmpTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     tmpTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    [tmpTextField addTarget:[EventProxy sharedInstance] action:@selector(event:) forControlEvents:UIControlEventEditingDidEndOnExit];
     return [LuaGroupedObjectManager addObject:tmpTextField group:scriptId];
 }
 

@@ -36,7 +36,7 @@ NSString *luaStringParam(lua_State *L, int location)
     if(paramValue){
         paramString = [NSString stringWithFormat:@"%s", paramValue];
     }
-    paramString = [CodeUtils decodeAllChinese:paramString];
+    paramString = [CodeUtils decodeUnicode:paramString];
     if(paramString.length == 0){
         paramString = @"";
     }
@@ -58,7 +58,7 @@ CGRect luaRect(NSString *frame)
 
 void pushString(lua_State *L, NSString *returnValue)
 {
-    returnValue = [CodeUtils encodeAllChinese:returnValue];
+    returnValue = [CodeUtils encodeUnicode:returnValue];
     lua_pushstring(L, [returnValue UTF8String]);
 }
 
@@ -100,7 +100,8 @@ int http_request(lua_State *L)
 
 int http_cancel(lua_State *L)
 {
-    NSString *requestId = luaStringParam(L, 1);
+//    NSString *scriptId = luaStringParam(L, 1);
+    NSString *requestId = luaStringParam(L, 2);
     
     [HTTPRequestImpl cancelRequestWithRequestId:requestId];
     

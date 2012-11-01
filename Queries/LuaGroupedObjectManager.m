@@ -99,6 +99,7 @@
     if(objectDictionary){
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
         if(tmp){
+            D_Log(@"retain object:%@", tmp.object);
             tmp.referenceCount++;
         }
     }
