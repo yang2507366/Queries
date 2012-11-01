@@ -44,12 +44,12 @@ end
 
 function UIViewController:navigationItem()
     local naviItemId = runtime::invokeMethod(self:id(), "navigationItem");
-    return UINavigationItem:get(naviItemId):autorelease();
+    return UINavigationItem:get(naviItemId);
 end
 
 function UIViewController:navigationController()
     local ncId = runtime::invokeMethod(self:id(), "navigationController");
-    return UINavigationController:get(ncId):autorelease();
+    return UINavigationController:get(ncId);
 end
 
 -- event

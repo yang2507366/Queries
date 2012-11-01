@@ -19,8 +19,8 @@ function QueryMobileNumberViewController:viewDidLoad()
     ap_new();
     local x, y, width, height = self:view():bounds();
     local tmpView = UIView:create():autorelease();
-    tmpView:setFrame(x, y, width, 180);
-    tmpView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
+    tmpView:setFrame(x, y, width, 150);
+    tmpView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
     
     local label = UILabel:createWithTitle("手机号码:"):autorelease();
     label:setFrame(10, 10, 80, label:font():lineHeight());

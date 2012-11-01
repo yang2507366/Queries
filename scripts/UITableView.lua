@@ -33,7 +33,7 @@ function UITableView:get(tableViewId)
     local tableView = UIView:new(tableViewId);
     setmetatable(tableView, self);
     
-    return tableView:autorelease();
+    return tableView;
 end
 
 function UITableView:create()

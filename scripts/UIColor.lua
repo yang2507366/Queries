@@ -21,5 +21,5 @@ function UIColor:get(colorId)
     local color = Object:new(colorId);
     setmetatable(color, self);
     
-    return color:autorelease();
+    return color;
 end

@@ -21,13 +21,12 @@ function QuiresListViewController:viewDidLoad()
     
     local identifier = "id_";
     function listTableView:cellForRowAtIndex(index)
-        ap_new();
         local cell = self:dequeueReusableCellWithIdentifier(identifier);
         if cell == nil then
             cell = UITableViewCell:create(identifier):retain();
         end
+        ap_new();
         cell:textLabel():setText(kTitleList[index + 1]);
-        
         ap_release();
         return cell:autorelease();
     end

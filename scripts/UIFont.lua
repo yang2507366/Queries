@@ -21,7 +21,7 @@ function UIFont:get(fontId)
     local font = Object:new(fontId);
     setmetatable(font, self);
     
-    return font:autorelease();
+    return font;
 end
 
 -- instance methods

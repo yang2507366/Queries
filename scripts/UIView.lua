@@ -31,7 +31,7 @@ function UIView:get(viewId)
     local view = Object:new(viewId);
     setmetatable(view, self);
     
-    return view:autorelease();
+    return view;
 end
 
 -- instance methods
