@@ -38,7 +38,7 @@ function UIButton:get(buttonId)
     local button = UIView:new(buttonId);
     setmetatable(button, self);
     
-    return button;
+    return button:autorelease();
 end
 
 -- instance methods

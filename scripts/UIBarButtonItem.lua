@@ -21,7 +21,7 @@ function UIBarButtonItem:get(buttonItemId)
     local buttonItem = Object:new(buttonItemId);
     setmetatable(buttonItem, self);
     
-    return buttonItem;
+    return buttonItem:autorelease();
 end
 
 -- instance methods

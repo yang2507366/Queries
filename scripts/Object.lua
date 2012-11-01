@@ -36,6 +36,7 @@ end
 
 function Object:retain()
     runtime::retainObject(self:id());
+    return self;
 end
 
 function Object:retainCount()

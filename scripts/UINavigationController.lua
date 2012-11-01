@@ -19,7 +19,7 @@ function UINavigationController:get(ncId)
     local nc = UIViewController:new(ncId);
     setmetatable(nc, self);
     
-    return nc;
+    return nc:autorelease();
 end
 
 -- instance methods

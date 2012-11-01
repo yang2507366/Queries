@@ -33,7 +33,7 @@ function UITableView:get(tableViewId)
     local tableView = UIView:new(tableViewId);
     setmetatable(tableView, self);
     
-    return tableView;
+    return tableView:autorelease();
 end
 
 function UITableView:create()
@@ -59,6 +59,19 @@ function UITableView:deselectRow(rowIndex)
     local indexPathId = runtime::invokeClassMethod("NSIndexPath", "indexPathForRow:inSection:", rowIndex, 0);
     runtime::invokeMethod(self:id(), "deselectRowAtIndexPath:animated:", indexPathId, "YES");
     releaseObjectById(indexPathId);
+end
+
+function UITableView:tableHeaderView()
+    local viewId = runtime::invokeMethod(self:id(), "tableHeaderView");
+    return UIView:get(viewId):autorelease();
+end
+
+function UITableView:setTableHeaderView(view)
+    runtime::invokeMethod(self:id(), "setTableHeaderView:", view:id());
+end
+
+function UITableView:setSeparatorStyle(style)
+    runtime::invokeMethod(self:id(), "setSeparatorStyle:", style);
 end
 
 -- event

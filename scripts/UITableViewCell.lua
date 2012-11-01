@@ -5,6 +5,11 @@ UITableViewCell = {};
 UITableViewCell.__index = UITableViewCell;
 setmetatable(UITableViewCell, UIView);
 
+-- constant
+UITableViewCellSeparatorStyleNone = 0;
+UITableViewCellSeparatorStyleSingleLine = 1;
+UITableViewCellSeparatorStyleSingleLineEtched = 2;
+
 -- constructor
 function UITableViewCell:create(reuseIdentifier)
     if reuseIdentifier == nil then
@@ -19,7 +24,7 @@ function UITableViewCell:get(cellId)
     local cell = UIView:new(cellId);
     setmetatable(cell, self);
     
-    return cell;
+    return cell:autorelease();
 end
 
 -- instance methods

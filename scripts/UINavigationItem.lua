@@ -20,7 +20,7 @@ end
 
 function UINavigationItem:rightBarButtonItem()
     local ri = runtime::invokeMethod(self:id(), "rightBarButtonItem");
-    local bi = UIBarButtonItem:new(ri);
+    local bi = UIBarButtonItem:get(ri);
     return bi;
 end
 

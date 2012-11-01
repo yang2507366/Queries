@@ -5,7 +5,7 @@ require "QuiresListViewController"
 function main()
     ap_new();
     
-    local quiresListVC = QuiresListViewController:createWithTitle("Quires");
+    local quiresListVC = QuiresListViewController:createWithTitle("Quires"):retain();
     local nc = UINavigationController:createWithRootViewController(quiresListVC);
     nc:setAsRootViewController();
     

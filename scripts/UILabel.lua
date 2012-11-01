@@ -18,7 +18,7 @@ function UILabel:get(labelId)
     local label = UIView:get(labelId);
     setmetatable(label, self);
     
-    return label;
+    return label:autorelease();
 end
 
 -- instance methods

@@ -11,29 +11,29 @@ QuiresListViewController.__index = QuiresListViewController;
 setmetatable(QuiresListViewController, UIViewController);
 
 function QuiresListViewController:viewDidLoad()
-    self.tableView = UITableView:create();
-    self.tableView:setFrame(self:view():bounds());
-    self:view():addSubview(self.tableView);
+    listTableView = UITableView:create():retain();
+    listTableView:setFrame(self:view():bounds());
+    self:view():addSubview(listTableView);
     
-    function self.tableView:numberOfRows()
+    function listTableView:numberOfRows()
         return #kTitleList;
     end
     
     local identifier = "id_";
-    function self.tableView:cellForRowAtIndex(index)
+    function listTableView:cellForRowAtIndex(index)
         ap_new();
         local cell = self:dequeueReusableCellWithIdentifier(identifier);
         if cell == nil then
-            cell = UITableViewCell:create(identifier);
+            cell = UITableViewCell:create(identifier):retain();
         end
         cell:textLabel():setText(kTitleList[index + 1]);
         
         ap_release();
-        return cell;
+        return cell:autorelease();
     end
     
-    local currentNC = self:navigationController();
-    function self.tableView:didSelectCellAtIndex(rowIndex)
+    local currentNC = self:navigationController():retain();
+    function listTableView:didSelectCellAtIndex(rowIndex)
         self:deselectRow(rowIndex);
         local index = rowIndex + 1;
         if kTitleList[index] == kTitleSearchMobileNumber then
