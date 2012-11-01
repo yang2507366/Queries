@@ -13,7 +13,6 @@ function QueryMobileNumberViewController:dealloc()
     tableView:release();
     button:release();
     textField:release();
-    po(self);
 end
 
 function QueryMobileNumberViewController:viewDidLoad()
