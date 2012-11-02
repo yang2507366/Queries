@@ -21,9 +21,17 @@ function UITextField:get(textFieldId)
     local textField = UIView:new(textFieldId);
     setmetatable(textField, self);
     
-    return textField:autorelease();
+    return textField;
 end
 
 function UITextField:setClearButtonMode(mode)
     runtime::invokeMethod(self:id(), "setClearButtonMode", mode);
+end
+
+function UITextField:text()
+    return runtime::invokeMethod(self:id(), "text");
+end
+
+function UITextField:setText(str)
+    runtime::invokeMethod(self:id(), str);
 end

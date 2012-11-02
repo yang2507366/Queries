@@ -24,7 +24,7 @@ function UITableViewCell:get(cellId)
     local cell = UIView:new(cellId);
     setmetatable(cell, self);
     
-    return cell:autorelease();
+    return cell;
 end
 
 -- instance methods

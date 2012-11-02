@@ -25,7 +25,7 @@ function UIViewController:get(vcId)
     local vc = Object:new(vcId);
     setmetatable(vc, self);
     
-    return vc:autorelease();
+    return vc;
 end
 
 -- instance methods

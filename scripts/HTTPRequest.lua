@@ -12,7 +12,7 @@ function HTTPRequest:start(URLString)
     
     event_proxy_http_request[requestId] = request;
     
-    return request:autorelease();
+    return request;
 end
 
 -- instance method

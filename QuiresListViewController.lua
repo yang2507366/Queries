@@ -1,7 +1,7 @@
 require "UIKit"
 require "QueryMobileNumberViewController"
 
-kTitleSearchMobileNumber = "搜索手机号码";
+kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchWord = "搜索单词";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchWord};
@@ -37,13 +37,13 @@ function QuiresListViewController:viewDidLoad()
         self:deselectRow(rowIndex);
         local index = rowIndex + 1;
         if kTitleList[index] == kTitleSearchMobileNumber then
-            po(kTitleSearchMobileNumber);
+            print(currentNC);
             
             local vc = QueryMobileNumberViewController:createWithTitle(kTitleSearchMobileNumber);
             function vc:viewDidPop()
                 vc:release();
             end
-            
+            print(currentNC:id());
             currentNC:pushViewController(vc, true);
         elseif kTitleList[index] == kTitleSearchWord then
             po(kTitleSearchWord);

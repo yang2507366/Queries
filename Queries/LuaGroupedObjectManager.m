@@ -88,6 +88,9 @@
     NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
     if(objectDictionary){
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
+        if(!tmp){
+            D_Log(@"%@ not exists", objectId);
+        }
         return tmp.object;
     }
     return nil;
@@ -99,8 +102,8 @@
     if(objectDictionary){
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
         if(tmp){
-            D_Log(@"retain object:%@", tmp.object);
-            tmp.referenceCount++;
+            ++tmp.referenceCount;
+            D_Log(@"retain object:%@, %@, retainCount:%d", tmp.object, objectId, tmp.referenceCount);
         }
     }
 }
@@ -111,8 +114,10 @@
     if(objectDictionary){
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
         if(tmp){
-            tmp.referenceCount--;
+            --tmp.referenceCount;
+            D_Log(@"release object:%@, %@, retainCount:%d", tmp.object, objectId, tmp.referenceCount);
             if(tmp.referenceCount == 0){
+                D_Log(@"remove object for release:%@", objectId);
                 [self removeObjectWithId:objectId group:group];
                 return YES;
             }

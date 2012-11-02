@@ -18,6 +18,12 @@ function dp(str)
     print(str);
 end
 
+function srelease(obj)
+    if obj then
+        obj:release();
+    end
+end
+
 -- print table
 local print = print
 local tconcat = table.concat

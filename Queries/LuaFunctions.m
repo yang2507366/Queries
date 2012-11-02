@@ -374,18 +374,15 @@ int ui_heightOfLabelText(lua_State *L)
 #pragma mark - string
 int ustring_substring(lua_State *L)
 {
-    NSString *string = luaStringParam(L, 1);
-    
-    NSString *beginIndex = luaStringParam(L, 2);
-    NSString *length = luaStringParam(L, 3);
+//    NSString *scriptId = luaStringParam(L, 1);
+    NSString *string = luaStringParam(L, 2);
+    string = [CodeUtils decodeUnicode:string];
+    NSInteger beginIndex = [luaStringParam(L, 3) intValue];
+    NSInteger endIndex = [luaStringParam(L, 4) intValue];
     
     NSString *resultString = @"";
-    if(string.length != 0 && beginIndex.length != 0 && length > 0){
-        NSInteger begin = [beginIndex intValue];
-        NSInteger legnth = [length intValue];
-        if(begin > 0 && length > 0){
-            resultString = [string substringWithRange:NSMakeRange(begin, legnth)];
-        }
+    if(string.length != 0 && beginIndex < string.length && endIndex < string.length && beginIndex < endIndex){
+        resultString = [string substringWithRange:NSMakeRange(beginIndex, endIndex - beginIndex)];
     }
     pushString(L, resultString);
     return 1;
@@ -393,7 +390,9 @@ int ustring_substring(lua_State *L)
 
 int ustring_length(lua_State *L)
 {
-    NSString *string = luaStringParam(L, 1);
+//    NSString *scriptId = luaStringParam(L, 1);
+    NSString *string = luaStringParam(L, 2);
+    string = [CodeUtils decodeUnicode:string];
     lua_pushnumber(L, [string length]);
     
     return 1;
@@ -401,11 +400,13 @@ int ustring_length(lua_State *L)
 
 int ustring_find(lua_State *L)
 {
-    NSString *string = luaStringParam(L, 1);
-    
-    NSString *targetStr = luaStringParam(L, 2);
-    NSInteger fromIndex = lua_tointeger(L, 3);
-    NSInteger reverse = lua_toboolean(L, 4);
+//    NSString *scriptId = luaStringParam(L, 1);
+    NSString *string = luaStringParam(L, 2);
+    string = [CodeUtils decodeUnicode:string];
+    NSString *targetStr = luaStringParam(L, 3);
+    targetStr = [CodeUtils decodeUnicode:targetStr];
+    NSInteger fromIndex = lua_tointeger(L, 4);
+    NSInteger reverse = lua_toboolean(L, 5);
     
     NSInteger location = -1;
     if(string.length > 0 && targetStr.length > 0 && fromIndex > -1 && fromIndex < string.length){
