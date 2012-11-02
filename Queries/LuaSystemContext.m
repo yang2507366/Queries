@@ -6,31 +6,29 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaApplication.h"
+#import "LuaSystemContext.h"
 #import "LuaScriptInteraction.h"
 #import "LuaInvoker.h"
 #import "LuaConstants.h"
 #import "UnicodeChecker.h"
 #import "SelfSupportChecker.h"
-#import "ImportSupportChecker.h"
 #import "PrefixGrammarChecker.h"
 #import "AutoreleasePoolChecker.h"
 #import "CodeUtils.h"
+#import "RequireReplaceChecker.h"
 
-@interface LuaApplication ()
+@interface LuaSystemContext ()
 
-@property(nonatomic, retain)NSMutableDictionary *originalScriptDictionary;
-@property(nonatomic, retain)NSMutableDictionary *runnableScriptDictionary;
-@property(nonatomic, retain)NSMutableDictionary *runningProgramDictionary;
 @property(nonatomic, retain)NSArray *scriptCheckers;
 
-@property(nonatomic, retain)UIWindow *window;
+@property(nonatomic, retain)LuaApp *currentApp;
+@property(nonatomic, retain)NSMutableDictionary *appDict;
 
 @end
 
-@implementation LuaApplication
+@implementation LuaSystemContext
 
-+ (id)sharedManager
++ (id)sharedApplication
 {
     static typeof(self) instance = nil;
     @synchronized(self.class){
@@ -43,11 +41,10 @@
 
 - (void)dealloc
 {
-    self.originalScriptDictionary = nil;
-    self.runnableScriptDictionary = nil;
-    self.runningProgramDictionary = nil;
     self.scriptCheckers = nil;
-    self.window = nil;
+    
+    self.currentApp = nil;
+    self.appDict = nil;
     [super dealloc];
 }
 
@@ -55,13 +52,11 @@
 {
     self = [super init];
     
-    self.originalScriptDictionary = [NSMutableDictionary dictionary];
-    self.runnableScriptDictionary = [NSMutableDictionary dictionary];
-    self.runningProgramDictionary = [NSMutableDictionary dictionary];
+    self.appDict = [NSMutableDictionary dictionary];
     self.scriptCheckers = [NSArray arrayWithObjects:
-//                           [[[ImportSupportChecker alloc] init] autorelease],
                            [[[UnicodeChecker alloc] init] autorelease],
 //                           [[AutoreleasePoolChecker new] autorelease],
+                           [[RequireReplaceChecker new] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
                            nil];
@@ -69,12 +64,12 @@
     return self;
 }
 
-- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
+- (NSString *)compileScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
     for(NSInteger i = 0; i < self.scriptCheckers.count; ++i){
         id<LuaScriptChecker> checker = [self.scriptCheckers objectAtIndex:i];
         if(script){
-            script = [checker checkScript:script scriptId:scriptId];
+            script = [checker checkScript:script scriptName:scriptName bundleId:bundleId];
         }else{
             return nil;
         }
@@ -82,126 +77,61 @@
     return script;
 }
 
-- (void)processAllScripts
+- (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId
 {
-    NSArray *allScriptIds = [self.originalScriptDictionary allKeys];
-    for(NSString *scriptId in allScriptIds){
-        [self processScriptWithScriptId:scriptId script:[self originalScriptWithScriptId:scriptId]];
-    }
-    
+    LuaApp *targetApp = [self.appDict objectForKey:appId];
+    NSString *originalScript = [targetApp.scriptBundle scriptWithScriptName:scriptName];
+    NSString *script = [self compileScript:originalScript scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
+    return script;
 }
 
-- (void)processScriptWithScriptId:(NSString *)scriptId script:(NSString *)script
+- (void)runApp:(LuaApp *)app
 {
-    script = [self checkScript:script scriptId:scriptId];
-    if(script.length == 0){
-        script = @"";
-    }
-    [self.runnableScriptDictionary setObject:script forKey:scriptId];
-}
-
-- (NSString *)originalScriptWithScriptId:(NSString *)scriptId
-{
-    return [self.originalScriptDictionary objectForKey:scriptId];
-}
-
-- (NSString *)scriptWithScriptId:(NSString *)scriptId
-{
-    return [self.runnableScriptDictionary objectForKey:scriptId];
-}
-
-+ (void)setProgram:(id<ScriptInteraction>)si forScriptId:(NSString *)scriptId
-{
-    [[[self.class sharedManager] runningProgramDictionary] setObject:si forKey:scriptId];
-}
-
-+ (id<ScriptInteraction>)programWithScriptId:(NSString *)scriptId
-{
-    id<ScriptInteraction> program = [[[self sharedManager] runningProgramDictionary] objectForKey:scriptId];
-    if(!program){
-        NSString *script = [self scriptWithScriptId:scriptId];
-//        D_Log(@"create script interaction for:%@\n%@", scriptId, script);
-        program = [[[LuaScriptInteraction alloc] initWithScript:script] autorelease];
-        [self setProgram:program forScriptId:scriptId];
-    }
-    return program;
-}
-
-+ (void)removeProgramWithScriptId:(NSString *)scriptId
-{
-    [[[self sharedManager] runningProgramDictionary] removeObjectForKey:scriptId];
-}
-
-+ (id<ScriptInteraction>)restartProgramWithScriptId:(NSString *)scritId
-{
-    [self removeProgramWithScriptId:scritId];
-    return [self programWithScriptId:scritId];
-}
-
-+ (void)run
-{
-    [self.class loadLuaScripts];
-    
-    LuaScriptInteraction *si = [self programWithScriptId:lua_main_file];
-    [si callFunction:@"main" callback:^(NSString *returnValue, NSString *error) {
-        D_Log(@"lua main:%@, %@", returnValue, error);
+    self.currentApp = app;
+    [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
+    NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
+                                    scriptName:lua_main_function
+                                      bundleId:[app.scriptBundle bundleId]];
+    id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
+    app.scriptInteraction = si;
+    [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {
         if(error.length != 0){
-            D_Log(@"%@", [CodeUtils decodeUnicode:si.script]);
+            NSLog(@"%@", error);
+            NSLog(@"%@", mainScript);
         }
     } parameters:nil];
 }
 
-+ (void)runOnWindow:(UIWindow *)window
+- (UIWindow *)currentWindow
 {
-    [[self.class sharedManager] setWindow:window];
-    [self run];
+    return [self.currentApp baseWindow];
 }
 
-+ (UIWindow *)window
++ (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId
 {
-    return [[self.class sharedManager] window];
+    return [[[self appDictionary] objectForKey:appId] scriptInteraction];
 }
 
-+ (void)loadLuaScripts
++ (NSMutableDictionary *)appDictionary
 {
-    // read all scripts, and save to original script dictionary as scriptId : script
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSArray *fileNames = [fileManager contentsOfDirectoryAtPath:path error:nil];
-    for(NSString *fileName in fileNames){
-        if([[fileName lowercaseString] hasSuffix:@".lua"]){
-            NSString *filePath = [path stringByAppendingPathComponent:fileName];
-            NSString *script = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-            if(script.length == 0){
-                script = @"";
-            }
-            [[[self.class sharedManager] originalScriptDictionary] setObject:script forKey:fileName];
-        }
-    }
-    // process scripts
-    [[self.class sharedManager] processAllScripts];
+    return [[self sharedApplication] appDict];
 }
 
-+ (NSString *)originalScriptWithScriptId:(NSString *)scriptId
++ (UIWindow *)currentWindow
 {
-    return [[LuaApplication sharedManager] originalScriptWithScriptId:scriptId];
+    return [[self sharedApplication] currentWindow];
 }
 
-+ (NSString *)scriptWithScriptId:(NSString *)identifier
++ (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId
 {
-    return [[LuaApplication sharedManager] scriptWithScriptId:identifier];
-}
-
-+ (NSString *)requireScriptWithScriptId:(NSString *)scriptId
-{
-    NSString *script = [self scriptWithScriptId:scriptId];
-    if(script.length != 0){
-        NSRange beginRange = [script rangeOfString:@"function" options:NSBackwardsSearch];
-        if(beginRange.location != NSNotFound){
-            script = [script substringToIndex:beginRange.location - 1];
-        }
-    }
+    NSString *script = [[self sharedApplication] scriptWithScriptName:scriptName appId:appId];
+    
     return script;
+}
+
++ (void)runApp:(LuaApp *)app
+{
+    [[self sharedApplication] runApp:app];
 }
 
 @end

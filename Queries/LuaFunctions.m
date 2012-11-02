@@ -9,7 +9,7 @@
 #include "LuaFunctions.h"
 #include <stdio.h>
 #import "HTTPRequestImpl.h"
-#import "LuaApplication.h"
+#import "LuaSystemContext.h"
 #import "LuaScriptInteraction.h"
 #import "UIRelatedImpl.h"
 #import "CodeUtils.h"
@@ -63,9 +63,9 @@ void pushString(lua_State *L, NSString *returnValue)
     lua_pushstring(L, [returnValue UTF8String]);
 }
 
-id<ScriptInteraction>scriptInteractionForScriptId(NSString *scriptId)
+id<ScriptInteraction>scriptInteractionForAppId(NSString *appId)
 {
-    id<ScriptInteraction> si = [LuaApplication programWithScriptId:scriptId];
+    id<ScriptInteraction> si = [LuaSystemContext scriptInteractionWithAppId:appId];
     
     return si;
 }
@@ -92,7 +92,7 @@ int http_request(lua_State *L)
     NSString *url = luaStringParam(L, 2);
     NSString *callbackFuncName = luaStringParam(L, 3);
     
-    LuaScriptInteraction *si = scriptInteractionForScriptId(scriptId);
+    LuaScriptInteraction *si = scriptInteractionForAppId(scriptId);
     NSString *requestId = [HTTPRequestImpl requestWithLuaState:si urlString:url
                                        callbackLuaFunctionName:callbackFuncName];
     pushString(L, requestId);
@@ -117,7 +117,7 @@ int ui_createButton(lua_State *L)
     NSUInteger type = lua_tointeger(L, 2);
     NSString *tappedFunc = luaStringParam(L, 3);
     
-    id<ScriptInteraction> si = scriptInteractionForScriptId(scriptId);
+    id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
     NSString *buttonId = [ButtonImpl createWithScriptId:scriptId si:si type:type tappedFunc:tappedFunc];
     pushString(L, buttonId);
     return 1;
@@ -212,7 +212,7 @@ int ui_alert(lua_State *L)
     NSString *funcName = luaStringParam(L, 4);
     
     [UIRelatedImpl alertWithTitle:title message:msg
-                        scriptInteraction:scriptInteractionForScriptId(scriptId)
+                        scriptInteraction:scriptInteractionForAppId(scriptId)
                          callbackFuncName:funcName];
     return 0;
 }
@@ -227,7 +227,7 @@ int ui_createViewController(lua_State *L)
     NSString *viewDidPopedFunc = luaStringParam(L, 5);
     
     NSString *vcId = [ViewControllerImpl createViewControllerWithScriptId:scriptId
-                                                                       si:scriptInteractionForScriptId(scriptId)
+                                                                       si:scriptInteractionForAppId(scriptId)
                                                                     title:title
                                                           viewDidLoadFunc:viewDidLoadFunc
                                                        viewWillAppearFunc:viewWillAppearFunc
@@ -244,7 +244,7 @@ int ui_createNavigationController(lua_State *L)
     NSString *rootViewControllerId = luaStringParam(L, 2);
     
     NSString *vcId = [NavigationControllerImpl createNavigationControllerWithScriptId:scriptId
-                                                                                   si:scriptInteractionForScriptId(scriptId)
+                                                                                   si:scriptInteractionForAppId(scriptId)
                                                                  rootViewControllerId:rootViewControllerId];
     pushString(L, vcId);
     return 1;
@@ -307,7 +307,7 @@ int ui_createWebView(lua_State *L)
     NSString *didErrorFunc = luaStringParam(L, 5);
     
     NSString *objId = [WebViewImpl createWebViewWithScriptId:scriptId
-                                                          si:scriptInteractionForScriptId(scriptId)
+                                                          si:scriptInteractionForAppId(scriptId)
                                                        frame:frame
                                              shouldStartFunc:shouldStartFunc
                                                  didLoadFunc:didLoadFunc
@@ -338,7 +338,7 @@ int ui_createTableView(lua_State *L)
     NSString *heightForRowFunc = luaStringParam(L, 6);
     
     NSString *tableViewId = [TableViewImpl createTableViewWithScriptId:scriptId
-                                                                    si:scriptInteractionForScriptId(scriptId)
+                                                                    si:scriptInteractionForAppId(scriptId)
                                                                  frame:frame
                                                       numberOfRowsFunc:numOfRowsFunc
                                                           wrapCellFunc:wrapCellFunc
@@ -357,7 +357,7 @@ int ui_createBarButtonItem(lua_State *L)
     NSString *tapFunc = luaStringParam(L, 3);
     
     pushString(L, [UIBarButtonItemImpl createBarButtonItemWithScriptId:scriptId
-                                                                    si:scriptInteractionForScriptId(scriptId)
+                                                                    si:scriptInteractionForAppId(scriptId)
                                                                  title:title
                                                           callbackFunc:tapFunc]);
     return 1;
@@ -391,7 +391,7 @@ int ui_dialog(lua_State *L)
         [titleList addObject:luaStringParam(L, i)];
     }
     
-    id<ScriptInteraction> si = scriptInteractionForScriptId(scriptId);
+    id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
     [DialogTools dialogWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
         [si callFunction:callbackFunc parameters:[NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
     } cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];

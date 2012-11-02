@@ -93,7 +93,7 @@
     return resultString;
 }
 
-- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
+- (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
     return [self methodPrefixGrammarCheck:script];
 }

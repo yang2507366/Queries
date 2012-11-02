@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ScriptBoundle <NSObject>
+@protocol ScriptBundle <NSObject>
+
+- (NSString *)bundleId;
+- (NSString *)scriptWithScriptName:(NSString *)scriptName;
+- (NSString *)mainScript;
 
 @end

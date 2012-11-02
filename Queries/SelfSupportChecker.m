@@ -11,9 +11,11 @@
 
 @implementation SelfSupportChecker
 
-- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
+- (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName  bundleId:(NSString *)bundleId
 {
-    script = [NSString stringWithFormat:@"%@\nfunction %@\n\treturn \"%@\";\nend\n", script, script_id_function_name, scriptId];
+    if([scriptName isEqualToString:lua_main_file]){
+        script = [NSString stringWithFormat:@"%@\nfunction %@\n\treturn \"%@\";\nend\n", script, script_id_function_name, bundleId];
+    }
     script = [script stringByReplacingOccurrencesOfString:lua_self withString:script_id_function_name];
     return script;
 }

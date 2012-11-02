@@ -11,7 +11,7 @@
 
 @implementation DotGrammarChecker
 
-- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
+- (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
     NSRange beginRange = [script rangeOfString:lua_dot_grammar];
     NSRange endRange = NSMakeRange(0, 0);

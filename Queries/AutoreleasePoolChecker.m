@@ -7,48 +7,7 @@
 //
 
 #import "AutoreleasePoolChecker.h"
-
-@interface NSString (Substring)
-
-- (NSString *)substringWithBeginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex;
-- (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex reverse:(BOOL)reverse;
-- (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex;
-- (NSInteger)find:(NSString *)str;
-
-@end
-
-@implementation NSString (Substring)
-
-- (NSString *)substringWithBeginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex
-{
-    if(endIndex >= beginIndex){
-        return [self substringWithRange:NSMakeRange(beginIndex, endIndex - beginIndex)];
-    }
-    return nil;
-}
-
-- (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex reverse:(BOOL)reverse
-{
-    if(fromInex < self.length){
-        NSRange range = [self rangeOfString:str
-                                    options:reverse ? NSBackwardsSearch : NSCaseInsensitiveSearch
-                                      range:NSMakeRange(fromInex, self.length - fromInex)];
-        return range.location == NSNotFound ? -1 : range.location;
-    }
-    return -1;
-}
-
-- (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex
-{
-    return [self find:str fromIndex:fromInex reverse:NO];
-}
-
-- (NSInteger)find:(NSString *)str
-{
-    return [self find:str fromIndex:0];
-}
-
-@end
+#import "NSString+Substring.h"
 
 typedef enum{
     StackInfoTypeFunction,
@@ -131,9 +90,9 @@ typedef enum{
     return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122);
 }
 
-- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId
+- (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
-    if([scriptId isEqualToString:@"AutoreleasePool.lua"]){
+    if([scriptName isEqualToString:@"AutoreleasePool.lua"]){
         return script;
     }
 //    NSLog(@"****************************%@", scriptId);
@@ -232,7 +191,7 @@ typedef enum{
             fromIndex = endPosition + endString.length;
         }
     }
-    NSLog(@"%@, %@", scriptId, functionPositionList);
+    NSLog(@"%@, %@", scriptName, functionPositionList);
 //    NSMutableString *resultScript = [NSMutableString string];
 //    if(functionPositionList.count != 0){
 //        NSInteger beginIndex = 0;

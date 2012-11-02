@@ -11,10 +11,12 @@
 #import "MemoryTracer.h"
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
-#import "LuaApplication.h"
+#import "LuaSystemContext.h"
 #import "MethodInvokerForLua.h"
 #import "LuaGroupedObjectManager.h"
 #import "CodeUtils.h"
+#import "ApplicationScriptBundle.h"
+#import "LuaApp.h"
 
 @implementation AppDelegate
 
@@ -37,7 +39,8 @@
 //        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
 //    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
     
-    [LuaApplication runOnWindow:self.window];
+    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
+    [LuaSystemContext runApp:app];
     
 //    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
 //                                                       className:@"UIColor"

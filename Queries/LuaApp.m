@@ -7,7 +7,32 @@
 //
 
 #import "LuaApp.h"
+#import "LuaScriptInteraction.h"
+
+@interface LuaApp ()
+
+@end
+
 
 @implementation LuaApp
+
+- (void)dealloc
+{
+    self.scriptInteraction = nil;
+    [_scriptBundle release];
+    [_baseWindow release];
+    
+    [super dealloc];
+}
+
+- (id)initWithScriptBundle:(id<ScriptBundle>)scriptBundle baseWindow:(UIWindow *)window
+{
+    self = [super init];
+    
+    _scriptBundle = [scriptBundle retain];
+    _baseWindow = [window retain];
+    
+    return self;
+}
 
 @end

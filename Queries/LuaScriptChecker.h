@@ -8,6 +8,6 @@
 
 @protocol LuaScriptChecker <NSObject>
 
-- (NSString *)checkScript:(NSString *)script scriptId:(NSString *)scriptId;
+- (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId;
 
 @end

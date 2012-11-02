@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ScriptBundle.h"
 
-@interface ApplicationScriptBundle : NSObject
+@interface ApplicationScriptBundle : NSObject <ScriptBundle>
 
 @end

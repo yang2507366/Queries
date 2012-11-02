@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LuaScriptChecker.h"
 
-@interface RequireReplaceChecker : NSObject
+@interface RequireReplaceChecker : NSObject <LuaScriptChecker>
 
 @end

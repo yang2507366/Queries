@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString_Substring : NSObject
+@interface NSString (Substring)
+
+- (NSString *)substringWithBeginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex;
+- (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex reverse:(BOOL)reverse;
+- (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex;
+- (NSInteger)find:(NSString *)str;
 
 @end

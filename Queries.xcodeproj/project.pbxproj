@@ -64,7 +64,6 @@
 		3EA309CD164145FB0013A6D1 /* QuiresListViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
-		3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */; };
 		3EC0BAA31633CB060074D22B /* ViewControllerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */; };
 		3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */; };
 		3EC0BAA91633EA200074D22B /* LuaObjectManagerLegacy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */; };
@@ -74,6 +73,10 @@
 		3EC2CBC4163CCD1D00E83E10 /* Utils.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC2CBC1163CCD1D00E83E10 /* Utils.lua */; };
 		3EC357B81642C242009611C8 /* HTTPRequest.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC357B71642C242009611C8 /* HTTPRequest.lua */; };
 		3EC357BA1642C757009611C8 /* Network.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC357B91642C757009611C8 /* Network.lua */; };
+		3EC357C31643E288009611C8 /* ApplicationScriptBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */; };
+		3EC357C61643EDE7009611C8 /* LuaApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C51643EDE7009611C8 /* LuaApp.m */; };
+		3EC357CA16440442009611C8 /* RequireReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C916440442009611C8 /* RequireReplaceChecker.m */; };
+		3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CC16440519009611C8 /* NSString+Substring.m */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
@@ -109,7 +112,7 @@
 		3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
 		3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */; };
 		3EE36D711632AA7F00BB5D02 /* HTTPRequestImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */; };
-		3EE36D781632B2CE00BB5D02 /* LuaApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D771632B2CE00BB5D02 /* LuaApplication.m */; };
+		3EE36D781632B2CE00BB5D02 /* LuaSystemContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D771632B2CE00BB5D02 /* LuaSystemContext.m */; };
 		3EE3B2A21631987F00C77F85 /* MemoryTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A11631987F00C77F85 /* MemoryTracer.m */; };
 		3EE3B2AC1631B58200C77F85 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AB1631B58200C77F85 /* Toast.m */; };
 		3EE3B2BD1631B5DA00C77F85 /* CodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AE1631B5DA00C77F85 /* CodeUtils.m */; };
@@ -219,8 +222,6 @@
 		3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnicodeChecker.m; sourceTree = "<group>"; };
 		3EC0BA9B1633BA4C0074D22B /* SelfSupportChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfSupportChecker.h; sourceTree = "<group>"; };
 		3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfSupportChecker.m; sourceTree = "<group>"; };
-		3EC0BA9E1633BBFD0074D22B /* ImportSupportChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportSupportChecker.h; sourceTree = "<group>"; };
-		3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportSupportChecker.m; sourceTree = "<group>"; };
 		3EC0BAA11633CB060074D22B /* ViewControllerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerImpl.h; sourceTree = "<group>"; };
 		3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerImpl.m; sourceTree = "<group>"; };
 		3EC0BAA41633E99F0074D22B /* TextFieldImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldImpl.h; sourceTree = "<group>"; };
@@ -234,6 +235,15 @@
 		3EC2CBC1163CCD1D00E83E10 /* Utils.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Utils.lua; path = scripts/Utils.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC357B71642C242009611C8 /* HTTPRequest.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HTTPRequest.lua; path = scripts/HTTPRequest.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC357B91642C757009611C8 /* Network.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Network.lua; path = scripts/Network.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EC357BF1643E1BC009611C8 /* ScriptBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptBundle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		3EC357C11643E288009611C8 /* ApplicationScriptBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationScriptBundle.h; sourceTree = "<group>"; };
+		3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationScriptBundle.m; sourceTree = "<group>"; };
+		3EC357C41643EDE7009611C8 /* LuaApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaApp.h; sourceTree = "<group>"; };
+		3EC357C51643EDE7009611C8 /* LuaApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaApp.m; sourceTree = "<group>"; };
+		3EC357C816440441009611C8 /* RequireReplaceChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireReplaceChecker.h; sourceTree = "<group>"; };
+		3EC357C916440442009611C8 /* RequireReplaceChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireReplaceChecker.m; sourceTree = "<group>"; };
+		3EC357CB16440519009611C8 /* NSString+Substring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Substring.h"; sourceTree = "<group>"; };
+		3EC357CC16440519009611C8 /* NSString+Substring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Substring.m"; sourceTree = "<group>"; };
 		3ED0C77E16354F2D00A3E33F /* TableViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewImpl.h; sourceTree = "<group>"; };
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
@@ -298,8 +308,8 @@
 		3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaFunctions.m; sourceTree = "<group>"; };
 		3EE36D6F1632AA7F00BB5D02 /* HTTPRequestImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequestImpl.h; sourceTree = "<group>"; };
 		3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequestImpl.m; sourceTree = "<group>"; };
-		3EE36D761632B2CD00BB5D02 /* LuaApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaApplication.h; sourceTree = "<group>"; };
-		3EE36D771632B2CE00BB5D02 /* LuaApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaApplication.m; sourceTree = "<group>"; };
+		3EE36D761632B2CD00BB5D02 /* LuaSystemContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaSystemContext.h; sourceTree = "<group>"; };
+		3EE36D771632B2CE00BB5D02 /* LuaSystemContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaSystemContext.m; sourceTree = "<group>"; };
 		3EE3B2A01631987F00C77F85 /* MemoryTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryTracer.h; sourceTree = "<group>"; };
 		3EE3B2A11631987F00C77F85 /* MemoryTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryTracer.m; sourceTree = "<group>"; };
 		3EE3B2AA1631B58200C77F85 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
@@ -464,6 +474,8 @@
 			children = (
 				3E633989162D91DA00B63328 /* GiveRightsOfOrientationBack.h */,
 				3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */,
+				3EC357CB16440519009611C8 /* NSString+Substring.h */,
+				3EC357CC16440519009611C8 /* NSString+Substring.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -556,14 +568,14 @@
 				3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */,
 				3EC0BA9B1633BA4C0074D22B /* SelfSupportChecker.h */,
 				3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */,
-				3EC0BA9E1633BBFD0074D22B /* ImportSupportChecker.h */,
-				3EC0BA9F1633BBFD0074D22B /* ImportSupportChecker.m */,
 				3E094F1816351CEA006F90A9 /* PrefixGrammarChecker.h */,
 				3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */,
 				3E4EBD27163814BC00629387 /* DotGrammarChecker.h */,
 				3E4EBD28163814BD00629387 /* DotGrammarChecker.m */,
 				3E027993163F64C800586EC8 /* AutoreleasePoolChecker.h */,
 				3E027994163F64C800586EC8 /* AutoreleasePoolChecker.m */,
+				3EC357C816440441009611C8 /* RequireReplaceChecker.h */,
+				3EC357C916440442009611C8 /* RequireReplaceChecker.m */,
 			);
 			name = LuaScriptChecker;
 			sourceTree = "<group>";
@@ -703,8 +715,8 @@
 				3EE3B32B163235E800C77F85 /* LuaScriptInteraction.h */,
 				3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */,
 				3EE36D6616324A9400BB5D02 /* LuaScriptInvokeFilter.h */,
-				3EE36D761632B2CD00BB5D02 /* LuaApplication.h */,
-				3EE36D771632B2CE00BB5D02 /* LuaApplication.m */,
+				3EE36D761632B2CD00BB5D02 /* LuaSystemContext.h */,
+				3EE36D771632B2CE00BB5D02 /* LuaSystemContext.m */,
 				3EE36D6816324B9000BB5D02 /* UnicodeScriptInvokeFilter.h */,
 				3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */,
 				3E8C453D1634361400468A7E /* LuaGroupedObjectManager.h */,
@@ -712,6 +724,11 @@
 				3E8C4540163438CB00468A7E /* ObjectWrapper.h */,
 				3E8C4541163438CB00468A7E /* ObjectWrapper.m */,
 				3EE3B329163232EE00C77F85 /* ScriptInteraction.h */,
+				3EC357BF1643E1BC009611C8 /* ScriptBundle.h */,
+				3EC357C11643E288009611C8 /* ApplicationScriptBundle.h */,
+				3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */,
+				3EC357C41643EDE7009611C8 /* LuaApp.h */,
+				3EC357C51643EDE7009611C8 /* LuaApp.m */,
 			);
 			name = Lua;
 			sourceTree = "<group>";
@@ -861,14 +878,13 @@
 				3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */,
 				3EE36D6D163255FB00BB5D02 /* LuaFunctions.m in Sources */,
 				3EE36D711632AA7F00BB5D02 /* HTTPRequestImpl.m in Sources */,
-				3EE36D781632B2CE00BB5D02 /* LuaApplication.m in Sources */,
+				3EE36D781632B2CE00BB5D02 /* LuaSystemContext.m in Sources */,
 				3E06D5AE1632C2490013DCF7 /* LuaInvoker.m in Sources */,
 				3E06D5B21632C94A0013DCF7 /* UIRelatedImpl.m in Sources */,
 				3E06D5C21632E2880013DCF7 /* ProviderPool.m in Sources */,
 				3E06D5C51632E3650013DCF7 /* HTTPRequest.m in Sources */,
 				3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */,
 				3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */,
-				3EC0BAA01633BBFD0074D22B /* ImportSupportChecker.m in Sources */,
 				3EC0BAA31633CB060074D22B /* ViewControllerImpl.m in Sources */,
 				3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */,
 				3EC0BAA91633EA200074D22B /* LuaObjectManagerLegacy.m in Sources */,
@@ -921,6 +937,10 @@
 				3ED77342163E2DD000E5C9A9 /* print.c in Sources */,
 				3E027995163F64C800586EC8 /* AutoreleasePoolChecker.m in Sources */,
 				3E1A7BD71643B6E700D9EE55 /* DialogImpl.m in Sources */,
+				3EC357C31643E288009611C8 /* ApplicationScriptBundle.m in Sources */,
+				3EC357C61643EDE7009611C8 /* LuaApp.m in Sources */,
+				3EC357CA16440442009611C8 /* RequireReplaceChecker.m in Sources */,
+				3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
