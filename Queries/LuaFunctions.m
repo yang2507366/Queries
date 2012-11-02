@@ -27,6 +27,7 @@
 #import "LuaConstants.h"
 #import "LuaGroupedObjectManager.h"
 #import "RuntimeUtils.h"
+#import "DialogTools.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -369,6 +370,28 @@ int ui_heightOfLabelText(lua_State *L)
     
     lua_pushnumber(L, size.height);
     return 1;
+}
+
+int ui_dialog(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *title = luaStringParam(L, 2);
+    NSString *message = luaStringParam(L, 3);
+    NSString *cancelButtonTitle = luaStringParam(L, 4);
+    NSString *callbackFunc = luaStringParam(L, 5);
+    
+    NSInteger numberOfArgs = lua_gettop(L);
+    NSMutableArray *titleList = [NSMutableArray array];
+    for(NSInteger i = 6; i <= numberOfArgs; ++i){
+        [titleList addObject:luaStringParam(L, i)];
+    }
+    
+    id<ScriptInteraction> si = scriptInteractionForScriptId(scriptId);
+    [DialogTools dialogWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
+        [si callFunction:callbackFunc parameters:[NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
+    } cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
+    
+    return 0;
 }
 
 #pragma mark - string
@@ -841,6 +864,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_createBarButtonItem", ui_createBarButtonItem);
 #pragma mark - ui::heightOfLabelText
     pushFunctionToLua(L, "ui_heightOfLabelText", ui_heightOfLabelText);
+#pragma mark - ui::dialog
+    pushFunctionToLua(L, "ui_dialog", ui_dialog);
 #pragma mark - ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
 #pragma mark - ustring::length

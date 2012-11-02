@@ -48,8 +48,13 @@ function QuiresListViewController:viewDidLoad()
             currentNC:pushViewController(vc, true);
         elseif kTitleList[index] == kTitleSearchWord then
             po(kTitleSearchWord);
+            ui::dialog("title", "message", "cancel", "callbackFunc", "button1", "button2");
         end
         ap_release();
     end
     ap_release();
+end
+
+function callbackFunc(buttonIndex, buttonTitle)
+    print(buttonIndex..","..buttonTitle);
 end

@@ -12,6 +12,16 @@ typedef void(^DialogCompletion)(NSInteger buttonIndex, NSString *buttonTitle);
 
 @interface DialogTools : NSObject
 
-+ (void)dialogWithTitle:(NSString *)title message:(NSString *)message completion:(DialogCompletion)completion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
++ (void)dialogWithTitle:(NSString *)title
+                message:(NSString *)message
+             completion:(DialogCompletion)completion
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+      otherButtonTitles:(NSString *)otherButtonTitles, ...;
+
++ (void)dialogWithTitle:(NSString *)title
+                message:(NSString *)message
+             completion:(DialogCompletion)completion
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+   otherButtonTitleList:(NSArray *)titleList;
 
 @end

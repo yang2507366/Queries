@@ -20,6 +20,7 @@
 		3E094F0C1634F145006F90A9 /* LabelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F0B1634F145006F90A9 /* LabelImpl.m */; };
 		3E094F1716351532006F90A9 /* NavigationControllerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1616351531006F90A9 /* NavigationControllerImpl.m */; };
 		3E094F1A16351CEA006F90A9 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
+		3E1A7BD71643B6E700D9EE55 /* DialogImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1A7BD61643B6E600D9EE55 /* DialogImpl.m */; };
 		3E2D04341640DDDA00EDCFDA /* UIButton.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D04331640DDDA00EDCFDA /* UIButton.lua */; };
 		3E2D043B1640F3BD00EDCFDA /* UITableViewCell.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */; };
 		3E2D043D1640F79E00EDCFDA /* UITableView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D043C1640F79E00EDCFDA /* UITableView.lua */; };
@@ -150,6 +151,8 @@
 		3E094F1616351531006F90A9 /* NavigationControllerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationControllerImpl.m; sourceTree = "<group>"; };
 		3E094F1816351CEA006F90A9 /* PrefixGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixGrammarChecker.h; sourceTree = "<group>"; };
 		3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefixGrammarChecker.m; sourceTree = "<group>"; };
+		3E1A7BD51643B6E600D9EE55 /* DialogImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogImpl.h; sourceTree = "<group>"; };
+		3E1A7BD61643B6E600D9EE55 /* DialogImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogImpl.m; sourceTree = "<group>"; };
 		3E2D04331640DDDA00EDCFDA /* UIButton.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIButton.lua; path = scripts/UIButton.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E2D04391640E84200EDCFDA /* Implementable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Implementable.h; sourceTree = "<group>"; };
 		3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITableViewCell.lua; path = scripts/UITableViewCell.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
@@ -660,6 +663,8 @@
 				3ED0C7831635502700A3E33F /* ArrayImpl.m */,
 				3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */,
 				3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */,
+				3E1A7BD51643B6E600D9EE55 /* DialogImpl.h */,
+				3E1A7BD61643B6E600D9EE55 /* DialogImpl.m */,
 			);
 			name = UIKitImpl;
 			sourceTree = "<group>";
@@ -911,6 +916,7 @@
 				3ED77341163E2DD000E5C9A9 /* lzio.c in Sources */,
 				3ED77342163E2DD000E5C9A9 /* print.c in Sources */,
 				3E027995163F64C800586EC8 /* AutoreleasePoolChecker.m in Sources */,
+				3E1A7BD71643B6E700D9EE55 /* DialogImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

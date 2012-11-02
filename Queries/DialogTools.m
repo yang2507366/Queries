@@ -50,7 +50,11 @@
 
 @implementation DialogTools
 
-+ (void)dialogWithTitle:(NSString *)title message:(NSString *)message completion:(DialogCompletion)completion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...
++ (void)dialogWithTitle:(NSString *)title
+                message:(NSString *)message
+             completion:(DialogCompletion)completion
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+      otherButtonTitles:(NSString *)otherButtonTitles, ...
 {
     NSMutableArray *titleList = [NSMutableArray array];
     va_list params;
@@ -59,6 +63,15 @@
         [titleList addObject:item];
     }
     va_end(params);
+    [self dialogWithTitle:title message:message completion:completion cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
+}
+
++ (void)dialogWithTitle:(NSString *)title
+                message:(NSString *)message
+             completion:(DialogCompletion)completion
+      cancelButtonTitle:(NSString *)cancelButtonTitle
+   otherButtonTitleList:(NSArray *)titleList
+{
     [[[[Dialog alloc] init] autorelease] dialogWithTitle:title
                                                  message:message
                                               completion:completion
