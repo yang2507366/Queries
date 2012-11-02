@@ -41,8 +41,8 @@ function UIView:setFrame(x, y, width, height)
 end
 
 function UIView:frame()
-    local frame = ui:getViewFrame(self:id());
-    return frame;
+    local x, y, width, height = ui::getViewFrame(self:id());
+    return x, y, width, height;
 end
 
 function UIView:bounds()

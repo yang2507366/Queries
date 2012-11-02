@@ -10,6 +10,11 @@ UITableViewCellSeparatorStyleNone = 0;
 UITableViewCellSeparatorStyleSingleLine = 1;
 UITableViewCellSeparatorStyleSingleLineEtched = 2;
 
+UITableViewCellAccessoryNone = 0;
+UITableViewCellAccessoryDisclosureIndicator = 1;
+UITableViewCellAccessoryDetailDisclosureButton = 2;
+UITableViewCellAccessoryCheckmark = 3;
+
 -- constructor
 function UITableViewCell:create(reuseIdentifier)
     if reuseIdentifier == nil then
@@ -37,4 +42,12 @@ function UITableViewCell:contentView()
     local viewId = runtime::invokeMethod(self:id(), "contentView");
     
     return UIView:get(viewId);
+end
+
+function UITableViewCell:setAccessoryType(accessoryType)
+    runtime::invokeMethod(self:id(), "setAccessoryType", accessoryType);
+end
+
+function UITableViewCell:accessoryType()
+    return runtime::invokeMethod(self:id(), "accessoryType");
 end

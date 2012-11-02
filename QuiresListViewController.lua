@@ -34,8 +34,9 @@ function QuiresListViewController:viewDidLoad()
             label = UILabel:createWithTitle("");
             label:setTag(1001);
             local x, y, width, height = cell:contentView():bounds();
-            label:setFrame(20, 10, width, label:font():lineHeight());
+            label:setFrame(10, 10, width, label:font():lineHeight());
             cell:contentView():addSubview(label);
+            cell:setAccessoryType(UITableViewCellAccessoryDisclosureIndicator);
         else
             label = cell:contentView():viewWithTag(1001, UILabel);
         end
