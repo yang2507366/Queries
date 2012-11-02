@@ -1,10 +1,11 @@
 require "UIKit"
 require "QueryMobileNumberViewController"
+require "QueryPostcodeViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
-kTitleSearchWord = "搜索单词";
+kTitleSearchPostcode = "邮政编码";
 
-kTitleList = {kTitleSearchMobileNumber, kTitleSearchWord};
+kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode};
 
 QuiresListViewController = {};
 QuiresListViewController.__index = QuiresListViewController;
@@ -22,13 +23,26 @@ function QuiresListViewController:viewDidLoad()
     
     local identifier = "id_";
     function listTableView:cellForRowAtIndex(index)
+        ap_new();
         local cell = self:dequeueReusableCellWithIdentifier(identifier);
+        
+        local label = nil;
         if cell == nil then
             cell = UITableViewCell:create(identifier);
             cell:textLabel():setFont(UIFont:createWithFontSize(16));
+            
+            label = UILabel:createWithTitle("");
+            label:setTag(1001);
+            local x, y, width, height = cell:contentView():bounds();
+            label:setFrame(20, 10, width, label:font():lineHeight());
+            cell:contentView():addSubview(label);
+        else
+            label = cell:contentView():viewWithTag(1001, UILabel);
         end
-        ap_new();
-        cell:textLabel():setText(kTitleList[index + 1]);
+        cell:retain();
+        
+        label:setText(kTitleList[index + 1]);
+        
         ap_release();
         return cell;
     end
@@ -39,16 +53,19 @@ function QuiresListViewController:viewDidLoad()
         self:deselectRow(rowIndex);
         local index = rowIndex + 1;
         if kTitleList[index] == kTitleSearchMobileNumber then
-            print(currentNC);
-            
+            -- 手机号码
             local vc = QueryMobileNumberViewController:createWithTitle(kTitleSearchMobileNumber):retain();
             function vc:viewDidPop()
                 vc:release();
             end
             currentNC:pushViewController(vc, true);
-        elseif kTitleList[index] == kTitleSearchWord then
-            po(kTitleSearchWord);
-            ui::dialog("title", "message", "cancel", "callbackFunc", "button1", "button2");
+        elseif kTitleList[index] == kTitleSearchPostcode then
+            -- 邮政编码
+            local vc = QueryPostcodeViewController:createWithTitle(kTitleSearchPostcode):retain();
+            function vc:viewDidPop()
+                vc:release();
+            end
+            currentNC:pushViewController(vc, true);
         end
         ap_release();
     end

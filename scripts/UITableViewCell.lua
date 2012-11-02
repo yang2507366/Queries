@@ -30,5 +30,11 @@ end
 -- instance methods
 function UITableViewCell:textLabel()
     local labelId = runtime::invokeMethod(self:id(), "textLabel");
-    return UILabel:get(labelId):autorelease();
+    return UILabel:get(labelId);
+end
+
+function UITableViewCell:contentView()
+    local viewId = runtime::invokeMethod(self:id(), "contentView");
+    
+    return UIView:get(viewId);
 end

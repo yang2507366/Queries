@@ -79,3 +79,21 @@ end
 function UIView:becomeFirstResponder()
     runtime::invokeMethod(self:id(), "becomeFirstResponder");
 end
+
+function UIView:viewWithTag(tag, viewType)
+    local viewId = runtime::invokeMethod(self:id(), "viewWithTag:", tag);
+    local view = UIView:get(viewId);
+    if viewType then
+        setmetatable(view, viewType);
+    end
+    return view;
+end
+
+function UIView:setTag(tag)
+    runtime::invokeMethod(self:id(), "setTag:", tag);
+end
+
+function UIView:tag()
+    local tag = runtime::invokeMethod(self:id(), "tag");
+    return tonumber(tag);
+end
