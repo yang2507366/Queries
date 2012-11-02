@@ -107,9 +107,14 @@
     return [self.currentApp baseWindow];
 }
 
+- (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId
+{
+    return [[self.appDict objectForKey:appId] scriptInteraction];
+}
+
 + (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId
 {
-    return [[[self appDictionary] objectForKey:appId] scriptInteraction];
+    return [[self sharedApplication] scriptInteractionWithAppId:appId];
 }
 
 + (NSMutableDictionary *)appDictionary
