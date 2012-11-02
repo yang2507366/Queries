@@ -31,6 +31,7 @@
     self.numberOfRowsBlock = nil;
     self.wrapCellBlock = nil;
     self.didSelectCellBlock = nil;
+    self.heightForRowBlock = nil;
     [super dealloc];
 }
 

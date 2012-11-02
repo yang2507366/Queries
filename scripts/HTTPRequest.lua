@@ -7,7 +7,7 @@ setmetatable(HTTPRequest, Object);
 -- constructor
 function HTTPRequest:start(URLString)
     local requestId = http::request(URLString, "event_http_request_response");
-    local request = Object:new(request);
+    local request = Object:new(requestId);
     setmetatable(request, self);
     
     event_proxy_http_request[requestId] = request;
@@ -18,6 +18,10 @@ end
 -- instance method
 function HTTPRequest:cancel()
     http:cancel(self:id());
+end
+
+function HTTPRequest:release()
+    print("http release()");
 end
 
 -- event

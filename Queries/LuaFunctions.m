@@ -419,6 +419,20 @@ int ustring_find(lua_State *L)
     return 1;
 }
 
+int ustring_encodeURL(lua_State *L)
+{
+//    NSString *scriptId = luaStringParam(L, 1);
+    NSString *str = luaStringParam(L, 2);
+    str = [CodeUtils decodeUnicode:str];
+    if(str.length != 0){
+        str = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)str, NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
+        str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    pushString(L, str);
+    
+    return 1;
+}
+
 #pragma mark - script
 int script_runScriptWithId(lua_State *L)
 {

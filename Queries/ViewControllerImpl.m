@@ -22,6 +22,7 @@
     self.viewDidLoadBlock = nil;
     self.viewWillAppearBlock = nil;
     self.viewShouldPopBlock = nil;
+    self.viewDidPopedBlock = nil;
     
     self.group = nil;
     self.objectId = nil;

@@ -11,13 +11,11 @@ setmetatable(QueryMobileNumberViewController, UIViewController);
 local tableView;
 local button;
 local textField;
-local httpRequest;
 
 function QueryMobileNumberViewController:dealloc()
     srelease(tableView);
     srelease(button);
     srelease(textField);
-    srelease(httpRequest);
 end
 
 function QueryMobileNumberViewController:viewDidLoad()
@@ -42,20 +40,26 @@ function QueryMobileNumberViewController:viewDidLoad()
     button:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     tmpView:addSubview(button);
     function button:tapped()
+        ap_new();
         local number = textField:text();
         if ustring::length(number) ~= 11 then
             ui::alert("请输入正确的手机号码");
+            textField:becomeFirstResponder();
+            ap_release();
             return;
         end
         httpRequest = HTTPRequest:start("http://wap.ip138.com/sim_search.asp?mobile="..number);
         
         function httpRequest:response(responseString, errorString)
+            ap_new();
             if ustring::length(errorString) == 0 then
                 anylyzeResponse(responseString);
             else
                 ui::alert("网络连接错误");
             end
+            ap_release();
         end
+        ap_release();
     end
     
     tableView = UITableView:create():retain();
@@ -67,6 +71,7 @@ function QueryMobileNumberViewController:viewDidLoad()
 end
 
 function anylyzeResponse(str)
+    ap_new();
     local beginIndex = ustring::find(str, "归属地：");
     if beginIndex ~= -1 then
         local endIndex = ustring::find(str, "<br/>", beginIndex);
@@ -77,4 +82,5 @@ function anylyzeResponse(str)
         end
     end
     ui::alert("数据解析出错");
+    ap_release();
 end

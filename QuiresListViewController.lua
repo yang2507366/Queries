@@ -25,6 +25,7 @@ function QuiresListViewController:viewDidLoad()
         local cell = self:dequeueReusableCellWithIdentifier(identifier);
         if cell == nil then
             cell = UITableViewCell:create(identifier);
+            cell:textLabel():setFont(UIFont:createWithFontSize(16));
         end
         ap_new();
         cell:textLabel():setText(kTitleList[index + 1]);
@@ -34,20 +35,21 @@ function QuiresListViewController:viewDidLoad()
     
     local currentNC = self:navigationController():retain();
     function listTableView:didSelectCellAtIndex(rowIndex)
+        ap_new();
         self:deselectRow(rowIndex);
         local index = rowIndex + 1;
         if kTitleList[index] == kTitleSearchMobileNumber then
             print(currentNC);
             
-            local vc = QueryMobileNumberViewController:createWithTitle(kTitleSearchMobileNumber);
+            local vc = QueryMobileNumberViewController:createWithTitle(kTitleSearchMobileNumber):retain();
             function vc:viewDidPop()
                 vc:release();
             end
-            print(currentNC:id());
             currentNC:pushViewController(vc, true);
         elseif kTitleList[index] == kTitleSearchWord then
             po(kTitleSearchWord);
         end
+        ap_release();
     end
     ap_release();
 end
