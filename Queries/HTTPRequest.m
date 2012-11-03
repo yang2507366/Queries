@@ -11,6 +11,7 @@
 @interface HTTPRequest () <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 
 @property(nonatomic, copy)void (^callback)(NSString *, NSError *);
+@property(nonatomic, copy)void(^returnDataCallback)(NSData *, NSError *);
 @property(nonatomic, retain)NSURLConnection *URLConnection;
 @property(nonatomic, retain)NSMutableData *responseData;
 @property(nonatomic, assign)BOOL complete;
@@ -19,11 +20,12 @@
 
 @implementation HTTPRequest
 
-+ (void)requestWithURLString:(NSString *)URLString identifier:(NSString *)identifier completion:(void (^)(NSString *, NSError *))completion
++ (id)requestWithURLString:(NSString *)URLString identifier:(NSString *)identifier completion:(void (^)(NSString *, NSError *))completion
 {
     HTTPRequest *req = [[[HTTPRequest alloc] init] autorelease];
     [req requestWithURLString:URLString completion:completion];
     [ProviderPool addProviderToSharedPool:req identifier:identifier];
+    return req;
 }
 
 + (void)cancelRequestWithIdentifier:(NSString *)identifier
@@ -34,21 +36,32 @@
 - (void)dealloc
 {
     self.callback = nil;
+    self.returnDataCallback = nil;
     [self.URLConnection cancel]; self.URLConnection = nil;
     self.responseData = nil;
     [super dealloc];
 }
 
-- (void)requestWithURLString:(NSString *)URLString completion:(void (^)(NSString *, NSError *))completion
+- (void)requestWithURLString:(NSString *)URLString
 {
-    self.callback = completion;
-    
     self.responseData = [NSMutableData data];
     
     NSURL *url = [NSURL URLWithString:URLString];
     self.URLConnection = [[[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self] autorelease];
     [self.URLConnection start];
     self.complete = NO;
+}
+
+- (void)requestWithURLString:(NSString *)URLString completion:(void (^)(NSString *, NSError *))completion
+{
+    self.callback = completion;
+    [self requestWithURLString:URLString];
+}
+
+- (void)requestWithURLString:(NSString *)URLString returnData:(void(^)(NSData *data, NSError *error))returnData
+{
+    self.returnDataCallback = returnData;
+    [self requestWithURLString:URLString];
 }
 
 - (BOOL)isExecuting
@@ -68,6 +81,9 @@
     if(self.callback){
         self.callback(nil, error);
     }
+    if(self.returnDataCallback){
+        self.returnDataCallback(nil, error);
+    }
     self.complete = YES;
 }
 
@@ -76,6 +92,9 @@
     NSString *responseString = [[[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding] autorelease];
     if(self.callback){
         self.callback(responseString, nil);
+    }
+    if(self.returnDataCallback){
+        self.returnDataCallback(self.responseData, nil);
     }
     self.complete = YES;
 }

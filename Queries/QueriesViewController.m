@@ -8,6 +8,7 @@
 
 #import "QueriesViewController.h"
 #import "GridViewTableViewHelper.h"
+#import "Waiting.h"
 
 @interface QueriesViewController () <GridViewTableViewHelperDelegate>
 

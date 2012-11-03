@@ -77,6 +77,7 @@
 		3EC357C61643EDE7009611C8 /* LuaApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C51643EDE7009611C8 /* LuaApp.m */; };
 		3EC357CA16440442009611C8 /* RequireReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C916440442009611C8 /* RequireReplaceChecker.m */; };
 		3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CC16440519009611C8 /* NSString+Substring.m */; };
+		3EC357D01644C48E009611C8 /* Waiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CF1644C48E009611C8 /* Waiting.m */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
@@ -244,6 +245,8 @@
 		3EC357C916440442009611C8 /* RequireReplaceChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireReplaceChecker.m; sourceTree = "<group>"; };
 		3EC357CB16440519009611C8 /* NSString+Substring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Substring.h"; sourceTree = "<group>"; };
 		3EC357CC16440519009611C8 /* NSString+Substring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Substring.m"; sourceTree = "<group>"; };
+		3EC357CE1644C48E009611C8 /* Waiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waiting.h; sourceTree = "<group>"; };
+		3EC357CF1644C48E009611C8 /* Waiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waiting.m; sourceTree = "<group>"; };
 		3ED0C77E16354F2D00A3E33F /* TableViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewImpl.h; sourceTree = "<group>"; };
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
@@ -489,6 +492,8 @@
 				3EE3B2AB1631B58200C77F85 /* Toast.m */,
 				3E633990162D958B00B63328 /* GridViewTableViewHelper.h */,
 				3E633991162D958B00B63328 /* GridViewTableViewHelper.m */,
+				3EC357CE1644C48E009611C8 /* Waiting.h */,
+				3EC357CF1644C48E009611C8 /* Waiting.m */,
 			);
 			name = UIComponents;
 			sourceTree = "<group>";
@@ -941,6 +946,7 @@
 				3EC357C61643EDE7009611C8 /* LuaApp.m in Sources */,
 				3EC357CA16440442009611C8 /* RequireReplaceChecker.m in Sources */,
 				3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */,
+				3EC357D01644C48E009611C8 /* Waiting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

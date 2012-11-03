@@ -17,11 +17,11 @@ end
 
 -- instance method
 function HTTPRequest:cancel()
-    http:cancel(self:id());
+    http::cancel(self:id());
 end
 
 function HTTPRequest:release()
-    print("http release()");
+    
 end
 
 -- event

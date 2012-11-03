@@ -1,6 +1,7 @@
 require "Object"
 require "UIView"
 require "UINavigationItem"
+require "System"
 
 UIViewController = {};
 UIViewController.__index = UIViewController;
@@ -50,6 +51,26 @@ end
 function UIViewController:navigationController()
     local ncId = runtime::invokeMethod(self:id(), "navigationController");
     return UINavigationController:get(ncId);
+end
+
+function UIViewController:setWaiting(waiting)
+    ap_new();
+    if waiting then
+        runtime::invokeClassMethod("Waiting", "showWaiting:inView:", "YES", self:view():id());
+        else
+        runtime::invokeClassMethod("Waiting", "showWaiting:inView:", "NO", self:view():id());
+    end
+    ap_release();
+end
+
+function UIViewController:setLoading(loading)
+    ap_new();
+    if loading then
+        runtime::invokeClassMethod("Waiting", "showLoading:inView:", "YES", self:view():id());
+    else
+        runtime::invokeClassMethod("Waiting", "showLoading:inView:", "NO", self:view():id());
+    end
+    ap_release();
 end
 
 -- event

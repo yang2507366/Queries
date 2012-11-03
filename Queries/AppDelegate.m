@@ -38,7 +38,7 @@
 //    self.window.rootViewController =
 //        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
 //    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
-    
+//    
     LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
     [LuaSystemContext runApp:app];
     

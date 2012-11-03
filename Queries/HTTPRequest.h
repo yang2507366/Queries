@@ -11,7 +11,7 @@
 
 @interface HTTPRequest : NSObject <HTTPGetRequest>
 
-+ (void)requestWithURLString:(NSString *)URLString identifier:(NSString *)identifier completion:(void (^)(NSString *, NSError *))completion;
++ (id)requestWithURLString:(NSString *)URLString identifier:(NSString *)identifier completion:(void (^)(NSString *, NSError *))completion;
 + (void)cancelRequestWithIdentifier:(NSString *)identifier;
 
 @end

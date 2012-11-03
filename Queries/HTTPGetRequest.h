@@ -12,6 +12,7 @@
 @protocol HTTPGetRequest <ProviderPoolable>
 
 - (void)requestWithURLString:(NSString *)URLString completion:(void(^)(NSString *responseString, NSError *error))completion;
+- (void)requestWithURLString:(NSString *)URLString returnData:(void(^)(NSData *data, NSError *error))returnData;
 - (BOOL)isExecuting;
 - (void)cancel;
 

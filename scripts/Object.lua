@@ -45,7 +45,7 @@ function Object:retainCount()
 end
 
 function Object:dealloc()
-    print("dealloc:"..self:id());
+--    print("dealloc:"..self:id());
 end
 
 function Object:autorelease()

@@ -22,50 +22,51 @@
     return sharedRequestList;
 }
 
-+ (BOOL)requestExists:(NSString *)requestId
++ (NSMutableDictionary *)sharedRequestDictionary
 {
-    NSMutableArray *requestList = [self.class sharedRequestList];
-    for(NSInteger i = 0; i < requestList.count; ++i){
-        NSString *tmpRequest = [requestList objectAtIndex:i];
-        if([tmpRequest isEqualToString:requestId]){
-            return YES;
+    static NSMutableDictionary *requestDictionary = nil;
+    @synchronized(self.class){
+        if(requestDictionary == nil){
+            requestDictionary = [[NSMutableDictionary dictionary] retain];
         }
     }
-    return NO;
+    return requestDictionary;
+}
+
++ (BOOL)requestExists:(NSString *)requestId
+{
+    return [[self sharedRequestDictionary] objectForKey:requestId] != nil;
 }
 
 + (NSString *)requestWithLuaState:(id<ScriptInteraction>)script urlString:(NSString *)urlString callbackLuaFunctionName:(NSString *)luaFunctionName
 {
     NSString *requestId = [NSString stringWithFormat:@"%d", (NSInteger)urlString];
-    [[self.class sharedRequestList] addObject:requestId];
     
-    [HTTPRequest requestWithURLString:urlString identifier:requestId completion:^(NSString *responseStr, NSError *error) {
+    id req = [HTTPRequest requestWithURLString:urlString identifier:requestId completion:^(NSString *responseStr, NSError *error) {
         if(error){
-            if([self.class requestExists:requestId]){
-                [script callFunction:luaFunctionName callback:nil parameters:requestId, @"", error.localizedDescription, nil];
-            }
+        if([self.class requestExists:requestId]){
+            [script callFunction:luaFunctionName callback:nil parameters:requestId, @"", error.localizedDescription, nil];
+        }
         }else{
-            if(responseStr.length == 0){
-                responseStr = @"";
-            }
-            if([self.class requestExists:requestId]){
-                [script callFunction:luaFunctionName callback:nil parameters:requestId, responseStr, @"", nil];
-            }
+        if(responseStr.length == 0){
+            responseStr = @"";
+        }
+        if([self.class requestExists:requestId]){
+            [script callFunction:luaFunctionName callback:nil parameters:requestId, responseStr, @"", nil];
+        }
         }
     }];
+    [[self sharedRequestDictionary] setObject:req forKey:requestId];
     
     return requestId;
 }
 
 + (void)cancelRequestWithRequestId:(NSString *)requestId
 {
-    NSMutableArray *requestList = [self.class sharedRequestList];
-    for(NSInteger i = 0; i < requestList.count; ++i){
-        NSString *tmpRequest = [requestList objectAtIndex:i];
-        if([tmpRequest isEqualToString:requestId]){
-            [requestList removeObjectAtIndex:i];
-            break;
-        }
+    id<HTTPGetRequest> req = [[self sharedRequestDictionary ] objectForKey:requestId];
+    if(req){
+        [req cancel];
+        [[self sharedRequestDictionary] removeObjectForKey:requestId];
     }
 }
 

@@ -4,8 +4,9 @@ require "QueryPostcodeViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
+kTitleGoogleTranslate = "Google翻译";
 
-kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode};
+kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate};
 
 QuiresListViewController = {};
 QuiresListViewController.__index = QuiresListViewController;

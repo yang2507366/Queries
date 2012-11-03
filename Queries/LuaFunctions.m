@@ -404,7 +404,6 @@ int ustring_substring(lua_State *L)
 {
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *string = luaStringParam(L, 2);
-    string = [CodeUtils decodeUnicode:string];
     NSInteger beginIndex = [luaStringParam(L, 3) intValue];
     NSInteger endIndex = [luaStringParam(L, 4) intValue];
     
@@ -420,7 +419,6 @@ int ustring_length(lua_State *L)
 {
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *string = luaStringParam(L, 2);
-    string = [CodeUtils decodeUnicode:string];
     lua_pushnumber(L, [string length]);
     
     return 1;
@@ -430,9 +428,7 @@ int ustring_find(lua_State *L)
 {
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *string = luaStringParam(L, 2);
-    string = [CodeUtils decodeUnicode:string];
     NSString *targetStr = luaStringParam(L, 3);
-    targetStr = [CodeUtils decodeUnicode:targetStr];
     NSInteger fromIndex = lua_tointeger(L, 4);
     NSInteger reverse = lua_toboolean(L, 5);
     
@@ -440,7 +436,7 @@ int ustring_find(lua_State *L)
     if(string.length > 0 && targetStr.length > 0 && fromIndex > -1 && fromIndex < string.length){
         NSRange tmpRange = [string rangeOfString:targetStr
                                          options:reverse ? NSBackwardsSearch : NSCaseInsensitiveSearch
-                                           range:NSMakeRange(fromIndex, string.length - fromIndex)];
+                                           range:reverse ? NSMakeRange(0, fromIndex) : NSMakeRange(fromIndex, string.length - fromIndex)];
         location = tmpRange.location == NSNotFound ? -1 : tmpRange.location;
     }
     lua_pushnumber(L, location);
@@ -451,10 +447,8 @@ int ustring_encodeURL(lua_State *L)
 {
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *str = luaStringParam(L, 2);
-    str = [CodeUtils decodeUnicode:str];
     if(str.length != 0){
         str = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)str, NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
-        str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     pushString(L, str);
     
@@ -877,6 +871,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ustring_length", ustring_length);
 #pragma mark - ustring::substring
     pushFunctionToLua(L, "ustring_substring", ustring_substring);
+#pragma mark - ustring::encodeURL
+    pushFunctionToLua(L, "ustring_encodeURL", ustring_encodeURL);
 #pragma mark - utils::printObject
     pushFunctionToLua(L, "utils_printObject", utils_printObject);
 #pragma mark - utils::printObjectDescription
