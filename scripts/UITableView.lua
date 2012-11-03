@@ -40,6 +40,14 @@ function UITableView:create()
     return UITableView:createWithStyle();
 end
 
+-- deconstructor
+function UITableView:dealloc()
+    tableView_numberOfRows_proxy[self:id()] = nil;
+    tableView_cellForRowAtIndex_proxy[self:id()] = nil;
+    tableView_didSelectCell_proxy[self:id()] = nil;
+    tableView_heightForRow_proxy[self:id()] = nil;
+end
+
 -- instance method
 function UITableView:dequeueReusableCellWithIdentifier(identifier)
     local cellId = runtime::invokeMethod(self:id(), "dequeueReusableCellWithIdentifier:", identifier);

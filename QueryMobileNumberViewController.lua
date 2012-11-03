@@ -53,7 +53,7 @@ function QueryMobileNumberViewController:viewDidLoad()
         function httpRequest:response(responseString, errorString)
             ap_new();
             if ustring::length(errorString) == 0 then
-                anylyzeResponse(responseString);
+                anylyzeResponse(responseString, number);
             else
                 ui::alert("网络连接错误");
             end
@@ -70,7 +70,7 @@ function QueryMobileNumberViewController:viewDidLoad()
     ap_release();
 end
 
-function anylyzeResponse(str)
+function anylyzeResponse(str, number)
     ap_new();
     local beginIndex = ustring::find(str, "归属地：");
     if beginIndex ~= -1 then
@@ -81,6 +81,6 @@ function anylyzeResponse(str)
             return;
         end
     end
-    ui::alert("数据解析出错");
+    ui::alert("没有找到号码:"..number.."的相关信息");
     ap_release();
 end

@@ -286,6 +286,26 @@ int ui_createTextField(lua_State *L)
     return 1;
 }
 
+int ui_attachTextFieldDelegate(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *obejctId = luaStringParam(L, 2);
+    NSString *shouldBeginEditFunc = luaStringParam(L, 3);
+    NSString *didBeginEditFunc = luaStringParam(L, 4);
+    NSString *shouldEndEditFunc = luaStringParam(L, 5);
+    NSString *didEndEditFunc = luaStringParam(L, 6);
+    NSString *shouldChangeCharFunc = luaStringParam(L, 7);
+    [TextFieldImpl attachEventWithAppId:appId
+                                     si:scriptInteractionForAppId(appId)
+                               objectId:obejctId
+                        shouldBeginFunc:shouldBeginEditFunc
+                           didBeginFunc:didBeginEditFunc
+                          shouldEndFunc:shouldEndEditFunc
+                             didEndFunc:didEndEditFunc
+                   shouldChangeCharFunc:shouldChangeCharFunc];
+    return 0;
+}
+
 int ui_createLabel(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
@@ -451,6 +471,7 @@ int ustring_encodeURL(lua_State *L)
         str = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)str, NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
     }
     pushString(L, str);
+    [str release];
     
     return 1;
 }
@@ -842,8 +863,10 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_pushViewControllerToNavigationController", ui_pushViewControllerToNavigationController);
 #pragma mark - ui::createNavigationController
     pushFunctionToLua(L, "ui_createNavigationController", ui_createNavigationController);
-#pragma mark - ui::createNavigationController
+#pragma mark - ui::createTextField
     pushFunctionToLua(L, "ui_createTextField", ui_createTextField);
+#pragma mark - ui::attachTextFieldDelegate
+    pushFunctionToLua(L, "ui_attachTextFieldDelegate", ui_attachTextFieldDelegate);
 #pragma mark - ui::createLabel
     pushFunctionToLua(L, "ui_createLabel", ui_createLabel);
 #pragma mark - ui::createWebView

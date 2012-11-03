@@ -7,9 +7,12 @@ QueryPostcodeViewController.__index = QueryPostcodeViewController;
 setmetatable(QueryPostcodeViewController, UIViewController);
 
 kUseAddress = "根据地名查询邮编";
+kUsePostcode = "根据邮编查询地名";--http://wap.ip138.com/post_search.asp?zip=342500&action=zip2area
 
 function QueryPostcodeViewController:dealloc()
     self.addressTextField:release();
+    self.postcodeField:release();
+    self.tableView:release();
 end
 
 function QueryPostcodeViewController:viewDidLoad()
@@ -30,7 +33,7 @@ function QueryPostcodeViewController:viewDidLoad()
     self.addressTextField = addressTextField:retain();
     
     x, y, width, height = addressTextField:frame();
-    local addressButton = UIButton:createWithTitle(kUseAddress);
+    local addressButton = UIButton:createWithTitle("查询");
     addressButton:setFrame(x, y + height + 10, width, height);
     cview:addSubview(addressButton);
     function addressButton:tapped()
@@ -65,11 +68,31 @@ function QueryPostcodeViewController:viewDidLoad()
         ap_release();
     end
     
+    x, y, width, height = self:view():bounds();
+    
+    label = UILabel:createWithTitle(kUsePostcode);
+    label:setFrame(10, 150, 200, label:font():lineHeight());
+    cview:addSubview(label);
+    
+    local postcodeField = UITextField:create();
+    postcodeField:setFrame(10, 180, width - 20, 40);
+    postcodeField:setClearButtonMode(1);
+    cview:addSubview(postcodeField);
+    self.postcodeField = postcodeField:retain();
+    
+    local postcodeButton = UIButton:createWithTitle("查询");
+    postcodeButton:setFrame(10, 230, width - 20, 40);
+    cview:addSubview(postcodeButton);
+    function postcodeButton:tapped()
+        print("tapped"..postcodeField:text());
+    end
+    
     local tmpTableView = UITableView:create();
     tmpTableView:setFrame(self:view():bounds());
     tmpTableView:setSeparatorStyle(UITableViewCellSeparatorStyleNone);
     tmpTableView:setTableHeaderView(cview);
     self:view():addSubview(tmpTableView);
+    self.tableView = tmpTableView:retain();
     
     ap_release();
 end

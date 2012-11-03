@@ -97,7 +97,6 @@
     [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {
         if(error.length != 0){
             NSLog(@"%@", error);
-            NSLog(@"%@", mainScript);
         }
     } parameters:nil];
 }
