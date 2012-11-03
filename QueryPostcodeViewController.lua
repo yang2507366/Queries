@@ -42,6 +42,7 @@ function QueryPostcodeViewController:viewDidLoad()
         if ustring::length(city) == 0 then
             ui::alert("请输入需要查询的地名");
             addressTextField:becomeFirstResponder();
+            ap_release();
             return;
         end
         addressTextField:resignFirstResponder();
@@ -79,12 +80,34 @@ function QueryPostcodeViewController:viewDidLoad()
     postcodeField:setClearButtonMode(1);
     cview:addSubview(postcodeField);
     self.postcodeField = postcodeField:retain();
+    function postcodeField:shouldBeginEditing()
+        local x, y, width, height = globalSelf.tableView:frame();
+        y = y - 100;
+        globalSelf.tableView:setFrame(x, y, width, height);
+        return "YES";
+    end
+    function postcodeField:shouldEndEditing()
+        local x, y, width, height = globalSelf.tableView:frame();
+        y = y + 100;
+        globalSelf.tableView:setFrame(x, y, width, height);
+        return "YES";
+    end
     
     local postcodeButton = UIButton:createWithTitle("查询");
     postcodeButton:setFrame(10, 230, width - 20, 40);
     cview:addSubview(postcodeButton);
     function postcodeButton:tapped()
-        print("tapped"..postcodeField:text());
+        if ustring::length(globalSelf.postcodeField:text()) == 0 then
+            ui::alert("请输入需要查询的邮政编码");
+            globalSelf.postcodeField:becomeFirstResponder();
+            return;
+        end
+        local postcode = globalSelf.postcodeField:text();
+        local urlString = "http://wap.ip138.com/post_search.asp?zip="..postcode.."&action=zip2area";
+        local httpReq = HTTPRequest:start(urlString);
+        function httpReq:response(responseString, errorString)
+            po(responseString);
+        end
     end
     
     local tmpTableView = UITableView:create();
