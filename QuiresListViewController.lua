@@ -1,6 +1,7 @@
 require "UIKit"
 require "QueryMobileNumberViewController"
 require "QueryPostcodeViewController"
+require "GoogleTranslateViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
@@ -21,7 +22,9 @@ function QuiresListViewController:viewDidLoad()
     function listTableView:numberOfRows()
         return #kTitleList;
     end
-    
+    function listTableView:heightOfRowAtIndex(rowIndex)
+        return 72;
+    end
     local identifier = "id_";
     function listTableView:cellForRowAtIndex(index)
         ap_new();
@@ -35,7 +38,7 @@ function QuiresListViewController:viewDidLoad()
             label = UILabel:createWithTitle("");
             label:setTag(1001);
             local x, y, width, height = cell:contentView():bounds();
-            label:setFrame(10, 10, width, label:font():lineHeight());
+            label:setFrame(10, 0, width, 72);
             cell:contentView():addSubview(label);
             cell:setAccessoryType(UITableViewCellAccessoryDisclosureIndicator);
         else
@@ -64,6 +67,13 @@ function QuiresListViewController:viewDidLoad()
         elseif kTitleList[index] == kTitleSearchPostcode then
             -- 邮政编码
             local vc = QueryPostcodeViewController:createWithTitle(kTitleSearchPostcode):retain();
+            function vc:viewDidPop()
+                vc:release();
+            end
+            currentNC:pushViewController(vc, true);
+        elseif kTitleList[index] == kTitleGoogleTranslate then
+            -- google翻译
+            local vc = GoogleTranslateViewController:createWithTitle(kTitleGoogleTranslate):retain();
             function vc:viewDidPop()
                 vc:release();
             end

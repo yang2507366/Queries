@@ -10,13 +10,81 @@
 #import "LuaGroupedObjectManager.h"
 #import "EventProxy.h"
 
-@interface TextFieldImpl () <UITextFieldDelegate>
 
-@property(nonatomic, copy)BOOL(^shouldBeginBlock)();
-@property(nonatomic, copy)void(^didBeginBlock)();
-@property(nonatomic, copy)BOOL(^shouldEndBlock)();
-@property(nonatomic, copy)void(^didEndBlock)();
-@property(nonatomic, copy)BOOL(^shouldChangeCharBlock)(NSInteger location, NSInteger length);
+
+@interface TextFieldDelegateProxy : NSObject <UITextFieldDelegate>
+
++ (id)sharedInstance;
+
+@end
+
+@implementation TextFieldDelegateProxy
+
++ (id)sharedDict
+{
+    static NSMutableDictionary *textFieldDict = nil;
+    if(textFieldDict == nil){
+        textFieldDict = [[NSMutableDictionary dictionary] retain];
+    }
+    return textFieldDict;
+}
+
++ (id)sharedInstance
+{
+    static typeof(self) instance = nil;
+    if(instance == nil){
+        instance = [[self alloc] init];
+    }
+    return instance;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    TextFieldImpl *impl = (id)textField;
+    if(impl.shouldBeginBlock){
+        return impl.shouldBeginBlock();
+    }
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    TextFieldImpl *impl = (id)textField;
+    if(impl.didBeginBlock){
+        impl.didBeginBlock();
+    }
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    TextFieldImpl *impl = (id)textField;
+    if(impl.shouldEndBlock){
+        return impl.shouldEndBlock();
+    }
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    TextFieldImpl *impl = (id)textField;
+    if(impl.didEndBlock){
+        impl.didEndBlock();
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    TextFieldImpl *impl = (id)textField;
+    if(impl.shouldChangeCharBlock){
+        return impl.shouldChangeCharBlock(range.location, range.length);
+    }
+    return YES;
+}
+
+@end
+
+
+@interface TextFieldImpl ()
 
 @end
 
@@ -37,47 +105,7 @@
 {
     self = [super initWithFrame:frame];
     
-    self.delegate = self;
-    
     return self;
-}
-
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if(self.shouldBeginBlock){
-        return self.shouldBeginBlock();
-    }
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    if(self.didBeginBlock){
-        self.didBeginBlock();
-    }
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    if(self.shouldEndBlock){
-        return self.shouldEndBlock();
-    }
-    return YES;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if(self.didEndBlock){
-        self.didEndBlock();
-    }
-}
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if(self.shouldChangeCharBlock){
-        return self.shouldChangeCharBlock(range.location, range.length);
-    }
-    return YES;
 }
 
 + (NSString *)createTextFieldWithScriptId:(NSString *)scriptId frame:(CGRect)frame
@@ -102,6 +130,7 @@
         shouldChangeCharFunc:(NSString *)shouldChangeCharFunc
 {
     TextFieldImpl *textField = [LuaGroupedObjectManager objectWithId:objectId group:appId];
+    textField.delegate = [TextFieldDelegateProxy sharedInstance];
     [textField setShouldBeginBlock:^BOOL{
         NSString *bstr = [si callFunction:shouldBeginFunc parameters:objectId, nil];
         return [bstr boolValue];

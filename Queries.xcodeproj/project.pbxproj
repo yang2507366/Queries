@@ -43,6 +43,9 @@
 		3E63398B162D91DA00B63328 /* GiveRightsOfOrientationBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */; };
 		3E633992162D958B00B63328 /* GridViewTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewTableViewHelper.m */; };
 		3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E633994162D9F6C00B63328 /* QuartzCore.framework */; };
+		3E6B949F16460E8C009B01AD /* AnimationImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B949E16460E8C009B01AD /* AnimationImpl.m */; };
+		3E6B94A116461861009B01AD /* UIAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E6B94A016461861009B01AD /* UIAnimation.lua */; };
+		3E6B94A416465A7C009B01AD /* GoogleTranslateViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E6B94A316465A7C009B01AD /* GoogleTranslateViewController.lua */; };
 		3E79D45016415F920096A727 /* System.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D44F16415F920096A727 /* System.lua */; };
 		3E79D45316415FD00096A727 /* UIKit.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D45216415FD00096A727 /* UIKit.lua */; };
 		3E79D45516416CE00096A727 /* QueryMobileNumberViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */; };
@@ -192,6 +195,10 @@
 		3E633990162D958B00B63328 /* GridViewTableViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewTableViewHelper.h; sourceTree = "<group>"; };
 		3E633991162D958B00B63328 /* GridViewTableViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewTableViewHelper.m; sourceTree = "<group>"; };
 		3E633994162D9F6C00B63328 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3E6B949D16460E8C009B01AD /* AnimationImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationImpl.h; sourceTree = "<group>"; };
+		3E6B949E16460E8C009B01AD /* AnimationImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationImpl.m; sourceTree = "<group>"; };
+		3E6B94A016461861009B01AD /* UIAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIAnimation.lua; path = scripts/UIAnimation.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3E6B94A316465A7C009B01AD /* GoogleTranslateViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GoogleTranslateViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D44F16415F920096A727 /* System.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = System.lua; path = scripts/System.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D45216415FD00096A727 /* UIKit.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIKit.lua; path = scripts/UIKit.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QueryMobileNumberViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
@@ -508,6 +515,14 @@
 			name = AddInFrameworks;
 			sourceTree = "<group>";
 		};
+		3E6B94A216465A62009B01AD /* GoogleTranslate */ = {
+			isa = PBXGroup;
+			children = (
+				3E6B94A316465A7C009B01AD /* GoogleTranslateViewController.lua */,
+			);
+			name = GoogleTranslate;
+			sourceTree = "<group>";
+		};
 		3E9D0C31163192EF00C3FDCE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +566,7 @@
 				3EA29A27163E547E005CAF98 /* UIView.lua */,
 				3E9FFDAD163E48CB000B630E /* UIViewController.lua */,
 				3E0892FE164219FD00066181 /* UITextField.lua */,
+				3E6B94A016461861009B01AD /* UIAnimation.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -558,6 +574,7 @@
 		3EA309CA164145D80013A6D1 /* Quires */ = {
 			isa = PBXGroup;
 			children = (
+				3E6B94A216465A62009B01AD /* GoogleTranslate */,
 				3E08930116421A1B00066181 /* main.lua */,
 				3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */,
 				3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */,
@@ -654,7 +671,7 @@
 			path = "lua-5.1";
 			sourceTree = "<group>";
 		};
-		3EE36D6E1632AA5200BB5D02 /* UIKitImpl */ = {
+		3EE36D6E1632AA5200BB5D02 /* impl */ = {
 			isa = PBXGroup;
 			children = (
 				3EE36D6F1632AA7F00BB5D02 /* HTTPRequestImpl.h */,
@@ -685,8 +702,10 @@
 				3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */,
 				3E1A7BD51643B6E600D9EE55 /* DialogImpl.h */,
 				3E1A7BD61643B6E600D9EE55 /* DialogImpl.m */,
+				3E6B949D16460E8C009B01AD /* AnimationImpl.h */,
+				3E6B949E16460E8C009B01AD /* AnimationImpl.m */,
 			);
-			name = UIKitImpl;
+			name = impl;
 			sourceTree = "<group>";
 		};
 		3EE3B2C51631B5E600C77F85 /* KeyValueManager */ = {
@@ -708,7 +727,7 @@
 				3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */,
 				3EE36D6B163255F200BB5D02 /* LuaFunctions.h */,
 				3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */,
-				3EE36D6E1632AA5200BB5D02 /* UIKitImpl */,
+				3EE36D6E1632AA5200BB5D02 /* impl */,
 				3EC0BAA71633EA1F0074D22B /* LuaObjectManagerLegacy.h */,
 				3EC0BAA81633EA1F0074D22B /* LuaObjectManagerLegacy.m */,
 				3EC0BAAA1633EAFC0074D22B /* EventProxy.h */,
@@ -850,6 +869,8 @@
 				3EC357B81642C242009611C8 /* HTTPRequest.lua in Resources */,
 				3EC357BA1642C757009611C8 /* Network.lua in Resources */,
 				3E1A7BDA1643BD7F00D9EE55 /* QueryPostcodeViewController.lua in Resources */,
+				3E6B94A116461861009B01AD /* UIAnimation.lua in Resources */,
+				3E6B94A416465A7C009B01AD /* GoogleTranslateViewController.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,6 +968,7 @@
 				3EC357CA16440442009611C8 /* RequireReplaceChecker.m in Sources */,
 				3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */,
 				3EC357D01644C48E009611C8 /* Waiting.m in Sources */,
+				3E6B949F16460E8C009B01AD /* AnimationImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

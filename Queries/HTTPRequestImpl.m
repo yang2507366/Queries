@@ -44,16 +44,16 @@
     
     id req = [HTTPRequest requestWithURLString:urlString identifier:requestId completion:^(NSString *responseStr, NSError *error) {
         if(error){
-        if([self.class requestExists:requestId]){
-            [script callFunction:luaFunctionName callback:nil parameters:requestId, @"", error.localizedDescription, nil];
-        }
+            if([self.class requestExists:requestId]){
+                [script callFunction:luaFunctionName callback:nil parameters:requestId, @"", error.localizedDescription, nil];
+            }
         }else{
-        if(responseStr.length == 0){
-            responseStr = @"";
-        }
-        if([self.class requestExists:requestId]){
-            [script callFunction:luaFunctionName callback:nil parameters:requestId, responseStr, @"", nil];
-        }
+            if(responseStr.length == 0){
+                responseStr = @"";
+            }
+            if([self.class requestExists:requestId]){
+                [script callFunction:luaFunctionName callback:nil parameters:requestId, responseStr, @"", nil];
+            }
         }
     }];
     [[self sharedRequestDictionary] setObject:req forKey:requestId];

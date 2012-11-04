@@ -7,14 +7,16 @@
 //
 
 #import "HTTPRequest.h"
+#import "DelayController.h"
 
-@interface HTTPRequest () <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@interface HTTPRequest () <NSURLConnectionDelegate, NSURLConnectionDataDelegate, DelayControllerDelegate>
 
 @property(nonatomic, copy)void (^callback)(NSString *, NSError *);
 @property(nonatomic, copy)void(^returnDataCallback)(NSData *, NSError *);
 @property(nonatomic, retain)NSURLConnection *URLConnection;
 @property(nonatomic, retain)NSMutableData *responseData;
 @property(nonatomic, assign)BOOL complete;
+@property(nonatomic, retain)DelayController *timeOutChecker;
 
 @end
 
@@ -39,6 +41,7 @@
     self.returnDataCallback = nil;
     [self.URLConnection cancel]; self.URLConnection = nil;
     self.responseData = nil;
+    [self.timeOutChecker cancel]; self.timeOutChecker = nil;
     [super dealloc];
 }
 
@@ -50,6 +53,10 @@
     self.URLConnection = [[[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self] autorelease];
     [self.URLConnection start];
     self.complete = NO;
+    self.timeOutChecker = [[[DelayController alloc] initWithInterval:10] autorelease];
+    self.timeOutChecker.delegate = self;
+    [self.timeOutChecker start];
+    NSLog(@"%@", URLString);
 }
 
 - (void)requestWithURLString:(NSString *)URLString completion:(void (^)(NSString *, NSError *))completion
@@ -73,6 +80,24 @@
 {
     self.callback = nil;
     [self.URLConnection cancel];
+}
+
+- (void)setComplete:(BOOL)complete
+{
+    _complete = complete;
+    [_timeOutChecker cancel];
+}
+
+#pragma mark - DelayControllerDelegate
+- (void)delayControllerDidFinishDelay:(DelayController *)controller
+{
+    [self cancel];
+    self.complete = YES;
+    if(self.callback){
+        self.callback(nil, [NSError errorWithDomain:NSStringFromClass(self.class)
+                                               code:-1
+                                           userInfo:[NSDictionary dictionaryWithObject:@"网络连接超时" forKey:NSLocalizedDescriptionKey]]);
+    }
 }
 
 #pragma mark - NSURLConnectionDelegate

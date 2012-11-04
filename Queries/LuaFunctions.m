@@ -28,6 +28,7 @@
 #import "LuaGroupedObjectManager.h"
 #import "RuntimeUtils.h"
 #import "DialogTools.h"
+#import "AnimationImpl.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -81,6 +82,12 @@ int math_operator_or(lua_State *L)
     }
     lua_pushinteger(L, result);
     
+    return 1;
+}
+
+int math_random(lua_State *L)
+{
+    lua_pushnumber(L, [NSDate timeIntervalSinceReferenceDate]);
     return 1;
 }
 
@@ -416,6 +423,26 @@ int ui_dialog(lua_State *L)
         [si callFunction:callbackFunc parameters:[NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
     } cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
     
+    return 0;
+}
+
+int ui_animate(lua_State *L)
+{
+    NSString *appid = luaStringParam(L, 1);
+    NSString *animId = luaStringParam(L, 2);
+    NSTimeInterval duration = lua_tonumber(L, 3);
+    NSTimeInterval delay = lua_tonumber(L, 4);
+    NSInteger options = lua_tonumber(L, 5);
+    NSString *animationFunc = luaStringParam(L, 6);
+    NSString *completeFunc = luaStringParam(L, 7);
+    [AnimationImpl animateWithAppId:appid
+                                 si:scriptInteractionForAppId(appid)
+                             animId:animId
+                  animationDuration:duration
+                                delay:delay
+                            options:options
+                      animationFunc:animationFunc
+                       completeFunc:completeFunc];
     return 0;
 }
 
@@ -755,6 +782,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "http_cancel", http_cancel);
 #pragma mark - math::operator_or
     pushFunctionToLua(L, "math_operator_or", math_operator_or);
+#pragma mark - math::random
+    pushFunctionToLua(L, "math_random", math_random);
 #pragma mark - NSLog
     pushFunctionToLua(L, "NSLog", nslog);
 #pragma mark - obj::invokeMethod
@@ -888,6 +917,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_heightOfLabelText", ui_heightOfLabelText);
 #pragma mark - ui::dialog
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
+#pragma mark - ui::animate
+    pushFunctionToLua(L, "ui_animate", ui_animate);
 #pragma mark - ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
 #pragma mark - ustring::length

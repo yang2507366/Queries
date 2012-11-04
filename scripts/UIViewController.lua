@@ -57,7 +57,7 @@ function UIViewController:setWaiting(waiting)
     ap_new();
     if waiting then
         runtime::invokeClassMethod("Waiting", "showWaiting:inView:", "YES", self:view():id());
-        else
+    else
         runtime::invokeClassMethod("Waiting", "showWaiting:inView:", "NO", self:view():id());
     end
     ap_release();

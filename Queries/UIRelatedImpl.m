@@ -102,7 +102,9 @@
 + (void)alertWithTitle:(NSString *)title message:(NSString *)msg scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName
 {
     [DialogTools dialogWithTitle:title message:msg completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
-        [si callFunction:funcName callback:nil parameters:nil];
+        if(funcName.length != 0){
+            [si callFunction:funcName callback:nil parameters:nil];
+        }
     } cancelButtonTitle:@"OK" otherButtonTitles:nil];
 }
 

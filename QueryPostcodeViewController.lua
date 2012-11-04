@@ -20,13 +20,15 @@ function QueryPostcodeViewController:viewDidLoad()
     local globalSelf = self;
     local x, y, width, height = self:view():bounds();
     local cview = UIView:create();
-    cview:setFrame(0, 0, width, height - 70);
-    cview:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
+    cview:setFrame(0, 0, width, height - 120);
+    cview:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
+--    cview:setBackgroundColor(UIColor:createWithRGB(255, 0, 0));
     local label = UILabel:createWithTitle(kUseAddress);
     label:setFrame(10, 10, 200, label:font():lineHeight());
     cview:addSubview(label);
     
     local addressTextField = UITextField:create();
+    addressTextField:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     addressTextField:setFrame(10, 40, width - 20, 40);
     addressTextField:setClearButtonMode(1);
     cview:addSubview(addressTextField);
@@ -35,6 +37,7 @@ function QueryPostcodeViewController:viewDidLoad()
     x, y, width, height = addressTextField:frame();
     local addressButton = UIButton:createWithTitle("查询");
     addressButton:setFrame(x, y + height + 10, width, height);
+    addressButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     cview:addSubview(addressButton);
     function addressButton:tapped()
         ap_new();
@@ -52,18 +55,12 @@ function QueryPostcodeViewController:viewDidLoad()
         function req:response(responseString, errorString)
             ap_new();
             globalSelf:setWaiting(false);
-            local beginIndex = ustring::find(responseString, "邮编：");
-            if beginIndex ~= -1 then
-                beginIndex = ustring::find(responseString, "<div>", beginIndex, true);
-                if beginIndex ~= -1 then
-                    local endIndex = ustring::find(responseString, "<br/>", beginIndex);
-                    if endIndex ~= -1 then
-                        ui::alert(ustring::substring(responseString, beginIndex + 5, endIndex));
-                        return;
-                    end
-                end
+            local result = analyzeResponseString(responseString);
+            if result then
+                ui::alert(result);
+            else
+                ui::alert("没有找到相关地名："..city);
             end
-            ui::alert("没有找到相关地名："..city);
             ap_release();
         end
         ap_release();
@@ -78,23 +75,37 @@ function QueryPostcodeViewController:viewDidLoad()
     local postcodeField = UITextField:create();
     postcodeField:setFrame(10, 180, width - 20, 40);
     postcodeField:setClearButtonMode(1);
+    postcodeField:setKeyboardType(UIKeyboardTypeNumberPad);
+    postcodeField:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     cview:addSubview(postcodeField);
     self.postcodeField = postcodeField:retain();
+    local anim = UIAnimation:create();
     function postcodeField:shouldBeginEditing()
-        local x, y, width, height = globalSelf.tableView:frame();
-        y = y - 100;
-        globalSelf.tableView:setFrame(x, y, width, height);
-        return "YES";
+        ap_new();
+        function anim:animation()
+            local x, y, width, height = globalSelf.tableView:frame();
+            y = y - 100;
+            globalSelf.tableView:setFrame(x, y, width, height);
+        end
+        anim:start();
+        ap_release();
+        return true;
     end
     function postcodeField:shouldEndEditing()
-        local x, y, width, height = globalSelf.tableView:frame();
-        y = y + 100;
-        globalSelf.tableView:setFrame(x, y, width, height);
-        return "YES";
+        ap_new();
+        function anim:animation()
+            local x, y, width, height = globalSelf.tableView:frame();
+            y = y + 100;
+            globalSelf.tableView:setFrame(x, y, width, height);
+        end
+        anim:start();
+        ap_release();
+        return true;
     end
     
     local postcodeButton = UIButton:createWithTitle("查询");
     postcodeButton:setFrame(10, 230, width - 20, 40);
+    postcodeButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     cview:addSubview(postcodeButton);
     function postcodeButton:tapped()
         if ustring::length(globalSelf.postcodeField:text()) == 0 then
@@ -102,11 +113,21 @@ function QueryPostcodeViewController:viewDidLoad()
             globalSelf.postcodeField:becomeFirstResponder();
             return;
         end
+        postcodeField:resignFirstResponder();
+        globalSelf:setWaiting(true);
         local postcode = globalSelf.postcodeField:text();
         local urlString = "http://wap.ip138.com/post_search.asp?zip="..postcode.."&action=zip2area";
         local httpReq = HTTPRequest:start(urlString);
         function httpReq:response(responseString, errorString)
-            po(responseString);
+            ap_new();
+            globalSelf:setWaiting(false);
+            local result = analyzeResponseString(responseString);
+            if result then
+                ui::alert(result);
+                else
+                ui::alert("没有找到相关邮编："..postcode);
+            end
+            ap_release();
         end
     end
     
@@ -118,4 +139,19 @@ function QueryPostcodeViewController:viewDidLoad()
     self.tableView = tmpTableView:retain();
     
     ap_release();
+end
+
+function analyzeResponseString(responseString)
+    print("response:"..responseString);
+    local beginIndex = ustring::find(responseString, "邮编：");
+    if beginIndex ~= -1 then
+        beginIndex = ustring::find(responseString, "<div>", beginIndex, true);
+        if beginIndex ~= -1 then
+            local endIndex = ustring::find(responseString, "<br/>", beginIndex);
+            if endIndex ~= -1 then
+                return ustring::substring(responseString, beginIndex + 5, endIndex);
+            end
+        end
+    end
+    return nil;
 end

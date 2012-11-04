@@ -20,6 +20,9 @@ end
 
 function QueryMobileNumberViewController:viewDidLoad()
     ap_new();
+    
+    local _self = self;
+    
     local x, y, width, height = self:view():bounds();
     local tmpView = UIView:create():autorelease();
     tmpView:setFrame(x, y, width, 150);
@@ -33,6 +36,7 @@ function QueryMobileNumberViewController:viewDidLoad()
     textField:setFrame(10, 40, width - 20, 40);
     textField:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     textField:setClearButtonMode(UITextFieldViewModeWhileEditing);
+    textField:setKeyboardType(UIKeyboardTypeNumberPad);
     tmpView:addSubview(textField);
     
     button = UIButton:createWithTitle("搜索"):retain();
@@ -48,10 +52,13 @@ function QueryMobileNumberViewController:viewDidLoad()
             ap_release();
             return;
         end
+        textField:resignFirstResponder();
+        _self:setWaiting(true);
         httpRequest = HTTPRequest:start("http://wap.ip138.com/sim_search.asp?mobile="..number);
         
         function httpRequest:response(responseString, errorString)
             ap_new();
+            _self:setWaiting(false);
             if ustring::length(errorString) == 0 then
                 anylyzeResponse(responseString, number);
             else
@@ -76,7 +83,6 @@ function anylyzeResponse(str, number)
     if beginIndex ~= -1 then
         local endIndex = ustring::find(str, "<br/>", beginIndex);
         if endIndex ~= -1 then
-            print(beginIndex..", "..endIndex);
             ui::alert(ustring::substring(str, beginIndex + 4, endIndex));
             return;
         end
