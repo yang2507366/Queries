@@ -58,15 +58,21 @@
 {
     NSFileManager *fileMgr = [NSFileManager defaultManager];
     NSArray *subfiles = [fileMgr contentsOfDirectoryAtPath:[self.dirPath stringByAppendingPathComponent:@"src"] error:nil];
-    
-    return subfiles;
+    NSMutableArray *filteredFiles = [NSMutableArray array];
+    for(NSString *fileName in subfiles){
+        if([fileName hasSuffix:@".lua"]){
+            [filteredFiles addObject:fileName];
+        }
+    }
+    return filteredFiles;
 }
 
 - (NSString *)mainScript
 {
     NSArray *scriptList = [self allScriptFileNames];
     for(NSString *file in scriptList){
-        NSString *script = [NSString stringWithContentsOfFile:[[self.dirPath stringByAppendingPathComponent:@"src"] stringByAppendingPathComponent:file]
+        NSString *filePath = [[self.dirPath stringByAppendingPathComponent:@"src"] stringByAppendingPathComponent:file];
+        NSString *script = [NSString stringWithContentsOfFile:filePath
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
         NSInteger beginIndex = [script find:@"function"];

@@ -97,6 +97,7 @@
     NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
                                     scriptName:lua_main_function
                                       bundleId:[app.scriptBundle bundleId]];
+    
     id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
     app.scriptInteraction = si;
     [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {

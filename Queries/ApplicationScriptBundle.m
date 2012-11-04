@@ -24,6 +24,17 @@
 {
     self = [super init];
     
+//    NSString *appPath = [[NSBundle mainBundle] bundlePath];
+//    NSInteger fileCount = 0;
+//    NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:appPath error:nil];
+//    for(NSString *fileName in fileNames){
+//        if([fileName hasSuffix:@".lua"]){
+//            NSLog(@"%@", fileName);
+//            ++fileCount;
+//        }
+//    }
+//    NSLog(@"script file count:%d", fileCount);
+    
     return self;
 }
 
@@ -44,7 +55,8 @@
 
 - (NSString *)mainScript
 {
-    return [self scriptWithScriptName:lua_main_file];
+    NSString *mainScript = [self scriptWithScriptName:lua_main_file];
+    return mainScript;
 }
 
 - (NSData *)resourceWithName:(NSString *)resName

@@ -10,7 +10,3 @@ setmetatable(GoogleTranslateViewController, UIViewController);
 function GoogleTranslateViewController:viewDidLoad()
     ui::alert("test");
 end
-
-function main()
-    
-end
