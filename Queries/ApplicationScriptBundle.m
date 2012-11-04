@@ -47,4 +47,9 @@
     return [self scriptWithScriptName:lua_main_file];
 }
 
+- (NSData *)resourceWithName:(NSString *)resName
+{
+    return nil;
+}
+
 @end

@@ -22,6 +22,8 @@
 
 + (void)setViewFrameWithViewId:(NSString *)viewId frame:(NSString *)frame scriptId:(NSString *)scriptId;
 
++ (NSString *)relatedViewControllerForAppId:(NSString *)appId;
+
 + (CGRect)frameOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId;
 + (CGRect)boundsOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId;
 

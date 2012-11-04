@@ -87,7 +87,9 @@
 
 - (void)runApp:(LuaApp *)app
 {
-    self.currentApp = app;
+    if(!self.currentApp){
+        self.currentApp = app;
+    }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
     NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
                                     scriptName:lua_main_function
@@ -99,6 +101,11 @@
             NSLog(@"%@", error);
         }
     } parameters:nil];
+}
+
+- (LuaApp *)appForId:(NSString *)appId
+{
+    return [self.appDict objectForKey:appId];
 }
 
 - (UIWindow *)currentWindow
@@ -114,6 +121,11 @@
 + (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId
 {
     return [[self sharedApplication] scriptInteractionWithAppId:appId];
+}
+
++ (LuaApp *)appForId:(NSString *)appId
+{
+    return [[self sharedApplication] appForId:appId];
 }
 
 + (NSMutableDictionary *)appDictionary

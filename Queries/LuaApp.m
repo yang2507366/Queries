@@ -21,6 +21,7 @@
     self.scriptInteraction = nil;
     [_scriptBundle release];
     [_baseWindow release];
+    self.relatedViewController = nil;
     
     [super dealloc];
 }

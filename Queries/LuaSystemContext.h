@@ -16,6 +16,7 @@
 + (UIWindow *)currentWindow;
 + (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId;
 + (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId;
++ (LuaApp *)appForId:(NSString *)appId;
 
 + (void)runApp:(LuaApp *)app;
 

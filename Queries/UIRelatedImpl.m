@@ -64,6 +64,15 @@
     }
 }
 
++ (NSString *)relatedViewControllerForAppId:(NSString *)appId
+{
+    id vc = [LuaSystemContext appForId:appId].relatedViewController;
+    if(vc){
+        return [LuaGroupedObjectManager addObject:vc group:appId];
+    }
+    return nil;
+}
+
 + (CGRect)frameOfViewWithViewId:(NSString *)viewId scriptId:(NSString *)scriptId
 {
     UIView *view = [self getObjectWithObjectId:viewId group:scriptId];

@@ -1,0 +1,17 @@
+//
+//  OnlineAppBundle.h
+//  Queries
+//
+//  Created by yangzexin on 11/4/12.
+//  Copyright (c) 2012 yangzexin. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface OnlineAppBundleLoader : NSObject
+
+- (id)initWithURLString:(NSString *)urlString;
+- (void)loadWithCompletion:(void(^)(NSString *))completion;
+- (void)cancel;
+
+@end

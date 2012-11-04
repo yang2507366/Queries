@@ -15,6 +15,7 @@
 @property(nonatomic, readonly)id<ScriptBundle>scriptBundle;
 @property(nonatomic, retain)id<ScriptInteraction> scriptInteraction;
 @property(nonatomic, readonly)UIWindow *baseWindow;
+@property(nonatomic, retain)UIViewController *relatedViewController;
 - (id)initWithScriptBundle:(id<ScriptBundle>)scriptBundle baseWindow:(UIWindow *)window;
 
 

@@ -46,6 +46,14 @@
 		3E6B949F16460E8C009B01AD /* AnimationImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B949E16460E8C009B01AD /* AnimationImpl.m */; };
 		3E6B94A116461861009B01AD /* UIAnimation.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E6B94A016461861009B01AD /* UIAnimation.lua */; };
 		3E6B94A416465A7C009B01AD /* GoogleTranslateViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E6B94A316465A7C009B01AD /* GoogleTranslateViewController.lua */; };
+		3E6B94F51646814D009B01AD /* OnlineAppBundleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */; };
+		3E6B94F816468F12009B01AD /* OnlineAppBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F716468F11009B01AD /* OnlineAppBundle.m */; };
+		3E6B950E16469292009B01AD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950416469292009B01AD /* ioapi.c */; };
+		3E6B950F16469292009B01AD /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950616469292009B01AD /* mztools.c */; };
+		3E6B951016469292009B01AD /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950816469292009B01AD /* unzip.c */; };
+		3E6B951116469292009B01AD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950A16469292009B01AD /* zip.c */; };
+		3E6B951216469292009B01AD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950D16469292009B01AD /* ZipArchive.m */; };
+		3E6B9514164692AA009B01AD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6B9513164692AA009B01AD /* libz.dylib */; };
 		3E79D45016415F920096A727 /* System.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D44F16415F920096A727 /* System.lua */; };
 		3E79D45316415FD00096A727 /* UIKit.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D45216415FD00096A727 /* UIKit.lua */; };
 		3E79D45516416CE00096A727 /* QueryMobileNumberViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */; };
@@ -199,6 +207,22 @@
 		3E6B949E16460E8C009B01AD /* AnimationImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationImpl.m; sourceTree = "<group>"; };
 		3E6B94A016461861009B01AD /* UIAnimation.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIAnimation.lua; path = scripts/UIAnimation.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E6B94A316465A7C009B01AD /* GoogleTranslateViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GoogleTranslateViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3E6B94F31646814D009B01AD /* OnlineAppBundleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineAppBundleLoader.h; sourceTree = "<group>"; };
+		3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineAppBundleLoader.m; sourceTree = "<group>"; };
+		3E6B94F616468F11009B01AD /* OnlineAppBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineAppBundle.h; sourceTree = "<group>"; };
+		3E6B94F716468F11009B01AD /* OnlineAppBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineAppBundle.m; sourceTree = "<group>"; };
+		3E6B950316469292009B01AD /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		3E6B950416469292009B01AD /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		3E6B950516469292009B01AD /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		3E6B950616469292009B01AD /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		3E6B950716469292009B01AD /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		3E6B950816469292009B01AD /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		3E6B950916469292009B01AD /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		3E6B950A16469292009B01AD /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		3E6B950B16469292009B01AD /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		3E6B950C16469292009B01AD /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		3E6B950D16469292009B01AD /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
+		3E6B9513164692AA009B01AD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3E79D44F16415F920096A727 /* System.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = System.lua; path = scripts/System.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D45216415FD00096A727 /* UIKit.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIKit.lua; path = scripts/UIKit.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QueryMobileNumberViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
@@ -356,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E6B9514164692AA009B01AD /* libz.dylib in Frameworks */,
 				3EE3B2CF1631B67300C77F85 /* libsqlite3.dylib in Frameworks */,
 				3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */,
 				3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */,
@@ -397,6 +422,7 @@
 				3EE3B32E16323DB000C77F85 /* Scripts */,
 				3E633987162D915700B63328 /* Libraries */,
 				3E633961162D8C3900B63328 /* Queries */,
+				3E6B95011646926F009B01AD /* 3rdLibraries */,
 				3E63395A162D8C3900B63328 /* Frameworks */,
 				3E633958162D8C3900B63328 /* Products */,
 			);
@@ -508,8 +534,8 @@
 		3E633993162D9F5800B63328 /* AddInFrameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3ED772EF163E2DD000E5C9A9 /* lua-5.1 */,
 				3EE3B2CE1631B67300C77F85 /* libsqlite3.dylib */,
+				3E6B9513164692AA009B01AD /* libz.dylib */,
 				3E633994162D9F6C00B63328 /* QuartzCore.framework */,
 			);
 			name = AddInFrameworks;
@@ -521,6 +547,33 @@
 				3E6B94A316465A7C009B01AD /* GoogleTranslateViewController.lua */,
 			);
 			name = GoogleTranslate;
+			sourceTree = "<group>";
+		};
+		3E6B95011646926F009B01AD /* 3rdLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				3ED772EF163E2DD000E5C9A9 /* lua-5.1 */,
+				3E6B950216469292009B01AD /* minizip */,
+				3E6B950C16469292009B01AD /* ZipArchive.h */,
+				3E6B950D16469292009B01AD /* ZipArchive.m */,
+			);
+			name = 3rdLibraries;
+			sourceTree = "<group>";
+		};
+		3E6B950216469292009B01AD /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				3E6B950316469292009B01AD /* crypt.h */,
+				3E6B950416469292009B01AD /* ioapi.c */,
+				3E6B950516469292009B01AD /* ioapi.h */,
+				3E6B950616469292009B01AD /* mztools.c */,
+				3E6B950716469292009B01AD /* mztools.h */,
+				3E6B950816469292009B01AD /* unzip.c */,
+				3E6B950916469292009B01AD /* unzip.h */,
+				3E6B950A16469292009B01AD /* zip.c */,
+				3E6B950B16469292009B01AD /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		3E9D0C31163192EF00C3FDCE /* Utils */ = {
@@ -753,6 +806,10 @@
 				3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */,
 				3EC357C41643EDE7009611C8 /* LuaApp.h */,
 				3EC357C51643EDE7009611C8 /* LuaApp.m */,
+				3E6B94F31646814D009B01AD /* OnlineAppBundleLoader.h */,
+				3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */,
+				3E6B94F616468F11009B01AD /* OnlineAppBundle.h */,
+				3E6B94F716468F11009B01AD /* OnlineAppBundle.m */,
 			);
 			name = Lua;
 			sourceTree = "<group>";
@@ -969,6 +1026,13 @@
 				3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */,
 				3EC357D01644C48E009611C8 /* Waiting.m in Sources */,
 				3E6B949F16460E8C009B01AD /* AnimationImpl.m in Sources */,
+				3E6B94F51646814D009B01AD /* OnlineAppBundleLoader.m in Sources */,
+				3E6B94F816468F12009B01AD /* OnlineAppBundle.m in Sources */,
+				3E6B950E16469292009B01AD /* ioapi.c in Sources */,
+				3E6B950F16469292009B01AD /* mztools.c in Sources */,
+				3E6B951016469292009B01AD /* unzip.c in Sources */,
+				3E6B951116469292009B01AD /* zip.c in Sources */,
+				3E6B951216469292009B01AD /* ZipArchive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
