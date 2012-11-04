@@ -10,4 +10,7 @@
 
 @interface AppRunImpl : NSObject
 
++ (void)runWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId relatedViewControllerId:(NSString *)rvcId;
++ (void)destoryAppWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId;
+
 @end

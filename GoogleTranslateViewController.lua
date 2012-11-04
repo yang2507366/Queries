@@ -1,5 +1,5 @@
 --http://translate.google.cn/?hl=zh-CN&tab=wT#zh-CN/en/测试用例
---[[require "UIKit"
+require "UIKit"
 require "System"
 require "Utils"
 
@@ -9,8 +9,8 @@ setmetatable(GoogleTranslateViewController, UIViewController);
 
 function GoogleTranslateViewController:viewDidLoad()
     ui::alert("test");
-end]]
+end
 
 function main()
-    print("test main");
+    
 end

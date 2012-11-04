@@ -29,6 +29,8 @@
 #import "RuntimeUtils.h"
 #import "DialogTools.h"
 #import "AnimationImpl.h"
+#import "AppLoaderImpl.h"
+#import "AppRunImpl.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -69,6 +71,40 @@ id<ScriptInteraction>scriptInteractionForAppId(NSString *appId)
     id<ScriptInteraction> si = [LuaSystemContext scriptInteractionWithAppId:appId];
     
     return si;
+}
+
+#pragma mark - app
+int app_runApp(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *targetAppId = luaStringParam(L, 2);
+    NSString *relatedViewControllerId = luaStringParam(L, 3);
+    [AppRunImpl runWithAppId:appId targetAppId:targetAppId relatedViewControllerId:relatedViewControllerId];
+    return 0;
+}
+
+int app_destoryApp(lua_State *L)
+{
+//    NSString *appId = luaStringParam(L, 1);
+    NSString *targetAppId = luaStringParam(L, 2);
+    [LuaSystemContext destoryAppWithAppId:targetAppId];
+    return 0;
+}
+
+int app_loadApp(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *loaderId = luaStringParam(L, 2);
+    NSString *urlString = luaStringParam(L, 3);
+    NSString *processFunc = luaStringParam(L, 4);
+    NSString *completeFunc = luaStringParam(L, 5);
+    [AppLoaderImpl loadWithAppId:appId
+                              si:scriptInteractionForAppId(appId)
+                        loaderId:loaderId
+                       urlString:urlString
+                     processFunc:processFunc
+                    completeFunc:completeFunc];
+    return 0;
 }
 
 #pragma mark - math
@@ -446,6 +482,14 @@ int ui_animate(lua_State *L)
     return 0;
 }
 
+int ui_getRelatedViewController(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *vcId = [UIRelatedImpl relatedViewControllerForAppId:appId];
+    pushString(L, vcId);
+    return 1;
+}
+
 #pragma mark - string
 int ustring_substring(lua_State *L)
 {
@@ -776,6 +820,11 @@ void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *
 
 void initFuntions(lua_State *L)
 {
+#pragma mark - app
+#pragma mark - app::loadApp
+    pushFunctionToLua(L, "app_loadApp", app_loadApp);
+#pragma mark - app::runApp
+    pushFunctionToLua(L, "app_runApp", app_runApp);
 #pragma mark - http::request
     pushFunctionToLua(L, "http_request", http_request);
 #pragma mark - http::cancel

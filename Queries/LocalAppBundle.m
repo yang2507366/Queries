@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "OnlineAppBundle.h"
+#import "LocalAppBundle.h"
 #import "NSString+Substring.h"
 
-@interface OnlineAppBundle ()
+@interface LocalAppBundle ()
 
 @property(nonatomic, copy)NSString *dirPath;
 
 @end
 
-@implementation OnlineAppBundle
+@implementation LocalAppBundle
 
 - (void)dealloc
 {
@@ -43,7 +43,9 @@
         scriptName = [NSString stringWithFormat:@"%@.lua", scriptName];
     }
     NSString *filePath = [[self.dirPath stringByAppendingPathComponent:@"src"] stringByAppendingPathComponent:scriptName];
-    return [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    NSString *script = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+
+    return script;
 }
 
 - (NSData *)resourceWithName:(NSString *)resName

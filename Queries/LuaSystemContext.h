@@ -18,6 +18,8 @@
 + (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId;
 + (LuaApp *)appForId:(NSString *)appId;
 
++ (void)runRootApp:(LuaApp *)app;
 + (void)runApp:(LuaApp *)app;
++ (void)destoryAppWithAppId:(NSString *)appId;
 
 @end

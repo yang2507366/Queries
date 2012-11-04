@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ProviderPool.h"
 
-@interface OnlineAppBundleLoader : NSObject
+@interface OnlineAppBundleLoader : NSObject <ProviderPoolable>
 
 - (id)initWithURLString:(NSString *)urlString;
 - (void)loadWithCompletion:(void(^)(NSString *))completion;

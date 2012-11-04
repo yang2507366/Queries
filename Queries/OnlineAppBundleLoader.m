@@ -56,4 +56,17 @@
     [self.request cancel];
 }
 
+- (BOOL)providerShouldBeRemoveFromPool
+{
+    return ![self.request isExecuting];
+}
+- (BOOL)providerIsExecuting
+{
+    return [self.request isExecuting];
+}
+- (void)providerWillRemoveFromPool
+{
+    [self cancel];
+}
+
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ScriptBundle.h"
 
-@interface OnlineAppBundle : NSObject <ScriptBundle>
+@interface LocalAppBundle : NSObject <ScriptBundle>
 
 - (id)initWithDirectory:(NSString *)dirPath;
 

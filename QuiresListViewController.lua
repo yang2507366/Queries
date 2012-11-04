@@ -2,6 +2,7 @@ require "UIKit"
 require "QueryMobileNumberViewController"
 require "QueryPostcodeViewController"
 require "GoogleTranslateViewController"
+require "AppLoader"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
@@ -15,6 +16,9 @@ setmetatable(QuiresListViewController, UIViewController);
 
 function QuiresListViewController:viewDidLoad()
     ap_new();
+    
+    local globalSelf = self;
+    
     listTableView = UITableView:create():retain();
     listTableView:setFrame(self:view():bounds());
     self:view():addSubview(listTableView);
@@ -73,11 +77,21 @@ function QuiresListViewController:viewDidLoad()
             currentNC:pushViewController(vc, true);
         elseif kTitleList[index] == kTitleGoogleTranslate then
             -- google翻译
-            local vc = GoogleTranslateViewController:createWithTitle(kTitleGoogleTranslate):retain();
+            --[[local vc = GoogleTranslateViewController:createWithTitle(kTitleGoogleTranslate):retain();
             function vc:viewDidPop()
                 vc:release();
             end
-            currentNC:pushViewController(vc, true);
+            currentNC:pushViewController(vc, true);]]
+            if globalSelf.loader then
+                globalSelf.loader:release();
+            end
+            globalSelf.loader = AppLoader:create():retain();
+            globalSelf.loader:load("http://imyvoaspecial.googlecode.com/files/gt2.zip");
+            globalSelf:setWaiting(true);
+            function globalSelf.loader:complete(success, appId)
+                globalSelf:setWaiting(false);
+                app::runApp(appId, globalSelf);
+            end
         end
         ap_release();
     end

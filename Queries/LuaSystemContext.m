@@ -21,7 +21,7 @@
 
 @property(nonatomic, retain)NSArray *scriptCheckers;
 
-@property(nonatomic, retain)LuaApp *currentApp;
+@property(nonatomic, retain)LuaApp *rootApp;
 @property(nonatomic, retain)NSMutableDictionary *appDict;
 
 @end
@@ -43,7 +43,7 @@
 {
     self.scriptCheckers = nil;
     
-    self.currentApp = nil;
+    self.rootApp = nil;
     self.appDict = nil;
     [super dealloc];
 }
@@ -85,11 +85,14 @@
     return script;
 }
 
+- (void)runRootApp:(LuaApp *)app
+{
+    self.rootApp = app;
+    [self runApp:app];
+}
+
 - (void)runApp:(LuaApp *)app
 {
-    if(!self.currentApp){
-        self.currentApp = app;
-    }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
     NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
                                     scriptName:lua_main_function
@@ -99,8 +102,19 @@
     [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {
         if(error.length != 0){
             NSLog(@"%@", error);
+            NSLog(@"%@", mainScript);
         }
     } parameters:nil];
+}
+
+- (void)destoryAppWithAppId:(NSString *)appId
+{
+    LuaApp *app = [self.appDict objectForKey:appId];
+    if(app == self.rootApp){
+        NSLog(@"root app cannot be destoryed");
+    }else{
+        [self.appDict removeObjectForKey:appId];
+    }
 }
 
 - (LuaApp *)appForId:(NSString *)appId
@@ -110,7 +124,7 @@
 
 - (UIWindow *)currentWindow
 {
-    return [self.currentApp baseWindow];
+    return [self.rootApp baseWindow];
 }
 
 - (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId
@@ -145,9 +159,19 @@
     return script;
 }
 
++ (void)runRootApp:(LuaApp *)app
+{
+    [[self sharedApplication] runRootApp:app];
+}
+
 + (void)runApp:(LuaApp *)app
 {
     [[self sharedApplication] runApp:app];
+}
+
++ (void)destoryAppWithAppId:(NSString *)appId
+{
+    [[self sharedApplication] destoryAppWithAppId:appId];
 }
 
 @end
