@@ -32,6 +32,7 @@
 #import "AppLoaderImpl.h"
 #import "AppRunImpl.h"
 #import "TextViewImpl.h"
+#import "LuaCommonUtils.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -140,6 +141,20 @@ int http_request(lua_State *L)
     NSString *requestId = [HTTPRequestImpl requestWithLuaState:si urlString:url
                                        callbackLuaFunctionName:callbackFuncName];
     pushString(L, requestId);
+    return 1;
+}
+
+int http_post(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *url = luaStringParam(L, 2);
+    NSString *paramId = luaStringParam(L, 3);
+    NSString *callbackFunc = luaStringParam(L, 4);
+    NSString *reqId = [HTTPRequestImpl postWithSi:scriptInteractionForAppId(appId)
+                                        urlString:url
+                                       parameters:[LuaGroupedObjectManager objectWithId:paramId group:appId]
+                                     callbackFunc:callbackFunc];
+    pushString(L, reqId);
     return 1;
 }
 
@@ -837,6 +852,14 @@ int utils_printObjectDescription(lua_State *L)
     return 0;
 }
 
+int utils_isObjCObject(lua_State *L)
+{
+//    NSString *appId = luaStringParam(L, 1);
+    NSString *objId = luaStringParam(L, 2);
+    lua_pushboolean(L, [LuaCommonUtils isObjCObject:objId] ? 1 : 0);
+    return 1;
+}
+
 void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *L))
 {
     lua_pushstring(L, functionName);
@@ -853,6 +876,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "app_runApp", app_runApp);
 #pragma mark - http::request
     pushFunctionToLua(L, "http_request", http_request);
+#pragma mark - http::post
+    pushFunctionToLua(L, "http_post", http_post);
 #pragma mark - http::cancel
     pushFunctionToLua(L, "http_cancel", http_cancel);
 #pragma mark - math::operator_or
@@ -1010,6 +1035,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "utils_printObject", utils_printObject);
 #pragma mark - utils::printObjectDescription
     pushFunctionToLua(L, "utils_printObjectDescription", utils_printObjectDescription);
+#pragma mark - utils::isObjCObject
+    pushFunctionToLua(L, "utils_isObjCObject", utils_isObjCObject);
 }
 
 

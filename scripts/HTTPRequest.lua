@@ -15,6 +15,16 @@ function HTTPRequest:start(URLString)
     return request;
 end
 
+function HTTPRequest:post(URLString, params)
+    local requestId = http::post(URLString, params:id(), "event_http_request_response");
+    local req = Object:new(requestId);
+    setmetatable(req, self);
+    
+    event_proxy_http_request[requestId] = req;
+    
+    return req;
+end
+
 -- instance method
 function HTTPRequest:cancel()
     http::cancel(self:id());

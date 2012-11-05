@@ -27,6 +27,7 @@
 #import "MethodInvokerForLua.h"
 #import "LuaGroupedObjectManager.h"
 #import "LuaConstants.h"
+#import "LuaCommonUtils.h"
 
 @implementation MethodInvokerForLua
 
@@ -291,7 +292,7 @@
                 argumentData = &string;
             }else if(ctype == '@'){//id
                 id obj = tmpParam;//****************************
-                if([tmpParam hasPrefix:lua_obj_prefix]){
+                if([LuaCommonUtils isObjCObject:tmpParam]){
                     obj = [LuaGroupedObjectManager objectWithId:tmpParam group:group];
                 }
                 argumentData = &obj;

@@ -1,3 +1,4 @@
+-- print object
 function po(object)
     if object.id then
         utils::printObject(object:id());
@@ -6,6 +7,7 @@ function po(object)
     end
 end
 
+-- print objc object properties
 function pd(object)
     if object.id then
         utils::printObjectDescription(object:id());
@@ -14,17 +16,19 @@ function pd(object)
     end
 end
 
+-- debug print
 function dp(str)
     print(str);
 end
 
+-- safty release
 function srelease(obj)
     if obj then
         obj:release();
     end
 end
 
--- 
+-- convert lua bool to objc bool
 function toObjCBool(b)
     if b ~= nil then
         if b then
@@ -35,6 +39,10 @@ function toObjCBool(b)
     else
         return "NO";
     end
+end
+
+function isObjCObject(objId)
+    return utils::isObjCObject(objId);
 end
 
 -- print table

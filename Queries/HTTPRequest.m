@@ -8,15 +8,15 @@
 
 #import "HTTPRequest.h"
 #import "DelayController.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
-@interface HTTPRequest () <NSURLConnectionDelegate, NSURLConnectionDataDelegate, DelayControllerDelegate>
+@interface HTTPRequest ()
 
 @property(nonatomic, copy)void (^callback)(NSString *, NSError *);
 @property(nonatomic, copy)void(^returnDataCallback)(NSData *, NSError *);
-@property(nonatomic, retain)NSURLConnection *URLConnection;
-@property(nonatomic, retain)NSMutableData *responseData;
-@property(nonatomic, assign)BOOL complete;
-@property(nonatomic, retain)DelayController *timeOutChecker;
+@property(nonatomic, assign)BOOL recyclable;
+@property(nonatomic, retain)ASIHTTPRequest *httpRequest;
 
 @end
 
@@ -39,24 +39,27 @@
 {
     self.callback = nil;
     self.returnDataCallback = nil;
-    [self.URLConnection cancel]; self.URLConnection = nil;
-    self.responseData = nil;
-    [self.timeOutChecker cancel]; self.timeOutChecker = nil;
+    [self.httpRequest clearDelegatesAndCancel]; self.httpRequest = nil;
     [super dealloc];
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    self.recyclable = NO;
+    [ASIHTTPRequest setDefaultUserAgentString:@"Queries"];
+    
+    return self;
 }
 
 - (void)requestWithURLString:(NSString *)URLString
 {
-    self.responseData = [NSMutableData data];
-    
-    NSURL *url = [NSURL URLWithString:URLString];
-    self.URLConnection = [[[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:url] delegate:self] autorelease];
-    [self.URLConnection start];
-    self.complete = NO;
-    self.timeOutChecker = [[[DelayController alloc] initWithInterval:10] autorelease];
-    self.timeOutChecker.delegate = self;
-    [self.timeOutChecker start];
-    NSLog(@"%@", URLString);
+    self.httpRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:URLString]];
+    self.httpRequest.delegate = self;
+    self.httpRequest.didFinishSelector = @selector(httpRequestDidFinish:);
+    self.httpRequest.didFailSelector = @selector(httpRequestDidError:);
+    [self.httpRequest startAsynchronous];
 }
 
 - (void)requestWithURLString:(NSString *)URLString completion:(void (^)(NSString *, NSError *))completion
@@ -71,67 +74,55 @@
     [self requestWithURLString:URLString];
 }
 
+- (void)postWithParameters:(NSDictionary *)params baseURLString:(NSString *)baseURLString completion:(void (^)(NSString *, NSError *))completion
+{
+    self.callback = completion;
+    ASIFormDataRequest *formRequest = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:baseURLString]];
+    for(NSString *key in params){
+        [formRequest setPostValue:[params objectForKey:key] forKey:key];
+    }
+    self.httpRequest = formRequest;
+    self.httpRequest.delegate = self;
+    self.httpRequest.didFinishSelector = @selector(httpRequestDidFinish:);
+    self.httpRequest.didFailSelector = @selector(httpRequestDidError:);
+    [self.httpRequest startAsynchronous];
+}
+
 - (BOOL)isExecuting
 {
-    return self.complete;
+    return self.httpRequest.isExecuting;
 }
 
 - (void)cancel
 {
     self.callback = nil;
-    [self.URLConnection cancel];
 }
 
-- (void)setComplete:(BOOL)complete
+#pragma mark - ASIHTTPRequestDelegate
+- (void)httpRequestDidFinish:(ASIHTTPRequest *)req
 {
-    _complete = complete;
-    [_timeOutChecker cancel];
-}
-
-#pragma mark - DelayControllerDelegate
-- (void)delayControllerDidFinishDelay:(DelayController *)controller
-{
-    [self cancel];
-    self.complete = YES;
+    self.recyclable = YES;
     if(self.callback){
-        self.callback(nil, [NSError errorWithDomain:NSStringFromClass(self.class)
-                                               code:-1
-                                           userInfo:[NSDictionary dictionaryWithObject:@"网络连接超时" forKey:NSLocalizedDescriptionKey]]);
+        self.callback(req.responseString, nil);
+    }
+    
+    if(self.returnDataCallback){
+        self.returnDataCallback(req.responseData, nil);
     }
 }
 
-#pragma mark - NSURLConnectionDelegate
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+- (void)httpRequestDidError:(ASIHTTPRequest *)req
 {
+    self.recyclable = YES;
+    NSError *error = [NSError errorWithDomain:NSStringFromClass(self.class)
+                                         code:-1
+                                     userInfo:[NSDictionary dictionaryWithObject:@"网络连接错误" forKey:NSLocalizedDescriptionKey]];
     if(self.callback){
         self.callback(nil, error);
     }
     if(self.returnDataCallback){
         self.returnDataCallback(nil, error);
     }
-    self.complete = YES;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSString *responseString = [[[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding] autorelease];
-    if(self.callback){
-        self.callback(responseString, nil);
-    }
-    if(self.returnDataCallback){
-        self.returnDataCallback(self.responseData, nil);
-    }
-    self.complete = YES;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [self.responseData appendData:data];
 }
 
 #pragma mark - ProviderPoolable
@@ -147,7 +138,7 @@
 
 - (BOOL)providerShouldBeRemoveFromPool
 {
-    return self.complete;
+    return self.recyclable;
 }
 
 @end

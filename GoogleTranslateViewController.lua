@@ -3,6 +3,8 @@ require "UIKit"
 require "System"
 require "Utils"
 require "Network"
+require "NSMutableArray"
+require "NSMutableDictionary"
 
 GoogleTranslateViewController = {};
 GoogleTranslateViewController.__index = GoogleTranslateViewController;
@@ -24,7 +26,6 @@ function GoogleTranslateViewController:viewDidLoad()
     
     closeKeyboardBtn = UIBarButtonItem:createWithTitle("关闭"):retain();
     closeKeyboardBtn:setStyle(UIBarButtonItemStyleDone);
-    print(closeKeyboardBtn);
     
     local cnLabel = UILabel:createWithText("输入需要翻译的中文:");
     cnLabel:setFrame(5, 5, 200, cnLabel:font():lineHeight());
@@ -64,10 +65,12 @@ function GoogleTranslateViewController:viewDidLoad()
             cnTextView:becomeFirstResponder();
             return;
         end
-        local urlString = "http://translate.google.cn/?hl=zh-CN&tab=wT#zh-CN/en/"..ustring::encodeURL(cnTextView:text());
-        local req = HTTPRequest:start(urlString);
+        local urlString = "http://translate.google.cn/?sl=zh-CN&amp;tl=en";
+        local params = NSMutableDictionary:create();
+        params:setObjectForKey("text", cnText);
+        local req = HTTPRequest:post(urlString, params);
         function req:response(responseString, errorString)
-            
+            po("response:"..responseString);
         end
         ap_release();
     end
@@ -84,5 +87,13 @@ function main()
     function gtVC:viewDidPop()
         gtVC:release();
     end
+    
+    local mdict = NSMutableDictionary:create();
+    mdict:setObjectForKey("test", "key1");
+    mdict:setObjectForKey("test2", "key2");
+    local ma = mdict:allKeys();
+    print(ma:count());
+    print(ma:objectAtIndex(0));
+    
     ap_release();
 end

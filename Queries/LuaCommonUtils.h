@@ -11,5 +11,6 @@
 @interface LuaCommonUtils : NSObject
 
 + (BOOL)scriptIsMainScript:(NSString *)script;
++ (BOOL)isObjCObject:(NSString *)objId;
 
 @end

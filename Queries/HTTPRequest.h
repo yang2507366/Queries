@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "HTTPGetRequest.h"
+#import "HTTPPostRequest.h"
 
-@interface HTTPRequest : NSObject <HTTPGetRequest>
+@interface HTTPRequest : NSObject <HTTPGetRequest, HTTPPostRequest>
 
 + (id)requestWithURLString:(NSString *)URLString identifier:(NSString *)identifier completion:(void (^)(NSString *, NSError *))completion;
 + (void)cancelRequestWithIdentifier:(NSString *)identifier;

@@ -61,6 +61,33 @@
     return requestId;
 }
 
++ (NSString *)postWithSi:(id<ScriptInteraction>)si
+               urlString:(NSString *)urlString
+              parameters:(NSMutableDictionary *)params
+            callbackFunc:(NSString *)callbackFunc
+{
+    NSString *requestId = [NSString stringWithFormat:@"%d", (NSInteger)urlString];
+    
+    HTTPRequest *req = [[HTTPRequest new] autorelease];
+    [req postWithParameters:params baseURLString:urlString completion:^(NSString *responseString, NSError *error) {
+        if(error){
+            if([self.class requestExists:requestId]){
+                [si callFunction:callbackFunc callback:nil parameters:requestId, @"", error.localizedDescription, nil];
+            }
+        }else{
+            if(responseString.length == 0){
+                responseString = @"";
+            }
+            if([self.class requestExists:requestId]){
+                [si callFunction:callbackFunc callback:nil parameters:requestId, responseString, @"", nil];
+            }
+        }
+    }];
+    [[self sharedRequestDictionary] setObject:req forKey:requestId];
+    
+    return requestId;
+}
+
 + (void)cancelRequestWithRequestId:(NSString *)requestId
 {
     id<HTTPGetRequest> req = [[self sharedRequestDictionary ] objectForKey:requestId];

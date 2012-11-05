@@ -8,6 +8,7 @@
 
 #import "LuaCommonUtils.h"
 #import "NSString+Substring.h"
+#import "LuaConstants.h"
 
 @implementation LuaCommonUtils
 
@@ -55,6 +56,11 @@
         }
     }
     return NO;
+}
+
++ (BOOL)isObjCObject:(NSString *)objId
+{
+    return [objId hasPrefix:lua_obj_prefix];
 }
 
 @end
