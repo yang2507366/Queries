@@ -23,7 +23,7 @@
     if(fromInex < self.length){
         NSRange range = [self rangeOfString:str
                                     options:reverse ? NSBackwardsSearch : NSCaseInsensitiveSearch
-                                      range:NSMakeRange(fromInex, self.length - fromInex)];
+                                      range:reverse ? NSMakeRange(0, fromInex) :NSMakeRange(fromInex, self.length - fromInex)];
         return range.location == NSNotFound ? -1 : range.location;
     }
     return -1;
