@@ -24,6 +24,19 @@ function srelease(obj)
     end
 end
 
+-- 
+function toObjCBool(b)
+    if b ~= nil then
+        if b then
+            return "YES";
+        else
+            return "NO";
+        end
+    else
+        return "NO";
+    end
+end
+
 -- print table
 local print = print
 local tconcat = table.concat

@@ -41,6 +41,11 @@ function UIButton:get(buttonId)
     return button;
 end
 
+-- deconstructor
+function UIButton:willDealloc()
+    button_tap_event_proxy[self:id()] = nil;
+end
+
 -- instance methods
 function UIButton:setTitle(title, state)
     if state == nil then

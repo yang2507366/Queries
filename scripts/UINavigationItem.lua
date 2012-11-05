@@ -7,7 +7,7 @@ setmetatable(UINavigationItem, Object);
 
 -- constructor
 function UINavigationItem:get(naviItemId)
-    local naviItem = Object:create(naviItemId);
+    local naviItem = Object:new(naviItemId);
     setmetatable(naviItem, self);
     
     return naviItem;
@@ -25,5 +25,9 @@ function UINavigationItem:rightBarButtonItem()
 end
 
 function UINavigationItem:setRightBarButtonItem(buttonItem)
-    runtime::invokeMethod(self:id(), "setRightBarButtonItem:", buttonItem:id());
+    if buttonItem then
+        runtime::invokeMethod(self:id(), "setRightBarButtonItem:", buttonItem:id());
+    else
+        runtime::invokeMethod(self:id(), "setRightBarButtonItem:");
+    end
 end

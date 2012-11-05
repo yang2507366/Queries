@@ -24,6 +24,11 @@ function UIBarButtonItem:get(buttonItemId)
     return buttonItem;
 end
 
+-- deconstructor
+function UIBarButtonItem:willDealloc()
+    event_table_barButtonItem_tapped[self:id()] = nil;
+end
+
 -- instance methods
 function UIBarButtonItem:setTitle(title)
     runtime::invokeMethod(self.id, "setTitle:", title);

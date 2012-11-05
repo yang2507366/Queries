@@ -44,7 +44,7 @@ function UITextField:get(textFieldId)
 end
 
 -- deconstructor
-function UITextField:dealloc()
+function UITextField:willDealloc()
     eventProxyTable_textField[self:id()] = nil;
 end
 

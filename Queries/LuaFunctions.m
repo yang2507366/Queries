@@ -31,6 +31,7 @@
 #import "AnimationImpl.h"
 #import "AppLoaderImpl.h"
 #import "AppRunImpl.h"
+#import "TextViewImpl.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -487,6 +488,31 @@ int ui_getRelatedViewController(lua_State *L)
     NSString *appId = luaStringParam(L, 1);
     NSString *vcId = [UIRelatedImpl relatedViewControllerForAppId:appId];
     pushString(L, vcId);
+    return 1;
+}
+
+int ui_createTextView(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *textViewShouldBeginEditingFunc = luaStringParam(L, 2);
+    NSString *textViewShouldEndEditingFunc = luaStringParam(L, 3);
+    NSString *textViewDidBeginEditingFunc = luaStringParam(L, 4);
+    NSString *textViewDidEndEditingFunc = luaStringParam(L, 5);
+    NSString *shouldChangeTextInRangeFunc = luaStringParam(L, 6);
+    NSString *textViewDidChangeFunc = luaStringParam(L, 7);
+    NSString *textViewDidChangeSelectionFunc = luaStringParam(L, 8);
+    
+    NSString *tvId = [TextViewImpl createTextViewWithAppId:appId
+                                                        si:scriptInteractionForAppId(appId)
+                                       didBeginEditingFunc:textViewDidBeginEditingFunc
+                                            didEndEditFunc:textViewDidEndEditingFunc
+                                             didChangeFunc:textViewDidChangeFunc
+                                    didChangeSelectionFunc:textViewDidChangeSelectionFunc
+                                    shouldBeginEditingFunc:textViewShouldBeginEditingFunc
+                                      shouldEndEditingFunc:textViewShouldEndEditingFunc
+                               shouldChangeTextInRangeFunc:shouldChangeTextInRangeFunc];
+    pushString(L, tvId);
+    
     return 1;
 }
 
@@ -970,6 +996,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_animate", ui_animate);
 #pragma mark - ui::getRelatedViewController
     pushFunctionToLua(L, "ui_getRelatedViewController", ui_getRelatedViewController);
+#pragma mark - ui::createTextView
+    pushFunctionToLua(L, "ui_createTextView", ui_createTextView);
 #pragma mark - ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
 #pragma mark - ustring::length
