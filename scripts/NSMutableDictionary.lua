@@ -7,6 +7,7 @@ setmetatable(NSMutableDictionary, Object);
 
 function NSMutableDictionary:create()
     local dictId = runtime::createObject("NSMutableDictionary", "init");
+    print(dictId);
     return self:get(dictId);
 end
 

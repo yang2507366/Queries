@@ -51,7 +51,7 @@
         D_Log(@"%@ exists", containObjectId);
         return containObjectId;
     }else{
-        D_Log(@"add object:%d:%@, group:%@", (NSInteger)object, object, group);
+//        D_Log(@"add object:%d:%@, group:%@", (NSInteger)object, object, group);
         NSString *objectId = [self idForObject:object];
         [objectDictionary setObject:[ObjectWrapper newObjectWrapperWithObject:object] forKey:objectId];
         NSLog(@"add object count:%d", [self statisticObjectCount]);

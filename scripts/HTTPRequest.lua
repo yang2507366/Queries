@@ -16,7 +16,13 @@ function HTTPRequest:start(URLString)
 end
 
 function HTTPRequest:post(URLString, params)
-    local requestId = http::post(URLString, params:id(), "event_http_request_response");
+    if params == nil then
+        params = "";
+    end
+    if params.id then
+        params = params:id();
+    end
+    local requestId = http::post(URLString, params, "event_http_request_response");
     local req = Object:new(requestId);
     setmetatable(req, self);
     
