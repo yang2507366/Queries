@@ -66,7 +66,7 @@ function UITextField:setKeyboardType(ktype)
 end
 
 function UITextField:keyboardType()
-    return runtime::invokeMethod(self:id(), "keyboardType");
+    return tonumber(runtime::invokeMethod(self:id(), "keyboardType"));
 end
 
 -- event

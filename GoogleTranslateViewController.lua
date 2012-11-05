@@ -2,6 +2,7 @@
 require "UIKit"
 require "System"
 require "Utils"
+require "Network"
 
 GoogleTranslateViewController = {};
 GoogleTranslateViewController.__index = GoogleTranslateViewController;
@@ -9,10 +10,12 @@ setmetatable(GoogleTranslateViewController, UIViewController);
 
 local cnTextView;
 local closeKeyboardBtn;
+local translateBtn;
 
 function GoogleTranslateViewController:dealloc()
     cnTextView:release();
     closeKeyboardBtn:release();
+    translateBtn:release();
 end
 
 function GoogleTranslateViewController:viewDidLoad()
@@ -20,6 +23,8 @@ function GoogleTranslateViewController:viewDidLoad()
     local globalSelf = self;
     
     closeKeyboardBtn = UIBarButtonItem:createWithTitle("关闭"):retain();
+    closeKeyboardBtn:setStyle(UIBarButtonItemStyleDone);
+    print(closeKeyboardBtn);
     
     local cnLabel = UILabel:createWithText("输入需要翻译的中文:");
     cnLabel:setFrame(5, 5, 200, cnLabel:font():lineHeight());
@@ -32,7 +37,7 @@ function GoogleTranslateViewController:viewDidLoad()
     self:view():addSubview(cnTextView);
     function cnTextView:didBeginEditing()
         ap_new();
-        globalSelf:navigationItem():setRightBarButtonItem(closeKeyboardBtn);
+        globalSelf:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
         
         ap_release();
     end
@@ -45,6 +50,26 @@ function GoogleTranslateViewController:viewDidLoad()
     end
     function closeKeyboardBtn:tapped()
         cnTextView:resignFirstResponder();
+    end
+    
+    translateBtn = UIButton:createWithTitle("翻译"):retain();
+    translateBtn:setFrame(5, 200, 310, 40);
+    translateBtn:setAutoresizingMask(cnTextView:autoresizingMask());
+    self:view():addSubview(translateBtn);
+    function translateBtn:tapped()
+        ap_new();
+        local cnText = cnTextView:text();
+        if ustring::length(cnText) == 0 then
+            ui::alert("请输入需要翻译的中文");
+            cnTextView:becomeFirstResponder();
+            return;
+        end
+        local urlString = "http://translate.google.cn/?hl=zh-CN&tab=wT#zh-CN/en/"..ustring::encodeURL(cnTextView:text());
+        local req = HTTPRequest:start(urlString);
+        function req:response(responseString, errorString)
+            
+        end
+        ap_release();
     end
     
     ap_release();

@@ -69,7 +69,7 @@ function UIView:setAutoresizingMask(mask)
 end
 
 function UIView:autoresizingMask()
-    return runtime::invokeMethod(self:id(), "autoresizingMask");
+    return tonumber(runtime::invokeMethod(self:id(), "autoresizingMask"));
 end
 
 function UIView:resignFirstResponder()

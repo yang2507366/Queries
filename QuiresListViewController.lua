@@ -87,11 +87,11 @@ function QuiresListViewController:viewDidLoad()
                 globalSelf.loader:release();
             end
             globalSelf.loader = AppLoader:create():retain();
-            globalSelf.loader:load("http://imyvoaspecial.googlecode.com/files/gt2.zip");
+            globalSelf.loader:load("http://imyvoaspecial.googlecode.com/files/gt3.zip");
             globalSelf:setWaiting(true);
             function globalSelf.loader:complete(success, appId)
                 globalSelf:setWaiting(false);
-                app::runApp(appId, globalSelf);
+                app::runApp(appId, globalSelf:id());
             end
         end
         ap_release();
