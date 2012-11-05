@@ -28,7 +28,7 @@ function QueryMobileNumberViewController:viewDidLoad()
     tmpView:setFrame(x, y, width, 150);
     tmpView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
     
-    local label = UILabel:createWithTitle("手机号码："):autorelease();
+    local label = UILabel:createWithText("手机号码："):autorelease();
     label:setFrame(10, 10, 80, label:font():lineHeight());
     tmpView:addSubview(label);
     

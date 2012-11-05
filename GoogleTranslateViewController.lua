@@ -17,13 +17,16 @@ end
 
 function GoogleTranslateViewController:viewDidLoad()
     ap_new();
-    
     local globalSelf = self;
     
     closeKeyboardBtn = UIBarButtonItem:createWithTitle("关闭"):retain();
     
+    local cnLabel = UILabel:createWithText("输入需要翻译的中文:");
+    cnLabel:setFrame(5, 5, 200, cnLabel:font():lineHeight());
+    self:view():addSubview(cnLabel);
+    
     cnTextView = UITextView:create():retain();
-    cnTextView:setFrame(5, 5, 310, 190);
+    cnTextView:setFrame(5, 25, 310, 170);
     cnTextView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
     cnTextView:setBackgroundColor(UIColor:createWithRGB(235, 235, 235));
     self:view():addSubview(cnTextView);

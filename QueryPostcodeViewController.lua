@@ -23,7 +23,7 @@ function QueryPostcodeViewController:viewDidLoad()
     cview:setFrame(0, 0, width, height - 120);
     cview:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
 --    cview:setBackgroundColor(UIColor:createWithRGB(255, 0, 0));
-    local label = UILabel:createWithTitle(kUseAddress);
+    local label = UILabel:createWithText(kUseAddress);
     label:setFrame(10, 10, 200, label:font():lineHeight());
     cview:addSubview(label);
     
@@ -68,7 +68,7 @@ function QueryPostcodeViewController:viewDidLoad()
     
     x, y, width, height = self:view():bounds();
     
-    label = UILabel:createWithTitle(kUsePostcode);
+    label = UILabel:createWithText(kUsePostcode);
     label:setFrame(10, 150, 200, label:font():lineHeight());
     cview:addSubview(label);
     

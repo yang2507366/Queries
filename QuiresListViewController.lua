@@ -40,7 +40,7 @@ function QuiresListViewController:viewDidLoad()
             cell = UITableViewCell:create(identifier);
             cell:textLabel():setFont(UIFont:createWithFontSize(16));
             
-            label = UILabel:createWithTitle("");
+            label = UILabel:createWithText("");
             label:setTag(1001);
             local x, y, width, height = cell:contentView():bounds();
             label:setFrame(10, 0, width, 72);
