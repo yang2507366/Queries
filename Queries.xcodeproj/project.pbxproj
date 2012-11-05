@@ -27,7 +27,7 @@
 		3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4286161647518700B1451D /* LuaCommonUtils.m */; };
 		3E428629164779B800B1451D /* UITextView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E428628164779B800B1451D /* UITextView.lua */; };
 		3E42862D16477A6800B1451D /* TextViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E42862C16477A6800B1451D /* TextViewImpl.m */; };
-		3E45B9AE163A896F00E19133 /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E45B9AB163A896F00E19133 /* doc.txt */; };
+		3E42864A1647BECF00B1451D /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E4286491647BECF00B1451D /* doc.txt */; };
 		3E4EBD241636FDCA00629387 /* UIBarButtonItemImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */; };
 		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
@@ -183,7 +183,7 @@
 		3E428628164779B800B1451D /* UITextView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITextView.lua; path = scripts/UITextView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E42862B16477A6700B1451D /* TextViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewImpl.h; sourceTree = "<group>"; };
 		3E42862C16477A6800B1451D /* TextViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewImpl.m; sourceTree = "<group>"; };
-		3E45B9AB163A896F00E19133 /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doc.txt; path = scripts/doc.txt; sourceTree = "<group>"; };
+		3E4286491647BECF00B1451D /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = doc.txt; sourceTree = "<group>"; };
 		3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBarButtonItemImpl.h; sourceTree = "<group>"; };
 		3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBarButtonItemImpl.m; sourceTree = "<group>"; };
 		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
@@ -839,7 +839,7 @@
 		3EE3B32E16323DB000C77F85 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				3E45B9AB163A896F00E19133 /* doc.txt */,
+				3E4286491647BECF00B1451D /* doc.txt */,
 				3EA309CA164145D80013A6D1 /* Quires */,
 				3EC357B51642C21A009611C8 /* Network */,
 				3E9FFDAC163E48B6000B630E /* UIKit */,
@@ -916,7 +916,6 @@
 				3E63396E162D8C3A00B63328 /* Default.png in Resources */,
 				3E633970162D8C3A00B63328 /* Default@2x.png in Resources */,
 				3E633972162D8C3A00B63328 /* Default-568h@2x.png in Resources */,
-				3E45B9AE163A896F00E19133 /* doc.txt in Resources */,
 				3EC2CBC2163CCD1D00E83E10 /* Object.lua in Resources */,
 				3EC2CBC3163CCD1D00E83E10 /* Recyclable.lua in Resources */,
 				3EC2CBC4163CCD1D00E83E10 /* Utils.lua in Resources */,
@@ -944,6 +943,7 @@
 				3E6B94A416465A7C009B01AD /* GoogleTranslateViewController.lua in Resources */,
 				3E867ADA1646A18800650486 /* AppLoader.lua in Resources */,
 				3E428629164779B800B1451D /* UITextView.lua in Resources */,
+				3E42864A1647BECF00B1451D /* doc.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
