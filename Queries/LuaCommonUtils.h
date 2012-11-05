@@ -10,4 +10,6 @@
 
 @interface LuaCommonUtils : NSObject
 
++ (BOOL)scriptIsMainScript:(NSString *)script;
+
 @end

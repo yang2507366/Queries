@@ -11,7 +11,7 @@
 #import "MemoryTracer.h"
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
-#import "LuaSystemContext.h"
+#import "LuaAppContext.h"
 #import "MethodInvokerForLua.h"
 #import "LuaGroupedObjectManager.h"
 #import "CodeUtils.h"
@@ -43,8 +43,8 @@
 //        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
 //    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
     
-//    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
-//    [LuaSystemContext runRootApp:app];
+    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
+    [LuaAppContext runRootApp:app];
     
 //    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
 //                                                       className:@"UIColor"
@@ -67,20 +67,20 @@
 //        NSLog(@"%d", i << 20);
 //    }
     
-    OnlineAppBundleLoader *loader = [[[OnlineAppBundleLoader alloc] initWithURLString:@"http://imyvoaspecial.googlecode.com/files/qr20.zip"] autorelease];
-    [loader loadWithCompletion:^(NSString *filePath) {
-        NSLog(@"%@", filePath);
-        ZipArchive *zipAr = [[[ZipArchive alloc] init] autorelease];
-        [zipAr UnzipOpenFile:filePath];
-        NSString *targetPath = [NSString stringWithFormat:@"%@/Documents/%@", NSHomeDirectory(), [filePath lastPathComponent]];
-        [[NSFileManager defaultManager] createDirectoryAtPath:targetPath withIntermediateDirectories:NO attributes:nil error:nil];
-        [zipAr UnzipFileTo:targetPath overWrite:YES];
-        [zipAr UnzipCloseFile];
-        LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:targetPath] autorelease];
-        LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:_window] autorelease];
-        [LuaSystemContext runRootApp:app];
-    }];
-    [ProviderPool addProviderToSharedPool:loader identifier:@"root_app_loader"];
+//    OnlineAppBundleLoader *loader = [[[OnlineAppBundleLoader alloc] initWithURLString:@"http://imyvoaspecial.googlecode.com/files/qr20.zip"] autorelease];
+//    [loader loadWithCompletion:^(NSString *filePath) {
+//        NSLog(@"%@", filePath);
+//        ZipArchive *zipAr = [[[ZipArchive alloc] init] autorelease];
+//        [zipAr UnzipOpenFile:filePath];
+//        NSString *targetPath = [NSString stringWithFormat:@"%@/Documents/%@", NSHomeDirectory(), [filePath lastPathComponent]];
+//        [[NSFileManager defaultManager] createDirectoryAtPath:targetPath withIntermediateDirectories:NO attributes:nil error:nil];
+//        [zipAr UnzipFileTo:targetPath overWrite:YES];
+//        [zipAr UnzipCloseFile];
+//        LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:targetPath] autorelease];
+//        LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:_window] autorelease];
+//        [LuaSystemContext runRootApp:app];
+//    }];
+//    [ProviderPool addProviderToSharedPool:loader identifier:@"root_app_loader"];
     
     return YES;
 }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaSystemContext.h"
+#import "LuaAppContext.h"
 #import "LuaScriptInteraction.h"
 #import "LuaInvoker.h"
 #import "LuaConstants.h"
@@ -17,7 +17,7 @@
 #import "CodeUtils.h"
 #import "RequireReplaceChecker.h"
 
-@interface LuaSystemContext ()
+@interface LuaAppContext ()
 
 @property(nonatomic, retain)NSArray *scriptCheckers;
 
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation LuaSystemContext
+@implementation LuaAppContext
 
 + (id)sharedApplication
 {
@@ -97,15 +97,18 @@
     NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
                                     scriptName:lua_main_function
                                       bundleId:[app.scriptBundle bundleId]];
-    
-    id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
-    app.scriptInteraction = si;
-    [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {
-        if(error.length != 0){
-            NSLog(@"%@", error);
-            NSLog(@"%@", mainScript);
-        }
-    } parameters:nil];
+    if(mainScript.length != 0){
+        id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
+        app.scriptInteraction = si;
+        [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {
+            if(error.length != 0){
+                NSLog(@"%@", error);
+                NSLog(@"%@", mainScript);
+            }
+        } parameters:nil];
+    }else{
+        NSLog(@"run app:%@ failed, main script cannot be found", [app.scriptBundle bundleId]);
+    }
 }
 
 - (void)destoryAppWithAppId:(NSString *)appId

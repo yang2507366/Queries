@@ -12,7 +12,7 @@
 #import "lauxlib.h"
 #import "UnicodeScriptInvokeFilter.h"
 #import "LuaFunctions.h"
-#import "LuaSystemContext.h"
+#import "LuaAppContext.h"
 #import "NSString+Substring.h"
 #import "LuaConstants.h"
 
@@ -79,7 +79,7 @@ int get_module(lua_State *L)
             appId = [requireString substringToIndex:beginIndex];
             modName = [requireString substringFromIndex:beginIndex + 1];
         }
-        NSString *script = [LuaSystemContext scriptWithScriptName:modName appId:appId];
+        NSString *script = [LuaAppContext scriptWithScriptName:modName appId:appId];
         if(script.length != 0){
             const char *cscript = [script UTF8String];
             luaL_loadbuffer(L, cscript, [script length], cModName);

@@ -8,6 +8,7 @@
 
 #import "ApplicationScriptBundle.h"
 #import "LuaConstants.h"
+#import "LuaCommonUtils.h"
 
 @interface ApplicationScriptBundle ()
 
@@ -55,8 +56,19 @@
 
 - (NSString *)mainScript
 {
-    NSString *mainScript = [self scriptWithScriptName:lua_main_file];
-    return mainScript;
+    NSString *appPath = [[NSBundle mainBundle] bundlePath];
+    NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:appPath error:nil];
+    for(NSString *fileName in fileNames){
+        if([fileName hasSuffix:@".lua"]){
+            NSString *script = [NSString stringWithContentsOfFile:[appPath stringByAppendingPathComponent:fileName]
+                                                         encoding:NSUTF8StringEncoding
+                                                            error:nil];
+            if([LuaCommonUtils scriptIsMainScript:script]){
+                return script;
+            }
+        }
+    }
+    return nil;
 }
 
 - (NSData *)resourceWithName:(NSString *)resName
