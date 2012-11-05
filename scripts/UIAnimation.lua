@@ -39,6 +39,10 @@ function UIAnimation:create()
     return anim;
 end
 
+function UIAnimation:willDealloc()
+    eventProxy_animation[self:id()] = nil;
+end
+
 function UIAnimation:start(duration, delay, options)
     if duration == nil then
         duration = 0.25;

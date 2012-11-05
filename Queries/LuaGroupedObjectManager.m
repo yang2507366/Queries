@@ -137,6 +137,7 @@
         NSArray *allObjectKeys = [tmpDict allKeys];
         for(NSString *objectKey in allObjectKeys){
             ++i;
+            D_Log(@"statis item:%@", [[tmpDict objectForKey:objectKey] object]);
         }
     }
     return i;

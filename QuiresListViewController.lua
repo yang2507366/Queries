@@ -27,7 +27,7 @@ function QuiresListViewController:viewDidLoad()
     function listTableView:numberOfRows()
         return #kTitleList;
     end
-    function listTableView:heightOfRowAtIndex(rowIndex)
+    function listTableView:heightForRowAtIndex(rowIndex)
         return 72;
     end
     local identifier = "id_";

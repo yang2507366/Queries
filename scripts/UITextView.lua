@@ -76,7 +76,11 @@ function UITextView_shouldBeginEditing(tvId)
 end
 
 function UITextView_shouldEndEditing(tvId)
-    return toObjCBool(eventProxyTable_textView[tvId]:shouldEndEditing());
+    local tv = eventProxyTable_textView[tvId];
+    if tv then
+        return toObjCBool(tv:shouldEndEditing());
+    end
+    return toObjCBool(true);
 end
 
 function UITextView_textViewDidBeginEditing(tvId)
@@ -84,7 +88,10 @@ function UITextView_textViewDidBeginEditing(tvId)
 end
 
 function UITextView_textViewDidEndEditing(tvId)
-    eventProxyTable_textView[tvId]:didEndEditing();
+    local tv = eventProxyTable_textView[tvId];
+    if tv then
+        tv:didEndEditing();
+    end
 end
 
 function UITextView_shouldChangeTextInRange(tvId, location, length, replacementText)

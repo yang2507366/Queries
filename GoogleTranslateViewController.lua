@@ -12,6 +12,7 @@ local closeKeyboardBtn;
 
 function GoogleTranslateViewController:dealloc()
     cnTextView:release();
+    closeKeyboardBtn:release();
 end
 
 function GoogleTranslateViewController:viewDidLoad()
@@ -22,9 +23,9 @@ function GoogleTranslateViewController:viewDidLoad()
     closeKeyboardBtn = UIBarButtonItem:createWithTitle("关闭"):retain();
     
     cnTextView = UITextView:create():retain();
-    cnTextView:setFrame(5, 5, 310, 120);
-    cnTextView:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
-    cnTextView:setBackgroundColor(UIColor:createWithRGB(255, 0, 0));
+    cnTextView:setFrame(5, 5, 310, 190);
+    cnTextView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
+    cnTextView:setBackgroundColor(UIColor:createWithRGB(235, 235, 235));
     self:view():addSubview(cnTextView);
     function cnTextView:didBeginEditing()
         ap_new();

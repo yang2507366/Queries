@@ -89,7 +89,7 @@ function UITableView:didSelectCellAtIndex(rowIndex)
     
 end
 
-function UITableView:heightOfRowAtIndex(rowIndex)
+function UITableView:heightForRowAtIndex(rowIndex)
     return 44;
 end
 
@@ -109,5 +109,5 @@ function event_proxy_tableView_didSelectCell(tableViewId, rowIndex)
 end
 
 function event_proxy_tableView_heightForRow(tableViewId, rowIndex)
-    return eventProxtTable_tableView[tableViewId]:heightOfRowAtIndex(rowIndex);
+    return eventProxtTable_tableView[tableViewId]:heightForRowAtIndex(rowIndex);
 end

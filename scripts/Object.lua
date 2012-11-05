@@ -58,7 +58,6 @@ function Object:autorelease()
     if success == false then
         print("error, autorelease failed, no pool around");
     end
-    
     return self;
 end
 

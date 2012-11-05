@@ -411,6 +411,9 @@
                      initMethodName:(NSString *)initMethodName
                          parameters:(NSArray *)parameters
 {
+    /**
+     根据className创建对象，先创建一个未初始化的对象，加入到对象池中，然后调用初始化方法进行初始化，如果初始化失败的话，就将该为初始化的对象移除
+     */
     Class class = NSClassFromString(className);
     id object = [[class alloc] autorelease];
     if(object){
@@ -437,9 +440,8 @@
         id object = class;
         NSString *objId = [LuaGroupedObjectManager addObject:object group:group];
         NSString *resultObjId = [self invokeWithGroup:group objectId:objId methodName:methodName parameters:parameters];
-        if(resultObjId.length == 0){
-            [LuaGroupedObjectManager removeObjectWithId:objId group:group];
-        }
+        
+        [LuaGroupedObjectManager removeObjectWithId:objId group:group];
         
         return resultObjId;
     }
