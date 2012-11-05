@@ -8,5 +8,17 @@ GoogleTranslateViewController.__index = GoogleTranslateViewController;
 setmetatable(GoogleTranslateViewController, UIViewController);
 
 function GoogleTranslateViewController:viewDidLoad()
-    ui::alert("test");
+    
+end
+
+
+function main()
+    ap_new();
+    local relatedVC = UIViewController:get(ui::getRelatedViewController());
+    local gtVC = GoogleTranslateViewController:createWithTitle("Google翻译"):retain();
+    relatedVC:navigationController():pushViewController(gtVC, true);
+    function gtVC:viewDidPop()
+        gtVC:release();
+    end
+    ap_release();
 end

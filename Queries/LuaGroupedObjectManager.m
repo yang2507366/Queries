@@ -54,6 +54,7 @@
         D_Log(@"add object:%d:%@, group:%@", (NSInteger)object, object, group);
         NSString *objectId = [self idForObject:object];
         [objectDictionary setObject:[ObjectWrapper newObjectWrapperWithObject:object] forKey:objectId];
+        NSLog(@"add object count:%d", [self statisticObjectCount]);
         return objectId;
     }
 }
@@ -70,6 +71,7 @@
         [objectDictionary removeObjectForKey:objectId];
         D_Log(@"removeObjectWithId:%@", objectId);
     }
+    NSLog(@"remove object count:%d", [self statisticObjectCount]);
 }
 
 - (NSString *)containsObject:(id)object group:(NSString *)group
@@ -124,6 +126,20 @@
         }
     }
     return NO;
+}
+
+- (NSInteger)statisticObjectCount
+{
+    NSInteger i = 0;
+    NSArray *allKeys = [self.groupDictionary allKeys];
+    for(NSString *group in allKeys){
+        NSDictionary *tmpDict = [self.groupDictionary objectForKey:group];
+        NSArray *allObjectKeys = [tmpDict allKeys];
+        for(NSString *objectKey in allObjectKeys){
+            ++i;
+        }
+    }
+    return i;
 }
 
 #pragma mark - class methods

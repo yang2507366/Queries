@@ -21,6 +21,7 @@
 #import "ZipArchive.h"
 #import "LocalAppBundle.h"
 #import "ProviderPool.h"
+#import "NavigationControllerImpl.h"
 
 @implementation AppDelegate
 
@@ -43,7 +44,12 @@
 //        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
 //    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
     
+    UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
+    UINavigationController *nc = [[[NavigationControllerImpl alloc] initWithRootViewController:relatedVC] autorelease];
+    self.window.rootViewController = nc;
+    
     LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
+    app.relatedViewController = relatedVC;
     [LuaAppContext runRootApp:app];
     
 //    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"

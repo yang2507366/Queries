@@ -21,18 +21,33 @@
             NSString *funcName = [script substringWithBeginIndex:beginIndex + 8 endIndex:endIndex];
             funcName = [funcName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             if(funcName.length == 4 && [funcName isEqualToString:@"main"]){
+                BOOL noComment = YES;
                 NSInteger commentBeginIndex = [script find:@"--[[" fromIndex:endIndex reverse:YES];
                 if(commentBeginIndex != -1){
+                    // find --[[ comment
                     NSInteger commentEndIndex = [script find:@"]]" fromIndex:endIndex];
                     if(commentEndIndex != -1){
-                        NSLog(@"main function in comments");
-                        return NO;
-                    }else{
-                        NSLog(@"comment has no end");
+                        // finded
+                        NSLog(@"main function in comments --[[");
+                        noComment = NO;
                     }
-                }else{
-                    return YES;
                 }
+                if(noComment){
+                    // find -- comment
+                    NSInteger newLineIndex = [script find:@"\n" fromIndex:endIndex reverse:YES];
+                    if(newLineIndex == -1){
+                        newLineIndex = 0;
+                    }else{
+                        ++newLineIndex;
+                    }
+                    NSString *innerStr = [script substringWithBeginIndex:newLineIndex endIndex:endIndex];
+                    if([innerStr find:@"--"] != -1){
+                        // finded
+                        NSLog(@"main function in comments --");
+                        noComment = NO;
+                    }
+                }
+                return noComment;
             }
             beginIndex = [script find:@"function" fromIndex:endIndex + 2];
         }else{

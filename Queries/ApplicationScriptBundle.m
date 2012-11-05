@@ -64,6 +64,7 @@
                                                          encoding:NSUTF8StringEncoding
                                                             error:nil];
             if([LuaCommonUtils scriptIsMainScript:script]){
+                NSLog(@"%@ find main script in file:%@", self.bundleId, fileName);
                 return script;
             }
         }

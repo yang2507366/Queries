@@ -21,10 +21,7 @@ function UITableView:createWithStyle(style)
                                             "event_proxy_tableView_didSelectCell",
                                             "event_proxy_tableView_heightForRow");
     local tableView = self:get(tableViewId);
-    tableView_numberOfRows_proxy[tableViewId] = tableView;
-    tableView_cellForRowAtIndex_proxy[tableViewId] = tableView;
-    tableView_didSelectCell_proxy[tableViewId] = tableView;
-    tableView_heightForRow_proxy[tableViewId] = tableView;
+    eventProxtTable_tableView[tableViewId] = tableView;
     
     return tableView;
 end
@@ -42,10 +39,7 @@ end
 
 -- deconstructor
 function UITableView:dealloc()
-    tableView_numberOfRows_proxy[self:id()] = nil;
-    tableView_cellForRowAtIndex_proxy[self:id()] = nil;
-    tableView_didSelectCell_proxy[self:id()] = nil;
-    tableView_heightForRow_proxy[self:id()] = nil;
+    eventProxtTable_tableView[self:id()] = nil;
 end
 
 -- instance method
@@ -100,23 +94,20 @@ function UITableView:heightOfRowAtIndex(rowIndex)
 end
 
 -- event proxy
-tableView_numberOfRows_proxy = {};
-tableView_cellForRowAtIndex_proxy = {};
-tableView_didSelectCell_proxy = {};
-tableView_heightForRow_proxy = {};
+eventProxtTable_tableView = {};
 
 function event_proxy_tableView_numberOfRows(tableViewId)
-    return tableView_numberOfRows_proxy[tableViewId]:numberOfRows();
+    return eventProxtTable_tableView[tableViewId]:numberOfRows();
 end
 
 function event_proxy_tableView_cellForRowAtIndex(tableViewId, rowIndex)
-    return tableView_cellForRowAtIndex_proxy[tableViewId]:cellForRowAtIndex(rowIndex):id();
+    return eventProxtTable_tableView[tableViewId]:cellForRowAtIndex(rowIndex):id();
 end
 
 function event_proxy_tableView_didSelectCell(tableViewId, rowIndex)
-    tableView_didSelectCell_proxy[tableViewId]:didSelectCellAtIndex(rowIndex);
+    eventProxtTable_tableView[tableViewId]:didSelectCellAtIndex(rowIndex);
 end
 
 function event_proxy_tableView_heightForRow(tableViewId, rowIndex)
-    return tableView_heightForRow_proxy[tableViewId]:heightOfRowAtIndex(rowIndex);
+    return eventProxtTable_tableView[tableViewId]:heightOfRowAtIndex(rowIndex);
 end

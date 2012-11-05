@@ -15,9 +15,7 @@ function UIViewController:createWithTitle(title)
     local vcId = ui::createViewController(title, "_global_viewDidLoad", "_global_viewWillAppear", "_global_viewDidPop");
     local vc = self:get(vcId);
     
-    _global_view_did_load_event_table[vcId] = vc;
-    _global_view_will_appear_event_table[vcId] = vc;
-    _global_view_did_pop_event_table[vcId] = vc;
+    eventProxyTable_viewController[vcId] = vc;
     
     return vc;
 end
@@ -86,19 +84,24 @@ function UIViewController:viewDidPop()
     
 end
 
+-- private event
+function UIViewController:p_viewDidPop()
+    self:viewDidPop();
+    eventProxyTable_viewController[self:id()] = nil;
+end
+
 -- event proxy
-_global_view_did_load_event_table = {};
-_global_view_will_appear_event_table = {};
-_global_view_did_pop_event_table = {};
+
+eventProxyTable_viewController = {};
 
 function _global_viewDidLoad(vcId)
-    _global_view_did_load_event_table[vcId]:viewDidLoad(vcId);
+    eventProxyTable_viewController[vcId]:viewDidLoad();
 end
 
 function _global_viewWillAppear(vcId)
-    _global_view_will_appear_event_table[vcId]:viewWillAppear(vcId);
+    eventProxyTable_viewController[vcId]:viewWillAppear();
 end
 
 function _global_viewDidPop(vcId)
-    _global_view_did_pop_event_table[vcId]:viewDidPop(vcId);
+    eventProxyTable_viewController[vcId]:p_viewDidPop();
 end

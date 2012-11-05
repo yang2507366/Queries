@@ -968,6 +968,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
 #pragma mark - ui::animate
     pushFunctionToLua(L, "ui_animate", ui_animate);
+#pragma mark - ui::getRelatedViewController
+    pushFunctionToLua(L, "ui_getRelatedViewController", ui_getRelatedViewController);
 #pragma mark - ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
 #pragma mark - ustring::length

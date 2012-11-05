@@ -14,7 +14,6 @@
 		3E06D5C21632E2880013DCF7 /* ProviderPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C11632E2880013DCF7 /* ProviderPool.m */; };
 		3E06D5C51632E3650013DCF7 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C41632E3650013DCF7 /* HTTPRequest.m */; };
 		3E0892FF164219FD00066181 /* UITextField.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E0892FE164219FD00066181 /* UITextField.lua */; };
-		3E08930216421A1B00066181 /* main.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E08930116421A1B00066181 /* main.lua */; };
 		3E094F041634E469006F90A9 /* RTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F011634E469006F90A9 /* RTProperty.m */; };
 		3E094F051634E469006F90A9 /* RuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F031634E469006F90A9 /* RuntimeUtils.m */; };
 		3E094F0C1634F145006F90A9 /* LabelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F0B1634F145006F90A9 /* LabelImpl.m */; };
@@ -160,7 +159,6 @@
 		3E06D5C31632E3650013DCF7 /* HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPRequest.h; sourceTree = "<group>"; };
 		3E06D5C41632E3650013DCF7 /* HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPRequest.m; sourceTree = "<group>"; };
 		3E0892FE164219FD00066181 /* UITextField.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITextField.lua; path = scripts/UITextField.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
-		3E08930116421A1B00066181 /* main.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E094F001634E469006F90A9 /* RTProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTProperty.h; sourceTree = "<group>"; };
 		3E094F011634E469006F90A9 /* RTProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTProperty.m; sourceTree = "<group>"; };
 		3E094F021634E469006F90A9 /* RuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeUtils.h; sourceTree = "<group>"; };
@@ -639,7 +637,6 @@
 			isa = PBXGroup;
 			children = (
 				3E6B94A216465A62009B01AD /* GoogleTranslate */,
-				3E08930116421A1B00066181 /* main.lua */,
 				3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */,
 				3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */,
 				3E1A7BD91643BD7F00D9EE55 /* QueryPostcodeViewController.lua */,
@@ -932,7 +929,6 @@
 				3E79D45316415FD00096A727 /* UIKit.lua in Resources */,
 				3E79D45516416CE00096A727 /* QueryMobileNumberViewController.lua in Resources */,
 				3E0892FF164219FD00066181 /* UITextField.lua in Resources */,
-				3E08930216421A1B00066181 /* main.lua in Resources */,
 				3EC357B81642C242009611C8 /* HTTPRequest.lua in Resources */,
 				3EC357BA1642C757009611C8 /* Network.lua in Resources */,
 				3E1A7BDA1643BD7F00D9EE55 /* QueryPostcodeViewController.lua in Resources */,

@@ -8,6 +8,7 @@
 
 #import "LocalAppBundle.h"
 #import "NSString+Substring.h"
+#import "LuaCommonUtils.h"
 
 @interface LocalAppBundle ()
 
@@ -75,20 +76,9 @@
         NSString *script = [NSString stringWithContentsOfFile:filePath
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
-        NSInteger beginIndex = [script find:@"function"];
-        NSInteger endIndex = 0;
-        while(beginIndex != -1){
-            endIndex = [script find:@"(" fromIndex:beginIndex];
-            if(endIndex != -1){
-                NSString *funcName = [script substringWithBeginIndex:beginIndex + 8 endIndex:endIndex];
-                funcName = [funcName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-                if(funcName.length == 4 && [funcName isEqualToString:@"main"]){
-                    return [self scriptWithScriptName:file];
-                }
-                beginIndex = [script find:@"function" fromIndex:endIndex + 2];
-            }else{
-                break;
-            }
+        if([LuaCommonUtils scriptIsMainScript:script]){
+            NSLog(@"%@ find main script in file:%@", self.bundleId, file);
+            return script;
         }
     }
     return nil;
