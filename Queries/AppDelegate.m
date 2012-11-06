@@ -11,7 +11,7 @@
 #import "MemoryTracer.h"
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
-#import "LuaAppContext.h"
+#import "LuaAppRunner.h"
 #import "MethodInvokerForLua.h"
 #import "LuaGroupedObjectManager.h"
 #import "CodeUtils.h"
@@ -41,15 +41,15 @@
     
     [MemoryTracer start];
     
-    self.window.rootViewController =
-        [[[UINavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
+//    self.window.rootViewController =
+//        [[[UINavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
     
-//    UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
-//    UINavigationController *nc = [[[NavigationControllerImpl alloc] initWithRootViewController:relatedVC] autorelease];
-//    self.window.rootViewController = nc;
-//    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
-//    app.relatedViewController = relatedVC;
-//    [LuaAppContext runRootApp:app];
+    UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
+    UINavigationController *nc = [[[NavigationControllerImpl alloc] initWithRootViewController:relatedVC] autorelease];
+    self.window.rootViewController = nc;
+    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
+    app.relatedViewController = relatedVC;
+    [LuaAppRunner runRootApp:app];
     
 //    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
 //                                                       className:@"UIColor"

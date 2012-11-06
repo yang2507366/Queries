@@ -7,7 +7,7 @@
 //
 
 #import "CallScriptImpl.h"
-#import "LuaAppContext.h"
+#import "LuaAppRunner.h"
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
 #import "LuaConstants.h"
@@ -16,7 +16,7 @@
 
 + (BOOL)callScriptWithScriptId:(NSString *)scriptId
 {
-    id<ScriptInteraction> si = [LuaAppContext scriptInteractionWithAppId:scriptId];
+    id<ScriptInteraction> si = [LuaAppRunner scriptInteractionWithAppId:scriptId];
     if(si){
         [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {
             D_Log(@"call script with script id:%@, returnValue:%@, error:%@", scriptId, returnValue, error);

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaAppContext.h"
+#import "LuaAppRunner.h"
 #import "LuaScriptInteraction.h"
 #import "LuaInvoker.h"
 #import "LuaConstants.h"
@@ -18,7 +18,7 @@
 #import "RequireReplaceChecker.h"
 #import "SuperSupportChecker.h"
 
-@interface LuaAppContext ()
+@interface LuaAppRunner ()
 
 @property(nonatomic, retain)NSArray *scriptCheckers;
 
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation LuaAppContext
+@implementation LuaAppRunner
 
 + (id)sharedApplication
 {

@@ -9,7 +9,7 @@
 #include "LuaFunctions.h"
 #include <stdio.h>
 #import "HTTPRequestImpl.h"
-#import "LuaAppContext.h"
+#import "LuaAppRunner.h"
 #import "LuaScriptInteraction.h"
 #import "UIRelatedImpl.h"
 #import "CodeUtils.h"
@@ -70,7 +70,7 @@ void pushString(lua_State *L, NSString *returnValue)
 
 id<ScriptInteraction>scriptInteractionForAppId(NSString *appId)
 {
-    id<ScriptInteraction> si = [LuaAppContext scriptInteractionWithAppId:appId];
+    id<ScriptInteraction> si = [LuaAppRunner scriptInteractionWithAppId:appId];
     
     return si;
 }
@@ -89,7 +89,7 @@ int app_destoryApp(lua_State *L)
 {
 //    NSString *appId = luaStringParam(L, 1);
     NSString *targetAppId = luaStringParam(L, 2);
-    [LuaAppContext destoryAppWithAppId:targetAppId];
+    [LuaAppRunner destoryAppWithAppId:targetAppId];
     return 0;
 }
 
@@ -107,6 +107,18 @@ int app_loadApp(lua_State *L)
                      processFunc:processFunc
                     completeFunc:completeFunc];
     return 0;
+}
+
+int app_getApp(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *targetAppId = luaStringParam(L, 2);
+    if(targetAppId.length != 0){
+        appId = targetAppId;
+    }
+    NSString *objId = [LuaGroupedObjectManager addObject:[LuaAppRunner appForId:appId] group:appId];
+    pushString(L, objId);
+    return 1;
 }
 
 #pragma mark - math
@@ -888,6 +900,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "app_loadApp", app_loadApp);
 #pragma mark - app::runApp
     pushFunctionToLua(L, "app_runApp", app_runApp);
+#pragma mark - app::getApp
+    pushFunctionToLua(L, "app_getApp", app_getApp);
 #pragma mark - http::request
     pushFunctionToLua(L, "http_request", http_request);
 #pragma mark - http::post

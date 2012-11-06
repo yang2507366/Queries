@@ -9,7 +9,7 @@
 #import "UIRelatedImpl.h"
 #import "Singleton.h"
 #import "DialogTools.h"
-#import "LuaAppContext.h"
+#import "LuaAppRunner.h"
 #import "EventProxy.h"
 #import "LuaGroupedObjectManager.h"
 
@@ -28,7 +28,7 @@
 + (void)setRootViewControllerWithId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
 {
     UIViewController *vc = [self getObjectWithObjectId:viewControllerId group:scriptId];
-    [LuaAppContext currentWindow].rootViewController = vc;
+    [LuaAppRunner currentWindow].rootViewController = vc;
 }
 
 + (void)addSubViewWithViewId:(NSString *)viewId viewControllerId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
@@ -66,7 +66,7 @@
 
 + (NSString *)relatedViewControllerForAppId:(NSString *)appId
 {
-    id vc = [LuaAppContext appForId:appId].relatedViewController;
+    id vc = [LuaAppRunner appForId:appId].relatedViewController;
     if(vc){
         return [LuaGroupedObjectManager addObject:vc group:appId];
     }

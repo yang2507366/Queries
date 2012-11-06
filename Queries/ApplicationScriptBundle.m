@@ -74,7 +74,9 @@
 
 - (NSData *)resourceWithName:(NSString *)resName
 {
-    return nil;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:resName ofType:nil];
+    
+    return [NSData dataWithContentsOfFile:filePath];
 }
 
 @end
