@@ -13,6 +13,9 @@
 - (void)postWithParameters:(NSDictionary *)params
              baseURLString:(NSString *)baseURLString
                 completion:(void(^)(NSString *responseString, NSError *error))completion;
+- (void)postWithParameters:(NSDictionary *)params
+             baseURLString:(NSString *)baseURLString
+                returnData:(void(^)(NSData *data, NSError *error))returnData;
 - (void)cancel;
 
 @end

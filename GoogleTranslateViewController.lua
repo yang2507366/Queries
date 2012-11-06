@@ -95,13 +95,12 @@ function GoogleTranslateViewController:viewDidLoad()
         globalSelf:setWaiting(true);
         local urlString = "http://translate.google.com/translate_t#";
         local params = NSMutableDictionary:create();
-        print("dictions:"..params:id());
         params:setObjectForKey("hl", "en");
         params:setObjectForKey("UTF-8", "ie");
         params:setObjectForKey("zh-CN", "sl");
         params:setObjectForKey("en", "tl");
         params:setObjectForKey(cnText, "text");
-        local req = HTTPRequest:post(urlString, params);
+        local req = HTTPRequest:post(urlString, params, HTTPRequestEncodingGBK);
         function req:response(responseString, errorString)
 --            po("response:"..responseString);
             globalSelf:setWaiting(false);
@@ -112,7 +111,7 @@ function GoogleTranslateViewController:viewDidLoad()
                     beginIndex = ustring::find(responseString, ">", endIndex, true);
                     if beginIndex ~= -1 then
                         print(ustring::substring(responseString, beginIndex + 1, endIndex));
-                        enTextView:setText(ustring::substring(responseString, beginIndex + 1, endIndex));
+                        enTextView:setText(filterTranslatedString(ustring::substring(responseString, beginIndex + 1, endIndex)));
                         return;
                     end
                 end
@@ -125,6 +124,10 @@ function GoogleTranslateViewController:viewDidLoad()
     ap_release();
 end
 
+function filterTranslatedString(str)
+    str = ustring::replace(str, "&#39;", "'");
+    return str;
+end
 --[[
 function main()
     ap_new();

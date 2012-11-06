@@ -74,9 +74,8 @@
     [self requestWithURLString:URLString];
 }
 
-- (void)postWithParameters:(NSDictionary *)params baseURLString:(NSString *)baseURLString completion:(void (^)(NSString *, NSError *))completion
+- (void)postWithParameters:(NSDictionary *)params baseURLString:(NSString *)baseURLString
 {
-    self.callback = completion;
     ASIFormDataRequest *formRequest = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:baseURLString]];
     for(NSString *key in params){
         [formRequest setPostValue:[params objectForKey:key] forKey:key];
@@ -86,6 +85,20 @@
     self.httpRequest.didFinishSelector = @selector(httpRequestDidFinish:);
     self.httpRequest.didFailSelector = @selector(httpRequestDidError:);
     [self.httpRequest startAsynchronous];
+}
+
+- (void)postWithParameters:(NSDictionary *)params baseURLString:(NSString *)baseURLString completion:(void (^)(NSString *, NSError *))completion
+{
+    self.callback = completion;
+    [self postWithParameters:params baseURLString:baseURLString];
+}
+
+- (void)postWithParameters:(NSDictionary *)params
+             baseURLString:(NSString *)baseURLString
+                returnData:(void(^)(NSData *data, NSError *error))returnData
+{
+    self.returnDataCallback = returnData;
+    [self postWithParameters:params baseURLString:baseURLString];
 }
 
 - (BOOL)isExecuting
@@ -103,8 +116,6 @@
 {
     self.recyclable = YES;
     if(self.callback){
-//        NSString *str = [[[NSString alloc] initWithData:req.responseData encoding:NSUTF8StringEncoding] autorelease];
-//        self.callback(str, nil);
         self.callback(req.responseString, nil);
     }
     

@@ -136,10 +136,12 @@ int http_request(lua_State *L)
     
     NSString *url = luaStringParam(L, 2);
     NSString *callbackFuncName = luaStringParam(L, 3);
+    NSString *encoding = luaStringParam(L, 4);
     
     LuaScriptInteraction *si = scriptInteractionForAppId(scriptId);
     NSString *requestId = [HTTPRequestImpl requestWithLuaState:si urlString:url
-                                       callbackLuaFunctionName:callbackFuncName];
+                                       callbackLuaFunctionName:callbackFuncName
+                                                      encoding:encoding];
     pushString(L, requestId);
     return 1;
 }
@@ -150,10 +152,12 @@ int http_post(lua_State *L)
     NSString *url = luaStringParam(L, 2);
     NSString *paramId = luaStringParam(L, 3);
     NSString *callbackFunc = luaStringParam(L, 4);
+    NSString *encoding = luaStringParam(L, 5);
     NSString *reqId = [HTTPRequestImpl postWithSi:scriptInteractionForAppId(appId)
                                         urlString:url
                                        parameters:[LuaGroupedObjectManager objectWithId:paramId group:appId]
-                                     callbackFunc:callbackFunc];
+                                     callbackFunc:callbackFunc
+                                         encoding:encoding];
     pushString(L, reqId);
     return 1;
 }
@@ -585,6 +589,16 @@ int ustring_encodeURL(lua_State *L)
     pushString(L, str);
     [str release];
     
+    return 1;
+}
+
+int ustring_replace(lua_State *L)
+{
+    NSString *str = luaStringParam(L, 2);
+    NSString *occurrences = luaStringParam(L, 3);
+    NSString *replacement = luaStringParam(L, 4);
+    str = [str stringByReplacingOccurrencesOfString:occurrences withString:replacement];
+    pushString(L, str);
     return 1;
 }
 
@@ -1031,6 +1045,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ustring_substring", ustring_substring);
 #pragma mark - ustring::encodeURL
     pushFunctionToLua(L, "ustring_encodeURL", ustring_encodeURL);
+#pragma mark - ustring::replace
+    pushFunctionToLua(L, "ustring_replace", ustring_replace);
 #pragma mark - utils::printObject
     pushFunctionToLua(L, "utils_printObject", utils_printObject);
 #pragma mark - utils::printObjectDescription

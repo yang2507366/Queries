@@ -38,25 +38,38 @@
     return [[self sharedRequestDictionary] objectForKey:requestId] != nil;
 }
 
-+ (NSString *)requestWithLuaState:(id<ScriptInteraction>)script urlString:(NSString *)urlString callbackLuaFunctionName:(NSString *)luaFunctionName
++ (NSString *)dataToString:(NSData *)data encoding:(NSString *)encoding
+{
+    CFStringEncoding cfEncoding = kCFStringEncodingUTF8;
+    if([encoding isEqualToString:kHTTPRequestEncodingGBK]){
+        cfEncoding = kCFStringEncodingGB_18030_2000;
+    }
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
+    return [[[NSString alloc] initWithData:data encoding:enc] autorelease];
+}
+
++ (NSString *)requestWithLuaState:(id<ScriptInteraction>)script
+                        urlString:(NSString *)urlString
+          callbackLuaFunctionName:(NSString *)luaFunctionName
+                         encoding:(NSString *)encoding
 {
     NSString *requestId = [NSString stringWithFormat:@"%d", (NSInteger)urlString];
     
-    id req = [HTTPRequest requestWithURLString:urlString identifier:requestId completion:^(NSString *responseStr, NSError *error) {
+    id<HTTPGetRequest> request = [[[HTTPRequest alloc] init] autorelease];
+    [request requestWithURLString:urlString returnData:^(NSData *data, NSError *error) {
         if(error){
-            if([self.class requestExists:requestId]){
+            if([self requestExists:requestId]){
                 [script callFunction:luaFunctionName callback:nil parameters:requestId, @"", error.localizedDescription, nil];
             }
         }else{
-            if(responseStr.length == 0){
-                responseStr = @"";
-            }
-            if([self.class requestExists:requestId]){
-                [script callFunction:luaFunctionName callback:nil parameters:requestId, responseStr, @"", nil];
+            NSString *responseString = [self dataToString:data encoding:encoding];
+            if([self requestExists:requestId]){
+                [script callFunction:luaFunctionName callback:nil parameters:requestId, responseString, @"", nil];
             }
         }
     }];
-    [[self sharedRequestDictionary] setObject:req forKey:requestId];
+    [ProviderPool addProviderToSharedPool:request identifier:requestId];
+    [[self sharedRequestDictionary] setObject:request forKey:requestId];
     
     return requestId;
 }
@@ -65,19 +78,18 @@
                urlString:(NSString *)urlString
               parameters:(NSMutableDictionary *)params
             callbackFunc:(NSString *)callbackFunc
+                encoding:(NSString *)encoding
 {
     NSString *requestId = [NSString stringWithFormat:@"%d", (NSInteger)urlString];
     
     HTTPRequest *req = [[HTTPRequest new] autorelease];
-    [req postWithParameters:params baseURLString:urlString completion:^(NSString *responseString, NSError *error) {
+    [req postWithParameters:params baseURLString:urlString returnData:^(NSData *data, NSError *error) {
         if(error){
             if([self.class requestExists:requestId]){
                 [si callFunction:callbackFunc callback:nil parameters:requestId, @"", error.localizedDescription, nil];
             }
         }else{
-            if(responseString.length == 0){
-                responseString = @"";
-            }
+            NSString *responseString = [self dataToString:data encoding:encoding];
             if([self.class requestExists:requestId]){
                 [si callFunction:callbackFunc callback:nil parameters:requestId, responseString, @"", nil];
             }

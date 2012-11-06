@@ -85,7 +85,7 @@ function QuiresListViewController:viewDidLoad()
                 globalSelf.loader:release();
             end
             globalSelf.loader = AppLoader:create():retain();
-            globalSelf.loader:load("http://imyvoaspecial.googlecode.com/files/gt4.zip");
+            globalSelf.loader:load("http://imyvoaspecial.googlecode.com/files/gt7.zip");
             globalSelf:setWaiting(true);
             function globalSelf.loader:complete(success, appId)
                 globalSelf:setWaiting(false);
@@ -96,7 +96,6 @@ function QuiresListViewController:viewDidLoad()
     end
     ap_release();
 end
-
 
 function main()
     ap_new();

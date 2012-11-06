@@ -4,9 +4,13 @@ HTTPRequest = {};
 HTTPRequest.__index = HTTPRequest;
 setmetatable(HTTPRequest, Object);
 
+HTTPRequestEncodingDefault  = "Default";
+HTTPRequestEncodingUTF8     = "UTF8";
+HTTPRequestEncodingGBK      = "GBK";
+
 -- constructor
-function HTTPRequest:start(URLString)
-    local requestId = http::request(URLString, "event_http_request_response");
+function HTTPRequest:start(URLString, encoding)
+    local requestId = http::request(URLString, "event_http_request_response", encoding);
     local request = Object:new(requestId);
     setmetatable(request, self);
     
@@ -15,14 +19,14 @@ function HTTPRequest:start(URLString)
     return request;
 end
 
-function HTTPRequest:post(URLString, params)
+function HTTPRequest:post(URLString, params, encoding)
     if params == nil then
         params = "";
     end
     if params.id then
         params = params:id();
     end
-    local requestId = http::post(URLString, params, "event_http_request_response");
+    local requestId = http::post(URLString, params, "event_http_request_response", encoding);
     local req = Object:new(requestId);
     setmetatable(req, self);
     
