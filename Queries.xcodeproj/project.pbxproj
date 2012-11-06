@@ -76,6 +76,7 @@
 		3E867B5F1647DFF000650486 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E867B5E1647DFF000650486 /* MobileCoreServices.framework */; };
 		3E867B621647F30E00650486 /* NSMutableDictionary.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E867B611647F30E00650486 /* NSMutableDictionary.lua */; };
 		3E867B641647F4E000650486 /* NSMutableArray.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E867B631647F4E000650486 /* NSMutableArray.lua */; };
+		3E867B6C1649573100650486 /* AppRunnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B6B1649573100650486 /* AppRunnerViewController.m */; };
 		3E8C453C16340F2300468A7E /* CallScriptImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C453B16340F2300468A7E /* CallScriptImpl.m */; };
 		3E8C453F1634361500468A7E /* LuaGroupedObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C453E1634361400468A7E /* LuaGroupedObjectManager.m */; };
 		3E8C4542163438CC00468A7E /* ObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C4541163438CB00468A7E /* ObjectWrapper.m */; };
@@ -284,6 +285,8 @@
 		3E867B611647F30E00650486 /* NSMutableDictionary.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NSMutableDictionary.lua; path = scripts/NSMutableDictionary.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E867B631647F4E000650486 /* NSMutableArray.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NSMutableArray.lua; path = scripts/NSMutableArray.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E867B651647FE5900650486 /* HTTPPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPPostRequest.h; sourceTree = "<group>"; };
+		3E867B6A1649573100650486 /* AppRunnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRunnerViewController.h; sourceTree = "<group>"; };
+		3E867B6B1649573100650486 /* AppRunnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRunnerViewController.m; sourceTree = "<group>"; };
 		3E8C453A16340F2300468A7E /* CallScriptImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallScriptImpl.h; sourceTree = "<group>"; };
 		3E8C453B16340F2300468A7E /* CallScriptImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallScriptImpl.m; sourceTree = "<group>"; };
 		3E8C453D1634361400468A7E /* LuaGroupedObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaGroupedObjectManager.h; sourceTree = "<group>"; };
@@ -543,6 +546,8 @@
 				3E63397C162D8CDA00B63328 /* Base */,
 				3E633979162D8CD500B63328 /* QueriesViewController.h */,
 				3E63397A162D8CD500B63328 /* QueriesViewController.m */,
+				3E867B6A1649573100650486 /* AppRunnerViewController.h */,
+				3E867B6B1649573100650486 /* AppRunnerViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1172,6 +1177,7 @@
 				3E867B581647DFCE00650486 /* ASINetworkQueue.m in Sources */,
 				3E867B591647DFCE00650486 /* Reachability.m in Sources */,
 				3ED64C071648CC6B00190688 /* SuperSupportChecker.m in Sources */,
+				3E867B6C1649573100650486 /* AppRunnerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

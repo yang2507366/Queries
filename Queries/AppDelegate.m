@@ -22,6 +22,7 @@
 #import "LocalAppBundle.h"
 #import "ProviderPool.h"
 #import "NavigationControllerImpl.h"
+#import "AppRunnerViewController.h"
 
 @implementation AppDelegate
 
@@ -40,17 +41,15 @@
     
     [MemoryTracer start];
     
-//    self.window.rootViewController =
-//        [[[UINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
-//    self.window.rootViewController = [[[QueriesViewController alloc] init] autorelease];
+    self.window.rootViewController =
+        [[[UINavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
     
-    UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
-    UINavigationController *nc = [[[NavigationControllerImpl alloc] initWithRootViewController:relatedVC] autorelease];
-    self.window.rootViewController = nc;
-    
-    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
-    app.relatedViewController = relatedVC;
-    [LuaAppContext runRootApp:app];
+//    UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
+//    UINavigationController *nc = [[[NavigationControllerImpl alloc] initWithRootViewController:relatedVC] autorelease];
+//    self.window.rootViewController = nc;
+//    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
+//    app.relatedViewController = relatedVC;
+//    [LuaAppContext runRootApp:app];
     
 //    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
 //                                                       className:@"UIColor"
