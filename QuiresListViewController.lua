@@ -97,7 +97,7 @@ function QuiresListViewController:viewDidLoad()
     ap_release();
 end
 
---[[
+
 function main()
     ap_new();
     
@@ -105,7 +105,7 @@ function main()
     local quiresListVC = QuiresListViewController:createWithTitle("快捷查询"):retain();
     relatedVC:navigationController():pushViewController(quiresListVC, true);
     function quiresListVC:viewDidPop()
-        super:viewDidPop();
+        UIViewController.viewDidPop(self);
         listTableView:release();
         currentNC:release();
         srelease(quiresListVC.loader);
@@ -114,4 +114,3 @@ function main()
     
     ap_release();
 end
-]]

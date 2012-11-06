@@ -1,6 +1,7 @@
 require "System"
 require "UIKit"
 
+--[[
 function main()
     ap_new();
     local relatedVC = UIViewController:get(ui::getRelatedViewController());
@@ -11,8 +12,9 @@ function main()
         
     end
     function dictVC:viewDidPop()
-        super:viewDidPop();
+        UIViewController.viewDidPop(self);
         self:release();
     end
     ap_release();
 end
+]]

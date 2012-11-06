@@ -37,7 +37,7 @@ function GoogleTranslateViewController:viewDidLoad()
     cnTextView:setFrame(5, 25, 310, 90);
     cnTextView:setFont(UIFont:createWithFontSize(14));
     cnTextView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
-    cnTextView:setBackgroundColor(UIColor:createWithRGB(235, 235, 235));
+    cnTextView:setBackgroundColor(UIColor:createWithRGB(144, 238, 144));
     self:view():addSubview(cnTextView);
     function cnTextView:didBeginEditing()
         ap_new();
@@ -136,4 +136,5 @@ function main()
     end
     
     ap_release();
-end]]
+end
+]]

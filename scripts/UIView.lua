@@ -34,6 +34,10 @@ function UIView:get(viewId)
     return view;
 end
 
+function UIView:dealloc()
+    
+end
+
 -- instance methods
 function UIView:setFrame(x, y, width, height)
     local frame = x..","..y..","..width..","..height;

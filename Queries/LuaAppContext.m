@@ -60,7 +60,7 @@
                            [[RequireReplaceChecker new] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
-                           [[[SuperSupportChecker alloc] init] autorelease],
+//                           [[[SuperSupportChecker alloc] init] autorelease],
                            nil];
     
     return self;
