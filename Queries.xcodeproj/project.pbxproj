@@ -111,6 +111,7 @@
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
 		3ED64C071648CC6B00190688 /* SuperSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED64C061648CC6B00190688 /* SuperSupportChecker.m */; };
+		3ED64C171648F7CF00190688 /* DictionaryViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED64C161648F7CF00190688 /* DictionaryViewController.lua */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
 		3ED77326163E2DD000E5C9A9 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F2163E2DD000E5C9A9 /* lauxlib.c */; };
 		3ED77327163E2DD000E5C9A9 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F4163E2DD000E5C9A9 /* lbaselib.c */; };
@@ -341,6 +342,7 @@
 		3ED0C7831635502700A3E33F /* ArrayImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayImpl.m; sourceTree = "<group>"; };
 		3ED64C051648CC6B00190688 /* SuperSupportChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperSupportChecker.h; sourceTree = "<group>"; };
 		3ED64C061648CC6B00190688 /* SuperSupportChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperSupportChecker.m; sourceTree = "<group>"; };
+		3ED64C161648F7CF00190688 /* DictionaryViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DictionaryViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3ED772F0163E2DD000E5C9A9 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
 		3ED772F1163E2DD000E5C9A9 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
 		3ED772F2163E2DD000E5C9A9 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
@@ -735,6 +737,7 @@
 		3EA309CA164145D80013A6D1 /* Quires */ = {
 			isa = PBXGroup;
 			children = (
+				3ED64C141648F7B300190688 /* Dict */,
 				3E6B94A216465A62009B01AD /* GoogleTranslate */,
 				3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */,
 				3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */,
@@ -771,6 +774,14 @@
 				3EC357B91642C757009611C8 /* Network.lua */,
 			);
 			name = Network;
+			sourceTree = "<group>";
+		};
+		3ED64C141648F7B300190688 /* Dict */ = {
+			isa = PBXGroup;
+			children = (
+				3ED64C161648F7CF00190688 /* DictionaryViewController.lua */,
+			);
+			name = Dict;
 			sourceTree = "<group>";
 		};
 		3ED772EF163E2DD000E5C9A9 /* lua-5.1 */ = {
@@ -1041,6 +1052,7 @@
 				3E42864A1647BECF00B1451D /* doc.txt in Resources */,
 				3E867B621647F30E00650486 /* NSMutableDictionary.lua in Resources */,
 				3E867B641647F4E000650486 /* NSMutableArray.lua in Resources */,
+				3ED64C171648F7CF00190688 /* DictionaryViewController.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

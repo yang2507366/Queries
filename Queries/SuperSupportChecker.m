@@ -117,7 +117,7 @@
         }
     }
     [resultScript appendString:[script substringWithBeginIndex:lastSeparator endIndex:script.length]];
-    NSLog(@"%@", resultScript);
+//    NSLog(@"%@", resultScript);
     return resultScript;
 }
 

@@ -11,7 +11,7 @@ kTitleGoogleTranslate = "Google翻译";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate};
 
-QuiresListViewController = {};
+local QuiresListViewController = {};
 QuiresListViewController.__index = QuiresListViewController;
 setmetatable(QuiresListViewController, UIViewController);
 
@@ -97,7 +97,7 @@ function QuiresListViewController:viewDidLoad()
     ap_release();
 end
 
-
+--[[
 function main()
     ap_new();
     
@@ -114,3 +114,4 @@ function main()
     
     ap_release();
 end
+]]
