@@ -39,7 +39,7 @@ function UIAnimation:create()
     return anim;
 end
 
-function UIAnimation:willDealloc()
+function UIAnimation:dealloc()
     eventProxy_animation[self:id()] = nil;
 end
 

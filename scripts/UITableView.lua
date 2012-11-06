@@ -38,7 +38,7 @@ function UITableView:create()
 end
 
 -- deconstructor
-function UITableView:willDealloc()
+function UITableView:dealloc()
     eventProxtTable_tableView[self:id()] = nil;
 end
 

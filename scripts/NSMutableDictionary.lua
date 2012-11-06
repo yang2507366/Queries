@@ -6,8 +6,8 @@ NSMutableDictionary.__index = NSMutableDictionary;
 setmetatable(NSMutableDictionary, Object);
 
 function NSMutableDictionary:create()
-    local dictId = runtime::createObject("NSMutableDictionary", "init");
-    print(dictId);
+    local dictId = runtime::invokeClassMethod("NSMutableDictionary", "dictionary");
+    
     return self:get(dictId);
 end
 

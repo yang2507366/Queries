@@ -9,10 +9,15 @@ setmetatable(QueryPostcodeViewController, UIViewController);
 kUseAddress = "根据地名查询邮编";
 kUsePostcode = "根据邮编查询地名";--http://wap.ip138.com/post_search.asp?zip=342500&action=zip2area
 
+local addressButton;
+local postcodeButton;
+
 function QueryPostcodeViewController:dealloc()
     self.addressTextField:release();
     self.postcodeField:release();
     self.tableView:release();
+    addressButton:release();
+    postcodeButton:release();
 end
 
 function QueryPostcodeViewController:viewDidLoad()
@@ -35,7 +40,7 @@ function QueryPostcodeViewController:viewDidLoad()
     self.addressTextField = addressTextField:retain();
     
     x, y, width, height = addressTextField:frame();
-    local addressButton = UIButton:createWithTitle("查询");
+    addressButton = UIButton:createWithTitle("查询"):retain();
     addressButton:setFrame(x, y + height + 10, width, height);
     addressButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     cview:addSubview(addressButton);
@@ -103,7 +108,7 @@ function QueryPostcodeViewController:viewDidLoad()
         return true;
     end
     
-    local postcodeButton = UIButton:createWithTitle("查询");
+    postcodeButton = UIButton:createWithTitle("查询"):retain();
     postcodeButton:setFrame(10, 230, width - 20, 40);
     postcodeButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     cview:addSubview(postcodeButton);

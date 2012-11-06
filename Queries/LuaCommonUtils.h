@@ -10,7 +10,9 @@
 
 @interface LuaCommonUtils : NSObject
 
++ (BOOL)charIndexInCommentBlockWithScript:(NSString *)script index:(NSInteger)index;
 + (BOOL)scriptIsMainScript:(NSString *)script;
 + (BOOL)isObjCObject:(NSString *)objId;
++ (NSString *)uniqueString;
 
 @end

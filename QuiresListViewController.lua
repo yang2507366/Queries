@@ -15,6 +15,9 @@ QuiresListViewController = {};
 QuiresListViewController.__index = QuiresListViewController;
 setmetatable(QuiresListViewController, UIViewController);
 
+local listTableView;
+local currentNC;
+
 function QuiresListViewController:viewDidLoad()
     ap_new();
     
@@ -49,7 +52,7 @@ function QuiresListViewController:viewDidLoad()
         else
             label = cell:contentView():viewWithTag(1001, UILabel);
         end
-        cell:retain();
+        cell:keep();-- 保持该对象不被释放
         
         label:setText(kTitleList[index + 1]);
         
@@ -57,7 +60,7 @@ function QuiresListViewController:viewDidLoad()
         return cell;
     end
     
-    local currentNC = self:navigationController():retain();
+    currentNC = self:navigationController():retain();
     function listTableView:didSelectCellAtIndex(rowIndex)
         ap_new();
         self:deselectRow(rowIndex);
@@ -78,16 +81,11 @@ function QuiresListViewController:viewDidLoad()
             currentNC:pushViewController(vc, true);
         elseif kTitleList[index] == kTitleGoogleTranslate then
             -- google翻译
-            --[[local vc = GoogleTranslateViewController:createWithTitle(kTitleGoogleTranslate):retain();
-            function vc:viewDidPop()
-                vc:release();
-            end
-            currentNC:pushViewController(vc, true);]]
             if globalSelf.loader then
                 globalSelf.loader:release();
             end
             globalSelf.loader = AppLoader:create():retain();
-            globalSelf.loader:load("http://imyvoaspecial.googlecode.com/files/gt3.zip");
+            globalSelf.loader:load("http://imyvoaspecial.googlecode.com/files/gt4.zip");
             globalSelf:setWaiting(true);
             function globalSelf.loader:complete(success, appId)
                 globalSelf:setWaiting(false);
@@ -99,14 +97,20 @@ function QuiresListViewController:viewDidLoad()
     ap_release();
 end
 
---[[
+
 function main()
     ap_new();
     
+    local relatedVC = UIViewController:get(ui::getRelatedViewController());
     local quiresListVC = QuiresListViewController:createWithTitle("快捷查询"):retain();
-    local nc = UINavigationController:createWithRootViewController(quiresListVC);
-    nc:setAsRootViewController();
+    relatedVC:navigationController():pushViewController(quiresListVC, true);
+    function quiresListVC:viewDidPop()
+        super:viewDidPop();
+        listTableView:release();
+        currentNC:release();
+        srelease(quiresListVC.loader);
+        self:release();
+    end
     
     ap_release();
 end
-]]

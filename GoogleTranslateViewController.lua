@@ -35,6 +35,7 @@ function GoogleTranslateViewController:viewDidLoad()
     
     cnTextView = UITextView:create():retain();
     cnTextView:setFrame(5, 25, 310, 90);
+    cnTextView:setFont(UIFont:createWithFontSize(14));
     cnTextView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
     cnTextView:setBackgroundColor(UIColor:createWithRGB(235, 235, 235));
     self:view():addSubview(cnTextView);
@@ -59,7 +60,9 @@ function GoogleTranslateViewController:viewDidLoad()
     enTextView = UITextView:create():retain();
     enTextView:setFrame(5, 165, 310, 170);
     enTextView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
-    enTextView:setBackgroundColor(UIColor:createWithRGB(245, 245, 245));
+    enTextView:setBackgroundColor(UIColor:createWithRGB(144, 238, 144));
+    enTextView:setFont(UIFont:createWithFontSize(14));
+    enTextView:setEditable(false);
     self:view():addSubview(enTextView);
     function enTextView:didBeginEditing()
         ap_new();
@@ -85,6 +88,7 @@ function GoogleTranslateViewController:viewDidLoad()
         if ustring::length(cnText) == 0 then
             ui::alert("请输入需要翻译的中文");
             cnTextView:becomeFirstResponder();
+            ap_release();
             return;
         end
         cnTextView:resignFirstResponder();
@@ -121,7 +125,7 @@ function GoogleTranslateViewController:viewDidLoad()
     ap_release();
 end
 
-
+--[[
 function main()
     ap_new();
     local relatedVC = UIViewController:get(ui::getRelatedViewController());
@@ -131,12 +135,5 @@ function main()
         gtVC:release();
     end
     
---[[    local mdict = NSMutableDictionary:create();
-    mdict:setObjectForKey("test", "key1");
-    mdict:setObjectForKey("test2", "key2");
-    local ma = mdict:allKeys();
-    print(ma:count());
-    print(ma:objectAtIndex(0));]]
-    
     ap_release();
-end
+end]]

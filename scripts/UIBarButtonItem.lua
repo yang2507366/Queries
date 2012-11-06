@@ -29,7 +29,7 @@ function UIBarButtonItem:get(buttonItemId)
 end
 
 -- deconstructor
-function UIBarButtonItem:willDealloc()
+function UIBarButtonItem:dealloc()
     event_table_barButtonItem_tapped[self:id()] = nil;
 end
 

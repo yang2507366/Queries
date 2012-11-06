@@ -110,6 +110,7 @@
 		3EC357D01644C48E009611C8 /* Waiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CF1644C48E009611C8 /* Waiting.m */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
+		3ED64C071648CC6B00190688 /* SuperSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED64C061648CC6B00190688 /* SuperSupportChecker.m */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
 		3ED77326163E2DD000E5C9A9 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F2163E2DD000E5C9A9 /* lauxlib.c */; };
 		3ED77327163E2DD000E5C9A9 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F4163E2DD000E5C9A9 /* lbaselib.c */; };
@@ -338,6 +339,8 @@
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
 		3ED0C7831635502700A3E33F /* ArrayImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayImpl.m; sourceTree = "<group>"; };
+		3ED64C051648CC6B00190688 /* SuperSupportChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperSupportChecker.h; sourceTree = "<group>"; };
+		3ED64C061648CC6B00190688 /* SuperSupportChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperSupportChecker.m; sourceTree = "<group>"; };
 		3ED772F0163E2DD000E5C9A9 /* lapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lapi.c; sourceTree = "<group>"; };
 		3ED772F1163E2DD000E5C9A9 /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
 		3ED772F2163E2DD000E5C9A9 /* lauxlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lauxlib.c; sourceTree = "<group>"; };
@@ -755,6 +758,8 @@
 				3E027994163F64C800586EC8 /* AutoreleasePoolChecker.m */,
 				3EC357C816440441009611C8 /* RequireReplaceChecker.h */,
 				3EC357C916440442009611C8 /* RequireReplaceChecker.m */,
+				3ED64C051648CC6B00190688 /* SuperSupportChecker.h */,
+				3ED64C061648CC6B00190688 /* SuperSupportChecker.m */,
 			);
 			name = LuaScriptChecker;
 			sourceTree = "<group>";
@@ -1154,6 +1159,7 @@
 				3E867B571647DFCE00650486 /* ASIInputStream.m in Sources */,
 				3E867B581647DFCE00650486 /* ASINetworkQueue.m in Sources */,
 				3E867B591647DFCE00650486 /* Reachability.m in Sources */,
+				3ED64C071648CC6B00190688 /* SuperSupportChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

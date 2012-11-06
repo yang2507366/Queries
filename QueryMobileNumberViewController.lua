@@ -79,6 +79,7 @@ end
 
 function anylyzeResponse(str, number)
     ap_new();
+--    po(str);
     local beginIndex = ustring::find(str, "归属地：");
     if beginIndex ~= -1 then
         local endIndex = ustring::find(str, "<br/>", beginIndex);

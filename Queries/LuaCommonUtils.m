@@ -12,6 +12,35 @@
 
 @implementation LuaCommonUtils
 
++ (BOOL)charIndexInCommentBlockWithScript:(NSString *)script index:(NSInteger)index
+{
+    BOOL noComment = YES;
+    NSInteger commentBeginIndex = [script find:@"--[[" fromIndex:index reverse:YES];
+    if(commentBeginIndex != -1){
+        // find --[[ comment
+        NSInteger commentEndIndex = [script find:@"]]" fromIndex:index];
+        if(commentEndIndex != -1){
+            // finded
+            noComment = NO;
+        }
+    }
+    if(noComment){
+        // find -- comment
+        NSInteger newLineIndex = [script find:@"\n" fromIndex:index reverse:YES];
+        if(newLineIndex == -1){
+            newLineIndex = 0;
+        }else{
+            ++newLineIndex;
+        }
+        NSString *innerStr = [script substringWithBeginIndex:newLineIndex endIndex:index];
+        if([innerStr find:@"--"] != -1){
+            // finded
+            noComment = NO;
+        }
+    }
+    return !noComment;
+}
+
 + (BOOL)scriptIsMainScript:(NSString *)script
 {
     NSInteger beginIndex = [script find:@"function"];
@@ -22,33 +51,7 @@
             NSString *funcName = [script substringWithBeginIndex:beginIndex + 8 endIndex:endIndex];
             funcName = [funcName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             if(funcName.length == 4 && [funcName isEqualToString:@"main"]){
-                BOOL noComment = YES;
-                NSInteger commentBeginIndex = [script find:@"--[[" fromIndex:endIndex reverse:YES];
-                if(commentBeginIndex != -1){
-                    // find --[[ comment
-                    NSInteger commentEndIndex = [script find:@"]]" fromIndex:endIndex];
-                    if(commentEndIndex != -1){
-                        // finded
-                        NSLog(@"main function in comments --[[");
-                        noComment = NO;
-                    }
-                }
-                if(noComment){
-                    // find -- comment
-                    NSInteger newLineIndex = [script find:@"\n" fromIndex:endIndex reverse:YES];
-                    if(newLineIndex == -1){
-                        newLineIndex = 0;
-                    }else{
-                        ++newLineIndex;
-                    }
-                    NSString *innerStr = [script substringWithBeginIndex:newLineIndex endIndex:endIndex];
-                    if([innerStr find:@"--"] != -1){
-                        // finded
-                        NSLog(@"main function in comments --");
-                        noComment = NO;
-                    }
-                }
-                return noComment;
+                return ![self charIndexInCommentBlockWithScript:script index:endIndex];
             }
             beginIndex = [script find:@"function" fromIndex:endIndex + 2];
         }else{
@@ -61,6 +64,12 @@
 + (BOOL)isObjCObject:(NSString *)objId
 {
     return [objId hasPrefix:lua_obj_prefix];
+}
+
++ (NSString *)uniqueString
+{
+    return [[NSString stringWithFormat:@"%f", [NSDate timeIntervalSinceReferenceDate]]
+            stringByReplacingOccurrencesOfString:@"." withString:@""];
 }
 
 @end

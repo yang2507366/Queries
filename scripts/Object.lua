@@ -31,7 +31,6 @@ function Object:release()
 --    releaseObjectById(self:id());
     local recycled = runtime::releaseObject(self:id());
     if recycled then
-        self:willDealloc();
         self:dealloc();
     end
 end
@@ -41,15 +40,15 @@ function Object:retain()
     return self;
 end
 
+function Object:keep()
+    return self:retain();
+end
+
 function Object:retainCount()
     
 end
 
 function Object:dealloc()
-    
-end
-
-function Object:willDealloc()
     
 end
 

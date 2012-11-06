@@ -17,3 +17,4 @@
 #define lua_object_file             @"Object.lua"
 #define lua_require_separator       @"/"
 #define lua_app_bundle_dir          [NSString stringWithFormat:@"%@/Documents/bundles/", NSHomeDirectory()]
+#define lua_super                   @"super:"

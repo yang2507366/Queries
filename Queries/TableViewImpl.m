@@ -97,8 +97,9 @@
     }];
     [impl setWrapCellBlock:^UITableViewCell *(NSInteger index) {
         NSString *cellId = [si callFunction:wrapCellFunc parameters:tableViewId, [NSString stringWithFormat:@"%d", index], nil];;
-        
-        return [LuaGroupedObjectManager objectWithId:cellId group:scriptId];
+        id cell = [[LuaGroupedObjectManager objectWithId:cellId group:scriptId] retain];
+        [LuaGroupedObjectManager releaseObjectWithId:cellId group:scriptId];
+        return [cell autorelease];
     }];
     [impl setDidSelectCellBlock:^(NSInteger index) {
         [si callFunction:didSelectFunc parameters:tableViewId, [NSString stringWithFormat:@"%d", index], nil];

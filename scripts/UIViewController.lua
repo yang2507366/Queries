@@ -81,12 +81,6 @@ function UIViewController:viewWillAppear()
 end
 
 function UIViewController:viewDidPop()
-    
-end
-
--- private event
-function UIViewController:p_viewDidPop()
-    self:viewDidPop();
     eventProxyTable_viewController[self:id()] = nil;
 end
 
@@ -103,5 +97,5 @@ function _global_viewWillAppear(vcId)
 end
 
 function _global_viewDidPop(vcId)
-    eventProxyTable_viewController[vcId]:p_viewDidPop();
+    eventProxyTable_viewController[vcId]:viewDidPop();
 end

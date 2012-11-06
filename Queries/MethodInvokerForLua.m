@@ -320,6 +320,11 @@
             if(ctype == 'c'){//char
                 char c;
                 [invocation getReturnValue:&c];
+                if(c == '\x01'){
+                    return @"YES";
+                }else if(c == '\0'){
+                    return @"NO";
+                }
                 return [NSString stringWithFormat:@"%c", c];
             }else if(ctype == 'i'){//integer
                 int i;

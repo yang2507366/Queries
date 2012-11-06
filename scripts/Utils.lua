@@ -41,6 +41,18 @@ function toObjCBool(b)
     end
 end
 
+function stringEquals(str1, str2)
+    local beginIndex, endIndex = string.find(str1, str2);
+    if beginIndex ~= nil and endIndex ~= nil and beginIndex == 1 and endIndex == string.len(str1) then
+        return true;
+    end
+    return false;
+end
+
+function toLuaBool(b)
+    return stringEquals(b, "YES");
+end
+
 function isObjCObject(objId)
     return utils::isObjCObject(objId);
 end

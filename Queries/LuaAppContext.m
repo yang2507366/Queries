@@ -16,6 +16,7 @@
 #import "AutoreleasePoolChecker.h"
 #import "CodeUtils.h"
 #import "RequireReplaceChecker.h"
+#import "SuperSupportChecker.h"
 
 @interface LuaAppContext ()
 
@@ -59,6 +60,7 @@
                            [[RequireReplaceChecker new] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
+                           [[[SuperSupportChecker alloc] init] autorelease],
                            nil];
     
     return self;

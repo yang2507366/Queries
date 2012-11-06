@@ -103,6 +103,8 @@
 {
     self.recyclable = YES;
     if(self.callback){
+//        NSString *str = [[[NSString alloc] initWithData:req.responseData encoding:NSUTF8StringEncoding] autorelease];
+//        self.callback(str, nil);
         self.callback(req.responseString, nil);
     }
     

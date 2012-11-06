@@ -1,5 +1,7 @@
 require "Object"
 require "UIView"
+require "UIFont"
+require "Utils"
 
 UITextView = {};
 UITextView.__index = UITextView;
@@ -27,7 +29,7 @@ function UITextView:get(tvId)
 end
 
 -- deconstructor
-function UITextView:willDealloc()
+function UITextView:dealloc()
     eventProxyTable_textView[self:id()] = nil;
 end
 
@@ -38,6 +40,24 @@ end
 
 function UITextView:text()
     return runtime::invokeMethod(self:id(), "text");
+end
+
+function UITextView:setFont(font)
+    runtime::invokeMethod(self:id(), "setFont:", font:id());
+end
+
+function UITextView:font()
+    local fontId = runtime::invokeMethod(self:id(), "font");
+    return UIFont:get(fontId);
+end
+
+function UITextView:setEditable(editable)
+    runtime::invokeMethod(self:id(), "setEditable:", toObjCBool(editable));
+end
+
+function UITextView:editable()
+    local b = runtime::invokeMethod(self:id(), "isEditable");
+    return toLuaBool(b);
 end
 
 -- events

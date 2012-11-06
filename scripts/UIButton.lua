@@ -42,7 +42,7 @@ function UIButton:get(buttonId)
 end
 
 -- deconstructor
-function UIButton:willDealloc()
+function UIButton:dealloc()
     button_tap_event_proxy[self:id()] = nil;
 end
 
