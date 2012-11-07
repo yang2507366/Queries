@@ -14,8 +14,13 @@ function AppLoader:create()
     return tmp;
 end
 
+-- instance methods
 function AppLoader:load(urlString)
     app::loadApp(self:id(), urlString, "eventProxy_appProcessing", "eventProxy_appLoadComplete");
+end
+
+function AppLoader:runWithRelatedViewController(relatedVC)
+    app::runApp(self:id(), relatedVC:id());
 end
 
 -- event
@@ -29,6 +34,11 @@ end
 
 function AppLoader:cancel()
     
+end
+
+-- global functions
+function runAppWithRelatedViewController(appId, relatedVC)
+    app::runApp(appId, relatedVC:id());
 end
 
 -- event proxy

@@ -41,6 +41,7 @@ function toObjCBool(b)
     end
 end
 
+-- common language utils
 function stringEquals(str1, str2)
     local beginIndex, endIndex = string.find(str1, str2);
     if beginIndex ~= nil and endIndex ~= nil and beginIndex == 1 and endIndex == string.len(str1) then
@@ -55,6 +56,21 @@ end
 
 function isObjCObject(objId)
     return utils::isObjCObject(objId);
+end
+
+function tostruct(...)
+    local str = "";
+    for i, v in pairs(arg) do
+        if i ~= 'n' then
+            str = str..","..v
+        end
+    end
+    local strLen = string.len(str);
+    if strLen ~= 0 then
+        str = string.sub(str, 2, strLen);
+    end
+    print(str);
+    return str;
 end
 
 -- print table

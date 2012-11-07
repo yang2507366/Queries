@@ -81,6 +81,7 @@
 		3E867B621647F30E00650486 /* NSMutableDictionary.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E867B611647F30E00650486 /* NSMutableDictionary.lua */; };
 		3E867B641647F4E000650486 /* NSMutableArray.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E867B631647F4E000650486 /* NSMutableArray.lua */; };
 		3E867B6C1649573100650486 /* AppRunnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B6B1649573100650486 /* AppRunnerViewController.m */; };
+		3E88500F164A212600BFC6B8 /* UIImageView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E88500E164A212600BFC6B8 /* UIImageView.lua */; };
 		3E8C453C16340F2300468A7E /* CallScriptImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C453B16340F2300468A7E /* CallScriptImpl.m */; };
 		3E8C453F1634361500468A7E /* LuaGroupedObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C453E1634361400468A7E /* LuaGroupedObjectManager.m */; };
 		3E8C4542163438CC00468A7E /* ObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C4541163438CB00468A7E /* ObjectWrapper.m */; };
@@ -295,6 +296,7 @@
 		3E867B651647FE5900650486 /* HTTPPostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPPostRequest.h; sourceTree = "<group>"; };
 		3E867B6A1649573100650486 /* AppRunnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRunnerViewController.h; sourceTree = "<group>"; };
 		3E867B6B1649573100650486 /* AppRunnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRunnerViewController.m; sourceTree = "<group>"; };
+		3E88500E164A212600BFC6B8 /* UIImageView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIImageView.lua; path = scripts/UIImageView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E8C453A16340F2300468A7E /* CallScriptImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallScriptImpl.h; sourceTree = "<group>"; };
 		3E8C453B16340F2300468A7E /* CallScriptImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallScriptImpl.m; sourceTree = "<group>"; };
 		3E8C453D1634361400468A7E /* LuaGroupedObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaGroupedObjectManager.h; sourceTree = "<group>"; };
@@ -739,22 +741,23 @@
 		3E9FFDAC163E48B6000B630E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3E6B94A016461861009B01AD /* UIAnimation.lua */,
 				3EA309C4164024F30013A6D1 /* UIBarButtonItem.lua */,
 				3E2D04331640DDDA00EDCFDA /* UIButton.lua */,
 				3EA29A35163E7559005CAF98 /* UIColor.lua */,
 				3EA309C016401A700013A6D1 /* UIFont.lua */,
+				3E77174916495F510077A1C0 /* UIImage.lua */,
+				3E88500E164A212600BFC6B8 /* UIImageView.lua */,
 				3E79D45216415FD00096A727 /* UIKit.lua */,
 				3EA309BE164017920013A6D1 /* UILabel.lua */,
 				3EA29A24163E4A82005CAF98 /* UINavigationController.lua */,
 				3EA309C21640241A0013A6D1 /* UINavigationItem.lua */,
 				3E2D043C1640F79E00EDCFDA /* UITableView.lua */,
 				3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */,
+				3E0892FE164219FD00066181 /* UITextField.lua */,
+				3E428628164779B800B1451D /* UITextView.lua */,
 				3EA29A27163E547E005CAF98 /* UIView.lua */,
 				3E9FFDAD163E48CB000B630E /* UIViewController.lua */,
-				3E0892FE164219FD00066181 /* UITextField.lua */,
-				3E6B94A016461861009B01AD /* UIAnimation.lua */,
-				3E428628164779B800B1451D /* UITextView.lua */,
-				3E77174916495F510077A1C0 /* UIImage.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1082,6 +1085,7 @@
 				3E77174D164960460077A1C0 /* NSData.lua in Resources */,
 				3E771751164962290077A1C0 /* google_translate.jpg in Resources */,
 				3E771753164962FE0077A1C0 /* AppBundle.lua in Resources */,
+				3E88500F164A212600BFC6B8 /* UIImageView.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

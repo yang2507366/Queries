@@ -89,7 +89,7 @@ function QuiresListViewController:viewDidLoad()
             globalSelf:setWaiting(true);
             function globalSelf.loader:complete(success, appId)
                 globalSelf:setWaiting(false);
-                app::runApp(appId, globalSelf:id());
+                runAppWithRelatedViewController(appId, globalSelf);
             end
         end
         ap_release();

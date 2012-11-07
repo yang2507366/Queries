@@ -1,4 +1,5 @@
 require "Object"
+require "NSData"
 
 AppBundle = {};
 AppBundle.__index = AppBundle;
@@ -18,6 +19,9 @@ function AppBundle:bundleId()
     return bid;
 end
 
-function AppBundle:getResource(resName)
+function AppBundle:dataFromResource(resName)
+    local dataId = runtime::invokeMethod(self:id(), "resourceWithName:", resName);
+    local data = NSData:get(dataId);
     
+    return data;
 end

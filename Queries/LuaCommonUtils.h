@@ -15,4 +15,13 @@
 + (BOOL)isObjCObject:(NSString *)objId;
 + (NSString *)uniqueString;
 
++ (CGRect)CGRectWithString:(NSString *)str;
++ (CGSize)CGSizeWithString:(NSString *)str;
++ (CGPoint)CGPointWithString:(NSString *)str;
++ (NSRange)NSRangeWithString:(NSString *)str;
++ (UIEdgeInsets)UIEdgeInsetsWithString:(NSString *)str;
++ (UIOffset)UIOffsetWithString:(NSString *)str;
++ (CATransform3D)CATransform3DWithString:(NSString *)str;
++ (CGAffineTransform)CGAffineTransformWithString:(NSString *)str;
+
 @end

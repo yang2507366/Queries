@@ -195,6 +195,45 @@
             }else if(ctype == '['){//C array
             }else if(ctype == '{'){//struct
                 NSLog(@"get struct:%s", [methodSignature methodReturnType]);//未处理
+                NSString *structType = [NSString stringWithFormat:@"%s", [methodSignature methodReturnType]];
+                if([structType hasPrefix:@"{CGSize"]){
+                    CGSize size;
+                    [invocation getReturnValue:&size];
+                    return [NSString stringWithFormat:@"%f,%f", size.width, size.height];
+                }else if([structType hasPrefix:@"{CGPoint"]){
+                    CGPoint point;
+                    [invocation getReturnValue:&point];
+                    return [NSString stringWithFormat:@"%f,%f", point.x, point.y];
+                }else if([structType hasPrefix:@"{CGRect"]){
+                    CGRect rect;
+                    [invocation getReturnValue:&rect];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height];
+                }else if([structType hasPrefix:@"{NSRange"]){
+                    NSRange range;
+                    [invocation getReturnValue:&range];
+                    return [NSString stringWithFormat:@"%d,%d", range.location, range.length];
+                }else if([structType hasPrefix:@"{UIEdgeInsets"]){
+                    UIEdgeInsets insets;
+                    [invocation getReturnValue:&insets];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f", insets.top, insets.left, insets.bottom, insets.right];
+                }else if([structType hasPrefix:@"{UIOffset"]){
+                    UIOffset offset;
+                    [invocation getReturnValue:&offset];
+                    return [NSString stringWithFormat:@"%f,%f", offset.horizontal, offset.vertical];
+                }else if([structType hasPrefix:@"{CATransform3D"]){
+                    CATransform3D t3d;
+                    [invocation getReturnValue:&t3d];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+                            t3d.m11, t3d.m12, t3d.m13, t3d.m14,
+                            t3d.m21, t3d.m22, t3d.m23, t3d.m24,
+                            t3d.m31, t3d.m32, t3d.m33, t3d.m34,
+                            t3d.m41, t3d.m42, t3d.m43, t3d.m44
+                            ];
+                }else if([structType hasPrefix:@"{CGAffineTransform"]){
+                    CGAffineTransform t;
+                    [invocation getReturnValue:&t];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f", t.a, t.b, t.c, t.d, t.tx, t.ty];
+                }
             }else if(ctype == '('){//union
             }else if(ctype == 'b'){//bit
             }else if(ctype == '^'){//pointer to type
@@ -305,6 +344,32 @@
             }else if(ctype == '['){//C array
             }else if(ctype == '{'){//struct
                 NSLog(@"set struct:%s", [methodSignature getArgumentTypeAtIndex:i]);//未处理
+                NSString *structType = [NSString stringWithFormat:@"%s", [methodSignature getArgumentTypeAtIndex:i]];
+                if([structType hasPrefix:@"{CGSize"]){
+                    CGSize size = [LuaCommonUtils CGSizeWithString:tmpParam];
+                    argumentData = &size;
+                }else if([structType hasPrefix:@"{CGPoint"]){
+                    CGPoint point = [LuaCommonUtils CGPointWithString:tmpParam];
+                    argumentData = &point;
+                }else if([structType hasPrefix:@"{CGRect"]){
+                    CGRect rect = [LuaCommonUtils CGRectWithString:tmpParam];
+                    argumentData = &rect;
+                }else if([structType hasPrefix:@"{NSRange"]){
+                    NSRange range = [LuaCommonUtils NSRangeWithString:tmpParam];
+                    argumentData = &range;
+                }else if([structType hasPrefix:@"{UIEdgeInsets"]){
+                    UIEdgeInsets insets = [LuaCommonUtils UIEdgeInsetsWithString:tmpParam];
+                    argumentData = &insets;
+                }else if([structType hasPrefix:@"{UIOffset"]){
+                    UIOffset offset = [LuaCommonUtils UIOffsetWithString:tmpParam];
+                    argumentData = &offset;
+                }else if([structType hasPrefix:@"{CATransform3D"]){
+                    CATransform3D t3d = [LuaCommonUtils CATransform3DWithString:tmpParam];
+                    argumentData = &t3d;
+                }else if([structType hasPrefix:@"{CGAffineTransform"]){
+                    CGAffineTransform t = [LuaCommonUtils CGAffineTransformWithString:tmpParam];
+                    argumentData = &t;
+                }
             }else if(ctype == '('){//union
             }else if(ctype == 'b'){//bit
             }else if(ctype == '^'){//pointer to type
@@ -402,6 +467,45 @@
             }else if(ctype == '['){//C array
             }else if(ctype == '{'){//struct
                 NSLog(@"get struct:%s", [methodSignature methodReturnType]);//未处理
+                NSString *structType = [NSString stringWithFormat:@"%s", [methodSignature methodReturnType]];
+                if([structType hasPrefix:@"{CGSize"]){
+                    CGSize size;
+                    [invocation getReturnValue:&size];
+                    return [NSString stringWithFormat:@"%f,%f", size.width, size.height];
+                }else if([structType hasPrefix:@"{CGPoint"]){
+                    CGPoint point;
+                    [invocation getReturnValue:&point];
+                    return [NSString stringWithFormat:@"%f,%f", point.x, point.y];
+                }else if([structType hasPrefix:@"{CGRect"]){
+                    CGRect rect;
+                    [invocation getReturnValue:&rect];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f", rect.origin.x, rect.origin.y, rect.size.width, rect.size.height];
+                }else if([structType hasPrefix:@"{NSRange"]){
+                    NSRange range;
+                    [invocation getReturnValue:&range];
+                    return [NSString stringWithFormat:@"%d,%d", range.location, range.length];
+                }else if([structType hasPrefix:@"{UIEdgeInsets"]){
+                    UIEdgeInsets insets;
+                    [invocation getReturnValue:&insets];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f", insets.top, insets.left, insets.bottom, insets.right];
+                }else if([structType hasPrefix:@"{UIOffset"]){
+                    UIOffset offset;
+                    [invocation getReturnValue:&offset];
+                    return [NSString stringWithFormat:@"%f,%f", offset.horizontal, offset.vertical];
+                }else if([structType hasPrefix:@"{CATransform3D"]){
+                    CATransform3D t3d;
+                    [invocation getReturnValue:&t3d];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+                            t3d.m11, t3d.m12, t3d.m13, t3d.m14,
+                            t3d.m21, t3d.m22, t3d.m23, t3d.m24,
+                            t3d.m31, t3d.m32, t3d.m33, t3d.m34,
+                            t3d.m41, t3d.m42, t3d.m43, t3d.m44
+                            ];
+                }else if([structType hasPrefix:@"{CGAffineTransform"]){
+                    CGAffineTransform t;
+                    [invocation getReturnValue:&t];
+                    return [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f", t.a, t.b, t.c, t.d, t.tx, t.ty];
+                }
             }else if(ctype == '('){//union
             }else if(ctype == 'b'){//bit
             }else if(ctype == '^'){//pointer to type
