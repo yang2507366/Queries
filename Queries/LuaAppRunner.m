@@ -56,7 +56,7 @@
     self.appDict = [NSMutableDictionary dictionary];
     self.scriptCheckers = [NSArray arrayWithObjects:
                            [[[UnicodeChecker alloc] init] autorelease],
-//                           [[AutoreleasePoolChecker new] autorelease],
+                           [[AutoreleasePoolChecker new] autorelease],
                            [[RequireReplaceChecker new] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],

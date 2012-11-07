@@ -8,6 +8,7 @@
 
 #import "AutoreleasePoolChecker.h"
 #import "NSString+Substring.h"
+#import "LuaCommonUtils.h"
 
 typedef enum{
     StackInfoTypeFunction,
@@ -92,7 +93,7 @@ typedef enum{
 
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
-    if([scriptName isEqualToString:@"AutoreleasePool.lua"]){
+    if(![LuaCommonUtils scriptIsMainScript:script]){
         return script;
     }
 //    NSLog(@"****************************%@", scriptId);
@@ -191,26 +192,27 @@ typedef enum{
             fromIndex = endPosition + endString.length;
         }
     }
-    NSLog(@"%@, %@", scriptName, functionPositionList);
-//    NSMutableString *resultScript = [NSMutableString string];
-//    if(functionPositionList.count != 0){
-//        NSInteger beginIndex = 0;
-//        NSInteger endIndex = 0;
-//        for(FunctionPosition *fp in functionPositionList){
-//            endIndex = fp.beginIndex;
-//            [resultScript appendString:[script substringWithBeginIndex:beginIndex endIndex:endIndex]];
-//            // add function to resultScript
-//            [resultScript appendString:[script substringWithBeginIndex:fp.beginIndex endIndex:fp.endIndex]];
-//            // end
-//            beginIndex = fp.endIndex;
-//        }
+    NSLog(@"stack:%@", stack);
+//    NSLog(@"%@, %@", scriptName, functionPositionList);
+    NSMutableString *resultScript = [NSMutableString string];
+    if(functionPositionList.count != 0){
+        NSInteger beginIndex = 0;
+        NSInteger endIndex = 0;
+        for(FunctionPosition *fp in functionPositionList){
+            endIndex = fp.beginIndex;
+            [resultScript appendString:[script substringWithBeginIndex:beginIndex endIndex:endIndex]];
+            // add function to resultScript
+            [resultScript appendString:[script substringWithBeginIndex:fp.beginIndex endIndex:fp.endIndex]];
+            // end
+            beginIndex = fp.endIndex;
+        }
 //        NSLog(@"%d, %d", beginIndex, script.length);
-//        if(beginIndex != script.length){
-//            [resultScript appendString:[script substringWithBeginIndex:beginIndex endIndex:script.length]];
-//        }
-//    }else{
-//        [resultScript appendString:script];
-//    }
+        if(beginIndex != script.length){
+            [resultScript appendString:[script substringWithBeginIndex:beginIndex endIndex:script.length]];
+        }
+    }else{
+        [resultScript appendString:script];
+    }
     
     return script;
 }
