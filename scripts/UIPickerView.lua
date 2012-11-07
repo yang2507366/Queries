@@ -46,7 +46,7 @@ function UIPickerView:rowHeightForComponent(component)
 end
 
 function UIPickerView:titleForRowForComponent(row, component)
-    print(row, component);
+    print("row:"..row..", "..component);
     return "title";
 end
 
@@ -65,7 +65,6 @@ end
 -- event proxy
 eventProxyTable_pickerView = {};
 function UIPickerView_numberOfComponents(pvId)
-    print(pvId);
     local pv = eventProxyTable_pickerView[pvId];
     if pv then
         return pv:numberOfComponents();
@@ -98,6 +97,7 @@ function UIPickerView_rowHeightForComponent(pvId, component)
 end
 
 function UIPickerView_titleForRowForComponent(pvId, row, component)
+    print("title."..pvId);
     local pv = eventProxyTable_pickerView[pvId];
     if pv then
         return pv:titleForRowForComponent(row, component);

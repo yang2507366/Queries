@@ -20,8 +20,8 @@ function main()
         self:view():addSubview(imgView);
         
         
-        local pickerView = UIPickerView:create();
-        pickerView:setFrame(10, 200, 200, 100);
+        local pickerView = UIPickerView:create():retain();
+        pickerView:setFrame(10, 200, 280, 100);
         self:view():addSubview(pickerView);
         
         ap_release();

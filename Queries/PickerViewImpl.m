@@ -130,7 +130,7 @@ viewForRowForComponentReuseView:(NSString *)viewForRowForComponentReuseView
     NSString *objId = [LuaGroupedObjectManager addObject:tmpPickerView group:appId];
     if(numOfComponents.length != 0){
         [tmpPickerView setNumOfComponents:^NSInteger{
-            return [[si callFunction:numOfComponents parameters:nil] intValue];
+            return [[si callFunction:numOfComponents parameters:objId, nil] intValue];
         }];
     }
     if(numOfRowsInComponent.length != 0){
