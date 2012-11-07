@@ -1,6 +1,6 @@
 require "System"
 require "UIKit"
-require "App"
+require "AppBundle"
 
 function main()
     ap_new();
@@ -16,7 +16,7 @@ function main()
         self:release();
     end
     
-    local app = App:get();
+    local app = AppBundle:get();
     app:bundleId();
     
     ap_release();

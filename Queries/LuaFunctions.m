@@ -109,14 +109,19 @@ int app_loadApp(lua_State *L)
     return 0;
 }
 
-int app_getApp(lua_State *L)
+int app_getAppBundle(lua_State *L)
 {
     NSString *appId = luaStringParam(L, 1);
     NSString *targetAppId = luaStringParam(L, 2);
     if(targetAppId.length != 0){
         appId = targetAppId;
     }
-    NSString *objId = [LuaGroupedObjectManager addObject:[LuaAppRunner appForId:appId] group:appId];
+    NSString *objId = @"";
+    LuaApp *app = [LuaAppRunner appForId:appId];
+    if(app){
+        id sb = [app scriptBundle];
+        objId = [LuaGroupedObjectManager addObject:sb group:appId];
+    }
     pushString(L, objId);
     return 1;
 }
@@ -900,8 +905,8 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "app_loadApp", app_loadApp);
 #pragma mark - app::runApp
     pushFunctionToLua(L, "app_runApp", app_runApp);
-#pragma mark - app::getApp
-    pushFunctionToLua(L, "app_getApp", app_getApp);
+#pragma mark - app::getAppBundle
+    pushFunctionToLua(L, "app_getAppBundle", app_getAppBundle);
 #pragma mark - http::request
     pushFunctionToLua(L, "http_request", http_request);
 #pragma mark - http::post

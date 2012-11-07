@@ -1,23 +1,23 @@
 require "Object"
 
-App = {};
-App.__index = App;
-setmetatable(App, Object);
+AppBundle = {};
+AppBundle.__index = AppBundle;
+setmetatable(AppBundle, Object);
 
-function App:get(appId)
-    appId = app::getApp(appId);
+function AppBundle:get(appId)
+    appId = app::getAppBundle(appId);
     local app = Object:new(appId);
     setmetatable(app, self);
     
     return app;
 end
 
-function App:bundleId()
+function AppBundle:bundleId()
     local bid = runtime::invokeMethod(self:id(), "bundleId");
-    print(bid);
+    
     return bid;
 end
 
-function App:getResource(resName)
+function AppBundle:getResource(resName)
     
 end

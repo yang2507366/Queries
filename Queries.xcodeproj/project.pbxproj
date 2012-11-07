@@ -59,7 +59,7 @@
 		3E77174A16495F510077A1C0 /* UIImage.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E77174916495F510077A1C0 /* UIImage.lua */; };
 		3E77174D164960460077A1C0 /* NSData.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E77174C164960460077A1C0 /* NSData.lua */; };
 		3E771751164962290077A1C0 /* google_translate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E771750164962290077A1C0 /* google_translate.jpg */; };
-		3E771753164962FE0077A1C0 /* App.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E771752164962FE0077A1C0 /* App.lua */; };
+		3E771753164962FE0077A1C0 /* AppBundle.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E771752164962FE0077A1C0 /* AppBundle.lua */; };
 		3E79D45016415F920096A727 /* System.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D44F16415F920096A727 /* System.lua */; };
 		3E79D45316415FD00096A727 /* UIKit.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D45216415FD00096A727 /* UIKit.lua */; };
 		3E79D45516416CE00096A727 /* QueryMobileNumberViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */; };
@@ -256,7 +256,7 @@
 		3E77174916495F510077A1C0 /* UIImage.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIImage.lua; path = scripts/UIImage.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E77174C164960460077A1C0 /* NSData.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = NSData.lua; path = scripts/NSData.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E771750164962290077A1C0 /* google_translate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = google_translate.jpg; sourceTree = "<group>"; };
-		3E771752164962FE0077A1C0 /* App.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = App.lua; path = scripts/App.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3E771752164962FE0077A1C0 /* AppBundle.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = AppBundle.lua; path = scripts/AppBundle.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D44F16415F920096A727 /* System.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = System.lua; path = scripts/System.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D45216415FD00096A727 /* UIKit.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIKit.lua; path = scripts/UIKit.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QueryMobileNumberViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
@@ -699,7 +699,7 @@
 		3E867B601647F27700650486 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3E771752164962FE0077A1C0 /* App.lua */,
+				3E771752164962FE0077A1C0 /* AppBundle.lua */,
 				3E867AD91646A18800650486 /* AppLoader.lua */,
 				3E77174C164960460077A1C0 /* NSData.lua */,
 				3E867B631647F4E000650486 /* NSMutableArray.lua */,
@@ -1081,7 +1081,7 @@
 				3E77174A16495F510077A1C0 /* UIImage.lua in Resources */,
 				3E77174D164960460077A1C0 /* NSData.lua in Resources */,
 				3E771751164962290077A1C0 /* google_translate.jpg in Resources */,
-				3E771753164962FE0077A1C0 /* App.lua in Resources */,
+				3E771753164962FE0077A1C0 /* AppBundle.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
