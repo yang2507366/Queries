@@ -24,6 +24,8 @@
 		3E2D04341640DDDA00EDCFDA /* UIButton.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D04331640DDDA00EDCFDA /* UIButton.lua */; };
 		3E2D043B1640F3BD00EDCFDA /* UITableViewCell.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */; };
 		3E2D043D1640F79E00EDCFDA /* UITableView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E2D043C1640F79E00EDCFDA /* UITableView.lua */; };
+		3E34ECF1164A97D400B4F7F0 /* PickerViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E34ECF0164A97D400B4F7F0 /* PickerViewImpl.m */; };
+		3E34ECF4164AA19E00B4F7F0 /* UIPickerView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E34ECF3164AA19E00B4F7F0 /* UIPickerView.lua */; };
 		3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4286161647518700B1451D /* LuaCommonUtils.m */; };
 		3E428629164779B800B1451D /* UITextView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E428628164779B800B1451D /* UITextView.lua */; };
 		3E42862D16477A6800B1451D /* TextViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E42862C16477A6800B1451D /* TextViewImpl.m */; };
@@ -200,6 +202,9 @@
 		3E2D04391640E84200EDCFDA /* Implementable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Implementable.h; sourceTree = "<group>"; };
 		3E2D043A1640F3BD00EDCFDA /* UITableViewCell.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITableViewCell.lua; path = scripts/UITableViewCell.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E2D043C1640F79E00EDCFDA /* UITableView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITableView.lua; path = scripts/UITableView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3E34ECEF164A97D400B4F7F0 /* PickerViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewImpl.h; sourceTree = "<group>"; };
+		3E34ECF0164A97D400B4F7F0 /* PickerViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewImpl.m; sourceTree = "<group>"; };
+		3E34ECF3164AA19E00B4F7F0 /* UIPickerView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UIPickerView.lua; path = scripts/UIPickerView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E4286151647518700B1451D /* LuaCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaCommonUtils.h; sourceTree = "<group>"; };
 		3E4286161647518700B1451D /* LuaCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaCommonUtils.m; sourceTree = "<group>"; };
 		3E428628164779B800B1451D /* UITextView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = UITextView.lua; path = scripts/UITextView.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
@@ -758,6 +763,7 @@
 				3E428628164779B800B1451D /* UITextView.lua */,
 				3EA29A27163E547E005CAF98 /* UIView.lua */,
 				3E9FFDAD163E48CB000B630E /* UIViewController.lua */,
+				3E34ECF3164AA19E00B4F7F0 /* UIPickerView.lua */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -911,6 +917,8 @@
 				3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */,
 				3E0359331635322B0051DABA /* WebViewImpl.h */,
 				3E0359341635322B0051DABA /* WebViewImpl.m */,
+				3E34ECEF164A97D400B4F7F0 /* PickerViewImpl.h */,
+				3E34ECF0164A97D400B4F7F0 /* PickerViewImpl.m */,
 			);
 			name = impl;
 			sourceTree = "<group>";
@@ -1086,6 +1094,7 @@
 				3E771751164962290077A1C0 /* google_translate.jpg in Resources */,
 				3E771753164962FE0077A1C0 /* AppBundle.lua in Resources */,
 				3E88500F164A212600BFC6B8 /* UIImageView.lua in Resources */,
+				3E34ECF4164AA19E00B4F7F0 /* UIPickerView.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1215,7 @@
 				3E867B591647DFCE00650486 /* Reachability.m in Sources */,
 				3ED64C071648CC6B00190688 /* SuperSupportChecker.m in Sources */,
 				3E867B6C1649573100650486 /* AppRunnerViewController.m in Sources */,
+				3E34ECF1164A97D400B4F7F0 /* PickerViewImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

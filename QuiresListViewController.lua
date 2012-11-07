@@ -106,7 +106,7 @@ function QuiresListViewController:viewDidLoad()
     ap_release();
 end
 
-
+--[[
 function main()
     ap_new();
     
@@ -123,3 +123,4 @@ function main()
     
     ap_release();
 end
+]]

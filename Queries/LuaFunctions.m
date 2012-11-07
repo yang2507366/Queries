@@ -33,6 +33,7 @@
 #import "AppRunImpl.h"
 #import "TextViewImpl.h"
 #import "LuaCommonUtils.h"
+#import "PickerViewImpl.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
@@ -548,6 +549,21 @@ int ui_createTextView(lua_State *L)
                                       shouldEndEditingFunc:textViewShouldEndEditingFunc
                                shouldChangeTextInRangeFunc:shouldChangeTextInRangeFunc];
     pushString(L, tvId);
+    
+    return 1;
+}
+
+int ui_createPickerView(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *numOfComponents = luaStringParam(L, 2);
+    NSString *numOfRowsInComponent = luaStringParam(L, 3);
+    NSString *widthForComponent = luaStringParam(L, 4);
+    NSString *rowHeightForComponent = luaStringParam(L, 5);
+    NSString *titleForRowForComponent = luaStringParam(L, 6);
+    NSString *attributedTitleForRowForComponent = luaStringParam(L, 7);
+    NSString *viewForRowForComponentReuseView = luaStringParam(L, 8);
+    NSString *didSelectRowInComponent = luaStringParam(L, 9);
     
     return 1;
 }
