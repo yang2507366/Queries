@@ -168,9 +168,12 @@ viewForRowForComponentReuseView:(NSString *)viewForRowForComponentReuseView
             NSString *reuseViewId = [LuaGroupedObjectManager addObject:reuseView group:appId];
             NSString *viewId = [si callFunction:viewForRowForComponentReuseView
                                      parameters:objId, [NSString stringWithFormat:@"%d", row], [NSString stringWithFormat:@"%d", component], reuseViewId, nil];
-            UIView *view = [[LuaGroupedObjectManager objectWithId:viewId group:appId] retain];
-            [LuaGroupedObjectManager releaseObjectWithId:viewId group:appId];
-            return [view autorelease];
+            if(viewId.length != 0){
+                UIView *view = [[LuaGroupedObjectManager objectWithId:viewId group:appId] retain];
+                [LuaGroupedObjectManager releaseObjectWithId:viewId group:appId];
+                return [view autorelease];
+            }
+            return nil;
         }];
     }
     if(didSelectRowInComponent.length != 0){

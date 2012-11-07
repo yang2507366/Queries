@@ -23,7 +23,25 @@ function main()
         local pickerView = UIPickerView:create():retain();
         pickerView:setFrame(10, 200, 280, 100);
         self:view():addSubview(pickerView);
-        
+        function pickerView:numberOfComponents()
+            return 1;
+        end
+        function pickerView:numberOfRowInComponent(component)
+            return 10;
+        end
+        function pickerView:viewForRowForComponentReusingView(row, component, reusingView)
+            ap_new();
+            if reusingView == nil then
+                reusingView = UIView:create();
+                reusingView:setFrame(0, 0, 100, 30);
+            end
+            reusingView:keep();
+            reusingView:setBackgroundColor(UIColor:createWithRGB(255, 0, 0));
+            po(reusingView);
+            
+            ap_release();
+            return reusingView;
+        end
         ap_release();
     end
     function dictVC:viewDidPop()

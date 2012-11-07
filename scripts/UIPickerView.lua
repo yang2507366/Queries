@@ -30,15 +30,19 @@ end
 
 -- delegate methods
 function UIPickerView:numberOfComponents()
-    return 1;
+    return 0;
 end
 
 function UIPickerView:numberOfRowsInComponent(component)
-    return 10;
+    return 0;
 end
 
 function UIPickerView:widthForComponent(component)
-    return 200;
+    local x, y, width, height = self:frame();
+    if width == 0 then
+        width = 320;
+    end
+    return width - 20;
 end
 
 function UIPickerView:rowHeightForComponent(component)
@@ -46,8 +50,7 @@ function UIPickerView:rowHeightForComponent(component)
 end
 
 function UIPickerView:titleForRowForComponent(row, component)
-    print("row:"..row..", "..component);
-    return "title";
+    return "";
 end
 
 function UIPickerView:attributedTitleForRowForComponent(row, component)
@@ -97,7 +100,6 @@ function UIPickerView_rowHeightForComponent(pvId, component)
 end
 
 function UIPickerView_titleForRowForComponent(pvId, row, component)
-    print("title."..pvId);
     local pv = eventProxyTable_pickerView[pvId];
     if pv then
         return pv:titleForRowForComponent(row, component);
@@ -112,10 +114,16 @@ end
 function UIPickerView_viewForRowForComponentReusingView(pvId, row, component, reusingView)
     local pv = eventProxyTable_pickerView[pvId];
     if pv then
+        ap_new();
         if string.len(reusingView) ~= 0 then
-            reusingView = UIView:get(reusingView);
+            reusingView = UIView:get(reusingView):keep();
         end
-        return pv:viewForRowForComponentReusingView(row, component, reusingView);
+        ap_release();
+        local view = pv:viewForRowForComponentReusingView(row, component, reusingView);
+        if view then
+            return view:id();
+        end
+        return nil;
     end
     return nil;
 end
