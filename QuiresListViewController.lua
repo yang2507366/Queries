@@ -39,22 +39,31 @@ function QuiresListViewController:viewDidLoad()
         local cell = self:dequeueReusableCellWithIdentifier(identifier);
         
         local label = nil;
+        local icon = nil;
         if cell == nil then
             cell = UITableViewCell:create(identifier);
             cell:textLabel():setFont(UIFont:createWithFontSize(16));
+            cell:setAccessoryType(UITableViewCellAccessoryDisclosureIndicator);
             
             label = UILabel:createWithText("");
             label:setTag(1001);
             local x, y, width, height = cell:contentView():bounds();
-            label:setFrame(10, 0, width, 72);
+            label:setFrame(50, 0, width - 70, 72);
             cell:contentView():addSubview(label);
-            cell:setAccessoryType(UITableViewCellAccessoryDisclosureIndicator);
+            
+            icon = UIImageView:create();
+            icon:setTag(1002);
+            icon:setFrame(10, 20, 30, 30);
+            icon:setBackgroundColor(UIColor:createWithRGB(255, 0, 0));
+            cell:contentView():addSubview(icon);
         else
             label = cell:contentView():viewWithTag(1001, UILabel);
+            icon = cell:contentView():viewWithTag(1002, UIImageView);
         end
         cell:keep();-- 保持该对象不被释放
         
         label:setText(kTitleList[index + 1]);
+        icon:setImage(UIImage:imageWithResName("google_translate.jpg"));
         
         ap_release();
         return cell;
@@ -97,7 +106,7 @@ function QuiresListViewController:viewDidLoad()
     ap_release();
 end
 
---[[
+
 function main()
     ap_new();
     
@@ -114,4 +123,3 @@ function main()
     
     ap_release();
 end
-]]

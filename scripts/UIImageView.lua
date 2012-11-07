@@ -24,7 +24,9 @@ end
 
 -- instance methods
 function UIImageView:setImage(image)
-    runtime::invokeMethod(self:id(), "setImage:", image:id());
+    if image then
+        runtime::invokeMethod(self:id(), "setImage:", image:id());
+    end
 end
 
 function UIImageView:image()

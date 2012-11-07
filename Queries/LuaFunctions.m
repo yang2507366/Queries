@@ -492,7 +492,7 @@ int ui_dialog(lua_State *L)
     }
     
     id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
-    [DialogTools dialogWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
+    [DialogTools showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
         [si callFunction:callbackFunc parameters:[NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
     } cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
     

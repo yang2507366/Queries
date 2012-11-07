@@ -51,7 +51,7 @@
     [loader loadWithCompletion:^(NSString *filePath) {
         NSLog(@"%@", filePath);
         if(filePath.length == 0){
-            [DialogTools dialogWithTitle:@"" message:@"加载失败，请检查输入的URL地址" completion:nil cancelButtonTitle:@"确定" otherButtonTitleList:nil];
+            [DialogTools showWithTitle:@"" message:@"加载失败，请检查输入的URL地址" completion:nil cancelButtonTitle:@"确定" otherButtonTitleList:nil];
             return;
         }
         ZipArchive *zipAr = [[[ZipArchive alloc] init] autorelease];

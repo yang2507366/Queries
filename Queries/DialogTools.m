@@ -22,7 +22,7 @@
     [super dealloc];
 }
 
-- (void)dialogWithTitle:(NSString *)title message:(NSString *)message completion:(DialogCompletion)completion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles
+- (void)showWithTitle:(NSString *)title message:(NSString *)message completion:(DialogCompletion)completion cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles
 {
     [self retain];
     self.callback = completion;
@@ -50,7 +50,7 @@
 
 @implementation DialogTools
 
-+ (void)dialogWithTitle:(NSString *)title
++ (void)showWithTitle:(NSString *)title
                 message:(NSString *)message
              completion:(DialogCompletion)completion
       cancelButtonTitle:(NSString *)cancelButtonTitle
@@ -63,16 +63,16 @@
         [titleList addObject:item];
     }
     va_end(params);
-    [self dialogWithTitle:title message:message completion:completion cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
+    [self showWithTitle:title message:message completion:completion cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
 }
 
-+ (void)dialogWithTitle:(NSString *)title
++ (void)showWithTitle:(NSString *)title
                 message:(NSString *)message
              completion:(DialogCompletion)completion
       cancelButtonTitle:(NSString *)cancelButtonTitle
    otherButtonTitleList:(NSArray *)titleList
 {
-    [[[[Dialog alloc] init] autorelease] dialogWithTitle:title
+    [[[[Dialog alloc] init] autorelease] showWithTitle:title
                                                  message:message
                                               completion:completion
                                        cancelButtonTitle:cancelButtonTitle

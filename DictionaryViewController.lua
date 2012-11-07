@@ -3,6 +3,7 @@ require "UIKit"
 require "AppBundle"
 require "UIImage"
 
+--[[
 function main()
     ap_new();
     local relatedVC = UIViewController:get(ui::getRelatedViewController());
@@ -30,3 +31,4 @@ function main()
     
     ap_release();
 end
+--]]

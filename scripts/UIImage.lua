@@ -17,7 +17,11 @@ end
 
 function UIImage:imageWithResName(resName)
     local ab = AppBundle:get();
-    return self:imageWithData(ab:dataFromResource(resName));
+    local data = ab:dataFromResource(resName);
+    if data then
+        return self:imageWithData(ab:dataFromResource(resName));
+    end
+    return nil;
 end
 
 function UIImage:get(imgId)

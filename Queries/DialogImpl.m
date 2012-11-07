@@ -19,7 +19,7 @@
                dialogId:(NSString *)dialogId
            callbackFunc:(NSString *)callbackFunc
 {
-    [DialogTools dialogWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
+    [DialogTools showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
         [si callFunction:callbackFunc parameters:dialogId, [NSString stringWithFormat:@"%d", buttonIndex], buttonTitle];
     } cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
 }
