@@ -44,6 +44,11 @@
     return @"main_bundle";
 }
 
+- (NSString *)boundleVersion
+{
+    return @"0.0.0";
+}
+
 - (NSString *)scriptWithScriptName:(NSString *)scriptName
 {
     if(![scriptName hasSuffix:@".lua"]){

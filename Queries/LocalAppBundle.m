@@ -84,4 +84,9 @@
     return nil;
 }
 
+- (NSString *)boundleVersion
+{
+    return @"0.0.0";
+}
+
 @end
