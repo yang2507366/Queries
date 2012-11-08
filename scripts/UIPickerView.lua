@@ -14,7 +14,7 @@ function UIPickerView:create()
                                             "UIPickerView_rowHeightForComponent",
                                             "UIPickerView_titleForRowForComponent",
                                             "UIPickerView_attributedTitleForRowForComponent",
-                                            "UIPickerView_viewForRowForComponentReusingView",
+                                            "",
                                             "UIPickerView_didSelectRowInComponent");
     local pv = UIPickerView:get(pvId);
     eventProxyTable_pickerView[pvId] = pv;

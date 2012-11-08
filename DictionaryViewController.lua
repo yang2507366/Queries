@@ -42,6 +42,10 @@ function main()
             ap_release();
             return reusingView;
         end
+        function pickerView:titleForRowForComponent(row, component)
+            print(row, component);
+            return "titt";
+        end
         ap_release();
     end
     function dictVC:viewDidPop()

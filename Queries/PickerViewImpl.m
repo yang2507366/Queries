@@ -9,21 +9,15 @@
 #import "PickerViewImpl.h"
 #import "LuaGroupedObjectManager.h"
 #import "LuaAppRunner.h"
+#import <objc/objc-class.h>
 
 @interface PickerViewImplEventProxy : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
+
+@property(nonatomic, assign)PickerViewImpl *impl;
 
 @end
 
 @implementation PickerViewImplEventProxy
-
-+ (id)sharedInstance
-{
-    static PickerViewImplEventProxy *instance = nil;
-    if(instance == nil){
-        instance = [[PickerViewImplEventProxy alloc] init];
-    }
-    return instance;
-}
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -96,6 +90,26 @@
     }
 }
 
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    NSString *selectorName = NSStringFromSelector(aSelector);
+    
+    if([selectorName isEqualToString:@"pickerView:titleForRow:forComponent:"] && self.impl.titleForRowForComponent == nil){
+        return NO;
+    }
+    if([selectorName isEqualToString:@"pickerView:viewForRow:forComponent:reusingView:"] && self.impl.viewForRowForComponentReuseView == nil){
+        return NO;
+    }
+    
+    return [super respondsToSelector:aSelector];
+}
+
+@end
+
+@interface PickerViewImpl ()
+
+@property(nonatomic, retain)PickerViewImplEventProxy *eventProxy;
+
 @end
 
 @implementation PickerViewImpl
@@ -110,7 +124,27 @@
     self.attributedTitleForRowForComponent = nil;
     self.viewForRowForComponentReuseView = nil;
     self.didSelectRowInComponent = nil;
+    self.eventProxy = nil;
     [super dealloc];
+}
+
+- (id)init
+{
+    self = [self initWithFrame:CGRectZero];
+    
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+   
+    self.eventProxy = [[[PickerViewImplEventProxy alloc] init] autorelease];
+    self.eventProxy.impl = self;
+    self.delegate = self.eventProxy;
+    self.dataSource = self.eventProxy;
+    
+    return self;
 }
 
 + (NSString *)createWithAppId:(NSString *)appId
@@ -125,8 +159,6 @@ viewForRowForComponentReuseView:(NSString *)viewForRowForComponentReuseView
 {
     id<ScriptInteraction> si = [LuaAppRunner scriptInteractionWithAppId:appId];
     PickerViewImpl *tmpPickerView = [[[PickerViewImpl alloc] init] autorelease];
-    tmpPickerView.delegate = [PickerViewImplEventProxy sharedInstance];
-    tmpPickerView.dataSource = [PickerViewImplEventProxy sharedInstance];
     NSString *objId = [LuaGroupedObjectManager addObject:tmpPickerView group:appId];
     if(numOfComponents.length != 0){
         [tmpPickerView setNumOfComponents:^NSInteger{
@@ -153,6 +185,8 @@ viewForRowForComponentReuseView:(NSString *)viewForRowForComponentReuseView
             return [si callFunction:titleForRowForComponent
                          parameters:objId, [NSString stringWithFormat:@"%d", row], [NSString stringWithFormat:@"%d", component], nil];
         }];
+    }else{
+        [tmpPickerView setTitleForRowForComponent:nil];
     }
     if(attributedTitleForRowForComponent.length != 0){
         [tmpPickerView setAttributedTitleForRowForComponent:^NSAttributedString *(NSInteger row, NSInteger component) {
