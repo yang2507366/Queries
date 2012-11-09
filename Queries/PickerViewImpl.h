@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ScriptInteraction.h"
+#import "Implementable.h"
 
-@interface PickerViewImpl : UIPickerView
+@interface PickerViewImpl : UIPickerView <Implementable>
 
 @property(nonatomic, copy)NSInteger(^numOfComponents)();
 @property(nonatomic, copy)NSInteger(^numOfRowsInComponent)(NSInteger component);
@@ -19,6 +20,8 @@
 @property(nonatomic, copy)NSAttributedString *(^attributedTitleForRowForComponent)(NSInteger row, NSInteger component);
 @property(nonatomic, copy)UIView *(^viewForRowForComponentReuseView)(NSInteger row, NSInteger component, UIView *reuseView);
 @property(nonatomic, copy)void(^didSelectRowInComponent)(NSInteger row, NSInteger component);
+
++ (NSString *)createWithAppId:(NSString *)appId;
 
 + (NSString *)createWithAppId:(NSString *)appId
               numOfComponents:(NSString *)numOfComponents

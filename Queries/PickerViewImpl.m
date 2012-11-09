@@ -94,10 +94,21 @@
 {
     NSString *selectorName = NSStringFromSelector(aSelector);
     
-    if([selectorName isEqualToString:@"pickerView:titleForRow:forComponent:"] && self.impl.titleForRowForComponent == nil){
+    if([selectorName isEqualToString:@"numberOfComponentsInPickerView:"] && _impl.numOfComponents == nil){
         return NO;
-    }
-    if([selectorName isEqualToString:@"pickerView:viewForRow:forComponent:reusingView:"] && self.impl.viewForRowForComponentReuseView == nil){
+    }else if([selectorName isEqualToString:@"pickerView:numberOfRowsInComponent:"] && _impl.numOfRowsInComponent == nil){
+        return NO;
+    }else if([selectorName isEqualToString:@"pickerView:attributedTitleForRow:forComponent:"]){
+        return NO;
+    }else if([selectorName isEqualToString:@"pickerView:didSelectRow:inComponent:"] && _impl.didSelectRowInComponent == nil){
+        return NO;
+    }else if([selectorName isEqualToString:@"pickerView:rowHeightForComponent:"] && _impl.rowHeightForComponent == nil){
+        return NO;
+    }else if([selectorName isEqualToString:@"pickerView:titleForRow:forComponent:"] && self.impl.titleForRowForComponent == nil){
+        return NO;
+    }else if([selectorName isEqualToString:@"pickerView:viewForRow:forComponent:reusingView:"] && self.impl.viewForRowForComponentReuseView == nil){
+        return NO;
+    }else if([selectorName isEqualToString:@"pickerView:widthForComponent:"] && _impl.widthForComponent == nil){
         return NO;
     }
     
@@ -114,8 +125,14 @@
 
 @implementation PickerViewImpl
 
+@synthesize appId;
+@synthesize objectId;
+
 - (void)dealloc
 {
+    self.appId = nil;
+    self.objectId = nil;
+    
     self.numOfComponents = nil;
     self.numOfRowsInComponent = nil;
     self.widthForComponent = nil;
@@ -145,6 +162,136 @@
     self.dataSource = self.eventProxy;
     
     return self;
+}
+
+- (void)updateDelegate
+{
+    self.delegate = self.eventProxy;
+    self.dataSource = self.eventProxy;
+}
+
+- (void)setNumberOfComponentsFunc:(NSString *)func
+{
+    if(func.length != 0){
+        [self setNumOfComponents:^NSInteger{
+            NSString *num = [[LuaAppRunner scriptInteractionWithAppId:self.appId] callFunction:func parameters:self.objectId, nil];
+            return [num intValue];
+        }];
+    }else{
+        self.numOfComponents = nil;
+    }
+    [self updateDelegate];
+}
+
+- (void)setNumberOfRowsInComponentFunc:(NSString *)func
+{
+    if(func.length != 0){
+        [self setNumOfRowsInComponent:^NSInteger(NSInteger component) {
+            NSString *rows = [[LuaAppRunner scriptInteractionWithAppId:self.appId]
+                              callFunction:func parameters:self.objectId, [NSString stringWithFormat:@"%d", component], nil];
+            return [rows intValue];
+        }];
+    }else{
+        self.numOfRowsInComponent = nil;
+    }
+    [self updateDelegate];
+}
+
+- (void)setWidthForComponentFuc:(NSString *)func
+{
+    if(func.length != 0){
+        [self setWidthForComponent:^CGFloat(NSInteger component) {
+            NSString *width = [[LuaAppRunner scriptInteractionWithAppId:self.appId]
+                               callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", component], nil];
+            return [width floatValue];
+        }];
+    }else{
+        self.widthForComponent = nil;
+    }
+    [self updateDelegate];
+}
+
+- (void)setRowHeightForComponentFunc:(NSString *)func
+{
+    if(func.length != 0){
+        [self setRowHeightForComponent:^CGFloat(NSInteger component) {
+            NSString *rowHeight = [[LuaAppRunner scriptInteractionWithAppId:appId]
+                                   callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", component], nil];
+            return [rowHeight floatValue];
+        }];
+    }else{
+        self.rowHeightForComponent = nil;
+    }
+    [self updateDelegate];
+}
+
+- (void)setTitleForRowForComponentFunc:(NSString *)func
+{
+    if(func.length != 0){
+        [self setTitleForRowForComponent:^NSString *(NSInteger row, NSInteger componnet) {
+            NSString *title = [[LuaAppRunner scriptInteractionWithAppId:appId]
+                               callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", row], [NSString stringWithFormat:@"%d", componnet], nil];
+            return title;
+        }];
+    }else{
+        self.titleForRowForComponent = nil;
+    }
+    [self updateDelegate];
+}
+
+- (void)setAttributedTitleForRowForComponentFunc:(NSString *)func
+{
+    if(func.length != 0){
+        [self setAttributedTitleForRowForComponent:^NSAttributedString *(NSInteger row, NSInteger component) {
+            return nil;
+        }];
+    }else{
+        self.attributedTitleForRowForComponent = nil;
+    }
+}
+
+- (void)setViewForRowForComponentReusingViewFunc:(NSString *)func
+{
+    if(func.length!= 0){
+        [self setViewForRowForComponentReuseView:^UIView *(NSInteger row, NSInteger component, UIView *reusingView) {
+            NSString *reusingViewId = @"";
+            if(reusingView){
+                reusingViewId = [LuaGroupedObjectManager addObject:reusingView group:appId];
+            }
+            NSString *viewId = [[LuaAppRunner scriptInteractionWithAppId:appId]
+                                callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", row],
+                                [NSString stringWithFormat:@"%d", component], reusingViewId, nil];
+            if(reusingView){
+                [LuaGroupedObjectManager releaseObjectWithId:reusingViewId group:appId];
+            }
+            UIView *view = [LuaGroupedObjectManager objectWithId:viewId group:appId];
+            return view;
+        }];
+    }else{
+        self.viewForRowForComponentReuseView = nil;
+    }
+    [self updateDelegate];
+}
+
+- (void)setDidSelectRowInComponentFunc:(NSString *)func
+{
+    if(func.length != 0){
+        [self setDidSelectRowInComponent:^(NSInteger row, NSInteger component) {
+            
+        }];
+    }else{
+        self.didSelectRowInComponent = nil;
+    }
+    [self updateDelegate];
+}
+
++ (NSString *)createWithAppId:(NSString *)appId
+{
+    PickerViewImpl *impl = [[PickerViewImpl new] autorelease];
+    impl.appId = appId;
+    impl.objectId = [LuaGroupedObjectManager addObject:impl group:appId];
+    
+    return impl.objectId;
 }
 
 + (NSString *)createWithAppId:(NSString *)appId

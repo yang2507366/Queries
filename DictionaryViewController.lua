@@ -22,30 +22,43 @@ function main()
         
         local pickerView = UIPickerView:create():retain();
         pickerView:setFrame(10, 200, 280, 100);
+--        pickerView:setShowsSelectionIndicator(true);
         self:view():addSubview(pickerView);
-        function pickerView:numberOfComponents()
-            return 1;
+        local pickerViewDelegate = {};
+        function pickerViewDelegate:numberOfComponents()
+            return 2;
         end
-        function pickerView:numberOfRowInComponent(component)
-            return 10;
+        
+        function pickerViewDelegate:numberOfRowsInComponent(componnet)
+            return 12;
         end
-        function pickerView:viewForRowForComponentReusingView(row, component, reusingView)
+        
+        function pickerViewDelegate:didSelectRowInComponent(row, componnet)
+            print(row, componnet);
+        end
+        
+        function pickerViewDelegate:rowHeightForComponent(componnet)
+            return 40.0;
+        end
+        
+        function pickerViewDelegate:viewForRowForComponentReusingView(row, componnet, reusingView)
             ap_new();
-            if reusingView == nil then
-                reusingView = UIView:create();
-                reusingView:setFrame(0, 0, 100, 30);
+            if not reusingView then
+                reusingView = UILabel:createWithText("");
+                reusingView:setFrame(0, 0, 200, 40);
+            else
+                print("reusingView:"..reusingView:id());
             end
+            print(row, componnet);
+            reusingView:setText(row..","..componnet);
             reusingView:keep();
-            reusingView:setBackgroundColor(UIColor:createWithRGB(255, 0, 0));
-            po(reusingView);
             
             ap_release();
             return reusingView;
         end
-        function pickerView:titleForRowForComponent(row, component)
-            print(row, component);
-            return "titt";
-        end
+        
+        pickerView:setDelegate(pickerViewDelegate);
+        
         ap_release();
     end
     function dictVC:viewDidPop()

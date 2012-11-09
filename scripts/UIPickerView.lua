@@ -1,21 +1,13 @@
 require "System"
 require "UIView"
+require "UIPickerViewDelegate"
 
 UIPickerView = {};
 UIPickerView.__index = UIPickerView;
 setmetatable(UIPickerView, UIView);
 
 function UIPickerView:create()
-    local pvId = runtime::invokeClassMethod("PickerViewImpl", "createWithAppId:numOfComponents:numOfRowsInComponent:widthForComponent:rowHeightForComponent:titleForRowForComponent:attributedTitleForRowForComponent:viewForRowForComponentReuseView:didSelectRowInComponent:",
-                                            app_id(),
-                                            "UIPickerView_numberOfComponents",
-                                            "UIPickerView_numOfRowsInComponent",
-                                            "UIPickerView_widthForComponent",
-                                            "UIPickerView_rowHeightForComponent",
-                                            "UIPickerView_titleForRowForComponent",
-                                            "UIPickerView_attributedTitleForRowForComponent",
-                                            "",
-                                            "UIPickerView_didSelectRowInComponent");
+    local pvId = runtime::invokeClassMethod("PickerViewImpl", "createWithAppId:", app_id());
     local pv = UIPickerView:get(pvId);
     eventProxyTable_pickerView[pvId] = pv;
     return pv;
@@ -28,57 +20,104 @@ function UIPickerView:get(pvId)
     return pv;
 end
 
--- delegate methods
+-- instance methods
+function UIPickerView:setDelegate(delegate)
+    self.delegate = delegate;
+    
+    if delegate.numberOfComponents then
+        runtime::invokeMethod(self:id(), "setNumberOfComponentsFunc:", "UIPickerView_numberOfComponents");
+    else
+        runtime::invokeMethod(self:id(), "setNumberOfComponentsFunc:", "");
+    end
+    
+    if delegate.numberOfRowsInComponent then
+        runtime::invokeMethod(self:id(), "setNumberOfRowsInComponentFunc:", "UIPickerView_numberOfRowsInComponent");
+    else
+        runtime::invokeMethod(self:id(), "setNumberOfRowsInComponentFunc:", "");
+    end
+    
+    if delegate.titleForRowForComponent then
+        runtime::invokeMethod(self:id(), "setTitleForRowForComponentFunc:", "UIPickerView_titleForRowForComponent");
+    else
+        runtime::invokeMethod(self:id(), "setTitleForRowForComponentFunc:", "");
+    end
+    
+    if delegate.didSelectRowInComponent then
+        runtime::invokeMethod(self:id(), "setDidSelectRowInComponentFunc:", "UIPickerView_didSelectRowInComponent");
+    else
+        runtime::invokeMethod(self:id(), "setDidSelectRowInComponentFunc:", "");
+    end
+    
+    if delegate.rowHeightForComponent then
+        runtime::invokeMethod(self:id(), "setRowHeightForComponentFunc:", "UIPickerView_rowHeightForComponent");
+    else
+        runtime::invokeMethod(self:id(), "setRowHeightForComponentFunc:", "");
+    end
+    
+    if delegate.viewForRowForComponentReusingView then
+        runtime::invokeMethod(self:id(), "setViewForRowForComponentReusingViewFunc:", "UIPickerView_viewForRowForComponentReusingView");
+    else
+        runtime::invokeMethod(self:id(), "setViewForRowForComponentReusingViewFunc:", "");
+    end
+end
+
+function UIPickerView:setShowsSelectionIndicator(show)
+    runtime::invokeMethod(self:id(), "setShowsSelectionIndicator:", toObjCBool(show));
+end
+
+function UIPickerView:showsSelectionIndicator()
+    return toLuaBool(runtime::invokeMethod(self:id(), "showsSelectionIndicator"));
+end
+
 function UIPickerView:numberOfComponents()
-    return 0;
+    return runtime::invokeMethod(self:id(), "numberOfComponents");
 end
 
 function UIPickerView:numberOfRowsInComponent(component)
-    return 0;
+    return runtime::invokeMethod(self:id(), "numberOfRowsInComponent:", component);
 end
 
-function UIPickerView:widthForComponent(component)
-    local x, y, width, height = self:frame();
-    if width == 0 then
-        width = 320;
+function UIPickerView:reloadAllComponents()
+    runtime::invokeMethod(self:id(), "reloadAllComponents");
+end
+
+function UIPickerView:rowSizeForComponent(component)
+    local sizeStr = runtime::invokeMethod(self:id(), "rowSizeForComponent:", component);
+    local size = stringSplit(sizeStr, ",");
+    if #size == 2 then
+        return size[1], size[2];
     end
-    return width - 20;
 end
 
-function UIPickerView:rowHeightForComponent(component)
-    return 44;
+function UIPickerView:selectedRowInComponent(component)
+    return tonumber(runtime::invokeMethod(self:id(), "selectedRowInComponent:", component));
 end
 
-function UIPickerView:titleForRowForComponent(row, component)
-    return "";
+function UIPickerView:selectRowInComponentAnimated(row, component, animated)
+    runtime::invokeMethod(self:id(), "selectRow:inComponent:animated:", row, component, toObjCBool(animated));
 end
 
-function UIPickerView:attributedTitleForRowForComponent(row, component)
-    return nil;
+function UIPickerView:viewForRowForComponent(row, component)
+    local viewId = runtime::invokeMethod(self:id(), "viewForRow:forComponent:", row, component);
+    if string.len(viewId) ~= 0 then
+        return UIView:get(viewId);
+    end
 end
 
-function UIPickerView:viewForRowForComponentReusingView(row, component, reusingView)
-    return nil;
-end
-
-function UIPickerView:didSelectRowInComponent(row, component)
-    
-end
-    
 -- event proxy
 eventProxyTable_pickerView = {};
 function UIPickerView_numberOfComponents(pvId)
     local pv = eventProxyTable_pickerView[pvId];
-    if pv then
-        return pv:numberOfComponents();
+    if pv and pv.delegate then
+        return pv.delegate:numberOfComponents();
     end
     return 0;
 end
 
-function UIPickerView_numOfRowsInComponent(pvId, component)
+function UIPickerView_numberOfRowsInComponent(pvId, component)
     local pv = eventProxyTable_pickerView[pvId];
-    if pv then
-        return pv:numberOfRowsInComponent(component);
+    if pv and pv.delegate then
+        return pv.delegate:numberOfRowsInComponent(component);
     end
     return 0;
 end
@@ -93,16 +132,17 @@ end
 
 function UIPickerView_rowHeightForComponent(pvId, component)
     local pv = eventProxyTable_pickerView[pvId];
-    if pv then
-        return pv:rowHeightForComponent(component);
+    if pv and pv.delegate then
+        return pv.delegate:rowHeightForComponent(component);
     end
     return 0;
 end
 
 function UIPickerView_titleForRowForComponent(pvId, row, component)
     local pv = eventProxyTable_pickerView[pvId];
-    if pv then
-        return pv:titleForRowForComponent(row, component);
+    if pv and pv.delegate then
+        local title = pv.delegate:titleForRowForComponent(row, component);
+        return title;
     end
     return "";
 end
@@ -113,25 +153,25 @@ end
 
 function UIPickerView_viewForRowForComponentReusingView(pvId, row, component, reusingView)
     local pv = eventProxyTable_pickerView[pvId];
-    if pv then
+    if pv and pv.delegate then
         ap_new();
         if string.len(reusingView) ~= 0 then
             reusingView = UIView:get(reusingView):keep();
+        else
+            reusingView = nil;
         end
         ap_release();
-        local view = pv:viewForRowForComponentReusingView(row, component, reusingView);
+        local view = pv.delegate:viewForRowForComponentReusingView(row, component, reusingView);
         if view then
             return view:id();
         end
-        return nil;
     end
-    return nil;
 end
 
 function UIPickerView_didSelectRowInComponent(pvId, row, component)
     local pv = eventProxyTable_pickerView[pvId];
-    if pv then
-        return pv:didSelectRowInComponent(row, component);
+    if pv and pv.delegate then
+        return pv.delegate:didSelectRowInComponent(row, component);
     end
 end
 

@@ -10,7 +10,7 @@
 
 @protocol Implementable <NSObject>
 
-@property(nonatomic, copy)NSString *scriptId;
+@property(nonatomic, copy)NSString *appId;
 @property(nonatomic, copy)NSString *objectId;
 
 @end
