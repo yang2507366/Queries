@@ -37,24 +37,8 @@ function main()
             print(row, componnet);
         end
         
-        function pickerViewDelegate:rowHeightForComponent(componnet)
-            return 40.0;
-        end
-        
-        function pickerViewDelegate:viewForRowForComponentReusingView(row, componnet, reusingView)
-            ap_new();
-            if not reusingView then
-                reusingView = UILabel:createWithText("");
-                reusingView:setFrame(0, 0, 200, 40);
-            else
-                print("reusingView:"..reusingView:id());
-            end
-            print(row, componnet);
-            reusingView:setText(row..","..componnet);
-            reusingView:keep();
-            
-            ap_release();
-            return reusingView;
+        function pickerViewDelegate:titleForRowForComponent(row, componnet)
+            return ""..row..", "..componnet;
         end
         
         pickerView:setDelegate(pickerViewDelegate);

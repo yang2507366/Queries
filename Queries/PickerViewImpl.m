@@ -75,11 +75,21 @@
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
-    PickerViewImpl *tmpPickerView = (id)pickerView;
-    if(tmpPickerView.viewForRowForComponentReuseView){
-        tmpPickerView.viewForRowForComponentReuseView(row, component, view);
+//    PickerViewImpl *tmpPickerView = (id)pickerView;
+//    if(tmpPickerView.viewForRowForComponentReuseView){
+//        tmpPickerView.viewForRowForComponentReuseView(row, component, view);
+//    }
+//    return nil;
+    UILabel *tmpLabel = (id)view;
+    if(tmpLabel == nil){
+        tmpLabel = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)] autorelease];
+    }else{
+        NSLog(@"reusing:%@", tmpLabel);
     }
-    return nil;
+    tmpLabel.backgroundColor = [UIColor blackColor];
+    tmpLabel.textAlignment = UITextAlignmentCenter;
+    tmpLabel.text = @"text";
+    return tmpLabel;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
