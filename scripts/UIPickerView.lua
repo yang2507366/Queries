@@ -7,7 +7,7 @@ UIPickerView.__index = UIPickerView;
 setmetatable(UIPickerView, UIView);
 
 function UIPickerView:create()
-    local pvId = runtime::invokeClassMethod("PickerViewImpl", "createWithAppId:", app_id());
+    local pvId = runtime::invokeClassMethod("PickerViewImpl", "create:", app_id());
     local pv = UIPickerView:get(pvId);
     eventProxyTable_pickerView[pvId] = pv;
     return pv;

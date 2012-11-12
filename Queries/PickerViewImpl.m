@@ -136,12 +136,12 @@
 @implementation PickerViewImpl
 
 @synthesize appId;
-@synthesize objectId;
+@synthesize objId;
 
 - (void)dealloc
 {
     self.appId = nil;
-    self.objectId = nil;
+    self.objId = nil;
     
     self.numOfComponents = nil;
     self.numOfRowsInComponent = nil;
@@ -184,7 +184,7 @@
 {
     if(func.length != 0){
         [self setNumOfComponents:^NSInteger{
-            NSString *num = [[LuaAppRunner scriptInteractionWithAppId:self.appId] callFunction:func parameters:self.objectId, nil];
+            NSString *num = [[LuaAppRunner scriptInteractionWithAppId:self.appId] callFunction:func parameters:self.objId, nil];
             return [num intValue];
         }];
     }else{
@@ -198,7 +198,7 @@
     if(func.length != 0){
         [self setNumOfRowsInComponent:^NSInteger(NSInteger component) {
             NSString *rows = [[LuaAppRunner scriptInteractionWithAppId:self.appId]
-                              callFunction:func parameters:self.objectId, [NSString stringWithFormat:@"%d", component], nil];
+                              callFunction:func parameters:self.objId, [NSString stringWithFormat:@"%d", component], nil];
             return [rows intValue];
         }];
     }else{
@@ -212,7 +212,7 @@
     if(func.length != 0){
         [self setWidthForComponent:^CGFloat(NSInteger component) {
             NSString *width = [[LuaAppRunner scriptInteractionWithAppId:self.appId]
-                               callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", component], nil];
+                               callFunction:func parameters:objId, [NSString stringWithFormat:@"%d", component], nil];
             return [width floatValue];
         }];
     }else{
@@ -226,7 +226,7 @@
     if(func.length != 0){
         [self setRowHeightForComponent:^CGFloat(NSInteger component) {
             NSString *rowHeight = [[LuaAppRunner scriptInteractionWithAppId:appId]
-                                   callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", component], nil];
+                                   callFunction:func parameters:objId, [NSString stringWithFormat:@"%d", component], nil];
             return [rowHeight floatValue];
         }];
     }else{
@@ -240,7 +240,7 @@
     if(func.length != 0){
         [self setTitleForRowForComponent:^NSString *(NSInteger row, NSInteger componnet) {
             NSString *title = [[LuaAppRunner scriptInteractionWithAppId:appId]
-                               callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", row], [NSString stringWithFormat:@"%d", componnet], nil];
+                               callFunction:func parameters:objId, [NSString stringWithFormat:@"%d", row], [NSString stringWithFormat:@"%d", componnet], nil];
             return title;
         }];
     }else{
@@ -269,7 +269,7 @@
                 reusingViewId = [LuaObjectManager addObject:reusingView group:appId];
             }
             NSString *viewId = [[LuaAppRunner scriptInteractionWithAppId:appId]
-                                callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", row],
+                                callFunction:func parameters:objId, [NSString stringWithFormat:@"%d", row],
                                 [NSString stringWithFormat:@"%d", component], reusingViewId, nil];
             if(reusingView){
                 [LuaObjectManager releaseObjectWithId:reusingViewId group:appId];
@@ -295,13 +295,13 @@
     [self updateDelegate];
 }
 
-+ (NSString *)createWithAppId:(NSString *)appId
++ (NSString *)create:(NSString *)appId
 {
     PickerViewImpl *impl = [[PickerViewImpl new] autorelease];
     impl.appId = appId;
-    impl.objectId = [LuaObjectManager addObject:impl group:appId];
+    impl.objId = [LuaObjectManager addObject:impl group:appId];
     
-    return impl.objectId;
+    return impl.objId;
 }
 
 + (NSString *)createWithAppId:(NSString *)appId
