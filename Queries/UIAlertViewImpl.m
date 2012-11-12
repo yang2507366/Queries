@@ -8,6 +8,8 @@
 
 #import "UIAlertViewImpl.h"
 #import "LuaObjectManager.h"
+#import "LuaAppRunner.h"
+#import "ScriptInteraction.h"
 
 @interface UIAlertViewDelegateProxy : NSObject <UIAlertViewDelegate>
 
@@ -26,33 +28,37 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    UIAlertViewImpl *tmp = (id)alertView;
+    if(tmp.clickedButtonAtIndex.length != 0){
+        id<ScriptInteraction> si = [LuaAppRunner scriptInteractionWithAppId:tmp.appId];
+        [si callFunction:tmp.clickedButtonAtIndex parameters:tmp.objId, [NSString stringWithFormat:@"%d", buttonIndex], nil];
+    }
 }
 
-- (void)alertViewCancel:(UIAlertView *)alertView
-{
-}
+//- (void)alertViewCancel:(UIAlertView *)alertView
+//{
+//}
+//
+//- (void)willPresentAlertView:(UIAlertView *)alertView
+//{
+//}
+//
+//- (void)didPresentAlertView:(UIAlertView *)alertView
+//{
+//}
+//
+//- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+//{
+//}
+//
+//- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+//{
+//}
 
-- (void)willPresentAlertView:(UIAlertView *)alertView
-{
-}
-
-- (void)didPresentAlertView:(UIAlertView *)alertView
-{
-}
-
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-}
-
-// Called after edits in any of the default fields added by the style
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
-{
-    return YES;
-}
+//- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+//{
+//    return YES;
+//}
 
 @end
 
@@ -61,18 +67,21 @@
 @synthesize appId;
 @synthesize objId;
 
+@synthesize clickedButtonAtIndex;
+
 - (void)dealloc
 {
     self.appId = nil;
     self.objId = nil;
+    
     [super dealloc];
 }
 
 + (NSString *)create:(NSString *)appId
 {
     UIAlertViewImpl *alert = [[[UIAlertViewImpl alloc] init] autorelease];
-    alert.appId = appId;
     alert.delegate = [UIAlertViewDelegateProxy sharedInstance];
+    alert.appId = appId;
     alert.objId = [LuaObjectManager addObject:alert group:appId];
     
     return alert.objId;

@@ -24,6 +24,10 @@
 #import "NavigationControllerImpl.h"
 #import "AppRunnerViewController.h"
 
+@interface AppDelegate () <UIAlertViewDelegate>
+
+@end
+
 @implementation AppDelegate
 
 - (void)dealloc

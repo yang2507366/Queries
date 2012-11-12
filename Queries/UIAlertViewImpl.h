@@ -11,4 +11,6 @@
 
 @interface UIAlertViewImpl : UIAlertView <LuaImplentatable>
 
+@property(nonatomic, copy)NSString *clickedButtonAtIndex;
+
 @end
