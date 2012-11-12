@@ -106,8 +106,12 @@
         [tmpWaitingView.indicatorView startAnimating];
     }else{
         tmpWaitingView = [[self viewDictionary] objectForKey:viewId];
-        [tmpWaitingView removeFromSuperview];
-        [[self viewDictionary] removeObjectForKey:viewId];
+        [UIView animateWithDuration:0.15f animations:^{
+            tmpWaitingView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            [tmpWaitingView removeFromSuperview];
+            [[self viewDictionary] removeObjectForKey:viewId];
+        }];
     }
 }
 
