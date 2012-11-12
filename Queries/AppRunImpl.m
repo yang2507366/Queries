@@ -11,7 +11,7 @@
 #import "LocalAppBundle.h"
 #import "LuaApp.h"
 #import "LuaAppRunner.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @implementation AppRunImpl
 
@@ -20,7 +20,7 @@
     NSString *appDir = [lua_app_bundle_dir stringByAppendingPathComponent:targetAppId];
     LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:appDir] autorelease];
     LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:nil] autorelease];
-    app.relatedViewController = [LuaGroupedObjectManager objectWithId:rvcId group:appId];
+    app.relatedViewController = [LuaObjectManager objectWithId:rvcId group:appId];
     [LuaAppRunner runRootApp:app];
 }
 

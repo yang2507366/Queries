@@ -7,7 +7,7 @@
 //
 
 #import "NavigationControllerImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "ViewControllerImpl.h"
 
 @interface NavigationControllerImpl ()
@@ -39,11 +39,11 @@
                                                   si:(id<ScriptInteraction>)si
                                 rootViewControllerId:(NSString *)rootViewControllerId
 {
-    id rootViewController = [LuaGroupedObjectManager objectWithId:rootViewControllerId group:scriptId];
+    id rootViewController = [LuaObjectManager objectWithId:rootViewControllerId group:scriptId];
     if(rootViewController){
         NavigationControllerImpl *impl = [[[NavigationControllerImpl alloc] initWithRootViewController:rootViewController] autorelease];
         impl.scriptId = scriptId;
-        return [LuaGroupedObjectManager addObject:impl group:scriptId];
+        return [LuaObjectManager addObject:impl group:scriptId];
     }else{
         D_Log(@"create navigationController error, null rootViewController:%@", rootViewControllerId);
     }

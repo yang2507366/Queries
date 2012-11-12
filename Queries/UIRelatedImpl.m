@@ -11,18 +11,18 @@
 #import "DialogTools.h"
 #import "LuaAppRunner.h"
 #import "EventProxy.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @implementation UIRelatedImpl
 
 + (NSString *)addObject:(id)object group:(NSString *)group
 {
-    return [LuaGroupedObjectManager addObject:object group:group];
+    return [LuaObjectManager addObject:object group:group];
 }
 
 + (id)getObjectWithObjectId:(NSString *)objectId group:(NSString *)group
 {
-    return [LuaGroupedObjectManager objectWithId:objectId group:group];
+    return [LuaObjectManager objectWithId:objectId group:group];
 }
 
 + (void)setRootViewControllerWithId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
@@ -47,8 +47,8 @@
                                     navigationControllerId:(NSString *)ncId
                                                   animated:(BOOL)animated
 {
-    UIViewController *vc = [LuaGroupedObjectManager objectWithId:vcId group:scriptId];
-    UINavigationController *nc= [LuaGroupedObjectManager objectWithId:ncId group:scriptId];
+    UIViewController *vc = [LuaObjectManager objectWithId:vcId group:scriptId];
+    UINavigationController *nc= [LuaObjectManager objectWithId:ncId group:scriptId];
     if([vc isKindOfClass:[UIViewController class]] && [nc isKindOfClass:[UINavigationController class]]){
         [nc pushViewController:vc animated:animated];
     }
@@ -68,7 +68,7 @@
 {
     id vc = [LuaAppRunner appForId:appId].relatedViewController;
     if(vc){
-        return [LuaGroupedObjectManager addObject:vc group:appId];
+        return [LuaObjectManager addObject:vc group:appId];
     }
     return nil;
 }
@@ -92,7 +92,7 @@
     if([view isKindOfClass:[UIView class]]){
         UIView *targetView = [view viewWithTag:tag];
         if(targetView){
-            return [LuaGroupedObjectManager addObject:targetView group:scriptId];
+            return [LuaObjectManager addObject:targetView group:scriptId];
         }
     }
     

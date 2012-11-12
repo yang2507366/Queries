@@ -13,7 +13,7 @@
 #import "LuaScriptInteraction.h"
 #import "LuaAppRunner.h"
 #import "MethodInvokerForLua.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "CodeUtils.h"
 #import "ApplicationScriptBundle.h"
 #import "LuaApp.h"

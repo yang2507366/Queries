@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "ObjectWrapper.h"
 #import "LuaConstants.h"
 
-@interface LuaGroupedObjectManager ()
+@interface LuaObjectManager ()
 
 @property(nonatomic, retain)NSMutableDictionary *groupDictionary;
 
 @end
 
-@implementation LuaGroupedObjectManager
+@implementation LuaObjectManager
 
 - (void)dealloc
 {

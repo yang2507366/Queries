@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LuaImplentatable.h"
 
-@interface UIAlertViewImpl : NSObject
+@interface UIAlertViewImpl : UIAlertView <LuaImplentatable>
 
 @end

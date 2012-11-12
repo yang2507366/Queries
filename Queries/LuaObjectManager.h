@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
 
-@interface LuaGroupedObjectManager : NSObject
+@interface LuaObjectManager : NSObject
 
 + (NSString *)addObject:(id)object group:(NSString *)group;
 + (void)removeGroup:(NSString *)group;

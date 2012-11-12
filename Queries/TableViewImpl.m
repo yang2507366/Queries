@@ -7,7 +7,7 @@
 //
 
 #import "TableViewImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @interface TableViewImpl () <UITableViewDataSource, UITableViewDelegate>
 
@@ -90,15 +90,15 @@
 {
     TableViewImpl *impl = [[[TableViewImpl alloc] initWithFrame:frame style:UITableViewStylePlain] autorelease];
     impl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    NSString *tableViewId = [LuaGroupedObjectManager addObject:impl group:scriptId];
+    NSString *tableViewId = [LuaObjectManager addObject:impl group:scriptId];
     [impl setNumberOfRowsBlock:^NSInteger{
         NSString *numOfRows = [si callFunction:numberOfRowsFunc parameters:tableViewId, nil];
         return [numOfRows intValue];
     }];
     [impl setWrapCellBlock:^UITableViewCell *(NSInteger index) {
         NSString *cellId = [si callFunction:wrapCellFunc parameters:tableViewId, [NSString stringWithFormat:@"%d", index], nil];;
-        id cell = [[LuaGroupedObjectManager objectWithId:cellId group:scriptId] retain];
-        [LuaGroupedObjectManager releaseObjectWithId:cellId group:scriptId];
+        id cell = [[LuaObjectManager objectWithId:cellId group:scriptId] retain];
+        [LuaObjectManager releaseObjectWithId:cellId group:scriptId];
         return [cell autorelease];
     }];
     [impl setDidSelectCellBlock:^(NSInteger index) {

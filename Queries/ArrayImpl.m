@@ -7,7 +7,7 @@
 //
 
 #import "ArrayImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @implementation ArrayImpl
 
@@ -21,7 +21,7 @@
 {
     NSMutableArray *array = [ArrayImpl array];
     
-    return [LuaGroupedObjectManager addObject:array group:scriptId];
+    return [LuaObjectManager addObject:array group:scriptId];
 }
 
 @end

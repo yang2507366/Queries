@@ -7,7 +7,7 @@
 //
 
 #import "ButtonImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "EventProxy.h"
 
 @implementation ButtonImpl
@@ -29,7 +29,7 @@
     button.frame = frame;
     [button setTitle:title forState:UIControlStateNormal];
     
-    NSString *buttonId = [LuaGroupedObjectManager addObject:button group:scriptId];
+    NSString *buttonId = [LuaObjectManager addObject:button group:scriptId];
     // add event
     [button addTarget:[EventProxy sharedInstance] action:@selector(event:) forControlEvents:UIControlEventTouchUpInside];
     [[EventProxy sharedInstance] addEventSource:button scriptInteraction:si funcName:eventFuncName viewId:buttonId];
@@ -40,7 +40,7 @@
 {
     UIButton *button = [UIButton buttonWithType:type];
     
-    NSString *buttonId = [LuaGroupedObjectManager addObject:button group:scriptId];
+    NSString *buttonId = [LuaObjectManager addObject:button group:scriptId];
     
     [button addTarget:[EventProxy sharedInstance] action:@selector(event:) forControlEvents:UIControlEventTouchUpInside];
     [[EventProxy sharedInstance] addEventSource:button scriptInteraction:si funcName:tappedFunc viewId:buttonId];

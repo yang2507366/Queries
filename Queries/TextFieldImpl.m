@@ -7,7 +7,7 @@
 //
 
 #import "TextFieldImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "EventProxy.h"
 
 
@@ -117,7 +117,7 @@
     tmpTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     tmpTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     [tmpTextField addTarget:[EventProxy sharedInstance] action:@selector(event:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    return [LuaGroupedObjectManager addObject:tmpTextField group:scriptId];
+    return [LuaObjectManager addObject:tmpTextField group:scriptId];
 }
 
 + (void)attachEventWithAppId:(NSString *)appId
@@ -129,7 +129,7 @@
                   didEndFunc:(NSString *)didEndFunc
         shouldChangeCharFunc:(NSString *)shouldChangeCharFunc
 {
-    TextFieldImpl *textField = [LuaGroupedObjectManager objectWithId:objectId group:appId];
+    TextFieldImpl *textField = [LuaObjectManager objectWithId:objectId group:appId];
     textField.delegate = [TextFieldDelegateProxy sharedInstance];
     [textField setShouldBeginBlock:^BOOL{
         NSString *bstr = [si callFunction:shouldBeginFunc parameters:objectId, nil];

@@ -7,7 +7,7 @@
 //
 
 #import "TextViewImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @interface TextViewEventProxy : NSObject <UITextViewDelegate>
 
@@ -113,7 +113,7 @@
     impl.autocapitalizationType = UITextAutocapitalizationTypeNone;
     impl.autocorrectionType = UITextAutocorrectionTypeNo;
     impl.delegate = [TextViewEventProxy sharedInstance];
-    NSString *tvId = [LuaGroupedObjectManager addObject:impl group:appId];
+    NSString *tvId = [LuaObjectManager addObject:impl group:appId];
     
     [impl setTextViewDidBeginEditingBlock:^{
         [si callFunction:didBeginEditingFunc parameters:tvId, nil];

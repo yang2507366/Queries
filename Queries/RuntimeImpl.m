@@ -7,24 +7,24 @@
 //
 
 #import "RuntimeImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "RTProperty.h"
 
 @implementation RuntimeImpl
 
 + (void)recycleObjectWithScriptId:(NSString *)scriptId
 {
-    [LuaGroupedObjectManager removeGroup:scriptId];
+    [LuaObjectManager removeGroup:scriptId];
 }
 
 + (void)recycleObjectWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId
 {
-    [LuaGroupedObjectManager removeObjectWithId:objectId group:scriptId];
+    [LuaObjectManager removeObjectWithId:objectId group:scriptId];
 }
 
 + (void)invokeObjectMethodWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId methodName:(NSString *)methodName
 {
-    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id obj = [LuaObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         D_Log(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return;
@@ -40,7 +40,7 @@
                             methodName:(NSString *)methodName
                                  value:(NSString *)value
 {
-    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id obj = [LuaObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         D_Log(@"invokeObjectMethodWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return;
@@ -56,7 +56,7 @@
                                           methodName:(NSString *)methodName
                                                value:(NSString *)value
 {
-    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id obj = [LuaObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         D_Log(@"invokeObjectMethodGetValueWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return @"";
@@ -80,7 +80,7 @@
                                                objectId:(NSString *)objectId
                                              methodName:(NSString *)methodName
 {
-    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id obj = [LuaObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         D_Log(@"invokeObjectMethodGetObjectIdWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, methodName);
         return @"";
@@ -94,7 +94,7 @@
         [invocation invoke];
         [invocation getReturnValue:&returnValue];
         if(returnValue){
-            return [LuaGroupedObjectManager addObject:returnValue group:scriptId];
+            return [LuaObjectManager addObject:returnValue group:scriptId];
         }
     }
     return @"";
@@ -105,8 +105,8 @@
                                        methodName:(NSString *)methodName
                                     valueObjectId:(NSString *)valueObjectId
 {
-    id targetObj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
-    id valueTargetObj = [LuaGroupedObjectManager objectWithId:valueObjectId group:scriptId];
+    id targetObj = [LuaObjectManager objectWithId:objectId group:scriptId];
+    id valueTargetObj = [LuaObjectManager objectWithId:valueObjectId group:scriptId];
     SEL selector = NSSelectorFromString([NSString stringWithFormat:@"%@:", methodName]);
     if([targetObj respondsToSelector:selector]){
         [targetObj performSelector:selector withObject:valueTargetObj];
@@ -122,7 +122,7 @@
                                          objectId:(NSString *)objectId
                                      propertyName:(NSString *)propertyName
 {
-    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id obj = [LuaObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         D_Log(@"invokeObjectPropertyGetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
     }
@@ -143,7 +143,7 @@
                                propertyName:(NSString *)propertyName
                                       value:(NSString *)value
 {
-    id obj = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id obj = [LuaObjectManager objectWithId:objectId group:scriptId];
     if(!obj){
         D_Log(@"invokeObjectPropertySetWithScriptId:%@, objectId:%@, methodName:%@ error, target object is null", scriptId, objectId, propertyName);
     }
@@ -162,14 +162,14 @@
     Class targetClass = NSClassFromString(className);
     if(targetClass){
         id object = [[[targetClass alloc] init] autorelease];
-        return [LuaGroupedObjectManager addObject:object group:scriptId];
+        return [LuaObjectManager addObject:object group:scriptId];
     }
     return nil;
 }
 
 + (NSString *)propertyIdOfObjectWithScriptId:(NSString *)scriptId objectId:(NSString *)objectId propertyName:(NSString *)propertyName
 {
-    id targetObject = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    id targetObject = [LuaObjectManager objectWithId:objectId group:scriptId];
     
     if(targetObject){
         SEL propertySelector = NSSelectorFromString(propertyName);
@@ -181,12 +181,12 @@
             id property = nil;
             [invocation getReturnValue:&property];
             if(property){
-                NSString *propertyObjectId = [LuaGroupedObjectManager containsObject:property group:scriptId];
+                NSString *propertyObjectId = [LuaObjectManager containsObject:property group:scriptId];
                 if(propertyObjectId.length != 0){
                     return propertyObjectId;
                 }else{
                     D_Log(@"add property object:%d", (NSInteger)property);
-                    return [LuaGroupedObjectManager addObject:property group:scriptId];
+                    return [LuaObjectManager addObject:property group:scriptId];
                 }
             }
         }

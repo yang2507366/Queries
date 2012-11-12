@@ -7,7 +7,7 @@
 //
 
 #import "WebViewImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @interface WebViewImpl () <UIWebViewDelegate>
 
@@ -77,7 +77,7 @@
 {
     WebViewImpl *webView = [[[WebViewImpl alloc] initWithFrame:frame] autorelease];
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    NSString *objId = [LuaGroupedObjectManager addObject:webView group:scriptId];
+    NSString *objId = [LuaObjectManager addObject:webView group:scriptId];
     if(shouldStartFunc.length != 0){
         webView.shouldStartBlock = ^BOOL(NSString *urlString){
             NSString *returnValue = [si callFunction:shouldStartFunc parameters:urlString, nil];
@@ -100,7 +100,7 @@
 
 + (void)loadRequestWithScriptId:(NSString *)scriptId webViewId:(NSString *)webViewId urlString:(NSString *)urlString
 {
-    WebViewImpl *webView = [LuaGroupedObjectManager objectWithId:webViewId group:scriptId];
+    WebViewImpl *webView = [LuaObjectManager objectWithId:webViewId group:scriptId];
     if(webView){
         [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
     }

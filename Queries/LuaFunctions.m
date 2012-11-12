@@ -25,7 +25,7 @@
 #import "UIBarButtonItemImpl.h"
 #import "MethodInvokerForLua.h"
 #import "LuaConstants.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "RuntimeUtils.h"
 #import "DialogTools.h"
 #import "AnimationImpl.h"
@@ -121,7 +121,7 @@ int app_getAppBundle(lua_State *L)
     LuaApp *app = [LuaAppRunner appForId:appId];
     if(app){
         id sb = [app scriptBundle];
-        objId = [LuaGroupedObjectManager addObject:sb group:appId];
+        objId = [LuaObjectManager addObject:sb group:appId];
     }
     pushString(L, objId);
     return 1;
@@ -173,7 +173,7 @@ int http_post(lua_State *L)
     NSString *encoding = luaStringParam(L, 5);
     NSString *reqId = [HTTPRequestImpl postWithSi:scriptInteractionForAppId(appId)
                                         urlString:url
-                                       parameters:[LuaGroupedObjectManager objectWithId:paramId group:appId]
+                                       parameters:[LuaObjectManager objectWithId:paramId group:appId]
                                      callbackFunc:callbackFunc
                                          encoding:encoding];
     pushString(L, reqId);
@@ -471,7 +471,7 @@ int ui_heightOfLabelText(lua_State *L)
     NSString *objectId = luaStringParam(L, 2);
     CGFloat width = lua_tonumber(L, 3);
     
-    UILabel *label = [LuaGroupedObjectManager objectWithId:objectId group:scriptId];
+    UILabel *label = [LuaObjectManager objectWithId:objectId group:scriptId];
     CGSize size = [label.text sizeWithFont:label.font constrainedToSize:CGSizeMake(width, 100000)];
     
     lua_pushnumber(L, size.height);
@@ -722,7 +722,7 @@ int runtime_retainObject(lua_State *L)
     NSString *scriptId = luaStringParam(L, 1);
     NSString *objectId = luaStringParam(L, 2);
     
-    [LuaGroupedObjectManager retainObjectWithId:objectId group:scriptId];
+    [LuaObjectManager retainObjectWithId:objectId group:scriptId];
     return 0;
 }
 
@@ -731,7 +731,7 @@ int runtime_releaseObject(lua_State *L)
     NSString *scriptId = luaStringParam(L, 1);
     NSString *objectId = luaStringParam(L, 2);
     
-    BOOL recycled = [LuaGroupedObjectManager releaseObjectWithId:objectId group:scriptId];
+    BOOL recycled = [LuaObjectManager releaseObjectWithId:objectId group:scriptId];
     lua_pushboolean(L, recycled ? 1 : 0);
     return 1;
 }
@@ -871,7 +871,7 @@ int utils_printObject(lua_State *L)
     
     id targetObject = log;
     if([log hasPrefix:lua_obj_prefix]){
-        id tmpObject = [LuaGroupedObjectManager objectWithId:log group:scriptId];
+        id tmpObject = [LuaObjectManager objectWithId:log group:scriptId];
         if(tmpObject){
             targetObject = tmpObject;
         }
@@ -889,7 +889,7 @@ int utils_printObjectDescription(lua_State *L)
     
     id targetObject = log;
     if([log hasPrefix:lua_obj_prefix]){
-        id tmpObject = [LuaGroupedObjectManager objectWithId:log group:scriptId];
+        id tmpObject = [LuaObjectManager objectWithId:log group:scriptId];
         if(tmpObject){
             targetObject = tmpObject;
         }

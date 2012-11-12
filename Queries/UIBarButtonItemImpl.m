@@ -8,7 +8,7 @@
 
 #import "UIBarButtonItemImpl.h"
 #import "EventProxy.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @interface UIBarButtonItemImpl ()
 
@@ -63,7 +63,7 @@
 {
     UIBarButtonItemImpl *btn = [[[UIBarButtonItemImpl alloc] initWithTitle:title tapEventBlock:nil] autorelease];
 
-    NSString *btnId = [LuaGroupedObjectManager addObject:btn group:scriptId];
+    NSString *btnId = [LuaObjectManager addObject:btn group:scriptId];
     btn.si = si;
     btn.callbackFunc = callbackFunc;
     btn.btnId = btnId;

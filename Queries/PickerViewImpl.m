@@ -7,7 +7,7 @@
 //
 
 #import "PickerViewImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 #import "LuaAppRunner.h"
 #import <objc/objc-class.h>
 
@@ -266,15 +266,15 @@
         [self setViewForRowForComponentReuseView:^UIView *(NSInteger row, NSInteger component, UIView *reusingView) {
             NSString *reusingViewId = @"";
             if(reusingView){
-                reusingViewId = [LuaGroupedObjectManager addObject:reusingView group:appId];
+                reusingViewId = [LuaObjectManager addObject:reusingView group:appId];
             }
             NSString *viewId = [[LuaAppRunner scriptInteractionWithAppId:appId]
                                 callFunction:func parameters:objectId, [NSString stringWithFormat:@"%d", row],
                                 [NSString stringWithFormat:@"%d", component], reusingViewId, nil];
             if(reusingView){
-                [LuaGroupedObjectManager releaseObjectWithId:reusingViewId group:appId];
+                [LuaObjectManager releaseObjectWithId:reusingViewId group:appId];
             }
-            UIView *view = [LuaGroupedObjectManager objectWithId:viewId group:appId];
+            UIView *view = [LuaObjectManager objectWithId:viewId group:appId];
             return view;
         }];
     }else{
@@ -299,7 +299,7 @@
 {
     PickerViewImpl *impl = [[PickerViewImpl new] autorelease];
     impl.appId = appId;
-    impl.objectId = [LuaGroupedObjectManager addObject:impl group:appId];
+    impl.objectId = [LuaObjectManager addObject:impl group:appId];
     
     return impl.objectId;
 }
@@ -316,7 +316,7 @@ viewForRowForComponentReuseView:(NSString *)viewForRowForComponentReuseView
 {
     id<ScriptInteraction> si = [LuaAppRunner scriptInteractionWithAppId:appId];
     PickerViewImpl *tmpPickerView = [[[PickerViewImpl alloc] init] autorelease];
-    NSString *objId = [LuaGroupedObjectManager addObject:tmpPickerView group:appId];
+    NSString *objId = [LuaObjectManager addObject:tmpPickerView group:appId];
     if(numOfComponents.length != 0){
         [tmpPickerView setNumOfComponents:^NSInteger{
             return [[si callFunction:numOfComponents parameters:objId, nil] intValue];
@@ -349,19 +349,19 @@ viewForRowForComponentReuseView:(NSString *)viewForRowForComponentReuseView
         [tmpPickerView setAttributedTitleForRowForComponent:^NSAttributedString *(NSInteger row, NSInteger component) {
             NSString *stringId = [si callFunction:attributedTitleForRowForComponent
                                     parameters:objId, [NSString stringWithFormat:@"%d", row], [NSString stringWithFormat:@"%d", component], nil];
-            NSAttributedString *tmp = [[LuaGroupedObjectManager objectWithId:stringId group:appId] retain];
-            [LuaGroupedObjectManager releaseObjectWithId:stringId group:appId];
+            NSAttributedString *tmp = [[LuaObjectManager objectWithId:stringId group:appId] retain];
+            [LuaObjectManager releaseObjectWithId:stringId group:appId];
             return [tmp autorelease];
         }];
     }
     if(viewForRowForComponentReuseView.length != 0){
         [tmpPickerView setViewForRowForComponentReuseView:^UIView *(NSInteger row, NSInteger component, UIView *reuseView) {
-            NSString *reuseViewId = [LuaGroupedObjectManager addObject:reuseView group:appId];
+            NSString *reuseViewId = [LuaObjectManager addObject:reuseView group:appId];
             NSString *viewId = [si callFunction:viewForRowForComponentReuseView
                                      parameters:objId, [NSString stringWithFormat:@"%d", row], [NSString stringWithFormat:@"%d", component], reuseViewId, nil];
             if(viewId.length != 0){
-                UIView *view = [[LuaGroupedObjectManager objectWithId:viewId group:appId] retain];
-                [LuaGroupedObjectManager releaseObjectWithId:viewId group:appId];
+                UIView *view = [[LuaObjectManager objectWithId:viewId group:appId] retain];
+                [LuaObjectManager releaseObjectWithId:viewId group:appId];
                 return [view autorelease];
             }
             return nil;

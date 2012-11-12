@@ -7,7 +7,7 @@
 //
 
 #import "LabelImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @implementation LabelImpl
 
@@ -25,7 +25,7 @@
     tmpLabel.backgroundColor = [UIColor clearColor];
     tmpLabel.frame = frame;
     
-    return [LuaGroupedObjectManager addObject:tmpLabel group:scriptId];
+    return [LuaObjectManager addObject:tmpLabel group:scriptId];
 }
 
 @end

@@ -10,4 +10,9 @@
 
 @protocol LuaImplentatable <NSObject>
 
+@property(nonatomic, copy)NSString *appId;
+@property(nonatomic, copy)NSString *objId;
+
++ (NSString *)create:(NSString *)appId;
+
 @end

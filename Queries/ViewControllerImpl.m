@@ -7,7 +7,7 @@
 //
 
 #import "ViewControllerImpl.h"
-#import "LuaGroupedObjectManager.h"
+#import "LuaObjectManager.h"
 
 @interface ViewControllerImpl ()
 
@@ -91,7 +91,7 @@
 {
     ViewControllerImpl *vc = [[[ViewControllerImpl alloc] init] autorelease];
     vc.title = title;
-    NSString *cid = [LuaGroupedObjectManager addObject:vc group:scriptId];
+    NSString *cid = [LuaObjectManager addObject:vc group:scriptId];
     vc.objectId = cid;
     vc.group = scriptId;
     vc.viewDidLoadBlock = ^(void){
