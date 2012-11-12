@@ -11,7 +11,7 @@
 #import "LuaApp.h"
 #import "ZipArchive.h"
 #import "LocalAppBundle.h"
-#import "LuaAppRunner.h"
+#import "LuaAppManager.h"
 #import "DialogTools.h"
 
 @interface AppRunnerViewController ()
@@ -63,7 +63,7 @@
         LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:targetPath] autorelease];
         LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:nil] autorelease];
         app.relatedViewController = self;
-        [LuaAppRunner runRootApp:app];
+        [LuaAppManager runRootApp:app];
     }];
     [ProviderPool addProviderToSharedPool:loader identifier:@"root_app_loader"];
 }

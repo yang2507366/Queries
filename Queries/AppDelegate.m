@@ -11,7 +11,7 @@
 #import "MemoryTracer.h"
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
-#import "LuaAppRunner.h"
+#import "LuaAppManager.h"
 #import "MethodInvokerForLua.h"
 #import "LuaObjectManager.h"
 #import "CodeUtils.h"

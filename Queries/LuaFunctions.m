@@ -9,7 +9,7 @@
 #include "LuaFunctions.h"
 #include <stdio.h>
 #import "HTTPRequestImpl.h"
-#import "LuaAppRunner.h"
+#import "LuaAppManager.h"
 #import "LuaScriptInteraction.h"
 #import "UIRelatedImpl.h"
 #import "CodeUtils.h"
@@ -71,7 +71,7 @@ void pushString(lua_State *L, NSString *returnValue)
 
 id<ScriptInteraction>scriptInteractionForAppId(NSString *appId)
 {
-    id<ScriptInteraction> si = [LuaAppRunner scriptInteractionWithAppId:appId];
+    id<ScriptInteraction> si = [LuaAppManager scriptInteractionWithAppId:appId];
     
     return si;
 }
@@ -90,7 +90,7 @@ int app_destoryApp(lua_State *L)
 {
 //    NSString *appId = luaStringParam(L, 1);
     NSString *targetAppId = luaStringParam(L, 2);
-    [LuaAppRunner destoryAppWithAppId:targetAppId];
+    [LuaAppManager destoryAppWithAppId:targetAppId];
     return 0;
 }
 
@@ -118,7 +118,7 @@ int app_getAppBundle(lua_State *L)
         appId = targetAppId;
     }
     NSString *objId = @"";
-    LuaApp *app = [LuaAppRunner appForId:appId];
+    LuaApp *app = [LuaAppManager appForId:appId];
     if(app){
         id sb = [app scriptBundle];
         objId = [LuaObjectManager addObject:sb group:appId];

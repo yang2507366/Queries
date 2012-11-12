@@ -8,7 +8,7 @@
 
 #import "UIAlertViewImpl.h"
 #import "LuaObjectManager.h"
-#import "LuaAppRunner.h"
+#import "LuaAppManager.h"
 #import "ScriptInteraction.h"
 
 @interface UIAlertViewDelegateProxy : NSObject <UIAlertViewDelegate>
@@ -30,7 +30,7 @@
 {
     UIAlertViewImpl *tmp = (id)alertView;
     if(tmp.clickedButtonAtIndex.length != 0){
-        id<ScriptInteraction> si = [LuaAppRunner scriptInteractionWithAppId:tmp.appId];
+        id<ScriptInteraction> si = [LuaAppManager scriptInteractionWithAppId:tmp.appId];
         [si callFunction:tmp.clickedButtonAtIndex parameters:tmp.objId, [NSString stringWithFormat:@"%d", buttonIndex], nil];
     }
 }

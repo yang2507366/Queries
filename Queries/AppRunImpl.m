@@ -10,7 +10,7 @@
 #import "LuaConstants.h"
 #import "LocalAppBundle.h"
 #import "LuaApp.h"
-#import "LuaAppRunner.h"
+#import "LuaAppManager.h"
 #import "LuaObjectManager.h"
 
 @implementation AppRunImpl
@@ -21,7 +21,7 @@
     LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:appDir] autorelease];
     LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:nil] autorelease];
     app.relatedViewController = [LuaObjectManager objectWithId:rvcId group:appId];
-    [LuaAppRunner runRootApp:app];
+    [LuaAppManager runRootApp:app];
 }
 
 + (void)destoryAppWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId

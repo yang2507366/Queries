@@ -11,7 +11,7 @@
 #import "ScriptBundle.h"
 #import "LuaApp.h"
 
-@interface LuaAppRunner : NSObject
+@interface LuaAppManager : NSObject
 
 + (UIWindow *)currentWindow;
 + (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId;
