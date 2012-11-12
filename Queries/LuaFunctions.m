@@ -23,7 +23,7 @@
 #import "WebViewImpl.h"
 #import "TableViewImpl.h"
 #import "UIBarButtonItemImpl.h"
-#import "MethodInvokerForLua.h"
+#import "LuaRuntimeUtils.h"
 #import "LuaConstants.h"
 #import "LuaObjectManager.h"
 #import "RuntimeUtils.h"
@@ -660,7 +660,7 @@ int runtime_invokeMethod(lua_State *L)
         [params addObject:luaStringParam(L, i)];
     }
     
-    NSString *returnValue = [MethodInvokerForLua invokeWithGroup:scriptId objectId:objectId methodName:methodName parameters:params];
+    NSString *returnValue = [LuaRuntimeUtils invokeWithGroup:scriptId objectId:objectId methodName:methodName parameters:params];
     pushString(L, returnValue);
     return 1;
 }
@@ -677,7 +677,7 @@ int runtime_createObject(lua_State *L)
         [params addObject:luaStringParam(L, i)];
     }
     
-    NSString *returnValue = [MethodInvokerForLua createObjectWithGroup:scriptId
+    NSString *returnValue = [LuaRuntimeUtils createObjectWithGroup:scriptId
                                                              className:className
                                                         initMethodName:initMethodName
                                                             parameters:params];
@@ -697,7 +697,7 @@ int runtime_invokeClassMethod(lua_State *L)
         [params addObject:luaStringParam(L, i)];
     }
     
-    NSString *returnValue = [MethodInvokerForLua invokeClassMethodWithGroup:scriptId className:className methodName:methodName parameters:params];
+    NSString *returnValue = [LuaRuntimeUtils invokeClassMethodWithGroup:scriptId className:className methodName:methodName parameters:params];
     pushString(L, returnValue);
     return 1;
 }

@@ -12,7 +12,7 @@
 #import "ScriptInteraction.h"
 #import "LuaScriptInteraction.h"
 #import "LuaAppManager.h"
-#import "MethodInvokerForLua.h"
+#import "LuaRuntimeUtils.h"
 #import "LuaObjectManager.h"
 #import "CodeUtils.h"
 #import "ApplicationScriptBundle.h"

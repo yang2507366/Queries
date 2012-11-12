@@ -24,12 +24,12 @@
 //}else if(ctype == '?'){//unknown
 //}
 
-#import "MethodInvokerForLua.h"
+#import "LuaRuntimeUtils.h"
 #import "LuaObjectManager.h"
 #import "LuaConstants.h"
 #import "LuaCommonUtils.h"
 
-@implementation MethodInvokerForLua
+@implementation LuaRuntimeUtils
 
 + (NSString *)invokeWithObject:(id)object methodName:(NSString *)methodName parameters:(NSString *)firstParameter, ...
 {

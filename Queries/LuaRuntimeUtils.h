@@ -8,12 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MethodInvoker <NSObject>
-
-
-@end
-
-@interface MethodInvokerForLua : NSObject
+@interface LuaRuntimeUtils : NSObject
 
 + (NSString *)invokeWithObject:(id)object methodName:(NSString *)methodName parameters:(NSString *)firstParameter, ...;
 + (NSString *)invokeWithGroup:(NSString *)group objectId:(NSString *)objectId methodName:(NSString *)methodName parameters:(NSArray *)parameters;
