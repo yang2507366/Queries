@@ -8,7 +8,6 @@
 
 #import "LuaAppManager.h"
 #import "LuaScriptInteraction.h"
-#import "LuaInvoker.h"
 #import "LuaConstants.h"
 #import "UnicodeChecker.h"
 #import "SelfSupportChecker.h"
