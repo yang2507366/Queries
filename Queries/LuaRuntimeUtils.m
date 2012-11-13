@@ -115,8 +115,9 @@
             }else if(ctype == '^'){//pointer to type
             }else if(ctype == '?'){//unknown
             }
-            
-            [invocation setArgument:argumentData atIndex:i];
+            if(argumentData){
+                [invocation setArgument:argumentData atIndex:i];
+            }
         }
         va_end(params);
         
