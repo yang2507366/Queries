@@ -1,4 +1,4 @@
-require "Utils"
+require "CommonUtils"
 
 -- public methods
 function ap_new()
@@ -17,7 +17,7 @@ function AutoreleasePool:new(name)
     local pool = {};
     
     if name == nil then
-        name = "untitled";
+        name = "unnamed";
     end
     pool.name = name;
     
@@ -27,13 +27,11 @@ function AutoreleasePool:new(name)
 end
 
 function AutoreleasePool:add(object)
---    dp("add:<"..self.name.."> "..object:id());
     table.insert(self, object);
 end
 
 function AutoreleasePool:drain()
     for i = 1, #self do
---        dp("drain:<"..self.name.."> "..self[i]:id());
         self[i]:release();
     end
 end
@@ -75,8 +73,6 @@ function autorelease_pool_new(name)
     local newPool = AutoreleasePool:new(name);
     _pool_list[#_pool_list + 1] = newPool;
     
---    print_pool_list();
-    
     return newPool;
 end
 
@@ -86,6 +82,4 @@ function autorelease_pool_drain()
     lastPool:drain();
     
     _pool_list[#_pool_list] = nil;
-    
---    print_pool_list();
 end

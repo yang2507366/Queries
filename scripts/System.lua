@@ -1,8 +1,5 @@
-require "AutoreleasePool"
-require "Object"
-require "Recyclable"
-require "Utils"
+System = {};
 
-function app_id()
-    return scriptid();
+function System.id()
+    return __app_id__();
 end

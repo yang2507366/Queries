@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#define script_id_function_name     @"scriptid()"
-#define lua_self                    @"_lself_"
+#define script_id_function_name     @"__app_id__()"
+#define lua_self                    @"__self__"
 #define lua_main_file               @"main"
 #define lua_main_function           @"main"
 #define lua_prefix_grammar          @"ios::"

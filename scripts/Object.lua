@@ -1,5 +1,3 @@
-require "Recyclable"
-require "Utils"
 require "AutoreleasePool"
 
 Object = {};
@@ -28,7 +26,6 @@ function Object:setId(objectId)
 end
 
 function Object:release()
---    releaseObjectById(self:id());
     local recycled = runtime::releaseObject(self:id());
     if recycled then
         self:dealloc();
@@ -60,6 +57,6 @@ function Object:autorelease()
     return self;
 end
 
-function objectConvert(object, targetType)
+function oc(object, targetType)
     setmetatable(object, targetType);
 end

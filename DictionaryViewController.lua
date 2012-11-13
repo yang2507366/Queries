@@ -1,8 +1,10 @@
-require "System"
-require "UIKit"
-require "AppBundle"
-require "UIImage"
-
+require "UIViewController"
+require "UINavigationController"
+require "UITableView"
+require "UITableViewDataSource"
+require "CommonUtils"
+require "UITableViewCell"
+require "UILabel"
 
 function main()
     ap_new();
@@ -12,46 +14,49 @@ function main()
 
     function dictVC:viewDidLoad()
         ap_new();
-        local img = UIImage:imageNamed("google_translate.jpg");
-        img:size();
         
-        local imgView = UIImageView:createWithImage(img);
-        imgView:setFrame(10, 10, 100, 100);
-        self:view():addSubview(imgView);
+        local tableView = UITableView:create();
+        tableView:setFrame(self:view():bounds());
+        tableView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
+        self:view():addSubview(tableView);
         
-        
-        local pickerView = UIPickerView:create():retain();
-        pickerView:setFrame(10, 200, 280, 100);
---        pickerView:setShowsSelectionIndicator(true);
-        self:view():addSubview(pickerView);
-        local pickerViewDelegate = {};
-        function pickerViewDelegate:numberOfComponents()
-            return 2;
+        local dataSource = {};
+        function dataSource:numberOfRowsInSection(section)
+            return 10;
         end
         
-        function pickerViewDelegate:numberOfRowsInComponent(componnet)
-            return 12;
+        function dataSource:numberOfSections()
+            return 10;
         end
         
-        function pickerViewDelegate:didSelectRowInComponent(row, componnet)
-            print(row, componnet);
+        function dataSource:cellForRowAtIndexPath(indexPath)
+            ap_new();
+            local cell = tableView:dequeueReusableCellWithIdentifier("id");
+            if not cell then
+                cell = UITableViewCell:create("id");
+            end
+            cell:keep();
+            cell:textLabel():setText(indexPath:section()..", "..indexPath:row());
+            ap_release();
+            return cell;
         end
         
-        function pickerViewDelegate:titleForRowForComponent(row, componnet)
-            return ""..row..", "..componnet;
+        function dataSource:titleForHeaderInSection(section)
+            return "section header "..section;
         end
         
-        pickerView:setDelegate(pickerViewDelegate);
+        function dataSource:titleForFooterInSection(section)
+            return "section footer "..section;
+        end
+        
+        function dataSource:canEditRowAtIndexPath(indexPath)
+            return true;
+        end
+        
+        tableView:setDataSource(dataSource);
         
         ap_release();
     end
-    function dictVC:viewDidPop()
-        UIViewController.viewDidPop(self);
-        self:release();
-    end
-    
-    local app = AppBundle:get();
-    app:bundleId();
     
     
     ap_release();

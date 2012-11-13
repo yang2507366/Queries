@@ -65,7 +65,7 @@ function UIView:backgroundColor()
 end
 
 function UIView:addSubview(subview)
-    ui::addSubview(self:id(), subview:id());
+    runtime::invokeMethod(self:id(), "addSubview:", subview:id());
 end
 
 function UIView:setAutoresizingMask(mask)
