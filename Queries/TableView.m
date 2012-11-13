@@ -84,6 +84,11 @@
     return can;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
     NSString *selectorName = NSStringFromSelector(aSelector);
