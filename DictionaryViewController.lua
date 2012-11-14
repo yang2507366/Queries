@@ -96,6 +96,10 @@ function main()
             print(cell:id()..","..indexPath:row());
         end
         
+        function delegate:willDisplayHeaderView(view, section)
+            print("header view:"..view:id()..","..section);
+        end
+        
         tableView:setDataSource(dataSource);
         tableView:setDelegate(delegate);
         tableView:setEditing(true);

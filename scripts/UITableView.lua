@@ -123,6 +123,12 @@ function UITableView:setDelegate(delegate)
     else
         runtime::invokeMethod(self:id(), "setWillDisplayCell:", "");
     end
+    
+    if delegate.willDisplayHeaderView then
+        runtime::invokeMethod(self:id(), "setWillDisplayHeaderView:", "UITableViewDelegate_willDisplayHeaderView");
+    else
+        runtime::invokeMethod(self:id(), "setWillDisplayHeaderView:", "");
+    end
 end
 
 function UITableView:dequeueReusableCellWithIdentifier(identifier)
@@ -165,6 +171,7 @@ end
 -- event proxy
 UITableViewEventProxyTable = {};
 
+-- dataSource
 function UITableViewDataSource_numberOfRowsInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     if tb and tb.dataSource then
@@ -268,6 +275,7 @@ function UITableViewDataSource_moveRowAtIndexPath(tableViewId, sourceIndexPathId
     end
 end
 
+-- delegate
 function UITableViewDelegate_willDisplayCell(tableViewId, cellId, indexPathId)
     local tb = UITableViewEventProxyTable[tableViewId];
     
@@ -277,5 +285,16 @@ function UITableViewDelegate_willDisplayCell(tableViewId, cellId, indexPathId)
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
         tb.delegate:willDisplayCell(cell, indexPath);
+    end
+end
+
+function UITableViewDelegate_willDisplayHeaderView(tableViewId, viewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local view = UIView:get(viewId):keep();
+        ap_release();
+        tb.delegate:willDisplayHeaderView(view, section);
     end
 end

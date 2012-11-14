@@ -180,6 +180,17 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.willDisplayHeaderView.length != 0){
+        NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
+        [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willDisplayHeaderView
+                                                                parameters:tmp.objId, viewId, [NSString stringWithFormat:@"%d", section], nil];
+        [LuaObjectManager releaseObjectWithId:viewId group:tmp.appId];
+    }
+}
+
 //- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return UITableViewCellEditingStyleNone;
