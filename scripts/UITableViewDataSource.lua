@@ -27,3 +27,23 @@ end
 function UITableViewDataSource:canEditRowAtIndexPath(indexPath)
     return nil;
 end
+
+function UITableViewDataSource:canMoveRowAtIndexPath(indexPath)
+    return nil;
+end
+
+function UITableViewDataSource:sectionIndexTitles()
+    return nil;
+end
+
+function UITableViewDataSource:sectionForSectionIndexTitle(title, index)
+    return nil;
+end
+
+function UITableViewDataSource:commitEditingStyle(editingStyle, indexPath)
+    return nil;
+end
+
+function UITableViewDataSource:moveRowAtIndexPath(sourceIndexPath, destinationIndexPath)
+    return nil;
+end

@@ -27,7 +27,7 @@ function NSMutableArray:objectAtIndex(index)
 end
 
 function NSMutableArray:addObject(obj)
-    if obj:id() ~= nil then
+    if obj.id ~= nil then
         obj = obj:id();
     end
     return runtime::invokeMethod(self:id(), "addObject:", obj);

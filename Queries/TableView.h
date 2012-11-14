@@ -20,7 +20,7 @@
 @property(nonatomic, copy)NSString *titleForFooterInSection;
 @property(nonatomic, copy)NSString *canEditRowAtIndexPath;
 @property(nonatomic, copy)NSString *canMoveRowAtIndexPath;
-@property(nonatomic, copy)NSString *sectionIndexTitlesForTableView;
+@property(nonatomic, copy)NSString *sectionIndexTitles;
 @property(nonatomic, copy)NSString *sectionForSectionIndexTitle;
 @property(nonatomic, copy)NSString *commitEditingStyle;
 @property(nonatomic, copy)NSString *moveRowAtIndexPath;

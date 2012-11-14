@@ -12,9 +12,9 @@ function NSIndexPath:get(indexPathId)
 end
 
 function NSIndexPath:section()
-    return runtime::invokeMethod(self:id(), "section");
+    return tonumber(runtime::invokeMethod(self:id(), "section"));
 end
 
 function NSIndexPath:row()
-    return runtime::invokeMethod(self:id(), "row");
+    return tonumber(runtime::invokeMethod(self:id(), "row"));
 end

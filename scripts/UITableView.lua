@@ -2,6 +2,7 @@ require "UIView"
 require "System"
 require "UITableViewCell"
 require "UITableViewDataSource"
+require "UITableViewDelegate"
 require "NSIndexPath"
 
 UITableView = {};
@@ -11,6 +12,10 @@ setmetatable(UITableView, UIView);
 -- constant
 UITableViewStylePlain = 0;
 UITableViewStyleGrouped = 1;
+
+UITableViewCellEditingStyleNone = 0;
+UITableViewCellEditingStyleDelete = 1;
+UITableViewCellEditingStyleInsert = 2;
 
 -- constructor
 function UITableView:createWithStyle(style)
@@ -74,9 +79,49 @@ function UITableView:setDataSource(dataSource)
     end
     
     if dataSource.canEditRowAtIndexPath then
-        runtime::invokeMethod(self:id(), "setCanEditRowAtIndexPath", "UITableViewDataSource_canEditRowAtIndexPath");
+        runtime::invokeMethod(self:id(), "setCanEditRowAtIndexPath:", "UITableViewDataSource_canEditRowAtIndexPath");
     else
-        runtime::invokeMethod(self:id(), "setCanEditRowAtIndexPath", "");
+        runtime::invokeMethod(self:id(), "setCanEditRowAtIndexPath:", "");
+    end
+    
+    if dataSource.canMoveRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setCanMoveRowAtIndexPath:", "UITableViewDataSource_canMoveRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setCanMoveRowAtIndexPath:", "");
+    end
+    
+    if dataSource.sectionIndexTitles then
+        runtime::invokeMethod(self:id(), "setSectionIndexTitles:", "UITableViewDataSource_sectionIndexTitles");
+    else
+        runtime::invokeMethod(self:id(), "setSectionIndexTitles:", "");
+    end
+    
+    if dataSource.sectionForSectionIndexTitle then
+        runtime::invokeMethod(self:id(), "setSectionForSectionIndexTitle:", "UITableViewDataSource_sectionForSectionIndexTitle");
+    else
+        runtime::invokeMethod(self:id(), "setSectionForSectionIndexTitle:", "");
+    end
+    
+    if dataSource.commitEditingStyle then
+        runtime::invokeMethod(self:id(), "setCommitEditingStyle:", "UITableViewDataSource_commitEditingStyle");
+    else
+        runtime::invokeMethod(self:id(), "setCommitEditingStyle:", "");
+    end
+    
+    if dataSource.moveRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setMoveRowAtIndexPath:", "UITableViewDataSource_moveRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setMoveRowAtIndexPath:", "");
+    end
+end
+
+function UITableView:setDelegate(delegate)
+    self.delegate = delegate;
+    
+    if delegate.willDisplayCell then
+        runtime::invokeMethod(self:id(), "setWillDisplayCell:", "UITableViewDelegate_willDisplayCell");
+    else
+        runtime::invokeMethod(self:id(), "setWillDisplayCell:", "");
     end
 end
 
@@ -88,6 +133,10 @@ function UITableView:dequeueReusableCellWithIdentifier(identifier)
     local cell = UITableViewCell:get(cellId);
     
     return cell;
+end
+
+function UITableView:setEditing(editing)
+    runtime::invokeMethod(self:id(), "setEditing:", toObjCBool(editing));
 end
 
 function UITableView:reloadData()
@@ -166,5 +215,67 @@ function UITableViewDataSource_canEditRowAtIndexPath(tableViewId, indexPathId)
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
         return toObjCBool(tb.dataSource:canEditRowAtIndexPath(indexPath));
+    end
+end
+
+function UITableViewDataSource_canMoveRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.dataSource then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return toObjCBool(tb.dataSource:canMoveRowAtIndexPath(indexPath));
+    end
+end
+
+function UITableViewDataSource_sectionIndexTitles(tableViewId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.dataSource then
+        return tb.dataSource:sectionIndexTitles():id();
+    end
+end
+
+function UITableViewDataSource_sectionForSectionIndexTitle(tableViewId, title, index)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.dataSource then
+        return tb.dataSource:sectionForSectionIndexTitle(title, tonumber(index));
+    end
+end
+
+function UITableViewDataSource_commitEditingStyle(tableViewId, editingStyle, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.dataSource then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.dataSource:commitEditingStyle(tonumber(editingStyle), indexPath);
+    end
+end
+
+function UITableViewDataSource_moveRowAtIndexPath(tableViewId, sourceIndexPathId, destinationIndexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.dataSource then
+        ap_new();
+        local sourceIndexPath = NSIndexPath:get(sourceIndexPathId):keep();
+        local destinationIndexPath = NSIndexPath:get(destinationIndexPathId):keep();
+        ap_release();
+        tb.dataSource:moveRowAtIndexPath(sourceIndexPath, destinationIndexPath);
+    end
+end
+
+function UITableViewDelegate_willDisplayCell(tableViewId, cellId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local cell = UITableViewCell:get(cellId):keep();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:willDisplayCell(cell, indexPath);
     end
 end

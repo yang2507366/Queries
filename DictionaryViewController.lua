@@ -5,6 +5,7 @@ require "UITableViewDataSource"
 require "CommonUtils"
 require "UITableViewCell"
 require "UILabel"
+require "NSMutableArray"
 
 function main()
     ap_new();
@@ -46,14 +47,58 @@ function main()
         end
         
         function dataSource:titleForFooterInSection(section)
-            return "section footer "..section;
+            return "";
         end
         
         function dataSource:canEditRowAtIndexPath(indexPath)
-            return true;
+            if indexPath:section() % 2 == 0 then
+                return true;
+            end
+            return false;
+        end
+        
+        function dataSource:canMoveRowAtIndexPath(indexPath)
+            if indexPath:section() % 2 == 0 then
+                return true;
+            end
+            return false;
+        end
+        
+        function dataSource:moveRowAtIndexPath(sourceIndexPath, descIndexPath)
+            print(sourceIndexPath:row()..", "..descIndexPath:row());
+        end
+        
+        local titles = NSMutableArray:create():keep();
+        titles:addObject("a");
+        titles:addObject("b");
+        titles:addObject("c");
+        titles:addObject("d");
+        titles:addObject("e");
+        titles:addObject("f");
+        function dataSource:sectionIndexTitles()
+            return titles;
+        end
+        
+        function dataSource:sectionForSectionIndexTitle(title, index)
+            if index == 4 then
+                return 4;
+            end
+            return 0;
+        end
+        
+        function dataSource:commitEditingStyle(editingStyle, indexPath)
+            print(editingStyle..","..indexPath:row());
+        end
+        
+        local delegate = {};
+        
+        function delegate:willDisplayCell(cell, indexPath)
+            print(cell:id()..","..indexPath:row());
         end
         
         tableView:setDataSource(dataSource);
+        tableView:setDelegate(delegate);
+        tableView:setEditing(true);
         
         ap_release();
     end
