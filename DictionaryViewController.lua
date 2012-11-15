@@ -47,7 +47,7 @@ function main()
         end
         
         function dataSource:titleForFooterInSection(section)
-            return "";
+            return "footer";
         end
         
         function dataSource:canEditRowAtIndexPath(indexPath)
@@ -93,11 +93,27 @@ function main()
         local delegate = {};
         
         function delegate:willDisplayCell(cell, indexPath)
-            print(cell:id()..","..indexPath:row());
+            print("WILL DISPLAY:"..cell:id()..","..indexPath:row());
         end
         
         function delegate:willDisplayHeaderView(view, section)
             print("header view:"..view:id()..","..section);
+        end
+        
+        function delegate:willDisplayFooterView(view, section)
+            print("footer view:"..view:id()..","..section);
+        end
+        
+        function delegate:didEndDisplayingCell(cell, indexPath)
+            print("END DISPLAY:"..cell:id()..","..indexPath:row());
+        end
+        
+        function delegate:didEndDisplayingHeaderView(view, section)
+            print("end header view:"..view:id()..","..section);            
+        end
+        
+        function delegate:didEndDisplayingFooterView(view, section)
+            print("end footer view:"..view:id()..","..section);
         end
         
         tableView:setDataSource(dataSource);

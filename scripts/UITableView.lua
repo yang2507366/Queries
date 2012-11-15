@@ -129,6 +129,30 @@ function UITableView:setDelegate(delegate)
     else
         runtime::invokeMethod(self:id(), "setWillDisplayHeaderView:", "");
     end
+    
+    if delegate.willDisplayFooterView then
+        runtime::invokeMethod(self:id(), "setWillDisplayFooterView:", "UITableViewDelegate_willDisplayFooterView");
+        else
+        runtime::invokeMethod(self:id(), "setWillDisplayFooterView:", "");
+    end
+    
+    if delegate.willDisplayCell then
+        runtime::invokeMethod(self:id(), "setDidEndDisplayingCell:", "UITableViewDelegate_didEndDisplayingCell");
+        else
+        runtime::invokeMethod(self:id(), "setDidEndDisplayingCell:", "");
+    end
+    
+    if delegate.didEndDisplayingHeaderView then
+        runtime::invokeMethod(self:id(), "setDidEndDisplayingHeaderView:", "UITableViewDelegate_didEndDisplayingHeaderView");
+        else
+        runtime::invokeMethod(self:id(), "setDidEndDisplayingHeaderView:", "");
+    end
+    
+    if delegate.didEndDisplayingFooterView then
+        runtime::invokeMethod(self:id(), "setDidEndDisplayingFooterView:", "UITableViewDelegate_didEndDisplayingFooterView");
+        else
+        runtime::invokeMethod(self:id(), "setDidEndDisplayingFooterView:", "");
+    end
 end
 
 function UITableView:dequeueReusableCellWithIdentifier(identifier)
@@ -296,5 +320,50 @@ function UITableViewDelegate_willDisplayHeaderView(tableViewId, viewId, section)
         local view = UIView:get(viewId):keep();
         ap_release();
         tb.delegate:willDisplayHeaderView(view, section);
+    end
+end
+
+function UITableViewDelegate_willDisplayFooterView(tableViewId, viewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local view = UIView:get(viewId):keep();
+        ap_release();
+        tb.delegate:willDisplayFooterView(view, section);
+    end
+end
+
+function UITableViewDelegate_didEndDisplayingCell(tableViewId, cellId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local cell = UITableViewCell:get(cellId):keep();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:didEndDisplayingCell(cell, indexPath);
+    end
+end
+
+function UITableViewDelegate_didEndDisplayingHeaderView(tableViewId, viewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local view = UIView:get(viewId):keep();
+        ap_release();
+        tb.delegate:didEndDisplayingHeaderView(view, section);
+    end
+end
+
+function UITableViewDelegate_didEndDisplayingFooterView(tableViewId, viewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local view = UIView:get(viewId):keep();
+        ap_release();
+        tb.delegate:didEndDisplayingFooterView(view, section);
     end
 end

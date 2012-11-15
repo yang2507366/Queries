@@ -191,6 +191,51 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.willDisplayFooterView.length != 0){
+        NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
+        [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willDisplayFooterView
+                                                                parameters:tmp.objId, viewId, [NSString stringWithFormat:@"%d", section], nil];
+        [LuaObjectManager releaseObjectWithId:viewId group:tmp.appId];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.didEndDisplayingCell.length != 0){
+        NSString *cellId = [LuaObjectManager addObject:cell group:tmp.appId];
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didEndDisplayingCell parameters:tmp.objId, cellId, indexPathId, nil];
+        [LuaObjectManager releaseObjectWithId:cellId group:tmp.appId];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.didEndDisplayingHeaderView.length != 0){
+        NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
+        [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didEndDisplayingHeaderView
+                                                                parameters:tmp.objId, viewId, [NSString stringWithFormat:@"%d", section], nil];
+        [LuaObjectManager releaseObjectWithId:viewId group:tmp.appId];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.didEndDisplayingFooterView.length != 0){
+        NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
+        [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didEndDisplayingFooterView
+                                                                parameters:tmp.objId, viewId, [NSString stringWithFormat:@"%d", section], nil];
+        [LuaObjectManager releaseObjectWithId:viewId group:tmp.appId];
+    }
+}
+
 //- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return UITableViewCellEditingStyleNone;
