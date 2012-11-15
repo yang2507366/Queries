@@ -64,7 +64,23 @@ end
 function UITableViewDelegate:titleForDeleteConfirmationButtonForRowAtIndexPath(indexPath)
 end
 
+function UITableViewDelegate:shouldIndentWhileEditingRowAtIndexPath(indexPath)
+end
 
+function UITableViewDelegate:willBeginEditingRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:didEndEditingRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:targetIndexPathForMoveFromRowAtIndexPath(sourceIndexPath, proposedDestinationIndexPath)
+end
+
+function UITableViewDelegate:indentationLevelForRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:shouldShowMenuForRowAtIndexPath(indexPath)
+end
 
 
 

@@ -244,6 +244,42 @@ function UITableView:setDelegate(delegate)
     else
         runtime::invokeMethod(self:id(), "setTitleForDeleteConfirmationButtonForRowAtIndexPath:", "");
     end
+    
+    if delegate.shouldIndentWhileEditingRowAtIndexPath then
+       runtime::invokeMethod(self:id(), "setShouldIndentWhileEditingRowAtIndexPath:", "UITableViewDelegate_shouldIndentWhileEditingRowAtIndexPath");
+    else
+       runtime::invokeMethod(self:id(), "setShouldIndentWhileEditingRowAtIndexPath:", "");
+    end
+    
+    if delegate.willBeginEditingRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setWillBeginEditingRowAtIndexPath:", "UITableViewDelegate_willBeginEditingRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setWillBeginEditingRowAtIndexPath:", "");
+    end
+    
+    if delegate.didEndEditingRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setDidEndEditingRowAtIndexPath:", "UITableViewDelegate_didEndEditingRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setDidEndEditingRowAtIndexPath:", "");
+    end
+    
+    if delegate.targetIndexPathForMoveFromRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setTargetIndexPathForMoveFromRowAtIndexPath:", "UITableViewDelegate_targetIndexPathForMoveFromRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setTargetIndexPathForMoveFromRowAtIndexPath:", "");
+    end
+    
+    if delegate.indentationLevelForRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setIndentationLevelForRowAtIndexPath:", "UITableViewDelegate_indentationLevelForRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setIndentationLevelForRowAtIndexPath:", "");
+    end
+    
+    if delegate.shouldShowMenuForRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setShouldShowMenuForRowAtIndexPath:", "UITableViewDelegate_shouldShowMenuForRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setShouldShowMenuForRowAtIndexPath:", "");
+    end
 end
 
 function UITableView:dequeueReusableCellWithIdentifier(identifier)
@@ -623,3 +659,84 @@ function UITableViewDelegate_titleForDeleteConfirmationButtonForRowAtIndexPath(t
         return tb.delegate:titleForDeleteConfirmationButtonForRowAtIndexPath(indexPath);
     end
 end
+
+function UITableViewDelegate_shouldIndentWhileEditingRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return toObjCBool(tb.delegate:shouldIndentWhileEditingRowAtIndexPath(indexPath));
+    end
+end
+
+function UITableViewDelegate_willBeginEditingRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:willBeginEditingRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_didEndEditingRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:didEndEditingRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_targetIndexPathForMoveFromRowAtIndexPath(tableViewId, sourceIndexPathId, destinationIndexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local sourceIndexPath = NSIndexPath:get(sourceIndexPathId):keep();
+        local destinationIndexPath = NSIndexPath:get(destinationIndexPathId):keep();
+        ap_release();
+        local resultIndexPath = tb.delegate:targetIndexPathForMoveFromRowAtIndexPath(sourceIndexPath, destinationIndexPath);
+        if resultIndexPath and resultIndexPath.id then
+            return resultIndexPath:id();
+        end
+    end
+end
+
+function UITableViewDelegate_indentationLevelForRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return tb.delegate:indentationLevelForRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_shouldShowMenuForRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return toObjCBool(tb.delegate:shouldShowMenuForRowAtIndexPath(indexPath));
+    end
+end
+
+
+
+
+
+
+
+
+
+
+

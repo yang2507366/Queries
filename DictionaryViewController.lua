@@ -129,14 +129,41 @@ function main()
             return 50.0;
         end
         
+        function delegate:shouldIndentWhileEditingRowAtIndexPath(indexPath)
+            print("delegate:shouldIndentWhileEditingRowAtIndexPath:"..indexPath:section());
+            if indexPath:section() == 0 then
+                return false;
+            end
+            return true;
+        end
         
         function delegate:didSelectRowAtIndexPath(indexPath)
             print("select row:"..indexPath:row());
         end
         
+        function delegate:didEndEditingRowAtIndexPath(indexPath)
+            print("did end editing:"..indexPath:row());
+        end
+        
+        function delegate:willBeginEditingRowAtIndexPath(indexPath)
+            print("delegate:willBeginEditingRowAtIndexPath:"..indexPath:row());
+        end
+        
+        function delegate:targetIndexPathForMoveFromRowAtIndexPath(sourceIndexPath, descIndexPath)
+            return NSIndexPath:create(2, 0);
+        end
+        
+        function delegate:indentationLevelForRowAtIndexPath(indexPath)
+            return 4;
+        end
+        
+        function delegate:shouldShowMenuForRowAtIndexPath(indexPath)
+            return true;
+        end
+        
         tableView:setDataSource(dataSource);
         tableView:setDelegate(delegate);
-        tableView:setEditing(true);
+        tableView:setEditing(false);
         
         ap_release();
     end

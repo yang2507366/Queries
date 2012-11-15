@@ -310,25 +310,28 @@
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableView *tmp = (id)tableView;
-    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
-    [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didHighlightRowAtIndexPath
-                                                             parameters:tmp.objId, indexPathId, nil] boolValue];
-    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    if(tmp.didHighlightRowAtIndexPath.length != 0){
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didHighlightRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableView *tmp = (id)tableView;
-    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
-    [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didUnhighlightRowAtIndexPath
-                                                             parameters:tmp.objId, indexPathId, nil] boolValue];
-    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    if(tmp.didUnhighlightRowAtIndexPath.length != 0){
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didUnhighlightRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TableView *tmp = (id)tableView;
-
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     NSString *newIndexPathId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willSelectRowAtIndexPath
                                                                                        parameters:tmp.objId, indexPathId, nil];
@@ -358,8 +361,8 @@
     TableView *tmp = (id)tableView;
     if(tmp.didSelectRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
-        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didSelectRowAtIndexPath
-                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didSelectRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil];
         [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
     }
 }
@@ -369,8 +372,8 @@
     TableView *tmp = (id)tableView;
     if(tmp.didDeselectRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
-        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didDeselectRowAtIndexPath
-                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didDeselectRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil];
         [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
     }
 }
@@ -393,6 +396,73 @@
                                                                                       parameters:tmp.objId, indexPathId, nil];
     [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
     return title;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    BOOL should = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.shouldIndentWhileEditingRowAtIndexPath
+                                                                           parameters:tmp.objId, indexPathId, nil] boolValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    return should;
+}
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.willBeginEditingRowAtIndexPath.length != 0){
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willBeginEditingRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.didEndEditingRowAtIndexPath.length != 0){
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didEndEditingRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+       toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *sourceIndexPathId = [LuaObjectManager addObject:sourceIndexPath group:tmp.appId];
+    NSString *destinationIndexPathId = [LuaObjectManager addObject:proposedDestinationIndexPath group:tmp.appId];
+    NSString *resultIndexPathId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId]
+                                   callFunction:tmp.targetIndexPathForMoveFromRowAtIndexPath parameters:tmp.objId, sourceIndexPathId, destinationIndexPathId, nil];
+    [LuaObjectManager releaseObjectWithId:sourceIndexPathId group:tmp.appId];
+    [LuaObjectManager releaseObjectWithId:destinationIndexPathId group:tmp.appId];
+    NSIndexPath *resultIndexPath = [[LuaObjectManager objectWithId:resultIndexPathId group:tmp.appId] retain];
+    [LuaObjectManager releaseObjectWithId:resultIndexPathId group:tmp.objId];
+    return [resultIndexPath autorelease];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    NSInteger indentationLevel = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.indentationLevelForRowAtIndexPath
+                                                                                      parameters:tmp.objId, indexPathId, nil] intValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    return indentationLevel;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    BOOL should = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.shouldShowMenuForRowAtIndexPath
+                                                                           parameters:tmp.objId, indexPathId, nil] boolValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    return should;
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector
@@ -419,6 +489,18 @@
         return NO;
     }else if([selectorName isEqualToString:@"tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:"]
              && self.targetTableView.titleForDeleteConfirmationButtonForRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:shouldIndentWhileEditingRowAtIndexPath:"]
+             && self.targetTableView.shouldIndentWhileEditingRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:"]
+             && self.targetTableView.targetIndexPathForMoveFromRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:indentationLevelForRowAtIndexPath:"]
+             && self.targetTableView.indentationLevelForRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:shouldShowMenuForRowAtIndexPath:"]
+             && self.targetTableView.shouldShowMenuForRowAtIndexPath.length == 0){
         return NO;
     }
     BOOL responds = class_respondsToSelector(self.class, aSelector);
