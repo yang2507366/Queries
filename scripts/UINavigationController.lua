@@ -5,7 +5,7 @@ UINavigationController.__index = UINavigationController;
 setmetatable(UINavigationController, UIViewController);
 
 -- constructor
-function UINavigationController:createWithRootViewController(rootVc)
+function UINavigationController:create(rootVc)
     if rootVc ~= nil then
         local ncId = ui::createNavigationController(rootVc:id());
         local nc = self:get(ncId);

@@ -44,7 +44,7 @@
     return @"main_bundle";
 }
 
-- (NSString *)boundleVersion
+- (NSString *)bundleVersion
 {
     return @"0.0.0";
 }

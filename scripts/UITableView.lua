@@ -29,7 +29,7 @@ function UITableView:createWithStyle(style)
 end
 
 function UITableView:create()
-    return UITableView:createWithStyle();
+    return UITableView:createWithStyle(UITableViewStylePlain);
 end
 
 function UITableView:get(tableViewId)

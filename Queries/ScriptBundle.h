@@ -13,7 +13,7 @@
 - (NSString *)bundleId;
 - (NSString *)scriptWithScriptName:(NSString *)scriptName;
 - (NSData *)resourceWithName:(NSString *)resName;
-- (NSString *)boundleVersion;
+- (NSString *)bundleVersion;
 - (NSString *)mainScript;
 
 @end

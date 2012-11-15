@@ -8,7 +8,7 @@ UIViewController.__index = UIViewController;
 setmetatable(UIViewController, Object);
 
 -- constructor
-function UIViewController:createWithTitle(title)
+function UIViewController:create(title)
     if title == nil then
         title = "Untitled";
     end

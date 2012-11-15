@@ -84,7 +84,7 @@
     return nil;
 }
 
-- (NSString *)boundleVersion
+- (NSString *)bundleVersion
 {
     return @"0.0.0";
 }

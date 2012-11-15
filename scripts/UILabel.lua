@@ -6,11 +6,11 @@ UILabel.__index = UILabel;
 setmetatable(UILabel, UIView);
 
 -- constructor
-function UILabel:createWithText(title)
-    if title == nil then
-        title = "";
+function UILabel:create(text)
+    if text == nil then
+        text = "";
     end
-    local labelId = ui::createLabel(title, "0, 0, 200, 17");
+    local labelId = ui::createLabel(text, "0, 0, 200, 17");
     return UILabel:get(labelId);
 end
 

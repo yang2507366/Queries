@@ -1,9 +1,14 @@
 require "Object"
 require "NSData"
+require "System"
 
 AppBundle = {};
 AppBundle.__index = AppBundle;
 setmetatable(AppBundle, Object);
+
+function AppBundle:current()
+    return AppBundle:get(System.id());
+end
 
 function AppBundle:get(appId)
     appId = app::getAppBundle(appId);
@@ -27,3 +32,8 @@ function AppBundle:dataFromResource(resName)
     end
     return nil;
 end
+
+function AppBundle:bundleVersion()
+    return runtime::invokeMethod(self:id(), "bundleVersion");
+end
+

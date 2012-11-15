@@ -5,14 +5,13 @@ UIFont.__index = UIFont;
 setmetatable(UIFont, Object);
 
 -- constructor
-function UIFont:createWithFontSize(fontSize)
-    local fontId = runtime::invokeClassMethod("UIFont", "systemFontOfSize:", fontSize);
-    
-    return self:get(fontId);
-end
-
-function UIFont:createWithBoldFontSize(fontSize)
-    local fontId = runtime::invokeClassMethod("UIFont", "boldSystemFontOfSize:", fontSize);
+function UIFont:create(fontSize, bold)
+    local fontId = nil;
+    if bold ~= nil and bold then
+        fontId = runtime::invokeClassMethod("UIFont", "boldSystemFontOfSize:", fontSize);
+    else
+        fontId = runtime::invokeClassMethod("UIFont", "systemFontOfSize:", fontSize);
+    end
     
     return self:get(fontId);
 end

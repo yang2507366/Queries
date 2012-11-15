@@ -6,11 +6,13 @@ require "CommonUtils"
 require "UITableViewCell"
 require "UILabel"
 require "NSMutableArray"
+require "UIFont"
+require "AppBundle"
 
 function main()
     ap_new();
     local relatedVC = UIViewController:get(ui::getRelatedViewController());
-    local dictVC = UIViewController:createWithTitle("在线词典"):retain();
+    local dictVC = UIViewController:create("在线词典"):retain();
     relatedVC:navigationController():pushViewController(dictVC, true);
 
     function dictVC:viewDidLoad()
@@ -39,6 +41,8 @@ function main()
             end
             cell:keep();
             cell:textLabel():setText(indexPath:section()..", "..indexPath:row());
+            cell:textLabel():setTextColor(UIColor:create(255, 0, 0));
+            cell:textLabel():setFont(UIFont:create(20, false));
             ap_release();
             return cell;
         end
@@ -164,6 +168,9 @@ function main()
         tableView:setDataSource(dataSource);
         tableView:setDelegate(delegate);
         tableView:setEditing(false);
+        
+        local ab = AppBundle:current();
+        print(ab:bundleVersion());
         
         ap_release();
     end
