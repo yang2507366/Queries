@@ -199,14 +199,50 @@ function UITableView:setDelegate(delegate)
     
     if delegate.didHighlightRowAtIndexPath then
         runtime::invokeMethod(self:id(), "setDidHighlightRowAtIndexPath:", "UITableViewDelegate_didHighlightRowAtIndexPath");
-        else
+    else
         runtime::invokeMethod(self:id(), "setDidHighlightRowAtIndexPath:", "");
     end
     
     if delegate.didUnhighlightRowAtIndexPath then
         runtime::invokeMethod(self:id(), "setDidUnhighlightRowAtIndexPath:", "UITableViewDelegate_didUnhighlightRowAtIndexPath");
-        else
+    else
         runtime::invokeMethod(self:id(), "setDidUnhighlightRowAtIndexPath:", "");
+    end
+    
+    if delegate.willSelectRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setWillSelectRowAtIndexPath:", "UITableViewDelegate_willSelectRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setWillSelectRowAtIndexPath:", "");
+    end
+    
+    if delegate.willDeselectRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setWillDeselectRowAtIndexPath:", "UITableViewDelegate_willDeselectRowAtIndexPath");
+        else
+        runtime::invokeMethod(self:id(), "setWillDeselectRowAtIndexPath:", "");
+    end
+    
+    if delegate.didSelectRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setDidSelectRowAtIndexPath:", "UITableViewDelegate_didSelectRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setDidSelectRowAtIndexPath:", "");
+    end
+    
+    if delegate.didDeselectRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setDidDeselectRowAtIndexPath:", "UITableViewDelegate_didDeselectRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setDidDeselectRowAtIndexPath:", "");
+    end
+    
+    if delegate.editingStyleForRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setEditingStyleForRowAtIndexPath:", "UITableViewDelegate_editingStyleForRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setEditingStyleForRowAtIndexPath:", "");
+    end
+    
+    if delegate.titleForDeleteConfirmationButtonForRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setTitleForDeleteConfirmationButtonForRowAtIndexPath:", "UITableViewDelegate_titleForDeleteConfirmationButtonForRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setTitleForDeleteConfirmationButtonForRowAtIndexPath:", "");
     end
 end
 
@@ -513,5 +549,77 @@ function UITableViewDelegate_didUnhighlightRowAtIndexPath(tableViewId, indexPath
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
         tb.delegate:didUnhighlightRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_willSelectRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        local newIndexPath = tb.delegate:willSelectRowAtIndexPath(indexPath);
+        if newIndexPath and newIndexPath.id then
+            return newIndexPath:id();
+        end
+    end
+end
+
+function UITableViewDelegate_willDeselectRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        local newIndexPath = tb.delegate:willDeselectRowAtIndexPath(indexPath);
+        if newIndexPath and newIndexPath.id then
+            return newIndexPath:id();
+        end
+    end
+end
+
+function UITableViewDelegate_didSelectRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:didSelectRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_didDeselectRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:didDeselectRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_editingStyleForRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return tb.delegate:editingStyleForRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_titleForDeleteConfirmationButtonForRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return tb.delegate:titleForDeleteConfirmationButtonForRowAtIndexPath(indexPath);
     end
 end

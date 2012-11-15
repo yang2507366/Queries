@@ -325,10 +325,75 @@
     [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
 }
 
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return UITableViewCellEditingStyleNone;
-//}
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    NSString *newIndexPathId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willSelectRowAtIndexPath
+                                                                                       parameters:tmp.objId, indexPathId, nil];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    NSIndexPath *newIndexPath = [[LuaObjectManager objectWithId:newIndexPathId group:tmp.appId] retain];
+    [LuaObjectManager releaseObjectWithId:newIndexPathId group:tmp.appId];
+    
+    return [newIndexPath autorelease];
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    NSString *newIndexPathId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willDeselectRowAtIndexPath
+                                                                                       parameters:tmp.objId, indexPathId, nil];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    NSIndexPath *newIndexPath = [[LuaObjectManager objectWithId:newIndexPathId group:tmp.appId] retain];
+    [LuaObjectManager releaseObjectWithId:newIndexPathId group:tmp.appId];
+    
+    return [newIndexPath autorelease];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.didSelectRowAtIndexPath.length != 0){
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didSelectRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.didDeselectRowAtIndexPath.length != 0){
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didDeselectRowAtIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil] boolValue];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    NSInteger editingStyle = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.editingStyleForRowAtIndexPath
+                                                                                     parameters:tmp.objId, indexPathId, nil] intValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    return editingStyle;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    NSString *title = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.titleForDeleteConfirmationButtonForRowAtIndexPath
+                                                                                      parameters:tmp.objId, indexPathId, nil];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    return title;
+}
 
 - (BOOL)respondsToSelector:(SEL)aSelector
 {
@@ -339,7 +404,21 @@
         return NO;
     }else if([selectorName isEqualToString:@"tableView:heightForFooterInSection:"] && self.targetTableView.heightForFooterInSection.length == 0){
         return NO;
+    }else if([selectorName isEqualToString:@"tableView:viewForFooterInSection:"] && self.targetTableView.viewForFooterInSection.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:viewForHeaderInSection:"] && self.targetTableView.viewForHeaderInSection.length == 0){
+        return NO;
     }else if([selectorName isEqualToString:@"tableView:shouldHighlightRowAtIndexPath:"] && self.targetTableView.shouldHighlightRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:willSelectRowAtIndexPath:"] && self.targetTableView.willSelectRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:willDeselectRowAtIndexPath:"] && self.targetTableView.willDeselectRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:editingStyleForRowAtIndexPath:"]
+             && self.targetTableView.editingStyleForRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:"]
+             && self.targetTableView.titleForDeleteConfirmationButtonForRowAtIndexPath.length == 0){
         return NO;
     }
     BOOL responds = class_respondsToSelector(self.class, aSelector);

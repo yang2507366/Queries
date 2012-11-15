@@ -45,3 +45,29 @@ end
 
 function UITableViewDelegate:didUnhighlightRowAtIndexPath(indexPath)
 end
+
+function UITableViewDelegate:willSelectRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:willDeselectRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:didSelectRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:didDeselectRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:editingStyleForRowAtIndexPath(indexPath)
+end
+
+function UITableViewDelegate:titleForDeleteConfirmationButtonForRowAtIndexPath(indexPath)
+end
+
+
+
+
+
+
+
+

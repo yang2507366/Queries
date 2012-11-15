@@ -4,6 +4,11 @@ NSIndexPath = {};
 NSIndexPath.__index = NSIndexPath;
 setmetatable(NSIndexPath, Object);
 
+function NSIndexPath:create(section, row)
+    local indexPathId = runtime::invokeClassMethod("NSIndexPath", "indexPathForRow:inSection:", row, section);
+    return self:get(indexPathId);
+end
+
 function NSIndexPath:get(indexPathId)
     local indexPath = Object:new(indexPathId);
     setmetatable(indexPath, self);
