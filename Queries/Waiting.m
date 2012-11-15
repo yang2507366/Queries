@@ -8,6 +8,7 @@
 
 #import "Waiting.h"
 #import <QuartzCore/QuartzCore.h>
+#import "KeyboardState.h"
 
 @interface WaitingView : UIView
 
@@ -74,6 +75,10 @@
                                       containerViewHeight);
     _backgroundRoundView.frame = _containerView.bounds;
     _indicatorView.frame = CGRectMake(0, 0, containerViewWidth, containerViewHeight - 20);
+    if([[UIDevice currentDevice].systemVersion floatValue] < 5.0f){
+        CGFloat size = 40.0f;
+        _indicatorView.frame = CGRectMake((containerViewWidth - size) / 2, 20, size, size);
+    }
     _textLabel.frame = CGRectMake(0, containerViewHeight - textLabelHeight, containerViewWidth, textLabelHeight);
 }
 
@@ -97,16 +102,23 @@
     NSString *viewId = [NSString stringWithFormat:@"%d", (NSInteger)view];
     WaitingView *tmpWaitingView = nil;
     if(waiting){
-        tmpWaitingView = [[[WaitingView alloc] initWithFrame:view.bounds] autorelease];
-        tmpWaitingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [[self viewDictionary] setObject:tmpWaitingView forKey:viewId];
-        
-        [view addSubview:tmpWaitingView];
-        tmpWaitingView.textLabel.text = @"请稍候";
-        [tmpWaitingView.indicatorView startAnimating];
+        if([[self viewDictionary] objectForKey:viewId] == nil){
+            tmpWaitingView = [[[WaitingView alloc] initWithFrame:view.bounds] autorelease];
+            if([KeyboardState sharedInstance].keyboardVisible){
+                CGRect tmpRect = tmpWaitingView.frame;
+                tmpRect.origin.y -= 120.0f;
+                tmpWaitingView.frame = tmpRect;
+            }
+            tmpWaitingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [[self viewDictionary] setObject:tmpWaitingView forKey:viewId];
+            
+            [view addSubview:tmpWaitingView];
+            tmpWaitingView.textLabel.text = @"请稍候";
+            [tmpWaitingView.indicatorView startAnimating];
+        }
     }else{
         tmpWaitingView = [[self viewDictionary] objectForKey:viewId];
-        [UIView animateWithDuration:0.15f animations:^{
+        [UIView animateWithDuration:0.25f animations:^{
             tmpWaitingView.alpha = 0.0f;
         } completion:^(BOOL finished) {
             [tmpWaitingView removeFromSuperview];
@@ -120,15 +132,17 @@
     NSString *viewId = [NSString stringWithFormat:@"%d", (NSInteger)view];
     WaitingView *tmpWaitingView = nil;
     if(loading){
-        tmpWaitingView = [[[WaitingView alloc] initWithFrame:view.bounds] autorelease];
-        tmpWaitingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [[self viewDictionary] setObject:tmpWaitingView forKey:viewId];
-        
-        [view addSubview:tmpWaitingView];
-        tmpWaitingView.textLabel.text = @"请稍候";
-        tmpWaitingView.backgroundRoundView.hidden = YES;
-        tmpWaitingView.backgroundColor = [UIColor blackColor];
-        [tmpWaitingView.indicatorView startAnimating];
+        if([[self viewDictionary] objectForKey:viewId] == nil){
+            tmpWaitingView = [[[WaitingView alloc] initWithFrame:view.bounds] autorelease];
+            tmpWaitingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [[self viewDictionary] setObject:tmpWaitingView forKey:viewId];
+            
+            [view addSubview:tmpWaitingView];
+            tmpWaitingView.textLabel.text = @"请稍候";
+            tmpWaitingView.backgroundRoundView.hidden = YES;
+            tmpWaitingView.backgroundColor = [UIColor blackColor];
+            [tmpWaitingView.indicatorView startAnimating];
+        }
     }else{
         tmpWaitingView = [[self viewDictionary] objectForKey:viewId];
         [tmpWaitingView removeFromSuperview];
