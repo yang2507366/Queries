@@ -153,6 +153,61 @@ function UITableView:setDelegate(delegate)
         else
         runtime::invokeMethod(self:id(), "setDidEndDisplayingFooterView:", "");
     end
+    
+    if delegate.heightForRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setHeightForRowAtIndexPath:", "UITableViewDelegate_heightForRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setHeightForRowAtIndexPath:", "");
+    end
+    
+    if delegate.heightForHeaderInSection then
+        runtime::invokeMethod(self:id(), "setHeightForHeaderInSection:", "UITableViewDelegate_heightForHeaderInSection");
+    else
+        runtime::invokeMethod(self:id(), "setHeightForHeaderInSection:", "");
+    end
+    
+    if delegate.heightForFooterInSection then
+        runtime::invokeMethod(self:id(), "setHeightForFooterInSection:", "UITableViewDelegate_heightForFooterInSection");
+    else
+        runtime::invokeMethod(self:id(), "setHeightForFooterInSection:", "");
+    end
+    
+    if delegate.viewForHeaderInSection then
+        runtime::invokeMethod(self:id(), "setViewForHeaderInSection:", "UITableViewDelegate_viewForHeaderInSection");
+    else
+        runtime::invokeMethod(self:id(), "setViewForHeaderInSection:", "");
+    end
+    
+    if delegate.viewForFooterInSection then
+        runtime::invokeMethod(self:id(), "setViewForFooterInSection:", "UITableViewDelegate_viewForFooterInSection");
+    else
+        runtime::invokeMethod(self:id(), "setViewForFooterInSection:", "");
+    end
+    
+    if delegate.accessoryButtonTappedForRowWithIndexPath then
+        runtime::invokeMethod(self:id(), "setAccessoryButtonTappedForRowWithIndexPath:",
+                              "UITableViewDelegate_accessoryButtonTappedForRowWithIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setAccessoryButtonTappedForRowWithIndexPath:","");
+    end
+    
+    if delegate.shouldHighlightRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setShouldHighlightRowAtIndexPath:", "UITableViewDelegate_shouldHighlightRowAtIndexPath");
+    else
+        runtime::invokeMethod(self:id(), "setShouldHighlightRowAtIndexPath:", "");
+    end
+    
+    if delegate.didHighlightRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setDidHighlightRowAtIndexPath:", "UITableViewDelegate_didHighlightRowAtIndexPath");
+        else
+        runtime::invokeMethod(self:id(), "setDidHighlightRowAtIndexPath:", "");
+    end
+    
+    if delegate.didUnhighlightRowAtIndexPath then
+        runtime::invokeMethod(self:id(), "setDidUnhighlightRowAtIndexPath:", "UITableViewDelegate_didUnhighlightRowAtIndexPath");
+        else
+        runtime::invokeMethod(self:id(), "setDidUnhighlightRowAtIndexPath:", "");
+    end
 end
 
 function UITableView:dequeueReusableCellWithIdentifier(identifier)
@@ -365,5 +420,98 @@ function UITableViewDelegate_didEndDisplayingFooterView(tableViewId, viewId, sec
         local view = UIView:get(viewId):keep();
         ap_release();
         tb.delegate:didEndDisplayingFooterView(view, section);
+    end
+end
+
+function UITableViewDelegate_heightForRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return tb.delegate:heightForRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_heightForHeaderInSection(tableViewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        return tb.delegate:heightForHeaderInSection(section);
+    end
+end
+
+function UITableViewDelegate_heightForFooterInSection(tableViewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        return tb.delegate:heightForFooterInSection(section);
+    end
+end
+
+function UITableViewDelegate_viewForHeaderInSection(tableViewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        local view = tb.delegate:viewForHeaderInSection(section);
+        if view and view.id then
+            return view:id();
+        end
+    end
+end
+
+function UITableViewDelegate_viewForFooterInSection(tableViewId, section)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        local view = tb.delegate:viewForFooterInSection(section);
+        if view and view.id then
+            return view:id();
+        end
+    end
+end
+
+function UITableViewDelegate_accessoryButtonTappedForRowWithIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:accessoryButtonTappedForRowWithIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_shouldHighlightRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        return toObjCBool(tb.delegate:shouldHighlightRowAtIndexPath(indexPath));
+    end
+end
+
+function UITableViewDelegate_didHighlightRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:didHighlightRowAtIndexPath(indexPath);
+    end
+end
+
+function UITableViewDelegate_didUnhighlightRowAtIndexPath(tableViewId, indexPathId)
+    local tb = UITableViewEventProxyTable[tableViewId];
+    
+    if tb and tb.delegate then
+        ap_new();
+        local indexPath = NSIndexPath:get(indexPathId):keep();
+        ap_release();
+        tb.delegate:didUnhighlightRowAtIndexPath(indexPath);
     end
 end

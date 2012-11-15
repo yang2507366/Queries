@@ -149,7 +149,6 @@
     }
     
     BOOL responds = class_respondsToSelector(self.class, aSelector);
-//    NSLog(@"%@ %@", selectorName, responds ? @"responds" : @"not responds");
     return responds;
 }
 
@@ -236,10 +235,116 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    CGFloat height = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.heightForRowAtIndexPath
+                                                                             parameters:tmp.objId, indexPathId, nil] floatValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    
+    return height;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    CGFloat height = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId]
+                       callFunction:tmp.heightForHeaderInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil] floatValue];
+    
+    return height;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    CGFloat height = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId]
+                       callFunction:tmp.heightForFooterInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil] floatValue];
+    
+    return height;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    NSString *viewId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId]
+                        callFunction:tmp.viewForHeaderInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil];
+    UIView *view = [[LuaObjectManager objectWithId:viewId group:tmp.appId] retain];
+    [LuaObjectManager releaseObjectWithId:viewId group:tmp.appId];
+    
+    return [view autorelease];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    TableView *tmp = (id)tableView;
+    NSString *viewId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId]
+                        callFunction:tmp.viewForFooterInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil];
+    UIView *view = [[LuaObjectManager objectWithId:viewId group:tmp.appId] retain];
+    [LuaObjectManager releaseObjectWithId:viewId group:tmp.appId];
+    
+    return [view autorelease];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    if(tmp.accessoryButtonTappedForRowWithIndexPath.length != 0){
+        NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+        [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.accessoryButtonTappedForRowWithIndexPath
+                                                                 parameters:tmp.objId, indexPathId, nil] floatValue];
+        [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    BOOL should = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.shouldHighlightRowAtIndexPath
+                                                                           parameters:tmp.objId, indexPathId, nil] boolValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+    return should;
+}
+
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didHighlightRowAtIndexPath
+                                                             parameters:tmp.objId, indexPathId, nil] boolValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+}
+
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TableView *tmp = (id)tableView;
+    NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
+    [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didUnhighlightRowAtIndexPath
+                                                             parameters:tmp.objId, indexPathId, nil] boolValue];
+    [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
+}
+
 //- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    return UITableViewCellEditingStyleNone;
 //}
+
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    NSString *selectorName = NSStringFromSelector(aSelector);
+    if([selectorName isEqualToString:@"tableView:heightForRowAtIndexPath:"] && self.targetTableView.heightForRowAtIndexPath.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:heightForHeaderInSection:"] && self.targetTableView.heightForHeaderInSection.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:heightForFooterInSection:"] && self.targetTableView.heightForFooterInSection.length == 0){
+        return NO;
+    }else if([selectorName isEqualToString:@"tableView:shouldHighlightRowAtIndexPath:"] && self.targetTableView.shouldHighlightRowAtIndexPath.length == 0){
+        return NO;
+    }
+    BOOL responds = class_respondsToSelector(self.class, aSelector);
+    return responds;
+}
 
 @end
 

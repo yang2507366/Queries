@@ -50,3 +50,11 @@ end
 function UILabel:setNumberOfLines(numberOfLines)
     runtime::invokeMethod(self:id(), "setNumberOfLines:", numberOfLines);
 end
+
+function UILabel:setTextColor(color)
+    runtime::invokeMethod(self:id(), "setTextColor:", color:id());
+end
+
+function UILabel:textColor()
+    return UIColor:get(runtime::invokeMethod(self:id(), "textColor"));
+end

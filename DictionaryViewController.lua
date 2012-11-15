@@ -35,6 +35,7 @@ function main()
             local cell = tableView:dequeueReusableCellWithIdentifier("id");
             if not cell then
                 cell = UITableViewCell:create("id");
+                cell:setAccessoryType(2);
             end
             cell:keep();
             cell:textLabel():setText(indexPath:section()..", "..indexPath:row());
@@ -116,9 +117,57 @@ function main()
             print("end footer view:"..view:id()..","..section);
         end
         
+        function delegate:heightForRowAtIndexPath(indexPath)
+            return 100.0;
+        end
+        
+        function delegate:heightForHeaderInSection(section)
+            return 50.0;
+        end
+        
+        function delegate:heightForFooterInSection(section)
+            return 50.0;
+        end
+        
+        function delegate:viewForHeaderInSection(section)
+            ap_new();
+            local label = UILabel:createWithText("section:"..section):keep();
+            label:setBackgroundColor(UIColor:createWithRGB(0, 0, 0));
+            label:setTextColor(UIColor:createWithRGB(255, 255, 255));
+            ap_release();
+            
+            return label;
+        end
+        
+        function delegate:viewForFooterInSection(section)
+            ap_new();
+            local label = UILabel:createWithText("footer:"..section):keep();
+            label:setBackgroundColor(UIColor:createWithRGB(0, 0, 0));
+            label:setTextColor(UIColor:createWithRGB(255, 255, 255));
+            ap_release();
+            
+            return label;
+        end
+        
+        function delegate:accessoryButtonTappedForRowWithIndexPath(indexPath)
+            print(indexPath:section()..", "..indexPath:row());
+        end
+        
+        function delegate:shouldHighlightRowAtIndexPath(indexPath)
+            return true;
+        end
+        
+        function delegate:didHighlightRowAtIndexPath(indexPath)
+            print("did high:"..indexPath:row());
+        end
+        
+        function delegate:didUnhighlightRowAtIndexPath(indexPath)
+            print("un high:"..indexPath:row());
+        end
+        
         tableView:setDataSource(dataSource);
         tableView:setDelegate(delegate);
-        tableView:setEditing(true);
+        tableView:setEditing(false);
         
         ap_release();
     end
