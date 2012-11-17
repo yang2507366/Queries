@@ -1,5 +1,6 @@
 require "UIView"
 require "UILabel"
+require "System"
 
 UIButton = {};
 UIButton.__index = UIButton;
@@ -25,9 +26,8 @@ function UIButton:create(title, buttonType)
     if buttonType == nil then
         buttonType = UIButtonTypeRoundedRect;
     end
-    local buttonId = ui::createButton(buttonType, "event_proxy_button_tapped");
+    local buttonId = runtime::invokeClassMethod("Button", "create:type:", System.id());
     local button = UIButton:get(buttonId);
-    button_tap_event_proxy[buttonId] = button;
     
     button:setTitle(title);
     
@@ -38,12 +38,14 @@ function UIButton:get(buttonId)
     local button = UIView:new(buttonId);
     setmetatable(button, self);
     
+    UIButtonEventProxyTable[buttonId] = button;
+    
     return button;
 end
 
 -- deconstructor
 function UIButton:dealloc()
-    button_tap_event_proxy[self:id()] = nil;
+    UIButtonEventProxyTable[self:id()] = nil;
 end
 
 -- instance methods
@@ -65,8 +67,8 @@ function UIButton:tapped()
 end
 
 -- event proxy
-button_tap_event_proxy = {};
+UIButtonEventProxyTable = {};
 
 function event_proxy_button_tapped(buttonId)
-    button_tap_event_proxy[buttonId]:tapped();
+    UIButtonEventProxyTable[buttonId]:tapped();
 end

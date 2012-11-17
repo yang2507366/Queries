@@ -57,6 +57,7 @@ function Object:autorelease()
     return self;
 end
 
+-- object convert
 function oc(object, targetType)
     setmetatable(object, targetType);
 end

@@ -1,12 +1,4 @@
 UIPickerViewDelegate = {};
-UIPickerViewDelegate.__index = {};
-
-function UIPickerViewDelegate:create()
-    local delegate = {};
-    setmetatable(delegate, self);
-    
-    return delegate;
-end
 
 function UIPickerViewDelegate:numberOfComponents()
     return nil;

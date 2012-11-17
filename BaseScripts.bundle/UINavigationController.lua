@@ -1,4 +1,6 @@
+require "System"
 require "UIViewController"
+require "CommonUtils"
 
 UINavigationController = {};
 UINavigationController.__index = UINavigationController;
@@ -7,8 +9,10 @@ setmetatable(UINavigationController, UIViewController);
 -- constructor
 function UINavigationController:create(rootVc)
     if rootVc ~= nil then
-        local ncId = ui::createNavigationController(rootVc:id());
+        local ncId = runtime::invokeClassMethod("NavigationController", "create", System.id());
         local nc = self:get(ncId);
+        
+        nc:pushViewController(rootVc, false);
         
         return nc;
     end
@@ -24,5 +28,5 @@ end
 
 -- instance methods
 function UINavigationController:pushViewController(vc, animated)
-    ui::pushViewControllerToNavigationController(vc:id(), self:id(), animated);
+    runtime::invokeMethod(self:id(), "pushViewController:animated:", vc:id(), toObjCBool(animated));
 end

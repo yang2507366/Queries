@@ -43,18 +43,22 @@ int get_module(lua_State *L)
 {
     const char *cModName = luaL_checkstring(L, 1);
     if(strlen(cModName) != 0){
-        NSString *requireString = [NSString stringWithFormat:@"%s.lua", cModName];
+        NSString *requireString = [NSString stringWithFormat:@"%s", cModName];
+        if(![requireString hasSuffix:@".lua"]){
+            requireString = [NSString stringWithFormat:@"%@.lua", requireString];
+        }
         NSString *modName = requireString;
         NSString *appId = @"";
         NSInteger beginIndex = [requireString find:lua_require_separator];
+        NSString *targetScript = nil;
         if(beginIndex != -1){
             appId = [requireString substringToIndex:beginIndex];
             modName = [requireString substringFromIndex:beginIndex + 1];
+            targetScript = [LuaAppManager scriptWithScriptName:modName appId:appId];
         }
-        NSString *script = [LuaAppManager scriptWithScriptName:modName appId:appId];
-        if(script.length != 0){
-            const char *cscript = [script UTF8String];
-            luaL_loadbuffer(L, cscript, [script length], cModName);
+        if(targetScript.length != 0){
+            const char *cscript = [targetScript UTF8String];
+            luaL_loadbuffer(L, cscript, [targetScript length], cModName);
         }
     }
     return 1;

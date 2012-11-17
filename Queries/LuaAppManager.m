@@ -16,6 +16,7 @@
 #import "CodeUtils.h"
 #import "RequireReplaceChecker.h"
 #import "SuperSupportChecker.h"
+#import "AddBaseScriptsChecker.h"
 
 @interface LuaAppManager ()
 
@@ -56,10 +57,10 @@
     self.scriptCheckers = [NSArray arrayWithObjects:
                            [[[UnicodeChecker alloc] init] autorelease],
 //                           [[AutoreleasePoolChecker new] autorelease],
+//                           [[AddBaseScriptsChecker new] autorelease],
                            [[RequireReplaceChecker new] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],
-//                           [[[SuperSupportChecker alloc] init] autorelease],
                            nil];
     
     return self;
@@ -82,7 +83,11 @@
 {
     LuaApp *targetApp = [self.appDict objectForKey:appId];
     NSString *originalScript = [targetApp.scriptBundle scriptWithScriptName:scriptName];
+    if(originalScript.length == 0){
+        originalScript = [self.class baseScriptWithScriptName:scriptName];
+    }
     NSString *script = [self compileScript:originalScript scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
+
     return script;
 }
 
@@ -177,6 +182,20 @@
 + (void)destoryAppWithAppId:(NSString *)appId
 {
     [[self sharedApplication] destoryAppWithAppId:appId];
+}
+
++ (NSBundle *)baseScriptsBundle
+{
+    static NSBundle *baseScriptsBundle = nil;
+    if(baseScriptsBundle == nil){
+        baseScriptsBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BaseScripts" ofType:@".bundle"]];
+    }
+    return baseScriptsBundle;
+}
+
++ (NSString *)baseScriptWithScriptName:(NSString *)scriptName
+{
+    return [NSString stringWithContentsOfFile:[[self baseScriptsBundle] pathForResource:scriptName ofType:nil] encoding:NSUTF8StringEncoding error:nil];
 }
 
 @end

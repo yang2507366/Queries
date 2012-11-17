@@ -729,14 +729,3 @@ function UITableViewDelegate_shouldShowMenuForRowAtIndexPath(tableViewId, indexP
         return toObjCBool(tb.delegate:shouldShowMenuForRowAtIndexPath(indexPath));
     end
 end
-
-
-
-
-
-
-
-
-
-
-

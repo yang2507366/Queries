@@ -38,3 +38,12 @@ function UINavigationItem:setRightBarButtonItem(buttonItem, animated)
         runtime::invokeMethod(self:id(), "setRightBarButtonItem:animated:");
     end
 end
+
+function UINavigationItem:setLeftBarButtonItem(buttonItem, animated)
+    animated = toObjCBool(animated);
+    if buttonItem then
+        runtime::invokeMethod(self:id(), "setLeftBarButtonItem:animated:", buttonItem:id(), animated);
+        else
+        runtime::invokeMethod(self:id(), "setLeftBarButtonItem:animated:");
+    end
+end

@@ -31,7 +31,7 @@ end
 
 function UIImageView:image()
     local imgViewId = runtime::invokeMethod(self:id(), "image");
-    if ustring::length(imgViewId) == 0 then
+    if string.len(imgViewId) == 0 then
         return nil;
     end
     return UIImage:get(imgViewId);

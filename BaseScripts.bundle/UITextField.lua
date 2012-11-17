@@ -97,7 +97,7 @@ function epf_textFieldShouldBeginEditing(textFieldId)
     local b = eventProxyTable_textField[textFieldId]:shouldBeginEditing();
     if b then
         return "YES";
-        else
+    else
         return "NO";
     end
 end

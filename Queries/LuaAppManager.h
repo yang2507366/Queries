@@ -13,6 +13,9 @@
 
 @interface LuaAppManager : NSObject
 
++ (NSBundle *)baseScriptsBundle;
++ (NSString *)baseScriptWithScriptName:(NSString *)scriptName;
+
 + (UIWindow *)currentWindow;
 + (id<ScriptInteraction>)scriptInteractionWithAppId:(NSString *)appId;
 + (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId;

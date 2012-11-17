@@ -1,5 +1,6 @@
 require "Object"
 require "UIColor"
+require "CommonUtils"
 
 UIView = {};
 UIView.__index = UIView;
@@ -41,18 +42,28 @@ end
 -- instance methods
 function UIView:setFrame(x, y, width, height)
     local frame = x..","..y..","..width..","..height;
-    ui::setViewFrame(self:id(), frame);
+    runtime::invokeMethod(self:id(), "setFrame:", frame);
+end
+
+function frameOfCGRect(frameStr)
+    local frameTable = stringSplit(frameStr, ",");
+    local x = frameTable[1];
+    local y = frameTable[2];
+    local width = frameTable[3];
+    local height = frameTable[4];
+    return x, y, width, height;
 end
 
 function UIView:frame()
-    local x, y, width, height = ui::getViewFrame(self:id());
-    return x, y, width, height;
+    local frameStr = runtime::invokeMethod(self:id(), "frame");
+    
+    return frameOfCGRect(frameStr);
 end
 
 function UIView:bounds()
-    local x, y, width, height = ui::getViewBounds(self:id());
+    local frameStr = runtime::invokeMethod(self:id(), "bounds");
     
-    return x, y, width, height;
+    return frameOfCGRect(frameStr);
 end
 
 function UIView:setBackgroundColor(color)

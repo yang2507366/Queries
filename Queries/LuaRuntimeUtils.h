@@ -10,7 +10,6 @@
 
 @interface LuaRuntimeUtils : NSObject
 
-+ (NSString *)invokeWithObject:(id)object methodName:(NSString *)methodName parameters:(NSString *)firstParameter, ...;
 + (NSString *)invokeWithGroup:(NSString *)group objectId:(NSString *)objectId methodName:(NSString *)methodName parameters:(NSArray *)parameters;
 + (NSString *)createObjectWithGroup:(NSString *)group
                           className:(NSString *)className

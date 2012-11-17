@@ -146,6 +146,8 @@
         return NO;
     }else if([selectorName isEqualToString:@"tableView:commitEditingStyle:forRowAtIndexPath:"] && self.targetTableView.commitEditingStyle.length == 0){
         return NO;
+    }else if([selectorName isEqualToString:@"sectionIndexTitlesForTableView:"] && self.targetTableView.sectionIndexTitles){
+        return NO;
     }
     
     BOOL responds = class_respondsToSelector(self.class, aSelector);
