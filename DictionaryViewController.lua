@@ -14,6 +14,7 @@ require "UILabel"
 require "UITextField"
 require "UITextView"
 require "UIPickerView"
+require "UIAnimation"
 
 function main()
     ap_new();
@@ -69,6 +70,12 @@ function main()
         pickerView:setDataSource(pickerViewDataSource);
         pickerView:setDelegate(pickerViewDelegate);
         self:view():addSubview(pickerView);
+        
+        local anim = UIAnimation:create();
+        function anim:animation()
+            pickerView:setFrame(10, 200, 300, 300);
+        end
+        anim:start(2.0);
         
         ap_release();
     end

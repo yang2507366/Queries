@@ -41,6 +41,7 @@ end
 
 function UIAnimation:dealloc()
     eventProxy_animation[self:id()] = nil;
+    Object.dealloc(self);
 end
 
 function UIAnimation:start(duration, delay, options)
