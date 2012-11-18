@@ -12,7 +12,7 @@
 @interface OnlineAppBundleLoader : NSObject <ProviderPoolable>
 
 - (id)initWithURLString:(NSString *)urlString;
-- (void)loadWithCompletion:(void(^)(NSString *))completion;
+- (void)loadWithCompletion:(void(^)(NSString *downloadedZipPath))completion;
 - (void)cancel;
 
 @end
