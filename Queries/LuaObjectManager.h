@@ -19,5 +19,6 @@
 
 + (void)retainObjectWithId:(NSString *)objectId group:(NSString *)group;
 + (BOOL)releaseObjectWithId:(NSString *)objectId group:(NSString *)group;
++ (NSInteger)objectRetainCountForId:(NSString *)objectId group:(NSString *)group;
 
 @end

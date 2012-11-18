@@ -42,6 +42,7 @@ end
 
 -- deconstructor
 function UITableView:dealloc()
+    UIView.dealloc(self);
 end
 
 -- instance method

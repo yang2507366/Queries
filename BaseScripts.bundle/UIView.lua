@@ -36,7 +36,7 @@ function UIView:get(viewId)
 end
 
 function UIView:dealloc()
-    
+    Object.dealloc(self);
 end
 
 -- instance methods

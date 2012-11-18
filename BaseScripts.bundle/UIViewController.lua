@@ -39,6 +39,11 @@ function UIViewController:get(vcId)
     return vc;
 end
 
+function UIViewController:dealloc()
+    UIViewControllerEventProxyTable[self:id()] = nil;
+    Object.dealloc(self);
+end
+
 -- instance methods
 function UIViewController:setAsRootViewController()
     local vcId = self:id();
@@ -93,7 +98,6 @@ end
 
 -- override methods
 function UIViewController:loadView()
-    print("UIViewController:loadView");
 end
 
 function UIViewController:viewDidLoad()
@@ -123,7 +127,6 @@ function UIViewController:supportedInterfaceOrientations()
 end
 
 function UIViewController:viewDidPop()
-    UIViewControllerEventProxyTable[self:id()] = nil;
 end
 
 -- event proxy

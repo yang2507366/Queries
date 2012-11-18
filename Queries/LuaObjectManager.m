@@ -128,6 +128,16 @@
     return NO;
 }
 
+- (NSInteger)objectRetainCountForId:(NSString *)objectId group:(NSString *)group
+{
+    NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
+    if(objectDictionary){
+        ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
+        return tmp.referenceCount;
+    }
+    return -1;
+}
+
 - (NSInteger)statisticObjectCount
 {
     NSInteger i = 0;
@@ -191,6 +201,11 @@
 + (BOOL)releaseObjectWithId:(NSString *)objectId group:(NSString *)group
 {
     return [[self sharedInstance] releaseObjectWithId:objectId group:group];
+}
+
++ (NSInteger)objectRetainCountForId:(NSString *)objectId group:(NSString *)group
+{
+    return [[self sharedInstance] objectRetainCountForId:objectId group:group];
 }
 
 @end

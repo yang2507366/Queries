@@ -26,10 +26,11 @@ function Object:setId(objectId)
 end
 
 function Object:release()
-    local recycled = runtime::releaseObject(self:id());
-    if recycled then
+    local objId = self:id();
+    if self:retainCount() == 1 then
         self:dealloc();
     end
+    runtime::releaseObject(objId);
 end
 
 function Object:retain()
@@ -42,11 +43,11 @@ function Object:keep()
 end
 
 function Object:retainCount()
-    
+    return runtime::objectRetainCount(self:id());
 end
 
 function Object:dealloc()
-    
+    self.objectId = nil;
 end
 
 function Object:autorelease()

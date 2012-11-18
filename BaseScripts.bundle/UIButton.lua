@@ -21,12 +21,12 @@ end
 
 function UIButton:create(title, buttonType)
     if title == nil then
-        title = "Untitled";
+        title = "";
     end
     if buttonType == nil then
         buttonType = UIButtonTypeRoundedRect;
     end
-    local buttonId = runtime::invokeClassMethod("Button", "create:type:", System.id());
+    local buttonId = runtime::invokeClassMethod("Button", "create:type:", System.id(), buttonType);
     local button = UIButton:get(buttonId);
     
     button:setTitle(title);
@@ -39,6 +39,7 @@ function UIButton:get(buttonId)
     setmetatable(button, self);
     
     UIButtonEventProxyTable[buttonId] = button;
+    runtime::invokeClassMethod("Button", "attachTappedEvent:func:", buttonId, "UIButton_tapped");
     
     return button;
 end
@@ -46,6 +47,8 @@ end
 -- deconstructor
 function UIButton:dealloc()
     UIButtonEventProxyTable[self:id()] = nil;
+    runtime::invokeClassMethod("Button", "remove:", self:id());
+    UIView.dealloc(self);
 end
 
 -- instance methods
@@ -63,12 +66,11 @@ end
 
 -- events
 function UIButton:tapped()
-    
 end
 
 -- event proxy
 UIButtonEventProxyTable = {};
 
-function event_proxy_button_tapped(buttonId)
+function UIButton_tapped(buttonId)
     UIButtonEventProxyTable[buttonId]:tapped();
 end

@@ -14,17 +14,17 @@ function main()
     ap_new();
     local relatedVC = UIViewController:get(ui::getRelatedViewController());
     local dictVC = UIViewController:create("在线词典"):retain();
-    relatedVC:navigationController():pushViewController(dictVC, true);
-    
-    local vc = UIViewController:create("test"):keep();
-    function vc:viewDidLoad()
-        local btn = UIButton:create("title");
+    function dictVC:viewDidLoad()
+        ap_new();
+        local btn = UIButton:create():retain();
         btn:setFrame(10, 20, 80, 40);
-        vc:view():addSubview(btn);
+        function btn:tapped()
+            print("btntapped");
+        end
+        dictVC:view():addSubview(btn);
+        ap_release();
     end
-    
-    local nc = UINavigationController:create(vc);
-    nc:setAsRootViewController();
+    relatedVC:navigationController():pushViewController(dictVC, true);
     
     ap_release();
 end

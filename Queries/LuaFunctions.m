@@ -557,6 +557,14 @@ int runtime_releaseObject(lua_State *L)
     return 1;
 }
 
+int runtime_objectRetainCount(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *objId = luaStringParam(L, 2);
+    lua_pushnumber(L, [LuaObjectManager objectRetainCountForId:objId group:appId]);
+    return 1;
+}
+
 #pragma mark - system
 int nslog(lua_State *L)
 {
@@ -649,8 +657,10 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "runtime_retainObject", runtime_retainObject);
 #pragma mark - runtime_releaseObject
     pushFunctionToLua(L, "runtime_releaseObject", runtime_releaseObject);
-#pragma amrk - runtime::invokeMethod
+#pragma mark - runtime::invokeMethod
     pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
+#pragma mark - runtime::objectRetainCount
+    pushFunctionToLua(L, "runtime_objectRetainCount", runtime_objectRetainCount);
 #pragma mark - script::runScriptWithId
     pushFunctionToLua(L, "script_runScriptWithId", script_runScriptWithId);
 #pragma mark - ui::createButton
