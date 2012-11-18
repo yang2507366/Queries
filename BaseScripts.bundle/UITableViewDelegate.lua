@@ -1,85 +1,85 @@
 
 UITableViewDelegate = {};
 
-function UITableViewDelegate:willDisplayCell(cell, indexPath)
+function UITableViewDelegate:willDisplayCell(tableView, cell, indexPath)
 end
 
-function UITableViewDelegate:willDisplayHeaderView(view, section)
+function UITableViewDelegate:willDisplayHeaderView(tableView, view, section)
 end
 
-function UITableViewDelegate:willDisplayFooterView(view, section)
+function UITableViewDelegate:willDisplayFooterView(tableView, view, section)
 end
 
-function UITableViewDelegate:didEndDisplayingCell(cell, indexPath)
+function UITableViewDelegate:didEndDisplayingCell(tableView, cell, indexPath)
 end
 
-function UITableViewDelegate:didEndDisplayingHeaderView(view, section)
+function UITableViewDelegate:didEndDisplayingHeaderView(tableView, view, section)
 end
 
-function UITableViewDelegate:didEndDisplayingFooterView(view, section)
+function UITableViewDelegate:didEndDisplayingFooterView(tableView, view, section)
 end
 
-function UITableViewDelegate:heightForRowAtIndexPath(indexPath)
+function UITableViewDelegate:heightForRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:heightForHeaderInSection(section)
+function UITableViewDelegate:heightForHeaderInSection(tableView, section)
 end
 
-function UITableViewDelegate:heightForFooterInSection(section)
+function UITableViewDelegate:heightForFooterInSection(tableView, section)
 end
 
-function UITableViewDelegate:viewForHeaderInSection(section)
+function UITableViewDelegate:viewForHeaderInSection(tableView, section)
 end
 
-function UITableViewDelegate:viewForFooterInSection(section)
+function UITableViewDelegate:viewForFooterInSection(tableView, section)
 end
 
-function UITableViewDelegate:accessoryButtonTappedForRowWithIndexPath(indexPath)
+function UITableViewDelegate:accessoryButtonTappedForRowWithIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:shouldHighlightRowAtIndexPath(indexPath)
+function UITableViewDelegate:shouldHighlightRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:didHighlightRowAtIndexPath(indexPath)
+function UITableViewDelegate:didHighlightRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:didUnhighlightRowAtIndexPath(indexPath)
+function UITableViewDelegate:didUnhighlightRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:willSelectRowAtIndexPath(indexPath)
+function UITableViewDelegate:willSelectRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:willDeselectRowAtIndexPath(indexPath)
+function UITableViewDelegate:willDeselectRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:didSelectRowAtIndexPath(indexPath)
+function UITableViewDelegate:didSelectRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:didDeselectRowAtIndexPath(indexPath)
+function UITableViewDelegate:didDeselectRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:editingStyleForRowAtIndexPath(indexPath)
+function UITableViewDelegate:editingStyleForRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:titleForDeleteConfirmationButtonForRowAtIndexPath(indexPath)
+function UITableViewDelegate:titleForDeleteConfirmationButtonForRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:shouldIndentWhileEditingRowAtIndexPath(indexPath)
+function UITableViewDelegate:shouldIndentWhileEditingRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:willBeginEditingRowAtIndexPath(indexPath)
+function UITableViewDelegate:willBeginEditingRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:didEndEditingRowAtIndexPath(indexPath)
+function UITableViewDelegate:didEndEditingRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:targetIndexPathForMoveFromRowAtIndexPath(sourceIndexPath, proposedDestinationIndexPath)
+function UITableViewDelegate:targetIndexPathForMoveFromRowAtIndexPath(tableView, sourceIndexPath, proposedDestinationIndexPath)
 end
 
-function UITableViewDelegate:indentationLevelForRowAtIndexPath(indexPath)
+function UITableViewDelegate:indentationLevelForRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDelegate:shouldShowMenuForRowAtIndexPath(indexPath)
+function UITableViewDelegate:shouldShowMenuForRowAtIndexPath(tableView, indexPath)
 end
 
 

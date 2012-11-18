@@ -1,7 +1,8 @@
 require "Object"
 require "UIView"
 require "UIFont"
-require "Utils"
+require "CommonUtils"
+require "UITextViewDelegate"
 
 UITextView = {};
 UITextView.__index = UITextView;
@@ -9,13 +10,7 @@ setmetatable(UITextView, UIView);
 
 -- constructor
 function UITextView:create()
-    local tvId = ui::createTextView("UITextView_shouldBeginEditing",
-                                    "UITextView_shouldEndEditing",
-                                    "UITextView_textViewDidBeginEditing",
-                                    "UITextView_textViewDidEndEditing",
-                                    "UITextView_shouldChangeTextInRange",
-                                    "UITextView_didChange",
-                                    "UITextView_textViewDidChangeSelection");
+    local tvId = runtime::invokeClassMethod("TextView", "create:", System.id());
     return UITextView:get(tvId);
 end
 
@@ -23,14 +18,15 @@ function UITextView:get(tvId)
     local tv = UIView:new(tvId);
     setmetatable(tv, self);
     
-    eventProxyTable_textView[tvId] = tv;
+    UITextViewEventProxyTable[tvId] = tv;
     
     return tv;
 end
 
 -- deconstructor
 function UITextView:dealloc()
-    eventProxyTable_textView[self:id()] = nil;
+    UITextViewEventProxyTable[self:id()] = nil;
+    UIView.dealloc(self);
 end
 
 -- instance methods
@@ -40,6 +36,14 @@ end
 
 function UITextView:text()
     return runtime::invokeMethod(self:id(), "text");
+end
+
+function UITextView:setTextColor(color)
+    runtime::invokeMethod(self:id(), "setTextColor:", color:id());
+end
+
+function UITextView:textColor()
+    return UIColor:get(runtime::invokeMethod(self:id(), "textColor"));
 end
 
 function UITextView:setFont(font)
@@ -60,68 +64,101 @@ function UITextView:editable()
     return toLuaBool(b);
 end
 
--- events
-function UITextView:shouldBeginEditing()
-    return true;
-end
-
-function UITextView:shouldEndEditing()
-    return true;
-end
-
-function UITextView:didBeginEditing()
-
-end
-
-function UITextView:didEndEditing()
-
-end
-
-function UITextView:shouldChangeTextInRange(location, length, replacementText)
-    return true;
-end
-
-function UITextView:didChange()
-
-end
-
-function UITextView:didChangeSelection()
+function UITextView:setDelegate(delegate)
+    self.delegate = delegate;
     
+    if delegate.shouldBeginEditing then
+        runtime::invokeMethod(self:id(), "setShouldBeginEditing:", "UITextView_shouldBeginEditing");
+    else
+        runtime::invokeMethod(self:id(), "setShouldBeginEditing:", "");
+    end
+    
+    if delegate.shouldEndEditing then
+        runtime::invokeMethod(self:id(), "setShouldEndEditing:", "UITextView_shouldEndEditing");
+    else
+        runtime::invokeMethod(self:id(), "setShouldEndEditing:", "");
+    end
+    
+    if delegate.didBeginEditing then
+        runtime::invokeMethod(self:id(), "setDidBeginEditing:", "UITextView_didBeginEditing");
+    else
+        runtime::invokeMethod(self:id(), "setDidBeginEditing:", "");
+    end
+    
+    if delegate.didEndEditing then
+        runtime::invokeMethod(self:id(), "setDidEndEditing:", "UITextView_didEndEditing");
+    else
+        runtime::invokeMethod(self:id(), "setDidEndEditing:", "");
+    end
+    
+    if delegate.shouldChangeTextInRange then
+        runtime::invokeMethod(self:id(), "setShouldChangeTextInRange:", "UITextView_shouldChangeTextInRange");
+    else
+        runtime::invokeMethod(self:id(), "setShouldChangeTextInRange:", "");
+    end
+    
+    if delegate.didChange then
+        runtime::invokeMethod(self:id(), "setDidChange:", "UITextView_didChange");
+    else
+        runtime::invokeMethod(self:id(), "setDidChange:", "");
+    end
+    
+    if delegate.didChangeSelection then
+        runtime::invokeMethod(self:id(), "setDidChangeSelection:", "UITextView_didChangeSelection");
+    else
+        runtime::invokeMethod(self:id(), "setDidChangeSelection:", "");
+    end
+    
+    runtime::invokeMethod(self:id(), "updateDelegate");
 end
 
 -- event proxy
-eventProxyTable_textView = {};
+UITextViewEventProxyTable = {};
 function UITextView_shouldBeginEditing(tvId)
-    return toObjCBool(eventProxyTable_textView[tvId]:shouldBeginEditing());
+    local tv = UITextViewEventProxyTable[tvId];
+    if tv and tv.delegate then
+        return toObjCBool(tv.delegate:shouldBeginEditing(tv));
+    end
 end
 
 function UITextView_shouldEndEditing(tvId)
-    local tv = eventProxyTable_textView[tvId];
-    if tv then
-        return toObjCBool(tv:shouldEndEditing());
+    local tv = UITextViewEventProxyTable[tvId];
+    if tv and tv.delegate then
+        return toObjCBool(tv.delegate:shouldEndEditing(tv));
     end
-    return toObjCBool(true);
 end
 
-function UITextView_textViewDidBeginEditing(tvId)
-    eventProxyTable_textView[tvId]:didBeginEditing();
+function UITextView_didBeginEditing(tvId)
+    local tv = UITextViewEventProxyTable[tvId];
+    if tv and tv.delegate then
+        tv.delegate:didBeginEditing(tv);
+    end
 end
 
-function UITextView_textViewDidEndEditing(tvId)
-    local tv = eventProxyTable_textView[tvId];
-    if tv then
-        tv:didEndEditing();
+function UITextView_didEndEditing(tvId)
+    local tv = UITextViewEventProxyTable[tvId];
+    if tv and tv.delegate then
+        tv.delegate:didEndEditing(tv);
     end
 end
 
 function UITextView_shouldChangeTextInRange(tvId, location, length, replacementText)
-    return toObjCBool(eventProxyTable_textView[tvId]:shouldChangeTextInRange(tonumber(location), tonumber(length), replacementText));
+    local tv = UITextViewEventProxyTable[tvId];
+    if tv and tv.delegate then
+        return toObjCBool(tv.delegate:shouldChangeTextInRange(tv, tonumber(location), tonumber(length), replacementText));
+    end
 end
 
 function UITextView_didChange(tvId)
-    eventProxyTable_textView[tvId]:didChange();
+    local tv = UITextViewEventProxyTable[tvId];
+    if tv and tv.delegate then
+        tv.delegate:didChange(tv);
+    end
 end
 
-function UITextView_textViewDidChangeSelection(tvId)
-    eventProxyTable_textView[tvId]:didChangeSelection();
+function UITextView_didChangeSelection(tvId)
+    local tv = UITextViewEventProxyTable[tvId];
+    if tv and tv.delegate then
+        tv.delegate:didChangeSelection(tv);
+    end
 end

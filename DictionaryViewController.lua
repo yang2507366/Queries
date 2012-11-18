@@ -11,6 +11,9 @@ require "AppBundle"
 require "UIButton"
 require "UIBarButtonItem"
 require "UILabel"
+require "UITextField"
+require "UITextView"
+require "UIPickerView"
 
 function main()
     ap_new();
@@ -18,18 +21,54 @@ function main()
     local dictVC = UIViewController:create("在线词典"):retain();
     function dictVC:viewDidLoad()
         ap_new();
-        local btn = UIButton:create():retain();
-        btn:setFrame(10, 20, 80, 40);
-        function btn:tapped()
-            print("btntapped");
+        --[[
+        local tableView = UITableView:create():retain();
+        tableView:setFrame(self:view():bounds());
+        tableView:setAutoresizingMask(UIViewAutoresizingFlexibleHeight);
+        self:view():addSubview(tableView);
+        local tableViewDataSource = {};
+        function tableViewDataSource:numberOfSections(tmpTableView)
+            return 10;
         end
-        dictVC:view():addSubview(btn);
+        function tableViewDataSource:numberOfRowsInSection(tmpTableView)
+            return 10;
+        end
+        function tableViewDataSource:titleForHeaderInSection(tmpTableView, section)
+            return "header-"..section;
+        end
+        local cellIdentfier = "c_id";
+        function tableViewDataSource:cellForRowAtIndexPath(tmpTableView, indexPath)
+            ap_new();
+            setmetatable(tmpTableView, UITableView);
+            local cell = tmpTableView:dequeueReusableCellWithIdentifier(cellIdentfier);
+            if not cell then
+                cell = UITableViewCell:create(cellIdentfier);
+            end
+            cell:keep();
+            cell:textLabel():setText(indexPath:row());
+            ap_release();
+            return cell;
+        end
+        tableView:setDataSource(tableViewDataSource);
+         ]]
         
-        local rightBtn = UIBarButtonItem:create("title"):retain();
-        dictVC:navigationItem():setRightBarButtonItem(rightBtn);
-        
-        local label = UILabel:create("labeltest");
-        self:view():addSubview(label);
+        local pickerView = UIPickerView:create():retain();
+        pickerView:setFrame(10, 10, 300, 300);
+        pickerView:setShowsSelectionIndicator(true);
+        local pickerViewDelegate = {};
+        function pickerViewDelegate:titleForRowForComponent(pickerView, row, component)
+            return "title-"..component..","..row;
+        end
+        local pickerViewDataSource = {};
+        function pickerViewDataSource:numberOfComponents()
+            return 2;
+        end
+        function pickerViewDataSource:numberOfRowsInComponent()
+            return 10;
+        end
+        pickerView:setDataSource(pickerViewDataSource);
+        pickerView:setDelegate(pickerViewDelegate);
+        self:view():addSubview(pickerView);
         
         ap_release();
     end

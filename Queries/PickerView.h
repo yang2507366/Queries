@@ -10,7 +10,7 @@
 #import "ScriptInteraction.h"
 #import "LuaImplentatable.h"
 
-@interface PickerViewImpl : UIPickerView <LuaImplentatable>
+@interface PickerView : UIPickerView <LuaImplentatable>
 
 @property(nonatomic, copy)NSInteger(^numOfComponents)();
 @property(nonatomic, copy)NSInteger(^numOfRowsInComponent)(NSInteger component);
@@ -22,15 +22,5 @@
 @property(nonatomic, copy)void(^didSelectRowInComponent)(NSInteger row, NSInteger component);
 
 + (NSString *)create:(NSString *)appId;
-
-+ (NSString *)createWithAppId:(NSString *)appId
-              numOfComponents:(NSString *)numOfComponents
-         numOfRowsInComponent:(NSString *)numOfRowsInComponent
-            widthForComponent:(NSString *)widthForComponent
-        rowHeightForComponent:(NSString *)rowHeightForComponent
-      titleForRowForComponent:(NSString *)titleForRowForComponent
-attributedTitleForRowForComponent:(NSString *)attributedTitleForRowForComponent
-viewForRowForComponentReuseView:(NSString *)viewForRowForComponentReuseView
-      didSelectRowInComponent:(NSString *)didSelectRowInComponent;
 
 @end

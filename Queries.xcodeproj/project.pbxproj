@@ -19,12 +19,13 @@
 		3E094F1A16351CEA006F90A9 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
 		3E1A7BD71643B6E700D9EE55 /* DialogImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E1A7BD61643B6E600D9EE55 /* DialogImpl.m */; };
 		3E1A7BDA1643BD7F00D9EE55 /* QueryPostcodeViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E1A7BD91643BD7F00D9EE55 /* QueryPostcodeViewController.lua */; };
-		3E34ECF1164A97D400B4F7F0 /* PickerViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E34ECF0164A97D400B4F7F0 /* PickerViewImpl.m */; };
+		3E34ECF1164A97D400B4F7F0 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E34ECF0164A97D400B4F7F0 /* PickerView.m */; };
 		3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4286161647518700B1451D /* LuaCommonUtils.m */; };
 		3E42862D16477A6800B1451D /* TextViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E42862C16477A6800B1451D /* TextViewImpl.m */; };
 		3E42864A1647BECF00B1451D /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E4286491647BECF00B1451D /* doc.txt */; };
 		3E4EBD241636FDCA00629387 /* UIBarButtonItemImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */; };
 		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
+		3E6283FA165902F700F59593 /* TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6283F9165902F700F59593 /* TextView.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E633960162D8C3900B63328 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395F162D8C3900B63328 /* CoreGraphics.framework */; };
@@ -83,7 +84,6 @@
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC0BAA31633CB060074D22B /* ViewControllerImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */; };
-		3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */; };
 		3EC0BAAC1633EAFD0074D22B /* EventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BAAB1633EAFD0074D22B /* EventProxy.m */; };
 		3EC357C31643E288009611C8 /* ApplicationScriptBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */; };
 		3EC357C61643EDE7009611C8 /* LuaApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C51643EDE7009611C8 /* LuaApp.m */; };
@@ -173,8 +173,8 @@
 		3E1A7BD51643B6E600D9EE55 /* DialogImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogImpl.h; sourceTree = "<group>"; };
 		3E1A7BD61643B6E600D9EE55 /* DialogImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogImpl.m; sourceTree = "<group>"; };
 		3E1A7BD91643BD7F00D9EE55 /* QueryPostcodeViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QueryPostcodeViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
-		3E34ECEF164A97D400B4F7F0 /* PickerViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewImpl.h; sourceTree = "<group>"; };
-		3E34ECF0164A97D400B4F7F0 /* PickerViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewImpl.m; sourceTree = "<group>"; };
+		3E34ECEF164A97D400B4F7F0 /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		3E34ECF0164A97D400B4F7F0 /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
 		3E4286151647518700B1451D /* LuaCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaCommonUtils.h; sourceTree = "<group>"; };
 		3E4286161647518700B1451D /* LuaCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaCommonUtils.m; sourceTree = "<group>"; };
 		3E42862B16477A6700B1451D /* TextViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewImpl.h; sourceTree = "<group>"; };
@@ -184,6 +184,8 @@
 		3E4EBD231636FDC900629387 /* UIBarButtonItemImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBarButtonItemImpl.m; sourceTree = "<group>"; };
 		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
 		3E4EBD28163814BD00629387 /* DotGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotGrammarChecker.m; sourceTree = "<group>"; };
+		3E6283F8165902F700F59593 /* TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextView.h; sourceTree = "<group>"; };
+		3E6283F9165902F700F59593 /* TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextView.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E63395B162D8C3900B63328 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3E63395D162D8C3900B63328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -293,8 +295,6 @@
 		3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfSupportChecker.m; sourceTree = "<group>"; };
 		3EC0BAA11633CB060074D22B /* ViewControllerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerImpl.h; sourceTree = "<group>"; };
 		3EC0BAA21633CB060074D22B /* ViewControllerImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerImpl.m; sourceTree = "<group>"; };
-		3EC0BAA41633E99F0074D22B /* TextFieldImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldImpl.h; sourceTree = "<group>"; };
-		3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldImpl.m; sourceTree = "<group>"; };
 		3EC0BAAA1633EAFC0074D22B /* EventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventProxy.h; sourceTree = "<group>"; };
 		3EC0BAAB1633EAFD0074D22B /* EventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventProxy.m; sourceTree = "<group>"; };
 		3EC357BF1643E1BC009611C8 /* ScriptBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScriptBundle.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -711,6 +711,10 @@
 				3ED3F59D165899EB003EE847 /* Label.m */,
 				3ED3F59F16589CEF003EE847 /* TextField.h */,
 				3ED3F5A016589CEF003EE847 /* TextField.m */,
+				3E6283F8165902F700F59593 /* TextView.h */,
+				3E6283F9165902F700F59593 /* TextView.m */,
+				3E34ECEF164A97D400B4F7F0 /* PickerView.h */,
+				3E34ECF0164A97D400B4F7F0 /* PickerView.m */,
 			);
 			name = impl2;
 			sourceTree = "<group>";
@@ -834,14 +838,10 @@
 				3E094F0B1634F145006F90A9 /* LabelImpl.m */,
 				3E094F1516351530006F90A9 /* NavigationControllerImpl.h */,
 				3E094F1616351531006F90A9 /* NavigationControllerImpl.m */,
-				3E34ECEF164A97D400B4F7F0 /* PickerViewImpl.h */,
-				3E34ECF0164A97D400B4F7F0 /* PickerViewImpl.m */,
 				3E8C454316343DE600468A7E /* RuntimeImpl.h */,
 				3E8C454416343DE600468A7E /* RuntimeImpl.m */,
 				3ED0C77E16354F2D00A3E33F /* TableViewImpl.h */,
 				3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */,
-				3EC0BAA41633E99F0074D22B /* TextFieldImpl.h */,
-				3EC0BAA51633E9A00074D22B /* TextFieldImpl.m */,
 				3E42862B16477A6700B1451D /* TextViewImpl.h */,
 				3E42862C16477A6800B1451D /* TextViewImpl.m */,
 				3E4EBD221636FDC700629387 /* UIBarButtonItemImpl.h */,
@@ -1046,7 +1046,6 @@
 				3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */,
 				3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */,
 				3EC0BAA31633CB060074D22B /* ViewControllerImpl.m in Sources */,
-				3EC0BAA61633E9A00074D22B /* TextFieldImpl.m in Sources */,
 				3EC0BAAC1633EAFD0074D22B /* EventProxy.m in Sources */,
 				3E8C453C16340F2300468A7E /* CallScriptImpl.m in Sources */,
 				3E8C453F1634361500468A7E /* LuaObjectManager.m in Sources */,
@@ -1124,7 +1123,7 @@
 				3E867B591647DFCE00650486 /* Reachability.m in Sources */,
 				3ED64C071648CC6B00190688 /* SuperSupportChecker.m in Sources */,
 				3E867B6C1649573100650486 /* AppRunnerViewController.m in Sources */,
-				3E34ECF1164A97D400B4F7F0 /* PickerViewImpl.m in Sources */,
+				3E34ECF1164A97D400B4F7F0 /* PickerView.m in Sources */,
 				3EE591B916512C6C00465C10 /* UIAlertViewImpl.m in Sources */,
 				3EA2707A165278D60011C0D4 /* TableView.m in Sources */,
 				3E7A6DF81657AACB008DC64B /* AddBaseScriptsChecker.m in Sources */,
@@ -1134,6 +1133,7 @@
 				3ED3F59A16589452003EE847 /* BarButtonItem.m in Sources */,
 				3ED3F59E165899EB003EE847 /* Label.m in Sources */,
 				3ED3F5A116589CEF003EE847 /* TextField.m in Sources */,
+				3E6283FA165902F700F59593 /* TextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -146,7 +146,7 @@
         return NO;
     }else if([selectorName isEqualToString:@"tableView:commitEditingStyle:forRowAtIndexPath:"] && self.targetTableView.commitEditingStyle.length == 0){
         return NO;
-    }else if([selectorName isEqualToString:@"sectionIndexTitlesForTableView:"] && self.targetTableView.sectionIndexTitles){
+    }else if([selectorName isEqualToString:@"sectionIndexTitlesForTableView:"] && self.targetTableView.sectionIndexTitles.length == 0){
         return NO;
     }
     

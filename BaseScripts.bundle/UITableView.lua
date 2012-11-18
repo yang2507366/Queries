@@ -327,7 +327,7 @@ UITableViewEventProxyTable = {};
 function UITableViewDataSource_numberOfRowsInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     if tb and tb.dataSource then
-        return tb.dataSource:numberOfRowsInSection(tonumber(section));
+        return tb.dataSource:numberOfRowsInSection(tb, tonumber(section));
     end
 end
 
@@ -338,7 +338,7 @@ function UITableViewDataSource_cellForRowAtIndexPath(tableViewId, indexPathId)
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return tb.dataSource:cellForRowAtIndexPath(indexPath):id();
+        return tb.dataSource:cellForRowAtIndexPath(tb, indexPath):id();
     end
 end
 
@@ -346,7 +346,7 @@ function UITableViewDataSource_numberOfSections(tableViewId)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.dataSource then
-        return tb.dataSource:numberOfSections();
+        return tb.dataSource:numberOfSections(tb);
     end
 end
 
@@ -354,7 +354,7 @@ function UITableViewDataSource_titleForHeaderInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.dataSource then
-        return tb.dataSource:titleForHeaderInSection(tonumber(section));
+        return tb.dataSource:titleForHeaderInSection(tb, tonumber(section));
     end
 end
 
@@ -362,7 +362,7 @@ function UITableViewDataSource_titleForFooterInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.dataSource then
-        return tb.dataSource:titleForFooterInSection(tonumber(section));
+        return tb.dataSource:titleForFooterInSection(tb, tonumber(section));
     end
 end
 
@@ -373,7 +373,7 @@ function UITableViewDataSource_canEditRowAtIndexPath(tableViewId, indexPathId)
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return toObjCBool(tb.dataSource:canEditRowAtIndexPath(indexPath));
+        return toObjCBool(tb.dataSource:canEditRowAtIndexPath(tb, indexPath));
     end
 end
 
@@ -384,7 +384,7 @@ function UITableViewDataSource_canMoveRowAtIndexPath(tableViewId, indexPathId)
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return toObjCBool(tb.dataSource:canMoveRowAtIndexPath(indexPath));
+        return toObjCBool(tb.dataSource:canMoveRowAtIndexPath(tb, indexPath));
     end
 end
 
@@ -392,7 +392,7 @@ function UITableViewDataSource_sectionIndexTitles(tableViewId)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.dataSource then
-        return tb.dataSource:sectionIndexTitles():id();
+        return tb.dataSource:sectionIndexTitles(tb):id();
     end
 end
 
@@ -400,7 +400,7 @@ function UITableViewDataSource_sectionForSectionIndexTitle(tableViewId, title, i
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.dataSource then
-        return tb.dataSource:sectionForSectionIndexTitle(title, tonumber(index));
+        return tb.dataSource:sectionForSectionIndexTitle(tb, title, tonumber(index));
     end
 end
 
@@ -411,7 +411,7 @@ function UITableViewDataSource_commitEditingStyle(tableViewId, editingStyle, ind
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.dataSource:commitEditingStyle(tonumber(editingStyle), indexPath);
+        tb.dataSource:commitEditingStyle(tb, tonumber(editingStyle), indexPath);
     end
 end
 
@@ -423,7 +423,7 @@ function UITableViewDataSource_moveRowAtIndexPath(tableViewId, sourceIndexPathId
         local sourceIndexPath = NSIndexPath:get(sourceIndexPathId):keep();
         local destinationIndexPath = NSIndexPath:get(destinationIndexPathId):keep();
         ap_release();
-        tb.dataSource:moveRowAtIndexPath(sourceIndexPath, destinationIndexPath);
+        tb.dataSource:moveRowAtIndexPath(tb, sourceIndexPath, destinationIndexPath);
     end
 end
 
@@ -436,7 +436,7 @@ function UITableViewDelegate_willDisplayCell(tableViewId, cellId, indexPathId)
         local cell = UITableViewCell:get(cellId):keep();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:willDisplayCell(cell, indexPath);
+        tb.delegate:willDisplayCell(tb, cell, indexPath);
     end
 end
 
@@ -447,7 +447,7 @@ function UITableViewDelegate_willDisplayHeaderView(tableViewId, viewId, section)
         ap_new();
         local view = UIView:get(viewId):keep();
         ap_release();
-        tb.delegate:willDisplayHeaderView(view, section);
+        tb.delegate:willDisplayHeaderView(tb, view, section);
     end
 end
 
@@ -458,7 +458,7 @@ function UITableViewDelegate_willDisplayFooterView(tableViewId, viewId, section)
         ap_new();
         local view = UIView:get(viewId):keep();
         ap_release();
-        tb.delegate:willDisplayFooterView(view, section);
+        tb.delegate:willDisplayFooterView(tb, view, section);
     end
 end
 
@@ -470,7 +470,7 @@ function UITableViewDelegate_didEndDisplayingCell(tableViewId, cellId, indexPath
         local cell = UITableViewCell:get(cellId):keep();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:didEndDisplayingCell(cell, indexPath);
+        tb.delegate:didEndDisplayingCell(tb, cell, indexPath);
     end
 end
 
@@ -481,7 +481,7 @@ function UITableViewDelegate_didEndDisplayingHeaderView(tableViewId, viewId, sec
         ap_new();
         local view = UIView:get(viewId):keep();
         ap_release();
-        tb.delegate:didEndDisplayingHeaderView(view, section);
+        tb.delegate:didEndDisplayingHeaderView(tb, view, section);
     end
 end
 
@@ -492,7 +492,7 @@ function UITableViewDelegate_didEndDisplayingFooterView(tableViewId, viewId, sec
         ap_new();
         local view = UIView:get(viewId):keep();
         ap_release();
-        tb.delegate:didEndDisplayingFooterView(view, section);
+        tb.delegate:didEndDisplayingFooterView(tb, view, section);
     end
 end
 
@@ -503,7 +503,7 @@ function UITableViewDelegate_heightForRowAtIndexPath(tableViewId, indexPathId)
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return tb.delegate:heightForRowAtIndexPath(indexPath);
+        return tb.delegate:heightForRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -511,7 +511,7 @@ function UITableViewDelegate_heightForHeaderInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.delegate then
-        return tb.delegate:heightForHeaderInSection(section);
+        return tb.delegate:heightForHeaderInSection(tb, section);
     end
 end
 
@@ -519,7 +519,7 @@ function UITableViewDelegate_heightForFooterInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.delegate then
-        return tb.delegate:heightForFooterInSection(section);
+        return tb.delegate:heightForFooterInSection(tb, section);
     end
 end
 
@@ -527,7 +527,7 @@ function UITableViewDelegate_viewForHeaderInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.delegate then
-        local view = tb.delegate:viewForHeaderInSection(section);
+        local view = tb.delegate:viewForHeaderInSection(tb, section);
         if view and view.id then
             return view:id();
         end
@@ -538,7 +538,7 @@ function UITableViewDelegate_viewForFooterInSection(tableViewId, section)
     local tb = UITableViewEventProxyTable[tableViewId];
     
     if tb and tb.delegate then
-        local view = tb.delegate:viewForFooterInSection(section);
+        local view = tb.delegate:viewForFooterInSection(tb, section);
         if view and view.id then
             return view:id();
         end
@@ -552,7 +552,7 @@ function UITableViewDelegate_accessoryButtonTappedForRowWithIndexPath(tableViewI
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:accessoryButtonTappedForRowWithIndexPath(indexPath);
+        tb.delegate:accessoryButtonTappedForRowWithIndexPath(tb, indexPath);
     end
 end
 
@@ -563,7 +563,7 @@ function UITableViewDelegate_shouldHighlightRowAtIndexPath(tableViewId, indexPat
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return toObjCBool(tb.delegate:shouldHighlightRowAtIndexPath(indexPath));
+        return toObjCBool(tb.delegate:shouldHighlightRowAtIndexPath(tb, indexPath));
     end
 end
 
@@ -574,7 +574,7 @@ function UITableViewDelegate_didHighlightRowAtIndexPath(tableViewId, indexPathId
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:didHighlightRowAtIndexPath(indexPath);
+        tb.delegate:didHighlightRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -585,7 +585,7 @@ function UITableViewDelegate_didUnhighlightRowAtIndexPath(tableViewId, indexPath
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:didUnhighlightRowAtIndexPath(indexPath);
+        tb.delegate:didUnhighlightRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -596,7 +596,7 @@ function UITableViewDelegate_willSelectRowAtIndexPath(tableViewId, indexPathId)
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        local newIndexPath = tb.delegate:willSelectRowAtIndexPath(indexPath);
+        local newIndexPath = tb.delegate:willSelectRowAtIndexPath(tb, indexPath);
         if newIndexPath and newIndexPath.id then
             return newIndexPath:id();
         end
@@ -610,7 +610,7 @@ function UITableViewDelegate_willDeselectRowAtIndexPath(tableViewId, indexPathId
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        local newIndexPath = tb.delegate:willDeselectRowAtIndexPath(indexPath);
+        local newIndexPath = tb.delegate:willDeselectRowAtIndexPath(tb, indexPath);
         if newIndexPath and newIndexPath.id then
             return newIndexPath:id();
         end
@@ -624,7 +624,7 @@ function UITableViewDelegate_didSelectRowAtIndexPath(tableViewId, indexPathId)
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:didSelectRowAtIndexPath(indexPath);
+        tb.delegate:didSelectRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -635,7 +635,7 @@ function UITableViewDelegate_didDeselectRowAtIndexPath(tableViewId, indexPathId)
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:didDeselectRowAtIndexPath(indexPath);
+        tb.delegate:didDeselectRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -646,7 +646,7 @@ function UITableViewDelegate_editingStyleForRowAtIndexPath(tableViewId, indexPat
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return tb.delegate:editingStyleForRowAtIndexPath(indexPath);
+        return tb.delegate:editingStyleForRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -657,7 +657,7 @@ function UITableViewDelegate_titleForDeleteConfirmationButtonForRowAtIndexPath(t
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return tb.delegate:titleForDeleteConfirmationButtonForRowAtIndexPath(indexPath);
+        return tb.delegate:titleForDeleteConfirmationButtonForRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -668,7 +668,7 @@ function UITableViewDelegate_shouldIndentWhileEditingRowAtIndexPath(tableViewId,
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return toObjCBool(tb.delegate:shouldIndentWhileEditingRowAtIndexPath(indexPath));
+        return toObjCBool(tb.delegate:shouldIndentWhileEditingRowAtIndexPath(tb, indexPath));
     end
 end
 
@@ -679,7 +679,7 @@ function UITableViewDelegate_willBeginEditingRowAtIndexPath(tableViewId, indexPa
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:willBeginEditingRowAtIndexPath(indexPath);
+        tb.delegate:willBeginEditingRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -690,7 +690,7 @@ function UITableViewDelegate_didEndEditingRowAtIndexPath(tableViewId, indexPathI
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        tb.delegate:didEndEditingRowAtIndexPath(indexPath);
+        tb.delegate:didEndEditingRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -702,7 +702,7 @@ function UITableViewDelegate_targetIndexPathForMoveFromRowAtIndexPath(tableViewI
         local sourceIndexPath = NSIndexPath:get(sourceIndexPathId):keep();
         local destinationIndexPath = NSIndexPath:get(destinationIndexPathId):keep();
         ap_release();
-        local resultIndexPath = tb.delegate:targetIndexPathForMoveFromRowAtIndexPath(sourceIndexPath, destinationIndexPath);
+        local resultIndexPath = tb.delegate:targetIndexPathForMoveFromRowAtIndexPath(tb, sourceIndexPath, destinationIndexPath);
         if resultIndexPath and resultIndexPath.id then
             return resultIndexPath:id();
         end
@@ -716,7 +716,7 @@ function UITableViewDelegate_indentationLevelForRowAtIndexPath(tableViewId, inde
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return tb.delegate:indentationLevelForRowAtIndexPath(indexPath);
+        return tb.delegate:indentationLevelForRowAtIndexPath(tb, indexPath);
     end
 end
 
@@ -727,6 +727,6 @@ function UITableViewDelegate_shouldShowMenuForRowAtIndexPath(tableViewId, indexP
         ap_new();
         local indexPath = NSIndexPath:get(indexPathId):keep();
         ap_release();
-        return toObjCBool(tb.delegate:shouldShowMenuForRowAtIndexPath(indexPath));
+        return toObjCBool(tb.delegate:shouldShowMenuForRowAtIndexPath(tb, indexPath));
     end
 end

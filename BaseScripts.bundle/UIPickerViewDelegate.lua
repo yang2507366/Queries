@@ -1,33 +1,19 @@
 UIPickerViewDelegate = {};
 
-function UIPickerViewDelegate:numberOfComponents()
-    return nil;
+function UIPickerViewDelegate:attributedTitleForRowForComponent(pickerView, component)
 end
 
-function UIPickerViewDelegate:numberOfRowsInComponent(component)
-    return nil;
+function UIPickerViewDelegate:didSelectRowInComponent(pickerView, row, component)
 end
 
-function UIPickerViewDelegate:attributedTitleForRowForComponent(component)
-    return nil;
+function UIPickerViewDelegate:rowHeightForComponent(pickerView, component)
 end
 
-function UIPickerViewDelegate:didSelectRowInComponent(row, component)
-    return nil;
+function UIPickerViewDelegate:titleForRowForComponent(pickerView, component)
 end
 
-function UIPickerViewDelegate:rowHeightForComponent(component)
-    return nil;
+function UIPickerViewDelegate:viewForRowForComponentReusingView(pickerView, row, component, reusingView)
 end
 
-function UIPickerViewDelegate:titleForRowForComponent(component)
-    return nil;
-end
-
-function UIPickerViewDelegate:viewForRowForComponentReusingView(row, component, reusingView)
-    return nil;
-end
-
-function UIPickerViewDelegate:widthForComponent(component)
-    return nil;
+function UIPickerViewDelegate:widthForComponent(pickerView, component)
 end

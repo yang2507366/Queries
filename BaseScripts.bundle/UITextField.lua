@@ -1,5 +1,7 @@
 require "UIView"
 require "UITextFieldDelegate"
+require "System"
+require "CommonUtils"
 
 UITextField = {};
 UITextField.__index = UITextField;
@@ -25,7 +27,7 @@ UIKeyboardTypeTwitter                   = 9;
 
 -- constructor
 function UITextField:create()
-    local textFieldId = ui::createTextField();
+    local textFieldId = runtime::invokeClassMethod("TextField", "create:", System.id());
     
     return self:get(textFieldId);
 end
@@ -42,9 +44,58 @@ end
 -- deconstructor
 function UITextField:dealloc()
     UITextFieldEventProxyTable[self:id()] = nil;
+    UIView.dealloc(self);
 end
 
 -- instance methods
+function UITextField:setDelegate(delegate)
+    self.delegate = delegate;
+    
+    if delegate.shouldBeginEditing then
+        runtime::invokeMethod(self:id(), "setShouldBeginEditing:", "UITextFieldDelegate_shouldBeginEditing");
+    else
+        runtime::invokeMethod(self:id(), "setShouldBeginEditing:", "");
+    end
+    
+    if delegate.didBeginEditing then
+        runtime::invokeMethod(self:id(), "setDidBeginEditing:", "UITextFieldDelegate_didBeginEditing");
+    else
+        runtime::invokeMethod(self:id(), "setDidBeginEditing:", "");
+    end
+    
+    if delegate.shouldEndEditing then
+        runtime::invokeMethod(self:id(), "setShouldEndEditing:", "UITextFieldDelegate_shouldEndEditing");
+    else
+        runtime::invokeMethod(self:id(), "setShouldEndEditing:", "");
+    end
+    
+    if delegate.didEndEditing then
+        runtime::invokeMethod(self:id(), "setDidEndEditing:", "UITextFieldDelegate_didEndEditing");
+    else
+        runtime::invokeMethod(self:id(), "setDidEndEditing:", "");
+    end
+    
+    if delegate.shouldChangeCharactersInRange then
+        runtime::invokeMethod(self:id(), "setShouldChangeCharactersInRange:", "UITextFieldDelegate_shouldChangeCharactersInRange");
+    else
+        runtime::invokeMethod(self:id(), "setShouldChangeCharactersInRange:", "");
+    end
+    
+    if delegate.shouldClear then
+        runtime::invokeMethod(self:id(), "setShouldClear:", "UITextFieldDelegate_shouldClear");
+    else
+        runtime::invokeMethod(self:id(), "setShouldClear:", "");
+    end
+    
+    if delegate.shouldReturn then
+        runtime::invokeMethod(self:id(), "setShouldReturn:", "UITextFieldDelegate_shouldReturn");
+    else
+        runtime::invokeMethod(self:id(), "setShouldReturn:", "");
+    end
+    
+    runtime::invokeMethod(self:id(), "updateDelegate");
+end
+
 function UITextField:setClearButtonMode(mode)
     runtime::invokeMethod(self:id(), "setClearButtonMode", mode);
 end
@@ -65,68 +116,54 @@ function UITextField:keyboardType()
     return tonumber(runtime::invokeMethod(self:id(), "keyboardType"));
 end
 
--- event
-function UITextField:shouldBeginEditing()
-    return "YES";
-end
-
-function UITextField:didBeginEditing()
-    
-end
-
-function UITextField:shouldEndEditing()
-    return true;
-end
-
-function UITextField:didEndEditing()
-    
-end
-
-function UITextField:shouldChangeCharactersInRange(location, length)
-    return true;
-end
-
 -- event proxy
 UITextFieldEventProxyTable = {};
 
-function epf_textFieldShouldBeginEditing(textFieldId)
-    local b = UITextFieldEventProxyTable[textFieldId]:shouldBeginEditing();
-    if b then
-        return "YES";
-    else
-        return "NO";
-    end
-end
-
-function epf_textFieldDidBeginEditing(textFieldId)
-    UITextFieldEventProxyTable[textFieldId]:didBeginEditing();
-end
-
-function epf_textFieldShouldEndEditing(textFieldId)
+function UITextFieldDelegate_shouldBeginEditing(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
-    if textField then
-        local b = textField:shouldEndEditing();
-        if b then
-            return "YES";
-        else
-            return "NO";
-        end
+    if textField and textField.delegate then
+        return toObjCBool(textField.delegate:shouldBeginEditing(textField));
     end
-    return "YES";
 end
 
-function epf_textFieldDidEndEditing(textFieldId)
+function UITextFieldDelegate_didBeginEditing(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
-    if textField then
-        textField:didEndEditing();
+    if textField and textField.delegate then
+        textField.delegate:didBeginEditing(textField);
     end
 end
 
-function epf_shouldChangeCharactersInRange(textFieldId, location, length)
-    local b = UITextFieldEventProxyTable[textFieldId]:shouldChangeCharactersInRange(tonumber(location), tonumber(length));
-    if b then
-        return "YES";
-    else
-        return "NO";
+function UITextFieldDelegate_shouldEndEditing(textFieldId)
+    local textField = UITextFieldEventProxyTable[textFieldId];
+    if textField and textField.delegate then
+        return toObjCBool(textField.delegate:shouldEndEditing(textField));
+    end
+end
+
+function UITextFieldDelegate_didEndEditing(textFieldId)
+    local textField = UITextFieldEventProxyTable[textFieldId];
+    if textField and textField.delegate then
+        textField.delegate:didEndEditing(textField);
+    end
+end
+
+function UITextFieldDelegate_shouldChangeCharactersInRange(textFieldId, location, length, replacementString)
+    local textField = UITextFieldEventProxyTable[textFieldId];
+    if textField and textField.delegate then
+        return toObjCBool(textField.delegate:shouldChangeCharactersInRange(textField, tonumber(location), tonumber(length), replacementString));
+    end
+end
+
+function UITextFieldDelegate_shouldClear(textFieldId)
+    local textField = UITextFieldEventProxyTable[textFieldId];
+    if textField and textField.delegate then
+        return toObjCBool(textField.delegate:shouldClear(textField));
+    end
+end
+
+function UITextFieldDelegate_shouldReturn(textFieldId)
+    local textField = UITextFieldEventProxyTable[textFieldId];
+    if textField and textField.delegate then
+        return toObjCBool(textField.delegate:shouldReturn(textField));
     end
 end

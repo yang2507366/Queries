@@ -1,49 +1,36 @@
 require "Object"
 
 UITableViewDataSource = {};
-UITableViewDataSource.__index = UITableViewDataSource;
-setmetatable(UITableViewDataSource, Object);
 
-function UITableViewDataSource:numberOfRowsInSection(section)
-    return nil;
+function UITableViewDataSource:numberOfRowsInSection(tableView, section)
 end
 
-function UITableViewDataSource:cellForRowAtIndexPath(indexPath)
-    return nil;
+function UITableViewDataSource:cellForRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDataSource:numberOfSections()
-    return nil;
+function UITableViewDataSource:numberOfSections(tableView)
 end
 
-function UITableViewDataSource:titleForHeaderInSection(section)
-    return nil;
+function UITableViewDataSource:titleForHeaderInSection(tableView, section)
 end
 
-function UITableViewDataSource:titleForFooterInSection(section)
-    return nil;
+function UITableViewDataSource:titleForFooterInSection(tableView, section)
 end
 
-function UITableViewDataSource:canEditRowAtIndexPath(indexPath)
-    return nil;
+function UITableViewDataSource:canEditRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDataSource:canMoveRowAtIndexPath(indexPath)
-    return nil;
+function UITableViewDataSource:canMoveRowAtIndexPath(tableView, indexPath)
 end
 
-function UITableViewDataSource:sectionIndexTitles()
-    return nil;
+function UITableViewDataSource:sectionIndexTitles(tableView)
 end
 
-function UITableViewDataSource:sectionForSectionIndexTitle(title, index)
-    return nil;
+function UITableViewDataSource:sectionForSectionIndexTitle(tableView, title, index)
 end
 
-function UITableViewDataSource:commitEditingStyle(editingStyle, indexPath)
-    return nil;
+function UITableViewDataSource:commitEditingStyle(tableView, editingStyle, indexPath)
 end
 
-function UITableViewDataSource:moveRowAtIndexPath(sourceIndexPath, destinationIndexPath)
-    return nil;
+function UITableViewDataSource:moveRowAtIndexPath(tableView, sourceIndexPath, destinationIndexPath)
 end

@@ -1,22 +1,22 @@
 UITextFieldDelegate = {};
 
-function UITextFieldDelegate:textFieldShouldBeginEditing()
+function UITextFieldDelegate:shouldBeginEditing(textField)
 end
 
-function UITextFieldDelegate:textFieldDidBeginEditing()
+function UITextFieldDelegate:didBeginEditing(textField)
 end
 
-function UITextFieldDelegate:textFieldShouldEndEditing()
+function UITextFieldDelegate:shouldEndEditing(textField)
 end
 
-function UITextFieldDelegate:textFieldDidEndEditing()
+function UITextFieldDelegate:didEndEditing(textField)
 end
 
-function UITextFieldDelegate:shouldChangeCharactersInRange(range, replacementString)
+function UITextFieldDelegate:shouldChangeCharactersInRange(textField, location, length, replacementString)
 end
 
-function UITextFieldDelegate:textFieldShouldClear()
+function UITextFieldDelegate:shouldClear(textField)
 end
 
-function UITextFieldDelegate:textFieldShouldReturn()
+function UITextFieldDelegate:shouldReturn(textField)
 end

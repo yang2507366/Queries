@@ -13,8 +13,6 @@
 #import "LuaScriptInteraction.h"
 #import "UIRelatedImpl.h"
 #import "CodeUtils.h"
-#import "TextFieldImpl.h"
-#import "LabelImpl.h"
 #import "LuaRuntimeUtils.h"
 #import "LuaConstants.h"
 #import "LuaObjectManager.h"
@@ -23,9 +21,7 @@
 #import "AnimationImpl.h"
 #import "AppLoaderImpl.h"
 #import "AppRunImpl.h"
-#import "TextViewImpl.h"
 #import "LuaCommonUtils.h"
-#import "PickerViewImpl.h"
 
 #pragma mark - common
 NSString *luaStringParam(lua_State *L, int location)
