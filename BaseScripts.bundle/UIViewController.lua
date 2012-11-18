@@ -150,11 +150,17 @@ function UIViewController_viewDidAppear(vcId)
 end
 
 function UIViewController_viewWillDisappear(vcId)
-    UIViewControllerEventProxyTable[vcId]:viewWillDisappear();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:viewWillDisappear();
+    end
 end
 
 function UIViewController_viewDidDisappear(vcId)
-    UIViewControllerEventProxyTable[vcId]:viewDidDisappear();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:viewDidDisappear();
+    end
 end
 
 function UIViewController_didReceiveMemoryWarning(vcId)

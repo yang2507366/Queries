@@ -13,16 +13,8 @@
 #import "LuaScriptInteraction.h"
 #import "UIRelatedImpl.h"
 #import "CodeUtils.h"
-#import "CallScriptImpl.h"
-#import "RuntimeImpl.h"
 #import "TextFieldImpl.h"
-#import "ButtonImpl.h"
 #import "LabelImpl.h"
-#import "ViewControllerImpl.h"
-#import "NavigationControllerImpl.h"
-#import "WebViewImpl.h"
-#import "TableViewImpl.h"
-#import "UIBarButtonItemImpl.h"
 #import "LuaRuntimeUtils.h"
 #import "LuaConstants.h"
 #import "LuaObjectManager.h"
@@ -191,19 +183,6 @@ int http_cancel(lua_State *L)
 }
 
 #pragma mark - UI
-int ui_createButton(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    
-    NSUInteger type = lua_tointeger(L, 2);
-    NSString *tappedFunc = luaStringParam(L, 3);
-    
-    id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
-    NSString *buttonId = [ButtonImpl createWithScriptId:scriptId si:si type:type tappedFunc:tappedFunc];
-    pushString(L, buttonId);
-    return 1;
-}
-
 int ui_alert(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
@@ -226,92 +205,6 @@ int ui_setRootViewController(lua_State *L)
     
     [UIRelatedImpl setRootViewControllerWithId:viewControllerId scriptId:scriptId];
     return 0;
-}
-
-int ui_createTextField(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    
-    NSString *frame = luaStringParam(L, 2);
-    
-    NSString *objId = [TextFieldImpl createTextFieldWithScriptId:scriptId frame:luaRect(frame)];
-    lua_pushstring(L, [objId UTF8String]);
-    return 1;
-}
-
-int ui_attachTextFieldDelegate(lua_State *L)
-{
-    NSString *appId = luaStringParam(L, 1);
-    NSString *obejctId = luaStringParam(L, 2);
-    NSString *shouldBeginEditFunc = luaStringParam(L, 3);
-    NSString *didBeginEditFunc = luaStringParam(L, 4);
-    NSString *shouldEndEditFunc = luaStringParam(L, 5);
-    NSString *didEndEditFunc = luaStringParam(L, 6);
-    NSString *shouldChangeCharFunc = luaStringParam(L, 7);
-    [TextFieldImpl attachEventWithAppId:appId
-                                     si:scriptInteractionForAppId(appId)
-                               objectId:obejctId
-                        shouldBeginFunc:shouldBeginEditFunc
-                           didBeginFunc:didBeginEditFunc
-                          shouldEndFunc:shouldEndEditFunc
-                             didEndFunc:didEndEditFunc
-                   shouldChangeCharFunc:shouldChangeCharFunc];
-    return 0;
-}
-
-int ui_createLabel(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    
-    NSString *text = luaStringParam(L, 2);
-    CGRect frame = luaRect(luaStringParam(L, 3));
-    
-    pushString(L, [LabelImpl createLabelWithScriptId:scriptId text:text frame:frame]);
-    return 1;
-}
-
-int ui_createWebView(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    
-    CGRect frame = luaRect(luaStringParam(L, 2));
-    NSString *shouldStartFunc = luaStringParam(L, 3);
-    NSString *didLoadFunc = luaStringParam(L, 4);
-    NSString *didErrorFunc = luaStringParam(L, 5);
-    
-    NSString *objId = [WebViewImpl createWebViewWithScriptId:scriptId
-                                                          si:scriptInteractionForAppId(scriptId)
-                                                       frame:frame
-                                             shouldStartFunc:shouldStartFunc
-                                                 didLoadFunc:didLoadFunc
-                                                didErrorFunc:didErrorFunc];
-    pushString(L, objId);
-    return 1;
-}
-
-int ui_webViewLoadURL(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    
-    NSString *webViewId = luaStringParam(L, 2);
-    NSString *urlString = luaStringParam(L, 3);
-    
-    [WebViewImpl loadRequestWithScriptId:scriptId webViewId:webViewId urlString:urlString];
-    return 0;
-}
-
-int ui_createBarButtonItem(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    
-    NSString *title = luaStringParam(L, 2);
-    NSString *tapFunc = luaStringParam(L, 3);
-    
-    pushString(L, [UIBarButtonItemImpl createBarButtonItemWithScriptId:scriptId
-                                                                    si:scriptInteractionForAppId(scriptId)
-                                                                 title:title
-                                                          callbackFunc:tapFunc]);
-    return 1;
 }
 
 int ui_dialog(lua_State *L)
@@ -361,31 +254,6 @@ int ui_getRelatedViewController(lua_State *L)
     NSString *appId = luaStringParam(L, 1);
     NSString *vcId = [UIRelatedImpl relatedViewControllerForAppId:appId];
     pushString(L, vcId);
-    return 1;
-}
-
-int ui_createTextView(lua_State *L)
-{
-    NSString *appId = luaStringParam(L, 1);
-    NSString *textViewShouldBeginEditingFunc = luaStringParam(L, 2);
-    NSString *textViewShouldEndEditingFunc = luaStringParam(L, 3);
-    NSString *textViewDidBeginEditingFunc = luaStringParam(L, 4);
-    NSString *textViewDidEndEditingFunc = luaStringParam(L, 5);
-    NSString *shouldChangeTextInRangeFunc = luaStringParam(L, 6);
-    NSString *textViewDidChangeFunc = luaStringParam(L, 7);
-    NSString *textViewDidChangeSelectionFunc = luaStringParam(L, 8);
-    
-    NSString *tvId = [TextViewImpl createTextViewWithAppId:appId
-                                                        si:scriptInteractionForAppId(appId)
-                                       didBeginEditingFunc:textViewDidBeginEditingFunc
-                                            didEndEditFunc:textViewDidEndEditingFunc
-                                             didChangeFunc:textViewDidChangeFunc
-                                    didChangeSelectionFunc:textViewDidChangeSelectionFunc
-                                    shouldBeginEditingFunc:textViewShouldBeginEditingFunc
-                                      shouldEndEditingFunc:textViewShouldEndEditingFunc
-                               shouldChangeTextInRangeFunc:shouldChangeTextInRangeFunc];
-    pushString(L, tvId);
-    
     return 1;
 }
 
@@ -456,31 +324,12 @@ int ustring_replace(lua_State *L)
     return 1;
 }
 
-#pragma mark - script
-int script_runScriptWithId(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    
-    BOOL success = [CallScriptImpl callScriptWithScriptId:scriptId];
-    pushString(L, success ? @"1" : @"0");
-    return 1;
-}
-
 #pragma mark - runtime
-int runtime_recycleCurrentScript(lua_State *L)
+int runtime_recycleCurrentApp(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
     
-    [RuntimeImpl recycleObjectWithScriptId:scriptId];
-    return 0;
-}
-
-int runtime_recycleObjectById(lua_State *L)
-{
-    NSString *scriptId = luaStringParam(L, 1);
-    NSString *objectId = luaStringParam(L, 2);
-    
-    [RuntimeImpl recycleObjectWithScriptId:scriptId objectId:objectId];
+    [LuaObjectManager removeGroup:scriptId];
     return 0;
 }
 
@@ -626,87 +475,34 @@ void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *
 
 void initFuntions(lua_State *L)
 {
-#pragma mark - app
-#pragma mark - app::loadApp
     pushFunctionToLua(L, "app_loadApp", app_loadApp);
-#pragma mark - app::runApp
     pushFunctionToLua(L, "app_runApp", app_runApp);
-#pragma mark - app::getAppBundle
     pushFunctionToLua(L, "app_getAppBundle", app_getAppBundle);
-#pragma mark - http::request
     pushFunctionToLua(L, "http_request", http_request);
-#pragma mark - http::post
     pushFunctionToLua(L, "http_post", http_post);
-#pragma mark - http::cancel
     pushFunctionToLua(L, "http_cancel", http_cancel);
-#pragma mark - math::operator_or
     pushFunctionToLua(L, "math_operator_or", math_operator_or);
-#pragma mark - math::random
     pushFunctionToLua(L, "math_random", math_random);
-#pragma mark - NSLog
     pushFunctionToLua(L, "NSLog", nslog);
-#pragma mark - runtime::recycleCurrentScript
-    pushFunctionToLua(L, "runtime_recycleCurrentScript", runtime_recycleCurrentScript);
-#pragma mark - runtime::recycleObjectById
-    pushFunctionToLua(L, "runtime_recycleObjectById", runtime_recycleObjectById);
-#pragma mark - runtime::createObject
+    pushFunctionToLua(L, "runtime_recycle", runtime_recycleCurrentApp);
     pushFunctionToLua(L, "runtime_createObject", runtime_createObject);
-#pragma mark - runtime::invokeClassMethod
     pushFunctionToLua(L, "runtime_invokeClassMethod", runtime_invokeClassMethod);
-#pragma mark - runtime::retainObject
     pushFunctionToLua(L, "runtime_retainObject", runtime_retainObject);
-#pragma mark - runtime_releaseObject
     pushFunctionToLua(L, "runtime_releaseObject", runtime_releaseObject);
-#pragma mark - runtime::invokeMethod
     pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
-#pragma mark - runtime::objectRetainCount
     pushFunctionToLua(L, "runtime_objectRetainCount", runtime_objectRetainCount);
-#pragma mark - script::runScriptWithId
-    pushFunctionToLua(L, "script_runScriptWithId", script_runScriptWithId);
-#pragma mark - ui::createButton
-    pushFunctionToLua(L, "ui_createButton", ui_createButton);
-#pragma mark - ui::alert
     pushFunctionToLua(L, "ui_alert", ui_alert);
-#pragma mark - ui::setRootViewController
     pushFunctionToLua(L, "ui_setRootViewController", ui_setRootViewController);
-#pragma mark - ui::createTextField
-    pushFunctionToLua(L, "ui_createTextField", ui_createTextField);
-#pragma mark - ui::attachTextFieldDelegate
-    pushFunctionToLua(L, "ui_attachTextFieldDelegate", ui_attachTextFieldDelegate);
-#pragma mark - ui::createLabel
-    pushFunctionToLua(L, "ui_createLabel", ui_createLabel);
-#pragma mark - ui::createWebView
-    pushFunctionToLua(L, "ui_createWebView", ui_createWebView);
-#pragma mark - ui::webViewLoadURL
-    pushFunctionToLua(L, "ui_webViewLoadURL", ui_webViewLoadURL);
-#pragma mark - ui::createBarButtonItem
-    /**
-     调用示例：ui::createBarButtonItem("title", "callbackFunc");
-     */
-    pushFunctionToLua(L, "ui_createBarButtonItem", ui_createBarButtonItem);
-#pragma mark - ui::dialog
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
-#pragma mark - ui::animate
     pushFunctionToLua(L, "ui_animate", ui_animate);
-#pragma mark - ui::getRelatedViewController
     pushFunctionToLua(L, "ui_getRelatedViewController", ui_getRelatedViewController);
-#pragma mark - ui::createTextView
-    pushFunctionToLua(L, "ui_createTextView", ui_createTextView);
-#pragma mark - ustring::find
     pushFunctionToLua(L, "ustring_find", ustring_find);
-#pragma mark - ustring::length
     pushFunctionToLua(L, "ustring_length", ustring_length);
-#pragma mark - ustring::substring
     pushFunctionToLua(L, "ustring_substring", ustring_substring);
-#pragma mark - ustring::encodeURL
     pushFunctionToLua(L, "ustring_encodeURL", ustring_encodeURL);
-#pragma mark - ustring::replace
     pushFunctionToLua(L, "ustring_replace", ustring_replace);
-#pragma mark - utils::printObject
     pushFunctionToLua(L, "utils_printObject", utils_printObject);
-#pragma mark - utils::printObjectDescription
     pushFunctionToLua(L, "utils_printObjectDescription", utils_printObjectDescription);
-#pragma mark - utils::isObjCObject
     pushFunctionToLua(L, "utils_isObjCObject", utils_isObjCObject);
 }
 

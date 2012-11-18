@@ -92,6 +92,9 @@
 		3EC357D01644C48E009611C8 /* Waiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CF1644C48E009611C8 /* Waiting.m */; };
 		3ED0C78016354F2D00A3E33F /* TableViewImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */; };
 		3ED0C7841635502700A3E33F /* ArrayImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED0C7831635502700A3E33F /* ArrayImpl.m */; };
+		3ED3F59A16589452003EE847 /* BarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59916589452003EE847 /* BarButtonItem.m */; };
+		3ED3F59E165899EB003EE847 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59D165899EB003EE847 /* Label.m */; };
+		3ED3F5A116589CEF003EE847 /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F5A016589CEF003EE847 /* TextField.m */; };
 		3ED64C071648CC6B00190688 /* SuperSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED64C061648CC6B00190688 /* SuperSupportChecker.m */; };
 		3ED64C171648F7CF00190688 /* DictionaryViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3ED64C161648F7CF00190688 /* DictionaryViewController.lua */; };
 		3ED77325163E2DD000E5C9A9 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
@@ -309,6 +312,12 @@
 		3ED0C77F16354F2D00A3E33F /* TableViewImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewImpl.m; sourceTree = "<group>"; };
 		3ED0C7821635502700A3E33F /* ArrayImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayImpl.h; sourceTree = "<group>"; };
 		3ED0C7831635502700A3E33F /* ArrayImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayImpl.m; sourceTree = "<group>"; };
+		3ED3F59816589451003EE847 /* BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButtonItem.h; sourceTree = "<group>"; };
+		3ED3F59916589452003EE847 /* BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarButtonItem.m; sourceTree = "<group>"; };
+		3ED3F59C165899EB003EE847 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
+		3ED3F59D165899EB003EE847 /* Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Label.m; sourceTree = "<group>"; };
+		3ED3F59F16589CEF003EE847 /* TextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextField.h; sourceTree = "<group>"; };
+		3ED3F5A016589CEF003EE847 /* TextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextField.m; sourceTree = "<group>"; };
 		3ED64C051648CC6B00190688 /* SuperSupportChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuperSupportChecker.h; sourceTree = "<group>"; };
 		3ED64C061648CC6B00190688 /* SuperSupportChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuperSupportChecker.m; sourceTree = "<group>"; };
 		3ED64C161648F7CF00190688 /* DictionaryViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DictionaryViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
@@ -696,6 +705,12 @@
 				3E7A6DFD1657D4C1008DC64B /* NavigationController.m */,
 				3E7A6DFF1657E2D0008DC64B /* Button.h */,
 				3E7A6E001657E2D0008DC64B /* Button.m */,
+				3ED3F59816589451003EE847 /* BarButtonItem.h */,
+				3ED3F59916589452003EE847 /* BarButtonItem.m */,
+				3ED3F59C165899EB003EE847 /* Label.h */,
+				3ED3F59D165899EB003EE847 /* Label.m */,
+				3ED3F59F16589CEF003EE847 /* TextField.h */,
+				3ED3F5A016589CEF003EE847 /* TextField.m */,
 			);
 			name = impl2;
 			sourceTree = "<group>";
@@ -1116,6 +1131,9 @@
 				3E7A6DFB1657D051008DC64B /* ViewController.m in Sources */,
 				3E7A6DFE1657D4C1008DC64B /* NavigationController.m in Sources */,
 				3E7A6E011657E2D0008DC64B /* Button.m in Sources */,
+				3ED3F59A16589452003EE847 /* BarButtonItem.m in Sources */,
+				3ED3F59E165899EB003EE847 /* Label.m in Sources */,
+				3ED3F5A116589CEF003EE847 /* TextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

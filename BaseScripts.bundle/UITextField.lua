@@ -1,4 +1,5 @@
 require "UIView"
+require "UITextFieldDelegate"
 
 UITextField = {};
 UITextField.__index = UITextField;
@@ -32,20 +33,15 @@ end
 function UITextField:get(textFieldId)
     local textField = UIView:new(textFieldId);
     setmetatable(textField, self);
-    ui::attachTextFieldDelegate(textFieldId,
-                                "epf_textFieldShouldBeginEditing",
-                                "epf_textFieldDidBeginEditing",
-                                "epf_textFieldShouldEndEditing",
-                                "epf_textFieldDidEndEditing",
-                                "epf_shouldChangeCharactersInRange");
-    eventProxyTable_textField[textFieldId] = textField;
+    
+    UITextFieldEventProxyTable[textFieldId] = textField;
     
     return textField;
 end
 
 -- deconstructor
 function UITextField:dealloc()
-    eventProxyTable_textField[self:id()] = nil;
+    UITextFieldEventProxyTable[self:id()] = nil;
 end
 
 -- instance methods
@@ -91,10 +87,10 @@ function UITextField:shouldChangeCharactersInRange(location, length)
 end
 
 -- event proxy
-eventProxyTable_textField = {};
+UITextFieldEventProxyTable = {};
 
 function epf_textFieldShouldBeginEditing(textFieldId)
-    local b = eventProxyTable_textField[textFieldId]:shouldBeginEditing();
+    local b = UITextFieldEventProxyTable[textFieldId]:shouldBeginEditing();
     if b then
         return "YES";
     else
@@ -103,11 +99,11 @@ function epf_textFieldShouldBeginEditing(textFieldId)
 end
 
 function epf_textFieldDidBeginEditing(textFieldId)
-    eventProxyTable_textField[textFieldId]:didBeginEditing();
+    UITextFieldEventProxyTable[textFieldId]:didBeginEditing();
 end
 
 function epf_textFieldShouldEndEditing(textFieldId)
-    local textField = eventProxyTable_textField[textFieldId];
+    local textField = UITextFieldEventProxyTable[textFieldId];
     if textField then
         local b = textField:shouldEndEditing();
         if b then
@@ -120,14 +116,14 @@ function epf_textFieldShouldEndEditing(textFieldId)
 end
 
 function epf_textFieldDidEndEditing(textFieldId)
-    local textField = eventProxyTable_textField[textFieldId];
+    local textField = UITextFieldEventProxyTable[textFieldId];
     if textField then
         textField:didEndEditing();
     end
 end
 
 function epf_shouldChangeCharactersInRange(textFieldId, location, length)
-    local b = eventProxyTable_textField[textFieldId]:shouldChangeCharactersInRange(tonumber(location), tonumber(length));
+    local b = UITextFieldEventProxyTable[textFieldId]:shouldChangeCharactersInRange(tonumber(location), tonumber(length));
     if b then
         return "YES";
     else

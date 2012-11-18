@@ -9,6 +9,8 @@ require "NSMutableArray"
 require "UIFont"
 require "AppBundle"
 require "UIButton"
+require "UIBarButtonItem"
+require "UILabel"
 
 function main()
     ap_new();
@@ -22,7 +24,18 @@ function main()
             print("btntapped");
         end
         dictVC:view():addSubview(btn);
+        
+        local rightBtn = UIBarButtonItem:create("title"):retain();
+        dictVC:navigationItem():setRightBarButtonItem(rightBtn);
+        
+        local label = UILabel:create("labeltest");
+        self:view():addSubview(label);
+        
         ap_release();
+    end
+    
+    function dictVC:viewDidPop()
+        self:release();
     end
     relatedVC:navigationController():pushViewController(dictVC, true);
     

@@ -1,5 +1,6 @@
 require "UIView"
 require "UIFont"
+require "System"
 
 UILabel = {};
 UILabel.__index = UILabel;
@@ -10,8 +11,11 @@ function UILabel:create(text)
     if text == nil then
         text = "";
     end
-    local labelId = ui::createLabel(text, "0, 0, 200, 17");
-    return UILabel:get(labelId);
+    local labelId = runtime::invokeClassMethod("Label", "create:", System.id());
+    local label = UILabel:get(labelId);
+    label:setText(text);
+    
+    return label;
 end
 
 function UILabel:get(labelId)
@@ -39,12 +43,6 @@ function UILabel:font()
     local fontId = runtime::invokeMethod(self:id(), "font");
     
     return UIFont:get(fontId);
-end
-
-function UILabel:heightOfText(width)
-    local height = ui::heightOfLabelText(self:id(), width);
-    
-    return height;
 end
 
 function UILabel:setNumberOfLines(numberOfLines)

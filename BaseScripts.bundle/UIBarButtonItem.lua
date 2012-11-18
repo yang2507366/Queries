@@ -13,10 +13,10 @@ function UIBarButtonItem:create(title)
     if title == nil then
         title = "Untitled";
     end
-    local buttonItemId = ui::createBarButtonItem(title, "event_function_barButtonItem_tapped");
+    local buttonItemId = runtime::invokeClassMethod("BarButtonItem", "create", System.id());
     local buttonItem = self:get(buttonItemId);
     
-    event_table_barButtonItem_tapped[buttonItemId] = buttonItem;
+    buttonItem:setTitle(title);
     
     return buttonItem;
 end
@@ -25,12 +25,17 @@ function UIBarButtonItem:get(buttonItemId)
     local buttonItem = Object:new(buttonItemId);
     setmetatable(buttonItem, self);
     
+    UIBarButtonItemEventProxyTable[buttonItemId] = buttonItem;
+    runtime::invokeMethod(buttonItemId, "setTapped:", "UIBarButtonItem_tapped");
+    
     return buttonItem;
 end
 
 -- deconstructor
 function UIBarButtonItem:dealloc()
-    event_table_barButtonItem_tapped[self:id()] = nil;
+    runtime::invokeMethod(self:id(), "setTapped:", "");
+    UIBarButtonItemEventProxyTable[self:id()] = nil;
+    Object.dealloc(self);
 end
 
 -- instance methods
@@ -48,12 +53,11 @@ end
 
 -- event
 function UIBarButtonItem:tapped()
-    
 end
 
 -- event proxy
-event_table_barButtonItem_tapped = {};
+UIBarButtonItemEventProxyTable = {};
 
-function event_function_barButtonItem_tapped(btnId)
-    event_table_barButtonItem_tapped[btnId]:tapped();
+function UIBarButtonItem_tapped(btnId)
+    UIBarButtonItemEventProxyTable[btnId]:tapped();
 end
