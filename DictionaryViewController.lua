@@ -15,14 +15,14 @@ require "UITextField"
 require "UITextView"
 require "UIPickerView"
 require "UIAnimation"
-
+--[[
 function main()
     ap_new();
     local relatedVC = UIViewController:get(ui::getRelatedViewController());
     local dictVC = UIViewController:create("在线词典"):retain();
     function dictVC:viewDidLoad()
         ap_new();
-        --[[
+
         local tableView = UITableView:create():retain();
         tableView:setFrame(self:view():bounds());
         tableView:setAutoresizingMask(UIViewAutoresizingFlexibleHeight);
@@ -51,10 +51,9 @@ function main()
             return cell;
         end
         tableView:setDataSource(tableViewDataSource);
-         ]]
         
         local pickerView = UIPickerView:create():retain();
-        pickerView:setFrame(10, 10, 300, 300);
+        pickerView:setFrame(0, 10, 320, 300);
         pickerView:setShowsSelectionIndicator(true);
         local pickerViewDelegate = {};
         function pickerViewDelegate:titleForRowForComponent(pickerView, row, component)
@@ -73,7 +72,7 @@ function main()
         
         local anim = UIAnimation:create();
         function anim:animation()
-            pickerView:setFrame(10, 200, 300, 300);
+            pickerView:setFrame(0, 200, 320, 300);
         end
         anim:start(2.0);
         
@@ -87,3 +86,4 @@ function main()
     
     ap_release();
 end
+]]

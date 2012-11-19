@@ -1,9 +1,13 @@
 require "System"
-require "UIKit"
 require "QueryMobileNumberViewController"
 require "QueryPostcodeViewController"
-require "GoogleTranslateViewController"
 require "AppLoader"
+require "UITableView"
+require "UIViewController"
+require "UILabel"
+require "UINavigationController"
+require "UIImageView"
+require "UIImage"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
@@ -105,13 +109,12 @@ function QuiresListViewController:viewDidLoad()
     end
     ap_release();
 end
-
 --[[
 function main()
     ap_new();
     
     local relatedVC = UIViewController:get(ui::getRelatedViewController());
-    local quiresListVC = QuiresListViewController:createWithTitle("快捷查询"):retain();
+    local quiresListVC = QuiresListViewController:create("快捷查询"):retain();
     relatedVC:navigationController():pushViewController(quiresListVC, true);
     function quiresListVC:viewDidPop()
         UIViewController.viewDidPop(self);

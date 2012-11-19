@@ -79,6 +79,8 @@
 		3EC357CA16440442009611C8 /* RequireReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C916440442009611C8 /* RequireReplaceChecker.m */; };
 		3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CC16440519009611C8 /* NSString+Substring.m */; };
 		3EC357D01644C48E009611C8 /* Waiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CF1644C48E009611C8 /* Waiting.m */; };
+		3EC9A677165A709B00B382CD /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A676165A709B00B382CD /* View.m */; };
+		3EC9A67A165A743D00B382CD /* QuiresViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A679165A743D00B382CD /* QuiresViewController.lua */; };
 		3ED3F59A16589452003EE847 /* BarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59916589452003EE847 /* BarButtonItem.m */; };
 		3ED3F59E165899EB003EE847 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59D165899EB003EE847 /* Label.m */; };
 		3ED3F5A116589CEF003EE847 /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F5A016589CEF003EE847 /* TextField.m */; };
@@ -272,6 +274,9 @@
 		3EC357CC16440519009611C8 /* NSString+Substring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Substring.m"; sourceTree = "<group>"; };
 		3EC357CE1644C48E009611C8 /* Waiting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waiting.h; sourceTree = "<group>"; };
 		3EC357CF1644C48E009611C8 /* Waiting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waiting.m; sourceTree = "<group>"; };
+		3EC9A675165A709B00B382CD /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
+		3EC9A676165A709B00B382CD /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
+		3EC9A679165A743D00B382CD /* QuiresViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QuiresViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3ED3F59816589451003EE847 /* BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButtonItem.h; sourceTree = "<group>"; };
 		3ED3F59916589452003EE847 /* BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarButtonItem.m; sourceTree = "<group>"; };
 		3ED3F59C165899EB003EE847 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
@@ -683,6 +688,8 @@
 				3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */,
 				3E06D5B01632C94A0013DCF7 /* UIRelatedImpl.h */,
 				3E06D5B11632C94A0013DCF7 /* UIRelatedImpl.m */,
+				3EC9A675165A709B00B382CD /* View.h */,
+				3EC9A676165A709B00B382CD /* View.m */,
 			);
 			name = impl;
 			sourceTree = "<group>";
@@ -709,6 +716,18 @@
 				3E7A6DF71657AACB008DC64B /* AddBaseScriptsChecker.m */,
 			);
 			name = ScriptChecker;
+			sourceTree = "<group>";
+		};
+		3EC9A678165A741200B382CD /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				3ED64C141648F7B300190688 /* Dict */,
+				3E6B94A216465A62009B01AD /* GoogleTranslate */,
+				3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */,
+				3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */,
+				3E1A7BD91643BD7F00D9EE55 /* QueryPostcodeViewController.lua */,
+			);
+			name = Legacy;
 			sourceTree = "<group>";
 		};
 		3ED64C141648F7B300190688 /* Dict */ = {
@@ -815,12 +834,9 @@
 		3EE3B32E16323DB000C77F85 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				3EC9A678165A741200B382CD /* Legacy */,
 				3E4286491647BECF00B1451D /* doc.txt */,
-				3ED64C141648F7B300190688 /* Dict */,
-				3E6B94A216465A62009B01AD /* GoogleTranslate */,
-				3EA309CC164145FB0013A6D1 /* QuiresListViewController.lua */,
-				3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */,
-				3E1A7BD91643BD7F00D9EE55 /* QueryPostcodeViewController.lua */,
+				3EC9A679165A743D00B382CD /* QuiresViewController.lua */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -928,6 +944,7 @@
 				3ED64C171648F7CF00190688 /* DictionaryViewController.lua in Resources */,
 				3E771751164962290077A1C0 /* google_translate.jpg in Resources */,
 				3E7A6DF41657A9FC008DC64B /* BaseScripts.bundle in Resources */,
+				3EC9A67A165A743D00B382CD /* QuiresViewController.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,6 +1059,7 @@
 				3ED3F59E165899EB003EE847 /* Label.m in Sources */,
 				3ED3F5A116589CEF003EE847 /* TextField.m in Sources */,
 				3E6283FA165902F700F59593 /* TextView.m in Sources */,
+				3EC9A677165A709B00B382CD /* View.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

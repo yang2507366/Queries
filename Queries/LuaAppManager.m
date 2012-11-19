@@ -193,9 +193,57 @@
     return baseScriptsBundle;
 }
 
++ (NSString *)generateUnitScriptWithFolderPath:(NSString *)folderPath
+{
+    NSArray *subFileNameList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:folderPath error:nil];
+    NSMutableString *requireString = [NSMutableString string];
+    for(NSString *subFileName in subFileNameList){
+        if([subFileName hasSuffix:@".lua"]){
+            [requireString appendFormat:@"require \"%@\"\n", subFileName];
+        }
+    }
+    NSString *tmpPath = [NSString stringWithFormat:@"%@/Library/tmpUnitScripts/", NSHomeDirectory()];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:tmpPath]){
+        [[NSFileManager defaultManager] createDirectoryAtPath:tmpPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    NSString *tmpScriptPath = [tmpPath stringByAppendingPathComponent:[folderPath lastPathComponent]];
+    [requireString writeToFile:tmpScriptPath atomically:NO encoding:NSUTF8StringEncoding error:nil];
+    
+    return tmpScriptPath;
+}
+
 + (NSString *)baseScriptWithScriptName:(NSString *)scriptName
 {
-    return [NSString stringWithContentsOfFile:[[self baseScriptsBundle] pathForResource:scriptName ofType:nil] encoding:NSUTF8StringEncoding error:nil];
+    static NSDictionary *baseScriptFileDictionary = nil;
+    if(baseScriptFileDictionary == nil){
+        NSMutableDictionary *tmpDict = [NSMutableDictionary dictionary];
+        NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BaseScripts" ofType:@".bundle"]];
+        NSString *bundleRootPath = [bundle bundlePath];
+        NSMutableArray *folderList = [NSMutableArray arrayWithObject:bundleRootPath];
+        while(folderList.count != 0){
+            NSString *lastFolder = [[[folderList lastObject] retain] autorelease];
+            [folderList removeLastObject];
+            
+            NSArray *subFileNameList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:lastFolder error:nil];
+            for(NSString *subFileName in subFileNameList){
+                NSString *subFilePath = [lastFolder stringByAppendingPathComponent:subFileName];
+                BOOL isDir = NO;
+                [[NSFileManager defaultManager] fileExistsAtPath:subFilePath isDirectory:&isDir];
+                if(isDir){
+                    [folderList addObject:subFilePath];
+                    if([lastFolder isEqualToString:bundleRootPath]){
+                        [tmpDict setObject:[self generateUnitScriptWithFolderPath:subFilePath]
+                                    forKey:[NSString stringWithFormat:@"%@.lua", subFileName]];
+                    }
+                }else{
+                    [tmpDict setObject:subFilePath forKey:[subFilePath lastPathComponent]];
+                }
+            }
+        }
+        baseScriptFileDictionary = [tmpDict retain];
+    }
+    
+    return [NSString stringWithContentsOfFile:[baseScriptFileDictionary objectForKey:scriptName] encoding:NSUTF8StringEncoding error:nil];
 }
 
 @end
