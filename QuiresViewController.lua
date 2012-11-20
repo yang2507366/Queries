@@ -1,6 +1,12 @@
 require "Lang"
+require "UIKit"
 
 function main()
-    local obj = Object:new("12213213");
-    print(obj:id());
+    ap_new();
+    local rootVC = UIViewController:create("Quires"):retain();
+    function rootVC:viewDidPop()
+        self:release();
+    end
+    rootVC:pushToRelatedViewController();
+    ap_release();
 end

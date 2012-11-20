@@ -52,6 +52,13 @@ function UIViewController:setAsRootViewController()
     end
 end
 
+function UIViewController:pushToRelatedViewController()
+    local relatedVCId = ui::getRelatedViewController();
+    if string.len(relatedVCId) ~= 0 then
+        UIViewController:get(relatedVCId):navigationController():pushViewController(self, true);
+    end
+end
+
 function UIViewController:view()
     local viewId = runtime::invokeMethod(self:id(), "view");
 
@@ -134,19 +141,31 @@ end
 UIViewControllerEventProxyTable = {};
 
 function UIViewController_loadView(vcId)
-    UIViewControllerEventProxyTable[vcId]:loadView();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:loadView();
+    end
 end
 
 function UIViewController_viewDidLoad(vcId)
-    UIViewControllerEventProxyTable[vcId]:viewDidLoad();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:viewDidLoad();
+    end
 end
 
 function UIViewController_viewWillAppear(vcId)
-    UIViewControllerEventProxyTable[vcId]:viewWillAppear();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:viewWillAppear();
+    end
 end
 
 function UIViewController_viewDidAppear(vcId)
-    UIViewControllerEventProxyTable[vcId]:viewDidAppear();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:viewDidAppear();
+    end
 end
 
 function UIViewController_viewWillDisappear(vcId)
@@ -164,19 +183,31 @@ function UIViewController_viewDidDisappear(vcId)
 end
 
 function UIViewController_didReceiveMemoryWarning(vcId)
-    UIViewControllerEventProxyTable[vcId]:didReceiveMemoryWarning();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:didReceiveMemoryWarning();
+    end
 end
 
 function UIViewController_shouldAutorotate(vcId)
-    return toObjCBool(UIViewControllerEventProxyTable[vcId]:shouldAutorotate());
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        return toObjCBool(vc:shouldAutorotate());
+    end
 end
 
 function UIViewController_supportedInterfaceOrientations(vcId)
-    return UIViewControllerEventProxyTable[vcId]:supportedInterfaceOrientations();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        return vc:supportedInterfaceOrientations();
+    end
 end
 
 function UIViewController_viewDidPop(vcId)
-    UIViewControllerEventProxyTable[vcId]:viewDidPop();
+    local vc = UIViewControllerEventProxyTable[vcId];
+    if vc then
+        vc:viewDidPop();
+    end
 end
 
 
