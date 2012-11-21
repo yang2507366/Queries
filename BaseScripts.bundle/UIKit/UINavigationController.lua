@@ -28,5 +28,8 @@ end
 
 -- instance methods
 function UINavigationController:pushViewController(vc, animated)
+    if animated == nil then
+        animated = true;
+    end
     runtime::invokeMethod(self:id(), "pushViewController:animated:", vc:id(), toObjCBool(animated));
 end

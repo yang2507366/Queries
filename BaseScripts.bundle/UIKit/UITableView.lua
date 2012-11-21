@@ -301,10 +301,8 @@ function UITableView:reloadData()
     runtime::invokeMethod(self:id(), "reloadData");
 end
 
-function UITableView:deselectRow(rowIndex)
-    local indexPathId = runtime::invokeClassMethod("NSIndexPath", "indexPathForRow:inSection:", rowIndex, 0);
-    runtime::invokeMethod(self:id(), "deselectRowAtIndexPath:animated:", indexPathId, "YES");
-    releaseObjectById(indexPathId);
+function UITableView:deselectRowAtIndexPath(indexPath)
+    runtime::invokeMethod(self:id(), "deselectRowAtIndexPath:animated:", indexPath:id(), toObjCBool(true));
 end
 
 function UITableView:tableHeaderView()

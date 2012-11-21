@@ -29,8 +29,10 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [[LuaAppManager scriptInteractionWithAppId:self.targetTextField.appId]
-     callFunction:self.targetTextField.didBeginEditing parameters:self.targetTextField.objId, nil];
+    if(self.targetTextField.didBeginEditing.length != 0){
+        [[LuaAppManager scriptInteractionWithAppId:self.targetTextField.appId]
+         callFunction:self.targetTextField.didBeginEditing parameters:self.targetTextField.objId, nil];
+    }
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
@@ -44,8 +46,10 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [[LuaAppManager scriptInteractionWithAppId:self.targetTextField.appId]
-     callFunction:self.targetTextField.didEndEditing parameters:self.targetTextField.objId, nil];
+    if(self.targetTextField.didEndEditing.length != 0){
+        [[LuaAppManager scriptInteractionWithAppId:self.targetTextField.appId]
+         callFunction:self.targetTextField.didEndEditing parameters:self.targetTextField.objId, nil];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

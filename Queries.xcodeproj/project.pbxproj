@@ -45,7 +45,6 @@
 		3E6B951116469292009B01AD /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950A16469292009B01AD /* zip.c */; };
 		3E6B951216469292009B01AD /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950D16469292009B01AD /* ZipArchive.m */; };
 		3E6B9514164692AA009B01AD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6B9513164692AA009B01AD /* libz.dylib */; };
-		3E771751164962290077A1C0 /* google_translate.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3E771750164962290077A1C0 /* google_translate.jpg */; };
 		3E79D45516416CE00096A727 /* QueryMobileNumberViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */; };
 		3E7A6DF41657A9FC008DC64B /* BaseScripts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E7A6DF31657A9FC008DC64B /* BaseScripts.bundle */; };
 		3E7A6DF81657AACB008DC64B /* AddBaseScriptsChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DF71657AACB008DC64B /* AddBaseScriptsChecker.m */; };
@@ -81,6 +80,10 @@
 		3EC357D01644C48E009611C8 /* Waiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CF1644C48E009611C8 /* Waiting.m */; };
 		3EC9A677165A709B00B382CD /* View.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A676165A709B00B382CD /* View.m */; };
 		3EC9A67A165A743D00B382CD /* QuiresViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A679165A743D00B382CD /* QuiresViewController.lua */; };
+		3EC9A67C165BCBBD00B382CD /* MobileNumberViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A67B165BCBBD00B382CD /* MobileNumberViewController.lua */; };
+		3EC9A67F165D27B100B382CD /* ImageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A67E165D27B000B382CD /* ImageCreator.m */; };
+		3EC9A682165D2AE700B382CD /* translate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A680165D2AE700B382CD /* translate.png */; };
+		3EC9A683165D2AE700B382CD /* translate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A681165D2AE700B382CD /* translate@2x.png */; };
 		3ED3F59A16589452003EE847 /* BarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59916589452003EE847 /* BarButtonItem.m */; };
 		3ED3F59E165899EB003EE847 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59D165899EB003EE847 /* Label.m */; };
 		3ED3F5A116589CEF003EE847 /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F5A016589CEF003EE847 /* TextField.m */; };
@@ -205,7 +208,6 @@
 		3E6B950C16469292009B01AD /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		3E6B950D16469292009B01AD /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		3E6B9513164692AA009B01AD /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		3E771750164962290077A1C0 /* google_translate.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = google_translate.jpg; sourceTree = "<group>"; };
 		3E79D45416416CE00096A727 /* QueryMobileNumberViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QueryMobileNumberViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E7A6DF31657A9FC008DC64B /* BaseScripts.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BaseScripts.bundle; sourceTree = "<group>"; };
 		3E7A6DF61657AACB008DC64B /* AddBaseScriptsChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBaseScriptsChecker.h; sourceTree = "<group>"; };
@@ -277,6 +279,11 @@
 		3EC9A675165A709B00B382CD /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
 		3EC9A676165A709B00B382CD /* View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View.m; sourceTree = "<group>"; };
 		3EC9A679165A743D00B382CD /* QuiresViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QuiresViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EC9A67B165BCBBD00B382CD /* MobileNumberViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MobileNumberViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EC9A67D165D27B000B382CD /* ImageCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCreator.h; sourceTree = "<group>"; };
+		3EC9A67E165D27B000B382CD /* ImageCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCreator.m; sourceTree = "<group>"; };
+		3EC9A680165D2AE700B382CD /* translate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = translate.png; path = Queries/translate.png; sourceTree = "<group>"; };
+		3EC9A681165D2AE700B382CD /* translate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "translate@2x.png"; path = "Queries/translate@2x.png"; sourceTree = "<group>"; };
 		3ED3F59816589451003EE847 /* BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButtonItem.h; sourceTree = "<group>"; };
 		3ED3F59916589452003EE847 /* BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarButtonItem.m; sourceTree = "<group>"; };
 		3ED3F59C165899EB003EE847 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
@@ -596,7 +603,8 @@
 		3E77174E1649620D0077A1C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3E771750164962290077A1C0 /* google_translate.jpg */,
+				3EC9A680165D2AE700B382CD /* translate.png */,
+				3EC9A681165D2AE700B382CD /* translate@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -660,36 +668,38 @@
 		3EA27075165278AC0011C0D4 /* impl */ = {
 			isa = PBXGroup;
 			children = (
-				3EA27078165278D60011C0D4 /* TableView.h */,
-				3EA27079165278D60011C0D4 /* TableView.m */,
-				3E7A6DF91657D051008DC64B /* ViewController.h */,
-				3E7A6DFA1657D051008DC64B /* ViewController.m */,
-				3E7A6DFC1657D4C1008DC64B /* NavigationController.h */,
-				3E7A6DFD1657D4C1008DC64B /* NavigationController.m */,
-				3E7A6DFF1657E2D0008DC64B /* Button.h */,
-				3E7A6E001657E2D0008DC64B /* Button.m */,
-				3ED3F59816589451003EE847 /* BarButtonItem.h */,
-				3ED3F59916589452003EE847 /* BarButtonItem.m */,
-				3ED3F59C165899EB003EE847 /* Label.h */,
-				3ED3F59D165899EB003EE847 /* Label.m */,
-				3ED3F59F16589CEF003EE847 /* TextField.h */,
-				3ED3F5A016589CEF003EE847 /* TextField.m */,
-				3E6283F8165902F700F59593 /* TextView.h */,
-				3E6283F9165902F700F59593 /* TextView.m */,
-				3E34ECEF164A97D400B4F7F0 /* PickerView.h */,
-				3E34ECF0164A97D400B4F7F0 /* PickerView.m */,
 				3E6B949D16460E8C009B01AD /* AnimationImpl.h */,
 				3E6B949E16460E8C009B01AD /* AnimationImpl.m */,
 				3E867ADB1646A47A00650486 /* AppLoaderImpl.h */,
 				3E867ADC1646A47A00650486 /* AppLoaderImpl.m */,
 				3E867ADE1646AC4A00650486 /* AppRunImpl.h */,
 				3E867ADF1646AC4A00650486 /* AppRunImpl.m */,
+				3ED3F59816589451003EE847 /* BarButtonItem.h */,
+				3ED3F59916589452003EE847 /* BarButtonItem.m */,
+				3E7A6DFF1657E2D0008DC64B /* Button.h */,
+				3E7A6E001657E2D0008DC64B /* Button.m */,
 				3EE36D6F1632AA7F00BB5D02 /* HTTPRequestImpl.h */,
 				3EE36D701632AA7F00BB5D02 /* HTTPRequestImpl.m */,
+				3EC9A67D165D27B000B382CD /* ImageCreator.h */,
+				3EC9A67E165D27B000B382CD /* ImageCreator.m */,
+				3ED3F59C165899EB003EE847 /* Label.h */,
+				3ED3F59D165899EB003EE847 /* Label.m */,
+				3E7A6DFC1657D4C1008DC64B /* NavigationController.h */,
+				3E7A6DFD1657D4C1008DC64B /* NavigationController.m */,
+				3E34ECEF164A97D400B4F7F0 /* PickerView.h */,
+				3E34ECF0164A97D400B4F7F0 /* PickerView.m */,
+				3EA27078165278D60011C0D4 /* TableView.h */,
+				3EA27079165278D60011C0D4 /* TableView.m */,
+				3ED3F59F16589CEF003EE847 /* TextField.h */,
+				3ED3F5A016589CEF003EE847 /* TextField.m */,
+				3E6283F8165902F700F59593 /* TextView.h */,
+				3E6283F9165902F700F59593 /* TextView.m */,
 				3E06D5B01632C94A0013DCF7 /* UIRelatedImpl.h */,
 				3E06D5B11632C94A0013DCF7 /* UIRelatedImpl.m */,
 				3EC9A675165A709B00B382CD /* View.h */,
 				3EC9A676165A709B00B382CD /* View.m */,
+				3E7A6DF91657D051008DC64B /* ViewController.h */,
+				3E7A6DFA1657D051008DC64B /* ViewController.m */,
 			);
 			name = impl;
 			sourceTree = "<group>";
@@ -837,6 +847,7 @@
 				3EC9A678165A741200B382CD /* Legacy */,
 				3E4286491647BECF00B1451D /* doc.txt */,
 				3EC9A679165A743D00B382CD /* QuiresViewController.lua */,
+				3EC9A67B165BCBBD00B382CD /* MobileNumberViewController.lua */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -942,9 +953,11 @@
 				3E6B94A416465A7C009B01AD /* GoogleTranslateViewController.lua in Resources */,
 				3E42864A1647BECF00B1451D /* doc.txt in Resources */,
 				3ED64C171648F7CF00190688 /* DictionaryViewController.lua in Resources */,
-				3E771751164962290077A1C0 /* google_translate.jpg in Resources */,
 				3E7A6DF41657A9FC008DC64B /* BaseScripts.bundle in Resources */,
 				3EC9A67A165A743D00B382CD /* QuiresViewController.lua in Resources */,
+				3EC9A67C165BCBBD00B382CD /* MobileNumberViewController.lua in Resources */,
+				3EC9A682165D2AE700B382CD /* translate.png in Resources */,
+				3EC9A683165D2AE700B382CD /* translate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,6 +1073,7 @@
 				3ED3F5A116589CEF003EE847 /* TextField.m in Sources */,
 				3E6283FA165902F700F59593 /* TextView.m in Sources */,
 				3EC9A677165A709B00B382CD /* View.m in Sources */,
+				3EC9A67F165D27B100B382CD /* ImageCreator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

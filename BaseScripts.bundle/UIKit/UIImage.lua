@@ -10,16 +10,19 @@ function UIImage:imageNamed(imgName)
     return self:get(imgId);
 end
 
-function UIImage:imageWithData(data)
-    local imgId = runtime::invokeClassMethod("UIImage", "imageWithData:", data:id());
+function UIImage:imageWithData(data, scale)
+    if scale == nil then
+        scale = 1.0;
+    end
+    local imgId = runtime::invokeClassMethod("UIImage", "imageWithData:scale:", data:id(), scale);
     return self:get(imgId);
 end
 
-function UIImage:imageWithResName(resName)
+function UIImage:imageWithResName(resName, scale)
     local ab = AppBundle:get();
     local data = ab:dataFromResource(resName);
     if data then
-        return self:imageWithData(ab:dataFromResource(resName));
+        return self:imageWithData(data, scale);
     end
     return nil;
 end

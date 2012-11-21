@@ -1,5 +1,6 @@
 require "UIView"
 require "UILabel"
+require "UIImageView"
 
 UITableViewCell = {};
 UITableViewCell.__index = UITableViewCell;
@@ -46,6 +47,11 @@ function UITableViewCell:contentView()
     local viewId = runtime::invokeMethod(self:id(), "contentView");
     
     return UIView:get(viewId);
+end
+
+function UITableViewCell:imageView()
+    local imageViewId = runtime::invokeMethod(self:id(), "imageView");
+    return UIImageView:get(imageViewId);
 end
 
 function UITableViewCell:setAccessoryType(accessoryType)
