@@ -36,8 +36,13 @@ function main()
                 cell = UITableViewCell:create(identifier);
             end
             cell:keep();
-            cell:textLabel():setText(kTitleList[indexPath:row() + 1]);
-            cell:imageView():setImage(UIImage:imageWithResName("translate.png", 2));
+            local targetTitle = kTitleList[indexPath:row() + 1];
+            cell:textLabel():setText(targetTitle);
+            local icon = nil;
+            if targetTitle == kTitleGoogleTranslate then
+                icon = UIImage:imageWithResName("translate.png", 2);
+            end
+            cell:imageView():setImage(icon);
             ap_release();
             
             return cell;
