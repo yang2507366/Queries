@@ -84,6 +84,11 @@
 		3EC9A67F165D27B100B382CD /* ImageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A67E165D27B000B382CD /* ImageCreator.m */; };
 		3EC9A682165D2AE700B382CD /* translate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A680165D2AE700B382CD /* translate.png */; };
 		3EC9A683165D2AE700B382CD /* translate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A681165D2AE700B382CD /* translate@2x.png */; };
+		3EC9A686165E58EB00B382CD /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A684165E58EB00B382CD /* phone.png */; };
+		3EC9A687165E58EB00B382CD /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A685165E58EB00B382CD /* phone@2x.png */; };
+		3EC9A68E165E59F400B382CD /* postcode.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A68C165E59F400B382CD /* postcode.png */; };
+		3EC9A68F165E59F400B382CD /* postcode@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A68D165E59F400B382CD /* postcode@2x.png */; };
+		3EC9A691165E5A4100B382CD /* PostcodeViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A690165E5A4100B382CD /* PostcodeViewController.lua */; };
 		3ED3F59A16589452003EE847 /* BarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59916589452003EE847 /* BarButtonItem.m */; };
 		3ED3F59E165899EB003EE847 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59D165899EB003EE847 /* Label.m */; };
 		3ED3F5A116589CEF003EE847 /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F5A016589CEF003EE847 /* TextField.m */; };
@@ -284,6 +289,11 @@
 		3EC9A67E165D27B000B382CD /* ImageCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCreator.m; sourceTree = "<group>"; };
 		3EC9A680165D2AE700B382CD /* translate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = translate.png; path = Queries/translate.png; sourceTree = "<group>"; };
 		3EC9A681165D2AE700B382CD /* translate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "translate@2x.png"; path = "Queries/translate@2x.png"; sourceTree = "<group>"; };
+		3EC9A684165E58EB00B382CD /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone.png; path = Queries/phone.png; sourceTree = "<group>"; };
+		3EC9A685165E58EB00B382CD /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phone@2x.png"; path = "Queries/phone@2x.png"; sourceTree = "<group>"; };
+		3EC9A68C165E59F400B382CD /* postcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = postcode.png; path = Queries/postcode.png; sourceTree = "<group>"; };
+		3EC9A68D165E59F400B382CD /* postcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "postcode@2x.png"; path = "Queries/postcode@2x.png"; sourceTree = "<group>"; };
+		3EC9A690165E5A4100B382CD /* PostcodeViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PostcodeViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3ED3F59816589451003EE847 /* BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButtonItem.h; sourceTree = "<group>"; };
 		3ED3F59916589452003EE847 /* BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarButtonItem.m; sourceTree = "<group>"; };
 		3ED3F59C165899EB003EE847 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
@@ -603,6 +613,10 @@
 		3E77174E1649620D0077A1C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3EC9A68C165E59F400B382CD /* postcode.png */,
+				3EC9A68D165E59F400B382CD /* postcode@2x.png */,
+				3EC9A684165E58EB00B382CD /* phone.png */,
+				3EC9A685165E58EB00B382CD /* phone@2x.png */,
 				3EC9A680165D2AE700B382CD /* translate.png */,
 				3EC9A681165D2AE700B382CD /* translate@2x.png */,
 			);
@@ -848,6 +862,7 @@
 				3E4286491647BECF00B1451D /* doc.txt */,
 				3EC9A679165A743D00B382CD /* QuiresViewController.lua */,
 				3EC9A67B165BCBBD00B382CD /* MobileNumberViewController.lua */,
+				3EC9A690165E5A4100B382CD /* PostcodeViewController.lua */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -958,6 +973,11 @@
 				3EC9A67C165BCBBD00B382CD /* MobileNumberViewController.lua in Resources */,
 				3EC9A682165D2AE700B382CD /* translate.png in Resources */,
 				3EC9A683165D2AE700B382CD /* translate@2x.png in Resources */,
+				3EC9A686165E58EB00B382CD /* phone.png in Resources */,
+				3EC9A687165E58EB00B382CD /* phone@2x.png in Resources */,
+				3EC9A68E165E59F400B382CD /* postcode.png in Resources */,
+				3EC9A68F165E59F400B382CD /* postcode@2x.png in Resources */,
+				3EC9A691165E5A4100B382CD /* PostcodeViewController.lua in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

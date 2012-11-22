@@ -16,6 +16,10 @@ function Object:new(objectId)
     return obj:autorelease();
 end
 
+function Object:dealloc()
+    self.objectId = nil;
+end
+
 -- instance methods
 function Object:id()
     return self.objectId;
@@ -46,8 +50,14 @@ function Object:retainCount()
     return runtime::objectRetainCount(self:id());
 end
 
-function Object:dealloc()
-    self.objectId = nil;
+function Object:equals(obj)
+    if obj.id then
+        local sb, se = string.find(self:id(), obj:id());
+        if sb and se then
+            return se == string.len(self:id());
+        end
+    end
+    return false;
 end
 
 function Object:autorelease()

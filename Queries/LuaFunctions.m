@@ -116,7 +116,7 @@ int app_getAppBundle(lua_State *L)
 }
 
 #pragma mark - math
-int math_operator_or(lua_State *L)
+int math_byte_operator_or(lua_State *L)
 {
     int numberOfParams = lua_gettop(L);
     
@@ -477,7 +477,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "http_request", http_request);
     pushFunctionToLua(L, "http_post", http_post);
     pushFunctionToLua(L, "http_cancel", http_cancel);
-    pushFunctionToLua(L, "math_operator_or", math_operator_or);
+    pushFunctionToLua(L, "math_bor", math_byte_operator_or);
     pushFunctionToLua(L, "math_random", math_random);
     pushFunctionToLua(L, "NSLog", nslog);
     pushFunctionToLua(L, "runtime_recycle", runtime_recycleCurrentApp);

@@ -3,6 +3,7 @@ require "UIKit"
 require "Utils"
 
 require "MobileNumberViewController"
+require "PostcodeViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
@@ -22,6 +23,7 @@ function main()
         ap_new();
         self.tableView = UITableView:create():retain();
         self.tableView:setFrame(self:view():bounds());
+        self.tableView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
         self:view():addSubview(self.tableView);
         
         local tableViewDataSource = {};
@@ -40,7 +42,11 @@ function main()
             cell:textLabel():setText(targetTitle);
             local icon = nil;
             if targetTitle == kTitleGoogleTranslate then
-                icon = UIImage:imageWithResName("translate.png", 2);
+                icon = UIImage:imageWithResName("translate.png");
+            elseif targetTitle == kTitleSearchMobileNumber then
+                icon = UIImage:imageWithResName("phone.png");
+            elseif targetTitle == kTitleSearchPostcode then
+                icon = UIImage:imageWithResName("postcode.png");
             end
             cell:imageView():setImage(icon);
             ap_release();
@@ -56,6 +62,12 @@ function main()
             local selectedTitle = kTitleList[indexPath:row() + 1];
             if selectedTitle == kTitleSearchMobileNumber then
                 local vc = MobileNumberViewController:create(kTitleSearchMobileNumber):retain();
+                function vc:viewDidPop()
+                    self:release();
+                end
+                rootVC:navigationController():pushViewController(vc);
+            elseif selectedTitle == kTitleSearchPostcode then
+                local vc = PostcodeViewController:create(kTitleSearchPostcode):retain();
                 function vc:viewDidPop()
                     self:release();
                 end

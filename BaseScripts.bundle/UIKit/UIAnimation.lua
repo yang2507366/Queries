@@ -34,13 +34,13 @@ function UIAnimation:create()
     local animId = tostring(math::random());
     local anim = Object:new(animId);
     setmetatable(anim, self);
-    eventProxy_animation[animId] = anim;
+    UIAnimationEventProxyTable[animId] = anim;
     
     return anim;
 end
 
 function UIAnimation:dealloc()
-    eventProxy_animation[self:id()] = nil;
+    UIAnimationEventProxyTable[self:id()] = nil;
     Object.dealloc(self);
 end
 
@@ -54,7 +54,7 @@ function UIAnimation:start(duration, delay, options)
     if options == nil then
         options = 0;
     end
-    ui::animate(self:id(), duration, delay, options, "epf_animation", "epf_animation_complete");
+    ui::animate(self:id(), duration, delay, options, "UIAnimation_animation", "UIAnimation_complete");
 end
 
 -- instance methods
@@ -67,12 +67,17 @@ function UIAnimation:complete()
 end
 
 -- event proxy
-eventProxy_animation = {};
+UIAnimationEventProxyTable = {};
 
-function epf_animation(animId)
-    eventProxy_animation[animId]:animation();
+function UIAnimation:_complete()
+    self:complete();
+    self:dealloc();
 end
 
-function epf_animation_complete(animId)
-    eventProxy_animation[animId]:complete();
+function UIAnimation_animation(animId)
+    UIAnimationEventProxyTable[animId]:animation();
+end
+
+function UIAnimation_complete(animId)
+    UIAnimationEventProxyTable[animId]:_complete();
 end
