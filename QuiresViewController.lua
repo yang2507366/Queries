@@ -89,6 +89,7 @@ function main()
         
         ap_release();
     end
+
     rootVC:pushToRelatedViewController();
     
     ap_release();
