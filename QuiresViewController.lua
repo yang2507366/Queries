@@ -4,6 +4,7 @@ require "Utils"
 
 require "MobileNumberViewController"
 require "PostcodeViewController"
+require "TranslateViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
@@ -68,6 +69,12 @@ function main()
                 rootVC:navigationController():pushViewController(vc);
             elseif selectedTitle == kTitleSearchPostcode then
                 local vc = PostcodeViewController:create(kTitleSearchPostcode):retain();
+                function vc:viewDidPop()
+                    self:release();
+                end
+                rootVC:navigationController():pushViewController(vc);
+            elseif selectedTitle == kTitleGoogleTranslate then
+                local vc = TranslateViewController:create(kTitleGoogleTranslate):retain();
                 function vc:viewDidPop()
                     self:release();
                 end

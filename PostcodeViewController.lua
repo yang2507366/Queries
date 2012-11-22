@@ -71,11 +71,11 @@ function PostcodeViewController:viewDidLoad()
             local tx, ty, tw, th = bself:view():frame();
             local anim = UIAnimation:create();
             function anim:animation()
-            bself:view():setFrame(tx, ty + 50, tw, th);
+                bself:view():setFrame(tx, ty + 50, tw, th);
+            end
+            anim:start();
         end
-        anim:start();
-    end
-ap_release();
+        ap_release();
         return true;
     end
     function textFieldDelegate:didBeginEditing()
@@ -93,17 +93,75 @@ ap_release();
     
     addressButton = UIButton:create("查询"):retain();
     function addressButton:tapped()
-        
+        ap_new();
+        local city = addressField:text();
+        if ustring::length(city) == 0 then
+            ui::alert("请输入需要查询的地名");
+            addressField:becomeFirstResponder();
+            ap_release();
+            return;
+        end
+        addressField:resignFirstResponder();
+        bself:setWaiting(true);
+        local urlString = "http://wap.ip138.com/post_search.asp?area="..ustring::encodeURL(city).."&action=area2zip";
+        local req = HTTPRequest:start(urlString);
+        function req:response(responseString, errorString)
+            ap_new();
+            bself:setWaiting(false);
+            local result = analyzeResponseString(responseString);
+            if result then
+                ui::alert(result);
+            else
+                ui::alert("没有找到相关地名："..city);
+            end
+            ap_release();
+        end
+        ap_release();
     end
     addressButton:setFrame(10, 75, width - 20, 40);
     self:view():addSubview(addressButton);
     
     postcodeButton = UIButton:create("查询"):retain();
     function postcodeButton:tapped()
-        
+        if ustring::length(postcodeField:text()) == 0 then
+            ui::alert("请输入需要查询的邮政编码");
+            bself.postcodeField:becomeFirstResponder();
+            return;
+        end
+        postcodeField:resignFirstResponder();
+        bself:setWaiting(true);
+        local postcode = postcodeField:text();
+        local urlString = "http://wap.ip138.com/post_search.asp?zip="..postcode.."&action=zip2area";
+        local httpReq = HTTPRequest:start(urlString);
+        function httpReq:response(responseString, errorString)
+            ap_new();
+            bself:setWaiting(false);
+            local result = analyzeResponseString(responseString);
+            if result then
+                ui::alert(result);
+            else
+                ui::alert("没有找到相关邮编："..postcode);
+            end
+            ap_release();
+        end
     end
     postcodeButton:setFrame(10, 200, width - 20, 40);
     self:view():addSubview(postcodeButton);
     
     ap_release();
+end
+
+function analyzeResponseString(responseString)
+--    print("response:"..responseString);
+    local beginIndex = ustring::find(responseString, "邮编：");
+    if beginIndex ~= -1 then
+        beginIndex = ustring::find(responseString, "<div>", beginIndex, true);
+        if beginIndex ~= -1 then
+            local endIndex = ustring::find(responseString, "<br/>", beginIndex);
+            if endIndex ~= -1 then
+                return ustring::substring(responseString, beginIndex + 5, endIndex);
+            end
+        end
+    end
+    return nil;
 end

@@ -1,54 +1,49 @@
---http://translate.google.cn/?hl=zh-CN&tab=wT#zh-CN/en/测试用例
 require "UIKit"
-require "System"
-require "Utils"
-require "Network"
-require "NSMutableArray"
-require "NSMutableDictionary"
 
-GoogleTranslateViewController = {};
-GoogleTranslateViewController.__index = GoogleTranslateViewController;
-setmetatable(GoogleTranslateViewController, UIViewController);
+TranslateViewController = {};
+TranslateViewController.__index = TranslateViewController;
+setmetatable(TranslateViewController, UIViewController);
 
 local cnTextView;
 local enTextView;
 local closeKeyboardBtn;
 local translateBtn;
 
-function GoogleTranslateViewController:dealloc()
+function TranslateViewController:dealloc()
     cnTextView:release();
     enTextView:release();
     closeKeyboardBtn:release();
     translateBtn:release();
+    UIViewController.dealloc(self);
 end
 
-function GoogleTranslateViewController:viewDidLoad()
+function TranslateViewController:viewDidLoad()
     ap_new();
-    local globalSelf = self;
+    local bself = self;
     
-    closeKeyboardBtn = UIBarButtonItem:createWithTitle("关闭"):retain();
+    closeKeyboardBtn = UIBarButtonItem:create("关闭"):retain();
     closeKeyboardBtn:setStyle(UIBarButtonItemStyleDone);
     
-    local cnLabel = UILabel:createWithText("输入需要翻译的中文:");
+    local cnLabel = UILabel:create("输入需要翻译的中文:");
     cnLabel:setFrame(5, 5, 200, cnLabel:font():lineHeight());
     self:view():addSubview(cnLabel);
     
     cnTextView = UITextView:create():retain();
     cnTextView:setFrame(5, 25, 310, 90);
-    cnTextView:setFont(UIFont:createWithFontSize(14));
-    cnTextView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
-    cnTextView:setBackgroundColor(UIColor:createWithRGB(144, 238, 144));
+    cnTextView:setFont(UIFont:create(14));
+    cnTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth));
+    cnTextView:setBackgroundColor(UIColor:create(144, 238, 144));
     self:view():addSubview(cnTextView);
     function cnTextView:didBeginEditing()
         ap_new();
-        globalSelf:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
+        bself:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
         
         ap_release();
     end
     function cnTextView:didEndEditing()
         ap_new();
         
-        globalSelf:navigationItem():setRightBarButtonItem(nil);
+        bself:navigationItem():setRightBarButtonItem(nil);
         
         ap_release();
     end
@@ -59,26 +54,26 @@ function GoogleTranslateViewController:viewDidLoad()
     
     enTextView = UITextView:create():retain();
     enTextView:setFrame(5, 165, 310, 170);
-    enTextView:setAutoresizingMask(math::operator_or(UIViewAutoresizingFlexibleWidth));
-    enTextView:setBackgroundColor(UIColor:createWithRGB(144, 238, 144));
-    enTextView:setFont(UIFont:createWithFontSize(14));
+    enTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth));
+    enTextView:setBackgroundColor(UIColor:create(144, 238, 144));
+    enTextView:setFont(UIFont:create(14));
     enTextView:setEditable(false);
     self:view():addSubview(enTextView);
     function enTextView:didBeginEditing()
         ap_new();
-        globalSelf:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
+        bself:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
         
         ap_release();
     end
     function enTextView:didEndEditing()
         ap_new();
         
-        globalSelf:navigationItem():setRightBarButtonItem(nil);
+        bself:navigationItem():setRightBarButtonItem(nil);
         
         ap_release();
     end
     
-    translateBtn = UIButton:createWithTitle("翻译"):retain();
+    translateBtn = UIButton:create("翻译"):retain();
     translateBtn:setFrame(5, 120, 310, 40);
     translateBtn:setAutoresizingMask(cnTextView:autoresizingMask());
     self:view():addSubview(translateBtn);
@@ -92,7 +87,7 @@ function GoogleTranslateViewController:viewDidLoad()
             return;
         end
         cnTextView:resignFirstResponder();
-        globalSelf:setWaiting(true);
+        bself:setWaiting(true);
         local urlString = "http://translate.google.com/translate_t#";
         local params = NSMutableDictionary:create();
         params:setObjectForKey("hl", "en");
@@ -103,7 +98,7 @@ function GoogleTranslateViewController:viewDidLoad()
         local req = HTTPRequest:post(urlString, params, HTTPRequestEncodingGBK);
         function req:response(responseString, errorString)
 --            po("response:"..responseString);
-            globalSelf:setWaiting(false);
+            bself:setWaiting(false);
             local beginIndex = ustring::find(responseString, "result_box");
             if beginIndex ~= -1 then
                 local endIndex = ustring::find(responseString, "</span>", beginIndex + 10);
@@ -128,16 +123,3 @@ function filterTranslatedString(str)
     str = ustring::replace(str, "&#39;", "'");
     return str;
 end
---[[
-function main()
-    ap_new();
-    local relatedVC = UIViewController:get(ui::getRelatedViewController());
-    local gtVC = GoogleTranslateViewController:createWithTitle("Google翻译"):retain();
-    relatedVC:navigationController():pushViewController(gtVC, true);
-    function gtVC:viewDidPop()
-        gtVC:release();
-    end
-    
-    ap_release();
-end
-]]
