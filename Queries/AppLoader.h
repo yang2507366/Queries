@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ScriptInteraction.h"
 
-@interface AppLoaderImpl : NSObject
+@interface AppLoader : NSObject
 
 + (void)loadWithAppId:(NSString *)appId
                    si:(id<ScriptInteraction>)si
@@ -17,5 +17,6 @@
             urlString:(NSString *)urlString
           processFunc:(NSString *)processFunc
          completeFunc:(NSString *)completeFunc;
++ (void)cancelLoadWithAppId:(NSString *)appId loaderId:(NSString *)loaderId;
 
 @end

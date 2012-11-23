@@ -9,14 +9,19 @@ function AppLoader:create()
     local tmp = Object:new(appId);
     setmetatable(tmp, self);
     
-    eventProxyTable_appLoader[appId] = tmp;
+    AppLoaderEventProxyTable[appId] = tmp;
     
     return tmp;
 end
 
+function AppLoader:dealloc()
+    AppLoaderEventProxyTable[self:id()] = nil;
+    Object.dealloc(self);
+end
+
 -- instance methods
 function AppLoader:load(urlString)
-    app::loadApp(self:id(), urlString, "eventProxy_appProcessing", "eventProxy_appLoadComplete");
+    app::loadApp(self:id(), urlString, "AppLoader_appProcessing", "AppLoader_appLoadComplete");
 end
 
 function AppLoader:runWithRelatedViewController(relatedVC)
@@ -33,7 +38,7 @@ function AppLoader:processing(loadedLength, amountLength)
 end
 
 function AppLoader:cancel()
-    
+    app::cancelLoadApp(self:id());
 end
 
 -- global functions
@@ -42,17 +47,19 @@ function runAppWithRelatedViewController(appId, relatedVC)
 end
 
 -- event proxy
-eventProxyTable_appLoader = {};
-function eventProxy_appLoadComplete(appLoaderId, success, appId)
+AppLoaderEventProxyTable = {};
+function AppLoader_appLoadComplete(appLoaderId, success, appId)
     local bsuccess = false;
     if success then
         if tonumber(success) == 1 then
             bsuccess = true;
         end
     end
-    eventProxyTable_appLoader[appLoaderId]:complete(bsuccess, appId);
+    local targetLoader = AppLoaderEventProxyTable[appLoaderId];
+    targetLoader:complete(bsuccess, appId);
+    targetLoader:dealloc();
 end
 
-function eventProxy_appProcessing(appLoaderId, loadedLength, amountLength)
-    eventProxyTable_appLoader[appLoaderId]:processing(loadedLength, amountLength);
+function AppLoader_appProcessing(appLoaderId, loadedLength, amountLength)
+    AppLoaderEventProxyTable[appLoaderId]:processing(loadedLength, amountLength);
 end

@@ -123,3 +123,13 @@ function filterTranslatedString(str)
     str = ustring::replace(str, "&#39;", "'");
     return str;
 end
+
+function main()
+    ap_new();
+    local vc = TranslateViewController:create("Translator"):retain();
+    function vc:viewDidPop()
+        self:release();
+    end
+    vc:pushToRelatedViewController();
+    ap_release();
+end

@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "AppLoaderImpl.h"
+#import "AppLoader.h"
 #import "OnlineAppBundleLoader.h"
 #import "ZipArchive.h"
 #import "ProviderPool.h"
 #import "LuaConstants.h"
 
-@implementation AppLoaderImpl
+@implementation AppLoader
 
 + (void)loadWithAppId:(NSString *)appId
                    si:(id<ScriptInteraction>)si

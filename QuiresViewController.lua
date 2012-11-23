@@ -12,6 +12,7 @@ kTitleGoogleTranslate = "Google翻译";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate};
 
+--[[
 function main()
     ap_new();
     
@@ -94,3 +95,5 @@ function main()
     
     ap_release();
 end
+
+]]

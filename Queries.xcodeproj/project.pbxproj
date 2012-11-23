@@ -48,7 +48,7 @@
 		3E7A6DFB1657D051008DC64B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DFA1657D051008DC64B /* ViewController.m */; };
 		3E7A6DFE1657D4C1008DC64B /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DFD1657D4C1008DC64B /* NavigationController.m */; };
 		3E7A6E011657E2D0008DC64B /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6E001657E2D0008DC64B /* Button.m */; };
-		3E867ADD1646A47A00650486 /* AppLoaderImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* AppLoaderImpl.m */; };
+		3E867ADD1646A47A00650486 /* AppLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* AppLoader.m */; };
 		3E867AE01646AC4A00650486 /* AppRunImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADF1646AC4A00650486 /* AppRunImpl.m */; };
 		3E867B511647DFCE00650486 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B3C1647DFCE00650486 /* ASIAuthenticationDialog.m */; };
 		3E867B521647DFCE00650486 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B3F1647DFCE00650486 /* ASIDataCompressor.m */; };
@@ -216,8 +216,8 @@
 		3E7A6DFD1657D4C1008DC64B /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		3E7A6DFF1657E2D0008DC64B /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		3E7A6E001657E2D0008DC64B /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
-		3E867ADB1646A47A00650486 /* AppLoaderImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLoaderImpl.h; sourceTree = "<group>"; };
-		3E867ADC1646A47A00650486 /* AppLoaderImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLoaderImpl.m; sourceTree = "<group>"; };
+		3E867ADB1646A47A00650486 /* AppLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLoader.h; sourceTree = "<group>"; };
+		3E867ADC1646A47A00650486 /* AppLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLoader.m; sourceTree = "<group>"; };
 		3E867ADE1646AC4A00650486 /* AppRunImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRunImpl.h; sourceTree = "<group>"; };
 		3E867ADF1646AC4A00650486 /* AppRunImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRunImpl.m; sourceTree = "<group>"; };
 		3E867B3B1647DFCE00650486 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
@@ -668,8 +668,8 @@
 			children = (
 				3E6B949D16460E8C009B01AD /* AnimationImpl.h */,
 				3E6B949E16460E8C009B01AD /* AnimationImpl.m */,
-				3E867ADB1646A47A00650486 /* AppLoaderImpl.h */,
-				3E867ADC1646A47A00650486 /* AppLoaderImpl.m */,
+				3E867ADB1646A47A00650486 /* AppLoader.h */,
+				3E867ADC1646A47A00650486 /* AppLoader.m */,
 				3E867ADE1646AC4A00650486 /* AppRunImpl.h */,
 				3E867ADF1646AC4A00650486 /* AppRunImpl.m */,
 				3ED3F59816589451003EE847 /* BarButtonItem.h */,
@@ -724,13 +724,6 @@
 				3E7A6DF71657AACB008DC64B /* AddBaseScriptsChecker.m */,
 			);
 			name = ScriptChecker;
-			sourceTree = "<group>";
-		};
-		3EC9A678165A741200B382CD /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Legacy;
 			sourceTree = "<group>";
 		};
 		3ED772EF163E2DD000E5C9A9 /* lua-5.1 */ = {
@@ -829,7 +822,6 @@
 		3EE3B32E16323DB000C77F85 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				3EC9A678165A741200B382CD /* Legacy */,
 				3E4286491647BECF00B1451D /* doc.txt */,
 				3EC9A679165A743D00B382CD /* QuiresViewController.lua */,
 				3EC9A67B165BCBBD00B382CD /* MobileNumberViewController.lua */,
@@ -1036,7 +1028,7 @@
 				3E6B951016469292009B01AD /* unzip.c in Sources */,
 				3E6B951116469292009B01AD /* zip.c in Sources */,
 				3E6B951216469292009B01AD /* ZipArchive.m in Sources */,
-				3E867ADD1646A47A00650486 /* AppLoaderImpl.m in Sources */,
+				3E867ADD1646A47A00650486 /* AppLoader.m in Sources */,
 				3E867AE01646AC4A00650486 /* AppRunImpl.m in Sources */,
 				3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */,
 				3E867B511647DFCE00650486 /* ASIAuthenticationDialog.m in Sources */,

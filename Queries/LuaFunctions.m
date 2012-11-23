@@ -19,7 +19,7 @@
 #import "RuntimeUtils.h"
 #import "DialogTools.h"
 #import "AnimationImpl.h"
-#import "AppLoaderImpl.h"
+#import "AppLoader.h"
 #import "AppRunImpl.h"
 #import "LuaCommonUtils.h"
 
@@ -89,12 +89,20 @@ int app_loadApp(lua_State *L)
     NSString *urlString = luaStringParam(L, 3);
     NSString *processFunc = luaStringParam(L, 4);
     NSString *completeFunc = luaStringParam(L, 5);
-    [AppLoaderImpl loadWithAppId:appId
+    [AppLoader loadWithAppId:appId
                               si:scriptInteractionForAppId(appId)
                         loaderId:loaderId
                        urlString:urlString
                      processFunc:processFunc
                     completeFunc:completeFunc];
+    return 0;
+}
+
+int app_cancelLoadApp(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *loaderId = luaStringParam(L, 2);
+    [AppLoader cancelLoadWithAppId:appId loaderId:loaderId];
     return 0;
 }
 
@@ -472,6 +480,7 @@ void pushFunctionToLua(lua_State *L, char *functionName, int (*func)(lua_State *
 void initFuntions(lua_State *L)
 {
     pushFunctionToLua(L, "app_loadApp", app_loadApp);
+    pushFunctionToLua(L, "app_cancelLoadApp", app_cancelLoadApp);
     pushFunctionToLua(L, "app_runApp", app_runApp);
     pushFunctionToLua(L, "app_getAppBundle", app_getAppBundle);
     pushFunctionToLua(L, "http_request", http_request);
