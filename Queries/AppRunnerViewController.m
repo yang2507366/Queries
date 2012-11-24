@@ -84,7 +84,6 @@
     OnlineAppBundleLoader *loader = [[[OnlineAppBundleLoader alloc] initWithURLString:urlString] autorelease];
     [loader loadWithCompletion:^(NSString *filePath) {
         [Waiting showWaiting:NO inView:self.view];
-        NSLog(@"%@", filePath);
         if(filePath.length == 0){
             [DialogTools showWithTitle:@"" message:@"加载失败，请检查输入的URL地址" completion:nil cancelButtonTitle:@"确定" otherButtonTitleList:nil];
             return;
