@@ -288,7 +288,7 @@
 		3EC9A68D165E59F400B382CD /* postcode@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "postcode@2x.png"; path = "Queries/postcode@2x.png"; sourceTree = "<group>"; };
 		3EC9A690165E5A4100B382CD /* PostcodeViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PostcodeViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC9A692165E6DF200B382CD /* TranslateViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TranslateViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
-		3EC9A6971660942F00B382CD /* GecoderViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GecoderViewController.lua; sourceTree = "<group>"; };
+		3EC9A6971660942F00B382CD /* GecoderViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GecoderViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3ED3F59816589451003EE847 /* BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButtonItem.h; sourceTree = "<group>"; };
 		3ED3F59916589452003EE847 /* BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarButtonItem.m; sourceTree = "<group>"; };
 		3ED3F59C165899EB003EE847 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
