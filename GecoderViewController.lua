@@ -1,4 +1,4 @@
 
-function main()
-
-end
+--[[function main()
+    print("load gecoder");
+end]]

@@ -43,17 +43,17 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [MemoryTracer start];
+//    [MemoryTracer start];
 
-//    self.window.rootViewController =
-//        [[[NavigationControllerImpl alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
+    self.window.rootViewController =
+        [[[NavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
     
-    UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
-    UINavigationController *nc = [[[NavigationController alloc] initWithRootViewController:relatedVC] autorelease];
-    self.window.rootViewController = nc;
-    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
-    app.relatedViewController = relatedVC;
-    [LuaAppManager runRootApp:app];
+//    UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
+//    UINavigationController *nc = [[[NavigationController alloc] initWithRootViewController:relatedVC] autorelease];
+//    self.window.rootViewController = nc;
+//    LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
+//    app.relatedViewController = relatedVC;
+//    [LuaAppManager runRootApp:app];
     
 //    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
 //                                                       className:@"UIColor"

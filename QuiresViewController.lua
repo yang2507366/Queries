@@ -5,14 +5,13 @@ require "App"
 
 require "MobileNumberViewController"
 require "PostcodeViewController"
-require "TranslateViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
 kTitleGoogleTranslate = "Google翻译";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate};
---[[
+
 function main()
     ap_new();
     
@@ -110,4 +109,4 @@ function main()
     
     ap_release();
 end
-]]
+
