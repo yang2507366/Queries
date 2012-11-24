@@ -17,6 +17,7 @@
 #import "RequireReplaceChecker.h"
 #import "SuperSupportChecker.h"
 #import "AddBaseScriptsChecker.h"
+#import "LuaObjectManager.h"
 
 @interface LuaAppManager ()
 
@@ -91,18 +92,24 @@
     return script;
 }
 
-- (void)runRootApp:(LuaApp *)app
+- (void)runRootApp:(LuaApp *)app params:(id)params;
 {
     self.rootApp = app;
-    [self runApp:app];
+    [self runApp:app params:params];
 }
 
-- (void)runApp:(LuaApp *)app
+- (void)runApp:(LuaApp *)app params:(id)params
 {
+    NSString *paramsId = nil;
+    NSString *appId = [app.scriptBundle bundleId];
+    if(params){
+        paramsId = [LuaObjectManager addObject:params group:appId];
+        [LuaObjectManager retainObjectWithId:paramsId group:appId];
+    }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
     NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
                                     scriptName:lua_main_function
-                                      bundleId:[app.scriptBundle bundleId]];
+                                      bundleId:appId];
     if(mainScript.length != 0){
         id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
         app.scriptInteraction = si;
@@ -111,9 +118,12 @@
                 NSLog(@"%@", error);
                 NSLog(@"%@", mainScript);
             }
-        } parameters:nil];
+        } parameters:paramsId != nil ? paramsId : nil, nil];
     }else{
-        NSLog(@"run app:%@ failed, main script cannot be found", [app.scriptBundle bundleId]);
+        NSLog(@"run app:%@ failed, main script cannot be found", appId);
+    }
+    if(paramsId != nil){
+        [LuaObjectManager releaseObjectWithId:paramsId group:appId];
     }
 }
 
@@ -171,12 +181,22 @@
 
 + (void)runRootApp:(LuaApp *)app
 {
-    [[self sharedApplication] runRootApp:app];
+    [[self sharedApplication] runRootApp:app params:nil];
+}
+
++ (void)runRootApp:(LuaApp *)app params:(id)params
+{
+    [[self sharedApplication] runRootApp:app params:params];
 }
 
 + (void)runApp:(LuaApp *)app
 {
-    [[self sharedApplication] runApp:app];
+    [[self sharedApplication] runApp:app params:nil];
+}
+
++ (void)runApp:(LuaApp *)app params:(id)params
+{
+    [[self sharedApplication] runApp:app params:params];
 }
 
 + (void)destoryAppWithAppId:(NSString *)appId

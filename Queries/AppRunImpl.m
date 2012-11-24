@@ -15,13 +15,16 @@
 
 @implementation AppRunImpl
 
-+ (void)runWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId relatedViewControllerId:(NSString *)rvcId
++ (void)runWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId params:(NSString *)params relatedViewControllerId:(NSString *)rvcId
 {
+    if([params hasPrefix:lua_obj_prefix]){
+        params = [LuaObjectManager objectWithId:params group:appId];
+    }
     NSString *appDir = [lua_app_bundle_dir stringByAppendingPathComponent:targetAppId];
     LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:appDir] autorelease];
     LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:nil] autorelease];
     app.relatedViewController = [LuaObjectManager objectWithId:rvcId group:appId];
-    [LuaAppManager runRootApp:app];
+    [LuaAppManager runApp:app params:params];
 }
 
 + (void)destoryAppWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId

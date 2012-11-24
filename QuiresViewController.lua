@@ -5,12 +5,14 @@ require "App"
 
 require "MobileNumberViewController"
 require "PostcodeViewController"
+require "GecoderViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
 kTitleGoogleTranslate = "Google翻译";
+kTitleGecoder = "Geocoder";
 
-kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate};
+kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate, kTitleGecoder};
 
 function main()
     ap_new();
@@ -81,7 +83,7 @@ function main()
                 function appLoader:complete(success, appId)
                     rootVC:setWaiting(false);
                     if success then
-                        AppRunner.run(appId, rootVC);
+                        AppRunner.run(appId, nil, rootVC);
                     else
                         ui::alert("加载失败");
                     end
@@ -94,6 +96,8 @@ function main()
                     self:release();
                 end
                 rootVC:navigationController():pushViewController(vc);]]
+            elseif selectedTitle == kTitleGecoder then
+            
             end
             ap_release();
         end

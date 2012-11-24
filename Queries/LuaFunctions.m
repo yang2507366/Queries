@@ -69,8 +69,9 @@ int app_runApp(lua_State *L)
 {
     NSString *appId = luaStringParam(L, 1);
     NSString *targetAppId = luaStringParam(L, 2);
-    NSString *relatedViewControllerId = luaStringParam(L, 3);
-    [AppRunImpl runWithAppId:appId targetAppId:targetAppId relatedViewControllerId:relatedViewControllerId];
+    NSString *params = luaStringParam(L, 3);
+    NSString *relatedViewControllerId = luaStringParam(L, 4);
+    [AppRunImpl runWithAppId:appId targetAppId:targetAppId params:params relatedViewControllerId:relatedViewControllerId];
     return 0;
 }
 

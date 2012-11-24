@@ -22,7 +22,9 @@
 + (LuaApp *)appForId:(NSString *)appId;
 
 + (void)runRootApp:(LuaApp *)app;
++ (void)runRootApp:(LuaApp *)app params:(id)params;
 + (void)runApp:(LuaApp *)app;
++ (void)runApp:(LuaApp *)app params:(id)params;
 + (void)destoryAppWithAppId:(NSString *)appId;
 
 @end

@@ -1,4 +1,6 @@
+require "Lang"
 
---[[function main()
-    print("load gecoder");
-end]]
+function main(args)
+    print("load gecoder:");
+    po(args);
+end
