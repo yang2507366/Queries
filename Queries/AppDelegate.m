@@ -55,42 +55,6 @@
 //    app.relatedViewController = relatedVC;
 //    [LuaAppManager runRootApp:app];
     
-//    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
-//                                                       className:@"UIColor"
-//                                                  initMethodName:@"initWithRed:green:blue:alpha:"
-//                                                      parameters:[NSArray arrayWithObjects:@"1.0f", @"0.0f", @"0.0f", @"1.0f", nil]];
-//    NSString *objId = [MethodInvokerForLua createObjectWithGroup:@"test"
-//                                                       className:@"LabelImpl"
-//                                                  initMethodName:@"init"
-//                                                      parameters:[NSArray array]];
-//    
-//    NSLog(@"objId:%@", objId);
-//    UIColor *targetObject = [LuaGroupedObjectManager objectWithId:objId group:@"test"];
-//    NSLog(@"targetObject:%@", targetObject);
-//    [LuaGroupedObjectManager removeObjectWithId:objId group:@"test"];
-//    NSString *objId = [MethodInvokerForLua invokeClassMethodWithGroup:@"test" className:@"UIColor" methodName:@"blueColor" parameters:nil];
-//    UIColor *targetObject = [LuaGroupedObjectManager objectWithId:objId group:@"test"];
-//    NSLog(@"targetObject:%@", targetObject);
-    
-//    for(int i = 0; i < 8; ++i){
-//        NSLog(@"%d", i << 20);
-//    }
-    
-//    OnlineAppBundleLoader *loader = [[[OnlineAppBundleLoader alloc] initWithURLString:@"http://imyvoaspecial.googlecode.com/files/qr20.zip"] autorelease];
-//    [loader loadWithCompletion:^(NSString *filePath) {
-//        NSLog(@"%@", filePath);
-//        ZipArchive *zipAr = [[[ZipArchive alloc] init] autorelease];
-//        [zipAr UnzipOpenFile:filePath];
-//        NSString *targetPath = [NSString stringWithFormat:@"%@/Documents/%@", NSHomeDirectory(), [filePath lastPathComponent]];
-//        [[NSFileManager defaultManager] createDirectoryAtPath:targetPath withIntermediateDirectories:NO attributes:nil error:nil];
-//        [zipAr UnzipFileTo:targetPath overWrite:YES];
-//        [zipAr UnzipCloseFile];
-//        LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:targetPath] autorelease];
-//        LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:_window] autorelease];
-//        [LuaSystemContext runRootApp:app];
-//    }];
-//    [ProviderPool addProviderToSharedPool:loader identifier:@"root_app_loader"];
-    
     return YES;
 }
 
