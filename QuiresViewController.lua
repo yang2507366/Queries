@@ -12,7 +12,7 @@ kTitleSearchPostcode = "邮政编码";
 kTitleGoogleTranslate = "Google翻译";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate};
-
+--[[
 function main()
     ap_new();
     
@@ -81,12 +81,20 @@ function main()
                 end
                 function appLoader:complete(success, appId)
                     rootVC:setWaiting(false);
-                    if not success then
+                    if success then
+                        AppRunner.run(appId, rootVC);
                     else
+                        ui::alert("加载失败");
                     end
                 end
                 rootVC:setWaiting(true);
-                appLoader:load("http://imyvoaspecial.googlecode.com/files/t2.zip");
+                appLoader:load("http://imyvoaspecial.googlecode.com/files/t2.1.zip");
+            
+                --[[local vc = TranslateViewController:create(kTitleGoogleTranslate):retain();
+                function vc:viewDidPop()
+                    self:release();
+                end
+                rootVC:navigationController():pushViewController(vc);]]
             end
             ap_release();
         end
@@ -102,3 +110,4 @@ function main()
     
     ap_release();
 end
+]]

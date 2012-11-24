@@ -21,9 +21,6 @@ function TranslateViewController:viewDidLoad()
     ap_new();
     local bself = self;
     
-    closeKeyboardBtn = UIBarButtonItem:create("关闭"):retain();
-    closeKeyboardBtn:setStyle(UIBarButtonItemStyleDone);
-    
     local cnLabel = UILabel:create("输入需要翻译的中文:");
     cnLabel:setFrame(5, 5, 200, cnLabel:font():lineHeight());
     self:view():addSubview(cnLabel);
@@ -34,19 +31,9 @@ function TranslateViewController:viewDidLoad()
     cnTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth));
     cnTextView:setBackgroundColor(UIColor:create(144, 238, 144));
     self:view():addSubview(cnTextView);
-    function cnTextView:didBeginEditing()
-        ap_new();
-        bself:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
-        
-        ap_release();
-    end
-    function cnTextView:didEndEditing()
-        ap_new();
-        
-        bself:navigationItem():setRightBarButtonItem(nil);
-        
-        ap_release();
-    end
+    
+    closeKeyboardBtn = UIBarButtonItem:create("关闭"):retain();
+    closeKeyboardBtn:setStyle(UIBarButtonItemStyleDone);
     function closeKeyboardBtn:tapped()
         cnTextView:resignFirstResponder();
         enTextView:resignFirstResponder();
@@ -59,19 +46,23 @@ function TranslateViewController:viewDidLoad()
     enTextView:setFont(UIFont:create(14));
     enTextView:setEditable(false);
     self:view():addSubview(enTextView);
-    function enTextView:didBeginEditing()
+    
+    local textViewDelegate = {};
+    function textViewDelegate:didBeginEditing()
         ap_new();
         bself:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
         
         ap_release();
     end
-    function enTextView:didEndEditing()
+    function textViewDelegate:didEndEditing()
         ap_new();
         
         bself:navigationItem():setRightBarButtonItem(nil);
         
         ap_release();
     end
+    enTextView:setDelegate(textViewDelegate);
+    cnTextView:setDelegate(textViewDelegate);
     
     translateBtn = UIButton:create("翻译"):retain();
     translateBtn:setFrame(5, 120, 310, 40);
@@ -123,13 +114,13 @@ function filterTranslatedString(str)
     str = ustring::replace(str, "&#39;", "'");
     return str;
 end
-
+--[[
 function main()
     ap_new();
-    local vc = TranslateViewController:create("Translator"):retain();
+    local vc = TranslateViewController:create("Google翻译"):retain();
     function vc:viewDidPop()
         self:release();
     end
     vc:pushToRelatedViewController();
     ap_release();
-end
+end]]
