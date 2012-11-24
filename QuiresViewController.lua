@@ -1,6 +1,7 @@
 require "Lang"
 require "UIKit"
 require "Utils"
+require "App"
 
 require "MobileNumberViewController"
 require "PostcodeViewController"
@@ -12,7 +13,6 @@ kTitleGoogleTranslate = "Google翻译";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate};
 
---[[
 function main()
     ap_new();
     
@@ -75,11 +75,18 @@ function main()
                 end
                 rootVC:navigationController():pushViewController(vc);
             elseif selectedTitle == kTitleGoogleTranslate then
-                local vc = TranslateViewController:create(kTitleGoogleTranslate):retain();
-                function vc:viewDidPop()
-                    self:release();
+                local appLoader = AppLoader:create();
+                function appLoader:processing(loaded)
+                    
                 end
-                rootVC:navigationController():pushViewController(vc);
+                function appLoader:complete(success, appId)
+                    rootVC:setWaiting(false);
+                    if not success then
+                    else
+                    end
+                end
+                rootVC:setWaiting(true);
+                appLoader:load("http://imyvoaspecial.googlecode.com/files/t2.zip");
             end
             ap_release();
         end
@@ -95,5 +102,3 @@ function main()
     
     ap_release();
 end
-
-]]
