@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ScriptInteraction.h"
 
-@interface AnimationImpl : NSObject
+@interface Animation : NSObject
 
 + (NSString *)animateWithAppId:(NSString *)appId
                             si:(id<ScriptInteraction>)si

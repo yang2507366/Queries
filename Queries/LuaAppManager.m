@@ -104,7 +104,6 @@
     NSString *appId = [app.scriptBundle bundleId];
     if(params){
         paramsId = [LuaObjectManager addObject:params group:appId];
-        [LuaObjectManager retainObjectWithId:paramsId group:appId];
     }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
     NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]

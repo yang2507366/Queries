@@ -18,9 +18,9 @@
 #import "LuaObjectManager.h"
 #import "RuntimeUtils.h"
 #import "DialogTools.h"
-#import "AnimationImpl.h"
+#import "Animation.h"
 #import "AppLoader.h"
-#import "AppRunImpl.h"
+#import "AppRunner.h"
 #import "LuaCommonUtils.h"
 
 #pragma mark - common
@@ -71,7 +71,7 @@ int app_runApp(lua_State *L)
     NSString *targetAppId = luaStringParam(L, 2);
     NSString *params = luaStringParam(L, 3);
     NSString *relatedViewControllerId = luaStringParam(L, 4);
-    [AppRunImpl runWithAppId:appId targetAppId:targetAppId params:params relatedViewControllerId:relatedViewControllerId];
+    [AppRunner runWithAppId:appId targetAppId:targetAppId params:params relatedViewControllerId:relatedViewControllerId];
     return 0;
 }
 
@@ -243,7 +243,7 @@ int ui_animate(lua_State *L)
     NSInteger options = lua_tonumber(L, 5);
     NSString *animationFunc = luaStringParam(L, 6);
     NSString *completeFunc = luaStringParam(L, 7);
-    [AnimationImpl animateWithAppId:appid
+    [Animation animateWithAppId:appid
                                  si:scriptInteractionForAppId(appid)
                              animId:animId
                   animationDuration:duration

@@ -1,5 +1,5 @@
 require "UIView"
-require "System"
+require "AppContext"
 require "UITableViewCell"
 require "UITableViewDataSource"
 require "UITableViewDelegate"
@@ -22,7 +22,7 @@ function UITableView:createWithStyle(style)
     if style == nil then
         style = UITableViewStylePlain;
     end
-    local tableViewId = runtime::invokeClassMethod("TableView", "create", System.id());
+    local tableViewId = runtime::invokeClassMethod("TableView", "create", AppContext.current());
     local tableView = self:get(tableViewId);
     
     return tableView;

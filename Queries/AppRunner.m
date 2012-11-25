@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "AppRunImpl.h"
+#import "AppRunner.h"
 #import "LuaConstants.h"
 #import "LocalAppBundle.h"
 #import "LuaApp.h"
 #import "LuaAppManager.h"
 #import "LuaObjectManager.h"
 
-@implementation AppRunImpl
+@implementation AppRunner
 
 + (void)runWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId params:(NSString *)params relatedViewControllerId:(NSString *)rvcId
 {

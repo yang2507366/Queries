@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "AnimationImpl.h"
+#import "Animation.h"
 
-@implementation AnimationImpl
+@implementation Animation
 
 + (NSString *)animateWithAppId:(NSString *)appId
                             si:(id<ScriptInteraction>)si

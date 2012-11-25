@@ -1,13 +1,13 @@
 require "Object"
 require "NSData"
-require "System"
+require "AppContext"
 
 AppBundle = {};
 AppBundle.__index = AppBundle;
 setmetatable(AppBundle, Object);
 
 function AppBundle:current()
-    return AppBundle:get(System.id());
+    return AppBundle:get(AppContext.current());
 end
 
 function AppBundle:get(appId)

@@ -10,7 +10,7 @@ setmetatable(UITextView, UIView);
 
 -- constructor
 function UITextView:create()
-    local tvId = runtime::invokeClassMethod("TextView", "create:", System.id());
+    local tvId = runtime::invokeClassMethod("TextView", "create:", AppContext.current());
     return UITextView:get(tvId);
 end
 

@@ -1,4 +1,4 @@
-require "System"
+require "AppContext"
 require "UIView"
 require "UIPickerViewDelegate"
 
@@ -7,7 +7,7 @@ UIPickerView.__index = UIPickerView;
 setmetatable(UIPickerView, UIView);
 
 function UIPickerView:create()
-    local pvId = runtime::invokeClassMethod("PickerView", "create:", System.id());
+    local pvId = runtime::invokeClassMethod("PickerView", "create:", AppContext.current());
     local pv = UIPickerView:get(pvId);
     
     return pv;

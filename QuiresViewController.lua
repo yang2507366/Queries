@@ -17,10 +17,18 @@ kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTransl
 function main()
     ap_new();
     
+    local observer = NotificationObserver:create():retain();
+    observer:observe("UIApplicationWillChangeStatusBarOrientationNotification");
+    function observer:receive(object, userInfo)
+        po(object);
+        po(userInfo);
+    end
+    
     local rootVC = UIViewController:create("Quires"):retain();
     function rootVC:viewDidPop()
         self.tableView:release();
         self:release();
+        observer:release();
     end
     function rootVC:viewDidLoad()
         ap_new();
@@ -108,6 +116,7 @@ function main()
                         dict:setObjectForKey("obj1", "key1");
                         dict:setObjectForKey("obj2", "key4");
                         dict:setObjectForKey("obj3", "ke5");
+                        po(dict:allKeys());
                         AppRunner.run(appId, dict, rootVC);
                     else
                         ui::alert("加载失败");

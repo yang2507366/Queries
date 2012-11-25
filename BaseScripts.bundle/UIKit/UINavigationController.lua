@@ -1,4 +1,4 @@
-require "System"
+require "AppContext"
 require "UIViewController"
 require "CommonUtils"
 
@@ -9,7 +9,7 @@ setmetatable(UINavigationController, UIViewController);
 -- constructor
 function UINavigationController:create(rootVc)
     if rootVc ~= nil then
-        local ncId = runtime::invokeClassMethod("NavigationController", "create", System.id());
+        local ncId = runtime::invokeClassMethod("NavigationController", "create", AppContext.current());
         local nc = self:get(ncId);
         
         nc:pushViewController(rootVc, false);

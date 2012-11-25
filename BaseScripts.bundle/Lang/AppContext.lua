@@ -1,5 +1,5 @@
-System = {};
+AppContext = {};
 
-function System.id()
+function AppContext.current()
     return __app_id__();
 end

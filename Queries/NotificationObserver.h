@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LuaImplentatable.h"
 
-@interface NotificationObserver : NSObject
+@interface NotificationObserver : NSObject <LuaImplentatable>
 
 @end

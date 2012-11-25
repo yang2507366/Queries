@@ -1,8 +1,8 @@
-require "Object"
+require "NSArray"
 
 NSMutableArray = {};
 NSMutableArray.__index = NSMutableArray;
-setmetatable(NSMutableArray, Object);
+setmetatable(NSMutableArray, NSArray);
 
 function NSMutableArray:create()
     local arrId = runtime::createObject("NSMutableArray", "init");
@@ -11,19 +11,10 @@ function NSMutableArray:create()
 end
 
 function NSMutableArray:get(arrId)
-    local arr = Object:new(arrId);
+    local arr = NSArray:new(arrId);
     setmetatable(arr, self);
     
     return arr;
-end
-
-function NSMutableArray:objectAtIndex(index)
-    local objId = runtime::invokeMethod(self:id(), "objectAtIndex:", index);
-    if isObjCObject(objId) then
-        return Object:new(objId);
-    else
-        return objId;
-    end
 end
 
 function NSMutableArray:addObject(obj)
@@ -39,8 +30,4 @@ end
 
 function NSMutableArray:removeObjectAtIndex(index)
     runtime::invokeMethod(self:id(), "removeObjectAtIndex:", index);
-end
-
-function NSMutableArray:count()
-    return tonumber(runtime::invokeMethod(self:id(), "count"));
 end

@@ -34,7 +34,7 @@
 		3E63398B162D91DA00B63328 /* GiveRightsOfOrientationBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */; };
 		3E633992162D958B00B63328 /* GridViewTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewTableViewHelper.m */; };
 		3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E633994162D9F6C00B63328 /* QuartzCore.framework */; };
-		3E6B949F16460E8C009B01AD /* AnimationImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B949E16460E8C009B01AD /* AnimationImpl.m */; };
+		3E6B949F16460E8C009B01AD /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B949E16460E8C009B01AD /* Animation.m */; };
 		3E6B94F51646814D009B01AD /* OnlineAppBundleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */; };
 		3E6B94F816468F12009B01AD /* LocalAppBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F716468F11009B01AD /* LocalAppBundle.m */; };
 		3E6B950E16469292009B01AD /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950416469292009B01AD /* ioapi.c */; };
@@ -49,7 +49,7 @@
 		3E7A6DFE1657D4C1008DC64B /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DFD1657D4C1008DC64B /* NavigationController.m */; };
 		3E7A6E011657E2D0008DC64B /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6E001657E2D0008DC64B /* Button.m */; };
 		3E867ADD1646A47A00650486 /* AppLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* AppLoader.m */; };
-		3E867AE01646AC4A00650486 /* AppRunImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADF1646AC4A00650486 /* AppRunImpl.m */; };
+		3E867AE01646AC4A00650486 /* AppRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADF1646AC4A00650486 /* AppRunner.m */; };
 		3E867B511647DFCE00650486 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B3C1647DFCE00650486 /* ASIAuthenticationDialog.m */; };
 		3E867B521647DFCE00650486 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B3F1647DFCE00650486 /* ASIDataCompressor.m */; };
 		3E867B531647DFCE00650486 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B411647DFCE00650486 /* ASIDataDecompressor.m */; };
@@ -87,6 +87,7 @@
 		3EC9A691165E5A4100B382CD /* PostcodeViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A690165E5A4100B382CD /* PostcodeViewController.lua */; };
 		3EC9A693165E6DF200B382CD /* TranslateViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A692165E6DF200B382CD /* TranslateViewController.lua */; };
 		3EC9A6981660942F00B382CD /* GecoderViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A6971660942F00B382CD /* GecoderViewController.lua */; };
+		3EC9A69F1661F64D00B382CD /* NotificationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A69E1661F64D00B382CD /* NotificationObserver.m */; };
 		3ED3F59A16589452003EE847 /* BarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59916589452003EE847 /* BarButtonItem.m */; };
 		3ED3F59E165899EB003EE847 /* Label.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59D165899EB003EE847 /* Label.m */; };
 		3ED3F5A116589CEF003EE847 /* TextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F5A016589CEF003EE847 /* TextField.m */; };
@@ -190,8 +191,8 @@
 		3E633990162D958B00B63328 /* GridViewTableViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewTableViewHelper.h; sourceTree = "<group>"; };
 		3E633991162D958B00B63328 /* GridViewTableViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewTableViewHelper.m; sourceTree = "<group>"; };
 		3E633994162D9F6C00B63328 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3E6B949D16460E8C009B01AD /* AnimationImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationImpl.h; sourceTree = "<group>"; };
-		3E6B949E16460E8C009B01AD /* AnimationImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationImpl.m; sourceTree = "<group>"; };
+		3E6B949D16460E8C009B01AD /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animation.h; sourceTree = "<group>"; };
+		3E6B949E16460E8C009B01AD /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animation.m; sourceTree = "<group>"; };
 		3E6B94F31646814D009B01AD /* OnlineAppBundleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineAppBundleLoader.h; sourceTree = "<group>"; };
 		3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineAppBundleLoader.m; sourceTree = "<group>"; };
 		3E6B94F616468F11009B01AD /* LocalAppBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalAppBundle.h; sourceTree = "<group>"; };
@@ -219,8 +220,8 @@
 		3E7A6E001657E2D0008DC64B /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		3E867ADB1646A47A00650486 /* AppLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLoader.h; sourceTree = "<group>"; };
 		3E867ADC1646A47A00650486 /* AppLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLoader.m; sourceTree = "<group>"; };
-		3E867ADE1646AC4A00650486 /* AppRunImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRunImpl.h; sourceTree = "<group>"; };
-		3E867ADF1646AC4A00650486 /* AppRunImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRunImpl.m; sourceTree = "<group>"; };
+		3E867ADE1646AC4A00650486 /* AppRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRunner.h; sourceTree = "<group>"; };
+		3E867ADF1646AC4A00650486 /* AppRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRunner.m; sourceTree = "<group>"; };
 		3E867B3B1647DFCE00650486 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		3E867B3C1647DFCE00650486 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		3E867B3D1647DFCE00650486 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -289,6 +290,8 @@
 		3EC9A690165E5A4100B382CD /* PostcodeViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PostcodeViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC9A692165E6DF200B382CD /* TranslateViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TranslateViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC9A6971660942F00B382CD /* GecoderViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GecoderViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
+		3EC9A69D1661F64D00B382CD /* NotificationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationObserver.h; sourceTree = "<group>"; };
+		3EC9A69E1661F64D00B382CD /* NotificationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationObserver.m; sourceTree = "<group>"; };
 		3ED3F59816589451003EE847 /* BarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarButtonItem.h; sourceTree = "<group>"; };
 		3ED3F59916589452003EE847 /* BarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarButtonItem.m; sourceTree = "<group>"; };
 		3ED3F59C165899EB003EE847 /* Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Label.h; sourceTree = "<group>"; };
@@ -668,12 +671,12 @@
 		3EA27075165278AC0011C0D4 /* impl */ = {
 			isa = PBXGroup;
 			children = (
-				3E6B949D16460E8C009B01AD /* AnimationImpl.h */,
-				3E6B949E16460E8C009B01AD /* AnimationImpl.m */,
+				3E6B949D16460E8C009B01AD /* Animation.h */,
+				3E6B949E16460E8C009B01AD /* Animation.m */,
 				3E867ADB1646A47A00650486 /* AppLoader.h */,
 				3E867ADC1646A47A00650486 /* AppLoader.m */,
-				3E867ADE1646AC4A00650486 /* AppRunImpl.h */,
-				3E867ADF1646AC4A00650486 /* AppRunImpl.m */,
+				3E867ADE1646AC4A00650486 /* AppRunner.h */,
+				3E867ADF1646AC4A00650486 /* AppRunner.m */,
 				3ED3F59816589451003EE847 /* BarButtonItem.h */,
 				3ED3F59916589452003EE847 /* BarButtonItem.m */,
 				3E7A6DFF1657E2D0008DC64B /* Button.h */,
@@ -686,6 +689,8 @@
 				3ED3F59D165899EB003EE847 /* Label.m */,
 				3E7A6DFC1657D4C1008DC64B /* NavigationController.h */,
 				3E7A6DFD1657D4C1008DC64B /* NavigationController.m */,
+				3EC9A69D1661F64D00B382CD /* NotificationObserver.h */,
+				3EC9A69E1661F64D00B382CD /* NotificationObserver.m */,
 				3E34ECEF164A97D400B4F7F0 /* PickerView.h */,
 				3E34ECF0164A97D400B4F7F0 /* PickerView.m */,
 				3EA27078165278D60011C0D4 /* TableView.h */,
@@ -1024,7 +1029,7 @@
 				3EC357CA16440442009611C8 /* RequireReplaceChecker.m in Sources */,
 				3EC357CD16440519009611C8 /* NSString+Substring.m in Sources */,
 				3EC357D01644C48E009611C8 /* Waiting.m in Sources */,
-				3E6B949F16460E8C009B01AD /* AnimationImpl.m in Sources */,
+				3E6B949F16460E8C009B01AD /* Animation.m in Sources */,
 				3E6B94F51646814D009B01AD /* OnlineAppBundleLoader.m in Sources */,
 				3E6B94F816468F12009B01AD /* LocalAppBundle.m in Sources */,
 				3E6B950E16469292009B01AD /* ioapi.c in Sources */,
@@ -1033,7 +1038,7 @@
 				3E6B951116469292009B01AD /* zip.c in Sources */,
 				3E6B951216469292009B01AD /* ZipArchive.m in Sources */,
 				3E867ADD1646A47A00650486 /* AppLoader.m in Sources */,
-				3E867AE01646AC4A00650486 /* AppRunImpl.m in Sources */,
+				3E867AE01646AC4A00650486 /* AppRunner.m in Sources */,
 				3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */,
 				3E867B511647DFCE00650486 /* ASIAuthenticationDialog.m in Sources */,
 				3E867B521647DFCE00650486 /* ASIDataCompressor.m in Sources */,
@@ -1058,6 +1063,7 @@
 				3E6283FA165902F700F59593 /* TextView.m in Sources */,
 				3EC9A677165A709B00B382CD /* View.m in Sources */,
 				3EC9A67F165D27B100B382CD /* ImageCreator.m in Sources */,
+				3EC9A69F1661F64D00B382CD /* NotificationObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

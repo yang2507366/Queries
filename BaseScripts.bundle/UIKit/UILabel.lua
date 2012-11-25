@@ -1,6 +1,6 @@
 require "UIView"
 require "UIFont"
-require "System"
+require "AppContext"
 
 UILabel = {};
 UILabel.__index = UILabel;
@@ -11,7 +11,7 @@ function UILabel:create(text)
     if text == nil then
         text = "";
     end
-    local labelId = runtime::invokeClassMethod("Label", "create:", System.id());
+    local labelId = runtime::invokeClassMethod("Label", "create:", AppContext.current());
     local label = UILabel:get(labelId);
     label:setText(text);
     

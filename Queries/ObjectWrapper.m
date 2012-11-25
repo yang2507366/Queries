@@ -21,7 +21,7 @@
 {
     self = [super init];
     
-    self.referenceCount = 0;
+    self.referenceCount = 1;
     
     return self;
 }

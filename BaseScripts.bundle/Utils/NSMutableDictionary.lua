@@ -1,9 +1,8 @@
-require "Object"
-require "NSMutableArray"
+require "NSDictionary"
 
 NSMutableDictionary = {};
 NSMutableDictionary.__index = NSMutableDictionary;
-setmetatable(NSMutableDictionary, Object);
+setmetatable(NSMutableDictionary, NSDictionary);
 
 function NSMutableDictionary:create()
     local dictId = runtime::invokeClassMethod("NSMutableDictionary", "dictionary");
@@ -23,18 +22,4 @@ function NSMutableDictionary:setObjectForKey(obj, key)
         obj = obj:id();
     end
     runtime::invokeMethod(self:id(), "setObject:forKey:", obj, key);
-end
-
-function NSMutableDictionary:objectForKey(key)
-    local objId = runtime::invokeMethod(self:id(), "objectForKey:", key);
-    if isObjCObject(objId) then
-        return Object:new(objId);
-    else
-        return objId;
-    end
-end
-
-function NSMutableDictionary:allKeys()
-    local arrId = runtime::invokeMethod(self:id(), "allKeys");
-    return NSMutableArray:get(arrId);
 end

@@ -11,7 +11,7 @@ function Object:new(objectId)
     if objectId ~= nil then
         obj.objectId = objectId;
     end
-    obj:retain();
+--    obj:retain();
     
     return obj:autorelease();
 end

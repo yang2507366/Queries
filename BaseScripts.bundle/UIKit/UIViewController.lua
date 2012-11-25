@@ -1,7 +1,7 @@
 require "Object"
 require "UIView"
 require "UINavigationItem"
-require "System"
+require "AppContext"
 require "CommonUtils"
 
 UIViewController = {};
@@ -13,7 +13,7 @@ function UIViewController:create(title)
     if title == nil then
         title = "Untitled";
     end
-    local vcId = runtime::invokeClassMethod("ViewController", "create:", System.id());
+    local vcId = runtime::invokeClassMethod("ViewController", "create:", AppContext.current());
     local vc = self:get(vcId);
     vc:setTitle(title);
     

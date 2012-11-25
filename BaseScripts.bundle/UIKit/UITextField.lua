@@ -1,6 +1,6 @@
 require "UIView"
 require "UITextFieldDelegate"
-require "System"
+require "AppContext"
 require "CommonUtils"
 
 UITextField = {};
@@ -27,7 +27,7 @@ UIKeyboardTypeTwitter                   = 9;
 
 -- constructor
 function UITextField:create()
-    local textFieldId = runtime::invokeClassMethod("TextField", "create:", System.id());
+    local textFieldId = runtime::invokeClassMethod("TextField", "create:", AppContext.current());
     
     return self:get(textFieldId);
 end

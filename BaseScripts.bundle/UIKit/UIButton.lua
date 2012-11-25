@@ -1,6 +1,6 @@
 require "UIView"
 require "UILabel"
-require "System"
+require "AppContext"
 
 UIButton = {};
 UIButton.__index = UIButton;
@@ -26,7 +26,7 @@ function UIButton:create(title, buttonType)
     if buttonType == nil then
         buttonType = UIButtonTypeRoundedRect;
     end
-    local buttonId = runtime::invokeClassMethod("Button", "create:type:", System.id(), buttonType);
+    local buttonId = runtime::invokeClassMethod("Button", "create:type:", AppContext.current(), buttonType);
     local button = UIButton:get(buttonId);
     
     button:setTitle(title);
