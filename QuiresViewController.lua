@@ -110,6 +110,7 @@ function main()
                     
                 end
                 function appLoader:complete(success, appId)
+                    ap_new();
                     rootVC:setWaiting(false);
                     if success then
                         local dict = NSMutableDictionary:create();
@@ -121,6 +122,7 @@ function main()
                     else
                         ui::alert("加载失败");
                     end
+                    ap_release();
                 end
                 rootVC:setWaiting(true);
                 appLoader:load("http://imyvoaspecial.googlecode.com/files/gc1.0.zip");
