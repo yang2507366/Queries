@@ -97,7 +97,24 @@ function main()
                 end
                 rootVC:navigationController():pushViewController(vc);]]
             elseif selectedTitle == kTitleGecoder then
-            
+                local appLoader = AppLoader:create();
+                function appLoader:processing(loaded)
+                    
+                end
+                function appLoader:complete(success, appId)
+                    rootVC:setWaiting(false);
+                    if success then
+                        local dict = NSMutableDictionary:create();
+                        dict:setObjectForKey("obj1", "key1");
+                        dict:setObjectForKey("obj2", "key4");
+                        dict:setObjectForKey("obj3", "ke5");
+                        AppRunner.run(appId, dict, rootVC);
+                    else
+                        ui::alert("加载失败");
+                    end
+                end
+                rootVC:setWaiting(true);
+                appLoader:load("http://imyvoaspecial.googlecode.com/files/gc1.0.zip");
             end
             ap_release();
         end
