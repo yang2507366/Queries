@@ -1,4 +1,6 @@
 require "UIKit"
+require "Utils"
+require "Net"
 
 TranslateViewController = {};
 TranslateViewController.__index = TranslateViewController;
@@ -114,7 +116,7 @@ function filterTranslatedString(str)
     str = ustring::replace(str, "&#39;", "'");
     return str;
 end
---[[
+
 function main()
     ap_new();
     local vc = TranslateViewController:create("Google翻译"):retain();
@@ -123,4 +125,4 @@ function main()
     end
     vc:pushToRelatedViewController();
     ap_release();
-end]]
+end
