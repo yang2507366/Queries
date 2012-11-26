@@ -262,6 +262,12 @@ int ui_getRelatedViewController(lua_State *L)
     return 1;
 }
 
+int ui_screenScale(lua_State *L)
+{
+    pushString(L, [NSString stringWithFormat:@"%f", [UIScreen mainScreen].scale]);
+    return 1;
+}
+
 #pragma mark - string
 int ustring_substring(lua_State *L)
 {
@@ -271,7 +277,7 @@ int ustring_substring(lua_State *L)
     NSInteger endIndex = [luaStringParam(L, 4) intValue];
     
     NSString *resultString = @"";
-    if(string.length != 0 && beginIndex < string.length && endIndex < string.length && beginIndex < endIndex){
+    if(string.length != 0 && beginIndex <= string.length && endIndex <= string.length && beginIndex < endIndex){
         resultString = [string substringWithRange:NSMakeRange(beginIndex, endIndex - beginIndex)];
     }
     pushString(L, resultString);
@@ -298,8 +304,8 @@ int ustring_find(lua_State *L)
     NSInteger location = -1;
     if(string.length > 0 && targetStr.length > 0 && fromIndex > -1 && fromIndex < string.length){
         NSRange tmpRange = [string rangeOfString:targetStr
-                                         options:reverse ? NSBackwardsSearch : NSCaseInsensitiveSearch
-                                           range:reverse ? NSMakeRange(0, fromIndex) : NSMakeRange(fromIndex, string.length - fromIndex)];
+                                         options:reverse == 1 ? NSBackwardsSearch : NSCaseInsensitiveSearch
+                                           range:reverse == 1 ? NSMakeRange(0, fromIndex) : NSMakeRange(fromIndex, string.length - fromIndex)];
         location = tmpRange.location == NSNotFound ? -1 : tmpRange.location;
     }
     lua_pushnumber(L, location);
@@ -419,6 +425,23 @@ int runtime_objectRetainCount(lua_State *L)
     return 1;
 }
 
+int runtime_objectClassName(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *objId = luaStringParam(L, 2);
+    if([LuaCommonUtils isObjCObject:objId]){
+        id object = [LuaObjectManager objectWithId:objId group:appId];
+        if(object){
+            pushString(L, NSStringFromClass([object class]));
+        }else{
+            pushString(L, @"nil");
+        }
+    }else{
+        pushString(L, NSStringFromClass([NSString class]));
+    }
+    return 1;
+}
+
 #pragma mark - system
 int nslog(lua_State *L)
 {
@@ -434,7 +457,7 @@ int utils_printObject(lua_State *L)
     NSString *log = luaStringParam(L, 2);
     
     id targetObject = log;
-    if([log hasPrefix:lua_obj_prefix]){
+    if([LuaCommonUtils isObjCObject:log]){
         id tmpObject = [LuaObjectManager objectWithId:log group:scriptId];
         if(tmpObject){
             targetObject = tmpObject;
@@ -497,11 +520,13 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "runtime_releaseObject", runtime_releaseObject);
     pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
     pushFunctionToLua(L, "runtime_objectRetainCount", runtime_objectRetainCount);
+    pushFunctionToLua(L, "runtime_objectClassName", runtime_objectClassName);
     pushFunctionToLua(L, "ui_alert", ui_alert);
     pushFunctionToLua(L, "ui_setRootViewController", ui_setRootViewController);
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
     pushFunctionToLua(L, "ui_animate", ui_animate);
     pushFunctionToLua(L, "ui_getRelatedViewController", ui_getRelatedViewController);
+    pushFunctionToLua(L, "ui_screenScale", ui_screenScale);
     pushFunctionToLua(L, "ustring_find", ustring_find);
     pushFunctionToLua(L, "ustring_length", ustring_length);
     pushFunctionToLua(L, "ustring_substring", ustring_substring);

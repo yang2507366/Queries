@@ -9,7 +9,6 @@
 #import "PickerView.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
-#import <objc/objc-class.h>
 
 @interface PickerViewImplEventProxy : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
 

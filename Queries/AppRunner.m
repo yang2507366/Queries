@@ -12,12 +12,13 @@
 #import "LuaApp.h"
 #import "LuaAppManager.h"
 #import "LuaObjectManager.h"
+#import "LuaCommonUtils.h"
 
 @implementation AppRunner
 
 + (void)runWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId params:(NSString *)params relatedViewControllerId:(NSString *)rvcId
 {
-    if([params hasPrefix:lua_obj_prefix]){
+    if([LuaCommonUtils isObjCObject:params]){
         params = [LuaObjectManager objectWithId:params group:appId];
     }
     NSString *appDir = [lua_app_bundle_dir stringByAppendingPathComponent:targetAppId];

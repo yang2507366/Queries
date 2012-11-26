@@ -17,6 +17,8 @@ kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTransl
 function main()
     ap_new();
     
+    local appBundle = AppBundle:current();
+    print(appBundle:objCClassName());
     local observer = NotificationObserver:create():retain();
     observer:observe("UIApplicationWillChangeStatusBarOrientationNotification");
     function observer:receive(object, userInfo)
@@ -58,6 +60,8 @@ function main()
                 icon = UIImage:imageWithResName("phone.png");
             elseif targetTitle == kTitleSearchPostcode then
                 icon = UIImage:imageWithResName("postcode.png");
+            elseif targetTitle == kTitleGecoder then
+                icon = UIImage:imageWithResName("gecode.png");
             end
             cell:imageView():setImage(icon);
             ap_release();

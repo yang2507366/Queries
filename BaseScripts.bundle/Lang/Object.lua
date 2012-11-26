@@ -68,7 +68,12 @@ function Object:autorelease()
     return self;
 end
 
+function Object:objCClassName()
+    return runtime::objectClassName(self:id());
+end
+
 -- object convert
 function oc(object, targetType)
     setmetatable(object, targetType);
 end
+
