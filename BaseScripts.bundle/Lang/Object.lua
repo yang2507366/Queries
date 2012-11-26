@@ -72,6 +72,10 @@ function Object:objCClassName()
     return runtime::objectClassName(self:id());
 end
 
+function Object:objCDescription()
+    return runtime::objectDescription(self:id());
+end
+
 -- object convert
 function oc(object, targetType)
     setmetatable(object, targetType);

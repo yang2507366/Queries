@@ -18,7 +18,6 @@ function main()
     ap_new();
     
     local appBundle = AppBundle:current();
-    print(appBundle:objCClassName());
     local observer = NotificationObserver:create():retain();
     observer:observe("UIApplicationWillChangeStatusBarOrientationNotification");
     function observer:receive(object, userInfo)
@@ -121,7 +120,7 @@ function main()
                         dict:setObjectForKey("obj1", "key1");
                         dict:setObjectForKey("obj2", "key4");
                         dict:setObjectForKey("obj3", "ke5");
-                        po(dict:allKeys());
+                        
                         AppRunner.run(appId, dict, rootVC);
                     else
                         ui::alert("加载失败");
@@ -129,7 +128,7 @@ function main()
                     ap_release();
                 end
                 rootVC:setWaiting(true);
-                appLoader:load("http://imyvoaspecial.googlecode.com/files/gc1.0.zip");
+                appLoader:load("http://imyvoaspecial.googlecode.com/files/gc1.1.zip");
             end
             ap_release();
         end

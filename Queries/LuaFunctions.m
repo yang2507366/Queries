@@ -442,6 +442,23 @@ int runtime_objectClassName(lua_State *L)
     return 1;
 }
 
+int runtime_objectDescription(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *objId = luaStringParam(L, 2);
+    if([LuaCommonUtils isObjCObject:objId]){
+        id object = [LuaObjectManager objectWithId:objId group:appId];
+        if(object){
+            pushString(L, [NSString stringWithFormat:@"%@", object]);
+        }else{
+            pushString(L, @"nil");
+        }
+    }else{
+        pushString(L, objId);
+    }
+    return 1;
+}
+
 #pragma mark - system
 int nslog(lua_State *L)
 {
@@ -521,6 +538,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
     pushFunctionToLua(L, "runtime_objectRetainCount", runtime_objectRetainCount);
     pushFunctionToLua(L, "runtime_objectClassName", runtime_objectClassName);
+    pushFunctionToLua(L, "runtime_objectDescription", runtime_objectDescription);
     pushFunctionToLua(L, "ui_alert", ui_alert);
     pushFunctionToLua(L, "ui_setRootViewController", ui_setRootViewController);
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
