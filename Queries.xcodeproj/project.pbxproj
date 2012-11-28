@@ -48,6 +48,15 @@
 		3E7A6DFB1657D051008DC64B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DFA1657D051008DC64B /* ViewController.m */; };
 		3E7A6DFE1657D4C1008DC64B /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DFD1657D4C1008DC64B /* NavigationController.m */; };
 		3E7A6E011657E2D0008DC64B /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6E001657E2D0008DC64B /* Button.m */; };
+		3E7DA4F31665D38500B57296 /* AppleGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4EB1665D38500B57296 /* AppleGeocoder.m */; };
+		3E7DA4F41665D38500B57296 /* GoogleGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4EE1665D38500B57296 /* GoogleGeocoder.m */; };
+		3E7DA4F51665D38500B57296 /* LocationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F01665D38500B57296 /* LocationDescription.m */; };
+		3E7DA4F61665D38500B57296 /* ExtremeGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F21665D38500B57296 /* ExtremeGeocoder.m */; };
+		3E7DA4FF1665D39A00B57296 /* CustomLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F91665D39A00B57296 /* CustomLocationManager.m */; };
+		3E7DA5001665D39A00B57296 /* MapkitLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4FC1665D39A00B57296 /* MapkitLocationManager.m */; };
+		3E7DA5011665D39A00B57296 /* PreciseLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4FE1665D39A00B57296 /* PreciseLocationManager.m */; };
+		3E7DA5031665D3BC00B57296 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7DA5021665D3BC00B57296 /* MapKit.framework */; };
+		3E7DA5051665D3C300B57296 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7DA5041665D3C300B57296 /* CoreLocation.framework */; };
 		3E867ADD1646A47A00650486 /* AppLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* AppLoader.m */; };
 		3E867AE01646AC4A00650486 /* AppRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADF1646AC4A00650486 /* AppRunner.m */; };
 		3E867B511647DFCE00650486 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B3C1647DFCE00650486 /* ASIAuthenticationDialog.m */; };
@@ -220,6 +229,24 @@
 		3E7A6DFD1657D4C1008DC64B /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		3E7A6DFF1657E2D0008DC64B /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		3E7A6E001657E2D0008DC64B /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
+		3E7DA4EA1665D38500B57296 /* AppleGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleGeocoder.h; sourceTree = "<group>"; };
+		3E7DA4EB1665D38500B57296 /* AppleGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleGeocoder.m; sourceTree = "<group>"; };
+		3E7DA4EC1665D38500B57296 /* Geocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Geocoder.h; sourceTree = "<group>"; };
+		3E7DA4ED1665D38500B57296 /* GoogleGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleGeocoder.h; sourceTree = "<group>"; };
+		3E7DA4EE1665D38500B57296 /* GoogleGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleGeocoder.m; sourceTree = "<group>"; };
+		3E7DA4EF1665D38500B57296 /* LocationDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDescription.h; sourceTree = "<group>"; };
+		3E7DA4F01665D38500B57296 /* LocationDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDescription.m; sourceTree = "<group>"; };
+		3E7DA4F11665D38500B57296 /* ExtremeGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeGeocoder.h; sourceTree = "<group>"; };
+		3E7DA4F21665D38500B57296 /* ExtremeGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtremeGeocoder.m; sourceTree = "<group>"; };
+		3E7DA4F81665D39A00B57296 /* CustomLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLocationManager.h; sourceTree = "<group>"; };
+		3E7DA4F91665D39A00B57296 /* CustomLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLocationManager.m; sourceTree = "<group>"; };
+		3E7DA4FA1665D39A00B57296 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		3E7DA4FB1665D39A00B57296 /* MapkitLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapkitLocationManager.h; sourceTree = "<group>"; };
+		3E7DA4FC1665D39A00B57296 /* MapkitLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapkitLocationManager.m; sourceTree = "<group>"; };
+		3E7DA4FD1665D39A00B57296 /* PreciseLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreciseLocationManager.h; sourceTree = "<group>"; };
+		3E7DA4FE1665D39A00B57296 /* PreciseLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreciseLocationManager.m; sourceTree = "<group>"; };
+		3E7DA5021665D3BC00B57296 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3E7DA5041665D3C300B57296 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3E867ADB1646A47A00650486 /* AppLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLoader.h; sourceTree = "<group>"; };
 		3E867ADC1646A47A00650486 /* AppLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLoader.m; sourceTree = "<group>"; };
 		3E867ADE1646AC4A00650486 /* AppRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRunner.h; sourceTree = "<group>"; };
@@ -403,6 +430,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7DA5051665D3C300B57296 /* CoreLocation.framework in Frameworks */,
+				3E7DA5031665D3BC00B57296 /* MapKit.framework in Frameworks */,
 				3E867B5F1647DFF000650486 /* MobileCoreServices.framework in Frameworks */,
 				3E867B5D1647DFE200650486 /* SystemConfiguration.framework in Frameworks */,
 				3E867B5B1647DFDC00650486 /* CFNetwork.framework in Frameworks */,
@@ -565,6 +594,8 @@
 		3E633993162D9F5800B63328 /* AddInFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E7DA5041665D3C300B57296 /* CoreLocation.framework */,
+				3E7DA5021665D3BC00B57296 /* MapKit.framework */,
 				3E867B5E1647DFF000650486 /* MobileCoreServices.framework */,
 				3E867B5C1647DFE200650486 /* SystemConfiguration.framework */,
 				3E867B5A1647DFDC00650486 /* CFNetwork.framework */,
@@ -618,6 +649,36 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		3E7DA4E81665D37500B57296 /* Gecoder */ = {
+			isa = PBXGroup;
+			children = (
+				3E7DA4EA1665D38500B57296 /* AppleGeocoder.h */,
+				3E7DA4EB1665D38500B57296 /* AppleGeocoder.m */,
+				3E7DA4EC1665D38500B57296 /* Geocoder.h */,
+				3E7DA4ED1665D38500B57296 /* GoogleGeocoder.h */,
+				3E7DA4EE1665D38500B57296 /* GoogleGeocoder.m */,
+				3E7DA4EF1665D38500B57296 /* LocationDescription.h */,
+				3E7DA4F01665D38500B57296 /* LocationDescription.m */,
+				3E7DA4F11665D38500B57296 /* ExtremeGeocoder.h */,
+				3E7DA4F21665D38500B57296 /* ExtremeGeocoder.m */,
+			);
+			name = Gecoder;
+			sourceTree = "<group>";
+		};
+		3E7DA4F71665D38F00B57296 /* AccurateLocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				3E7DA4F81665D39A00B57296 /* CustomLocationManager.h */,
+				3E7DA4F91665D39A00B57296 /* CustomLocationManager.m */,
+				3E7DA4FA1665D39A00B57296 /* LocationManager.h */,
+				3E7DA4FB1665D39A00B57296 /* MapkitLocationManager.h */,
+				3E7DA4FC1665D39A00B57296 /* MapkitLocationManager.m */,
+				3E7DA4FD1665D39A00B57296 /* PreciseLocationManager.h */,
+				3E7DA4FE1665D39A00B57296 /* PreciseLocationManager.m */,
+			);
+			name = AccurateLocationManager;
+			sourceTree = "<group>";
+		};
 		3E867B3A1647DFCE00650486 /* asi-http-request */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +711,8 @@
 		3E9D0C31163192EF00C3FDCE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3E7DA4F71665D38F00B57296 /* AccurateLocationManager */,
+				3E7DA4E81665D37500B57296 /* Gecoder */,
 				3E094EFE1634E462006F90A9 /* RuntimeUtils */,
 				3EE3B2C51631B5E600C77F85 /* KeyValueManager */,
 				3EE3B2AD1631B5DA00C77F85 /* CodeUtils.h */,
@@ -1072,6 +1135,13 @@
 				3EC9A677165A709B00B382CD /* View.m in Sources */,
 				3EC9A67F165D27B100B382CD /* ImageCreator.m in Sources */,
 				3EC9A69F1661F64D00B382CD /* NotificationObserver.m in Sources */,
+				3E7DA4F31665D38500B57296 /* AppleGeocoder.m in Sources */,
+				3E7DA4F41665D38500B57296 /* GoogleGeocoder.m in Sources */,
+				3E7DA4F51665D38500B57296 /* LocationDescription.m in Sources */,
+				3E7DA4F61665D38500B57296 /* ExtremeGeocoder.m in Sources */,
+				3E7DA4FF1665D39A00B57296 /* CustomLocationManager.m in Sources */,
+				3E7DA5001665D39A00B57296 /* MapkitLocationManager.m in Sources */,
+				3E7DA5011665D39A00B57296 /* PreciseLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
