@@ -13,7 +13,7 @@ kTitleGoogleTranslate = "Google翻译";
 kTitleGecoder = "Geocoder";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate, kTitleGecoder};
---[[
+
 function main()
     ap_new();
     
@@ -144,4 +144,3 @@ function main()
     
     ap_release();
 end
-]]

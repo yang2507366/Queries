@@ -1,5 +1,5 @@
 require "Lang"
-
+--[[
 function main(args)
     ap_new();
     if args ~= nil then
@@ -12,4 +12,4 @@ function main(args)
         end
     end
     ap_release();
-end
+end]]

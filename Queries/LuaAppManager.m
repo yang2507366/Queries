@@ -236,7 +236,7 @@
     static NSDictionary *baseScriptFileDictionary = nil;
     if(baseScriptFileDictionary == nil){
         NSMutableDictionary *tmpDict = [NSMutableDictionary dictionary];
-        NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BaseScripts" ofType:@".bundle"]];
+        NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BaseScripts.bundle" ofType:nil]];
         NSString *bundleRootPath = [bundle bundlePath];
         NSMutableArray *folderList = [NSMutableArray arrayWithObject:bundleRootPath];
         while(folderList.count != 0){
