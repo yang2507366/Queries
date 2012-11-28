@@ -1,5 +1,5 @@
 require "Lang"
---[[
+
 function main(args)
     ap_new();
     if args ~= nil then
@@ -7,9 +7,9 @@ function main(args)
             local obj = Object:new(args);
             setmetatable(obj, Object);
             ui::alert(obj:objCDescription());
-        else
+            else
             ui::alert(args);
         end
     end
     ap_release();
-end]]
+end
