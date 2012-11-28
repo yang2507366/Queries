@@ -20,7 +20,9 @@ end
 
 function UIImage:imageWithResName(resName, scale)
     if not scale then
-        scale = tonumber(ui::screenScale());
+        local screenId = runtime::invokeClassMethod("UIScreen", "mainScreen");
+        local scale = runtime::invokeMethod(screenId, "scale");
+        scale = tonumber(scale);
     end
     local beginIndex = string.find(resName, "@2x");
     if scale == 2.0 and beginIndex == nil  then

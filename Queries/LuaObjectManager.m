@@ -54,7 +54,9 @@
 //        D_Log(@"add object:%d:%@, group:%@", (NSInteger)object, object, group);
         NSString *objectId = [self idForObject:object];
         [objectDictionary setObject:[ObjectWrapper newObjectWrapperWithObject:object] forKey:objectId];
+#ifdef OBJ_COUNT_LOG_ENABLE
         NSLog(@"add object count:%d", [self statisticObjectCount]);
+#endif
         return objectId;
     }
 }
@@ -71,7 +73,9 @@
         [objectDictionary removeObjectForKey:objectId];
         D_Log(@"removeObjectWithId:%@", objectId);
     }
+#ifdef OBJ_COUNT_LOG_ENABLE
     NSLog(@"remove object count:%d", [self statisticObjectCount]);
+#endif
 }
 
 - (NSString *)containsObject:(id)object group:(NSString *)group

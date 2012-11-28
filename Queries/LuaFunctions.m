@@ -262,12 +262,6 @@ int ui_getRelatedViewController(lua_State *L)
     return 1;
 }
 
-int ui_screenScale(lua_State *L)
-{
-    pushString(L, [NSString stringWithFormat:@"%f", [UIScreen mainScreen].scale]);
-    return 1;
-}
-
 #pragma mark - string
 int ustring_substring(lua_State *L)
 {
@@ -544,7 +538,6 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
     pushFunctionToLua(L, "ui_animate", ui_animate);
     pushFunctionToLua(L, "ui_getRelatedViewController", ui_getRelatedViewController);
-    pushFunctionToLua(L, "ui_screenScale", ui_screenScale);
     pushFunctionToLua(L, "ustring_find", ustring_find);
     pushFunctionToLua(L, "ustring_length", ustring_length);
     pushFunctionToLua(L, "ustring_substring", ustring_substring);

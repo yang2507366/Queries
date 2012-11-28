@@ -131,7 +131,7 @@
                 argumentData = &s;
             }else if(ctype == '['){//C array
             }else if(ctype == '{'){//struct
-                NSLog(@"set struct:%s", [methodSignature getArgumentTypeAtIndex:i]);//未处理
+                D_Log(@"set struct:%s", [methodSignature getArgumentTypeAtIndex:i]);//未处理
                 NSString *structType = [NSString stringWithFormat:@"%s", [methodSignature getArgumentTypeAtIndex:i]];
                 if([structType hasPrefix:@"{CGSize"]){
                     CGSize size = [LuaCommonUtils CGSizeWithString:tmpParam];
@@ -254,7 +254,7 @@
                 return NSStringFromSelector(sel);
             }else if(ctype == '['){//C array
             }else if(ctype == '{'){//struct
-                NSLog(@"get struct:%s", [methodSignature methodReturnType]);//未处理
+                D_Log(@"get struct:%s", [methodSignature methodReturnType]);//未处理
                 NSString *structType = [NSString stringWithFormat:@"%s", [methodSignature methodReturnType]];
                 if([structType hasPrefix:@"{CGSize"]){
                     CGSize size;
