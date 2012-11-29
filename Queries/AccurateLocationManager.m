@@ -6,11 +6,11 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "CustomLocationManager.h"
+#import "AccurateLocationManager.h"
 #import "MapkitLocationManager.h"
 #import "PreciseLocationManager.h"
 
-@interface CustomLocationManager () <LocationManagerDelegate>
+@interface AccurateLocationManager () <LocationManagerDelegate>
 
 @property(nonatomic, retain)MapkitLocationManager *mapkitLocationMgr;
 @property(nonatomic, retain)PreciseLocationManager *preciseLocationMgr;
@@ -19,21 +19,21 @@
 
 @end
 
-@implementation CustomLocationManager
+@implementation AccurateLocationManager
 
-@synthesize delegate = _delegate;
+@synthesize delegate;
 
-@synthesize mapkitLocationMgr = _mapkitLocationMgr;
-@synthesize preciseLocationMgr = _preciseLocationMgr;
+@synthesize mapkitLocationMgr;
+@synthesize preciseLocationMgr;
 
-@synthesize preciseLocation = _preciseLocation;
+@synthesize preciseLocation;
 
 - (void)dealloc
 {
-    [_mapkitLocationMgr cancel]; [_mapkitLocationMgr release];
-    [_preciseLocationMgr cancel]; [_preciseLocationMgr release];
+    [self.mapkitLocationMgr cancel]; self.mapkitLocationMgr = nil;
+    [self.preciseLocationMgr cancel]; self.preciseLocationMgr = nil;
     
-    [_preciseLocation release];
+    self.preciseLocation = nil;
     [super dealloc];
 }
 

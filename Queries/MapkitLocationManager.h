@@ -15,6 +15,6 @@
     id<LocationManagerDelegate> _delegate;
 }
 
-@property(nonatomic, assign)NSTimeInterval timeOut;
+@property(nonatomic, assign)NSTimeInterval timeOutSeconds;
 
 @end

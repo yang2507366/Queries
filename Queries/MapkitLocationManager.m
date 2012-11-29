@@ -29,7 +29,7 @@
 
 @synthesize delegate = _delegate;
 
-@synthesize timeOut;
+@synthesize timeOutSeconds;
 
 @synthesize mapView;
 
@@ -49,7 +49,7 @@
     self = [super init];
     
     self.retryCount = 0;
-    self.timeOut = 10.0f;
+    self.timeOutSeconds = 10.0f;
     
     return self;
 }
@@ -67,7 +67,7 @@
         if(self.delayController){
             [self.delayController cancel];
         }
-        self.delayController = [[[DelayController alloc] initWithInterval:self.timeOut] autorelease];
+        self.delayController = [[[DelayController alloc] initWithInterval:self.timeOutSeconds] autorelease];
         self.delayController.delegate = self;
         [self.delayController start];
     }else{

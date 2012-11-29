@@ -52,7 +52,7 @@
 		3E7DA4F41665D38500B57296 /* GoogleGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4EE1665D38500B57296 /* GoogleGeocoder.m */; };
 		3E7DA4F51665D38500B57296 /* LocationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F01665D38500B57296 /* LocationDescription.m */; };
 		3E7DA4F61665D38500B57296 /* ExtremeGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F21665D38500B57296 /* ExtremeGeocoder.m */; };
-		3E7DA4FF1665D39A00B57296 /* CustomLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F91665D39A00B57296 /* CustomLocationManager.m */; };
+		3E7DA4FF1665D39A00B57296 /* AccurateLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F91665D39A00B57296 /* AccurateLocationManager.m */; };
 		3E7DA5001665D39A00B57296 /* MapkitLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4FC1665D39A00B57296 /* MapkitLocationManager.m */; };
 		3E7DA5011665D39A00B57296 /* PreciseLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4FE1665D39A00B57296 /* PreciseLocationManager.m */; };
 		3E7DA5031665D3BC00B57296 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E7DA5021665D3BC00B57296 /* MapKit.framework */; };
@@ -238,8 +238,8 @@
 		3E7DA4F01665D38500B57296 /* LocationDescription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDescription.m; sourceTree = "<group>"; };
 		3E7DA4F11665D38500B57296 /* ExtremeGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtremeGeocoder.h; sourceTree = "<group>"; };
 		3E7DA4F21665D38500B57296 /* ExtremeGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtremeGeocoder.m; sourceTree = "<group>"; };
-		3E7DA4F81665D39A00B57296 /* CustomLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLocationManager.h; sourceTree = "<group>"; };
-		3E7DA4F91665D39A00B57296 /* CustomLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLocationManager.m; sourceTree = "<group>"; };
+		3E7DA4F81665D39A00B57296 /* AccurateLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccurateLocationManager.h; sourceTree = "<group>"; };
+		3E7DA4F91665D39A00B57296 /* AccurateLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccurateLocationManager.m; sourceTree = "<group>"; };
 		3E7DA4FA1665D39A00B57296 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		3E7DA4FB1665D39A00B57296 /* MapkitLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapkitLocationManager.h; sourceTree = "<group>"; };
 		3E7DA4FC1665D39A00B57296 /* MapkitLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapkitLocationManager.m; sourceTree = "<group>"; };
@@ -668,8 +668,8 @@
 		3E7DA4F71665D38F00B57296 /* AccurateLocationManager */ = {
 			isa = PBXGroup;
 			children = (
-				3E7DA4F81665D39A00B57296 /* CustomLocationManager.h */,
-				3E7DA4F91665D39A00B57296 /* CustomLocationManager.m */,
+				3E7DA4F81665D39A00B57296 /* AccurateLocationManager.h */,
+				3E7DA4F91665D39A00B57296 /* AccurateLocationManager.m */,
 				3E7DA4FA1665D39A00B57296 /* LocationManager.h */,
 				3E7DA4FB1665D39A00B57296 /* MapkitLocationManager.h */,
 				3E7DA4FC1665D39A00B57296 /* MapkitLocationManager.m */,
@@ -1139,7 +1139,7 @@
 				3E7DA4F41665D38500B57296 /* GoogleGeocoder.m in Sources */,
 				3E7DA4F51665D38500B57296 /* LocationDescription.m in Sources */,
 				3E7DA4F61665D38500B57296 /* ExtremeGeocoder.m in Sources */,
-				3E7DA4FF1665D39A00B57296 /* CustomLocationManager.m in Sources */,
+				3E7DA4FF1665D39A00B57296 /* AccurateLocationManager.m in Sources */,
 				3E7DA5001665D39A00B57296 /* MapkitLocationManager.m in Sources */,
 				3E7DA5011665D39A00B57296 /* PreciseLocationManager.m in Sources */,
 			);

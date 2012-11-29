@@ -13,13 +13,6 @@
 @class MapkitLocationManager;
 @class PreciseLocationManager;
 
-@interface CustomLocationManager : NSObject <LocationManager> {
-    id<LocationManagerDelegate> _delegate;
-    
-    MapkitLocationManager *_mapkitLocationMgr;
-    PreciseLocationManager *_preciseLocationMgr;
-    
-    CLLocation *_preciseLocation;
-}
+@interface AccurateLocationManager : NSObject <LocationManager>
 
 @end
