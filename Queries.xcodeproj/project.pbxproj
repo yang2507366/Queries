@@ -77,6 +77,7 @@
 		3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D0C33163192FD00C3FDCE /* SystemUtils.m */; };
 		3EA2707A165278D60011C0D4 /* LITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA27079165278D60011C0D4 /* LITableView.m */; };
 		3EA40CC01667986E00978C91 /* LILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CBF1667986E00978C91 /* LILocationManager.m */; };
+		3EA40CC31667A44B00978C91 /* LIGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CC21667A44B00978C91 /* LIGeocoder.m */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC357C31643E288009611C8 /* ApplicationScriptBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */; };
@@ -289,6 +290,8 @@
 		3EA27079165278D60011C0D4 /* LITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITableView.m; sourceTree = "<group>"; };
 		3EA40CBE1667986E00978C91 /* LILocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LILocationManager.h; sourceTree = "<group>"; };
 		3EA40CBF1667986E00978C91 /* LILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LILocationManager.m; sourceTree = "<group>"; };
+		3EA40CC11667A44B00978C91 /* LIGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGeocoder.h; sourceTree = "<group>"; };
+		3EA40CC21667A44B00978C91 /* LIGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGeocoder.m; sourceTree = "<group>"; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -806,6 +809,8 @@
 				3EC9A69E1661F64D00B382CD /* LINotificationObserver.m */,
 				3EA40CBE1667986E00978C91 /* LILocationManager.h */,
 				3EA40CBF1667986E00978C91 /* LILocationManager.m */,
+				3EA40CC11667A44B00978C91 /* LIGeocoder.h */,
+				3EA40CC21667A44B00978C91 /* LIGeocoder.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1174,6 +1179,7 @@
 				3E7DA5001665D39A00B57296 /* MapkitLocationManager.m in Sources */,
 				3E7DA5011665D39A00B57296 /* PreciseLocationManager.m in Sources */,
 				3EA40CC01667986E00978C91 /* LILocationManager.m in Sources */,
+				3EA40CC31667A44B00978C91 /* LIGeocoder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

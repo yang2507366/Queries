@@ -50,6 +50,7 @@
 - (void)cancel
 {
     [self.geocoder cancelGeocode];
+    self.delegate = nil;
 }
 - (void)notifySucceed:(NSString *)locality
 {
