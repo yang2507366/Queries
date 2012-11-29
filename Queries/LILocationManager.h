@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LuaImplentatable.h"
+#import "AccurateLocationManager.h"
 
-@interface LILocationManager : NSObject
+@interface LILocationManager : AccurateLocationManager <LuaImplentatable>
+
+@property(nonatomic, copy)NSString *didUpdateToLocation;
+@property(nonatomic, copy)NSString *didFailWithError;
 
 @end

@@ -56,3 +56,11 @@ end
 function UILabel:textColor()
     return UIColor:get(runtime::invokeMethod(self:id(), "textColor"));
 end
+
+function UILabel:setTextAlignment(alignment)
+    runtime::invokeMethod(self:id(), "setTextAlignment:", alignment);
+end
+
+function UILabel:textAlignment()
+    tonumber(runtime::invokeMethod(self:id(), "textAlignment"));
+end

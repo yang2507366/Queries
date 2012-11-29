@@ -108,7 +108,7 @@ function main()
                 end
                 rootVC:navigationController():pushViewController(vc);]]
             elseif selectedTitle == kTitleGecoder then
-                local appLoader = AppLoader:create();
+                --[[local appLoader = AppLoader:create();
                 function appLoader:processing(loaded)
                     
                 end
@@ -128,7 +128,12 @@ function main()
                     ap_release();
                 end
                 rootVC:setWaiting(true);
-                appLoader:load("http://imyvoaspecial.googlecode.com/files/gc1.1.zip");
+                appLoader:load("http://imyvoaspecial.googlecode.com/files/gc1.1.zip");]]
+            local vc = GeocoderViewController:create(kTitleGecoder):retain();
+            function vc:viewDidPop()
+                self:release();
+            end
+            rootVC:navigationController():pushViewController(vc);
             end
             ap_release();
         end
