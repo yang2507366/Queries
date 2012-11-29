@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "View.h"
+#import "LIView.h"
 #import "LuaObjectManager.h"
 
-@implementation View
+@implementation LIView
 
 @synthesize appId;
 @synthesize objId;
@@ -43,7 +43,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    View *tmp = [[View new] autorelease];
+    LIView *tmp = [[LIView new] autorelease];
     tmp.appId = appId;
     tmp.objId = [LuaObjectManager addObject:tmp group:tmp.appId];
     

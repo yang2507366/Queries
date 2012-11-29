@@ -7,7 +7,7 @@ NotificationObserver.__index = NotificationObserver;
 setmetatable(NotificationObserver, Object);
 
 function NotificationObserver:create()
-    local noId = runtime::invokeClassMethod("NotificationObserver", "create:", AppContext.current());
+    local noId = runtime::invokeClassMethod("LINotificationObserver", "create:", AppContext.current());
     return self:get(noId);
 end
 

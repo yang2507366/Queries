@@ -8,19 +8,19 @@
 
 #include "LuaFunctions.h"
 #include <stdio.h>
-#import "HTTPRequestImpl.h"
+#import "LIHTTPRequest.h"
 #import "LuaAppManager.h"
 #import "LuaScriptInteraction.h"
-#import "UIRelatedImpl.h"
+#import "LIUIRelated.h"
 #import "CodeUtils.h"
 #import "LuaRuntimeUtils.h"
 #import "LuaConstants.h"
 #import "LuaObjectManager.h"
 #import "RuntimeUtils.h"
 #import "DialogTools.h"
-#import "Animation.h"
-#import "AppLoader.h"
-#import "AppRunner.h"
+#import "LIAnimation.h"
+#import "LIAppLoader.h"
+#import "LIAppRunner.h"
 #import "LuaCommonUtils.h"
 
 #pragma mark - common
@@ -71,7 +71,7 @@ int app_runApp(lua_State *L)
     NSString *targetAppId = luaStringParam(L, 2);
     NSString *params = luaStringParam(L, 3);
     NSString *relatedViewControllerId = luaStringParam(L, 4);
-    [AppRunner runWithAppId:appId targetAppId:targetAppId params:params relatedViewControllerId:relatedViewControllerId];
+    [LIAppRunner runWithAppId:appId targetAppId:targetAppId params:params relatedViewControllerId:relatedViewControllerId];
     return 0;
 }
 
@@ -90,7 +90,7 @@ int app_loadApp(lua_State *L)
     NSString *urlString = luaStringParam(L, 3);
     NSString *processFunc = luaStringParam(L, 4);
     NSString *completeFunc = luaStringParam(L, 5);
-    [AppLoader loadWithAppId:appId
+    [LIAppLoader loadWithAppId:appId
                               si:scriptInteractionForAppId(appId)
                         loaderId:loaderId
                        urlString:urlString
@@ -103,7 +103,7 @@ int app_cancelLoadApp(lua_State *L)
 {
     NSString *appId = luaStringParam(L, 1);
     NSString *loaderId = luaStringParam(L, 2);
-    [AppLoader cancelLoadWithAppId:appId loaderId:loaderId];
+    [LIAppLoader cancelLoadWithAppId:appId loaderId:loaderId];
     return 0;
 }
 
@@ -154,7 +154,7 @@ int http_request(lua_State *L)
     NSString *encoding = luaStringParam(L, 4);
     
     LuaScriptInteraction *si = scriptInteractionForAppId(scriptId);
-    NSString *requestId = [HTTPRequestImpl requestWithLuaState:si urlString:url
+    NSString *requestId = [LIHTTPRequest requestWithLuaState:si urlString:url
                                        callbackLuaFunctionName:callbackFuncName
                                                       encoding:encoding];
     pushString(L, requestId);
@@ -168,7 +168,7 @@ int http_post(lua_State *L)
     NSString *paramId = luaStringParam(L, 3);
     NSString *callbackFunc = luaStringParam(L, 4);
     NSString *encoding = luaStringParam(L, 5);
-    NSString *reqId = [HTTPRequestImpl postWithSi:scriptInteractionForAppId(appId)
+    NSString *reqId = [LIHTTPRequest postWithSi:scriptInteractionForAppId(appId)
                                         urlString:url
                                        parameters:[LuaObjectManager objectWithId:paramId group:appId]
                                      callbackFunc:callbackFunc
@@ -182,7 +182,7 @@ int http_cancel(lua_State *L)
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *requestId = luaStringParam(L, 2);
     
-    [HTTPRequestImpl cancelRequestWithRequestId:requestId];
+    [LIHTTPRequest cancelRequestWithRequestId:requestId];
     
     return 0;
 }
@@ -196,7 +196,7 @@ int ui_alert(lua_State *L)
     NSString *msg = luaStringParam(L, 3);
     NSString *funcName = luaStringParam(L, 4);
     
-    [UIRelatedImpl alertWithTitle:title message:msg
+    [LIUIRelated alertWithTitle:title message:msg
                         scriptInteraction:scriptInteractionForAppId(scriptId)
                          callbackFuncName:funcName];
     return 0;
@@ -208,7 +208,7 @@ int ui_setRootViewController(lua_State *L)
     
     NSString *viewControllerId = luaStringParam(L, 2);
     
-    [UIRelatedImpl setRootViewControllerWithId:viewControllerId scriptId:scriptId];
+    [LIUIRelated setRootViewControllerWithId:viewControllerId scriptId:scriptId];
     return 0;
 }
 
@@ -243,7 +243,7 @@ int ui_animate(lua_State *L)
     NSInteger options = lua_tonumber(L, 5);
     NSString *animationFunc = luaStringParam(L, 6);
     NSString *completeFunc = luaStringParam(L, 7);
-    [Animation animateWithAppId:appid
+    [LIAnimation animateWithAppId:appid
                                  si:scriptInteractionForAppId(appid)
                              animId:animId
                   animationDuration:duration
@@ -257,7 +257,7 @@ int ui_animate(lua_State *L)
 int ui_getRelatedViewController(lua_State *L)
 {
     NSString *appId = luaStringParam(L, 1);
-    NSString *vcId = [UIRelatedImpl relatedViewControllerForAppId:appId];
+    NSString *vcId = [LIUIRelated relatedViewControllerForAppId:appId];
     pushString(L, vcId);
     return 1;
 }

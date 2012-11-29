@@ -13,7 +13,7 @@ function UIBarButtonItem:create(title)
     if title == nil then
         title = "Untitled";
     end
-    local buttonItemId = runtime::invokeClassMethod("BarButtonItem", "create", AppContext.current());
+    local buttonItemId = runtime::invokeClassMethod("LIBarButtonItem", "create", AppContext.current());
     local buttonItem = self:get(buttonItemId);
     
     buttonItem:setTitle(title);

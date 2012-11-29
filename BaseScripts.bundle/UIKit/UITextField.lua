@@ -27,7 +27,7 @@ UIKeyboardTypeTwitter                   = 9;
 
 -- constructor
 function UITextField:create()
-    local textFieldId = runtime::invokeClassMethod("TextField", "create:", AppContext.current());
+    local textFieldId = runtime::invokeClassMethod("LITextField", "create:", AppContext.current());
     
     return self:get(textFieldId);
 end

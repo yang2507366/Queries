@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ScriptInteraction.h"
 
-@interface AppLoader : NSObject
+@interface LIAppLoader : NSObject
 
 + (void)loadWithAppId:(NSString *)appId
                    si:(id<ScriptInteraction>)si

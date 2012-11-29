@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "TableView.h"
+#import "LITableView.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 #import <objc/runtime.h>
 
 @interface TableViewDataSourceProxy : NSObject <UITableViewDataSource>
 
-@property(nonatomic, assign)TableView *targetTableView;
+@property(nonatomic, assign)LITableView *targetTableView;
 
 @end
 
@@ -21,7 +21,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.numberOfRowsInSection.length == 0){
         return 0;
     }
@@ -31,7 +31,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.cellForRowAtIndexPath.length == 0){
         return nil;
     }
@@ -47,7 +47,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.numberOfSections.length == 0){
         return 1;
     }
@@ -57,7 +57,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.titleForHeaderInSection.length == 0){
         return nil;
     }
@@ -68,7 +68,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.titleForFooterInSection.length == 0){
         return nil;
     }
@@ -79,7 +79,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     BOOL can = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.canEditRowAtIndexPath
                                                                         parameters:tmp.objId, indexPathId, nil] boolValue];
@@ -89,7 +89,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     BOOL can = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.canMoveRowAtIndexPath
                                                                         parameters:tmp.objId, indexPathId, nil] boolValue];
@@ -99,7 +99,7 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *titleArrayId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.sectionIndexTitles
                                                                                      parameters:tmp.objId, nil];
     return [LuaObjectManager objectWithId:titleArrayId group:tmp.appId];
@@ -107,14 +107,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     return [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.sectionForSectionIndexTitle
                                                                    parameters:tmp.objId, title, [NSString stringWithFormat:@"%d", index], nil] intValue];
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.commitEditingStyle
                                                             parameters:tmp.objId, [NSString stringWithFormat:@"%d", editingStyle], indexPathId, nil];
@@ -123,7 +123,7 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *sourceIndexPathId = [LuaObjectManager addObject:sourceIndexPath group:tmp.appId];
     NSString *destinationIndexPathId = [LuaObjectManager addObject:destinationIndexPath group:tmp.appId];
     [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.moveRowAtIndexPath
@@ -158,7 +158,7 @@
 
 @interface TableViewDelegateProxy : NSObject <UITableViewDelegate>
 
-@property(nonatomic, assign)TableView *targetTableView;
+@property(nonatomic, assign)LITableView *targetTableView;
 
 @end
 
@@ -171,7 +171,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.willDisplayCell.length != 0){
         NSString *cellId = [LuaObjectManager addObject:cell group:tmp.appId];
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
@@ -183,7 +183,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.willDisplayHeaderView.length != 0){
         NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
         [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willDisplayHeaderView
@@ -194,7 +194,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.willDisplayFooterView.length != 0){
         NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
         [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willDisplayFooterView
@@ -205,7 +205,7 @@
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didEndDisplayingCell.length != 0){
         NSString *cellId = [LuaObjectManager addObject:cell group:tmp.appId];
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
@@ -217,7 +217,7 @@
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingHeaderView:(UIView *)view forSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didEndDisplayingHeaderView.length != 0){
         NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
         [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didEndDisplayingHeaderView
@@ -228,7 +228,7 @@
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingFooterView:(UIView *)view forSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didEndDisplayingFooterView.length != 0){
         NSString *viewId = [LuaObjectManager addObject:view group:tmp.appId];
         [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didEndDisplayingFooterView
@@ -239,7 +239,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     CGFloat height = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.heightForRowAtIndexPath
                                                                              parameters:tmp.objId, indexPathId, nil] floatValue];
@@ -250,7 +250,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     CGFloat height = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId]
                        callFunction:tmp.heightForHeaderInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil] floatValue];
     
@@ -259,7 +259,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     CGFloat height = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId]
                        callFunction:tmp.heightForFooterInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil] floatValue];
     
@@ -268,7 +268,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *viewId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId]
                         callFunction:tmp.viewForHeaderInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil];
     UIView *view = [[LuaObjectManager objectWithId:viewId group:tmp.appId] retain];
@@ -279,7 +279,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *viewId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId]
                         callFunction:tmp.viewForFooterInSection parameters:tmp.objId, [NSString stringWithFormat:@"%d", section], nil];
     UIView *view = [[LuaObjectManager objectWithId:viewId group:tmp.appId] retain];
@@ -290,7 +290,7 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.accessoryButtonTappedForRowWithIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
         [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.accessoryButtonTappedForRowWithIndexPath
@@ -301,7 +301,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     BOOL should = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.shouldHighlightRowAtIndexPath
                                                                            parameters:tmp.objId, indexPathId, nil] boolValue];
@@ -311,7 +311,7 @@
 
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didHighlightRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
         [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didHighlightRowAtIndexPath
@@ -322,7 +322,7 @@
 
 - (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didUnhighlightRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
         [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didUnhighlightRowAtIndexPath
@@ -333,7 +333,7 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     NSString *newIndexPathId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willSelectRowAtIndexPath
                                                                                        parameters:tmp.objId, indexPathId, nil];
@@ -346,7 +346,7 @@
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     NSString *newIndexPathId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willDeselectRowAtIndexPath
@@ -360,7 +360,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didSelectRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
         [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didSelectRowAtIndexPath
@@ -371,7 +371,7 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didDeselectRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
         [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didDeselectRowAtIndexPath
@@ -382,7 +382,7 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     NSInteger editingStyle = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.editingStyleForRowAtIndexPath
                                                                                      parameters:tmp.objId, indexPathId, nil] intValue];
@@ -392,7 +392,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     NSString *title = [[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.titleForDeleteConfirmationButtonForRowAtIndexPath
                                                                                       parameters:tmp.objId, indexPathId, nil];
@@ -402,7 +402,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     BOOL should = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.shouldIndentWhileEditingRowAtIndexPath
                                                                            parameters:tmp.objId, indexPathId, nil] boolValue];
@@ -412,7 +412,7 @@
 
 - (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.willBeginEditingRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
         [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.willBeginEditingRowAtIndexPath
@@ -423,7 +423,7 @@
 
 - (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     if(tmp.didEndEditingRowAtIndexPath.length != 0){
         NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
         [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.didEndEditingRowAtIndexPath
@@ -435,7 +435,7 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath
        toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *sourceIndexPathId = [LuaObjectManager addObject:sourceIndexPath group:tmp.appId];
     NSString *destinationIndexPathId = [LuaObjectManager addObject:proposedDestinationIndexPath group:tmp.appId];
     NSString *resultIndexPathId = [[LuaAppManager scriptInteractionWithAppId:tmp.appId]
@@ -449,7 +449,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     NSInteger indentationLevel = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.indentationLevelForRowAtIndexPath
                                                                                       parameters:tmp.objId, indexPathId, nil] intValue];
@@ -459,7 +459,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TableView *tmp = (id)tableView;
+    LITableView *tmp = (id)tableView;
     NSString *indexPathId = [LuaObjectManager addObject:indexPath group:tmp.appId];
     BOOL should = [[[LuaAppManager scriptInteractionWithAppId:tmp.appId] callFunction:tmp.shouldShowMenuForRowAtIndexPath
                                                                            parameters:tmp.objId, indexPathId, nil] boolValue];
@@ -511,14 +511,14 @@
 
 @end
 
-@interface TableView ()
+@interface LITableView ()
 
 @property(nonatomic, retain)TableViewDataSourceProxy *dataSourceProxy;
 @property(nonatomic, retain)TableViewDelegateProxy *delegateProxy;
 
 @end
 
-@implementation TableView
+@implementation LITableView
 
 @synthesize appId;
 @synthesize objId;
@@ -609,7 +609,7 @@
 
 + (NSString *)create:(NSString *)appId style:(UITableViewCellStyle)style
 {
-    TableView *tmp = [[TableView alloc] initWithFrame:CGRectZero style:style];
+    LITableView *tmp = [[LITableView alloc] initWithFrame:CGRectZero style:style];
     tmp.appId = appId;
     tmp.objId = [LuaObjectManager addObject:tmp group:appId];
     

@@ -1,6 +1,7 @@
 require "Object"
 require "UIColor"
 require "CommonUtils"
+require "AppContext"
 
 UIView = {};
 UIView.__index = UIView;
@@ -24,7 +25,7 @@ UIControlStateReserved = 0xFF000000;
 
 -- constructor
 function UIView:create()
-    local viewId = runtime::createObject("UIView", "init");
+    local viewId = runtime::invokeClassMethod("LIView", "create:", AppContext.current());
     return self:get(viewId);
 end
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface TextView : UITextView <LuaImplentatable>
+@interface LITextView : UITextView <LuaImplentatable>
 
 @property(nonatomic, copy)NSString *shouldBeginEditing;
 @property(nonatomic, copy)NSString *shouldEndEditing;

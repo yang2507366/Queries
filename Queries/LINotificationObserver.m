@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "NotificationObserver.h"
+#import "LINotificationObserver.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
-@interface NotificationObserver ()
+@interface LINotificationObserver ()
 
 @property(nonatomic, copy)NSString *func;
 
 @end
 
-@implementation NotificationObserver
+@implementation LINotificationObserver
 
 @synthesize appId;
 @synthesize objId;
@@ -58,7 +58,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    NotificationObserver *tmp = [[NotificationObserver new] autorelease];
+    LINotificationObserver *tmp = [[LINotificationObserver new] autorelease];
     tmp.appId = appId;
     tmp.objId = [LuaObjectManager addObject:tmp group:appId];
     

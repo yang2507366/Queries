@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "NavigationController.h"
+#import "LINavigationController.h"
 #import "LuaObjectManager.h"
 
-@implementation NavigationController
+@implementation LINavigationController
 
 @synthesize appId;
 @synthesize objId;
@@ -32,7 +32,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    NavigationController *nc = [[NavigationController new] autorelease];
+    LINavigationController *nc = [[LINavigationController new] autorelease];
     nc.appId = appId;
     nc.objId = [LuaObjectManager addObject:nc group:appId];
     

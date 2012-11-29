@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "Label.h"
+#import "LILabel.h"
 #import "LuaObjectManager.h"
 
-@implementation Label
+@implementation LILabel
 
 @synthesize appId;
 @synthesize objId;
@@ -23,10 +23,10 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    Label *tmpLabel = [[[Label alloc] init] autorelease];
+    LILabel *tmpLabel = [[[LILabel alloc] init] autorelease];
     tmpLabel.font = [UIFont systemFontOfSize:14.0f];
     tmpLabel.backgroundColor = [UIColor clearColor];
-    tmpLabel.text = @"Label";
+    tmpLabel.text = @"LILabel";
     tmpLabel.frame = CGRectMake(0, 0, [tmpLabel.text sizeWithFont:tmpLabel.font].width, tmpLabel.font.lineHeight);
     
     tmpLabel.appId = appId;

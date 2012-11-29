@@ -21,7 +21,7 @@
 #import "ZipArchive.h"
 #import "LocalAppBundle.h"
 #import "ProviderPool.h"
-#import "NavigationController.h"
+#import "LINavigationController.h"
 #import "AppRunnerViewController.h"
 
 @interface AppDelegate () <UIAlertViewDelegate>
@@ -49,7 +49,7 @@
 //        [[[NavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
     
     UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
-    UINavigationController *nc = [[[NavigationController alloc] initWithRootViewController:relatedVC] autorelease];
+    UINavigationController *nc = [[[LINavigationController alloc] initWithRootViewController:relatedVC] autorelease];
     self.window.rootViewController = nc;
     LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
     app.relatedViewController = relatedVC;

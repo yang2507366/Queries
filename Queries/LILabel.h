@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface Label : UILabel <LuaImplentatable>
+@interface LILabel : UILabel <LuaImplentatable>
 
 @end

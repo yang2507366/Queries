@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "TextView.h"
+#import "LITextView.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
 @interface TextViewDelegateProxy : NSObject <UITextViewDelegate>
 
-@property(nonatomic, assign)TextView *targetTextView;
+@property(nonatomic, assign)LITextView *targetTextView;
 
 @end
 
@@ -81,13 +81,13 @@
 
 @end
 
-@interface TextView ()
+@interface LITextView ()
 
 @property(nonatomic, retain)TextViewDelegateProxy *delegateProxy;
 
 @end
 
-@implementation TextView
+@implementation LITextView
 
 @synthesize appId;
 @synthesize objId;
@@ -127,7 +127,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    TextView *tmp = [[TextView new] autorelease];
+    LITextView *tmp = [[LITextView new] autorelease];
     tmp.autocapitalizationType = UITextAutocapitalizationTypeNone;
     tmp.autocorrectionType = UITextAutocorrectionTypeNo;
     tmp.appId = appId;

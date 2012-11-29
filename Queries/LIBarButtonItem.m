@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "BarButtonItem.h"
+#import "LIBarButtonItem.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
-@implementation BarButtonItem
+@implementation LIBarButtonItem
 
 @synthesize appId;
 @synthesize objId;
@@ -43,7 +43,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    BarButtonItem *item = [[BarButtonItem new] autorelease];
+    LIBarButtonItem *item = [[LIBarButtonItem new] autorelease];
     item.style = UIBarButtonItemStyleBordered;
     item.appId = appId;
     item.objId = [LuaObjectManager addObject:item group:appId];

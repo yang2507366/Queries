@@ -13,7 +13,7 @@ function UIViewController:create(title)
     if title == nil then
         title = "Untitled";
     end
-    local vcId = runtime::invokeClassMethod("ViewController", "create:", AppContext.current());
+    local vcId = runtime::invokeClassMethod("LIViewController", "create:", AppContext.current());
     local vc = self:get(vcId);
     vc:setTitle(title);
     

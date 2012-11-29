@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface TextField : UITextField <LuaImplentatable>
+@interface LITextField : UITextField <LuaImplentatable>
 
 @property(nonatomic, copy)NSString *shouldBeginEditing;
 @property(nonatomic, copy)NSString *didBeginEditing;

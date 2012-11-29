@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "HTTPRequestImpl.h"
+#import "LIHTTPRequest.h"
 #import "HTTPRequest.h"
 
-@implementation HTTPRequestImpl
+@implementation LIHTTPRequest
 
 + (NSMutableArray *)sharedRequestList
 {

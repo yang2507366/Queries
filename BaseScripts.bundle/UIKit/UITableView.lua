@@ -22,7 +22,7 @@ function UITableView:createWithStyle(style)
     if style == nil then
         style = UITableViewStylePlain;
     end
-    local tableViewId = runtime::invokeClassMethod("TableView", "create", AppContext.current());
+    local tableViewId = runtime::invokeClassMethod("LITableView", "create", AppContext.current());
     local tableView = self:get(tableViewId);
     
     return tableView;

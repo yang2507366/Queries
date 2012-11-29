@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ImageCreator : NSObject
+@interface LIImageCreator : NSObject
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "ImageCreator.h"
+#import "LIImageCreator.h"
 #import "LuaObjectManager.h"
 
-@implementation ImageCreator
+@implementation LIImageCreator
 
 @end

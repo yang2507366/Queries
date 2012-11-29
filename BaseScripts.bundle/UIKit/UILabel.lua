@@ -11,7 +11,7 @@ function UILabel:create(text)
     if text == nil then
         text = "";
     end
-    local labelId = runtime::invokeClassMethod("Label", "create:", AppContext.current());
+    local labelId = runtime::invokeClassMethod("LILabel", "create:", AppContext.current());
     local label = UILabel:get(labelId);
     label:setText(text);
     

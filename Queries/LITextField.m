@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "TextField.h"
+#import "LITextField.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
 @interface TextFieldDelegateProxy : NSObject <UITextFieldDelegate>
 
-@property(nonatomic, assign)TextField *targetTextField;
+@property(nonatomic, assign)LITextField *targetTextField;
 
 @end
 
@@ -82,13 +82,13 @@
 
 @end
 
-@interface TextField ()
+@interface LITextField ()
 
 @property(nonatomic, retain)TextFieldDelegateProxy *delegateProxy;
 
 @end
 
-@implementation TextField
+@implementation LITextField
 
 @synthesize appId;
 @synthesize objId;
@@ -133,7 +133,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    TextField *tf = [[TextField new] autorelease];
+    LITextField *tf = [[LITextField new] autorelease];
     tf.frame = CGRectMake(0, 0, 80, 37);
     tf.autocapitalizationType = UITextAutocapitalizationTypeNone;
     tf.autocorrectionType = UITextAutocorrectionTypeNo;

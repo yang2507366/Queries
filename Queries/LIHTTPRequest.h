@@ -13,7 +13,7 @@
 #define KHTTPRequestEncodingUTF8    @"UTF8"
 #define kHTTPRequestEncodingGBK     @"GBK"
 
-@interface HTTPRequestImpl : NSObject
+@interface LIHTTPRequest : NSObject
 
 + (NSString *)requestWithLuaState:(id<ScriptInteraction>)script
                         urlString:(NSString *)urlString

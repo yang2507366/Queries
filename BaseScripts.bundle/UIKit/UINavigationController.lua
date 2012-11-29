@@ -9,7 +9,7 @@ setmetatable(UINavigationController, UIViewController);
 -- constructor
 function UINavigationController:create(rootVc)
     if rootVc ~= nil then
-        local ncId = runtime::invokeClassMethod("NavigationController", "create", AppContext.current());
+        local ncId = runtime::invokeClassMethod("LINavigationController", "create", AppContext.current());
         local nc = self:get(ncId);
         
         nc:pushViewController(rootVc, false);

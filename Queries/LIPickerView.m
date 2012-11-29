@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "PickerView.h"
+#import "LIPickerView.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
 @interface PickerViewImplEventProxy : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property(nonatomic, assign)PickerView *impl;
+@property(nonatomic, assign)LIPickerView *impl;
 
 @end
 
@@ -20,7 +20,7 @@
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    PickerView *tmpPickerView = (id)pickerView;
+    LIPickerView *tmpPickerView = (id)pickerView;
     if(tmpPickerView.numOfComponents){
         return tmpPickerView.numOfComponents();
     }
@@ -29,7 +29,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    PickerView *tmpPickerView = (id)pickerView;
+    LIPickerView *tmpPickerView = (id)pickerView;
     if(tmpPickerView.numOfRowsInComponent){
         return tmpPickerView.numOfRowsInComponent(component);
     }
@@ -38,7 +38,7 @@
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
-    PickerView *tmpPickerView = (id)pickerView;
+    LIPickerView *tmpPickerView = (id)pickerView;
     if(tmpPickerView.widthForComponent){
         return tmpPickerView.widthForComponent(component);
     }
@@ -47,7 +47,7 @@
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
 {
-    PickerView *tmpPickerView = (id)pickerView;
+    LIPickerView *tmpPickerView = (id)pickerView;
     if(tmpPickerView.rowHeightForComponent){
         tmpPickerView.rowHeightForComponent(component);
     }
@@ -56,7 +56,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    PickerView *tmpPickerView = (id)pickerView;
+    LIPickerView *tmpPickerView = (id)pickerView;
     if(tmpPickerView.titleForRowForComponent){
         return tmpPickerView.titleForRowForComponent(row, component);
     }
@@ -65,7 +65,7 @@
 
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    PickerView *tmpPickerView = (id)pickerView;
+    LIPickerView *tmpPickerView = (id)pickerView;
     if(tmpPickerView.attributedTitleForRowForComponent){
         tmpPickerView.attributedTitleForRowForComponent(row, component);
     }
@@ -93,7 +93,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    PickerView *tmpPickerView = (id)pickerView;
+    LIPickerView *tmpPickerView = (id)pickerView;
     if(tmpPickerView.didSelectRowInComponent){
         tmpPickerView.didSelectRowInComponent(row, component);
     }
@@ -126,13 +126,13 @@
 
 @end
 
-@interface PickerView ()
+@interface LIPickerView ()
 
 @property(nonatomic, retain)PickerViewImplEventProxy *eventProxy;
 
 @end
 
-@implementation PickerView
+@implementation LIPickerView
 
 @synthesize appId;
 @synthesize objId;
@@ -296,7 +296,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    PickerView *impl = [[PickerView new] autorelease];
+    LIPickerView *impl = [[LIPickerView new] autorelease];
     impl.appId = appId;
     impl.objId = [LuaObjectManager addObject:impl group:appId];
     

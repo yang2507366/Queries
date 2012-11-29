@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface BarButtonItem : UIBarButtonItem <LuaImplentatable>
+@interface LIBarButtonItem : UIBarButtonItem <LuaImplentatable>
 
 @property(nonatomic, copy)NSString *tapped;
 

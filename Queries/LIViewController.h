@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface ViewController : UIViewController <LuaImplentatable>
+@interface LIViewController : UIViewController <LuaImplentatable>
 
 @property(nonatomic, copy)NSString *_loadView;
 @property(nonatomic, copy)NSString *_viewDidLoad;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AppRunner : NSObject
+@interface LIAppRunner : NSObject
 
 + (void)runWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId params:(NSString *)params relatedViewControllerId:(NSString *)rvcId;
 + (void)destoryAppWithAppId:(NSString *)appId targetAppId:(NSString *)targetAppId;

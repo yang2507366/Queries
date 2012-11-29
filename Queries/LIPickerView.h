@@ -10,7 +10,7 @@
 #import "ScriptInteraction.h"
 #import "LuaImplentatable.h"
 
-@interface PickerView : UIPickerView <LuaImplentatable>
+@interface LIPickerView : UIPickerView <LuaImplentatable>
 
 @property(nonatomic, copy)NSInteger(^numOfComponents)();
 @property(nonatomic, copy)NSInteger(^numOfRowsInComponent)(NSInteger component);

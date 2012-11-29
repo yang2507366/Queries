@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "UIRelatedImpl.h"
+#import "LIUIRelated.h"
 #import "Singleton.h"
 #import "DialogTools.h"
 #import "LuaAppManager.h"
 #import "LuaObjectManager.h"
 
-@implementation UIRelatedImpl
+@implementation LIUIRelated
 
 + (void)setRootViewControllerWithId:(NSString *)viewControllerId scriptId:(NSString *)scriptId
 {

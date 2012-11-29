@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface TableView : UITableView <LuaImplentatable>
+@interface LITableView : UITableView <LuaImplentatable>
 
 + (NSString *)create:(NSString *)appId style:(UITableViewCellStyle)style;
 

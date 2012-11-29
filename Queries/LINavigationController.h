@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface NavigationController : UINavigationController <LuaImplentatable>
+@interface LINavigationController : UINavigationController <LuaImplentatable>
 
 @end

@@ -26,7 +26,7 @@ function UIButton:create(title, buttonType)
     if buttonType == nil then
         buttonType = UIButtonTypeRoundedRect;
     end
-    local buttonId = runtime::invokeClassMethod("Button", "create:type:", AppContext.current(), buttonType);
+    local buttonId = runtime::invokeClassMethod("LIButton", "create:type:", AppContext.current(), buttonType);
     local button = UIButton:get(buttonId);
     
     button:setTitle(title);
@@ -39,7 +39,7 @@ function UIButton:get(buttonId)
     setmetatable(button, self);
     
     UIButtonEventProxyTable[buttonId] = button;
-    runtime::invokeClassMethod("Button", "attachTappedEvent:func:", buttonId, "UIButton_tapped");
+    runtime::invokeClassMethod("LIButton", "attachTappedEvent:func:", buttonId, "UIButton_tapped");
     
     return button;
 end

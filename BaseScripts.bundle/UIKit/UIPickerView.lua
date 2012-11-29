@@ -7,7 +7,7 @@ UIPickerView.__index = UIPickerView;
 setmetatable(UIPickerView, UIView);
 
 function UIPickerView:create()
-    local pvId = runtime::invokeClassMethod("PickerView", "create:", AppContext.current());
+    local pvId = runtime::invokeClassMethod("LIPickerView", "create:", AppContext.current());
     local pv = UIPickerView:get(pvId);
     
     return pv;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "Button.h"
+#import "LIButton.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
@@ -90,7 +90,7 @@
 
 @end
 
-@implementation Button
+@implementation LIButton
 
 + (NSString *)create:(NSString *)appId
 {

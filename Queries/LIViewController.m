@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LIViewController.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
-@implementation ViewController
+@implementation LIViewController
 
 @synthesize appId;
 @synthesize objId;
@@ -114,7 +114,7 @@
 
 + (NSString *)create:(NSString *)appId
 {
-    ViewController *vc = [[[ViewController alloc] init] autorelease];
+    LIViewController *vc = [[[LIViewController alloc] init] autorelease];
     vc.appId = appId;
     vc.objId = [LuaObjectManager addObject:vc group:appId];
     

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface View : UIView <LuaImplentatable>
+@interface LIView : UIView <LuaImplentatable>
 
 @end

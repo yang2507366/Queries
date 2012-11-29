@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface Button : NSObject
+@interface LIButton : NSObject
 
 @end
