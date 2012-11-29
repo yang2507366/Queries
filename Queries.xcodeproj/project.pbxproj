@@ -76,6 +76,7 @@
 		3E8C4542163438CC00468A7E /* ObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C4541163438CB00468A7E /* ObjectWrapper.m */; };
 		3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D0C33163192FD00C3FDCE /* SystemUtils.m */; };
 		3EA2707A165278D60011C0D4 /* LITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA27079165278D60011C0D4 /* LITableView.m */; };
+		3EA40CC01667986E00978C91 /* LILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CBF1667986E00978C91 /* LILocationManager.m */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC357C31643E288009611C8 /* ApplicationScriptBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */; };
@@ -86,7 +87,6 @@
 		3EC9A677165A709B00B382CD /* LIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A676165A709B00B382CD /* LIView.m */; };
 		3EC9A67A165A743D00B382CD /* QuiresViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A679165A743D00B382CD /* QuiresViewController.lua */; };
 		3EC9A67C165BCBBD00B382CD /* MobileNumberViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A67B165BCBBD00B382CD /* MobileNumberViewController.lua */; };
-		3EC9A67F165D27B100B382CD /* LIImageCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A67E165D27B000B382CD /* LIImageCreator.m */; };
 		3EC9A682165D2AE700B382CD /* translate.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A680165D2AE700B382CD /* translate.png */; };
 		3EC9A683165D2AE700B382CD /* translate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A681165D2AE700B382CD /* translate@2x.png */; };
 		3EC9A686165E58EB00B382CD /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC9A684165E58EB00B382CD /* phone.png */; };
@@ -287,6 +287,8 @@
 		3E9D0C33163192FD00C3FDCE /* SystemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemUtils.m; sourceTree = "<group>"; };
 		3EA27078165278D60011C0D4 /* LITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LITableView.h; sourceTree = "<group>"; };
 		3EA27079165278D60011C0D4 /* LITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITableView.m; sourceTree = "<group>"; };
+		3EA40CBE1667986E00978C91 /* LILocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LILocationManager.h; sourceTree = "<group>"; };
+		3EA40CBF1667986E00978C91 /* LILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LILocationManager.m; sourceTree = "<group>"; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -308,8 +310,6 @@
 		3EC9A676165A709B00B382CD /* LIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIView.m; sourceTree = "<group>"; };
 		3EC9A679165A743D00B382CD /* QuiresViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = QuiresViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EC9A67B165BCBBD00B382CD /* MobileNumberViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MobileNumberViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
-		3EC9A67D165D27B000B382CD /* LIImageCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIImageCreator.h; sourceTree = "<group>"; };
-		3EC9A67E165D27B000B382CD /* LIImageCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIImageCreator.m; sourceTree = "<group>"; };
 		3EC9A680165D2AE700B382CD /* translate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = translate.png; path = Queries/translate.png; sourceTree = "<group>"; };
 		3EC9A681165D2AE700B382CD /* translate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "translate@2x.png"; path = "Queries/translate@2x.png"; sourceTree = "<group>"; };
 		3EC9A684165E58EB00B382CD /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = phone.png; path = Queries/phone.png; sourceTree = "<group>"; };
@@ -740,26 +740,47 @@
 		3EA27075165278AC0011C0D4 /* impl */ = {
 			isa = PBXGroup;
 			children = (
-				3E6B949D16460E8C009B01AD /* LIAnimation.h */,
-				3E6B949E16460E8C009B01AD /* LIAnimation.m */,
+				3EA40CB91667980800978C91 /* App */,
+				3EA40CBB1667981A00978C91 /* Net */,
+				3EA40CBC1667982600978C91 /* UIKit */,
+				3EA40CBD1667984800978C91 /* Utils */,
+			);
+			name = impl;
+			sourceTree = "<group>";
+		};
+		3EA40CB91667980800978C91 /* App */ = {
+			isa = PBXGroup;
+			children = (
 				3E867ADB1646A47A00650486 /* LIAppLoader.h */,
 				3E867ADC1646A47A00650486 /* LIAppLoader.m */,
 				3E867ADE1646AC4A00650486 /* LIAppRunner.h */,
 				3E867ADF1646AC4A00650486 /* LIAppRunner.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		3EA40CBB1667981A00978C91 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				3EE36D6F1632AA7F00BB5D02 /* LIHTTPRequest.h */,
+				3EE36D701632AA7F00BB5D02 /* LIHTTPRequest.m */,
+			);
+			name = Net;
+			sourceTree = "<group>";
+		};
+		3EA40CBC1667982600978C91 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				3E6B949D16460E8C009B01AD /* LIAnimation.h */,
+				3E6B949E16460E8C009B01AD /* LIAnimation.m */,
 				3ED3F59816589451003EE847 /* LIBarButtonItem.h */,
 				3ED3F59916589452003EE847 /* LIBarButtonItem.m */,
 				3E7A6DFF1657E2D0008DC64B /* LIButton.h */,
 				3E7A6E001657E2D0008DC64B /* LIButton.m */,
-				3EE36D6F1632AA7F00BB5D02 /* LIHTTPRequest.h */,
-				3EE36D701632AA7F00BB5D02 /* LIHTTPRequest.m */,
-				3EC9A67D165D27B000B382CD /* LIImageCreator.h */,
-				3EC9A67E165D27B000B382CD /* LIImageCreator.m */,
 				3ED3F59C165899EB003EE847 /* LILabel.h */,
 				3ED3F59D165899EB003EE847 /* LILabel.m */,
 				3E7A6DFC1657D4C1008DC64B /* LINavigationController.h */,
 				3E7A6DFD1657D4C1008DC64B /* LINavigationController.m */,
-				3EC9A69D1661F64D00B382CD /* LINotificationObserver.h */,
-				3EC9A69E1661F64D00B382CD /* LINotificationObserver.m */,
 				3E34ECEF164A97D400B4F7F0 /* LIPickerView.h */,
 				3E34ECF0164A97D400B4F7F0 /* LIPickerView.m */,
 				3EA27078165278D60011C0D4 /* LITableView.h */,
@@ -775,7 +796,18 @@
 				3E7A6DF91657D051008DC64B /* LIViewController.h */,
 				3E7A6DFA1657D051008DC64B /* LIViewController.m */,
 			);
-			name = impl;
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		3EA40CBD1667984800978C91 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3EC9A69D1661F64D00B382CD /* LINotificationObserver.h */,
+				3EC9A69E1661F64D00B382CD /* LINotificationObserver.m */,
+				3EA40CBE1667986E00978C91 /* LILocationManager.h */,
+				3EA40CBF1667986E00978C91 /* LILocationManager.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		3EC0BA941633B1840074D22B /* ScriptChecker */ = {
@@ -1133,7 +1165,6 @@
 				3ED3F5A116589CEF003EE847 /* LITextField.m in Sources */,
 				3E6283FA165902F700F59593 /* LITextView.m in Sources */,
 				3EC9A677165A709B00B382CD /* LIView.m in Sources */,
-				3EC9A67F165D27B100B382CD /* LIImageCreator.m in Sources */,
 				3EC9A69F1661F64D00B382CD /* LINotificationObserver.m in Sources */,
 				3E7DA4F31665D38500B57296 /* AppleGeocoder.m in Sources */,
 				3E7DA4F41665D38500B57296 /* GoogleGeocoder.m in Sources */,
@@ -1142,6 +1173,7 @@
 				3E7DA4FF1665D39A00B57296 /* AccurateLocationManager.m in Sources */,
 				3E7DA5001665D39A00B57296 /* MapkitLocationManager.m in Sources */,
 				3E7DA5011665D39A00B57296 /* PreciseLocationManager.m in Sources */,
+				3EA40CC01667986E00978C91 /* LILocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
