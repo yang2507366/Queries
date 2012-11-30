@@ -10,7 +10,37 @@
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
 
+@interface LILocationManagerDelegateProxy : NSObject <LocationManagerDelegate>
+
+@property(nonatomic, assign)LILocationManager *liLocationMgr;
+
+@end
+
+@implementation LILocationManagerDelegateProxy
+
+- (void)locationManager:(id)locationManager didUpdateToLocation:(CLLocation *)location
+{
+    if(self.liLocationMgr.didUpdateToLocation.length != 0){
+        CLLocationCoordinate2D coordinate = location.coordinate;
+        [[LuaAppManager scriptInteractionWithAppId:self.liLocationMgr.appId]
+         callFunction:self.liLocationMgr.didUpdateToLocation parameters:self.liLocationMgr.objId,
+         [NSString stringWithFormat:@"%f", coordinate.latitude], [NSString stringWithFormat:@"%f", coordinate.longitude], nil];
+    }
+}
+
+- (void)locationManager:(id)locationManager didFailWithError:(NSError *)error
+{
+    if(self.liLocationMgr.didFailWithError.length != 0){
+        [[LuaAppManager scriptInteractionWithAppId:self.liLocationMgr.appId] callFunction:self.liLocationMgr.didFailWithError
+                                                                               parameters:self.liLocationMgr.objId, nil];
+    }
+}
+
+@end
+
 @interface LILocationManager () <LocationManagerDelegate>
+
+@property(nonatomic, retain)LILocationManagerDelegateProxy *delegateProxy;
 
 @end
 
@@ -26,6 +56,7 @@
     
     self.didUpdateToLocation = nil;
     self.didFailWithError = nil;
+    self.delegateProxy = nil;
     [super dealloc];
 }
 
@@ -33,27 +64,11 @@
 {
     self = [super init];
     
-    self.delegate = self;
+    self.delegateProxy = [[LILocationManagerDelegateProxy new] autorelease];
+    self.delegateProxy.liLocationMgr = self;
+    self.delegate = self.delegateProxy;
     
     return self;
-}
-
-#pragma mark - LocationManagerDelegate
-- (void)locationManager:(id)locationManager didUpdateToLocation:(CLLocation *)location
-{
-    if(self.didUpdateToLocation.length != 0){
-        CLLocationCoordinate2D coordinate = location.coordinate;
-        [[LuaAppManager scriptInteractionWithAppId:self.appId]
-         callFunction:self.didUpdateToLocation parameters:self.objId,
-         [NSString stringWithFormat:@"%f", coordinate.latitude], [NSString stringWithFormat:@"%f", coordinate.longitude], nil];
-    }
-}
-
-- (void)locationManager:(id)locationManager didFailWithError:(NSError *)error
-{
-    if(self.didFailWithError.length != 0){
-        [[LuaAppManager scriptInteractionWithAppId:self.appId] callFunction:self.didFailWithError parameters:self.objId, nil];
-    }
 }
 
 + (NSString *)create:(NSString *)appId

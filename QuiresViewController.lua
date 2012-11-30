@@ -10,7 +10,7 @@ require "GecoderViewController"
 kTitleSearchMobileNumber = "手机号码归属地";
 kTitleSearchPostcode = "邮政编码";
 kTitleGoogleTranslate = "Google翻译";
-kTitleGecoder = "Geocoder";
+kTitleGecoder = "地理定位";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate, kTitleGecoder};
 

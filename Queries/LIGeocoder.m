@@ -13,7 +13,40 @@
 #import "GoogleGeocoder.h"
 #import "AppleGeocoder.h"
 
+@interface LIGeocoderEventProxy : NSObject <GeocoderDelegate>
+
+@property(nonatomic, assign)LIGeocoder *liGeocoder;
+
+@end
+
+@implementation LIGeocoderEventProxy
+
+- (void)dealloc
+{
+    [super dealloc];
+}
+
+- (void)geocoder:(id)geocoder didRecieveLocality:(LocationDescription *)info
+{
+    if(self.liGeocoder.didRecieveLocality.length != 0){
+        [[LuaAppManager scriptInteractionWithAppId:self.liGeocoder.appId] callFunction:self.liGeocoder.didRecieveLocality
+                                                                            parameters:self.liGeocoder.objId, info.locality, info.address, nil];
+    }
+}
+
+- (void)geocoder:(id)geocoder didError:(NSError *)error
+{
+    if(self.liGeocoder.didFailWithError.length != 0){
+        [[LuaAppManager scriptInteractionWithAppId:self.liGeocoder.appId] callFunction:self.liGeocoder.didFailWithError
+                                                                            parameters:self.liGeocoder.objId, nil];
+    }
+}
+
+@end
+
 @interface LIGeocoder () <GeocoderDelegate>
+
+@property(nonatomic, retain)LIGeocoderEventProxy *eventProxy;
 
 @end
 
@@ -24,36 +57,28 @@
 @synthesize didRecieveLocality;
 @synthesize didFailWithError;
 
+@synthesize eventProxy;
+
 - (void)dealloc
 {
     self.appId = nil;
     self.objId = nil;
     self.didRecieveLocality = nil;
     self.didFailWithError = nil;
+    
+    self.eventProxy = nil;
     [super dealloc];
 }
 
-- (id)init
+- (id)initWithGeocoderList:(NSArray *)pGeocoderList
 {
-    self = [super init];
+    self = [super initWithGeocoderList:pGeocoderList];
     
-    self.delegate = self;
+    self.eventProxy = [[LIGeocoderEventProxy new] autorelease];
+    self.eventProxy.liGeocoder = self;
+    self.delegate = self.eventProxy;
     
     return self;
-}
-
-- (void)geocoder:(id)geocoder didRecieveLocality:(LocationDescription *)info
-{
-    if(self.didRecieveLocality.length != 0){
-        [[LuaAppManager scriptInteractionWithAppId:self.appId] callFunction:self.didRecieveLocality parameters:self.objId, info.locality, info.address, nil];
-    }
-}
-
-- (void)geocoder:(id)geocoder didError:(NSError *)error
-{
-    if(self.didFailWithError.length != 0){
-        [[LuaAppManager scriptInteractionWithAppId:self.appId] callFunction:self.didFailWithError parameters:self.objId, nil];
-    }
 }
 
 + (NSString *)create:(NSString *)appId

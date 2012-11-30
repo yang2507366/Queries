@@ -69,13 +69,13 @@
 {
 //    NSLog(@"Accuracy:%f, %f", location.horizontalAccuracy, location.verticalAccuracy);
     if(locationManager == self.preciseLocationMgr){
-//        VLog(@"preciseCoordinate:%f, %f", location.coordinate.latitude, location.coordinate.longitude);
+//        NSLog(@"preciseCoordinate:%f, %f", location.coordinate.latitude, location.coordinate.longitude);
         self.preciseLocation = location;
         self.mapkitLocationMgr = [[[MapkitLocationManager alloc] init] autorelease];
         self.mapkitLocationMgr.delegate = self;
         [self.mapkitLocationMgr startUpdatingLocation];
     }else if(locationManager == self.mapkitLocationMgr){
-//        VLog(@"mapkitCoordinate:%f, %f", location.coordinate.latitude, location.coordinate.longitude);
+//        NSLog(@"mapkitCoordinate:%f, %f", location.coordinate.latitude, location.coordinate.longitude);
         [self notifySucceed:location];
     }
 }

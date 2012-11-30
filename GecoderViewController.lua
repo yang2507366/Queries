@@ -50,6 +50,7 @@ function GeocoderViewController:viewDidLoad()
             geocoder:release();
         end
         ap_new();
+        addressLabel:setText("正在获取您当前的位置信息");
         geocoder = Geocoder:create():retain();
         function geocoder:didSuccess(locality, address)
             if locality and address then
@@ -57,7 +58,7 @@ function GeocoderViewController:viewDidLoad()
             end
         end
         function geocoder:didError()
-            print("error");
+            addressLabel:setText("获取位置信息失败");
         end
         geocoder:geocode(latitude, longitude);
         ap_release();
