@@ -5,6 +5,7 @@ require "App"
 
 require "MobileNumberViewController"
 require "PostcodeViewController"
+require "TranslateViewController"
 require "GecoderViewController"
 
 kTitleSearchMobileNumber = "手机号码归属地";
@@ -87,7 +88,7 @@ function main()
                 end
                 rootVC:navigationController():pushViewController(vc);
             elseif selectedTitle == kTitleGoogleTranslate then
-                local appLoader = AppLoader:create();
+                --[[local appLoader = AppLoader:create();
                 function appLoader:processing(loaded)
                     
                 end
@@ -100,13 +101,13 @@ function main()
                     end
                 end
                 rootVC:setWaiting(true);
-                appLoader:load("http://imyvoaspecial.googlecode.com/files/t2.1.zip");
+                appLoader:load("http://imyvoaspecial.googlecode.com/files/t2.1.zip");]]
             
-                --[[local vc = TranslateViewController:create(kTitleGoogleTranslate):retain();
+                local vc = TranslateViewController:create(kTitleGoogleTranslate):retain();
                 function vc:viewDidPop()
                     self:release();
                 end
-                rootVC:navigationController():pushViewController(vc);]]
+                rootVC:navigationController():pushViewController(vc);
             elseif selectedTitle == kTitleGecoder then
                 --[[local appLoader = AppLoader:create();
                 function appLoader:processing(loaded)

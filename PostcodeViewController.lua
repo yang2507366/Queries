@@ -58,7 +58,7 @@ function PostcodeViewController:viewDidLoad()
             local tx, ty, tw, th = bself:view():frame();
             local anim = UIAnimation:create();
             function anim:animation()
-                bself:view():setFrame(tx, ty - 50, tw, th);
+                bself:view():setFrame(tx, ty - 100, tw, th);
             end
             anim:start();
         end
@@ -71,7 +71,7 @@ function PostcodeViewController:viewDidLoad()
             local tx, ty, tw, th = bself:view():frame();
             local anim = UIAnimation:create();
             function anim:animation()
-                bself:view():setFrame(tx, ty + 50, tw, th);
+                bself:view():setFrame(tx, ty + 100, tw, th);
             end
             anim:start();
         end
@@ -119,6 +119,7 @@ function PostcodeViewController:viewDidLoad()
         ap_release();
     end
     addressButton:setFrame(10, 75, width - 20, 40);
+    addressButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     self:view():addSubview(addressButton);
     
     postcodeButton = UIButton:create("查询"):retain();
@@ -146,6 +147,7 @@ function PostcodeViewController:viewDidLoad()
         end
     end
     postcodeButton:setFrame(10, 200, width - 20, 40);
+    postcodeButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     self:view():addSubview(postcodeButton);
     
     ap_release();

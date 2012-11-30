@@ -68,7 +68,7 @@ function TranslateViewController:viewDidLoad()
     
     translateBtn = UIButton:create("翻译"):retain();
     translateBtn:setFrame(5, 120, 310, 40);
-    translateBtn:setAutoresizingMask(cnTextView:autoresizingMask());
+    translateBtn:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     self:view():addSubview(translateBtn);
     function translateBtn:tapped()
         ap_new();
