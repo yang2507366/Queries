@@ -43,6 +43,7 @@ end
 
 -- deconstructor
 function UITextField:dealloc()
+    self:setDelegate(nil);
     UITextFieldEventProxyTable[self:id()] = nil;
     UIView.dealloc(self);
 end
@@ -51,43 +52,43 @@ end
 function UITextField:setDelegate(delegate)
     self.delegate = delegate;
     
-    if delegate.shouldBeginEditing then
+    if delegate and delegate.shouldBeginEditing then
         runtime::invokeMethod(self:id(), "setShouldBeginEditing:", "UITextFieldDelegate_shouldBeginEditing");
     else
         runtime::invokeMethod(self:id(), "setShouldBeginEditing:", "");
     end
     
-    if delegate.didBeginEditing then
+    if delegate and delegate.didBeginEditing then
         runtime::invokeMethod(self:id(), "setDidBeginEditing:", "UITextFieldDelegate_didBeginEditing");
     else
         runtime::invokeMethod(self:id(), "setDidBeginEditing:", "");
     end
     
-    if delegate.shouldEndEditing then
+    if delegate and delegate.shouldEndEditing then
         runtime::invokeMethod(self:id(), "setShouldEndEditing:", "UITextFieldDelegate_shouldEndEditing");
     else
         runtime::invokeMethod(self:id(), "setShouldEndEditing:", "");
     end
     
-    if delegate.didEndEditing then
+    if delegate and delegate.didEndEditing then
         runtime::invokeMethod(self:id(), "setDidEndEditing:", "UITextFieldDelegate_didEndEditing");
     else
         runtime::invokeMethod(self:id(), "setDidEndEditing:", "");
     end
     
-    if delegate.shouldChangeCharactersInRange then
+    if delegate and delegate.shouldChangeCharactersInRange then
         runtime::invokeMethod(self:id(), "setShouldChangeCharactersInRange:", "UITextFieldDelegate_shouldChangeCharactersInRange");
     else
         runtime::invokeMethod(self:id(), "setShouldChangeCharactersInRange:", "");
     end
     
-    if delegate.shouldClear then
+    if delegate and delegate.shouldClear then
         runtime::invokeMethod(self:id(), "setShouldClear:", "UITextFieldDelegate_shouldClear");
     else
         runtime::invokeMethod(self:id(), "setShouldClear:", "");
     end
     
-    if delegate.shouldReturn then
+    if delegate and delegate.shouldReturn then
         runtime::invokeMethod(self:id(), "setShouldReturn:", "UITextFieldDelegate_shouldReturn");
     else
         runtime::invokeMethod(self:id(), "setShouldReturn:", "");

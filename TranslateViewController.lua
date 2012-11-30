@@ -23,6 +23,8 @@ function TranslateViewController:viewDidLoad()
     ap_new();
     local bself = self;
     
+    local x, y, width, height = self:view():bounds();
+    
     local cnLabel = UILabel:create("输入需要翻译的中文:");
     cnLabel:setFrame(5, 5, 200, cnLabel:font():lineHeight());
     self:view():addSubview(cnLabel);
@@ -42,8 +44,8 @@ function TranslateViewController:viewDidLoad()
     end
     
     enTextView = UITextView:create():retain();
-    enTextView:setFrame(5, 165, 310, 170);
-    enTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth));
+    enTextView:setFrame(5, 165, 310, height - 165 - 5);
+    enTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
     enTextView:setBackgroundColor(UIColor:create(144, 238, 144));
     enTextView:setFont(UIFont:create(14));
     enTextView:setEditable(false);

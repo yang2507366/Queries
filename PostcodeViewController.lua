@@ -17,6 +17,7 @@ function PostcodeViewController:dealloc()
     addressButton:release();
     postcodeButton:release();
     closeKeyboardBtn:release();
+    
     UIViewController.dealloc(self);
 end
 
