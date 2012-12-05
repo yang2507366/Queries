@@ -50,7 +50,7 @@
         }
     }
     for(id<ProviderPoolable> provider in wantReleaseList){
-        [self providerDidRemove:provider];
+        NSLog(@"recycle remove:%@", provider);
         [self.providerList removeObject:provider];
     }
 }
@@ -58,15 +58,10 @@
 - (void)releaseAllProvider
 {
     for(id<ProviderPoolable> provider in self.providerList){
-        [self providerDidRemove:provider];
         [provider providerWillRemoveFromPool];
+        NSLog(@"force remove:%@", provider);
     }
     [self.providerList removeAllObjects];
-}
-
-- (void)providerDidRemove:(id<ProviderPoolable>)provider
-{
-    D_Log(@"%@", provider);
 }
 
 #pragma mark - SharedPool
@@ -96,6 +91,13 @@
 + (NSString *)identifierForObj:(id)obj
 {
     return [NSString stringWithFormat:@"id_%@", obj];
+}
+
++ (id)providerInPoolWithIdentifier:(id)identifier
+{
+    NSString *key = [self identifierForObj:identifier];
+    
+    return [[self sharedPoolDictionary] objectForKey:key];
 }
 
 + (void)addProviderToSharedPool:(id<ProviderPoolable>)provider identifier:(id)identifier

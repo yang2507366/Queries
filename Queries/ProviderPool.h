@@ -11,10 +11,12 @@
 @class ProviderPool;
 
 @protocol ProviderPoolable <NSObject>
+
 @required
 - (BOOL)providerShouldBeRemoveFromPool;
-- (BOOL)providerIsExecuting;
 - (void)providerWillRemoveFromPool;
+@optional
+- (BOOL)providerIsExecuting;
 
 @end
 
@@ -25,6 +27,7 @@
 - (void)addProvider:(id<ProviderPoolable>)provider;
 - (void)tryToReleaseProvider;
 
++ (id)providerInPoolWithIdentifier:(id)identifier;
 + (void)addProviderToSharedPool:(id<ProviderPoolable>)provider identifier:(id)identifier;
 + (void)cleanWithIdentifier:(id)identifier;
 
