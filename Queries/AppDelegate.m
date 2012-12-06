@@ -46,15 +46,18 @@
     [MemoryTracer start];
 
 //    self.window.rootViewController =
-//        [[[NavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
+//        [[[LINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];
+    
+//    self.window.rootViewController =
+//        [[[LINavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
     
     UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
     UINavigationController *nc = [[[LINavigationController alloc] initWithRootViewController:relatedVC] autorelease];
     self.window.rootViewController = nc;
+    
     LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:[ApplicationScriptBundle new] baseWindow:self.window] autorelease];
     app.relatedViewController = relatedVC;
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:@"objbjbjbj" forKey:@"kekekkke"];
-    [LuaAppManager runRootApp:app params:dict];
+    [LuaAppManager runRootApp:app params:nil];
     
     return YES;
 }

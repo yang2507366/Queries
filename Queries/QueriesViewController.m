@@ -54,7 +54,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
-    self.tableView.delegate = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? self.gridHelperLandscape : self.gridHelper;
     self.tableView.dataSource = UIInterfaceOrientationIsLandscape(toInterfaceOrientation) ? self.gridHelperLandscape : self.gridHelper;
     [self.tableView reloadData];
     return YES;
