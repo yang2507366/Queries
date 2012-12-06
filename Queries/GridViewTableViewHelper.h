@@ -17,7 +17,7 @@
 
 @end
 
-@interface GridViewTableViewHelper : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface GridViewTableViewHelper : NSObject <UITableViewDataSource>
 
 @property(nonatomic, assign)id<GridViewTableViewHelperDelegate> delegate;
 @property(nonatomic, readonly)NSInteger numberOfColumns;

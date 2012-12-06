@@ -40,7 +40,6 @@
 - (BOOL)shouldAutorotate
 {
     if([UIDevice currentDevice].orientation != UIDeviceOrientationPortraitUpsideDown){
-        self.tableView.delegate = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? self.gridHelperLandscape : self.gridHelper;
         self.tableView.dataSource = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? self.gridHelperLandscape : self.gridHelper;
         [self.tableView reloadData];
     }

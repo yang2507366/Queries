@@ -57,14 +57,6 @@
     self.identifier = [NSString stringWithFormat:@"%@%@", self, self.identifier];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(_iconHeight == 0){
-        _iconHeight = 80.0f;
-    }
-    return _iconHeight;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if([self.delegate respondsToSelector:@selector(numberOfItemsOfGridViewTableViewHelper:)]){
@@ -76,6 +68,7 @@
             _iconWidth = CGRectGetWidth(tableView.frame) / self.numberOfColumns;
             _iconHeight = _iconWidth;
         }
+        tableView.rowHeight = _iconHeight;
         NSInteger numberOfRows = numberOfIcons / self.numberOfColumns;
         if(numberOfIcons % self.numberOfColumns != 0){
             ++numberOfRows;
