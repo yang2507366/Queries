@@ -38,6 +38,13 @@
     if(self.locationManager){
         self.locationManager.delegate = nil;
     }
+    if([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied){
+        [self notifyError:[NSError errorWithDomain:NSStringFromClass(self.class)
+                                              code:-1
+                                          userInfo:[NSDictionary dictionaryWithObject:@"kCLAuthorizationStatusDenied"
+                                                                               forKey:NSLocalizedDescriptionKey]]];
+        return;
+    }
     self.locationManager = [[[CLLocationManager alloc] init] autorelease];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -47,6 +54,13 @@
 - (void)cancel
 {
     self.delegate = nil;
+}
+
+- (void)notifyError:(NSError *)error
+{
+    if([self.delegate respondsToSelector:@selector(locationManager:didFailWithError:)]){
+        [self.delegate locationManager:self didFailWithError:error];
+    }
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -67,9 +81,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    if([self.delegate respondsToSelector:@selector(locationManager:didFailWithError:)]){
-        [self.delegate locationManager:self didFailWithError:error];
-    }
+    [self notifyError:error];
 }
 
 @end
