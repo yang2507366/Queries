@@ -22,8 +22,6 @@ function GeocoderViewController:dealloc()
 end
 
 function GeocoderViewController:viewDidLoad()
-    ap_new();
-    
     local bself = self;
     
     local x, y, width, height = self:view():bounds();
@@ -49,7 +47,6 @@ function GeocoderViewController:viewDidLoad()
         if geocoder then
             geocoder:release();
         end
-        ap_new();
         addressLabel:setText("正在获取您当前的位置信息");
         geocoder = Geocoder:create():retain();
         function geocoder:didSuccess(locality, address)
@@ -61,7 +58,6 @@ function GeocoderViewController:viewDidLoad()
             addressLabel:setText("获取位置信息失败");
         end
         geocoder:geocode(latitude, longitude);
-        ap_release();
     end
     function locationMgr:didFailWithError()
         bself:setWaiting(false);
@@ -69,8 +65,6 @@ function GeocoderViewController:viewDidLoad()
     end
     locationMgr:startUpdatingLocation();
     self:setWaiting(true);
-    
-    ap_release();
 end
 
 --[[function main(args)

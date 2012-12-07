@@ -20,7 +20,6 @@ function TranslateViewController:dealloc()
 end
 
 function TranslateViewController:viewDidLoad()
-    ap_new();
     local bself = self;
     
     local x, y, width, height = self:view():bounds();
@@ -53,17 +52,10 @@ function TranslateViewController:viewDidLoad()
     
     local textViewDelegate = {};
     function textViewDelegate:didBeginEditing()
-        ap_new();
         bself:navigationItem():setRightBarButtonItem(closeKeyboardBtn, true);
-        
-        ap_release();
     end
     function textViewDelegate:didEndEditing()
-        ap_new();
-        
         bself:navigationItem():setRightBarButtonItem(nil);
-        
-        ap_release();
     end
     enTextView:setDelegate(textViewDelegate);
     cnTextView:setDelegate(textViewDelegate);
@@ -73,12 +65,10 @@ function TranslateViewController:viewDidLoad()
     translateBtn:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     self:view():addSubview(translateBtn);
     function translateBtn:tapped()
-        ap_new();
         local cnText = cnTextView:text();
         if ustring::length(cnText) == 0 then
             ui::alert("请输入需要翻译的中文");
             cnTextView:becomeFirstResponder();
-            ap_release();
             return;
         end
         cnTextView:resignFirstResponder();
@@ -108,10 +98,7 @@ function TranslateViewController:viewDidLoad()
             end
             ui::alert("翻译失败，数据错误");
         end
-        ap_release();
     end
-    
-    ap_release();
 end
 
 function filterTranslatedString(str)

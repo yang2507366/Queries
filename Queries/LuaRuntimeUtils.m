@@ -122,6 +122,9 @@
                 if([LuaCommonUtils isObjCObject:tmpParam]){
                     obj = [LuaObjectManager objectWithId:tmpParam group:group];
                 }
+                if(tmpParam.length == 0){
+                    obj = nil;
+                }
                 argumentData = &obj;
             }else if(ctype == '#'){//Class
                 Class class = NSClassFromString(tmpParam);

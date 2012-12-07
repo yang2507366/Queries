@@ -99,7 +99,7 @@
 
 + (NSString *)create:(NSString *)appId type:(UIButtonType)buttonType
 {
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *btn = [UIButton buttonWithType:buttonType];
     ButtonImplData *data = [[ButtonImplData new] autorelease];
     data.appId = appId;
     data.objId = [LuaObjectManager addObject:btn group:appId];

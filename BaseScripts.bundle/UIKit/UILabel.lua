@@ -41,7 +41,6 @@ end
 
 function UILabel:font()
     local fontId = runtime::invokeMethod(self:id(), "font");
-    
     return UIFont:get(fontId);
 end
 

@@ -26,6 +26,8 @@ end
 function UIImageView:setImage(image)
     if image then
         runtime::invokeMethod(self:id(), "setImage:", image:id());
+    else
+        runtime::invokeMethod(self:id(), "setImage:", "");
     end
 end
 

@@ -25,5 +25,5 @@ end
 
 -- instance methods
 function UIFont:lineHeight()
-    return runtime::invokeMethod(self:id(), "lineHeight");
+    return tonumber(runtime::invokeMethod(self:id(), "lineHeight"));
 end

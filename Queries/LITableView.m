@@ -591,7 +591,6 @@
     self.dataSourceProxy.targetTableView = self;
     self.delegateProxy = [[TableViewDelegateProxy new] autorelease];
     self.delegateProxy.targetTableView = self;
-    
     return self;
 }
 

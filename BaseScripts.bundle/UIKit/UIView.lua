@@ -98,11 +98,14 @@ end
 
 function UIView:viewWithTag(tag, viewType)
     local viewId = runtime::invokeMethod(self:id(), "viewWithTag:", tag);
-    local view = UIView:get(viewId);
-    if viewType then
-        setmetatable(view, viewType);
+    if isObjCObject(viewId) then
+        local view = UIView:get(viewId);
+        if viewType then
+            setmetatable(view, viewType);
+        end
+        return view;
     end
-    return view;
+    return nil;
 end
 
 function UIView:setTag(tag)
@@ -112,4 +115,13 @@ end
 function UIView:tag()
     local tag = runtime::invokeMethod(self:id(), "tag");
     return tonumber(tag);
+end
+
+function UIView:contentMode()
+    return tonumber(runtime::invokeMethod(self:id(), "contentMode"));
+end
+
+function UIView:setContentMode(mode)
+    print("contentMode:"..mode);
+    runtime::invokeMethod(self:id(), "setContentMode:", mode);
 end

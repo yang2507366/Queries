@@ -22,7 +22,6 @@ function PostcodeViewController:dealloc()
 end
 
 function PostcodeViewController:viewDidLoad()
-    ap_new();
     local bself = self;
     local x, y, width, height = self:view():bounds();
     
@@ -54,7 +53,6 @@ function PostcodeViewController:viewDidLoad()
     end
     local textFieldDelegate = {};
     function textFieldDelegate:shouldBeginEditing(tf)
-        ap_new();
         if tf:equals(postcodeField) then
             local tx, ty, tw, th = bself:view():frame();
             local anim = UIAnimation:create();
@@ -63,11 +61,9 @@ function PostcodeViewController:viewDidLoad()
             end
             anim:start();
         end
-        ap_release();
         return true;
     end
     function textFieldDelegate:shouldEndEditing(tf)
-        ap_new();
         if tf:equals(postcodeField) then
             local tx, ty, tw, th = bself:view():frame();
             local anim = UIAnimation:create();
@@ -76,30 +72,23 @@ function PostcodeViewController:viewDidLoad()
             end
             anim:start();
         end
-        ap_release();
         return true;
     end
     function textFieldDelegate:didBeginEditing()
-        ap_new();
         bself:navigationItem():setRightBarButtonItem(closeKeyboardBtn);
-        ap_release();
     end
     function textFieldDelegate:didEndEditing()
-        ap_new();
         bself:navigationItem():setRightBarButtonItem(nil);
-        ap_release();
     end
     addressField:setDelegate(textFieldDelegate);
     postcodeField:setDelegate(textFieldDelegate);
     
     addressButton = UIButton:create("查询"):retain();
     function addressButton:tapped()
-        ap_new();
         local city = addressField:text();
         if ustring::length(city) == 0 then
             ui::alert("请输入需要查询的地名");
             addressField:becomeFirstResponder();
-            ap_release();
             return;
         end
         addressField:resignFirstResponder();
@@ -107,7 +96,6 @@ function PostcodeViewController:viewDidLoad()
         local urlString = "http://wap.ip138.com/post_search.asp?area="..ustring::encodeURL(city).."&action=area2zip";
         local req = HTTPRequest:start(urlString);
         function req:response(responseString, errorString)
-            ap_new();
             bself:setWaiting(false);
             local result = analyzeResponseString(responseString);
             if result then
@@ -115,9 +103,7 @@ function PostcodeViewController:viewDidLoad()
             else
                 ui::alert("没有找到相关地名："..city);
             end
-            ap_release();
         end
-        ap_release();
     end
     addressButton:setFrame(10, 75, width - 20, 40);
     addressButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
@@ -136,7 +122,6 @@ function PostcodeViewController:viewDidLoad()
         local urlString = "http://wap.ip138.com/post_search.asp?zip="..postcode.."&action=zip2area";
         local httpReq = HTTPRequest:start(urlString);
         function httpReq:response(responseString, errorString)
-            ap_new();
             bself:setWaiting(false);
             local result = analyzeResponseString(responseString);
             if result then
@@ -144,14 +129,11 @@ function PostcodeViewController:viewDidLoad()
             else
                 ui::alert("没有找到相关邮编："..postcode);
             end
-            ap_release();
         end
     end
     postcodeButton:setFrame(10, 200, width - 20, 40);
     postcodeButton:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     self:view():addSubview(postcodeButton);
-    
-    ap_release();
 end
 
 function analyzeResponseString(responseString)

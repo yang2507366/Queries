@@ -8,12 +8,13 @@ require "PostcodeViewController"
 require "TranslateViewController"
 require "GecoderViewController"
 
-kTitleSearchMobileNumber = "手机号码归属地";
+kTitleSearchMobileNumber = "号码归属地";
 kTitleSearchPostcode = "邮政编码";
 kTitleGoogleTranslate = "Google翻译";
 kTitleGecoder = "地理定位";
 
 kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate, kTitleGecoder};
+local kImageList = nil;
 
 function main()
     ap_new();
@@ -28,16 +29,59 @@ function main()
     
     local rootVC = UIViewController:create("Quires"):retain();
     function rootVC:viewDidPop()
+        kImageList:release();
         self.tableView:release();
+        self.gridView:release();
         self:release();
         observer:release();
     end
     function rootVC:viewDidLoad()
-        ap_new();
         self.tableView = UITableView:create():retain();
         self.tableView:setFrame(self:view():bounds());
         self.tableView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
         self:view():addSubview(self.tableView);
+        
+        self.gridView = UIGridView:create():retain();
+        self.gridView:setFrame(self:view():bounds());
+        self.gridView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
+        self:view():addSubview(self.gridView);
+        local gridViewDelegate = {};
+        function gridViewDelegate:numberOfItemsInGridView()
+            return #kTitleList;
+        end
+        kImageList = NSMutableArray:create():retain();
+        kImageList:addObject(UIImage:imageWithResName("phone.png"));
+        kImageList:addObject(UIImage:imageWithResName("postcode.png"));
+        kImageList:addObject(UIImage:imageWithResName("translate.png"));
+        kImageList:addObject(UIImage:imageWithResName("gecode.png"));
+        function gridViewDelegate:configureViewAtIndex(gridView, view, index)
+            local x, y, width, height = view:bounds();
+            
+            local imageView = view:viewWithTag(1001, UIImageView);
+            local titleLabel = view:viewWithTag(1002, UILabel);
+            if not imageView then
+                imageView = UIImageView:create();
+                imageView:setTag(1001);
+                imageView:setFrame(5, 5, width - 10, height - 20 - 10);
+                imageView:setContentMode(1);
+                view:addSubview(imageView);
+            end
+            if not titleLabel then
+                titleLabel = UILabel:create();
+                titleLabel:setTag(1002);
+                titleLabel:setFrame(5, height - titleLabel:font():lineHeight() - 5, width - 10, titleLabel:font():lineHeight());
+                titleLabel:setTextAlignment(1);
+                view:addSubview(titleLabel);
+            end
+            if index < kImageList:count() then
+                imageView:setImage(kImageList:objectAtIndex(index));
+                titleLabel:setText(kTitleList[index + 1]);
+            else
+                imageView:setImage(nil);
+                titleLabel:setText("");
+            end
+        end
+        self.gridView:setDelegate(gridViewDelegate);
         
         local tableViewDataSource = {};
         function tableViewDataSource:numberOfRowsInSection(tb, section)
@@ -45,7 +89,6 @@ function main()
         end
         local identifier = "id";
         function tableViewDataSource:cellForRowAtIndexPath(tb, indexPath)
-            ap_new();
             local cell = tb:dequeueReusableCellWithIdentifier(identifier);
             if not cell then
                 cell = UITableViewCell:create(identifier);
@@ -64,7 +107,6 @@ function main()
                 icon = UIImage:imageWithResName("gecode.png");
             end
             cell:imageView():setImage(icon);
-            ap_release();
             
             return cell;
         end
@@ -72,7 +114,6 @@ function main()
         
         local tableViewDelegate = {};
         function tableViewDelegate:didSelectRowAtIndexPath(tb, indexPath)
-            ap_new();
             tb:deselectRowAtIndexPath(indexPath);
             local selectedTitle = kTitleList[indexPath:row() + 1];
             if selectedTitle == kTitleSearchMobileNumber then
@@ -136,14 +177,11 @@ function main()
             end
             rootVC:navigationController():pushViewController(vc);
             end
-            ap_release();
         end
         function tableViewDelegate:heightForRowAtIndexPath(tb, indexPath)
             return 72.0;
         end
         self.tableView:setDelegate(tableViewDelegate);
-        
-        ap_release();
     end
 
     rootVC:pushToRelatedViewController();

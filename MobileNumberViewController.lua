@@ -17,8 +17,6 @@ function MobileNumberViewController:dealloc()
 end
 
 function MobileNumberViewController:viewDidLoad()
-    ap_new();
-    
     local bself = self;
     
     local containerView = UIView:create();
@@ -58,13 +56,10 @@ function MobileNumberViewController:viewDidLoad()
     textField:setDelegate(textFieldDelegate);
     button = UIButton:create("查询"):retain();
     function button:tapped()
-        ap_new();
-        
         local number = textField:text();
         if ustring::length(number) ~= 11 then
             ui::alert("请输入正确的手机号码");
             textField:becomeFirstResponder();
-            ap_release();
             return;
         end
         textField:resignFirstResponder();
@@ -72,40 +67,21 @@ function MobileNumberViewController:viewDidLoad()
         
         httpRequest = HTTPRequest:start("http://wap.ip138.com/sim_search.asp?mobile="..number);
         function httpRequest:response(responseString, errorString)
-            ap_new();
             bself:setWaiting(false);
             if ustring::length(errorString) == 0 then
                 anylyzeResponse(responseString, number);
             else
                 ui::alert("网络连接错误");
             end
-            ap_release();
         end
-        ap_release();
     end
     button:setFrame(10, 90, width - 20, 40);
     button:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     self:view():addSubview(button);
     
-    local gridView = UIGridView:create():retain();
-    gridView:setFrame(0, 100, 320, 200);
-    self:view():addSubview(gridView);
-    local gridViewDelegate = {};
-    function gridViewDelegate:numberOfItemsInGridView()
-        return 10;
-    end
-    
-    function gridViewDelegate:configureViewAtIndex(gridView, view, index)
-        
-    end
-    
-    gridView:setDelegate(gridViewDelegate);
-    
-    ap_release();
 end
 
 function anylyzeResponse(str, number)
-    ap_new();
 --    po(str);
     local beginIndex = ustring::find(str, "归属地：");
     if beginIndex ~= -1 then
@@ -116,5 +92,4 @@ function anylyzeResponse(str, number)
         end
     end
     ui::alert("没有找到号码:"..number.."的相关信息");
-    ap_release();
 end
