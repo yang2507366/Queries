@@ -50,7 +50,6 @@
     
 //    self.window.rootViewController =
 //        [[[LINavigationController alloc] initWithRootViewController:[[[AppRunnerViewController alloc] init] autorelease]] autorelease];
-    NSLog(@"%d", UIViewContentModeScaleAspectFit);
     UIViewController *relatedVC = [[[UIViewController alloc] init] autorelease];
     UINavigationController *nc = [[[LINavigationController alloc] initWithRootViewController:relatedVC] autorelease];
     self.window.rootViewController = nc;

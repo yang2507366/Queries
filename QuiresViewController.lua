@@ -63,7 +63,7 @@ function main()
                 imageView = UIImageView:create();
                 imageView:setTag(1001);
                 imageView:setFrame(5, 5, width - 10, height - 20 - 10);
-                imageView:setContentMode(1);
+                imageView:setContentMode(4);
                 view:addSubview(imageView);
             end
             if not titleLabel then

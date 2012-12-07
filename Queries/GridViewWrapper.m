@@ -9,6 +9,42 @@
 #import "GridViewWrapper.h"
 #import <QuartzCore/QuartzCore.h>
 
+@interface UITapGestureRecognizerBlocked : UITapGestureRecognizer
+
+@property(nonatomic, copy)void(^callback)(UITapGestureRecognizerBlocked *);
+
+@end
+
+@implementation UITapGestureRecognizerBlocked
+
+@synthesize callback;
+
+- (void)dealloc
+{
+    self.callback = nil;
+    [super dealloc];
+}
+
+- (id)initWithCallback:(void(^)(UITapGestureRecognizerBlocked *))pCallback
+{
+    self = [super initWithTarget:nil action:nil];
+    
+    self.callback = pCallback;
+    
+    [self addTarget:self action:@selector(tapped:)];
+    
+    return self;
+}
+
+- (void)tapped:(UITapGestureRecognizerBlocked *)tapGestureRecognizerBlocked
+{
+    if(self.callback){
+        self.callback(self);
+    }
+}
+
+@end
+
 @interface GridViewWrapper ()
 
 @property(nonatomic, copy)NSString *identifier;
@@ -109,8 +145,16 @@
         NSArray *subviews = [cell.contentView subviews];
         for(NSInteger i = 0; i < tmpNumOfColumns; ++i){
             UIView *view = [subviews objectAtIndex:i];
+            NSInteger index = indexPath.row * _numberOfColumns + view.tag;
             view.hidden = NO;
-            [self.delegate gridViewWrapper:self configureView:view atIndex:indexPath.row * _numberOfColumns + view.tag];
+            for(UIGestureRecognizer *tmp in view.gestureRecognizers){
+                [view removeGestureRecognizer:tmp];
+            }
+            __block typeof(self) bself = self;
+            [view addGestureRecognizer:[[[UITapGestureRecognizerBlocked alloc] initWithCallback:^(UITapGestureRecognizerBlocked *tapGe) {
+                
+            }] autorelease]];
+            [self.delegate gridViewWrapper:self configureView:view atIndex:index];
         }
         if(tmpNumOfColumns < _numberOfColumns){
             for(NSInteger i = tmpNumOfColumns; i < _numberOfColumns; ++i){

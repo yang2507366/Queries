@@ -1,11 +1,12 @@
 require "NSArray"
+require "AppContext"
 
 NSMutableArray = {};
 NSMutableArray.__index = NSMutableArray;
 setmetatable(NSMutableArray, NSArray);
 
 function NSMutableArray:create()
-    local arrId = runtime::createObject("NSMutableArray", "init");
+    local arrId = runtime::invokeClassMethod("NSMutableArray", "array");
     
     return NSMutableArray:get(arrId);
 end

@@ -14,6 +14,7 @@
 
 - (NSInteger)numberOfItemsInGridViewWrapper:(GridViewWrapper *)gridViewWrapper;
 - (void)gridViewWrapper:(GridViewWrapper *)gridViewWrapper configureView:(UIView *)view atIndex:(NSInteger)index;
+- (void)gridViewWrapper:(GridViewWrapper *)gridViewWrapper viewItemTappedAtIndex:(NSInteger)index;
 
 @end
 

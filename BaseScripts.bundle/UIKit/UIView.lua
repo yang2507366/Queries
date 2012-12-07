@@ -122,6 +122,5 @@ function UIView:contentMode()
 end
 
 function UIView:setContentMode(mode)
-    print("contentMode:"..mode);
     runtime::invokeMethod(self:id(), "setContentMode:", mode);
 end
