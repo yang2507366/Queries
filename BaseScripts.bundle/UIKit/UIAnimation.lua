@@ -75,9 +75,13 @@ function UIAnimation:_complete()
 end
 
 function UIAnimation_animation(animId)
+    ap_new();
     UIAnimationEventProxyTable[animId]:animation();
+    ap_release();
 end
 
 function UIAnimation_complete(animId)
+    ap_new();
     UIAnimationEventProxyTable[animId]:_complete();
+    ap_release();
 end

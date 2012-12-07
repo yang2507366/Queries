@@ -20,8 +20,8 @@ end
 
 function UIImage:imageWithResName(resName, scale)
     if not scale then
-        local screenId = runtime::invokeClassMethod("UIScreen", "mainScreen");
-        local scale = runtime::invokeMethod(screenId, "scale");
+        local screen = Object:new(runtime::invokeClassMethod("UIScreen", "mainScreen"));
+        local scale = runtime::invokeMethod(screen:id(), "scale");
         scale = tonumber(scale);
     end
     local beginIndex = string.find(resName, "@2x");

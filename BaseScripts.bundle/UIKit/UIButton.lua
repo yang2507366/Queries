@@ -72,5 +72,7 @@ end
 UIButtonEventProxyTable = {};
 
 function UIButton_tapped(buttonId)
+    ap_new();
     UIButtonEventProxyTable[buttonId]:tapped();
+    ap_release();
 end

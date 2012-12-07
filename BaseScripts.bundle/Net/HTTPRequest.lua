@@ -53,5 +53,7 @@ end
 event_proxy_http_request = {};
 
 function event_http_request_response(httpId, responseString, errorString)
+    ap_new();
     event_proxy_http_request[httpId]:response(responseString, errorString);
+    ap_release();
 end

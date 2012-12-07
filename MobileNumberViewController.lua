@@ -87,6 +87,20 @@ function MobileNumberViewController:viewDidLoad()
     button:setAutoresizingMask(UIViewAutoresizingFlexibleWidth);
     self:view():addSubview(button);
     
+    local gridView = UIGridView:create():retain();
+    gridView:setFrame(0, 100, 320, 200);
+    self:view():addSubview(gridView);
+    local gridViewDelegate = {};
+    function gridViewDelegate:numberOfItemsInGridView()
+        return 10;
+    end
+    
+    function gridViewDelegate:configureViewAtIndex(gridView, view, index)
+        
+    end
+    
+    gridView:setDelegate(gridViewDelegate);
+    
     ap_release();
 end
 

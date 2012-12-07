@@ -115,7 +115,10 @@ UIPickerViewEventProxyTable = {};
 function UIPickerView_numberOfComponents(pvId)
     local pv = UIPickerViewEventProxyTable[pvId];
     if pv and pv.dataSource then
-        return pv.dataSource:numberOfComponents(pv);
+        ap_new();
+        local num = pv.dataSource:numberOfComponents(pv);
+        ap_release();
+        return num;
     end
     return 0;
 end
@@ -123,7 +126,10 @@ end
 function UIPickerView_numberOfRowsInComponent(pvId, component)
     local pv = UIPickerViewEventProxyTable[pvId];
     if pv and pv.dataSource then
-        return pv.dataSource:numberOfRowsInComponent(pv, component);
+        ap_new();
+        local num = pv.dataSource:numberOfRowsInComponent(pv, component);
+        ap_release();
+        return num;
     end
     return 0;
 end
@@ -131,7 +137,10 @@ end
 function UIPickerView_widthForComponent(pvId, component)
     local pv = UIPickerViewEventProxyTable[pvId];
     if pv then
-        return pv:widthForComponent(pv, component);
+        ap_new();
+        local width = pv:widthForComponent(pv, component);
+        ap_release();
+        return width;
     end
     return 0;
 end
@@ -139,7 +148,10 @@ end
 function UIPickerView_rowHeightForComponent(pvId, component)
     local pv = UIPickerViewEventProxyTable[pvId];
     if pv and pv.delegate then
-        return pv.delegate:rowHeightForComponent(pv, component);
+        ap_new();
+        local height = pv.delegate:rowHeightForComponent(pv, component);
+        ap_release();
+        return height;
     end
     return 0;
 end
@@ -147,7 +159,9 @@ end
 function UIPickerView_titleForRowForComponent(pvId, row, component)
     local pv = UIPickerViewEventProxyTable[pvId];
     if pv and pv.delegate then
+        ap_new();
         local title = pv.delegate:titleForRowForComponent(pv, row, component);
+        ap_release();
         return title;
     end
 end
@@ -161,22 +175,26 @@ function UIPickerView_viewForRowForComponentReusingView(pvId, row, component, re
     if pv and pv.delegate then
         ap_new();
         if string.len(reusingView) ~= 0 then
-            reusingView = UIView:get(reusingView):keep();
+            reusingView = UIView:get(reusingView);
         else
             reusingView = nil;
         end
-        ap_release();
         local view = pv.delegate:viewForRowForComponentReusingView(pv, row, component, reusingView);
+        local viewId = "";
         if view then
-            return view:id();
+            viewId = view:id();
         end
+        ap_release();
+        return viewId;
     end
 end
 
 function UIPickerView_didSelectRowInComponent(pvId, row, component)
     local pv = UIPickerViewEventProxyTable[pvId];
     if pv and pv.delegate then
-        return pv.delegate:didSelectRowInComponent(pv, row, component);
+        ap_new();
+        pv.delegate:didSelectRowInComponent(pv, row, component);
+        ap_release();
     end
 end
 

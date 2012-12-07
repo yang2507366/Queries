@@ -32,8 +32,9 @@
 		3E63397F162D8CF300B63328 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63397E162D8CF300B63328 /* BaseViewController.m */; };
 		3E633982162D8DB400B63328 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633981162D8DB400B63328 /* BaseTableViewController.m */; };
 		3E63398B162D91DA00B63328 /* GiveRightsOfOrientationBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */; };
-		3E633992162D958B00B63328 /* GridViewTableViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewTableViewHelper.m */; };
+		3E633992162D958B00B63328 /* GridViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewWrapper.m */; };
 		3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E633994162D9F6C00B63328 /* QuartzCore.framework */; };
+		3E67E1D91671DCBD00F71A39 /* LIGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1D81671DCBD00F71A39 /* LIGridView.m */; };
 		3E6B949F16460E8C009B01AD /* LIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B949E16460E8C009B01AD /* LIAnimation.m */; };
 		3E6B94F51646814D009B01AD /* OnlineAppBundleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */; };
 		3E6B94F816468F12009B01AD /* LocalAppBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F716468F11009B01AD /* LocalAppBundle.m */; };
@@ -200,9 +201,11 @@
 		3E633981162D8DB400B63328 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		3E633989162D91DA00B63328 /* GiveRightsOfOrientationBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiveRightsOfOrientationBack.h; sourceTree = "<group>"; };
 		3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiveRightsOfOrientationBack.m; sourceTree = "<group>"; };
-		3E633990162D958B00B63328 /* GridViewTableViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewTableViewHelper.h; sourceTree = "<group>"; };
-		3E633991162D958B00B63328 /* GridViewTableViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewTableViewHelper.m; sourceTree = "<group>"; };
+		3E633990162D958B00B63328 /* GridViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewWrapper.h; sourceTree = "<group>"; };
+		3E633991162D958B00B63328 /* GridViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewWrapper.m; sourceTree = "<group>"; };
 		3E633994162D9F6C00B63328 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3E67E1D71671DCBD00F71A39 /* LIGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGridView.h; sourceTree = "<group>"; };
+		3E67E1D81671DCBD00F71A39 /* LIGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGridView.m; sourceTree = "<group>"; };
 		3E6B949D16460E8C009B01AD /* LIAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIAnimation.h; sourceTree = "<group>"; };
 		3E6B949E16460E8C009B01AD /* LIAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIAnimation.m; sourceTree = "<group>"; };
 		3E6B94F31646814D009B01AD /* OnlineAppBundleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineAppBundleLoader.h; sourceTree = "<group>"; };
@@ -586,8 +589,8 @@
 				3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */,
 				3EE3B2AA1631B58200C77F85 /* Toast.h */,
 				3EE3B2AB1631B58200C77F85 /* Toast.m */,
-				3E633990162D958B00B63328 /* GridViewTableViewHelper.h */,
-				3E633991162D958B00B63328 /* GridViewTableViewHelper.m */,
+				3E633990162D958B00B63328 /* GridViewWrapper.h */,
+				3E633991162D958B00B63328 /* GridViewWrapper.m */,
 				3EC357CE1644C48E009611C8 /* Waiting.h */,
 				3EC357CF1644C48E009611C8 /* Waiting.m */,
 			);
@@ -798,6 +801,8 @@
 				3EC9A676165A709B00B382CD /* LIView.m */,
 				3E7A6DF91657D051008DC64B /* LIViewController.h */,
 				3E7A6DFA1657D051008DC64B /* LIViewController.m */,
+				3E67E1D71671DCBD00F71A39 /* LIGridView.h */,
+				3E67E1D81671DCBD00F71A39 /* LIGridView.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1071,7 +1076,7 @@
 				3E63397F162D8CF300B63328 /* BaseViewController.m in Sources */,
 				3E633982162D8DB400B63328 /* BaseTableViewController.m in Sources */,
 				3E63398B162D91DA00B63328 /* GiveRightsOfOrientationBack.m in Sources */,
-				3E633992162D958B00B63328 /* GridViewTableViewHelper.m in Sources */,
+				3E633992162D958B00B63328 /* GridViewWrapper.m in Sources */,
 				3E9D0C34163192FD00C3FDCE /* SystemUtils.m in Sources */,
 				3EE3B2A21631987F00C77F85 /* MemoryTracer.m in Sources */,
 				3EE3B2AC1631B58200C77F85 /* Toast.m in Sources */,
@@ -1180,6 +1185,7 @@
 				3E7DA5011665D39A00B57296 /* PreciseLocationManager.m in Sources */,
 				3EA40CC01667986E00978C91 /* LILocationManager.m in Sources */,
 				3EA40CC31667A44B00978C91 /* LIGeocoder.m in Sources */,
+				3E67E1D91671DCBD00F71A39 /* LIGridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

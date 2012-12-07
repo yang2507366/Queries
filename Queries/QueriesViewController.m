@@ -7,13 +7,13 @@
 //
 
 #import "QueriesViewController.h"
-#import "GridViewTableViewHelper.h"
+#import "GridViewWrapper.h"
 #import "Waiting.h"
 
-@interface QueriesViewController () <GridViewTableViewHelperDelegate>
+@interface QueriesViewController () <GridViewWrapperDelegate>
 
-@property(nonatomic, retain)GridViewTableViewHelper *gridHelper;
-@property(nonatomic, retain)GridViewTableViewHelper *gridHelperLandscape;
+@property(nonatomic, retain)GridViewWrapper *gridHelper;
+@property(nonatomic, retain)GridViewWrapper *gridHelperLandscape;
 
 @end
 
@@ -25,11 +25,11 @@
     self.view.backgroundColor = [UIColor blackColor];
     
     NSInteger numberOfPortraitColumns = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 3 : 2;
-    self.gridHelper = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:numberOfPortraitColumns] autorelease];
+    self.gridHelper = [[[GridViewWrapper alloc] initWithNumberOfColumns:numberOfPortraitColumns] autorelease];
     self.gridHelper.delegate = self;
     
     NSInteger numberOfLandscapeColumns = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ? 4 : 3;
-    self.gridHelperLandscape = [[[GridViewTableViewHelper alloc] initWithNumberOfColumns:numberOfLandscapeColumns] autorelease];
+    self.gridHelperLandscape = [[[GridViewWrapper alloc] initWithNumberOfColumns:numberOfLandscapeColumns] autorelease];
     self.gridHelperLandscape.delegate = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -66,12 +66,12 @@
 }
 
 #pragma mark - GridViewTableViewHelperDelegate
-- (NSInteger)numberOfItemsOfGridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper
+- (NSInteger)numberOfItemsInGridViewWrapper:(GridViewWrapper *)gridViewTableViewHelper
 {
     return 22;
 }
 
-- (void)gridViewTableViewHelper:(GridViewTableViewHelper *)gridViewTableViewHelper configureView:(UIView *)view atIndex:(NSInteger)index
+- (void)gridViewWrapper:(GridViewWrapper *)gridViewTableViewHelper configureView:(UIView *)view atIndex:(NSInteger)index
 {
     UILabel *label = (id)[view viewWithTag:1001];
     UIButton *btn = (id)[view viewWithTag:1002];

@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "GridViewTableViewHelper.h"
+#import "GridViewWrapper.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface GridViewTableViewHelper ()
+@interface GridViewWrapper ()
 
 @property(nonatomic, copy)NSString *identifier;
 @property(nonatomic, assign)BOOL forceSquare;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation GridViewTableViewHelper
+@implementation GridViewWrapper
 
 - (void)dealloc
 {
@@ -59,8 +59,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if([self.delegate respondsToSelector:@selector(numberOfItemsOfGridViewTableViewHelper:)]){
-        NSInteger numberOfIcons = [self.delegate numberOfItemsOfGridViewTableViewHelper:self];
+    if([self.delegate respondsToSelector:@selector(numberOfItemsInGridViewWrapper:)]){
+        NSInteger numberOfIcons = [self.delegate numberOfItemsInGridViewWrapper:self];
         if(_iconWidth == 0){
             _iconWidth = CGRectGetWidth(tableView.frame) / self.numberOfColumns;
         }
@@ -101,16 +101,16 @@
         }
     }
     NSInteger tmpNumOfColumns = _numberOfColumns;
-    if([self.delegate respondsToSelector:@selector(gridViewTableViewHelper:configureView:atIndex:)]){
+    if([self.delegate respondsToSelector:@selector(gridViewWrapper:configureView:atIndex:)]){
         if(indexPath.row == [self tableView:tableView numberOfRowsInSection:indexPath.section] - 1
-           && [self.delegate numberOfItemsOfGridViewTableViewHelper:self] % _numberOfColumns != 0){
-            tmpNumOfColumns = [self.delegate numberOfItemsOfGridViewTableViewHelper:self] % _numberOfColumns;
+           && [self.delegate numberOfItemsInGridViewWrapper:self] % _numberOfColumns != 0){
+            tmpNumOfColumns = [self.delegate numberOfItemsInGridViewWrapper:self] % _numberOfColumns;
         }
         NSArray *subviews = [cell.contentView subviews];
         for(NSInteger i = 0; i < tmpNumOfColumns; ++i){
             UIView *view = [subviews objectAtIndex:i];
             view.hidden = NO;
-            [self.delegate gridViewTableViewHelper:self configureView:view atIndex:indexPath.row * _numberOfColumns + view.tag];
+            [self.delegate gridViewWrapper:self configureView:view atIndex:indexPath.row * _numberOfColumns + view.tag];
         }
         if(tmpNumOfColumns < _numberOfColumns){
             for(NSInteger i = tmpNumOfColumns; i < _numberOfColumns; ++i){
