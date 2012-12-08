@@ -46,6 +46,13 @@ function UIGridView:setDelegate(delegate)
     else
         runtime::invokeMethod(self:id(), "setConfigureViewAtIndex:", "");
     end
+    
+    if delegate and delegate.viewItemDidTappedAtIndex then
+        runtime::invokeMethod(self:id(), "setViewItemDidTappedAtIndex:", "UIGridView_viewItemDidTappedAtIndex");
+    else
+        runtime::invokeMethod(self:id(), "setViewItemDidTappedAtIndex:", "");
+    end
+    
     runtime::invokeMethod(self:id(), "reloadData");
 end
 
@@ -64,6 +71,15 @@ function UIGridView_configureViewAtIndex(gridViewId, viewId, index)
         ap_new();
         local view = UIView:get(viewId);
         gridView.delegate:configureViewAtIndex(gridView, view, tonumber(index));
+        ap_release();
+    end
+end
+
+function UIGridView_viewItemDidTappedAtIndex(gridViewId, index)
+    local gridView = UIGridViewEventProxyTable[gridViewId];
+    if gridView and gridView.delegate then
+        ap_new();
+        gridView.delegate:viewItemDidTappedAtIndex(gridView, tonumber(index));
         ap_release();
     end
 end

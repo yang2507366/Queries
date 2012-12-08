@@ -28,6 +28,7 @@
     self.objId = nil;
     self.numberOfItemsInGridViewWrapper = nil;
     self.configureViewAtIndex = nil;
+    self.viewItemDidTappedAtIndex = nil;
     self.gridViewWrapper = nil;
     [super dealloc];
 }
@@ -59,6 +60,14 @@
         return num;
     }
     return 0;
+}
+
+- (void)gridViewWrapper:(GridViewWrapper *)gridViewWrapper viewItemTappedAtIndex:(NSInteger)index
+{
+    if(self.viewItemDidTappedAtIndex.length != 0){
+        [[LuaAppManager scriptInteractionWithAppId:self.appId] callFunction:self.viewItemDidTappedAtIndex
+                                                                 parameters:self.objId, [NSString stringWithFormat:@"%d", index], nil];
+    }
 }
 
 + (NSString *)create:(NSString *)appId

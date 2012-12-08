@@ -19,28 +19,14 @@ local kImageList = nil;
 function main()
     ap_new();
     
-    local appBundle = AppBundle:current();
-    local observer = NotificationObserver:create():retain();
-    observer:observe("UIApplicationWillChangeStatusBarOrientationNotification");
-    function observer:receive(object, userInfo)
-        po(object);
-        po(userInfo);
-    end
-    
     local rootVC = UIViewController:create("Quires"):retain();
     function rootVC:viewDidPop()
         kImageList:release();
-        self.tableView:release();
         self.gridView:release();
         self:release();
         observer:release();
     end
     function rootVC:viewDidLoad()
-        self.tableView = UITableView:create():retain();
-        self.tableView:setFrame(self:view():bounds());
-        self.tableView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
-        self:view():addSubview(self.tableView);
-        
         self.gridView = UIGridView:create():retain();
         self.gridView:setFrame(self:view():bounds());
         self.gridView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
@@ -81,41 +67,9 @@ function main()
                 titleLabel:setText("");
             end
         end
-        self.gridView:setDelegate(gridViewDelegate);
-        
-        local tableViewDataSource = {};
-        function tableViewDataSource:numberOfRowsInSection(tb, section)
-            return #kTitleList;
-        end
-        local identifier = "id";
-        function tableViewDataSource:cellForRowAtIndexPath(tb, indexPath)
-            local cell = tb:dequeueReusableCellWithIdentifier(identifier);
-            if not cell then
-                cell = UITableViewCell:create(identifier);
-            end
-            cell:keep();
-            local targetTitle = kTitleList[indexPath:row() + 1];
-            cell:textLabel():setText(targetTitle);
-            local icon = nil;
-            if targetTitle == kTitleGoogleTranslate then
-                icon = UIImage:imageWithResName("translate.png");
-            elseif targetTitle == kTitleSearchMobileNumber then
-                icon = UIImage:imageWithResName("phone.png");
-            elseif targetTitle == kTitleSearchPostcode then
-                icon = UIImage:imageWithResName("postcode.png");
-            elseif targetTitle == kTitleGecoder then
-                icon = UIImage:imageWithResName("gecode.png");
-            end
-            cell:imageView():setImage(icon);
-            
-            return cell;
-        end
-        self.tableView:setDataSource(tableViewDataSource);
-        
-        local tableViewDelegate = {};
-        function tableViewDelegate:didSelectRowAtIndexPath(tb, indexPath)
-            tb:deselectRowAtIndexPath(indexPath);
-            local selectedTitle = kTitleList[indexPath:row() + 1];
+        function gridViewDelegate:viewItemDidTappedAtIndex(gridView, index)
+            print(index);
+            local selectedTitle = kTitleList[index + 1];
             if selectedTitle == kTitleSearchMobileNumber then
                 local vc = MobileNumberViewController:create(kTitleSearchMobileNumber):retain();
                 function vc:viewDidPop()
@@ -130,19 +84,19 @@ function main()
                 rootVC:navigationController():pushViewController(vc);
             elseif selectedTitle == kTitleGoogleTranslate then
                 --[[local appLoader = AppLoader:create();
-                function appLoader:processing(loaded)
-                    
-                end
-                function appLoader:complete(success, appId)
+                 function appLoader:processing(loaded)
+                 
+                 end
+                 function appLoader:complete(success, appId)
                     rootVC:setWaiting(false);
                     if success then
                         AppRunner.run(appId, nil, rootVC);
                     else
                         ui::alert("加载失败");
                     end
-                end
-                rootVC:setWaiting(true);
-                appLoader:load("http://imyvoaspecial.googlecode.com/files/t2.1.zip");]]
+                 end
+                 rootVC:setWaiting(true);
+                 appLoader:load("http://imyvoaspecial.googlecode.com/files/t2.1.zip");]]
             
                 local vc = TranslateViewController:create(kTitleGoogleTranslate):retain();
                 function vc:viewDidPop()
@@ -150,38 +104,14 @@ function main()
                 end
                 rootVC:navigationController():pushViewController(vc);
             elseif selectedTitle == kTitleGecoder then
-                --[[local appLoader = AppLoader:create();
-                function appLoader:processing(loaded)
-                    
+                local vc = GeocoderViewController:create(kTitleGecoder):retain();
+                function vc:viewDidPop()
+                    self:release();
                 end
-                function appLoader:complete(success, appId)
-                    ap_new();
-                    rootVC:setWaiting(false);
-                    if success then
-                        local dict = NSMutableDictionary:create();
-                        dict:setObjectForKey("obj1", "key1");
-                        dict:setObjectForKey("obj2", "key4");
-                        dict:setObjectForKey("obj3", "ke5");
-                        
-                        AppRunner.run(appId, dict, rootVC);
-                    else
-                        ui::alert("加载失败");
-                    end
-                    ap_release();
-                end
-                rootVC:setWaiting(true);
-                appLoader:load("http://imyvoaspecial.googlecode.com/files/gc1.1.zip");]]
-            local vc = GeocoderViewController:create(kTitleGecoder):retain();
-            function vc:viewDidPop()
-                self:release();
-            end
-            rootVC:navigationController():pushViewController(vc);
+                rootVC:navigationController():pushViewController(vc);
             end
         end
-        function tableViewDelegate:heightForRowAtIndexPath(tb, indexPath)
-            return 72.0;
-        end
-        self.tableView:setDelegate(tableViewDelegate);
+        self.gridView:setDelegate(gridViewDelegate);
     end
 
     rootVC:pushToRelatedViewController();

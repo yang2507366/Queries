@@ -152,7 +152,9 @@
             }
             __block typeof(self) bself = self;
             [view addGestureRecognizer:[[[UITapGestureRecognizerBlocked alloc] initWithCallback:^(UITapGestureRecognizerBlocked *tapGe) {
-                
+                if([bself.delegate respondsToSelector:@selector(gridViewWrapper:viewItemTappedAtIndex:)]){
+                    [bself.delegate gridViewWrapper:bself viewItemTappedAtIndex:index];
+                }
             }] autorelease]];
             [self.delegate gridViewWrapper:self configureView:view atIndex:index];
         }

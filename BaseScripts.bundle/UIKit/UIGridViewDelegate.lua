@@ -5,3 +5,6 @@ end
 
 function UIGridViewDelegate:configureViewAtIndex(gridView, view, index)
 end
+
+function UIGridViewDelegate:viewItemDidTappedAtIndex(gridView, index)
+end
