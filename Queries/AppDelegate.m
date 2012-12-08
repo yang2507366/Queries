@@ -43,7 +43,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [MemoryTracer start];
+//    [MemoryTracer start];
 
 //    self.window.rootViewController =
 //        [[[LINavigationController alloc] initWithRootViewController:[[[QueriesViewController alloc] init] autorelease]] autorelease];

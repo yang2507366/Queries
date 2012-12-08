@@ -24,7 +24,6 @@ function main()
         kImageList:release();
         self.gridView:release();
         self:release();
-        observer:release();
     end
     function rootVC:viewDidLoad()
         self.gridView = UIGridView:create():retain();
