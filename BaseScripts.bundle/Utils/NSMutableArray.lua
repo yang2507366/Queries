@@ -7,7 +7,7 @@ setmetatable(NSMutableArray, NSArray);
 
 function NSMutableArray:create()
     local arrId = runtime::invokeClassMethod("NSMutableArray", "array");
-    
+
     return NSMutableArray:get(arrId);
 end
 

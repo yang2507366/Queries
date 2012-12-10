@@ -67,7 +67,6 @@ function main()
             end
         end
         function gridViewDelegate:viewItemDidTappedAtIndex(gridView, index)
-            print(index);
             local selectedTitle = kTitleList[index + 1];
             if selectedTitle == kTitleSearchMobileNumber then
                 local vc = MobileNumberViewController:create(kTitleSearchMobileNumber):retain();
@@ -113,9 +112,9 @@ function main()
         self.gridView:setDelegate(gridViewDelegate);
     end
 
---    rootVC:pushToRelatedViewController();
-    local nc = UINavigationController:create(rootVC);
-    nc:setAsRootViewController();
+    rootVC:pushToRelatedViewController();
+--    local nc = UINavigationController:create(rootVC);
+--    nc:setAsRootViewController();
 
     ap_release();
 end

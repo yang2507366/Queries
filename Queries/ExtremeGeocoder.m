@@ -91,7 +91,6 @@
 #pragma mark - GeocoderDelegate
 - (void)geocoder:(id)geocoder didRecieveLocality:(LocationDescription *)info
 {
-    NSLog(@"ExtremeGeocoder:%@, %@", geocoder, info);
     @synchronized(self){
         [self notifySuccess:info];
         [self cancelAllGeocoder];
