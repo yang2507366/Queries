@@ -7,13 +7,15 @@ require "MobileNumberViewController"
 require "PostcodeViewController"
 require "TranslateViewController"
 require "GecoderViewController"
+require "DictionaryViewController"
 
-kTitleSearchMobileNumber = "号码归属地";
-kTitleSearchPostcode = "邮政编码";
-kTitleGoogleTranslate = "Google翻译";
-kTitleGecoder = "地理定位";
+kTitleSearchMobileNumber        = "号码归属地";
+kTitleSearchPostcode            = "邮政编码";
+kTitleGoogleTranslate           = "Google翻译";
+kTitleGecoder                   = "地理定位";
+kTitleDictionary                = "词典";
 
-kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate, kTitleGecoder};
+kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTranslate, kTitleGecoder, kTitleDictionary};
 local kImageList = nil;
 
 function main()
@@ -39,6 +41,7 @@ function main()
         kImageList:addObject(UIImage:imageWithResName("postcode.png"));
         kImageList:addObject(UIImage:imageWithResName("translate.png"));
         kImageList:addObject(UIImage:imageWithResName("gecode.png"));
+        kImageList:addObject(UIImage:imageWithResName("dictionary.png"));
         function gridViewDelegate:configureViewAtIndex(gridView, view, index)
             local x, y, width, height = view:bounds();
             
@@ -60,10 +63,12 @@ function main()
             end
             if index < kImageList:count() then
                 imageView:setImage(kImageList:objectAtIndex(index));
-                titleLabel:setText(kTitleList[index + 1]);
             else
                 imageView:setImage(nil);
                 titleLabel:setText("");
+            end
+            if index < #kTitleList then
+                titleLabel:setText(kTitleList[index + 1]);
             end
         end
         function gridViewDelegate:viewItemDidTappedAtIndex(gridView, index)
@@ -103,6 +108,13 @@ function main()
                 rootVC:navigationController():pushViewController(vc);
             elseif selectedTitle == kTitleGecoder then
                 local vc = GeocoderViewController:create(kTitleGecoder):retain();
+                function vc:viewDidPop()
+                    self:release();
+                end
+                rootVC:navigationController():pushViewController(vc);
+            elseif selectedTitle == kTitleDictionary then
+                local vc = DictionaryViewController:create():retain();
+                vc:setTitle(kTitleDictionary);
                 function vc:viewDidPop()
                     self:release();
                 end
