@@ -112,9 +112,9 @@ function main()
         self.gridView:setDelegate(gridViewDelegate);
     end
 
-    rootVC:pushToRelatedViewController();
---    local nc = UINavigationController:create(rootVC);
---    nc:setAsRootViewController();
+--    rootVC:pushToRelatedViewController();
+    local nc = UINavigationController:create(rootVC);
+    nc:setAsRootViewController();
 
     ap_release();
 end
