@@ -63,8 +63,9 @@ function UIWebView_shouldStartLoadWithRequest(webViewId, requestURLString, navig
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
         ap_new();
-        webView.delegate:shouldStartLoadWithRequest(webView, requestURLString, navigationType);
+        local should = toObjCBool(webView.delegate:shouldStartLoadWithRequest(webView, requestURLString, navigationType));
         ap_release();
+        return should;
     end
 end
 

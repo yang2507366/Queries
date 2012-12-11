@@ -50,9 +50,9 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     if(self.shouldStartLoadWithRequest.length != 0){
-        [[LuaAppManager scriptInteractionWithAppId:self.appId]
-         callFunction:self.shouldStartLoadWithRequest parameters:self.objId,
-         [request.URL absoluteString],[NSString stringWithFormat:@"%d", navigationType], nil];
+        return [[[LuaAppManager scriptInteractionWithAppId:self.appId]
+                 callFunction:self.shouldStartLoadWithRequest parameters:self.objId,
+                 [request.URL absoluteString],[NSString stringWithFormat:@"%d", navigationType], nil] boolValue];
     }
     return YES;
 }

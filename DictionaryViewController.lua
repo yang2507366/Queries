@@ -18,13 +18,13 @@ function DictionaryViewController:viewDidLoad()
     
     local webViewDelegate = {};
     function webViewDelegate:didStartLoad()
-        print("start load");
+        bself:setWaiting(true);
     end
     function webViewDelegate:didFinishLoad()
-        print("finish");
+        bself:setWaiting(false);
     end
     function webViewDelegate:shouldStartLoadWithRequest(webView, URLString, navigationType)
-        print(URLString, navigationType);
+        return true;
     end
     function webViewDelegate:didFailLoadWithError(webView, errorString)
         print(errorString);
