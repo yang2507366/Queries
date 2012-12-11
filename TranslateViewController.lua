@@ -55,6 +55,7 @@ function TranslateViewController:viewDidLoad()
     enTextView:setEditable(false);
     bgFieldView = UITextField:create();
     bgFieldView:setFrame(enTextView:frame());
+    bgFieldView:setEnabled(false);
     bgFieldView:setAutoresizingMask(enTextView:autoresizingMask());
     bgFieldView:setUserInteractionEnabled(false);
     self:view():addSubview(bgFieldView);

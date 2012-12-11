@@ -117,6 +117,14 @@ function UITextField:keyboardType()
     return tonumber(runtime::invokeMethod(self:id(), "keyboardType"));
 end
 
+function UITextField:setEnabled(enabled)
+    runtime::invokeMethod(self:id(), "setEnabled:", toObjCBool(enabled));
+end
+
+function UITextField:enabled()
+    return toLuaBool(runtime::invokeMethod(self:id(), "enabled"));
+end
+
 -- event proxy
 UITextFieldEventProxyTable = {};
 
