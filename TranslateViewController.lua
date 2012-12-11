@@ -32,7 +32,12 @@ function TranslateViewController:viewDidLoad()
     cnTextView:setFrame(5, 25, 310, 90);
     cnTextView:setFont(UIFont:create(14));
     cnTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth));
-    cnTextView:setBackgroundColor(UIColor:create(144, 238, 144));
+    cnTextView:setBackgroundColor(UIColor.clearColor());
+    local bgFieldView = UITextField:create();
+    bgFieldView:setFrame(cnTextView:frame());
+    bgFieldView:setAutoresizingMask(cnTextView:autoresizingMask());
+    bgFieldView:setUserInteractionEnabled(false);
+    self:view():addSubview(bgFieldView);
     self:view():addSubview(cnTextView);
     
     closeKeyboardBtn = UIBarButtonItem:create("关闭"):retain();
@@ -45,9 +50,14 @@ function TranslateViewController:viewDidLoad()
     enTextView = UITextView:create():retain();
     enTextView:setFrame(5, 165, 310, height - 165 - 5);
     enTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
-    enTextView:setBackgroundColor(UIColor:create(144, 238, 144));
+    enTextView:setBackgroundColor(UIColor.clearColor());
     enTextView:setFont(UIFont:create(14));
     enTextView:setEditable(false);
+    bgFieldView = UITextField:create();
+    bgFieldView:setFrame(enTextView:frame());
+    bgFieldView:setAutoresizingMask(enTextView:autoresizingMask());
+    bgFieldView:setUserInteractionEnabled(false);
+    self:view():addSubview(bgFieldView);
     self:view():addSubview(enTextView);
     
     local textViewDelegate = {};
@@ -82,7 +92,7 @@ function TranslateViewController:viewDidLoad()
         params:setObjectForKey(cnText, "text");
         local req = HTTPRequest:post(urlString, params, HTTPRequestEncodingGBK);
         function req:response(responseString, errorString)
---            po("response:"..responseString);
+            po("response:"..responseString);
             bself:setWaiting(false);
             local beginIndex = ustring::find(responseString, "result_box");
             if beginIndex ~= -1 then

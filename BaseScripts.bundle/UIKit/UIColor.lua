@@ -22,3 +22,7 @@ function UIColor:get(colorId)
     
     return color;
 end
+
+function UIColor.clearColor()
+    return UIColor:get(runtime::invokeClassMethod("UIColor", "clearColor"));
+end

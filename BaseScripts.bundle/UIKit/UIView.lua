@@ -124,3 +124,12 @@ end
 function UIView:setContentMode(mode)
     runtime::invokeMethod(self:id(), "setContentMode:", mode);
 end
+
+function UIView:setUserInteractionEnabled(enabled)
+    runtime::invokeMethod(self:id(), "setUserInteractionEnabled:", toObjCBool(enabled));
+end
+
+function UIView:userInteractionEnabled()
+    local enabled = runtime::invokeMethod(self:id(), "userInteractionEnabled");
+    return toLuaBool(enabled);
+end
