@@ -15,6 +15,7 @@
 		3E094F051634E469006F90A9 /* RuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F031634E469006F90A9 /* RuntimeUtils.m */; };
 		3E094F1A16351CEA006F90A9 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
 		3E30C70816773488002E138F /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70716773488002E138F /* UIWebViewAdditions.m */; };
+		3E30C70B16773B8C002E138F /* RequireAutoreleasePoolChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */; };
 		3E34ECF1164A97D400B4F7F0 /* LIPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E34ECF0164A97D400B4F7F0 /* LIPickerView.m */; };
 		3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4286161647518700B1451D /* LuaCommonUtils.m */; };
 		3E42864A1647BECF00B1451D /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E4286491647BECF00B1451D /* doc.txt */; };
@@ -178,6 +179,8 @@
 		3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefixGrammarChecker.m; sourceTree = "<group>"; };
 		3E30C70616773488002E138F /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
 		3E30C70716773488002E138F /* UIWebViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewAdditions.m; sourceTree = "<group>"; };
+		3E30C70916773B8C002E138F /* RequireAutoreleasePoolChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireAutoreleasePoolChecker.h; sourceTree = "<group>"; };
+		3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequireAutoreleasePoolChecker.m; sourceTree = "<group>"; };
 		3E34ECEF164A97D400B4F7F0 /* LIPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPickerView.h; sourceTree = "<group>"; };
 		3E34ECF0164A97D400B4F7F0 /* LIPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPickerView.m; sourceTree = "<group>"; };
 		3E4286151647518700B1451D /* LuaCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaCommonUtils.h; sourceTree = "<group>"; };
@@ -858,6 +861,8 @@
 				3ED64C061648CC6B00190688 /* SuperSupportChecker.m */,
 				3E7A6DF61657AACB008DC64B /* AddBaseScriptsChecker.h */,
 				3E7A6DF71657AACB008DC64B /* AddBaseScriptsChecker.m */,
+				3E30C70916773B8C002E138F /* RequireAutoreleasePoolChecker.h */,
+				3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */,
 			);
 			name = ScriptChecker;
 			sourceTree = "<group>";
@@ -1210,6 +1215,7 @@
 				3E67E1D91671DCBD00F71A39 /* LIGridView.m in Sources */,
 				3EB7935516761126004EB529 /* LIWebView.m in Sources */,
 				3E30C70816773488002E138F /* UIWebViewAdditions.m in Sources */,
+				3E30C70B16773B8C002E138F /* RequireAutoreleasePoolChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
 #import "SuperSupportChecker.h"
 #import "AddBaseScriptsChecker.h"
 #import "LuaObjectManager.h"
+#import "RequireAutoreleasePoolChecker.h"
 
 @interface LuaAppManager ()
 
@@ -59,6 +60,7 @@
                            [[[UnicodeChecker alloc] init] autorelease],
 //                           [[AutoreleasePoolChecker new] autorelease],
 //                           [[AddBaseScriptsChecker new] autorelease],
+                           [[RequireAutoreleasePoolChecker new] autorelease],
                            [[RequireReplaceChecker new] autorelease],
                            [[[PrefixGrammarChecker alloc] init] autorelease],
                            [[[SelfSupportChecker alloc] init] autorelease],

@@ -38,3 +38,9 @@ end
 function DictionaryViewController:shouldAutorotate()
     return true;
 end
+--[[
+function main(args)
+    if args then
+        po(args);
+    end
+end]]
