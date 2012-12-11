@@ -126,7 +126,7 @@ function UIViewController:didReceiveMemoryWarning()
 end
 
 function UIViewController:shouldAutorotate()
-    return toObjCBool(true);
+    return false;
 end
 
 function UIViewController:supportedInterfaceOrientations()

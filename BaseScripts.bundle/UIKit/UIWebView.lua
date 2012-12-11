@@ -57,6 +57,15 @@ function UIWebView:loadRequest(URLString)
     runtime::invokeMethod(self:id(), "loadURLString:", URLString);
 end
 
+function UIWebView:scalesPageToFit()
+    return toLuaBool(runtime::invokeMethod(self:id(), "scalesPageToFit"));
+end
+
+function UIWebView:setScalesPageToFit(scale)
+    runtime::invokeMethod(self:id(), "setScalesPageToFit:", toObjCBool(scale));
+end
+
+-- event proxy
 UIWebViewEventProxyTable = {};
 
 function UIWebView_shouldStartLoadWithRequest(webViewId, requestURLString, navigationType)

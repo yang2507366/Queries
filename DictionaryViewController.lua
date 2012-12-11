@@ -22,6 +22,7 @@ function DictionaryViewController:viewDidLoad()
     end
     function webViewDelegate:didFinishLoad()
         bself:setWaiting(false);
+        bself.webView:setScalesPageToFit(true);
     end
     function webViewDelegate:shouldStartLoadWithRequest(webView, URLString, navigationType)
         return true;
@@ -32,4 +33,8 @@ function DictionaryViewController:viewDidLoad()
     self.webView:setDelegate(webViewDelegate);
     
     self.webView:loadRequest("http://3g.dict.cn");
+end
+
+function DictionaryViewController:shouldAutorotate()
+    return true;
 end

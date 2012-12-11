@@ -9,6 +9,7 @@
 #import "LIWebView.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
+#import "UIWebViewAdditions.h"
 
 @interface LIWebView () <UIWebViewDelegate>
 
@@ -35,6 +36,7 @@
     self = [super init];
     
     self.delegate = self;
+    [self removeShadow];
     
     return self;
 }
