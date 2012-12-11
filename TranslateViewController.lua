@@ -92,7 +92,7 @@ function TranslateViewController:viewDidLoad()
         params:setObjectForKey(cnText, "text");
         local req = HTTPRequest:post(urlString, params, HTTPRequestEncodingGBK);
         function req:response(responseString, errorString)
-            po("response:"..responseString);
+--            po("response:"..responseString);
             bself:setWaiting(false);
             local beginIndex = ustring::find(responseString, "result_box");
             if beginIndex ~= -1 then
