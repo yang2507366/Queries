@@ -18,3 +18,5 @@
 #define lua_require_separator       @"/"
 #define lua_app_bundle_dir          [NSString stringWithFormat:@"%@/Documents/bundles/", NSHomeDirectory()]
 #define lua_super                   @"super:"
+#define lua_ap_new                  "ap_new"
+#define lua_ap_release              "ap_release"

@@ -131,9 +131,9 @@ UITextFieldEventProxyTable = {};
 function UITextFieldDelegate_shouldBeginEditing(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
     if textField and textField.delegate then
-        ap_new();
+        
         local should = toObjCBool(textField.delegate:shouldBeginEditing(textField));
-        ap_release();
+        
         return should;
     end
 end
@@ -141,18 +141,18 @@ end
 function UITextFieldDelegate_didBeginEditing(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
     if textField and textField.delegate then
-        ap_new();
+        
         textField.delegate:didBeginEditing(textField);
-        ap_release();
+        
     end
 end
 
 function UITextFieldDelegate_shouldEndEditing(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
     if textField and textField.delegate then
-        ap_new();
+        
         local should = toObjCBool(textField.delegate:shouldEndEditing(textField));
-        ap_release();
+        
         return should;
     end
 end
@@ -160,20 +160,20 @@ end
 function UITextFieldDelegate_didEndEditing(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
     if textField and textField.delegate then
-        ap_new();
+        
         textField.delegate:didEndEditing(textField);
-        ap_release();
+        
     end
 end
 
 function UITextFieldDelegate_shouldChangeCharactersInRange(textFieldId, location, length, replacementString)
     local textField = UITextFieldEventProxyTable[textFieldId];
     if textField and textField.delegate then
-        ap_new();
+        
         
         local should = toObjCBool(textField.delegate:shouldChangeCharactersInRange(textField, tonumber(location), tonumber(length), replacementString));
         
-        ap_release();
+        
         return should;
     end
 end
@@ -181,9 +181,9 @@ end
 function UITextFieldDelegate_shouldClear(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
     if textField and textField.delegate then
-        ap_new();
+        
         local should = toObjCBool(textField.delegate:shouldClear(textField));
-        ap_release();
+        
         return should;
     end
 end
@@ -191,9 +191,9 @@ end
 function UITextFieldDelegate_shouldReturn(textFieldId)
     local textField = UITextFieldEventProxyTable[textFieldId];
     if textField and textField.delegate then
-        ap_new();
+        
         local should = toObjCBool(textField.delegate:shouldReturn(textField));
-        ap_release();
+        
         return should;
     end
 end

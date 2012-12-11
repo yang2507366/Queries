@@ -117,9 +117,9 @@ UITextViewEventProxyTable = {};
 function UITextView_shouldBeginEditing(tvId)
     local tv = UITextViewEventProxyTable[tvId];
     if tv and tv.delegate then
-        ap_new();
+        
         local should = toObjCBool(tv.delegate:shouldBeginEditing(tv));
-        ap_release();
+
         return should;
     end
 end
@@ -127,9 +127,9 @@ end
 function UITextView_shouldEndEditing(tvId)
     local tv = UITextViewEventProxyTable[tvId];
     if tv and tv.delegate then
-        ap_new();
+        
         local should = toObjCBool(tv.delegate:shouldEndEditing(tv));
-        ap_release();
+        
         return should;
     end
 end
@@ -137,27 +137,27 @@ end
 function UITextView_didBeginEditing(tvId)
     local tv = UITextViewEventProxyTable[tvId];
     if tv and tv.delegate then
-        ap_new();
+        
         tv.delegate:didBeginEditing(tv);
-        ap_release();
+        
     end
 end
 
 function UITextView_didEndEditing(tvId)
     local tv = UITextViewEventProxyTable[tvId];
     if tv and tv.delegate then
-        ap_new();
+        
         tv.delegate:didEndEditing(tv);
-        ap_release();
+        
     end
 end
 
 function UITextView_shouldChangeTextInRange(tvId, location, length, replacementText)
     local tv = UITextViewEventProxyTable[tvId];
     if tv and tv.delegate then
-        ap_new();
+        
         local should = toObjCBool(tv.delegate:shouldChangeTextInRange(tv, tonumber(location), tonumber(length), replacementText));
-        ap_release();
+        
         return should;
     end
 end
@@ -165,17 +165,17 @@ end
 function UITextView_didChange(tvId)
     local tv = UITextViewEventProxyTable[tvId];
     if tv and tv.delegate then
-        ap_new();
+        
         tv.delegate:didChange(tv);
-        ap_release();
+        
     end
 end
 
 function UITextView_didChangeSelection(tvId)
     local tv = UITextViewEventProxyTable[tvId];
     if tv and tv.delegate then
-        ap_new();
+        
         tv.delegate:didChangeSelection(tv);
-        ap_release();
+        
     end
 end

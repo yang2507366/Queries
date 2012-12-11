@@ -59,7 +59,5 @@ end
 UIBarButtonItemEventProxyTable = {};
 
 function UIBarButtonItem_tapped(btnId)
-    ap_new();
     UIBarButtonItemEventProxyTable[btnId]:tapped();
-    ap_release();
 end

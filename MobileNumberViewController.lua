@@ -44,14 +44,10 @@ function MobileNumberViewController:viewDidLoad()
     end
     local textFieldDelegate = {};
     function textFieldDelegate:didBeginEditing()
-        ap_new();
         bself:navigationItem():setRightBarButtonItem(closeKeyboardBtn);
-        ap_release();
     end
     function textFieldDelegate:didEndEditing()
-        ap_new();
         bself:navigationItem():setRightBarButtonItem(nil);
-        ap_release();
     end
     textField:setDelegate(textFieldDelegate);
     button = UIButton:create("查询"):retain();

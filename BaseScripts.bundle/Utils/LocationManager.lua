@@ -46,17 +46,13 @@ LocationManagerEventProxyTable = {};
 function LocationManager_didUpdateToLocation(lmId, latitude, longitude)
     local lm = LocationManagerEventProxyTable[lmId];
     if lm then
-        ap_new();
         lm:didUpdateToLocation(tonumber(latitude), tonumber(longitude));
-        ap_release();
     end
 end
 
 function LocationManager_didFailWithError(lmId)
     local lm = LocationManagerEventProxyTable[lmId];
     if lm then
-        ap_new();
         lm:didFailWithError();
-        ap_release();
     end
 end

@@ -72,10 +72,8 @@ end
 UIButtonEventProxyTable = {};
 
 function UIButton_tapped(buttonId)
-    ap_new();
     local button = UIButtonEventProxyTable[buttonId];
     if button then
         button:tapped()
     end
-    ap_release();
 end

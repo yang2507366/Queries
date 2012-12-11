@@ -2,11 +2,13 @@ require "CommonUtils"
 
 -- public methods
 function ap_new()
+--    print("new ap", #_pool_list);
     autorelease_pool_new();
 end
 
 function ap_release()
     autorelease_pool_drain();
+--    print("release ap", #_pool_list);
 end
 
 -- common implementation

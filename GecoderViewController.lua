@@ -68,7 +68,5 @@ function GeocoderViewController:viewDidLoad()
 end
 
 --[[function main(args)
-    ap_new();
-    
-    ap_release();
+
 end]]

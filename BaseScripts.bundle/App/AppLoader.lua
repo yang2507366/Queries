@@ -55,15 +55,11 @@ function AppLoader_appLoadComplete(appLoaderId, success, appId)
             bsuccess = true;
         end
     end
-    ap_new();
     local targetLoader = AppLoaderEventProxyTable[appLoaderId];
     targetLoader:complete(bsuccess, appId);
     targetLoader:dealloc();
-    ap_release();
 end
 
 function AppLoader_appProcessing(appLoaderId, loadedLength, amountLength)
-    ap_new();
     AppLoaderEventProxyTable[appLoaderId]:processing(loadedLength, amountLength);
-    ap_release();
 end

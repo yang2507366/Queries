@@ -34,7 +34,6 @@ NotificationObserverEventProxyTable = {};
 function NotificationObserver_notification(noId, objectId, userInfoId)
     local no = NotificationObserverEventProxyTable[noId];
     if no then
-        ap_new();
         local object = nil;
         if string.len(objectId) ~= 0 then
             object = Object:new(objectId);
@@ -44,6 +43,5 @@ function NotificationObserver_notification(noId, objectId, userInfoId)
             userInfo = NSDictionary:get(userInfoId);
         end
         no:receive(object, userInfo);
-        ap_release();
     end
 end

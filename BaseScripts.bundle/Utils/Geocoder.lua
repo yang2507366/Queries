@@ -45,17 +45,13 @@ GeocoderEventProxyTable = {};
 function Geocoder_didSuccess(gId, locality, address)
     local g = GeocoderEventProxyTable[gId];
     if g then
-        ap_new();
         g:didSuccess(locality, address);
-        ap_release();
     end
 end
 
 function Geocoder_didError(gId)
     local g = GeocoderEventProxyTable[gId];
     if g then
-        ap_new();
         g:didFailWithError();
-        ap_release();
     end
 end

@@ -118,11 +118,9 @@ function filterTranslatedString(str)
 end
 
 function main()
-    ap_new();
     local vc = TranslateViewController:create("Google翻译"):retain();
     function vc:viewDidPop()
         self:release();
     end
     vc:pushToRelatedViewController();
-    ap_release();
 end

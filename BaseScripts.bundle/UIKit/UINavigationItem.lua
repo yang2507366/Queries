@@ -43,7 +43,7 @@ function UINavigationItem:setLeftBarButtonItem(buttonItem, animated)
     animated = toObjCBool(animated);
     if buttonItem then
         runtime::invokeMethod(self:id(), "setLeftBarButtonItem:animated:", buttonItem:id(), animated);
-        else
+    else
         runtime::invokeMethod(self:id(), "setLeftBarButtonItem:animated:");
     end
 end

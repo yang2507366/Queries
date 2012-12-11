@@ -71,9 +71,9 @@ UIWebViewEventProxyTable = {};
 function UIWebView_shouldStartLoadWithRequest(webViewId, requestURLString, navigationType)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        ap_new();
+        
         local should = toObjCBool(webView.delegate:shouldStartLoadWithRequest(webView, requestURLString, navigationType));
-        ap_release();
+        
         return should;
     end
 end
@@ -81,26 +81,26 @@ end
 function UIWebView_didStartLoad(webViewId)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        ap_new();
+        
         webView.delegate:didStartLoad(webView);
-        ap_release();
+        
     end
 end
 
 function UIWebView_didFinishLoad(webViewId)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        ap_new();
+        
         webView.delegate:didFinishLoad(webView);
-        ap_release();
+        
     end
 end
 
 function UIWebView_didFailLoadWithError(weiViewId, errorString)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        ap_new();
+        
         webView.delegate:didFailLoadWithError(webView, errorString);
-        ap_release();
+        
     end
 end
