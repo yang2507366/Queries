@@ -48,7 +48,7 @@ function TranslateViewController:viewDidLoad()
     end
     
     enTextView = UITextView:create():retain();
-    enTextView:setFrame(5, 165, 310, height - 165 - 5);
+    enTextView:setFrame(5, 165, 310, height - 205 - 5);
     enTextView:setAutoresizingMask(math::bor(UIViewAutoresizingFlexibleWidth, UIViewAutoresizingFlexibleHeight));
     enTextView:setBackgroundColor(UIColor.clearColor());
     enTextView:setFont(UIFont:create(14));
