@@ -7,11 +7,15 @@
 //
 
 #import "RequireAutoreleasePoolChecker.h"
+#import "LuaCommonUtils.h"
 
 @implementation RequireAutoreleasePoolChecker
 
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
+    if([LuaCommonUtils scriptIsMainScript:script]){
+        return [NSString stringWithFormat:@"require \"AutoreleasePool\"\n%@", script];
+    }
     return script;
 }
 

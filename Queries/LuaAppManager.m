@@ -114,12 +114,14 @@
     if(mainScript.length != 0){
         id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
         app.scriptInteraction = si;
+        [si callFunction:@"ap_new" parameters:nil];
         [si callFunction:lua_main_function callback:^(NSString *returnValue, NSString *error) {
             if(error.length != 0){
                 NSLog(@"%@", error);
                 NSLog(@"%@", mainScript);
             }
         } parameters:paramsId != nil ? paramsId : nil, nil];
+        [si callFunction:@"ap_release" parameters:nil];
     }else{
         NSLog(@"run app:%@ failed, main script cannot be found", appId);
     }

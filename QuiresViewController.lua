@@ -19,8 +19,6 @@ kTitleList = {kTitleSearchMobileNumber, kTitleSearchPostcode, kTitleGoogleTransl
 local kImageList = nil;
 
 function main()
-    ap_new();
-    
     local rootVC = UIViewController:create("Quires"):retain();
     function rootVC:viewDidPop()
         kImageList:release();
@@ -127,6 +125,4 @@ function main()
 --    rootVC:pushToRelatedViewController();
     local nc = UINavigationController:create(rootVC);
     nc:setAsRootViewController();
-
-    ap_release();
 end
