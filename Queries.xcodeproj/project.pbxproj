@@ -151,7 +151,6 @@
 		3EE3B2BE1631B5DA00C77F85 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B01631B5DA00C77F85 /* CommonUtils.m */; };
 		3EE3B2BF1631B5DA00C77F85 /* DelayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B21631B5DA00C77F85 /* DelayController.m */; };
 		3EE3B2C01631B5DA00C77F85 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */; };
-		3EE3B2C11631B5DA00C77F85 /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B61631B5DA00C77F85 /* Singleton.m */; };
 		3EE3B2C21631B5DA00C77F85 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */; };
 		3EE3B2C31631B5DA00C77F85 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BA1631B5DA00C77F85 /* Timer.m */; };
 		3EE3B2C41631B5DA00C77F85 /* DialogTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */; };
@@ -426,8 +425,6 @@
 		3EE3B2B21631B5DA00C77F85 /* DelayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayController.m; sourceTree = "<group>"; };
 		3EE3B2B31631B5DA00C77F85 /* KeyboardState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardState.h; sourceTree = "<group>"; };
 		3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardState.m; sourceTree = "<group>"; };
-		3EE3B2B51631B5DA00C77F85 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
-		3EE3B2B61631B5DA00C77F85 /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Singleton.m; sourceTree = "<group>"; };
 		3EE3B2B71631B5DA00C77F85 /* TaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskQueue.h; sourceTree = "<group>"; };
 		3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
 		3EE3B2B91631B5DA00C77F85 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -748,8 +745,6 @@
 				3EE3B2B21631B5DA00C77F85 /* DelayController.m */,
 				3EE3B2B31631B5DA00C77F85 /* KeyboardState.h */,
 				3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */,
-				3EE3B2B51631B5DA00C77F85 /* Singleton.h */,
-				3EE3B2B61631B5DA00C77F85 /* Singleton.m */,
 				3EE3B2B71631B5DA00C77F85 /* TaskQueue.h */,
 				3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */,
 				3EE3B2B91631B5DA00C77F85 /* Timer.h */,
@@ -1111,7 +1106,6 @@
 				3EE3B2BE1631B5DA00C77F85 /* CommonUtils.m in Sources */,
 				3EE3B2BF1631B5DA00C77F85 /* DelayController.m in Sources */,
 				3EE3B2C01631B5DA00C77F85 /* KeyboardState.m in Sources */,
-				3EE3B2C11631B5DA00C77F85 /* Singleton.m in Sources */,
 				3EE3B2C21631B5DA00C77F85 /* TaskQueue.m in Sources */,
 				3EE3B2C31631B5DA00C77F85 /* Timer.m in Sources */,
 				3EE3B2C41631B5DA00C77F85 /* DialogTools.m in Sources */,
