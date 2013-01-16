@@ -189,7 +189,9 @@ typedef enum{
                     
                     if((lastStackInfo && (lastStackInfo.type == StackInfoTypeFor || lastStackInfo.type == StackInfoTypeWhile))
                        || [self isAlphbelt:nextChar]){
+#ifdef D_Log
                         D_Log(@"skip do:%@", [script substringToIndex:minStackInfo.position]);
+#endif
                     }else{
                         // push
                         [stack addObject:minStackInfo];
