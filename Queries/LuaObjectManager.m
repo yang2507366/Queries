@@ -48,7 +48,9 @@
     }
     NSString *containObjectId = [self containsObject:object group:group];
     if(containObjectId.length != 0){
+#ifdef D_Log
         D_Log(@"%@ exists", containObjectId);
+#endif
         return containObjectId;
     }else{
 //        D_Log(@"add object:%d:%@, group:%@", (NSInteger)object, object, group);
@@ -71,7 +73,9 @@
     NSMutableDictionary *objectDictionary = [self.groupDictionary objectForKey:group];
     if(objectDictionary){
         [objectDictionary removeObjectForKey:objectId];
+#ifdef D_Log
         D_Log(@"removeObjectWithId:%@", objectId);
+#endif
     }
 #ifdef OBJ_COUNT_LOG_ENABLE
     NSLog(@"remove object count:%d", [self statisticObjectCount]);
@@ -95,7 +99,9 @@
     if(objectDictionary){
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
         if(!tmp){
+#ifdef D_Log
             D_Log(@"%@ not exists", objectId);
+#endif
         }
         return tmp.object;
     }
@@ -109,7 +115,9 @@
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
         if(tmp){
             ++tmp.referenceCount;
+#ifdef D_Log
             D_Log(@"retain object:%@, %@, retainCount:%d", tmp.object, objectId, tmp.referenceCount);
+#endif
         }
     }
 }
@@ -121,9 +129,13 @@
         ObjectWrapper *tmp = [objectDictionary objectForKey:objectId];
         if(tmp){
             --tmp.referenceCount;
+#ifdef D_Log
             D_Log(@"release object:%@, %@, retainCount:%d", tmp.object, objectId, tmp.referenceCount);
+#endif
             if(tmp.referenceCount == 0){
+#ifdef D_Log
                 D_Log(@"remove object for release:%@", objectId);
+#endif
                 [self removeObjectWithId:objectId group:group];
                 return YES;
             }
@@ -151,7 +163,9 @@
         NSArray *allObjectKeys = [tmpDict allKeys];
         for(NSString *objectKey in allObjectKeys){
             ++i;
+#ifdef D_Log
             D_Log(@"statis item:%@", [[tmpDict objectForKey:objectKey] object]);
+#endif
         }
     }
     return i;
@@ -193,7 +207,9 @@
 
 + (NSString *)objectWithId:(NSString *)objectId group:(NSString *)group
 {
+#ifdef D_Log
     D_Log(@"get with object id:%@, group:%@", objectId, group);
+#endif
     return [[self sharedInstance] objectWithId:objectId group:group];
 }
 

@@ -44,7 +44,9 @@
 + (NSString *)invokeWithGroup:(NSString *)group objectId:(NSString *)objectId methodName:(NSString *)methodName parameters:(NSArray *)parameters
 {
     id object = [LuaObjectManager objectWithId:objectId group:group];
+#ifdef D_Log
     D_Log(@"%@ %@ \t%@", object, methodName, parameters);
+#endif
     if(parameters.count != 0 && ![methodName hasSuffix:@":"]){
         methodName = [NSString stringWithFormat:@"%@:", methodName];
     }
@@ -134,7 +136,9 @@
                 argumentData = &s;
             }else if(ctype == '['){//C array
             }else if(ctype == '{'){//struct
+#ifdef D_Log
                 D_Log(@"set struct:%s", [methodSignature getArgumentTypeAtIndex:i]);//未处理
+#endif
                 NSString *structType = [NSString stringWithFormat:@"%s", [methodSignature getArgumentTypeAtIndex:i]];
                 if([structType hasPrefix:@"{CGSize"]){
                     CGSize size = [LuaCommonUtils CGSizeWithString:tmpParam];
@@ -257,7 +261,9 @@
                 return NSStringFromSelector(sel);
             }else if(ctype == '['){//C array
             }else if(ctype == '{'){//struct
+#ifdef D_Log
                 D_Log(@"get struct:%s", [methodSignature methodReturnType]);//未处理
+#endif
                 NSString *structType = [NSString stringWithFormat:@"%s", [methodSignature methodReturnType]];
                 if([structType hasPrefix:@"{CGSize"]){
                     CGSize size;

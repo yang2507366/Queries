@@ -69,7 +69,9 @@
         lua_close(lua_state);
     }
     self.scriptInvokeFilter = nil;
+#ifdef D_Log
     D_Log(@"%@", self);
+#endif
     [super dealloc];
 }
 

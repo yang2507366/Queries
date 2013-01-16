@@ -12,7 +12,9 @@
 
 - (void)dealloc
 {
+#ifdef D_Log
     D_Log(@"recycle object:%d:%@", (NSInteger)self.object, self.object);
+#endif
     self.object = nil;
     [super dealloc];
 }

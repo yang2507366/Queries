@@ -20,6 +20,121 @@
 		3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4286161647518700B1451D /* LuaCommonUtils.m */; };
 		3E42864A1647BECF00B1451D /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E4286491647BECF00B1451D /* doc.txt */; };
 		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
+		3E5BBCD216A6ABA400C0E3C1 /* QueriesLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */; };
+		3E5BBCD416A6ABA400C0E3C1 /* QueriesLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BBCD316A6ABA400C0E3C1 /* QueriesLib.m */; };
+		3E5BBCD916A6ABE700C0E3C1 /* LIAppLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* LIAppLoader.m */; };
+		3E5BBCDA16A6ABE700C0E3C1 /* LIAppRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADF1646AC4A00650486 /* LIAppRunner.m */; };
+		3E5BBCDB16A6ABEB00C0E3C1 /* LIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D701632AA7F00BB5D02 /* LIHTTPRequest.m */; };
+		3E5BBCDC16A6AC0400C0E3C1 /* LIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B949E16460E8C009B01AD /* LIAnimation.m */; };
+		3E5BBCDD16A6AC0700C0E3C1 /* LIBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59916589452003EE847 /* LIBarButtonItem.m */; };
+		3E5BBCDE16A6AC0900C0E3C1 /* LIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6E001657E2D0008DC64B /* LIButton.m */; };
+		3E5BBCDF16A6AC0A00C0E3C1 /* LIGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1D81671DCBD00F71A39 /* LIGridView.m */; };
+		3E5BBCE016A6AC0D00C0E3C1 /* LILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F59D165899EB003EE847 /* LILabel.m */; };
+		3E5BBCE116A6AC1000C0E3C1 /* LINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DFD1657D4C1008DC64B /* LINavigationController.m */; };
+		3E5BBCE216A6AC1300C0E3C1 /* LIPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E34ECF0164A97D400B4F7F0 /* LIPickerView.m */; };
+		3E5BBCE316A6AC1600C0E3C1 /* LITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA27079165278D60011C0D4 /* LITableView.m */; };
+		3E5BBCE416A6AC1700C0E3C1 /* LITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3F5A016589CEF003EE847 /* LITextField.m */; };
+		3E5BBCE516A6AC1C00C0E3C1 /* LITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6283F9165902F700F59593 /* LITextView.m */; };
+		3E5BBCE616A6AC1E00C0E3C1 /* LIUIRelated.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5B11632C94A0013DCF7 /* LIUIRelated.m */; };
+		3E5BBCE716A6AC2000C0E3C1 /* LIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A676165A709B00B382CD /* LIView.m */; };
+		3E5BBCE816A6AC2100C0E3C1 /* LIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DFA1657D051008DC64B /* LIViewController.m */; };
+		3E5BBCE916A6AC2400C0E3C1 /* LIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB7935416761126004EB529 /* LIWebView.m */; };
+		3E5BBCEA16A6AC2E00C0E3C1 /* LINotificationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9A69E1661F64D00B382CD /* LINotificationObserver.m */; };
+		3E5BBCEB16A6AC3100C0E3C1 /* LILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CBF1667986E00978C91 /* LILocationManager.m */; };
+		3E5BBCEC16A6AC3400C0E3C1 /* LIGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CC21667A44B00978C91 /* LIGeocoder.m */; };
+		3E5BBCED16A6AC3B00C0E3C1 /* LuaFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6C163255FB00BB5D02 /* LuaFunctions.m */; };
+		3E5BBCEE16A6AC3D00C0E3C1 /* LuaScriptInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */; };
+		3E5BBCEF16A6AC4200C0E3C1 /* UnicodeScriptInvokeFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D6916324B9000BB5D02 /* UnicodeScriptInvokeFilter.m */; };
+		3E5BBCF016A6AC4800C0E3C1 /* LuaObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C453E1634361400468A7E /* LuaObjectManager.m */; };
+		3E5BBCF116A6AC4A00C0E3C1 /* ObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8C4541163438CB00468A7E /* ObjectWrapper.m */; };
+		3E5BBCF216A6AC4F00C0E3C1 /* OnlineAppBundleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */; };
+		3E5BBCF316A6AC5100C0E3C1 /* ApplicationScriptBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */; };
+		3E5BBCF416A6AC5300C0E3C1 /* LocalAppBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F716468F11009B01AD /* LocalAppBundle.m */; };
+		3E5BBCF516A6AC5600C0E3C1 /* LuaApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C51643EDE7009611C8 /* LuaApp.m */; };
+		3E5BBCF616A6AC5700C0E3C1 /* LuaAppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE36D771632B2CE00BB5D02 /* LuaAppManager.m */; };
+		3E5BBCF716A6AC5900C0E3C1 /* LuaCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4286161647518700B1451D /* LuaCommonUtils.m */; };
+		3E5BBCF816A6AC5D00C0E3C1 /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
+		3E5BBCF916A6AC5E00C0E3C1 /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
+		3E5BBCFA16A6AC5F00C0E3C1 /* PrefixGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F1916351CEA006F90A9 /* PrefixGrammarChecker.m */; };
+		3E5BBCFB16A6AC6100C0E3C1 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
+		3E5BBCFC16A6AC6200C0E3C1 /* AutoreleasePoolChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E027994163F64C800586EC8 /* AutoreleasePoolChecker.m */; };
+		3E5BBCFD16A6AC6300C0E3C1 /* RequireReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C916440442009611C8 /* RequireReplaceChecker.m */; };
+		3E5BBCFE16A6AC6400C0E3C1 /* SuperSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED64C061648CC6B00190688 /* SuperSupportChecker.m */; };
+		3E5BBCFF16A6AC6500C0E3C1 /* AddBaseScriptsChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7A6DF71657AACB008DC64B /* AddBaseScriptsChecker.m */; };
+		3E5BBD0016A6AC7200C0E3C1 /* RequireAutoreleasePoolChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */; };
+		3E5BBD0116A6AC7C00C0E3C1 /* LuaRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF86914163ACC1700E41ED6 /* LuaRuntimeUtils.m */; };
+		3E5BBD0216A6AC8900C0E3C1 /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70716773488002E138F /* UIWebViewAdditions.m */; };
+		3E5BBD0316A6AC8B00C0E3C1 /* GiveRightsOfOrientationBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E63398A162D91DA00B63328 /* GiveRightsOfOrientationBack.m */; };
+		3E5BBD0416A6AC8C00C0E3C1 /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CC16440519009611C8 /* NSString+Substring.m */; };
+		3E5BBD0516A6AC8F00C0E3C1 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C41632E3650013DCF7 /* HTTPRequest.m */; };
+		3E5BBD0616A6AC9100C0E3C1 /* ProviderPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C11632E2880013DCF7 /* ProviderPool.m */; };
+		3E5BBD0716A6AC9300C0E3C1 /* DialogTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */; };
+		3E5BBD0816A6AC9400C0E3C1 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AB1631B58200C77F85 /* Toast.m */; };
+		3E5BBD0916A6AC9500C0E3C1 /* GridViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewWrapper.m */; };
+		3E5BBD0A16A6AC9600C0E3C1 /* Waiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CF1644C48E009611C8 /* Waiting.m */; };
+		3E5BBD0B16A6AC9D00C0E3C1 /* AccurateLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F91665D39A00B57296 /* AccurateLocationManager.m */; };
+		3E5BBD0C16A6AC9E00C0E3C1 /* MapkitLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4FC1665D39A00B57296 /* MapkitLocationManager.m */; };
+		3E5BBD0D16A6AC9F00C0E3C1 /* PreciseLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4FE1665D39A00B57296 /* PreciseLocationManager.m */; };
+		3E5BBD0E16A6ACA200C0E3C1 /* AppleGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4EB1665D38500B57296 /* AppleGeocoder.m */; };
+		3E5BBD0F16A6ACA300C0E3C1 /* GoogleGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4EE1665D38500B57296 /* GoogleGeocoder.m */; };
+		3E5BBD1016A6ACA400C0E3C1 /* LocationDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F01665D38500B57296 /* LocationDescription.m */; };
+		3E5BBD1116A6ACA500C0E3C1 /* ExtremeGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DA4F21665D38500B57296 /* ExtremeGeocoder.m */; };
+		3E5BBD1216A6ACA800C0E3C1 /* RTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F011634E469006F90A9 /* RTProperty.m */; };
+		3E5BBD1316A6ACA900C0E3C1 /* RuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E094F031634E469006F90A9 /* RuntimeUtils.m */; };
+		3E5BBD1416A6ACAC00C0E3C1 /* DataBaseKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2CB1631B64D00C77F85 /* DataBaseKeyValueManager.m */; };
+		3E5BBD1516A6ACAE00C0E3C1 /* CodeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AE1631B5DA00C77F85 /* CodeUtils.m */; };
+		3E5BBD1616A6ACB000C0E3C1 /* CommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B01631B5DA00C77F85 /* CommonUtils.m */; };
+		3E5BBD1716A6ACB100C0E3C1 /* DelayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B21631B5DA00C77F85 /* DelayController.m */; };
+		3E5BBD1816A6ACB200C0E3C1 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */; };
+		3E5BBD1916A6ACB300C0E3C1 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */; };
+		3E5BBD1A16A6ACB400C0E3C1 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BA1631B5DA00C77F85 /* Timer.m */; };
+		3E5BBD1B16A6ACB500C0E3C1 /* SystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E9D0C33163192FD00C3FDCE /* SystemUtils.m */; };
+		3E5BBD1C16A6ACB600C0E3C1 /* MemoryTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2A11631987F00C77F85 /* MemoryTracer.m */; };
+		3E5BBD1D16A6ACCB00C0E3C1 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B3C1647DFCE00650486 /* ASIAuthenticationDialog.m */; };
+		3E5BBD1E16A6ACCD00C0E3C1 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B3F1647DFCE00650486 /* ASIDataCompressor.m */; };
+		3E5BBD1F16A6ACCE00C0E3C1 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B411647DFCE00650486 /* ASIDataDecompressor.m */; };
+		3E5BBD2016A6ACCF00C0E3C1 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B431647DFCE00650486 /* ASIDownloadCache.m */; };
+		3E5BBD2116A6ACD000C0E3C1 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B451647DFCE00650486 /* ASIFormDataRequest.m */; };
+		3E5BBD2216A6ACD100C0E3C1 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B471647DFCE00650486 /* ASIHTTPRequest.m */; };
+		3E5BBD2316A6ACD200C0E3C1 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B4B1647DFCE00650486 /* ASIInputStream.m */; };
+		3E5BBD2416A6ACD300C0E3C1 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B4D1647DFCE00650486 /* ASINetworkQueue.m */; };
+		3E5BBD2516A6ACD500C0E3C1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867B501647DFCE00650486 /* Reachability.m */; };
+		3E5BBD2616A6ACE100C0E3C1 /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F0163E2DD000E5C9A9 /* lapi.c */; };
+		3E5BBD2716A6ACE400C0E3C1 /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F2163E2DD000E5C9A9 /* lauxlib.c */; };
+		3E5BBD2816A6ACE500C0E3C1 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F4163E2DD000E5C9A9 /* lbaselib.c */; };
+		3E5BBD2916A6ACE600C0E3C1 /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F5163E2DD000E5C9A9 /* lcode.c */; };
+		3E5BBD2A16A6ACE700C0E3C1 /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F7163E2DD000E5C9A9 /* ldblib.c */; };
+		3E5BBD2B16A6ACE800C0E3C1 /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772F8163E2DD000E5C9A9 /* ldebug.c */; };
+		3E5BBD2C16A6ACEA00C0E3C1 /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772FA163E2DD000E5C9A9 /* ldo.c */; };
+		3E5BBD2D16A6ACEB00C0E3C1 /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772FC163E2DD000E5C9A9 /* ldump.c */; };
+		3E5BBD2E16A6ACEC00C0E3C1 /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772FD163E2DD000E5C9A9 /* lfunc.c */; };
+		3E5BBD2F16A6ACEE00C0E3C1 /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED772FF163E2DD000E5C9A9 /* lgc.c */; };
+		3E5BBD3016A6ACF000C0E3C1 /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77301163E2DD000E5C9A9 /* linit.c */; };
+		3E5BBD3116A6ACF100C0E3C1 /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77302163E2DD000E5C9A9 /* liolib.c */; };
+		3E5BBD3216A6ACF400C0E3C1 /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77303163E2DD000E5C9A9 /* llex.c */; };
+		3E5BBD3316A6ACF800C0E3C1 /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77306163E2DD000E5C9A9 /* lmathlib.c */; };
+		3E5BBD3416A6ACF900C0E3C1 /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77307163E2DD000E5C9A9 /* lmem.c */; };
+		3E5BBD3516A6ACFB00C0E3C1 /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77309163E2DD000E5C9A9 /* loadlib.c */; };
+		3E5BBD3616A6ACFC00C0E3C1 /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7730A163E2DD000E5C9A9 /* lobject.c */; };
+		3E5BBD3716A6AD0000C0E3C1 /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7730C163E2DD000E5C9A9 /* lopcodes.c */; };
+		3E5BBD3816A6AD0500C0E3C1 /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7730E163E2DD000E5C9A9 /* loslib.c */; };
+		3E5BBD3916A6AD0600C0E3C1 /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7730F163E2DD000E5C9A9 /* lparser.c */; };
+		3E5BBD3A16A6AD0800C0E3C1 /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77311163E2DD000E5C9A9 /* lstate.c */; };
+		3E5BBD3B16A6AD0900C0E3C1 /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77313163E2DD000E5C9A9 /* lstring.c */; };
+		3E5BBD3C16A6AD0A00C0E3C1 /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77315163E2DD000E5C9A9 /* lstrlib.c */; };
+		3E5BBD3D16A6AD0B00C0E3C1 /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77316163E2DD000E5C9A9 /* ltable.c */; };
+		3E5BBD3E16A6AD0D00C0E3C1 /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77318163E2DD000E5C9A9 /* ltablib.c */; };
+		3E5BBD3F16A6AD0E00C0E3C1 /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77319163E2DD000E5C9A9 /* ltm.c */; };
+		3E5BBD4016A6AD1000C0E3C1 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7731E163E2DD000E5C9A9 /* lundump.c */; };
+		3E5BBD4116A6AD1500C0E3C1 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77320163E2DD000E5C9A9 /* lvm.c */; };
+		3E5BBD4216A6AD1700C0E3C1 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77322163E2DD000E5C9A9 /* lzio.c */; };
+		3E5BBD4316A6AD1900C0E3C1 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ED77324163E2DD000E5C9A9 /* print.c */; };
+		3E5BBD4416A6AD1D00C0E3C1 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950416469292009B01AD /* ioapi.c */; };
+		3E5BBD4516A6AD1E00C0E3C1 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950616469292009B01AD /* mztools.c */; };
+		3E5BBD4616A6AD2000C0E3C1 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950816469292009B01AD /* unzip.c */; };
+		3E5BBD4716A6AD2100C0E3C1 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950A16469292009B01AD /* zip.c */; };
+		3E5BBD4816A6AD2200C0E3C1 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B950D16469292009B01AD /* ZipArchive.m */; };
+		3E5BBD6C16A6B05800C0E3C1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
 		3E6283FA165902F700F59593 /* LITextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6283F9165902F700F59593 /* LITextView.m */; };
 		3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395B162D8C3900B63328 /* UIKit.framework */; };
 		3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E63395D162D8C3900B63328 /* Foundation.framework */; };
@@ -160,6 +275,19 @@
 		3EF86915163ACC1700E41ED6 /* LuaRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF86914163ACC1700E41ED6 /* LuaRuntimeUtils.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3E5BBCCA16A6ABA400C0E3C1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				3E5BBCD216A6ABA400C0E3C1 /* QueriesLib.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3E027993163F64C800586EC8 /* AutoreleasePoolChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoreleasePoolChecker.h; sourceTree = "<group>"; };
 		3E027994163F64C800586EC8 /* AutoreleasePoolChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoreleasePoolChecker.m; sourceTree = "<group>"; };
@@ -187,6 +315,10 @@
 		3E4286491647BECF00B1451D /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = doc.txt; sourceTree = "<group>"; };
 		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
 		3E4EBD28163814BD00629387 /* DotGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotGrammarChecker.m; sourceTree = "<group>"; };
+		3E5BBCCC16A6ABA400C0E3C1 /* libQueriesLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQueriesLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E5BBCD016A6ABA400C0E3C1 /* QueriesLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QueriesLib-Prefix.pch"; sourceTree = "<group>"; };
+		3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueriesLib.h; sourceTree = "<group>"; };
+		3E5BBCD316A6ABA400C0E3C1 /* QueriesLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QueriesLib.m; sourceTree = "<group>"; };
 		3E6283F8165902F700F59593 /* LITextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LITextView.h; sourceTree = "<group>"; };
 		3E6283F9165902F700F59593 /* LITextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITextView.m; sourceTree = "<group>"; };
 		3E633957162D8C3900B63328 /* Queries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Queries.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -444,6 +576,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3E5BBCC916A6ABA400C0E3C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E5BBD6C16A6B05800C0E3C1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3E633954162D8C3900B63328 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,8 +593,8 @@
 				3E867B5F1647DFF000650486 /* MobileCoreServices.framework in Frameworks */,
 				3E867B5D1647DFE200650486 /* SystemConfiguration.framework in Frameworks */,
 				3E867B5B1647DFDC00650486 /* CFNetwork.framework in Frameworks */,
-				3E6B9514164692AA009B01AD /* libz.dylib in Frameworks */,
 				3EE3B2CF1631B67300C77F85 /* libsqlite3.dylib in Frameworks */,
+				3E6B9514164692AA009B01AD /* libz.dylib in Frameworks */,
 				3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */,
 				3E63395C162D8C3900B63328 /* UIKit.framework in Frameworks */,
 				3E63395E162D8C3900B63328 /* Foundation.framework in Frameworks */,
@@ -489,6 +629,24 @@
 			name = RuntimeUtils;
 			sourceTree = "<group>";
 		};
+		3E5BBCCE16A6ABA400C0E3C1 /* QueriesLib */ = {
+			isa = PBXGroup;
+			children = (
+				3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */,
+				3E5BBCD316A6ABA400C0E3C1 /* QueriesLib.m */,
+				3E5BBCCF16A6ABA400C0E3C1 /* Supporting Files */,
+			);
+			path = QueriesLib;
+			sourceTree = "<group>";
+		};
+		3E5BBCCF16A6ABA400C0E3C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3E5BBCD016A6ABA400C0E3C1 /* QueriesLib-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		3E63394C162D8C3900B63328 = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +658,7 @@
 				3E633961162D8C3900B63328 /* Queries */,
 				3E77174E1649620D0077A1C0 /* Resources */,
 				3E6B95011646926F009B01AD /* 3rdLibraries */,
+				3E5BBCCE16A6ABA400C0E3C1 /* QueriesLib */,
 				3E63395A162D8C3900B63328 /* Frameworks */,
 				3E633958162D8C3900B63328 /* Products */,
 			);
@@ -509,6 +668,7 @@
 			isa = PBXGroup;
 			children = (
 				3E633957162D8C3900B63328 /* Queries.app */,
+				3E5BBCCC16A6ABA400C0E3C1 /* libQueriesLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1012,6 +1172,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3E5BBCCB16A6ABA400C0E3C1 /* QueriesLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E5BBCD716A6ABA400C0E3C1 /* Build configuration list for PBXNativeTarget "QueriesLib" */;
+			buildPhases = (
+				3E5BBCC816A6ABA400C0E3C1 /* Sources */,
+				3E5BBCC916A6ABA400C0E3C1 /* Frameworks */,
+				3E5BBCCA16A6ABA400C0E3C1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QueriesLib;
+			productName = QueriesLib;
+			productReference = 3E5BBCCC16A6ABA400C0E3C1 /* libQueriesLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		3E633956162D8C3900B63328 /* Queries */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E633975162D8C3A00B63328 /* Build configuration list for PBXNativeTarget "Queries" */;
@@ -1051,6 +1228,7 @@
 			projectRoot = "";
 			targets = (
 				3E633956162D8C3900B63328 /* Queries */,
+				3E5BBCCB16A6ABA400C0E3C1 /* QueriesLib */,
 			);
 		};
 /* End PBXProject section */
@@ -1088,6 +1266,126 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3E5BBCC816A6ABA400C0E3C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E5BBCF216A6AC4F00C0E3C1 /* OnlineAppBundleLoader.m in Sources */,
+				3E5BBCDB16A6ABEB00C0E3C1 /* LIHTTPRequest.m in Sources */,
+				3E5BBCD416A6ABA400C0E3C1 /* QueriesLib.m in Sources */,
+				3E5BBCD916A6ABE700C0E3C1 /* LIAppLoader.m in Sources */,
+				3E5BBCDA16A6ABE700C0E3C1 /* LIAppRunner.m in Sources */,
+				3E5BBCDC16A6AC0400C0E3C1 /* LIAnimation.m in Sources */,
+				3E5BBCDD16A6AC0700C0E3C1 /* LIBarButtonItem.m in Sources */,
+				3E5BBCDE16A6AC0900C0E3C1 /* LIButton.m in Sources */,
+				3E5BBCDF16A6AC0A00C0E3C1 /* LIGridView.m in Sources */,
+				3E5BBCE016A6AC0D00C0E3C1 /* LILabel.m in Sources */,
+				3E5BBCE116A6AC1000C0E3C1 /* LINavigationController.m in Sources */,
+				3E5BBCE216A6AC1300C0E3C1 /* LIPickerView.m in Sources */,
+				3E5BBCE316A6AC1600C0E3C1 /* LITableView.m in Sources */,
+				3E5BBCE416A6AC1700C0E3C1 /* LITextField.m in Sources */,
+				3E5BBCE516A6AC1C00C0E3C1 /* LITextView.m in Sources */,
+				3E5BBCE616A6AC1E00C0E3C1 /* LIUIRelated.m in Sources */,
+				3E5BBCE716A6AC2000C0E3C1 /* LIView.m in Sources */,
+				3E5BBCF316A6AC5100C0E3C1 /* ApplicationScriptBundle.m in Sources */,
+				3E5BBCE916A6AC2400C0E3C1 /* LIWebView.m in Sources */,
+				3E5BBCFB16A6AC6100C0E3C1 /* DotGrammarChecker.m in Sources */,
+				3E5BBCFC16A6AC6200C0E3C1 /* AutoreleasePoolChecker.m in Sources */,
+				3E5BBCFD16A6AC6300C0E3C1 /* RequireReplaceChecker.m in Sources */,
+				3E5BBCFF16A6AC6500C0E3C1 /* AddBaseScriptsChecker.m in Sources */,
+				3E5BBCE816A6AC2100C0E3C1 /* LIViewController.m in Sources */,
+				3E5BBCFE16A6AC6400C0E3C1 /* SuperSupportChecker.m in Sources */,
+				3E5BBCFA16A6AC5F00C0E3C1 /* PrefixGrammarChecker.m in Sources */,
+				3E5BBCF916A6AC5E00C0E3C1 /* SelfSupportChecker.m in Sources */,
+				3E5BBCEA16A6AC2E00C0E3C1 /* LINotificationObserver.m in Sources */,
+				3E5BBCF416A6AC5300C0E3C1 /* LocalAppBundle.m in Sources */,
+				3E5BBCF816A6AC5D00C0E3C1 /* UnicodeChecker.m in Sources */,
+				3E5BBCF516A6AC5600C0E3C1 /* LuaApp.m in Sources */,
+				3E5BBD1216A6ACA800C0E3C1 /* RTProperty.m in Sources */,
+				3E5BBD1616A6ACB000C0E3C1 /* CommonUtils.m in Sources */,
+				3E5BBD1316A6ACA900C0E3C1 /* RuntimeUtils.m in Sources */,
+				3E5BBD1816A6ACB200C0E3C1 /* KeyboardState.m in Sources */,
+				3E5BBD1A16A6ACB400C0E3C1 /* Timer.m in Sources */,
+				3E5BBD1716A6ACB100C0E3C1 /* DelayController.m in Sources */,
+				3E5BBD1516A6ACAE00C0E3C1 /* CodeUtils.m in Sources */,
+				3E5BBD1B16A6ACB500C0E3C1 /* SystemUtils.m in Sources */,
+				3E5BBD1416A6ACAC00C0E3C1 /* DataBaseKeyValueManager.m in Sources */,
+				3E5BBD1C16A6ACB600C0E3C1 /* MemoryTracer.m in Sources */,
+				3E5BBD1916A6ACB300C0E3C1 /* TaskQueue.m in Sources */,
+				3E5BBCF616A6AC5700C0E3C1 /* LuaAppManager.m in Sources */,
+				3E5BBD0F16A6ACA300C0E3C1 /* GoogleGeocoder.m in Sources */,
+				3E5BBD1016A6ACA400C0E3C1 /* LocationDescription.m in Sources */,
+				3E5BBCF716A6AC5900C0E3C1 /* LuaCommonUtils.m in Sources */,
+				3E5BBD1116A6ACA500C0E3C1 /* ExtremeGeocoder.m in Sources */,
+				3E5BBD0E16A6ACA200C0E3C1 /* AppleGeocoder.m in Sources */,
+				3E5BBD0C16A6AC9E00C0E3C1 /* MapkitLocationManager.m in Sources */,
+				3E5BBCEB16A6AC3100C0E3C1 /* LILocationManager.m in Sources */,
+				3E5BBD0D16A6AC9F00C0E3C1 /* PreciseLocationManager.m in Sources */,
+				3E5BBD0B16A6AC9D00C0E3C1 /* AccurateLocationManager.m in Sources */,
+				3E5BBCEC16A6AC3400C0E3C1 /* LIGeocoder.m in Sources */,
+				3E5BBCED16A6AC3B00C0E3C1 /* LuaFunctions.m in Sources */,
+				3E5BBCEE16A6AC3D00C0E3C1 /* LuaScriptInteraction.m in Sources */,
+				3E5BBD0016A6AC7200C0E3C1 /* RequireAutoreleasePoolChecker.m in Sources */,
+				3E5BBD1D16A6ACCB00C0E3C1 /* ASIAuthenticationDialog.m in Sources */,
+				3E5BBD2616A6ACE100C0E3C1 /* lapi.c in Sources */,
+				3E5BBD0716A6AC9300C0E3C1 /* DialogTools.m in Sources */,
+				3E5BBD2716A6ACE400C0E3C1 /* lauxlib.c in Sources */,
+				3E5BBD0916A6AC9500C0E3C1 /* GridViewWrapper.m in Sources */,
+				3E5BBD2916A6ACE600C0E3C1 /* lcode.c in Sources */,
+				3E5BBD2B16A6ACE800C0E3C1 /* ldebug.c in Sources */,
+				3E5BBD3016A6ACF000C0E3C1 /* linit.c in Sources */,
+				3E5BBD3916A6AD0600C0E3C1 /* lparser.c in Sources */,
+				3E5BBD3C16A6AD0A00C0E3C1 /* lstrlib.c in Sources */,
+				3E5BBD4416A6AD1D00C0E3C1 /* ioapi.c in Sources */,
+				3E5BBD4616A6AD2000C0E3C1 /* unzip.c in Sources */,
+				3E5BBD3B16A6AD0900C0E3C1 /* lstring.c in Sources */,
+				3E5BBD4816A6AD2200C0E3C1 /* ZipArchive.m in Sources */,
+				3E5BBD4716A6AD2100C0E3C1 /* zip.c in Sources */,
+				3E5BBD4516A6AD1E00C0E3C1 /* mztools.c in Sources */,
+				3E5BBD4216A6AD1700C0E3C1 /* lzio.c in Sources */,
+				3E5BBD4116A6AD1500C0E3C1 /* lvm.c in Sources */,
+				3E5BBD4316A6AD1900C0E3C1 /* print.c in Sources */,
+				3E5BBD3716A6AD0000C0E3C1 /* lopcodes.c in Sources */,
+				3E5BBD4016A6AD1000C0E3C1 /* lundump.c in Sources */,
+				3E5BBD2F16A6ACEE00C0E3C1 /* lgc.c in Sources */,
+				3E5BBD3F16A6AD0E00C0E3C1 /* ltm.c in Sources */,
+				3E5BBD3E16A6AD0D00C0E3C1 /* ltablib.c in Sources */,
+				3E5BBD3D16A6AD0B00C0E3C1 /* ltable.c in Sources */,
+				3E5BBD3116A6ACF100C0E3C1 /* liolib.c in Sources */,
+				3E5BBD3316A6ACF800C0E3C1 /* lmathlib.c in Sources */,
+				3E5BBD3816A6AD0500C0E3C1 /* loslib.c in Sources */,
+				3E5BBD3616A6ACFC00C0E3C1 /* lobject.c in Sources */,
+				3E5BBD3A16A6AD0800C0E3C1 /* lstate.c in Sources */,
+				3E5BBD3216A6ACF400C0E3C1 /* llex.c in Sources */,
+				3E5BBD3516A6ACFB00C0E3C1 /* loadlib.c in Sources */,
+				3E5BBD3416A6ACF900C0E3C1 /* lmem.c in Sources */,
+				3E5BBD2C16A6ACEA00C0E3C1 /* ldo.c in Sources */,
+				3E5BBD2E16A6ACEC00C0E3C1 /* lfunc.c in Sources */,
+				3E5BBD2816A6ACE500C0E3C1 /* lbaselib.c in Sources */,
+				3E5BBD2D16A6ACEB00C0E3C1 /* ldump.c in Sources */,
+				3E5BBD2A16A6ACE700C0E3C1 /* ldblib.c in Sources */,
+				3E5BBD1E16A6ACCD00C0E3C1 /* ASIDataCompressor.m in Sources */,
+				3E5BBD2016A6ACCF00C0E3C1 /* ASIDownloadCache.m in Sources */,
+				3E5BBD1F16A6ACCE00C0E3C1 /* ASIDataDecompressor.m in Sources */,
+				3E5BBD2116A6ACD000C0E3C1 /* ASIFormDataRequest.m in Sources */,
+				3E5BBD2216A6ACD100C0E3C1 /* ASIHTTPRequest.m in Sources */,
+				3E5BBD0516A6AC8F00C0E3C1 /* HTTPRequest.m in Sources */,
+				3E5BBD0A16A6AC9600C0E3C1 /* Waiting.m in Sources */,
+				3E5BBD2516A6ACD500C0E3C1 /* Reachability.m in Sources */,
+				3E5BBD2416A6ACD300C0E3C1 /* ASINetworkQueue.m in Sources */,
+				3E5BBD0816A6AC9400C0E3C1 /* Toast.m in Sources */,
+				3E5BBD2316A6ACD200C0E3C1 /* ASIInputStream.m in Sources */,
+				3E5BBD0616A6AC9100C0E3C1 /* ProviderPool.m in Sources */,
+				3E5BBD0416A6AC8C00C0E3C1 /* NSString+Substring.m in Sources */,
+				3E5BBD0216A6AC8900C0E3C1 /* UIWebViewAdditions.m in Sources */,
+				3E5BBCEF16A6AC4200C0E3C1 /* UnicodeScriptInvokeFilter.m in Sources */,
+				3E5BBD0316A6AC8B00C0E3C1 /* GiveRightsOfOrientationBack.m in Sources */,
+				3E5BBD0116A6AC7C00C0E3C1 /* LuaRuntimeUtils.m in Sources */,
+				3E5BBCF016A6AC4800C0E3C1 /* LuaObjectManager.m in Sources */,
+				3E5BBCF116A6AC4A00C0E3C1 /* ObjectWrapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3E633953162D8C3900B63328 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1227,6 +1525,31 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3E5BBCD516A6ABA400C0E3C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/QueriesLib.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QueriesLib/QueriesLib-Prefix.pch";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3E5BBCD616A6ABA400C0E3C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/QueriesLib.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QueriesLib/QueriesLib-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		3E633973162D8C3A00B63328 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1303,6 +1626,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3E5BBCD716A6ABA400C0E3C1 /* Build configuration list for PBXNativeTarget "QueriesLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E5BBCD516A6ABA400C0E3C1 /* Debug */,
+				3E5BBCD616A6ABA400C0E3C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3E633951162D8C3900B63328 /* Build configuration list for PBXProject "Queries" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
