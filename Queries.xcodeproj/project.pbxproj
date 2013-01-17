@@ -196,6 +196,8 @@
 		3EA2707A165278D60011C0D4 /* LITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA27079165278D60011C0D4 /* LITableView.m */; };
 		3EA40CC01667986E00978C91 /* LILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CBF1667986E00978C91 /* LILocationManager.m */; };
 		3EA40CC31667A44B00978C91 /* LIGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CC21667A44B00978C91 /* LIGeocoder.m */; };
+		3EB1E1D016A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
+		3EB1E1D116A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
 		3EB7935116760C09004EB529 /* DictionaryViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3EB7935016760C09004EB529 /* DictionaryViewController.lua */; };
 		3EB7935516761126004EB529 /* LIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB7935416761126004EB529 /* LIWebView.m */; };
 		3EB7935816761CB0004EB529 /* dictionary.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EB7935616761CB0004EB529 /* dictionary.png */; };
@@ -436,6 +438,8 @@
 		3EA40CBF1667986E00978C91 /* LILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LILocationManager.m; sourceTree = "<group>"; };
 		3EA40CC11667A44B00978C91 /* LIGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGeocoder.h; sourceTree = "<group>"; };
 		3EA40CC21667A44B00978C91 /* LIGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGeocoder.m; sourceTree = "<group>"; };
+		3EB1E1CE16A8203500665B22 /* LITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LITabBarController.h; sourceTree = "<group>"; };
+		3EB1E1CF16A8203500665B22 /* LITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITabBarController.m; sourceTree = "<group>"; };
 		3EB7935016760C09004EB529 /* DictionaryViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DictionaryViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3EB7935316761126004EB529 /* LIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIWebView.h; sourceTree = "<group>"; };
 		3EB7935416761126004EB529 /* LIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIWebView.m; sourceTree = "<group>"; };
@@ -979,6 +983,8 @@
 				3E7A6DFA1657D051008DC64B /* LIViewController.m */,
 				3EB7935316761126004EB529 /* LIWebView.h */,
 				3EB7935416761126004EB529 /* LIWebView.m */,
+				3EB1E1CE16A8203500665B22 /* LITabBarController.h */,
+				3EB1E1CF16A8203500665B22 /* LITabBarController.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1383,6 +1389,7 @@
 				3E5BBD0116A6AC7C00C0E3C1 /* LuaRuntimeUtils.m in Sources */,
 				3E5BBCF016A6AC4800C0E3C1 /* LuaObjectManager.m in Sources */,
 				3E5BBCF116A6AC4A00C0E3C1 /* ObjectWrapper.m in Sources */,
+				3EB1E1D116A8203500665B22 /* LITabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1508,6 +1515,7 @@
 				3EB7935516761126004EB529 /* LIWebView.m in Sources */,
 				3E30C70816773488002E138F /* UIWebViewAdditions.m in Sources */,
 				3E30C70B16773B8C002E138F /* RequireAutoreleasePoolChecker.m in Sources */,
+				3EB1E1D016A8203500665B22 /* LITabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
