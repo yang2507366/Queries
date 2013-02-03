@@ -13,9 +13,9 @@
 @protocol ProviderPoolable <NSObject>
 
 @required
-- (BOOL)providerShouldBeRemoveFromPool;
 - (void)providerWillRemoveFromPool;
 @optional
+- (BOOL)providerShouldBeRemoveFromPool;
 - (BOOL)providerIsExecuting;
 
 @end

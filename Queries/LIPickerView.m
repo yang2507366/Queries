@@ -86,7 +86,7 @@
         NSLog(@"reusing:%@", tmpLabel);
     }
     tmpLabel.backgroundColor = [UIColor blackColor];
-    tmpLabel.textAlignment = UITextAlignmentCenter;
+    tmpLabel.textAlignment = NSTextAlignmentCenter;
     tmpLabel.text = @"text";
     return tmpLabel;
 }

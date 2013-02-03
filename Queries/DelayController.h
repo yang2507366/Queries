@@ -16,6 +16,7 @@
 
 @property(nonatomic, assign)id<DelayControllerDelegate> delegate;
 @property(nonatomic, readonly)NSTimeInterval delayTime;
+@property(nonatomic, assign)NSInteger tag;
 
 - (id)initWithInterval:(NSTimeInterval)interval;
 - (void)cancel;
