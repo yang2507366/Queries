@@ -19,5 +19,6 @@
 
 - (id)initWithDBName:(NSString *)dbName;
 - (id)initWithDBName:(NSString *)dbName atFilePath:(NSString *)filePath;
+- (id)initWithDBName:(NSString *)dbName atFolder:(NSString *)folderPath;
 
 @end

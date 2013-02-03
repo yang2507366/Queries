@@ -19,6 +19,7 @@
     DelayController *_animationDelayController;
 }
 
++ (Toast *)defaultToast;
 + (void)showToastWithString:(NSString *)string hideAfterInterval:(NSTimeInterval)interval;
 
 - (void)showToastInView:(UIView *)parentView withString:(NSString *)string hideAfterInterval:(NSTimeInterval)interval;

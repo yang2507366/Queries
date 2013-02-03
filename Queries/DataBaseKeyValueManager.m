@@ -63,6 +63,15 @@
     return self;
 }
 
+- (id)initWithDBName:(NSString *)dbName atFolder:(NSString *)folderPath
+{
+    dbName = [CodeUtils encodeWithString:dbName];
+    if(dbName.length > 200){
+        dbName = [dbName substringToIndex:200];
+    }
+    return [self initWithDBName:dbName atFilePath:[folderPath stringByAppendingPathComponent:dbName]];
+}
+
 #pragma mark - private methods
 - (void)openDatabase:(NSString *)dbFilePath
 {
