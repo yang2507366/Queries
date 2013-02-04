@@ -133,3 +133,12 @@ function UIView:userInteractionEnabled()
     local enabled = runtime::invokeMethod(self:id(), "userInteractionEnabled");
     return toLuaBool(enabled);
 end
+
+function UIView:setHidden(hidden)
+    runtime::invokeMethod(self:id(), "setHidden:", toObjCBool(hidden));
+end
+
+function UIView:hidden()
+    local hidden = runtime::invokeMethod(self:id(), "hidden");
+    return toLuaBool(hidden);
+end

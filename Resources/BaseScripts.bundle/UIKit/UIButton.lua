@@ -64,6 +64,14 @@ function UIButton:titleLabel()
     return UILabel:get(labelId);
 end
 
+function UIButton:setEnabled(enabled)
+    runtime::invokeMethod(self:id(), "setEnabled:", toObjCBool(enabled));
+end
+
+function UIButton:enabled()
+    return toLuaBool(runtime::invokeMethod(self:id(), "enabled"));
+end
+
 -- events
 function UIButton:tapped()
 end
