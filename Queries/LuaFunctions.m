@@ -225,10 +225,11 @@ int ui_dialog(lua_State *L)
     for(NSInteger i = 6; i <= numberOfArgs; ++i){
         [titleList addObject:luaStringParam(L, i)];
     }
-    
     id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
     [DialogTools showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
-        [si callFunction:callbackFunc parameters:[NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
+        if(callbackFunc.length != 0){
+            [si callFunction:callbackFunc parameters:[NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
+        }
     } cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
     
     return 0;
