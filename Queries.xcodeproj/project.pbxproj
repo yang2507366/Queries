@@ -124,6 +124,8 @@
 		3E30C70B16773B8C002E138F /* RequireAutoreleasePoolChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */; };
 		3E34ECF1164A97D400B4F7F0 /* LIPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E34ECF0164A97D400B4F7F0 /* LIPickerView.m */; };
 		3E4286171647518700B1451D /* LuaCommonUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4286161647518700B1451D /* LuaCommonUtils.m */; };
+		3E48219A16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */; };
+		3E48219B16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */; };
 		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
 		3E5BBCD216A6ABA400C0E3C1 /* QueriesLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */; };
 		3E5BBCD416A6ABA400C0E3C1 /* QueriesLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BBCD316A6ABA400C0E3C1 /* QueriesLib.m */; };
@@ -420,6 +422,9 @@
 		3E34ECF0164A97D400B4F7F0 /* LIPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPickerView.m; sourceTree = "<group>"; };
 		3E4286151647518700B1451D /* LuaCommonUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaCommonUtils.h; sourceTree = "<group>"; };
 		3E4286161647518700B1451D /* LuaCommonUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaCommonUtils.m; sourceTree = "<group>"; };
+		3E48219716BFF57400EE1E2A /* HTTPDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDownload.h; sourceTree = "<group>"; };
+		3E48219816BFFA1100EE1E2A /* HTTPDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPDownloader.h; sourceTree = "<group>"; };
+		3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDownloader.m; sourceTree = "<group>"; };
 		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
 		3E4EBD28163814BD00629387 /* DotGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotGrammarChecker.m; sourceTree = "<group>"; };
 		3E5BBCCC16A6ABA400C0E3C1 /* libQueriesLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQueriesLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -622,6 +627,9 @@
 				3E06D5C41632E3650013DCF7 /* HTTPRequest.m */,
 				3E06D5C01632E2880013DCF7 /* ProviderPool.h */,
 				3E06D5C11632E2880013DCF7 /* ProviderPool.m */,
+				3E48219716BFF57400EE1E2A /* HTTPDownload.h */,
+				3E48219816BFFA1100EE1E2A /* HTTPDownloader.h */,
+				3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -1410,6 +1418,7 @@
 				3E23563216BF4813006C00A8 /* zip.c in Sources */,
 				3E23563416BF4813006C00A8 /* ZipArchive.m in Sources */,
 				3EA5BF1E16BF4B3500BD81D4 /* NetworkManager.m in Sources */,
+				3E48219B16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1537,6 +1546,7 @@
 				3E23563116BF4813006C00A8 /* zip.c in Sources */,
 				3E23563316BF4813006C00A8 /* ZipArchive.m in Sources */,
 				3EA5BF1D16BF4B3500BD81D4 /* NetworkManager.m in Sources */,
+				3E48219A16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
