@@ -52,6 +52,13 @@ function UIViewController:setAsRootViewController()
     end
 end
 
+function UIViewController:relatedNavigationController()
+    local relatedVCId = ui::getRelatedViewController();
+    if string.len(relatedVCId) ~= 0 then
+        return UINavigationController:get(relatedVCId);
+    end
+end
+
 function UIViewController:pushToRelatedViewController()
     local relatedVCId = ui::getRelatedViewController();
     if string.len(relatedVCId) ~= 0 then
@@ -101,6 +108,10 @@ end
 
 function UIViewController:title()
     return runtime::invokeMethod(self:id(), "title");
+end
+
+function UIViewController:setHidesBottomBarWhenPushed(hide)
+    runtime::invokeMethod(self:id(), "setHidesBottomBarWhenPushed:", toObjCBool(hide));
 end
 
 -- override methods

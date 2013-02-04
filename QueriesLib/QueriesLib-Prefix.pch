@@ -5,4 +5,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    //#define D_Log(format, ...) NSLog((@"%s " format), __PRETTY_FUNCTION__, ##__VA_ARGS__);
+    //#define D_Log(...)
+    #define OBJ_COUNT_LOG_ENABLE
 #endif

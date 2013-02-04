@@ -262,6 +262,23 @@ int ui_getRelatedViewController(lua_State *L)
     return 1;
 }
 
+int ui_stringSize(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *string = luaStringParam(L, 2);
+    NSString *fontId = luaStringParam(L, 3);
+    CGFloat width = lua_tonumber(L, 4);
+    CGFloat height = lua_tonumber(L, 5);
+    UIFont *font = [LuaObjectManager objectWithId:fontId group:appId];
+    if(font){
+        CGSize size = [string sizeWithFont:font constrainedToSize:CGSizeMake(width, height)];
+        lua_pushnumber(L, size.width);
+        lua_pushnumber(L, size.height);
+        return 2;
+    }
+    return 0;
+}
+
 #pragma mark - string
 int ustring_substring(lua_State *L)
 {
@@ -538,6 +555,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
     pushFunctionToLua(L, "ui_animate", ui_animate);
     pushFunctionToLua(L, "ui_getRelatedViewController", ui_getRelatedViewController);
+    pushFunctionToLua(L, "ui_stringSize", ui_stringSize);
     pushFunctionToLua(L, "ustring_find", ustring_find);
     pushFunctionToLua(L, "ustring_length", ustring_length);
     pushFunctionToLua(L, "ustring_substring", ustring_substring);

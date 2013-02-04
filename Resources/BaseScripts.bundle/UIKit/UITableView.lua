@@ -22,7 +22,7 @@ function UITableView:createWithStyle(style)
     if style == nil then
         style = UITableViewStylePlain;
     end
-    local tableViewId = runtime::invokeClassMethod("LITableView", "create", AppContext.current());
+    local tableViewId = runtime::invokeClassMethod("LITableView", "create:style:", AppContext.current(), style);
     local tableView = self:get(tableViewId);
     
     return tableView;
@@ -335,7 +335,8 @@ function UITableViewDataSource_cellForRowAtIndexPath(tableViewId, indexPathId)
     
     if tb and tb.dataSource then
         local indexPath = NSIndexPath:get(indexPathId):keep();
-        local cellId = tb.dataSource:cellForRowAtIndexPath(tb, indexPath):id();
+        local cellId = tb.dataSource:cellForRowAtIndexPath(tb, indexPath):retain():id();
+        
         return cellId;
     end
 end
