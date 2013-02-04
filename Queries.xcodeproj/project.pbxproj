@@ -242,6 +242,8 @@
 		3EA2707A165278D60011C0D4 /* LITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA27079165278D60011C0D4 /* LITableView.m */; };
 		3EA40CC01667986E00978C91 /* LILocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CBF1667986E00978C91 /* LILocationManager.m */; };
 		3EA40CC31667A44B00978C91 /* LIGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA40CC21667A44B00978C91 /* LIGeocoder.m */; };
+		3EA5BF1D16BF4B3500BD81D4 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */; };
+		3EA5BF1E16BF4B3500BD81D4 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */; };
 		3EB1E1D016A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
 		3EB1E1D116A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
 		3EB7935516761126004EB529 /* LIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB7935416761126004EB529 /* LIWebView.m */; };
@@ -507,6 +509,8 @@
 		3EA40CBF1667986E00978C91 /* LILocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LILocationManager.m; sourceTree = "<group>"; };
 		3EA40CC11667A44B00978C91 /* LIGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGeocoder.h; sourceTree = "<group>"; };
 		3EA40CC21667A44B00978C91 /* LIGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGeocoder.m; sourceTree = "<group>"; };
+		3EA5BF1B16BF4B3500BD81D4 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		3EB1E1CE16A8203500665B22 /* LITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LITabBarController.h; sourceTree = "<group>"; };
 		3EB1E1CF16A8203500665B22 /* LITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITabBarController.m; sourceTree = "<group>"; };
 		3EB7935316761126004EB529 /* LIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIWebView.h; sourceTree = "<group>"; };
@@ -990,6 +994,8 @@
 				3E9D0C33163192FD00C3FDCE /* SystemUtils.m */,
 				3EE3B2A01631987F00C77F85 /* MemoryTracer.h */,
 				3EE3B2A11631987F00C77F85 /* MemoryTracer.m */,
+				3EA5BF1B16BF4B3500BD81D4 /* NetworkManager.h */,
+				3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1403,6 +1409,7 @@
 				3E23563016BF4813006C00A8 /* unzip.c in Sources */,
 				3E23563216BF4813006C00A8 /* zip.c in Sources */,
 				3E23563416BF4813006C00A8 /* ZipArchive.m in Sources */,
+				3EA5BF1E16BF4B3500BD81D4 /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1529,6 +1536,7 @@
 				3E23562F16BF4813006C00A8 /* unzip.c in Sources */,
 				3E23563116BF4813006C00A8 /* zip.c in Sources */,
 				3E23563316BF4813006C00A8 /* ZipArchive.m in Sources */,
+				3EA5BF1D16BF4B3500BD81D4 /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
