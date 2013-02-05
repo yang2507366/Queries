@@ -126,6 +126,8 @@
 		3E23563316BF4813006C00A8 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2355DC16BF4813006C00A8 /* ZipArchive.m */; };
 		3E23563416BF4813006C00A8 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2355DC16BF4813006C00A8 /* ZipArchive.m */; };
 		3E23563616BF4853006C00A8 /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E23563516BF4853006C00A8 /* doc.txt */; };
+		3E2B383C16C140050034DB94 /* LIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B383B16C140050034DB94 /* LIScrollView.m */; };
+		3E2B383D16C140050034DB94 /* LIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B383B16C140050034DB94 /* LIScrollView.m */; };
 		3E30C70816773488002E138F /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70716773488002E138F /* UIWebViewAdditions.m */; };
 		3E30C70B16773B8C002E138F /* RequireAutoreleasePoolChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */; };
 		3E34ECF1164A97D400B4F7F0 /* LIPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E34ECF0164A97D400B4F7F0 /* LIPickerView.m */; };
@@ -426,6 +428,8 @@
 		3E2355DB16BF4813006C00A8 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		3E2355DC16BF4813006C00A8 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		3E23563516BF4853006C00A8 /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doc.txt; path = Resources/doc.txt; sourceTree = "<group>"; };
+		3E2B383A16C140050034DB94 /* LIScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIScrollView.h; sourceTree = "<group>"; };
+		3E2B383B16C140050034DB94 /* LIScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIScrollView.m; sourceTree = "<group>"; };
 		3E30C70616773488002E138F /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
 		3E30C70716773488002E138F /* UIWebViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewAdditions.m; sourceTree = "<group>"; };
 		3E30C70916773B8C002E138F /* RequireAutoreleasePoolChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequireAutoreleasePoolChecker.h; sourceTree = "<group>"; };
@@ -1094,6 +1098,8 @@
 				3EB7935416761126004EB529 /* LIWebView.m */,
 				3EB1E1CE16A8203500665B22 /* LITabBarController.h */,
 				3EB1E1CF16A8203500665B22 /* LITabBarController.m */,
+				3E2B383A16C140050034DB94 /* LIScrollView.h */,
+				3E2B383B16C140050034DB94 /* LIScrollView.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1448,6 +1454,7 @@
 				3E0B29B116C0A4830095031A /* LIAudioPlayer.m in Sources */,
 				3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */,
 				3E0B29B916C0DFD50095031A /* FileUtils.m in Sources */,
+				3E2B383D16C140050034DB94 /* LIScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1579,6 +1586,7 @@
 				3E0B29B016C0A4830095031A /* LIAudioPlayer.m in Sources */,
 				3E0B29B416C0D0D80095031A /* LIStringUtils.m in Sources */,
 				3E0B29B816C0DFD50095031A /* FileUtils.m in Sources */,
+				3E2B383C16C140050034DB94 /* LIScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
