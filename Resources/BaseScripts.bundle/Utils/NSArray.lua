@@ -12,6 +12,14 @@ function NSArray:get(arrId)
     return arr;
 end
 
+function NSArray:read(path)
+    local arrId = runtime::invokeClassMethod("NSArray", "arrayWithContentsOfFile:", path);
+    if string.len(arrId) ~= 0 then
+        return self:get(arrId);
+    end
+    return nil;
+end
+
 function NSArray:objectAtIndex(index)
     local objId = runtime::invokeMethod(self:id(), "objectAtIndex:", index);
     if isObjCObject(objId) then
@@ -26,5 +34,5 @@ function NSArray:count()
 end
 
 function NSArray:writeToFile(path)
-    runtime::invokeMethod(self:id(), "writeToFile:atomically:", path, toObjBool(false));
+    runtime::invokeMethod(self:id(), "writeToFile:atomically:", path, toObjCBool(false));
 end

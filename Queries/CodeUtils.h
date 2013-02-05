@@ -20,5 +20,10 @@
 
 + (NSString *)encodeUnicode:(NSString *)string;
 + (NSString *)decodeUnicode:(NSString *)string;
++ (NSString *)removeAllUnicode:(NSString *)string;
+
++ (NSData *)md5DataForData:(NSData *)data;
++ (NSString *)md5ForData:(NSData *)data;
++ (NSString *)md5ForString:(NSString *)string;
 
 @end

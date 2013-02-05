@@ -11,5 +11,6 @@
 @interface LIStringUtils : NSObject
 
 + (NSString *)appendingPath:(NSString *)path component:(NSString *)component;
++ (NSString *)trim:(NSString *)str;
 
 @end

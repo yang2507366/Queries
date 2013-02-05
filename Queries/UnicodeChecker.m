@@ -13,7 +13,8 @@
 
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
-    return [CodeUtils encodeUnicode:script];
+    script = [CodeUtils encodeUnicode:script];
+    return script;
 }
 
 @end

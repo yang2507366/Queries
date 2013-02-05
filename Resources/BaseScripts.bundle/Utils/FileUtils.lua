@@ -1,16 +1,39 @@
+FileUtils = {};
 
-function appDocumentPath()
+function FileUtils.documentPath()
     return runtime::invokeClassMethod("CommonUtils", "documentPath");
 end
 
-function appLibraryPath()
+function FileUtils.libraryPath()
     return runtime::invokeClassMethod("CommonUtils", "libraryPath");
 end
 
-function appTempPath()
+function FileUtils.tempPath()
     return runtime::invokeClassMethod("CommonUtils", "tmpPath");
 end
 
-function appHomePath()
+function FileUtils.homePath()
     return runtime::invokeClassMethod("CommonUtils", "homePath");
+end
+
+function FileUtils.move(srcPath, desPath)
+    local fileMgrId = runtime::invokeClassMethod("NSFileManager", "defaultManager");
+    runtime::invokeMethod(fileMgrId, "moveItemAtPath:toPath:error:", srcPath, desPath);
+    runtime::releaseObject(fileMgrId);
+end
+
+function FileUtils.createDirectory(path, intermediate)
+    if not intermediate then
+        intermediate = false;
+    end
+    local fileMgrId = runtime::invokeClassMethod("NSFileManager", "defaultManager");
+    runtime::invokeMethod(fileMgrId, "createDirectoryAtPath:withIntermediateDirectories:attributes:error:", path, toObjCBool(intermediate));
+    runtime::releaseObject(fileMgrId);
+end
+
+function FileUtils.exists(path)
+    local fileMgrId = runtime::invokeClassMethod("NSFileManager", "defaultManager");
+    local exists = toLuaBool(runtime::invokeMethod(fileMgrId, "fileExistsAtPath:", path));
+    runtime::releaseObject(fileMgrId);
+    return exists;
 end

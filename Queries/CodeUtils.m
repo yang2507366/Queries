@@ -8,6 +8,7 @@
 
 #import "CodeUtils.h"
 #import "CommonUtils.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation CodeUtils
 
@@ -163,6 +164,22 @@ static char *customHexList = "0123456789abcdef";
     return allString;
 }
 
++ (NSString *)removeAllUnicode:(NSString *)string
+{
+    NSMutableString *allString = [NSMutableString string];
+    for(NSInteger i = 0; i < string.length; i++){
+        const unsigned short ch = [string characterAtIndex:i];
+        NSString *chStr = [string substringWithRange:NSMakeRange(i, 1)];
+        if(ch > 255){
+//            [allString appendFormat:@"[u]%@[/u]", [CodeUtils encodeWithString:chStr]];
+        }else{
+            [allString appendString:chStr];
+        }
+    }
+    
+    return allString;
+}
+
 + (NSString *)decodeUnicode:(NSString *)string
 {
     if(string.length == 0){
@@ -193,6 +210,31 @@ static char *customHexList = "0123456789abcdef";
         endRange.length = string.length - endRange.location;
     }
     return allString;
+}
+
++ (NSData *)md5DataForData:(NSData *)data
+{
+    unsigned char result[16];
+    CC_MD5(data.bytes, data.length, result);
+    return [NSData dataWithBytes:result length:16];
+}
+
++ (NSString *)md5ForData:(NSData *)data
+{
+    unsigned char result[16];
+    NSData *resultData = [self md5DataForData:data];
+    [resultData getBytes:result length:16];
+    return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+            result[0], result[1], result[2], result[3],
+            result[4], result[5], result[6], result[7],
+            result[8], result[9], result[10], result[11],
+            result[12], result[13], result[14], result[15]
+            ];
+}
+
++ (NSString *)md5ForString:(NSString *)string
+{
+    return [self md5ForData:[string dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 @end

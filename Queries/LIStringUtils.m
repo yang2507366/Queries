@@ -15,4 +15,9 @@
     return [path stringByAppendingPathComponent:component];
 }
 
++ (NSString *)trim:(NSString *)str
+{
+    return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 @end

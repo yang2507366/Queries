@@ -1,5 +1,6 @@
+DateUtils = {};
 
-function now(dateFormat)
+function DateUtils.now(dateFormat)
     local dateFormatId = runtime::invokeClassMethod("NSDateFormatter", "new");
     runtime::invokeMethod(dateFormatId, "autorelease");
     runtime::invokeMethod(dateFormatId, "setDateFormat:", dateFormat);

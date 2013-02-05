@@ -18,6 +18,8 @@
 		3E0B29B116C0A4830095031A /* LIAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29AF16C0A4830095031A /* LIAudioPlayer.m */; };
 		3E0B29B416C0D0D80095031A /* LIStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B316C0D0D80095031A /* LIStringUtils.m */; };
 		3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B316C0D0D80095031A /* LIStringUtils.m */; };
+		3E0B29B816C0DFD50095031A /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* FileUtils.m */; };
+		3E0B29B916C0DFD50095031A /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* FileUtils.m */; };
 		3E23549C16BF4787006C00A8 /* BaseScripts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549B16BF4787006C00A8 /* BaseScripts.bundle */; };
 		3E2354A316BF47A6006C00A8 /* DictionaryViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */; };
 		3E2354A416BF47A6006C00A8 /* GecoderViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */; };
@@ -318,6 +320,8 @@
 		3E0B29AF16C0A4830095031A /* LIAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIAudioPlayer.m; sourceTree = "<group>"; };
 		3E0B29B216C0D0D80095031A /* LIStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIStringUtils.h; sourceTree = "<group>"; };
 		3E0B29B316C0D0D80095031A /* LIStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIStringUtils.m; sourceTree = "<group>"; };
+		3E0B29B616C0DFD50095031A /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
+		3E0B29B716C0DFD50095031A /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtils.m; sourceTree = "<group>"; };
 		3E23549B16BF4787006C00A8 /* BaseScripts.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BaseScripts.bundle; path = Resources/BaseScripts.bundle; sourceTree = "<group>"; };
 		3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DictionaryViewController.lua; path = Resources/Scripts/DictionaryViewController.lua; sourceTree = "<group>"; };
 		3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GecoderViewController.lua; path = Resources/Scripts/GecoderViewController.lua; sourceTree = "<group>"; };
@@ -1028,8 +1032,8 @@
 		3EA27075165278AC0011C0D4 /* impl */ = {
 			isa = PBXGroup;
 			children = (
-				3E0B29AD16C0A45F0095031A /* Media */,
 				3EA40CB91667980800978C91 /* App */,
+				3E0B29AD16C0A45F0095031A /* Media */,
 				3EA40CBB1667981A00978C91 /* Net */,
 				3EA40CBC1667982600978C91 /* UIKit */,
 				3EA40CBD1667984800978C91 /* Utils */,
@@ -1105,6 +1109,8 @@
 				3EA40CC21667A44B00978C91 /* LIGeocoder.m */,
 				3E0B29B216C0D0D80095031A /* LIStringUtils.h */,
 				3E0B29B316C0D0D80095031A /* LIStringUtils.m */,
+				3E0B29B616C0DFD50095031A /* FileUtils.h */,
+				3E0B29B716C0DFD50095031A /* FileUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1441,6 +1447,7 @@
 				3E48219B16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */,
 				3E0B29B116C0A4830095031A /* LIAudioPlayer.m in Sources */,
 				3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */,
+				3E0B29B916C0DFD50095031A /* FileUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1571,6 +1578,7 @@
 				3E48219A16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */,
 				3E0B29B016C0A4830095031A /* LIAudioPlayer.m in Sources */,
 				3E0B29B416C0D0D80095031A /* LIStringUtils.m in Sources */,
+				3E0B29B816C0DFD50095031A /* FileUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

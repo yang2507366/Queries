@@ -63,3 +63,11 @@ end
 function UILabel:textAlignment()
     tonumber(runtime::invokeMethod(self:id(), "textAlignment"));
 end
+
+function UILabel:adjustsFontSizeToFitWidth()
+    return toLuaBool(runtime::invokeMethod(self:id(), "adjustsFontSizeToFitWidth"));
+end
+
+function UILabel:setAdjustsFontSizeToFitWidth(adjusts)
+    runtime::invokeMethod(self:id(), "setAdjustsFontSizeToFitWidth:", toObjCBool(adjusts));
+end
