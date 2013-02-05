@@ -11,5 +11,6 @@
 @interface FileUtils : NSObject
 
 + (void)moveFileWithSourcePath:(NSString *)srcPath destinationPath:(NSString *)desPath;
++ (NSString *)readString:(NSString *)path;
 
 @end

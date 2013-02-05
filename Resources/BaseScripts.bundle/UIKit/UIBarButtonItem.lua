@@ -21,6 +21,11 @@ function UIBarButtonItem:create(title)
     return buttonItem;
 end
 
+function UIBarButtonItem:createWithSystemItem(systemItem)
+    local objId = runtime::invokeClassMethod("LIBarButtonItem", "createWithAppId:systemItem:", AppContext.current(), systemItem);
+    return self:get(objId);
+end
+
 function UIBarButtonItem:get(buttonItemId)
     local buttonItem = Object:new(buttonItemId);
     setmetatable(buttonItem, self);
@@ -49,6 +54,14 @@ end
 
 function UIBarButtonItem:style()
     return tonumber(runtime::invokeMethod(self:id(), "style"));
+end
+
+function UIBarButtonItem:setEnabled(enabled)
+    runtime::invokeMethod(self:id(), "setEnabled:", toObjCBool(enabled));
+end
+
+function UIBarButtonItem:enabled()
+    return toLuaBool(runtime::invokeMethod(self:id(), "enabled"));
 end
 
 -- event

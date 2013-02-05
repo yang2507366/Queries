@@ -37,3 +37,7 @@ function FileUtils.exists(path)
     runtime::releaseObject(fileMgrId);
     return exists;
 end
+
+function FileUtils.readString(path)
+    return runtime::invokeClassMethod("FileUtils", "readString:", path);
+end

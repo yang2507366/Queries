@@ -15,4 +15,9 @@
     [[NSFileManager defaultManager] moveItemAtPath:srcPath toPath:desPath error:nil];
 }
 
++ (NSString *)readString:(NSString *)path
+{
+    return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+}
+
 @end

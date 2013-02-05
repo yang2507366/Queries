@@ -34,6 +34,13 @@
     return self;
 }
 
+- (id)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem target:(id)target action:(SEL)action
+{
+    self = [super initWithBarButtonSystemItem:systemItem target:self action:@selector(onTapped)];
+    
+    return self;
+}
+
 - (void)onTapped
 {
     if(self.tapped.length != 0){
@@ -49,6 +56,15 @@
     item.objId = [LuaObjectManager addObject:item group:appId];
     
     return item.objId;
+}
+
++ (NSString *)createWithAppId:(NSString *)appId systemItem:(NSInteger)systemItem
+{
+    LIBarButtonItem *tmp = [[LIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
+    tmp.appId = appId;
+    tmp.objId = [LuaObjectManager addObject:tmp group:appId];
+    
+    return tmp.objId;
 }
 
 @end

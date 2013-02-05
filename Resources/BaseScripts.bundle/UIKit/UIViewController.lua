@@ -66,6 +66,14 @@ function UIViewController:pushToRelatedViewController()
     end
 end
 
+function UIViewController:presentViewController(vc, animated)
+    runtime::invokeMethod(self:id(), "presentViewController:animated:completion:", vc:id(), toObjCBool(animated));
+end
+
+function UIViewController:dismissViewController(animated)
+    runtime::invokeMethod(self:id(), "dismissViewControllerAnimated:completion:", toObjCBool(animated));
+end
+
 function UIViewController:view()
     local viewId = runtime::invokeMethod(self:id(), "view");
 

@@ -13,4 +13,6 @@
 
 @property(nonatomic, copy)NSString *tapped;
 
++ (NSString *)createWithAppId:(NSString *)appId systemItem:(NSInteger)systemItem;
+
 @end

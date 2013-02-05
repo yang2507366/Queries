@@ -53,8 +53,12 @@ function UIWebView:setDelegate(delegate)
     end
 end
 
-function UIWebView:loadRequest(URLString)
+function UIWebView:loadURLString(URLString)
     runtime::invokeMethod(self:id(), "loadURLString:", URLString);
+end
+
+function UIWebView:loadHTMLString(HTMLString)
+    runtime::invokeMethod(self:id(), "loadHTMLString:baseURL:", HTMLString);
 end
 
 function UIWebView:scalesPageToFit()
@@ -63,6 +67,22 @@ end
 
 function UIWebView:setScalesPageToFit(scale)
     runtime::invokeMethod(self:id(), "setScalesPageToFit:", toObjCBool(scale));
+end
+
+function UIWebView:goForward()
+    runtime::invokeMethod(self:id(), "goForward");
+end
+
+function UIWebView:goBack()
+    runtime::invokeMethod(self:id(), "goBack");
+end
+
+function UIWebView:canGoBack()
+    return toLuaBool(runtime::invokeMethod(self:id(), "canGoBack"));
+end
+
+function UIWebView:canGoForward()
+    return toLuaBool(runtime::invokeMethod(self:id(), "canGoForward"));
 end
 
 -- event proxy
