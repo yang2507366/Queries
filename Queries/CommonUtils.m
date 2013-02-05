@@ -67,6 +67,11 @@
     return [NSString stringWithFormat:@"%@/Library/", homeDirectory];    
 }
 
++ (NSString *)homePath
+{
+    return NSHomeDirectory();
+}
+
 + (NSString *)formatNumber:(NSUInteger)number
 {
     if(number < 10){
