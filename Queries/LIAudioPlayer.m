@@ -49,9 +49,8 @@
     return @"";
 }
 
-+ (NSString *)create:(NSString *)appId URLId:(NSString *)URLId
++ (NSString *)create:(NSString *)appId URL:(NSURL *)URL
 {
-    NSURL *URL = [LuaObjectManager objectWithId:URLId group:appId];
     NSError *error = nil;
     LIAudioPlayer *tmp = [[[LIAudioPlayer alloc] initWithContentsOfURL:URL error:&error] autorelease];
     if(!error){
