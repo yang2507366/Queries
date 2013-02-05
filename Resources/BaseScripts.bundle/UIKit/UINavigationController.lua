@@ -1,6 +1,7 @@
 require "AppContext"
 require "UIViewController"
 require "CommonUtils"
+require "UINavigationBar"
 
 UINavigationController = {};
 UINavigationController.__index = UINavigationController;
@@ -32,4 +33,24 @@ function UINavigationController:pushViewController(vc, animated)
         animated = true;
     end
     runtime::invokeMethod(self:id(), "pushViewController:animated:", vc:id(), toObjCBool(animated));
+end
+
+function UINavigationController:toolbarHidden()
+    return toLuaBool(runtime::invokeMethod(self:id(), "toolbarHidden"));
+end
+
+function UINavigationController:setToolbarHidden(hidden)
+    runtime::invokeMethod(self:id(), "setToolbarHidden:", toObjCBool(hidden));
+end
+
+function UINavigationController:navigationBarHidden()
+    return toLuaBool(runtime::invokeMethod(self:id(), "navigationBarHidden"));
+end
+
+function UINavigationController:setNavigationBarHidden(hidden)
+    runtime::invokeMethod(self:id(), "setNavigationBarHidden:", toObjCBool(hidden));
+end
+
+function UINavigationController:navigationBar()
+    return UINavigationBar:get(runtime::invokeMethod(self:id(), "navigationBar"));
 end

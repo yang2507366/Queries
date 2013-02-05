@@ -1,5 +1,6 @@
 require "UIView"
 require "AppContext"
+require "UIScrollView"
 
 UIWebView = {};
 UIWebView.__index = UIWebView;
@@ -83,6 +84,10 @@ end
 
 function UIWebView:canGoForward()
     return toLuaBool(runtime::invokeMethod(self:id(), "canGoForward"));
+end
+
+function UIWebView:scrollView()
+    return UIScrollView:get(runtime::invokeMethod(self:id(), "getScrollView"));
 end
 
 -- event proxy

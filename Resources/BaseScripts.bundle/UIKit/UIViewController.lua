@@ -3,6 +3,7 @@ require "UIView"
 require "UINavigationItem"
 require "AppContext"
 require "CommonUtils"
+require "NSArray"
 
 UIViewController = {};
 UIViewController.__index = UIViewController;
@@ -120,6 +121,17 @@ end
 
 function UIViewController:setHidesBottomBarWhenPushed(hide)
     runtime::invokeMethod(self:id(), "setHidesBottomBarWhenPushed:", toObjCBool(hide));
+end
+
+function UIViewController:setToolbarItems(items)
+    runtime::invokeMethod(self:id(), "setToolbarItems:", items:id());
+end
+
+function UIViewController:toolbarItems()
+    local objId = runtime::invokeMethod(self:id(), "toolbarItems");
+    if string.len(objId) ~= 0 then
+        return NSArray:get(objId);
+    end
 end
 
 -- override methods
