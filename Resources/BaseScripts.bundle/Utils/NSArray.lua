@@ -1,4 +1,5 @@
 require "Object"
+require "CommonUtils"
 
 NSArray = {};
 NSArray.__index = NSArray;
@@ -22,4 +23,8 @@ end
 
 function NSArray:count()
     return tonumber(runtime::invokeMethod(self:id(), "count"));
+end
+
+function NSArray:writeToFile(path)
+    runtime::invokeMethod(self:id(), "writeToFile:atomically:", path, toObjBool(false));
 end

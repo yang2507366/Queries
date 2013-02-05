@@ -8,5 +8,8 @@ function now(dateFormat)
     runtime::invokeMethod(dateId, "auturelease");
     
     local dateString = runtime::invokeMethod(dateFormatId, "stringFromDate:", dateId);
-    print(dateString);
+    runtime::releaseObject(dateFormatId);
+    runtime::releaseObject(dateId);
+    
+    return dateString;
 end
