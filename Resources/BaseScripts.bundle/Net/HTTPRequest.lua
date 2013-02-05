@@ -9,8 +9,8 @@ HTTPRequestEncodingUTF8     = "UTF8";
 HTTPRequestEncodingGBK      = "GBK";
 
 -- constructor
-function HTTPRequest:start(URLString, encoding)
-    local requestId = http::request(URLString, "event_http_request_response", encoding);
+function HTTPRequest:get(URLString, encoding)
+    local requestId = http::get(URLString, "event_http_request_response", encoding);
     local request = Object:new(requestId);
     setmetatable(request, self);
     
@@ -35,6 +35,15 @@ function HTTPRequest:post(URLString, params, encoding)
     return req;
 end
 
+function HTTPRequest:download(URLString)
+    local reqId = http::download(URLString, "event_http_download_progress", "event_http_request_response");
+    local req = Object:new(reqId);
+    setmetatable(req, self);
+    event_proxy_http_request[reqId] = req;
+    
+    return req;
+end
+
 -- instance method
 function HTTPRequest:cancel()
     http::cancel(self:id());
@@ -45,6 +54,10 @@ function HTTPRequest:release()
 end
 
 -- event
+function HTTPRequest:progress(downloaded, total)
+    
+end
+
 function HTTPRequest:response(responseString, errorString)
     
 end
@@ -54,4 +67,9 @@ event_proxy_http_request = {};
 
 function event_http_request_response(httpId, responseString, errorString)
     event_proxy_http_request[httpId]:response(responseString, errorString);
+    event_proxy_http_request[httpId] = nil;
+end
+
+function event_http_download_progress(reqId, downloaded, total)
+    event_proxy_http_request[reqId]:progress(tonumber(downloaded), tonumber(total));
 end

@@ -26,5 +26,6 @@
 + (NSString *)timeStringWithDateString:(NSString *)dateString;
 
 + (BOOL)stringIsPureAlphabet:(NSString *)string;
++ (NSString *)filterNil:(NSString *)string;
 
 @end

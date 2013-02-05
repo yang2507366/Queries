@@ -127,6 +127,9 @@
     if([self.delegate respondsToSelector:@selector(HTTPDownloaderDidFinished:)]){
         [self.delegate HTTPDownloaderDidFinished:self];
     }
+    if(self.completionBlock){
+        self.completionBlock(self.filePathForSave, nil);
+    }
 }
 - (void)notifyDownloading
 {
@@ -184,6 +187,22 @@
     }
     self.fileHandle = nil;
     [self notifyDownloadDidFinished];
+}
+
+#pragma mark - ProviderPoolable
+- (BOOL)providerShouldBeRemoveFromPool
+{
+    return !self.downloading;
+}
+
+- (void)providerWillRemoveFromPool
+{
+    [self cancel];
+}
+
+- (BOOL)providerIsExecuting
+{
+    return self.downloading;
 }
 
 @end

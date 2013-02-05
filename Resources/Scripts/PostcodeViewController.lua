@@ -94,7 +94,7 @@ function PostcodeViewController:viewDidLoad()
         addressField:resignFirstResponder();
         bself:setWaiting(true);
         local urlString = "http://wap.ip138.com/post_search.asp?area="..ustring::encodeURL(city).."&action=area2zip";
-        local req = HTTPRequest:start(urlString);
+        local req = HTTPRequest:get(urlString);
         function req:response(responseString, errorString)
             bself:setWaiting(false);
             local result = analyzeResponseString(responseString);
@@ -120,7 +120,7 @@ function PostcodeViewController:viewDidLoad()
         bself:setWaiting(true);
         local postcode = postcodeField:text();
         local urlString = "http://wap.ip138.com/post_search.asp?zip="..postcode.."&action=zip2area";
-        local httpReq = HTTPRequest:start(urlString);
+        local httpReq = HTTPRequest:get(urlString);
         function httpReq:response(responseString, errorString)
             bself:setWaiting(false);
             local result = analyzeResponseString(responseString);

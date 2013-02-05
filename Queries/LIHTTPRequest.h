@@ -24,6 +24,10 @@
               parameters:(NSMutableDictionary *)params
             callbackFunc:(NSString *)callbackFunc
                 encoding:(NSString *)encoding;
++ (NSString *)downloadWithSi:(id<ScriptInteraction>)si
+                   URLString:(NSString *)URLString
+            progressFuncName:(NSString *)progressFuncName
+          completionFuncName:(NSString *)completionFuncName;
 + (void)cancelRequestWithRequestId:(NSString *)requestId;
 
 @end

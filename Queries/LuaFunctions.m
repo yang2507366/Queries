@@ -145,7 +145,7 @@ int math_random(lua_State *L)
 }
 
 #pragma mark - network
-int http_request(lua_State *L)
+int http_get(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
     
@@ -173,6 +173,21 @@ int http_post(lua_State *L)
                                        parameters:[LuaObjectManager objectWithId:paramId group:appId]
                                      callbackFunc:callbackFunc
                                          encoding:encoding];
+    pushString(L, reqId);
+    return 1;
+}
+
+int http_download(lua_State *L)
+{
+    NSString *appId = luaStringParam(L, 1);
+    NSString *url = luaStringParam(L, 2);
+    NSString *progressFuncName = luaStringParam(L, 3);
+    NSString *completionFuncName = luaStringParam(L, 4);
+    
+    NSString *reqId = [LIHTTPRequest downloadWithSi:scriptInteractionForAppId(appId)
+                                          URLString:url
+                                   progressFuncName:progressFuncName
+                                 completionFuncName:completionFuncName];
     pushString(L, reqId);
     return 1;
 }
@@ -536,9 +551,10 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "app_cancelLoadApp", app_cancelLoadApp);
     pushFunctionToLua(L, "app_runApp", app_runApp);
     pushFunctionToLua(L, "app_getAppBundle", app_getAppBundle);
-    pushFunctionToLua(L, "http_request", http_request);
+    pushFunctionToLua(L, "http_get", http_get);
     pushFunctionToLua(L, "http_post", http_post);
     pushFunctionToLua(L, "http_cancel", http_cancel);
+    pushFunctionToLua(L, "http_download", http_download);
     pushFunctionToLua(L, "math_bor", math_byte_operator_or);
     pushFunctionToLua(L, "math_random", math_random);
     pushFunctionToLua(L, "NSLog", nslog);

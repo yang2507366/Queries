@@ -8,6 +8,8 @@
 
 #import "LIHTTPRequest.h"
 #import "HTTPRequest.h"
+#import "HTTPDownloader.h"
+#import "CommonUtils.h"
 
 @implementation LIHTTPRequest
 
@@ -67,6 +69,7 @@
                 [script callFunction:luaFunctionName callback:nil parameters:requestId, responseString, @"", nil];
             }
         }
+        [[self sharedRequestDictionary] removeObjectForKey:requestId];
     }];
     [ProviderPool addProviderToSharedPool:request identifier:requestId];
     [[self sharedRequestDictionary] setObject:request forKey:requestId];
@@ -94,10 +97,36 @@
                 [si callFunction:callbackFunc callback:nil parameters:requestId, responseString, @"", nil];
             }
         }
+        [[self sharedRequestDictionary] removeObjectForKey:requestId];
     }];
+    [ProviderPool addProviderToSharedPool:req identifier:requestId];
     [[self sharedRequestDictionary] setObject:req forKey:requestId];
     
     return requestId;
+}
+
++ (NSString *)downloadWithSi:(id<ScriptInteraction>)si
+                   URLString:(NSString *)URLString
+            progressFuncName:(NSString *)progressFuncName
+          completionFuncName:(NSString *)completionFuncName
+{
+    HTTPDownloader *downloader = [[HTTPDownloader new] autorelease];
+    NSString *reqId = [NSString stringWithFormat:@"%d", [downloader hash]];
+    [[self sharedRequestDictionary] setObject:downloader forKey:reqId];
+    [ProviderPool addProviderToSharedPool:downloader identifier:reqId];
+    [downloader downloadWithURLString:URLString progress:^(long long downloadedLength, long long totalLength) {
+        if(progressFuncName.length != 0){
+            [si callFunction:progressFuncName
+                  parameters:reqId, [NSString stringWithFormat:@"%lld", downloadedLength], [NSString stringWithFormat:@"%lld", totalLength], nil];
+        }
+    } completion:^(NSString *tmpFilePath, NSError *error) {
+        if(completionFuncName.length != 0){
+            [si callFunction:completionFuncName
+                  parameters:reqId, [CommonUtils filterNil:tmpFilePath], [CommonUtils filterNil:error.localizedDescription], nil];
+        }
+        [[self sharedRequestDictionary] removeObjectForKey:reqId];
+    }];
+    return reqId;
 }
 
 + (void)cancelRequestWithRequestId:(NSString *)requestId

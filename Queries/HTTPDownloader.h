@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HTTPDownload.h"
+#import "ProviderPool.h"
 
 @class HTTPDownloader;
 
@@ -21,7 +22,7 @@
 
 @end
 
-@interface HTTPDownloader : NSObject <HTTPDownload> {
+@interface HTTPDownloader : NSObject <HTTPDownload, ProviderPoolable> {
     id<HTTPDownloaderDelegate> _delegate;
     
     NSString *_URLString;

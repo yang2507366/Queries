@@ -61,7 +61,7 @@ function MobileNumberViewController:viewDidLoad()
         textField:resignFirstResponder();
         bself:setWaiting(true);
         
-        httpRequest = HTTPRequest:start("http://wap.ip138.com/sim_search.asp?mobile="..number);
+        httpRequest = HTTPRequest:get("http://wap.ip138.com/sim_search.asp?mobile="..number);
         function httpRequest:response(responseString, errorString)
             bself:setWaiting(false);
             if ustring::length(errorString) == 0 then

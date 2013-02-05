@@ -50,7 +50,7 @@
         }
     }
     for(id<ProviderPoolable> provider in wantReleaseList){
-//        NSLog(@"recycle remove:%@", provider);
+        NSLog(@"recycle remove:%@", provider);
         [self.providerList removeObject:provider];
     }
 }
@@ -59,7 +59,7 @@
 {
     for(id<ProviderPoolable> provider in self.providerList){
         [provider providerWillRemoveFromPool];
-//        NSLog(@"force remove:%@", provider);
+        NSLog(@"force remove:%@", provider);
     }
     [self.providerList removeAllObjects];
 }

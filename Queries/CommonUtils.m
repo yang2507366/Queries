@@ -129,4 +129,12 @@
     return YES;
 }
 
++ (NSString *)filterNil:(NSString *)string
+{
+    if(string == nil){
+        return @"";
+    }
+    return string;
+}
+
 @end
