@@ -68,6 +68,10 @@ function Object:autorelease()
     return self;
 end
 
+function Object:hash()
+    return runtime::invokeMethod(self:id(), "hash");
+end
+
 function Object:objCClassName()
     return runtime::objectClassName(self:id());
 end

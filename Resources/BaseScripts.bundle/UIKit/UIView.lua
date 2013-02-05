@@ -46,25 +46,22 @@ function UIView:setFrame(x, y, width, height)
     runtime::invokeMethod(self:id(), "setFrame:", frame);
 end
 
-function frameOfCGRect(frameStr)
-    local frameTable = stringSplit(frameStr, ",");
-    local x = frameTable[1];
-    local y = frameTable[2];
-    local width = frameTable[3];
-    local height = frameTable[4];
-    return x, y, width, height;
+function split4ValueStruct(struct)
+    local values = stringSplit(struct, ",");
+
+    return values[1], values[2], values[3], values[4];
 end
 
 function UIView:frame()
     local frameStr = runtime::invokeMethod(self:id(), "frame");
     
-    return frameOfCGRect(frameStr);
+    return split4ValueStruct(frameStr);
 end
 
 function UIView:bounds()
     local frameStr = runtime::invokeMethod(self:id(), "bounds");
     
-    return frameOfCGRect(frameStr);
+    return split4ValueStruct(frameStr);
 end
 
 function UIView:setBackgroundColor(color)
