@@ -81,6 +81,13 @@ function stringSplit(str, split_char)
     return sub_str_tab;
 end
 
+function stringTableToNumberTable(tbl)
+    for i = 1, #tbl do
+        tbl[i] = tonumber(tbl[i]);
+    end
+    return tbl;
+end
+
 -- print table
 local print = print
 local tconcat = table.concat

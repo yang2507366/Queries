@@ -6,6 +6,12 @@ UINavigationItem.__index = UINavigationItem;
 setmetatable(UINavigationItem, Object);
 
 -- constructor
+function UINavigationItem:create()
+    local objId = runtime::invokeClassMethod("UINavigationItem", "new");
+    runtime::invokeMethod(objId, "autorelease");
+    return self:get(objId);
+end
+
 function UINavigationItem:get(naviItemId)
     local naviItem = Object:new(naviItemId);
     setmetatable(naviItem, self);

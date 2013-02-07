@@ -24,6 +24,17 @@ function UIScrollView:setContentInset(top, left, bottom, right)
     runtime::invokeMethod(self:id(), "setContentInset:", inset);
 end
 
+function UIScrollView:setScrollIndicatorInsets(top, left, bottom, right)
+    local inset = top..","..left..","..bottom..","..right;
+    runtime::invokeMethod(self:id(), "setScrollIndicatorInsets:", inset);
+end
+
+function UIScrollView:contentOffset()
+    local offset = runtime::invokeMethod(self:id(), "contentOffset");
+    local offsetTable = stringSplit(offset, ",");
+    return unpack(stringTableToNumberTable(offsetTable));
+end
+
 function UIScrollView:setDelegate(delegate)
     self.delegate = delegate;
     
