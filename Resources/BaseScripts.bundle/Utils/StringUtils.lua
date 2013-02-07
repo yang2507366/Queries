@@ -1,3 +1,5 @@
+require "CommonUtils"
+
 StringUtils = {};
 
 function StringUtils.appendingPathComponent(path, component)
@@ -14,4 +16,12 @@ end
 
 function StringUtils.trim(str)
     return runtime::invokeClassMethod("LIStringUtils", "trim:", str);
+end
+
+function StringUtils.hasPrefix(str, prefix)
+    return toLuaBool(runtime::invokeClassMethod("LIStringUtils", "string:hasPrefix:", str, prefix));
+end
+
+function StringUtils.length(str)
+    return tonumber(runtime::invokeClassMethod("LIStringUtils", "length:", str));
 end

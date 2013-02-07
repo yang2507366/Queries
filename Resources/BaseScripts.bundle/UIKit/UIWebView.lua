@@ -90,15 +90,29 @@ function UIWebView:scrollView()
     return UIScrollView:get(runtime::invokeMethod(self:id(), "getScrollView"));
 end
 
+function UIWebView:currentPageTitle()
+    return runtime::invokeMethod(self:id(), "getPageTitle");
+end
+
+function UIWebView:disableContextMenu()
+    runtime::invokeMethod(self:id(), "disableWebViewContextMenu");
+end
+
+function UIWebView:reload()
+    runtime::invokeMethod(self:id(), "reload");
+end
+
+function UIWebView:runScript(script)
+    runtime::invokeMethod(self:id(), "stringByEvaluatingJavaScriptFromString:", script);
+end
+
 -- event proxy
 UIWebViewEventProxyTable = {};
 
 function UIWebView_shouldStartLoadWithRequest(webViewId, requestURLString, navigationType)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        
         local should = toObjCBool(webView.delegate:shouldStartLoadWithRequest(webView, requestURLString, navigationType));
-        
         return should;
     end
 end
@@ -106,26 +120,20 @@ end
 function UIWebView_didStartLoad(webViewId)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        
         webView.delegate:didStartLoad(webView);
-        
     end
 end
 
 function UIWebView_didFinishLoad(webViewId)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        
         webView.delegate:didFinishLoad(webView);
-        
     end
 end
 
-function UIWebView_didFailLoadWithError(weiViewId, errorString)
+function UIWebView_didFailLoadWithError(webViewId, errorString)
     local webView = UIWebViewEventProxyTable[webViewId];
     if webView and webView.delegate then
-        
         webView.delegate:didFailLoadWithError(webView, errorString);
-        
     end
 end

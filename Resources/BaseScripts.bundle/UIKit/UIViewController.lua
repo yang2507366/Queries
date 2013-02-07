@@ -134,6 +134,10 @@ function UIViewController:toolbarItems()
     end
 end
 
+function UIViewController:tabBarController()
+    return UITabBarController:get(runtime::invokeMethod(self:id(), "tabBarController"));
+end
+
 -- override methods
 function UIViewController:loadView()
 end

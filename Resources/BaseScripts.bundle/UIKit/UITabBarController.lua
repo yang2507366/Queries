@@ -60,6 +60,14 @@ function UITabBarController:viewControllers()
     end
 end
 
+function UITabBarController:setSelectedIndex(selectedIndex)
+    runtime::invokeMethod(self:id(), "setSelectedIndex:", selectedIndex);
+end
+
+function UITabBarController:selectedIndex()
+    return tonumber(runtime:invokeMethod(self:id(), "selectedIndex"));
+end
+
 UITabBarControllerEventProxyTable = {};
 
 function UITabBarController_shouldSelectViewController(objId)

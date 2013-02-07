@@ -20,6 +20,11 @@ function NSArray:read(path)
     return nil;
 end
 
+function NSArray:arrayWithObject(obj)
+    local objId = runtime::invokeClassMethod("NSArray", "arrayWithObject:", obj:id());
+    return self:get(objId);
+end
+
 function NSArray:objectAtIndex(index)
     local objId = runtime::invokeMethod(self:id(), "objectAtIndex:", index);
     if isObjCObject(objId) then

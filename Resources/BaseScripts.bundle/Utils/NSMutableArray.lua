@@ -5,10 +5,18 @@ NSMutableArray = {};
 NSMutableArray.__index = NSMutableArray;
 setmetatable(NSMutableArray, NSArray);
 
-function NSMutableArray:create()
-    local arrId = runtime::invokeClassMethod("NSMutableArray", "array");
+function NSMutableArray:create(srcArr)
+    if srcArr and srcArr.id then
+        srcArr = srcArr:id();
+    end
+    local arrId = nil;
+    if srcArr then
+        arrId = runtime::invokeClassMethod("NSMutableArray", "arrayWithArray:", srcArr);
+    else
+        arrId = runtime::invokeClassMethod("NSMutableArray", "array");
+    end
 
-    return NSMutableArray:get(arrId);
+    return self:get(arrId);
 end
 
 function NSMutableArray:get(arrId)
@@ -31,6 +39,10 @@ function NSMutableArray:addObject(obj)
         obj = obj:id();
     end
     runtime::invokeMethod(self:id(), "addObject:", obj);
+end
+
+function NSMutableArray:addObjectsFromArray(arr)
+    runtime::invokeMethod(self:id(), "addObjectsFromArray:", arr:id());
 end
 
 function NSMutableArray:insertObject(obj, index)

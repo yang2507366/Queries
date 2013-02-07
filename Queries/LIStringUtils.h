@@ -12,5 +12,7 @@
 
 + (NSString *)appendingPath:(NSString *)path component:(NSString *)component;
 + (NSString *)trim:(NSString *)str;
++ (NSString *)string:(NSString *)string hasPrefix:(NSString *)prefix;
++ (NSString *)length:(NSString *)string;
 
 @end

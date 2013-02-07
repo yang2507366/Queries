@@ -7,6 +7,7 @@
 //
 
 #import "LIStringUtils.h"
+#import "CommonUtils.h"
 
 @implementation LIStringUtils
 
@@ -18,6 +19,16 @@
 + (NSString *)trim:(NSString *)str
 {
     return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
++ (NSString *)string:(NSString *)string hasPrefix:(NSString *)prefix
+{
+    return [string hasPrefix:prefix] ? @"YES" : @"NO";
+}
+
++ (NSString *)length:(NSString *)string
+{
+    return [NSString stringWithFormat:@"%d", [string length]];
 }
 
 @end

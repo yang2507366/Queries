@@ -106,7 +106,7 @@ function UITextField:text()
 end
 
 function UITextField:setText(str)
-    runtime::invokeMethod(self:id(), str);
+    runtime::invokeMethod(self:id(), "setText:", str);
 end
 
 function UITextField:setKeyboardType(ktype)
@@ -123,6 +123,30 @@ end
 
 function UITextField:enabled()
     return toLuaBool(runtime::invokeMethod(self:id(), "enabled"));
+end
+
+function UITextField:setReturnKeyType(keyType)
+    runtime::invokeMethod(self:id(), "setReturnKeyType:", keyType);
+end
+
+function UITextField:returnKeyType()
+    return runtime::invokeMethod(self:id(), "returnKeyType");
+end
+
+function UITextField:setFont(font)
+    runtime::invokeMethod(self:id(), "setFont:", font:id());
+end
+
+function UITextField:font()
+    return UIFont:get(runtime::invokeMethod(self:id(), "font"));
+end
+
+function UITextField:setPlaceholder(placeholder)
+    runtime::invokeMethod(self:id(), "setPlaceholder:", placeholder);
+end
+
+function UITextField:placeholder()
+    return runtime::invokeMethod(self:id(), "placeholder");
 end
 
 -- event proxy
