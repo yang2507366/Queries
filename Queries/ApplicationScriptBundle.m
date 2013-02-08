@@ -12,12 +12,15 @@
 
 @interface ApplicationScriptBundle ()
 
+@property(nonatomic, copy)NSString *mainScriptName;
+
 @end
 
 @implementation ApplicationScriptBundle
 
 - (void)dealloc
 {
+    self.mainScriptName = nil;
     [super dealloc];
 }
 
@@ -35,6 +38,15 @@
 //        }
 //    }
 //    NSLog(@"script file count:%d", fileCount);
+    
+    return self;
+}
+
+- (id)initWithMainScriptName:(NSString *)scriptName
+{
+    self = [super init];
+    
+    self.mainScriptName = scriptName;
     
     return self;
 }
@@ -61,18 +73,26 @@
 
 - (NSString *)mainScript
 {
-    NSString *appPath = [[NSBundle mainBundle] bundlePath];
-    NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:appPath error:nil];
-    for(NSString *fileName in fileNames){
-        if([fileName hasSuffix:@".lua"]){
-            NSString *script = [NSString stringWithContentsOfFile:[appPath stringByAppendingPathComponent:fileName]
-                                                         encoding:NSUTF8StringEncoding
-                                                            error:nil];
-            if([LuaCommonUtils scriptIsMainScript:script]){
-                NSLog(@"%@ find main script in file:%@", self.bundleId, fileName);
-                return script;
+    if(self.mainScriptName.length == 0){
+        NSString *appPath = [[NSBundle mainBundle] bundlePath];
+        NSArray *fileNames = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:appPath error:nil];
+        for(NSString *fileName in fileNames){
+            if([fileName hasSuffix:@".lua"]){
+                NSString *script = [NSString stringWithContentsOfFile:[appPath stringByAppendingPathComponent:fileName]
+                                                             encoding:NSUTF8StringEncoding
+                                                                error:nil];
+                if([LuaCommonUtils scriptIsMainScript:script]){
+                    NSLog(@"%@ find main script in file:%@", self.bundleId, fileName);
+                    return script;
+                }
             }
         }
+    }else{
+        NSString *scriptName = self.mainScriptName;
+        if(![scriptName hasSuffix:@".lua"]){
+            scriptName = [NSString stringWithFormat:@"%@.lua", scriptName];
+        }
+        return [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:scriptName ofType:nil] encoding:NSUTF8StringEncoding error:nil];
     }
     return nil;
 }

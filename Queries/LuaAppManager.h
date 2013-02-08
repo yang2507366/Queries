@@ -21,10 +21,10 @@
 + (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId;
 + (LuaApp *)appForId:(NSString *)appId;
 
-+ (void)runRootApp:(LuaApp *)app;
-+ (void)runRootApp:(LuaApp *)app params:(id)params;
-+ (void)runApp:(LuaApp *)app;
-+ (void)runApp:(LuaApp *)app params:(id)params;
++ (id)runRootApp:(LuaApp *)app;
++ (id)runRootApp:(LuaApp *)app params:(id)params;
++ (id)runApp:(LuaApp *)app;
++ (id)runApp:(LuaApp *)app params:(id)params;
 + (void)destoryAppWithAppId:(NSString *)appId;
 
 @end

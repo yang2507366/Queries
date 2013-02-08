@@ -26,6 +26,11 @@ function UIBarButtonItem:createWithSystemItem(systemItem)
     return self:get(objId);
 end
 
+function UIBarButtonItem:createWithImage(img)
+    local objId = runtime::invokeClassMethod("LIBarButtonItem", "createWithAppId:image:", AppContext.current(), img:id());
+    return self:get(objId);
+end
+
 function UIBarButtonItem:get(buttonItemId)
     local buttonItem = Object:new(buttonItemId);
     setmetatable(buttonItem, self);

@@ -41,6 +41,13 @@
     return self;
 }
 
+- (id)initWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action
+{
+    self = [super initWithImage:image style:style target:self action:@selector(onTapped)];
+    
+    return self;
+}
+
 - (void)onTapped
 {
     if(self.tapped.length != 0){
@@ -61,6 +68,15 @@
 + (NSString *)createWithAppId:(NSString *)appId systemItem:(NSInteger)systemItem
 {
     LIBarButtonItem *tmp = [[LIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
+    tmp.appId = appId;
+    tmp.objId = [LuaObjectManager addObject:tmp group:appId];
+    
+    return tmp.objId;
+}
+
++ (NSString *)createWithAppId:(NSString *)appId image:(UIImage *)img
+{
+    LIBarButtonItem *tmp = [[LIBarButtonItem alloc] initWithImage:img style:UIBarButtonItemStylePlain target:nil action:nil];
     tmp.appId = appId;
     tmp.objId = [LuaObjectManager addObject:tmp group:appId];
     

@@ -11,4 +11,6 @@
 
 @interface ApplicationScriptBundle : NSObject <ScriptBundle>
 
+- (id)initWithMainScriptName:(NSString *)scriptName;
+
 @end

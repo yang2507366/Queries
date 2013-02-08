@@ -232,6 +232,7 @@ void attachCFunctions(lua_State *L)
 #ifdef DEBUG
     lua_pop(lua_state, 1);
 #endif
+    NSLog(@"%@", errorMsg);
     return [LuaReturnValue createWithError:errorMsg];
 }
 
