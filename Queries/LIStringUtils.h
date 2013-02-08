@@ -14,5 +14,6 @@
 + (NSString *)trim:(NSString *)str;
 + (NSString *)string:(NSString *)string hasPrefix:(NSString *)prefix;
 + (NSString *)length:(NSString *)string;
++ (NSString *)equals:(NSString *)str with:(NSString *)str2;
 
 @end

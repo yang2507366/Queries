@@ -25,3 +25,7 @@ end
 function StringUtils.length(str)
     return tonumber(runtime::invokeClassMethod("LIStringUtils", "length:", str));
 end
+
+function StringUtils.equals(str1, str2)
+    return toLuaBool(runtime::invokeClassMethod("LIStringUtils", "equals:with:", str1, str2));
+end

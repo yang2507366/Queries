@@ -61,3 +61,11 @@ end
 function UITableViewCell:accessoryType()
     return runtime::invokeMethod(self:id(), "accessoryType");
 end
+
+function UITableViewCell:backgroundView()
+    return UIView:get(runtime::invokeMethod(self:id(), "backgroundView"));
+end
+
+function UITableViewCell:setBackgroundView(view)
+    runtime::invokeMethod(self:id(), "setBackgroundView:", view:id());
+end

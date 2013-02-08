@@ -65,7 +65,7 @@ function UITabBarController:setSelectedIndex(selectedIndex)
 end
 
 function UITabBarController:selectedIndex()
-    return tonumber(runtime:invokeMethod(self:id(), "selectedIndex"));
+    return tonumber(runtime::invokeMethod(self:id(), "selectedIndex"));
 end
 
 UITabBarControllerEventProxyTable = {};

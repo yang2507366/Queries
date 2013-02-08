@@ -80,6 +80,14 @@ function Object:objCDescription()
     return runtime::objectDescription(self:id());
 end
 
+function Object:releaseFields()
+    for k, v in pairs(self) do
+        if v and type(v) == "table" and v.id then
+            v:release();
+        end
+    end
+end
+
 -- object convert
 function oc(object, targetType)
     setmetatable(object, targetType);

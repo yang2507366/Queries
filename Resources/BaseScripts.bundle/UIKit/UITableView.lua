@@ -318,6 +318,25 @@ function UITableView:setSeparatorStyle(style)
     runtime::invokeMethod(self:id(), "setSeparatorStyle:", style);
 end
 
+function UITableView:selectRowAtIndexPath(indexPath, animated)
+    runtime::invokeMethod(self:id(), "selectRowAtIndexPath:animated:scrollPosition:", indexPath:id(), toObjCBool(animated));
+end
+
+function UITableView:beginUpdates()
+    runtime::invokeMethod(self:id(), "beginUpdates");
+end
+
+function UITableView:endUpdates()
+    runtime::invokeMethod(self:id(), "endUpdates");
+end
+
+function UITableView:deleteRowsAtIndexPaths(indexPaths, rowAnimation)
+    if not rowAnimation then
+        rowAnimation = 100;
+    end
+    runtime::invokeMethod(self:id(), "deleteRowsAtIndexPaths:withRowAnimation:", indexPaths:id(), rowAnimation);
+end
+
 -- event proxy
 UITableViewEventProxyTable = {};
 

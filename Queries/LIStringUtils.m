@@ -31,4 +31,10 @@
     return [NSString stringWithFormat:@"%d", [string length]];
 }
 
++ (NSString *)equals:(NSString *)str with:(NSString *)str2
+{
+    NSString *b = [str isEqualToString:str2] ? @"YES" : @"NO";
+    return b;
+}
+
 @end
