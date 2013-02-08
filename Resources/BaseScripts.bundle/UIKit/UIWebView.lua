@@ -1,6 +1,7 @@
 require "UIView"
 require "AppContext"
 require "UIScrollView"
+require "NSError"
 
 UIWebView = {};
 UIWebView.__index = UIWebView;
@@ -131,9 +132,10 @@ function UIWebView_didFinishLoad(webViewId)
     end
 end
 
-function UIWebView_didFailLoadWithError(webViewId, errorString)
+function UIWebView_didFailLoadWithError(webViewId, errId)
     local webView = UIWebViewEventProxyTable[webViewId];
+    local err = NSError:get(errId);
     if webView and webView.delegate then
-        webView.delegate:didFailLoadWithError(webView, errorString);
+        webView.delegate:didFailLoadWithError(webView, err);
     end
 end

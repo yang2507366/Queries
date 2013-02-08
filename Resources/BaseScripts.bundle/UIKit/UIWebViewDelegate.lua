@@ -9,5 +9,5 @@ end
 function UIWebViewDelegate:didFinishLoad(webView)
 end
 
-function UIWebViewDelegate:didFailLoadWithError(webView, errorString)
+function UIWebViewDelegate:didFailLoadWithError(webView, err)
 end

@@ -76,7 +76,9 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     if(self.didFailLoadWithError.length != 0){
-        [[LuaAppManager scriptInteractionWithAppId:self.appId] callFunction:self.didFailLoadWithError parameters:self.objId, error.localizedDescription, nil];
+        NSString *errId = [LuaObjectManager addObject:error group:self.appId];
+        [[LuaAppManager scriptInteractionWithAppId:self.appId] callFunction:self.didFailLoadWithError parameters:self.objId, errId, nil];
+        [LuaObjectManager releaseObjectWithId:errId group:self.appId];
     }
 }
 
