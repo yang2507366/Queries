@@ -39,7 +39,24 @@
 
 - (void)replaceLinkHref
 {
-    NSString *jsCode = [self loadJavascript:@"replaceLinkHref.js"];
+    NSString *jsCode =
+    @"function replaceTag(targetTag){\
+        var allLinks = document.getElementsByTagName(targetTag);\
+        if (allLinks) {\
+            var i;\
+            for (i=0; i<allLinks.length; i++) {\
+                var link = allLinks[i];\
+                if(link.href){\
+                    if(link.href.indexOf('mylink:') == -1){\
+                        link.href = 'mylink:' + link.href;\
+                    }\
+                }\
+            }\
+        }\
+    }\
+    function replaceLinkHref() {\
+        replaceTag('a');\
+    }";
     [self stringByEvaluatingJavaScriptFromString:jsCode];
     NSString *method = @"replaceLinkHref()";
     [self stringByEvaluatingJavaScriptFromString:method];
@@ -52,7 +69,22 @@
 
 - (NSString *)getALinkAtPoint:(CGPoint)point
 {
-    NSString *jsCode = [self loadJavascript:@"getElementsAtPoint.js"];
+    NSString *jsCode =
+    @"function getElementsAtPoint(x,y){\
+        var tags = "";\
+        var e = document.elementFromPoint(x,y);\
+        if(e){\
+            if(e.tagName == 'A'){\
+                tags = e.toString();\
+            }else{\
+                var parent = e.parentNode;\
+                if(parent && parent.tagName == 'A'){\
+                    tags = parent.toString();\
+                }\
+            }\
+        }\
+        return tags;\
+    }";
 	//NSLog(@"jsCode:%@", jsCode);
     [self stringByEvaluatingJavaScriptFromString:jsCode];
     NSString *method = [NSString stringWithFormat:@"getElementsAtPoint(%d, %d)", (NSInteger)point.x, (NSInteger)point.y];

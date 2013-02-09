@@ -21,3 +21,7 @@ function NSURL:get(objId)
     
     return obj;
 end
+
+function NSURL:absoluteString()
+    return runtime::invokeMethod(self:id(), "absoluteString");
+end

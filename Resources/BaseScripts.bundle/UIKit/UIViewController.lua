@@ -171,6 +171,14 @@ end
 function UIViewController:viewDidPop()
 end
 
+function UIViewController:contentSizeForViewInPopover()
+    return unpack(stringSplit(runtime::invokeMethod(self:id(), "contentSizeForViewInPopover")));
+end
+
+function UIViewController:setContentSizeForViewInPopover(width, height)
+    runtime::invokeMethod(self:id(), "setContentSizeForViewInPopover:", width..","..height);
+end
+
 -- event proxy
 
 UIViewControllerEventProxyTable = {};

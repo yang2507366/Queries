@@ -35,7 +35,6 @@ function UIImage:imageWithResName(resName, scale)
             else
             newResName = ustring::substring(resName, 0, beginIndex).."@2x"..ustring::substring(resName, beginIndex, ustring::length(resName));
         end
-        print(StringUtils.appendingPathComponent(FileUtils.mainBundlePath(), newResName));
         if FileUtils.exists(StringUtils.appendingPathComponent(FileUtils.mainBundlePath(), newResName)) then
             resName = newResName;
         else
@@ -43,7 +42,6 @@ function UIImage:imageWithResName(resName, scale)
         end
     end
     local ab = AppBundle:current();
-    print(resName);
     local data = ab:dataFromResource(resName);
     if data then
         return UIImage:imageWithData(data, scale);

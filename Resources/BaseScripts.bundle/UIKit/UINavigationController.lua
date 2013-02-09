@@ -2,6 +2,7 @@ require "AppContext"
 require "UIViewController"
 require "CommonUtils"
 require "UINavigationBar"
+require "UIToolbar"
 
 UINavigationController = {};
 UINavigationController.__index = UINavigationController;
@@ -53,4 +54,8 @@ end
 
 function UINavigationController:navigationBar()
     return UINavigationBar:get(runtime::invokeMethod(self:id(), "navigationBar"));
+end
+
+function UINavigationController:toolbar()
+    return UIToolbar:get(runtime::invokeMethod(self:id(), "toolbar"));
 end

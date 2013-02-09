@@ -20,3 +20,11 @@ end
 function UIToolbar:setItems(items)
     runtime::invokeMethod(self:id(), "setItems:", items:id());
 end
+
+function UIToolbar:barStyle()
+    return tonumber(runtime::invokeMethod(self:id(), "barStyle"));
+end
+
+function UIToolbar:setBarStyle(barStyle)
+    runtime::invokeMethod(self:id(), "setBarStyle:", barStyle);
+end

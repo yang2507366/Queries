@@ -24,3 +24,11 @@ end
 function UINavigationBar:popNavigationItem(animated)
     runtime::invokeMethod(self:id(), "popNavigationItemAnimated:", toObjCBool(animated));
 end
+
+function UINavigationBar:barStyle()
+    return tonumber(runtime::invokeMethod(self:id(), "barStyle"));
+end
+
+function UINavigationBar:setBarStyle(barStyle)
+    runtime::invokeMethod(self:id(), "setBarStyle:", barStyle);
+end

@@ -223,6 +223,10 @@
 		3E633992162D958B00B63328 /* GridViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewWrapper.m */; };
 		3E633995162D9F6C00B63328 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E633994162D9F6C00B63328 /* QuartzCore.framework */; };
 		3E67E1D91671DCBD00F71A39 /* LIGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E67E1D81671DCBD00F71A39 /* LIGridView.m */; };
+		3E69E31C16C645C300DC3BFD /* LISystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69E31B16C645C300DC3BFD /* LISystemUtils.m */; };
+		3E69E31D16C645C300DC3BFD /* LISystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69E31B16C645C300DC3BFD /* LISystemUtils.m */; };
+		3E69E32016C64D9F00DC3BFD /* LIPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69E31F16C64D9F00DC3BFD /* LIPopoverController.m */; };
+		3E69E32116C64D9F00DC3BFD /* LIPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69E31F16C64D9F00DC3BFD /* LIPopoverController.m */; };
 		3E6B949F16460E8C009B01AD /* LIAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B949E16460E8C009B01AD /* LIAnimation.m */; };
 		3E6B94F51646814D009B01AD /* OnlineAppBundleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F41646814D009B01AD /* OnlineAppBundleLoader.m */; };
 		3E6B94F816468F12009B01AD /* LocalAppBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B94F716468F11009B01AD /* LocalAppBundle.m */; };
@@ -475,6 +479,10 @@
 		3E633994162D9F6C00B63328 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3E67E1D71671DCBD00F71A39 /* LIGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGridView.h; sourceTree = "<group>"; };
 		3E67E1D81671DCBD00F71A39 /* LIGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGridView.m; sourceTree = "<group>"; };
+		3E69E31A16C645C300DC3BFD /* LISystemUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LISystemUtils.h; sourceTree = "<group>"; };
+		3E69E31B16C645C300DC3BFD /* LISystemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LISystemUtils.m; sourceTree = "<group>"; };
+		3E69E31E16C64D9F00DC3BFD /* LIPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIPopoverController.h; sourceTree = "<group>"; };
+		3E69E31F16C64D9F00DC3BFD /* LIPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIPopoverController.m; sourceTree = "<group>"; };
 		3E6B949D16460E8C009B01AD /* LIAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIAnimation.h; sourceTree = "<group>"; };
 		3E6B949E16460E8C009B01AD /* LIAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIAnimation.m; sourceTree = "<group>"; };
 		3E6B94F31646814D009B01AD /* OnlineAppBundleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineAppBundleLoader.h; sourceTree = "<group>"; };
@@ -1100,6 +1108,8 @@
 				3EB1E1CF16A8203500665B22 /* LITabBarController.m */,
 				3E2B383A16C140050034DB94 /* LIScrollView.h */,
 				3E2B383B16C140050034DB94 /* LIScrollView.m */,
+				3E69E31E16C64D9F00DC3BFD /* LIPopoverController.h */,
+				3E69E31F16C64D9F00DC3BFD /* LIPopoverController.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1117,6 +1127,8 @@
 				3E0B29B316C0D0D80095031A /* LIStringUtils.m */,
 				3E0B29B616C0DFD50095031A /* FileUtils.h */,
 				3E0B29B716C0DFD50095031A /* FileUtils.m */,
+				3E69E31A16C645C300DC3BFD /* LISystemUtils.h */,
+				3E69E31B16C645C300DC3BFD /* LISystemUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1455,6 +1467,8 @@
 				3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */,
 				3E0B29B916C0DFD50095031A /* FileUtils.m in Sources */,
 				3E2B383D16C140050034DB94 /* LIScrollView.m in Sources */,
+				3E69E31D16C645C300DC3BFD /* LISystemUtils.m in Sources */,
+				3E69E32116C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1587,6 +1601,8 @@
 				3E0B29B416C0D0D80095031A /* LIStringUtils.m in Sources */,
 				3E0B29B816C0DFD50095031A /* FileUtils.m in Sources */,
 				3E2B383C16C140050034DB94 /* LIScrollView.m in Sources */,
+				3E69E31C16C645C300DC3BFD /* LISystemUtils.m in Sources */,
+				3E69E32016C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

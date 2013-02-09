@@ -2,6 +2,7 @@ require "UIView"
 require "AppContext"
 require "UIScrollView"
 require "NSError"
+require "NSURL"
 
 UIWebView = {};
 UIWebView.__index = UIWebView;
@@ -103,8 +104,20 @@ function UIWebView:reload()
     runtime::invokeMethod(self:id(), "reload");
 end
 
+function UIWebView:stopLoading()
+    runtime::invokeMethod(self:id(), "stopLoading");
+end
+
 function UIWebView:runScript(script)
     runtime::invokeMethod(self:id(), "stringByEvaluatingJavaScriptFromString:", script);
+end
+
+function UIWebView:currentDocumentURL()
+    local request = runtime::invokeMethod(self:id(), "request");
+    local URL = runtime::invokeMethod(request, "mainDocumentURL");
+    runtime::releaseObject(request);
+    
+    return NSURL:get(URL);
 end
 
 -- event proxy

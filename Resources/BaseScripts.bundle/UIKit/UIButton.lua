@@ -1,6 +1,7 @@
 require "UIView"
 require "UILabel"
 require "AppContext"
+require "CommonUtils"
 
 UIButton = {};
 UIButton.__index = UIButton;
@@ -70,6 +71,26 @@ end
 
 function UIButton:enabled()
     return toLuaBool(runtime::invokeMethod(self:id(), "enabled"));
+end
+
+function UIButton:setImage(img, state)
+    runtime::invokeMethod(self:id(), "setImage:forState:", img:id(), state);
+end
+
+function UIButton:imageForState(state)
+    return UIImage:get(runtime::invokeMethod(self:id(), "imageForState:", state));
+end
+
+function UIButton:currentImage()
+    return UIImage:get(runtime::invokeMethod(self:id(), "currentImage"));
+end
+
+function UIButton:imageEdgeInsets()
+    return unpack(stringTableToNumberTable(stringSplit(runtime::invokeMethod(self:id(), "imageEdgeInsets"), ",")))
+end
+
+function UIButton:setImageEdgeInsets(top, left, bottom, right)
+    runtime::invokeMethod(self:id(), "setImageEdgeInsets:", top..","..left..","..bottom..","..right);
 end
 
 -- events
