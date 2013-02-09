@@ -41,3 +41,10 @@ end
 function FileUtils.readString(path)
     return runtime::invokeClassMethod("FileUtils", "readString:", path);
 end
+
+function FileUtils.mainBundlePath()
+    local mainBundle = runtime::invokeClassMethod("NSBundle", "mainBundle");
+    local path = runtime::invokeMethod(mainBundle, "bundlePath");
+    runtime::releaseObject(mainBundle);
+    return path;
+end

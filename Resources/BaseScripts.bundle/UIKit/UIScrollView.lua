@@ -1,5 +1,6 @@
 require "UIView"
 require "AppContext"
+require "CommonUtils"
 
 UIScrollView = {};
 UIScrollView.__index = UIScrollView;
@@ -33,6 +34,14 @@ function UIScrollView:contentOffset()
     local offset = runtime::invokeMethod(self:id(), "contentOffset");
     local offsetTable = stringSplit(offset, ",");
     return unpack(stringTableToNumberTable(offsetTable));
+end
+
+function UIScrollView:scrollsToTop()
+    return runtime::invokeMethod(self:id(), "scrollsToTop");
+end
+
+function UIScrollView:setScrollsToTop(scrollsToTop)
+    runtime::invokeMethod(self:id(), "setScrollsToTop:", toObjCBool(scrollsToTop));
 end
 
 function UIScrollView:setDelegate(delegate)

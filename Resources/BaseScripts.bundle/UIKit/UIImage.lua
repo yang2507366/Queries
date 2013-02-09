@@ -1,5 +1,7 @@
 require "Object"
 require "AppBundle"
+require "FileUtils"
+require "StringUtils"
 
 UIImage = {};
 UIImage.__index = UIImage;
@@ -27,13 +29,21 @@ function UIImage:imageWithResName(resName, scale)
     local beginIndex = string.find(resName, "@2x");
     if scale == 2.0 and beginIndex == nil then
         beginIndex = tonumber(ustring::find(resName, ".", ustring::length(resName) - 1, true));
+        local newResName = resName;
         if beginIndex == -1 then
-            resName = resName.."@2x";
+            newResName = resName.."@2x";
+            else
+            newResName = ustring::substring(resName, 0, beginIndex).."@2x"..ustring::substring(resName, beginIndex, ustring::length(resName));
+        end
+        print(StringUtils.appendingPathComponent(FileUtils.mainBundlePath(), newResName));
+        if FileUtils.exists(StringUtils.appendingPathComponent(FileUtils.mainBundlePath(), newResName)) then
+            resName = newResName;
         else
-            resName = ustring::substring(resName, 0, beginIndex).."@2x"..ustring::substring(resName, beginIndex, ustring::length(resName));
+            scale = 1.0;
         end
     end
     local ab = AppBundle:current();
+    print(resName);
     local data = ab:dataFromResource(resName);
     if data then
         return UIImage:imageWithData(data, scale);
@@ -51,4 +61,9 @@ end
 function UIImage:size()
     local imgSize = runtime::invokeMethod(self:id(), "size");
     
+end
+
+function UIImage:stretchableImage(leftWidth, topCapHeight)
+    local newImgId = runtime::invokeMethod(self:id(), "stretchableImageWithLeftCapWidth:topCapHeight:", leftWidth, topCapHeight);
+    return UIImage:get(newImgId);
 end

@@ -300,6 +300,10 @@ int ustring_substring(lua_State *L)
 {
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *string = luaStringParam(L, 2);
+    if([LuaCommonUtils isObjCObject:string]){
+        NSString *appId = luaStringParam(L, 1);
+        string = [LuaObjectManager objectWithId:string group:appId];
+    }
     NSInteger beginIndex = [luaStringParam(L, 3) intValue];
     NSInteger endIndex = [luaStringParam(L, 4) intValue];
     
@@ -315,6 +319,10 @@ int ustring_length(lua_State *L)
 {
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *string = luaStringParam(L, 2);
+    if([LuaCommonUtils isObjCObject:string]){
+        NSString *appId = luaStringParam(L, 1);
+        string = [LuaObjectManager objectWithId:string group:appId];
+    }
     lua_pushnumber(L, [string length]);
     
     return 1;
@@ -324,6 +332,10 @@ int ustring_find(lua_State *L)
 {
 //    NSString *scriptId = luaStringParam(L, 1);
     NSString *string = luaStringParam(L, 2);
+    if([LuaCommonUtils isObjCObject:string]){
+        NSString *appId = luaStringParam(L, 1);
+        string = [LuaObjectManager objectWithId:string group:appId];
+    }
     NSString *targetStr = luaStringParam(L, 3);
     NSInteger fromIndex = lua_tointeger(L, 4);
     NSInteger reverse = lua_toboolean(L, 5);
@@ -354,11 +366,15 @@ int ustring_encodeURL(lua_State *L)
 
 int ustring_replace(lua_State *L)
 {
-    NSString *str = luaStringParam(L, 2);
+    NSString *string = luaStringParam(L, 2);
+    if([LuaCommonUtils isObjCObject:string]){
+        NSString *appId = luaStringParam(L, 1);
+        string = [LuaObjectManager objectWithId:string group:appId];
+    }
     NSString *occurrences = luaStringParam(L, 3);
     NSString *replacement = luaStringParam(L, 4);
-    str = [str stringByReplacingOccurrencesOfString:occurrences withString:replacement];
-    pushString(L, str);
+    string = [string stringByReplacingOccurrencesOfString:occurrences withString:replacement];
+    pushString(L, string);
     return 1;
 }
 

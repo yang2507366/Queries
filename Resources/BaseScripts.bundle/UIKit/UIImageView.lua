@@ -4,14 +4,12 @@ UIImageView = {};
 UIImageView.__index = UIImageView;
 setmetatable(UIImageView, UIView);
 
-function UIImageView:create()
+function UIImageView:create(img)
     local imgViewId = runtime::createObject("UIImageView", "init");
-    return self:get(imgViewId);
-end
-
-function UIImageView:createWithImage(image)
-    local imgView = self:create();
-    imgView:setImage(image);
+    local imgView = self:get(imgViewId);
+    if img then
+        imgView:setImage(img);
+    end
     return imgView;
 end
 

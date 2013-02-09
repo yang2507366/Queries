@@ -97,6 +97,14 @@ function UITextField:setDelegate(delegate)
     runtime::invokeMethod(self:id(), "updateDelegate");
 end
 
+function UITextField:borderStyle()
+    return tonumber(runtime::invokeMethod(self:id(), "borderStyle"));
+end
+
+function UITextField:setBorderStyle(borderStyle)
+    runtime::invokeMethod(self:id(), "setBorderStyle:", borderStyle);
+end
+
 function UITextField:setClearButtonMode(mode)
     runtime::invokeMethod(self:id(), "setClearButtonMode", mode);
 end
