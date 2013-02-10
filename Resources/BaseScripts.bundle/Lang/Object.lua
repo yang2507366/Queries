@@ -88,6 +88,19 @@ function Object:releaseFields()
     end
 end
 
+function Object:setAssociatedObject(obj)
+    runtime::invokeClassMethod("LIRuntimeUtils", "setAssociatedObjectFor:key:value:policy:override", self:id(), "", obj:id(), 1, toObjCBool(true));
+end
+
+function Object:associatedObject()
+    local objId = runtime::invokeClassMethod("LIRuntimeUtils", "getAssociatedObjectWithAppId:forObject:key:", AppContext.current(), self:id(), "");
+    return Object:new(objId);
+end
+
+function Object:removeAssociatedObject()
+    runtime::invokeClassMethod("LIRuntimeUtils", "removeAssociatedObjectsForObject:", self:id());
+end
+
 -- object convert
 function oc(object, targetType)
     setmetatable(object, targetType);

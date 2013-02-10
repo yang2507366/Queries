@@ -16,10 +16,6 @@ UIButtonTypeInfoDark = 4;
 UIButtonTypeContactAdd = 5;
 
 -- constructor
-function UIButton:create(title)
-    return UIButton:create(title, UIButtonTypeRoundedRect);
-end
-
 function UIButton:create(title, buttonType)
     if title == nil then
         title = "";
@@ -74,6 +70,9 @@ function UIButton:enabled()
 end
 
 function UIButton:setImage(img, state)
+    if not state then
+        state = 0;
+    end
     runtime::invokeMethod(self:id(), "setImage:forState:", img:id(), state);
 end
 
@@ -96,6 +95,8 @@ end
 -- events
 function UIButton:tapped()
 end
+
+function UIButton:setGlobalCallbackFunc
 
 -- event proxy
 UIButtonEventProxyTable = {};
