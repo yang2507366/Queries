@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "LuaImplentatable.h"
 
-@interface LIButton : NSObject
+@interface LIButton : UIButton
+
+@end
+
+@interface UIButton (GlobalCallbackSupport)
+
+@property(nonatomic, copy)NSString *globalCallbackFuncName;
+@property(nonatomic, copy)NSString *globalCallbackFuncCategory;
+
 
 @end

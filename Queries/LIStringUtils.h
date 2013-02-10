@@ -15,5 +15,6 @@
 + (NSString *)string:(NSString *)string hasPrefix:(NSString *)prefix;
 + (NSString *)length:(NSString *)string;
 + (NSString *)equals:(NSString *)str with:(NSString *)str2;
++ (NSString *)objectToString:(id)obj;
 
 @end

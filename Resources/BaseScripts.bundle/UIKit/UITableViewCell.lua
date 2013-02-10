@@ -1,6 +1,7 @@
 require "UIView"
 require "UILabel"
 require "UIImageView"
+require "AppContext"
 
 UITableViewCell = {};
 UITableViewCell.__index = UITableViewCell;
@@ -21,7 +22,7 @@ function UITableViewCell:create(reuseIdentifier)
     if reuseIdentifier == nil then
         return nil;
     end
-    local cellId = runtime::createObject("UITableViewCell", "initWithStyle:reuseIdentifier:", "1", reuseIdentifier);
+    local cellId = runtime::invokeClassMethod("LITableViewCell", "create:style:reuseIdentifier:", AppContext.current() ,"1", reuseIdentifier);
     
     return self:get(cellId);
 end

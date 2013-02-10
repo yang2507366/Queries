@@ -29,3 +29,10 @@ end
 function StringUtils.equals(str1, str2)
     return toLuaBool(runtime::invokeClassMethod("LIStringUtils", "equals:with:", str1, str2));
 end
+
+function StringUtils.toString(str)
+    if str.id then
+        str = str:id();
+    end
+    return runtime::invokeClassMethod("LIStringUtils", "objectToString:", str);
+end

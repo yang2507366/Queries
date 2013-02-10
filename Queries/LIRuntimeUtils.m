@@ -12,7 +12,7 @@
 
 @implementation LIRuntimeUtils
 
-static char *askey = "";
+static char *askey = "askey";
 
 + (void)setAssociatedObjectFor:(id)object key:(NSString *)key value:(id)value policy:(NSInteger)policy override:(BOOL)override
 {
@@ -26,6 +26,12 @@ static char *askey = "";
 {
     id value = objc_getAssociatedObject(object, askey);
     return [LuaObjectManager addObject:value group:appId];
+}
+
++ (id)getAssociatedObjectForObject:(id)object key:(NSString *)key
+{
+    id obj = objc_getAssociatedObject(object, askey);
+    return obj;
 }
 
 + (void)removeAssociatedObjectsForObject:(id)object

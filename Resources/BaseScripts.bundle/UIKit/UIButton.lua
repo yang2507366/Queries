@@ -96,7 +96,13 @@ end
 function UIButton:tapped()
 end
 
-function UIButton:setGlobalCallbackFunc
+function UIButton:setGlobalCallbackFuncName(funcName, category)
+    if not category then
+        category = "default";
+    end
+    runtime::invokeMethod(self:id(), "setGlobalCallbackFuncCategory:", category);
+    runtime::invokeMethod(self:id(), "setGlobalCallbackFuncName:", funcName);
+end
 
 -- event proxy
 UIButtonEventProxyTable = {};

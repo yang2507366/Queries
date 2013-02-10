@@ -37,4 +37,9 @@
     return b;
 }
 
++ (NSString *)objectToString:(id)obj
+{
+    return [NSString stringWithFormat:@"%@", obj];
+}
+
 @end

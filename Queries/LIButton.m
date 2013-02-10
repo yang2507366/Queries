@@ -9,12 +9,15 @@
 #import "LIButton.h"
 #import "LuaObjectManager.h"
 #import "LuaAppManager.h"
+#import <objc/runtime.h>
+#import "LIRuntimeUtils.h"
 
 @interface ButtonImplData : NSObject
 
 @property(nonatomic, copy)NSString *appId;
 @property(nonatomic, copy)NSString *objId;
 @property(nonatomic, copy)NSString *tapped;
+@property(nonatomic, assign)UIButton *targetButton;
 
 @end
 
@@ -86,11 +89,55 @@
     if(implData.tapped.length != 0){
         [[LuaAppManager scriptInteractionWithAppId:implData.appId] callFunction:implData.tapped parameters:implData.objId, nil];
     }
+    NSString *funcCategory = implData.targetButton.globalCallbackFuncCategory;
+    NSString *funcName = implData.targetButton.globalCallbackFuncName;
+    
+    if(funcName.length != 0){
+        NSString *assObject = [NSString stringWithFormat:@"%@", [LIRuntimeUtils getAssociatedObjectForObject:implData.targetButton key:@""]];
+        [[LuaAppManager scriptInteractionWithAppId:implData.appId] callFunction:funcName parameters:assObject, funcCategory, nil];
+    }
+}
+
+@end
+
+@implementation UIButton (GlobalCallbackSupport)
+
+static char *kFuncCategoryKey = "category";
+static char *kFuncNameKey = "func";
+
+- (void)setGlobalCallbackFuncCategory:(NSString *)globalCallbackFuncCategory
+{
+    objc_setAssociatedObject(self, kFuncCategoryKey, globalCallbackFuncCategory, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)globalCallbackFuncCategory
+{
+    return objc_getAssociatedObject(self, kFuncCategoryKey);
+}
+
+- (void)setGlobalCallbackFuncName:(NSString *)globalCallbackFuncName
+{
+    objc_setAssociatedObject(self, kFuncNameKey, globalCallbackFuncName, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)globalCallbackFuncName
+{
+    return objc_getAssociatedObject(self, kFuncNameKey);
 }
 
 @end
 
 @implementation LIButton
+
+- (void)dealloc
+{
+    [super dealloc];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@ retainCount:%d", [super description], [self retainCount]];
+}
 
 + (NSString *)create:(NSString *)appId
 {
@@ -99,9 +146,10 @@
 
 + (NSString *)create:(NSString *)appId type:(UIButtonType)buttonType
 {
-    UIButton *btn = [UIButton buttonWithType:buttonType];
+    LIButton *btn = [[[LIButton alloc] init] autorelease];
     ButtonImplData *data = [[ButtonImplData new] autorelease];
     data.appId = appId;
+    data.targetButton = btn;
     data.objId = [LuaObjectManager addObject:btn group:appId];
     [[ButtonEventProxy shardInstance] setTargetButton:btn implData:data];
     [btn addTarget:[ButtonEventProxy shardInstance] action:@selector(tapped:) forControlEvents:UIControlEventTouchUpInside];

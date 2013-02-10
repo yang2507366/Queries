@@ -89,7 +89,10 @@ function Object:releaseFields()
 end
 
 function Object:setAssociatedObject(obj)
-    runtime::invokeClassMethod("LIRuntimeUtils", "setAssociatedObjectFor:key:value:policy:override", self:id(), "", obj:id(), 1, toObjCBool(true));
+    if obj.id then
+        obj = obj:id();
+    end
+    runtime::invokeClassMethod("LIRuntimeUtils", "setAssociatedObjectFor:key:value:policy:override", self:id(), "", obj, 1, toObjCBool(true));
 end
 
 function Object:associatedObject()

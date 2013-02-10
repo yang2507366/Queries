@@ -128,6 +128,8 @@
 		3E23563616BF4853006C00A8 /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E23563516BF4853006C00A8 /* doc.txt */; };
 		3E2ABA2616C7650200254332 /* LIRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ABA2516C7650200254332 /* LIRuntimeUtils.m */; };
 		3E2ABA2716C7650200254332 /* LIRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ABA2516C7650200254332 /* LIRuntimeUtils.m */; };
+		3E2ABA3416C7879100254332 /* LITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ABA3316C7879100254332 /* LITableViewCell.m */; };
+		3E2ABA3516C7879100254332 /* LITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ABA3316C7879100254332 /* LITableViewCell.m */; };
 		3E2B383C16C140050034DB94 /* LIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B383B16C140050034DB94 /* LIScrollView.m */; };
 		3E2B383D16C140050034DB94 /* LIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B383B16C140050034DB94 /* LIScrollView.m */; };
 		3E30C70816773488002E138F /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E30C70716773488002E138F /* UIWebViewAdditions.m */; };
@@ -436,6 +438,8 @@
 		3E23563516BF4853006C00A8 /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doc.txt; path = Resources/doc.txt; sourceTree = "<group>"; };
 		3E2ABA2416C7650200254332 /* LIRuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIRuntimeUtils.h; sourceTree = "<group>"; };
 		3E2ABA2516C7650200254332 /* LIRuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIRuntimeUtils.m; sourceTree = "<group>"; };
+		3E2ABA3216C7879100254332 /* LITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LITableViewCell.h; sourceTree = "<group>"; };
+		3E2ABA3316C7879100254332 /* LITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITableViewCell.m; sourceTree = "<group>"; };
 		3E2B383A16C140050034DB94 /* LIScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIScrollView.h; sourceTree = "<group>"; };
 		3E2B383B16C140050034DB94 /* LIScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIScrollView.m; sourceTree = "<group>"; };
 		3E30C70616773488002E138F /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
@@ -1114,6 +1118,8 @@
 				3E2B383B16C140050034DB94 /* LIScrollView.m */,
 				3E69E31E16C64D9F00DC3BFD /* LIPopoverController.h */,
 				3E69E31F16C64D9F00DC3BFD /* LIPopoverController.m */,
+				3E2ABA3216C7879100254332 /* LITableViewCell.h */,
+				3E2ABA3316C7879100254332 /* LITableViewCell.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1476,6 +1482,7 @@
 				3E69E31D16C645C300DC3BFD /* LISystemUtils.m in Sources */,
 				3E69E32116C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
 				3E2ABA2716C7650200254332 /* LIRuntimeUtils.m in Sources */,
+				3E2ABA3516C7879100254332 /* LITableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1611,6 +1618,7 @@
 				3E69E31C16C645C300DC3BFD /* LISystemUtils.m in Sources */,
 				3E69E32016C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
 				3E2ABA2616C7650200254332 /* LIRuntimeUtils.m in Sources */,
+				3E2ABA3416C7879100254332 /* LITableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

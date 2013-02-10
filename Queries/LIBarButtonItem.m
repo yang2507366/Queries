@@ -67,7 +67,7 @@
 
 + (NSString *)createWithAppId:(NSString *)appId systemItem:(NSInteger)systemItem
 {
-    LIBarButtonItem *tmp = [[LIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil];
+    LIBarButtonItem *tmp = [[[LIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem target:nil action:nil] autorelease];
     tmp.appId = appId;
     tmp.objId = [LuaObjectManager addObject:tmp group:appId];
     
@@ -76,7 +76,7 @@
 
 + (NSString *)createWithAppId:(NSString *)appId image:(UIImage *)img
 {
-    LIBarButtonItem *tmp = [[LIBarButtonItem alloc] initWithImage:img style:UIBarButtonItemStylePlain target:nil action:nil];
+    LIBarButtonItem *tmp = [[[LIBarButtonItem alloc] initWithImage:img style:UIBarButtonItemStylePlain target:nil action:nil] autorelease];
     tmp.appId = appId;
     tmp.objId = [LuaObjectManager addObject:tmp group:appId];
     
