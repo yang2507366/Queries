@@ -103,6 +103,11 @@
     return [super shouldAutorotate];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return [self shouldAutorotate];
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     if(self._supportedInterfaceOrientations.length != 0){
