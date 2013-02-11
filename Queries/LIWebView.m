@@ -85,6 +85,7 @@
 + (NSString *)create:(NSString *)appId
 {
     LIWebView *tmp = [[LIWebView new] autorelease];
+    tmp.multipleTouchEnabled = YES;
     tmp.appId = appId;
     tmp.objId = [LuaObjectManager addObject:tmp group:appId];
     

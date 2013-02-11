@@ -265,6 +265,8 @@
 		3EB1E1D016A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
 		3EB1E1D116A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
 		3EB7935516761126004EB529 /* LIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB7935416761126004EB529 /* LIWebView.m */; };
+		3EB87B4616C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB87B4516C7E39700C94FF9 /* LIGestureRecognizer.m */; };
+		3EB87B4716C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB87B4516C7E39700C94FF9 /* LIGestureRecognizer.m */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* SelfSupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* SelfSupportChecker.m */; };
 		3EC357C31643E288009611C8 /* ApplicationScriptBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */; };
@@ -552,6 +554,8 @@
 		3EB1E1CF16A8203500665B22 /* LITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITabBarController.m; sourceTree = "<group>"; };
 		3EB7935316761126004EB529 /* LIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIWebView.h; sourceTree = "<group>"; };
 		3EB7935416761126004EB529 /* LIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIWebView.m; sourceTree = "<group>"; };
+		3EB87B4416C7E39700C94FF9 /* LIGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGestureRecognizer.h; sourceTree = "<group>"; };
+		3EB87B4516C7E39700C94FF9 /* LIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGestureRecognizer.m; sourceTree = "<group>"; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -1120,6 +1124,8 @@
 				3E69E31F16C64D9F00DC3BFD /* LIPopoverController.m */,
 				3E2ABA3216C7879100254332 /* LITableViewCell.h */,
 				3E2ABA3316C7879100254332 /* LITableViewCell.m */,
+				3EB87B4416C7E39700C94FF9 /* LIGestureRecognizer.h */,
+				3EB87B4516C7E39700C94FF9 /* LIGestureRecognizer.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1483,6 +1489,7 @@
 				3E69E32116C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
 				3E2ABA2716C7650200254332 /* LIRuntimeUtils.m in Sources */,
 				3E2ABA3516C7879100254332 /* LITableViewCell.m in Sources */,
+				3EB87B4716C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1619,6 +1626,7 @@
 				3E69E32016C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
 				3E2ABA2616C7650200254332 /* LIRuntimeUtils.m in Sources */,
 				3E2ABA3416C7879100254332 /* LITableViewCell.m in Sources */,
+				3EB87B4616C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

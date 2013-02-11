@@ -133,3 +133,11 @@ function UIView:hidden()
     local hidden = runtime::invokeMethod(self:id(), "hidden");
     return toLuaBool(hidden);
 end
+
+function UIView:addGestureRecognizer(gr)
+    runtime::invokeMethod(self:id(), "addGestureRecognizer:", gr:id());
+end
+
+function UIView:removeGestureRecognizer(gr)
+    runtime::invokeMethod(self:id(), "removeGestureRecognizer:", gr:id());
+end

@@ -250,6 +250,30 @@ int ui_dialog(lua_State *L)
     return 0;
 }
 
+int ui_dialog_c(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *title = luaStringParam(L, 2);
+    NSString *message = luaStringParam(L, 3);
+    NSString *cancelButtonTitle = luaStringParam(L, 4);
+    NSString *callbackFunc = luaStringParam(L, 5);
+    NSString *dialogId = luaStringParam(L, 6);
+    
+    NSInteger numberOfArgs = lua_gettop(L);
+    NSMutableArray *titleList = [NSMutableArray array];
+    for(NSInteger i = 7; i <= numberOfArgs; ++i){
+        [titleList addObject:luaStringParam(L, i)];
+    }
+    id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
+    [DialogTools showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
+        if(callbackFunc.length != 0){
+            [si callFunction:callbackFunc parameters:dialogId, [NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
+        }
+    } cancelButtonTitle:cancelButtonTitle otherButtonTitleList:titleList];
+    
+    return 0;
+}
+
 int ui_animate(lua_State *L)
 {
     NSString *appid = luaStringParam(L, 1);
@@ -586,6 +610,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ui_alert", ui_alert);
     pushFunctionToLua(L, "ui_setRootViewController", ui_setRootViewController);
     pushFunctionToLua(L, "ui_dialog", ui_dialog);
+    pushFunctionToLua(L, "ui_dialog_c", ui_dialog_c);
     pushFunctionToLua(L, "ui_animate", ui_animate);
     pushFunctionToLua(L, "ui_getRelatedViewController", ui_getRelatedViewController);
     pushFunctionToLua(L, "ui_stringSize", ui_stringSize);

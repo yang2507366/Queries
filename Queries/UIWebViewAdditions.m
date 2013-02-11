@@ -14,8 +14,8 @@
 - (CGPoint)scrollOffset
 {
     CGPoint point;
-    point.x = [[self stringByEvaluatingJavaScriptFromString:@"window.pageXOffset"] integerValue];
-    point.y = [[self stringByEvaluatingJavaScriptFromString:@"window.pageYOffset"] integerValue];
+    point.x = [[self stringByEvaluatingJavaScriptFromString:@"window.pageXOffset"] floatValue];
+    point.y = [[self stringByEvaluatingJavaScriptFromString:@"window.pageYOffset"] floatValue];
     
     return point;
 }
@@ -23,8 +23,8 @@
 -(CGSize)windowSize
 {
     CGSize size;
-    size.width = [[self stringByEvaluatingJavaScriptFromString:@"window.innerWidth"] integerValue];
-    size.height = [[self stringByEvaluatingJavaScriptFromString:@"window.innerHeight"] integerValue];
+    size.width = [[self stringByEvaluatingJavaScriptFromString:@"window.innerWidth"] floatValue];
+    size.height = [[self stringByEvaluatingJavaScriptFromString:@"window.innerHeight"] floatValue];
     
     return size;
 }
@@ -39,7 +39,7 @@
 
 - (void)replaceLinkHref
 {
-    NSString *jsCode =
+    NSString *js =
     @"function replaceTag(targetTag){\
         var allLinks = document.getElementsByTagName(targetTag);\
         if (allLinks) {\
@@ -57,7 +57,7 @@
     function replaceLinkHref() {\
         replaceTag('a');\
     }";
-    [self stringByEvaluatingJavaScriptFromString:jsCode];
+    [self stringByEvaluatingJavaScriptFromString:js];
     NSString *method = @"replaceLinkHref()";
     [self stringByEvaluatingJavaScriptFromString:method];
 }
@@ -67,30 +67,128 @@
     [self stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
 }
 
-- (NSString *)getALinkAtPoint:(CGPoint)point
+- (NSString *)getLinkSRCAtPoint:(CGPoint)point
 {
     NSString *jsCode =
-    @"function getElementsAtPoint(x,y){\
-        var tags = "";\
-        var e = document.elementFromPoint(x,y);\
-        if(e){\
-            if(e.tagName == 'A'){\
-                tags = e.toString();\
-            }else{\
-                var parent = e.parentNode;\
-                if(parent && parent.tagName == 'A'){\
-                    tags = parent.toString();\
-                }\
-            }\
-        }\
-        return tags;\
+    @"function MyAppGetLinkSRCAtPoint(x,y) {\n\
+        var tags = '';\n\
+        var e = '';\n\
+        var offset = 0;\n\
+        while ((tags.length == 0) && (offset < 20)) {\n\
+            e = document.elementFromPoint(x,y+offset);\n\
+            while (e) {\n\
+                if (e.src) {\n\
+                    tags += e.src;\n\
+                    break;\n\
+                }\n\
+                e = e.parentNode;\n\
+            }\n\
+            if (tags.length == 0) {\n\
+                e = document.elementFromPoint(x,y-offset);\n\
+                while (e) {\n\
+                    if (e.src) {\n\
+                        tags += e.src;\n\
+                        break;\n\
+                    }\n\
+                    e = e.parentNode;\n\
+                }\n\
+            }\n\
+            offset++;\n\
+        }\n\
+        return tags;\n\
     }";
 	//NSLog(@"jsCode:%@", jsCode);
     [self stringByEvaluatingJavaScriptFromString:jsCode];
-    NSString *method = [NSString stringWithFormat:@"getElementsAtPoint(%d, %d)", (NSInteger)point.x, (NSInteger)point.y];
+    NSString *method = [NSString stringWithFormat:@"MyAppGetLinkSRCAtPoint(%d, %d)", (NSInteger)point.x, (NSInteger)point.y];
     NSString *result = [self stringByEvaluatingJavaScriptFromString:method];
     //NSLog(@"result:%@", result);
     return result;
+}
+
+- (NSString *)getALinkAtPoint:(CGPoint)point
+{
+    NSString *URLString = nil;
+    NSString *src = [self getLinkSRCAtPoint:point];
+    NSString *href = [self getLinkHREFAtPoint:point];
+    NSString *elements = [self getHTMLElementsAtPoint:point];
+    if([elements rangeOfString:@",IMG,"].location != NSNotFound){
+        URLString = src;
+    }
+    if([elements rangeOfString:@",A,"].location != NSNotFound){
+        URLString = href;
+    }
+    
+    return URLString;
+}
+
+- (NSString *)getLinkHREFAtPoint:(CGPoint)point
+{
+    NSString *js =
+    @"function MyAppGetLinkHREFAtPoint(x,y) {\n\
+        var tags = \"\";\n\
+        var e = \"\";\n\
+        var offset = 0;\n\
+        while ((tags.length == 0) && (offset < 20)) {\n\
+            e = document.elementFromPoint(x,y+offset);\n\
+            while (e) {\n\
+                if (e.href) {\n\
+                    tags += e.href;\n\
+                    break;\n\
+                }\n\
+                e = e.parentNode;\n\
+            }\n\
+            if (tags.length == 0) {\n\
+                e = document.elementFromPoint(x,y-offset);\n\
+                while (e) {\n\
+                    if (e.href) {\n\
+                        tags += e.href;\n\
+                        break;\n\
+                    }\n\
+                    e = e.parentNode;\n\
+                }\n\
+            }\n\
+            offset++;\n\
+        }\n\
+        return tags;\n\
+    }";
+    [self stringByEvaluatingJavaScriptFromString:js];
+    NSString *method = [NSString stringWithFormat:@"MyAppGetLinkHREFAtPoint(%d, %d)", (NSInteger)point.x, (NSInteger)point.y];
+    NSString *result = [self stringByEvaluatingJavaScriptFromString:method];
+    //NSLog(@"result:%@", result);
+    return result;
+}
+
+- (NSString *)getHTMLElementsAtPoint:(CGPoint)point
+{
+    NSString *js =
+    @"function MyAppGetHTMLElementsAtPoint(x,y) {\n\
+        var tags = '';\n\
+        var e;\n\
+        var offset = 0;\n\
+        while ((tags.search(',(A|IMG),') < 0) && (offset < 20)) {\n\
+            tags = ',';\n\
+            e = document.elementFromPoint(x,y+offset);\n\
+            while (e) {\n\
+                if (e.tagName) {\n\
+                    tags += e.tagName + ',';\n\
+                }\n\
+                e = e.parentNode;\n\
+            }\n\
+            if (tags.search(',(A|IMG),') < 0) {\n\
+                e = document.elementFromPoint(x,y-offset);\n\
+                while (e) {\n\
+                    if (e.tagName) {\n\
+                        tags += e.tagName + ',';\n\
+                    }\n\
+                    e = e.parentNode;\n\
+                }\n\
+            }\n\
+            offset++;\n\
+        }\n\
+        return tags;\n\
+    }";
+    [self stringByEvaluatingJavaScriptFromString:js];
+    return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"MyAppGetHTMLElementsAtPoint(%f, %f)", point.x, point.y]];
 }
 
 - (NSString *)getPageTitle

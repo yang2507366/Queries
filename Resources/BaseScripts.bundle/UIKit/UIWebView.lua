@@ -120,6 +120,22 @@ function UIWebView:currentDocumentURL()
     return NSURL:get(URL);
 end
 
+function UIWebView:realWindowSize()
+    return unpack(stringTableToNumberTable(stringSplit(runtime::invokeMethod(self:id(), "windowSize"), ",")));
+end
+
+function UIWebView:linkURLStringAtPoint(x, y)
+    return runtime::invokeMethod(self:id(), "getALinkAtPoint:", x..","..y);
+end
+
+function UIWebView:scrollOffset()
+    return unpack(stringTableToNumberTable(stringSplit(runtime::invokeMethod(self:id(), "scrollOffset"), ",")));
+end
+
+function UIWebView:HTMLElementsAtPoint(x, y)
+    return runtime::invokeMethod(self:id(), "getHTMLElementsAtPoint:", x..","..y);
+end
+
 -- event proxy
 UIWebViewEventProxyTable = {};
 
