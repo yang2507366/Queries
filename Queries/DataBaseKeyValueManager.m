@@ -169,8 +169,7 @@
 {
     sqlite3_close(_db);
     _db = NULL;
-    NSString *dbFilePath = [[CommonUtils documentPath] stringByAppendingPathComponent:[CodeUtils encodeWithString:self.dbName]];
-    [[NSFileManager defaultManager] removeItemAtPath:dbFilePath error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:self.dbFilePath error:nil];
     [self openDatabase:self.dbFilePath];
 }
 
