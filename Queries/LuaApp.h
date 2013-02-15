@@ -16,7 +16,8 @@
 @property(nonatomic, retain)id<ScriptInteraction> scriptInteraction;
 @property(nonatomic, readonly)UIWindow *baseWindow;
 @property(nonatomic, retain)UIViewController *relatedViewController;
+@property(nonatomic, copy)void(^consoleOutputBlock)(NSString *output);
 - (id)initWithScriptBundle:(id<ScriptBundle>)scriptBundle baseWindow:(UIWindow *)window;
-
+- (void)consoleOutput:(NSString *)output;
 
 @end

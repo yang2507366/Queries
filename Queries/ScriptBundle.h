@@ -14,6 +14,6 @@
 - (NSString *)scriptWithScriptName:(NSString *)scriptName;
 - (NSData *)resourceWithName:(NSString *)resName;
 - (NSString *)bundleVersion;
-- (NSString *)mainScript;
+- (NSString *)mainScriptName;
 
 @end

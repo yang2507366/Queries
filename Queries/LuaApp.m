@@ -22,6 +22,7 @@
     [_scriptBundle release];
     [_baseWindow release];
     self.relatedViewController = nil;
+    self.consoleOutputBlock = nil;
     
     [super dealloc];
 }
@@ -34,6 +35,13 @@
     _baseWindow = [window retain];
     
     return self;
+}
+
+- (void)consoleOutput:(NSString *)output
+{
+    if(self.consoleOutputBlock){
+        self.consoleOutputBlock(output);
+    }
 }
 
 @end

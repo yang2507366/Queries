@@ -156,6 +156,24 @@ void attachCFunctions(lua_State *L)
     return returnValue.returnValue;
 }
 
+- (NSString *)callFunction:(NSString *)funcName errorBlock:(void(^)(NSString *error))errorBlock parameters:(NSString *)firstParameter, ...
+{
+    va_list args;
+    NSMutableArray *parameters = [NSMutableArray array];
+    if(firstParameter){
+        va_start(args, firstParameter);
+        for(NSString *tmpParameter = firstParameter; tmpParameter; tmpParameter = va_arg(args, id)){
+            [parameters addObject:tmpParameter];
+        }
+        va_end(args);
+    }
+    LuaReturnValue *returnValue = [self callWithFunctionName:funcName parameters:parameters autoreleasePool:YES];
+    if(errorBlock && returnValue.errorString.length != 0){
+        errorBlock(returnValue.errorString);
+    }
+    return returnValue.returnValue;
+}
+
 - (LuaReturnValue *)callWithFunctionName:(NSString *)funcName parameters:(NSArray *)parameters autoreleasePool:(BOOL)autoreleasePool
 {
     if(!script_string){

@@ -535,6 +535,18 @@ int nslog(lua_State *L)
     return 0;
 }
 
+int utils_log(lua_State *L)
+{
+    NSString *bundleId = luaStringParam(L, 1);
+    NSString *log = luaStringParam(L, 2);
+    
+    LuaApp *app = [LuaAppManager appForId:bundleId];
+    [app consoleOutput:[NSString stringWithFormat:@"%@", log]];
+    NSLog(@"%@", log);
+    
+    return 0;
+}
+
 int utils_printObject(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
@@ -547,7 +559,8 @@ int utils_printObject(lua_State *L)
             targetObject = tmpObject;
         }
     }
-    
+    LuaApp *app = [LuaAppManager appForId:scriptId];
+    [app consoleOutput:[NSString stringWithFormat:@"%@", targetObject]];
     NSLog(@"%@", targetObject);
     
     return 0;
@@ -565,7 +578,8 @@ int utils_printObjectDescription(lua_State *L)
             targetObject = tmpObject;
         }
     }
-    
+    LuaApp *app = [LuaAppManager appForId:scriptId];
+    [app consoleOutput:[NSString stringWithFormat:@"%@", [RuntimeUtils descriptionOfObject:targetObject]]];
     NSLog(@"%@", [RuntimeUtils descriptionOfObject:targetObject]);
     return 0;
 }
@@ -619,6 +633,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "ustring_substring", ustring_substring);
     pushFunctionToLua(L, "ustring_encodeURL", ustring_encodeURL);
     pushFunctionToLua(L, "ustring_replace", ustring_replace);
+    pushFunctionToLua(L, "utils_log", utils_log);
     pushFunctionToLua(L, "utils_printObject", utils_printObject);
     pushFunctionToLua(L, "utils_printObjectDescription", utils_printObjectDescription);
     pushFunctionToLua(L, "utils_isObjCObject", utils_isObjCObject);
