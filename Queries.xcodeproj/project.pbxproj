@@ -296,6 +296,8 @@
 		3EE3B2CD1631B64D00C77F85 /* DataBaseKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2CB1631B64D00C77F85 /* DataBaseKeyValueManager.m */; };
 		3EE3B2CF1631B67300C77F85 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EE3B2CE1631B67300C77F85 /* libsqlite3.dylib */; };
 		3EE3B32D163235E800C77F85 /* LuaScriptInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */; };
+		3EF51BEC16CF6B57004B6C74 /* InputDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF51BEB16CF6B57004B6C74 /* InputDialog.m */; };
+		3EF51BED16CF6B57004B6C74 /* InputDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF51BEB16CF6B57004B6C74 /* InputDialog.m */; };
 		3EF86915163ACC1700E41ED6 /* LuaRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF86914163ACC1700E41ED6 /* LuaRuntimeUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -620,6 +622,8 @@
 		3EE3B32B163235E800C77F85 /* LuaScriptInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptInteraction.h; sourceTree = "<group>"; };
 		3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaScriptInteraction.m; sourceTree = "<group>"; };
 		3EE591B616512B4400465C10 /* LuaImplentatable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaImplentatable.h; sourceTree = "<group>"; };
+		3EF51BEA16CF6B57004B6C74 /* InputDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputDialog.h; sourceTree = "<group>"; };
+		3EF51BEB16CF6B57004B6C74 /* InputDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDialog.m; sourceTree = "<group>"; };
 		3EF86913163ACC1700E41ED6 /* LuaRuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaRuntimeUtils.h; sourceTree = "<group>"; };
 		3EF86914163ACC1700E41ED6 /* LuaRuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaRuntimeUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -939,6 +943,8 @@
 		3E63398C162D92E300B63328 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				3EF51BEA16CF6B57004B6C74 /* InputDialog.h */,
+				3EF51BEB16CF6B57004B6C74 /* InputDialog.m */,
 				3EE3B2BB1631B5DA00C77F85 /* DialogTools.h */,
 				3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */,
 				3EE3B2AA1631B58200C77F85 /* Toast.h */,
@@ -1490,6 +1496,7 @@
 				3E2ABA2716C7650200254332 /* LIRuntimeUtils.m in Sources */,
 				3E2ABA3516C7879100254332 /* LITableViewCell.m in Sources */,
 				3EB87B4716C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */,
+				3EF51BED16CF6B57004B6C74 /* InputDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1627,6 +1634,7 @@
 				3E2ABA2616C7650200254332 /* LIRuntimeUtils.m in Sources */,
 				3E2ABA3416C7879100254332 /* LITableViewCell.m in Sources */,
 				3EB87B4616C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */,
+				3EF51BEC16CF6B57004B6C74 /* InputDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
