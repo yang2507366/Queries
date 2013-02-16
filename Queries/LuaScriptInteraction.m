@@ -105,6 +105,17 @@ int get_module(lua_State *L)
     self = [super init];
     
     self.script = script;
+    self.scriptInvokeFilter = [[UnicodeScriptInvokeFilter new] autorelease];
+    [self initLua];
+    
+    return self;
+}
+
+- (void)initLua
+{
+    if(lua_state){
+        lua_close(lua_state);
+    }
     lua_state = lua_open();
     luaL_openlibs(lua_state);
     
@@ -114,9 +125,6 @@ int get_module(lua_State *L)
     if(script_string){
         luaL_dostring(lua_state, script_string);
     }
-    self.scriptInvokeFilter = [[UnicodeScriptInvokeFilter new] autorelease];
-    
-    return self;
 }
 
 void attachCFunctions(lua_State *L)
@@ -242,7 +250,7 @@ void attachCFunctions(lua_State *L)
         }
 #ifdef DEBUG
         errorMsg = [NSString stringWithFormat:@"%@\n%s", errorMsg, lua_tostring(lua_state, -1)];
-        NSLog(@"%@, error:%@", funcName, errorMsg);
+        NSLog(@"function name:%@, lua error message:%@", funcName, errorMsg);
 #else
         errorMsg = [NSString stringWithFormat:@"%@\n", errorMsg];
 #endif
@@ -250,7 +258,7 @@ void attachCFunctions(lua_State *L)
 #ifdef DEBUG
     lua_pop(lua_state, 1);
 #endif
-    NSLog(@"%@", errorMsg);
+//    [self initLua];
     return [LuaReturnValue createWithError:errorMsg];
 }
 

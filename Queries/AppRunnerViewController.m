@@ -12,7 +12,7 @@
 #import "ZipArchive.h"
 #import "LocalAppBundle.h"
 #import "LuaAppManager.h"
-#import "DialogTools.h"
+#import "ConfirmDialog.h"
 #import "Waiting.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -85,7 +85,7 @@
     [loader loadWithCompletion:^(NSString *filePath) {
         [Waiting showWaiting:NO inView:self.view];
         if(filePath.length == 0){
-            [DialogTools showWithTitle:@"" message:@"加载失败，请检查URL地址" completion:nil cancelButtonTitle:@"确定" otherButtonTitleList:nil];
+            [ConfirmDialog showWithTitle:@"" message:@"加载失败，请检查URL地址" completion:nil cancelButtonTitle:@"确定" otherButtonTitleList:nil];
             return;
         }
         ZipArchive *zipAr = [[[ZipArchive alloc] init] autorelease];

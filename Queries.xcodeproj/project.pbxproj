@@ -187,7 +187,7 @@
 		3E5BBD0416A6AC8C00C0E3C1 /* NSString+Substring.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CC16440519009611C8 /* NSString+Substring.m */; };
 		3E5BBD0516A6AC8F00C0E3C1 /* HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C41632E3650013DCF7 /* HTTPRequest.m */; };
 		3E5BBD0616A6AC9100C0E3C1 /* ProviderPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E06D5C11632E2880013DCF7 /* ProviderPool.m */; };
-		3E5BBD0716A6AC9300C0E3C1 /* DialogTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */; };
+		3E5BBD0716A6AC9300C0E3C1 /* ConfirmDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BC1631B5DA00C77F85 /* ConfirmDialog.m */; };
 		3E5BBD0816A6AC9400C0E3C1 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2AB1631B58200C77F85 /* Toast.m */; };
 		3E5BBD0916A6AC9500C0E3C1 /* GridViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E633991162D958B00B63328 /* GridViewWrapper.m */; };
 		3E5BBD0A16A6AC9600C0E3C1 /* Waiting.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357CF1644C48E009611C8 /* Waiting.m */; };
@@ -292,7 +292,7 @@
 		3EE3B2C01631B5DA00C77F85 /* KeyboardState.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B41631B5DA00C77F85 /* KeyboardState.m */; };
 		3EE3B2C21631B5DA00C77F85 /* TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */; };
 		3EE3B2C31631B5DA00C77F85 /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BA1631B5DA00C77F85 /* Timer.m */; };
-		3EE3B2C41631B5DA00C77F85 /* DialogTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */; };
+		3EE3B2C41631B5DA00C77F85 /* ConfirmDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2BC1631B5DA00C77F85 /* ConfirmDialog.m */; };
 		3EE3B2CD1631B64D00C77F85 /* DataBaseKeyValueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B2CB1631B64D00C77F85 /* DataBaseKeyValueManager.m */; };
 		3EE3B2CF1631B67300C77F85 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EE3B2CE1631B67300C77F85 /* libsqlite3.dylib */; };
 		3EE3B32D163235E800C77F85 /* LuaScriptInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EE3B32C163235E800C77F85 /* LuaScriptInteraction.m */; };
@@ -612,8 +612,8 @@
 		3EE3B2B81631B5DA00C77F85 /* TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskQueue.m; sourceTree = "<group>"; };
 		3EE3B2B91631B5DA00C77F85 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
 		3EE3B2BA1631B5DA00C77F85 /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
-		3EE3B2BB1631B5DA00C77F85 /* DialogTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogTools.h; sourceTree = "<group>"; };
-		3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogTools.m; sourceTree = "<group>"; };
+		3EE3B2BB1631B5DA00C77F85 /* ConfirmDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmDialog.h; sourceTree = "<group>"; };
+		3EE3B2BC1631B5DA00C77F85 /* ConfirmDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmDialog.m; sourceTree = "<group>"; };
 		3EE3B2CA1631B64D00C77F85 /* DataBaseKeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseKeyValueManager.h; sourceTree = "<group>"; };
 		3EE3B2CB1631B64D00C77F85 /* DataBaseKeyValueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseKeyValueManager.m; sourceTree = "<group>"; };
 		3EE3B2CC1631B64D00C77F85 /* KeyValueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueManager.h; sourceTree = "<group>"; };
@@ -945,8 +945,8 @@
 			children = (
 				3EF51BEA16CF6B57004B6C74 /* InputDialog.h */,
 				3EF51BEB16CF6B57004B6C74 /* InputDialog.m */,
-				3EE3B2BB1631B5DA00C77F85 /* DialogTools.h */,
-				3EE3B2BC1631B5DA00C77F85 /* DialogTools.m */,
+				3EE3B2BB1631B5DA00C77F85 /* ConfirmDialog.h */,
+				3EE3B2BC1631B5DA00C77F85 /* ConfirmDialog.m */,
 				3EE3B2AA1631B58200C77F85 /* Toast.h */,
 				3EE3B2AB1631B58200C77F85 /* Toast.m */,
 				3E633990162D958B00B63328 /* GridViewWrapper.h */,
@@ -1427,7 +1427,7 @@
 				3E5BBCED16A6AC3B00C0E3C1 /* LuaFunctions.m in Sources */,
 				3E5BBCEE16A6AC3D00C0E3C1 /* LuaScriptInteraction.m in Sources */,
 				3E5BBD0016A6AC7200C0E3C1 /* RequireAutoreleasePoolChecker.m in Sources */,
-				3E5BBD0716A6AC9300C0E3C1 /* DialogTools.m in Sources */,
+				3E5BBD0716A6AC9300C0E3C1 /* ConfirmDialog.m in Sources */,
 				3E5BBD0916A6AC9500C0E3C1 /* GridViewWrapper.m in Sources */,
 				3E5BBD0516A6AC8F00C0E3C1 /* HTTPRequest.m in Sources */,
 				3E5BBD0A16A6AC9600C0E3C1 /* Waiting.m in Sources */,
@@ -1520,7 +1520,7 @@
 				3EE3B2C01631B5DA00C77F85 /* KeyboardState.m in Sources */,
 				3EE3B2C21631B5DA00C77F85 /* TaskQueue.m in Sources */,
 				3EE3B2C31631B5DA00C77F85 /* Timer.m in Sources */,
-				3EE3B2C41631B5DA00C77F85 /* DialogTools.m in Sources */,
+				3EE3B2C41631B5DA00C77F85 /* ConfirmDialog.m in Sources */,
 				3EE3B2CD1631B64D00C77F85 /* DataBaseKeyValueManager.m in Sources */,
 				3EE3B32D163235E800C77F85 /* LuaScriptInteraction.m in Sources */,
 				3EE36D6A16324B9000BB5D02 /* UnicodeScriptInvokeFilter.m in Sources */,

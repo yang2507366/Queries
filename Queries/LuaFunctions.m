@@ -17,7 +17,7 @@
 #import "LuaConstants.h"
 #import "LuaObjectManager.h"
 #import "RuntimeUtils.h"
-#import "DialogTools.h"
+#import "ConfirmDialog.h"
 #import "LIAnimation.h"
 #import "LIAppLoader.h"
 #import "LIAppRunner.h"
@@ -241,7 +241,7 @@ int ui_dialog(lua_State *L)
         [titleList addObject:luaStringParam(L, i)];
     }
     id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
-    [DialogTools showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
+    [ConfirmDialog showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
         if(callbackFunc.length != 0){
             [si callFunction:callbackFunc parameters:[NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
         }
@@ -265,7 +265,7 @@ int ui_dialog_c(lua_State *L)
         [titleList addObject:luaStringParam(L, i)];
     }
     id<ScriptInteraction> si = scriptInteractionForAppId(scriptId);
-    [DialogTools showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
+    [ConfirmDialog showWithTitle:title message:message completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
         if(callbackFunc.length != 0){
             [si callFunction:callbackFunc parameters:dialogId, [NSString stringWithFormat:@"%d", buttonIndex], buttonTitle, nil];
         }
