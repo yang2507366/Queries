@@ -71,7 +71,7 @@
     return [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
 }
 
-- (NSString *)mainScriptName
+- (NSString *)mainScript
 {
     if(self.mainScriptName.length == 0){
         NSString *appPath = [[NSBundle mainBundle] bundlePath];

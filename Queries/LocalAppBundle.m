@@ -68,7 +68,7 @@
     return filteredFiles;
 }
 
-- (NSString *)mainScriptName
+- (NSString *)mainScript
 {
     NSArray *scriptList = [self allScriptFileNames];
     for(NSString *file in scriptList){

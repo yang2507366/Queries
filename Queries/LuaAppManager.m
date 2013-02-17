@@ -108,7 +108,7 @@
         paramsId = [LuaObjectManager addObject:params group:appId];
     }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
-    NSString *mainScript = [self compileScript:[app.scriptBundle mainScriptName]
+    NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
                                     scriptName:lua_main_function
                                       bundleId:appId];
     NSString *returnValue = nil;
