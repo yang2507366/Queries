@@ -7,7 +7,7 @@
 //
 
 #import "LIUIRelated.h"
-#import "ConfirmDialog.h"
+#import "AlertDialog.h"
 #import "LuaAppManager.h"
 #import "LuaObjectManager.h"
 
@@ -30,7 +30,7 @@
 
 + (void)alertWithTitle:(NSString *)title message:(NSString *)msg scriptInteraction:(id<ScriptInteraction>)si callbackFuncName:(NSString *)funcName
 {
-    [ConfirmDialog showWithTitle:title message:msg completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
+    [AlertDialog showWithTitle:title message:msg completion:^(NSInteger buttonIndex, NSString *buttonTitle) {
         if(funcName.length != 0){
             [si callFunction:funcName callback:nil parameters:nil];
         }

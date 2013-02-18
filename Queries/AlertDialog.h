@@ -10,7 +10,7 @@
 
 typedef void(^DialogCompletion)(NSInteger buttonIndex, NSString *buttonTitle);
 
-@interface ConfirmDialog : NSObject
+@interface AlertDialog : NSObject
 
 + (void)showWithTitle:(NSString *)title
                 message:(NSString *)message

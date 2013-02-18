@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 gewara. All rights reserved.
 //
 
-#import "ConfirmDialog.h"
+#import "AlertDialog.h"
 
 @interface Dialog : NSObject <UIAlertViewDelegate>
 
@@ -48,7 +48,7 @@
 
 @end
 
-@implementation ConfirmDialog
+@implementation AlertDialog
 
 + (void)showWithTitle:(NSString *)title
                 message:(NSString *)message
