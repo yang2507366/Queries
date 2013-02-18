@@ -24,15 +24,16 @@
     [super dealloc];
 }
 
-- (void)showInputDialogWithTitle:(NSString *)title
-               cancelButtonTitle:(NSString *)cancelButtonTitle
-              approveButtonTitle:(NSString *)approveButtonTitle
-                      completion:(void(^)(NSString *input))completion
+- (void)showWithTitle:(NSString *)title
+              message:(NSString *)message
+    cancelButtonTitle:(NSString *)cancelButtonTitle
+   approveButtonTitle:(NSString *)approveButtonTitle
+           completion:(void(^)(NSString *input))completion
 {
     [self retain];
     self.completion = completion;
     self.alertView = [[[UIAlertView alloc] initWithTitle:title
-                                                message:nil
+                                                message:message
                                                delegate:self
                                       cancelButtonTitle:cancelButtonTitle
                                       otherButtonTitles:approveButtonTitle, nil] autorelease];
@@ -71,13 +72,14 @@
     [self release];
 }
 
-+ (void)showInputDialogWithTitle:(NSString *)title
-               cancelButtonTitle:(NSString *)cancelButtonTitle
-              approveButtonTitle:(NSString *)approveButtonTitle
-                      completion:(void(^)(NSString *input))completion
++ (void)showWithTitle:(NSString *)title
+              message:(NSString *)message
+    cancelButtonTitle:(NSString *)cancelButtonTitle
+   approveButtonTitle:(NSString *)approveButtonTitle
+           completion:(void(^)(NSString *input))completion
 {
     InputDialog *inputDialog = [[InputDialog new] autorelease];
-    [inputDialog showInputDialogWithTitle:title cancelButtonTitle:cancelButtonTitle approveButtonTitle:approveButtonTitle completion:completion];
+    [inputDialog showWithTitle:title message:message cancelButtonTitle:cancelButtonTitle approveButtonTitle:approveButtonTitle completion:completion];
 }
 
 @end

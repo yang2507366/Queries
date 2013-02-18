@@ -10,9 +10,10 @@
 
 @interface InputDialog : NSObject
 
-+ (void)showInputDialogWithTitle:(NSString *)title
-               cancelButtonTitle:(NSString *)cancelButtonTitle
-              approveButtonTitle:(NSString *)approveButtonTitle
-                      completion:(void(^)(NSString *input))completion;
++ (void)showWithTitle:(NSString *)title
+              message:(NSString *)message
+    cancelButtonTitle:(NSString *)cancelButtonTitle
+   approveButtonTitle:(NSString *)approveButtonTitle
+           completion:(void(^)(NSString *input))completion;
 
 @end
