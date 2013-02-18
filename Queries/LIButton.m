@@ -11,6 +11,8 @@
 #import "LuaAppManager.h"
 #import <objc/runtime.h>
 #import "LIRuntimeUtils.h"
+#import "UITools.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ButtonImplData : NSObject
 
@@ -146,7 +148,13 @@ static char *kFuncNameKey = "func";
 
 + (NSString *)create:(NSString *)appId type:(UIButtonType)buttonType
 {
-    LIButton *btn = [[[LIButton alloc] init] autorelease];
+    LIButton *btn = [[LIButton new] autorelease];
+    if(buttonType == UIButtonTypeRoundedRect){
+        UIColor *bgColor = [UIColor colorWithRed:131.0f/255.0f green:156.0f/255.0f blue:182.0f/255.0f alpha:1.0f];
+        [btn setBackgroundImage:[UITools createPureColorRoundImageWithColor:bgColor size:CGSizeMake(30, 30) roundSize:5]
+                       forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
     ButtonImplData *data = [[ButtonImplData new] autorelease];
     data.appId = appId;
     data.targetButton = btn;

@@ -32,7 +32,7 @@ function DictionaryViewController:viewDidLoad()
     end
     self.webView:setDelegate(webViewDelegate);
     
-    self.webView:loadRequest("http://3g.dict.cn");
+    self.webView:loadURLString("http://3g.dict.cn");
 end
 
 function DictionaryViewController:shouldAutorotate()

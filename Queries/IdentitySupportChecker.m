@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 yangzexin. All rights reserved.
 //
 
-#import "SelfSupportChecker.h"
+#import "IdentitySupportChecker.h"
 #import "LuaConstants.h"
 #import "LuaCommonUtils.h"
 
-@implementation SelfSupportChecker
+@implementation IdentitySupportChecker
 
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName  bundleId:(NSString *)bundleId
 {

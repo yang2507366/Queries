@@ -10,7 +10,7 @@
 #import "LuaScriptInteraction.h"
 #import "LuaConstants.h"
 #import "UnicodeChecker.h"
-#import "SelfSupportChecker.h"
+#import "IdentitySupportChecker.h"
 #import "PrefixGrammarChecker.h"
 #import "AutoreleasePoolChecker.h"
 #import "CodeUtils.h"
@@ -57,13 +57,14 @@
     
     self.appDict = [NSMutableDictionary dictionary];
     self.scriptCheckers = [NSArray arrayWithObjects:
-                           [[[UnicodeChecker alloc] init] autorelease],
+                           [[UnicodeChecker new] autorelease],
 //                           [[AutoreleasePoolChecker new] autorelease],
 //                           [[AddBaseScriptsChecker new] autorelease],
                            [[RequireAutoreleasePoolChecker new] autorelease],
                            [[RequireReplaceChecker new] autorelease],
-                           [[[PrefixGrammarChecker alloc] init] autorelease],
-                           [[[SelfSupportChecker alloc] init] autorelease],
+                           [[PrefixGrammarChecker new] autorelease],
+                           [[IdentitySupportChecker new] autorelease],
+                           [[SuperSupportChecker new] autorelease],
                            nil];
     
     return self;

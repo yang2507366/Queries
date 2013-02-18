@@ -17,6 +17,7 @@ function Object:new(objectId)
 end
 
 function Object:dealloc()
+    self:releaseFields();
     self.objectId = nil;
 end
 
