@@ -542,7 +542,6 @@ int utils_log(lua_State *L)
     
     LuaApp *app = [LuaAppManager appForId:bundleId];
     [app consoleOutput:[NSString stringWithFormat:@"%@", log]];
-    NSLog(@"%@", log);
     
     return 0;
 }

@@ -65,7 +65,9 @@
                            [[PrefixGrammarChecker new] autorelease],
                            [[IdentitySupportChecker new] autorelease],
                            [[SuperSupportChecker new] autorelease],
-//                           [[TabCharReplaceChecker new] autorelease],
+#ifndef __IPHONE_6_0
+                           [[TabCharReplaceChecker new] autorelease],
+#endif
                            nil];
     
     return self;
