@@ -42,6 +42,7 @@ end
 
 -- deconstructor
 function UITableView:dealloc()
+    UITableViewEventProxyTable[self:id()] = nil;
     UIView.dealloc(self);
 end
 

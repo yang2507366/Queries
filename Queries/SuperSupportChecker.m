@@ -74,7 +74,33 @@
 
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
-    return script;
+    NSInteger lastFindIndex = 0;
+    NSInteger beginIndex = 0;
+    NSMutableString *resultString = [NSMutableString string];
+    while((beginIndex = [script find:@"super:" fromIndex:lastFindIndex]) != -1){
+        [resultString appendString:[script substringWithBeginIndex:lastFindIndex endIndex:beginIndex]];
+        [resultString appendString:@"getmetatable(getmetatable(self))."];
+        NSInteger endIndex = [script find:@"(" fromIndex:beginIndex];
+        if(endIndex == -1){
+            // error syntax
+            return script;
+        }
+        NSString *funcName = [script substringWithBeginIndex:beginIndex + 6 endIndex:endIndex];
+        [resultString appendString:funcName];
+        [resultString appendString:@"(self"];
+//        NSLog(@"%@", [script substringWithRange:NSMakeRange(beginIndex, endIndex - beginIndex)]);
+        NSInteger rightBracketIndex = [script find:@")" fromIndex:endIndex];
+        NSString *innerParams = [self getFuncInnerParams:[script substringWithBeginIndex:beginIndex endIndex:rightBracketIndex + 1]];
+        BOOL hasParams = [innerParams stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length != 0;
+        if(hasParams){
+            [resultString appendString:@", "];
+        }
+        lastFindIndex = endIndex + 1;
+    }
+    if(lastFindIndex != -1 && lastFindIndex < script.length){
+        [resultString appendString:[script substringWithBeginIndex:lastFindIndex endIndex:script.length]];
+    }
+    return resultString;
 }
 
 @end

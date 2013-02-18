@@ -22,6 +22,11 @@ function UIPickerView:get(pvId)
     return pv;
 end
 
+function UIPickerView:dealloc()
+    UIPickerViewEventProxyTable[self:id()] = nil;
+    UIView.dealloc(self);
+end
+
 -- instance methods
 function UIPickerView:setDelegate(delegate)
     self.delegate = delegate;

@@ -5,8 +5,7 @@ DictionaryViewController.__index = DictionaryViewController;
 setmetatable(DictionaryViewController, UIViewController);
 
 function DictionaryViewController:dealloc()
-    self.webView:release();
-    UIView.dealloc(self);
+    getmetatable(getmetatable(self)).dealloc(self);
 end
 
 function DictionaryViewController:viewDidLoad()
