@@ -45,7 +45,7 @@
 - (id)initWithDBName:(NSString *)dbName
 {
     NSString *filePath = [[CommonUtils libraryPath] 
-                          stringByAppendingPathComponent:[CodeUtils encodeWithString:dbName]];
+                          stringByAppendingPathComponent:[CodeUtils md5ForString:dbName]];
     self = [self initWithDBName:dbName atFilePath:filePath];
     
     return self;
@@ -65,7 +65,7 @@
 
 - (id)initWithDBName:(NSString *)dbName atFolder:(NSString *)folderPath
 {
-    dbName = [CodeUtils encodeWithString:dbName];
+    dbName = [CodeUtils md5ForString:dbName];
     if(dbName.length > 200){
         dbName = [dbName substringToIndex:200];
     }

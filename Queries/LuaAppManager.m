@@ -19,6 +19,7 @@
 #import "AddBaseScriptsChecker.h"
 #import "LuaObjectManager.h"
 #import "RequireAutoreleasePoolChecker.h"
+#import "TabCharReplaceChecker.h"
 
 @interface LuaAppManager ()
 
@@ -58,13 +59,13 @@
     self.appDict = [NSMutableDictionary dictionary];
     self.scriptCheckers = [NSArray arrayWithObjects:
                            [[UnicodeChecker new] autorelease],
-//                           [[AutoreleasePoolChecker new] autorelease],
 //                           [[AddBaseScriptsChecker new] autorelease],
                            [[RequireAutoreleasePoolChecker new] autorelease],
                            [[RequireReplaceChecker new] autorelease],
                            [[PrefixGrammarChecker new] autorelease],
                            [[IdentitySupportChecker new] autorelease],
                            [[SuperSupportChecker new] autorelease],
+//                           [[TabCharReplaceChecker new] autorelease],
                            nil];
     
     return self;

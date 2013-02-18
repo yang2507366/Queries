@@ -126,6 +126,8 @@
 		3E23563316BF4813006C00A8 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2355DC16BF4813006C00A8 /* ZipArchive.m */; };
 		3E23563416BF4813006C00A8 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2355DC16BF4813006C00A8 /* ZipArchive.m */; };
 		3E23563616BF4853006C00A8 /* doc.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3E23563516BF4853006C00A8 /* doc.txt */; };
+		3E27B0AE16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E27B0AD16D209DE00E7EE0D /* TabCharReplaceChecker.m */; };
+		3E27B0AF16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E27B0AD16D209DE00E7EE0D /* TabCharReplaceChecker.m */; };
 		3E2ABA2616C7650200254332 /* LIRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ABA2516C7650200254332 /* LIRuntimeUtils.m */; };
 		3E2ABA2716C7650200254332 /* LIRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ABA2516C7650200254332 /* LIRuntimeUtils.m */; };
 		3E2ABA3416C7879100254332 /* LITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2ABA3316C7879100254332 /* LITableViewCell.m */; };
@@ -443,6 +445,8 @@
 		3E2355DB16BF4813006C00A8 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
 		3E2355DC16BF4813006C00A8 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
 		3E23563516BF4853006C00A8 /* doc.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doc.txt; path = Resources/doc.txt; sourceTree = "<group>"; };
+		3E27B0AC16D209DE00E7EE0D /* TabCharReplaceChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabCharReplaceChecker.h; sourceTree = "<group>"; };
+		3E27B0AD16D209DE00E7EE0D /* TabCharReplaceChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabCharReplaceChecker.m; sourceTree = "<group>"; };
 		3E2ABA2416C7650200254332 /* LIRuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIRuntimeUtils.h; sourceTree = "<group>"; };
 		3E2ABA2516C7650200254332 /* LIRuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIRuntimeUtils.m; sourceTree = "<group>"; };
 		3E2ABA3216C7879100254332 /* LITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LITableViewCell.h; sourceTree = "<group>"; };
@@ -1197,6 +1201,8 @@
 				3E7A6DF71657AACB008DC64B /* AddBaseScriptsChecker.m */,
 				3E30C70916773B8C002E138F /* RequireAutoreleasePoolChecker.h */,
 				3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */,
+				3E27B0AC16D209DE00E7EE0D /* TabCharReplaceChecker.h */,
+				3E27B0AD16D209DE00E7EE0D /* TabCharReplaceChecker.m */,
 			);
 			name = ScriptChecker;
 			sourceTree = "<group>";
@@ -1516,6 +1522,7 @@
 				3EB87B4716C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */,
 				3EF51BED16CF6B57004B6C74 /* InputDialog.m in Sources */,
 				3E6D22E916D1CCE40088288C /* UITools.m in Sources */,
+				3E27B0AF16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1655,6 +1662,7 @@
 				3EB87B4616C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */,
 				3EF51BEC16CF6B57004B6C74 /* InputDialog.m in Sources */,
 				3E6D22E816D1CCE40088288C /* UITools.m in Sources */,
+				3E27B0AE16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
