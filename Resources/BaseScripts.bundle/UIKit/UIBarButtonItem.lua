@@ -45,7 +45,7 @@ end
 function UIBarButtonItem:dealloc()
     runtime::invokeMethod(self:id(), "setTapped:", "");
     UIBarButtonItemEventProxyTable[self:id()] = nil;
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

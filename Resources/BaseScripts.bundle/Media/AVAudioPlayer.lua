@@ -25,7 +25,7 @@ end
 
 function AVAudioPlayer:dealloc()
     AVAudioPlayerEventProxyTable[self:id()] = nil;
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 function AVAudioPlayer:play()

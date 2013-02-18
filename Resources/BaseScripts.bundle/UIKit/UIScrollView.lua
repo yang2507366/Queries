@@ -17,7 +17,7 @@ end
 
 function UIScrollView:dealloc()
     runtime::invokeClassMethod("LIScrollViewDelegateProxy", "removeDelegateWithHash:", self:hash());
-    UIView.dealloc(self);
+    super:dealloc();
 end
 
 function UIScrollView:setContentInset(top, left, bottom, right)

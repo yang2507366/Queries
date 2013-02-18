@@ -29,7 +29,7 @@ end
 function UIGestureRecognizer:dealloc()
     UIGestureRecognizerEventProxyTable[self:id()] = nil;
     self:removeAssociatedObject();
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

@@ -45,7 +45,7 @@ end
 function UIButton:dealloc()
     UIButtonEventProxyTable[self:id()] = nil;
     runtime::invokeClassMethod("Button", "remove:", self:id());
-    UIView.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

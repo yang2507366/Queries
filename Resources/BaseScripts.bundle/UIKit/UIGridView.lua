@@ -26,7 +26,7 @@ end
 function UIGridView:dealloc()
     self.delegate = nil;
     UIGridViewEventProxyTable[self:id()] = nil;
-    UIView.dealloc(self);
+    super:dealloc();
 end
 
 function UIGridView:setNumberOfColumns(columns)

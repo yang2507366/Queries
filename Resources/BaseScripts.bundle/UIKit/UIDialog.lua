@@ -16,7 +16,7 @@ end
 
 function UIDialog:dealloc()
     UIDialogEventProxyTable[self:id()] = nil;
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 function UIDialog:dismiss(buttonIndex, buttonTitle)

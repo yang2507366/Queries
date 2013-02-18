@@ -24,7 +24,7 @@ end
 
 function UIPopoverController:dealloc()
     UIPopoverControllerEventProxyTable[self:id()] = nil;
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 function UIPopoverController:dismiss(animated)

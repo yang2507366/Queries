@@ -72,30 +72,69 @@
     return @"";
 }
 
+- (NSString *)findSuperClassNameWithScript:(NSString *)script adIndex:(NSInteger)index
+{
+    NSString *func = @"function ";
+    NSInteger functionBeignIndex = [script find:func fromIndex:index reverse:YES];
+    if(functionBeignIndex != -1){
+        functionBeignIndex += func.length;
+        NSInteger endIndex = [script find:@"(" fromIndex:functionBeignIndex];
+        NSString *funcName = [script substringWithBeginIndex:functionBeignIndex endIndex:endIndex];
+        NSArray *arr = [funcName componentsSeparatedByString:@":"];
+        if(arr.count == 2){
+            return [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        }
+        return nil;
+    }
+    return nil;
+}
+
+- (BOOL)isAlphbelt:(char)c
+{
+    return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) || c == '_';
+}
+
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
     NSInteger lastFindIndex = 0;
     NSInteger beginIndex = 0;
     NSMutableString *resultString = [NSMutableString string];
-    while((beginIndex = [script find:@"super:" fromIndex:lastFindIndex]) != -1){
-        [resultString appendString:[script substringWithBeginIndex:lastFindIndex endIndex:beginIndex]];
-        [resultString appendString:@"getmetatable(getmetatable(self))."];
-        NSInteger endIndex = [script find:@"(" fromIndex:beginIndex];
-        if(endIndex == -1){
-            // error syntax
-            return script;
+    while((beginIndex = [script find:@"super" fromIndex:lastFindIndex]) != -1){
+        const unichar rightChar = [script characterAtIndex:beginIndex + 5];
+        unichar leftChar = '#';
+        if(beginIndex != 0){
+            leftChar = [script characterAtIndex:beginIndex - 1];
         }
-        NSString *funcName = [script substringWithBeginIndex:beginIndex + 6 endIndex:endIndex];
-        [resultString appendString:funcName];
-        [resultString appendString:@"(self"];
-//        NSLog(@"%@", [script substringWithRange:NSMakeRange(beginIndex, endIndex - beginIndex)]);
-        NSInteger rightBracketIndex = [script find:@")" fromIndex:endIndex];
-        NSString *innerParams = [self getFuncInnerParams:[script substringWithBeginIndex:beginIndex endIndex:rightBracketIndex + 1]];
-        BOOL hasParams = [innerParams stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length != 0;
-        if(hasParams){
-            [resultString appendString:@", "];
+        NSString *parentClassName = [self findSuperClassNameWithScript:script adIndex:beginIndex];
+        if([self isAlphbelt:leftChar] || [self isAlphbelt:rightChar]){
+            [resultString appendString:[script substringWithBeginIndex:lastFindIndex endIndex:beginIndex + 5]];
+            lastFindIndex = beginIndex + 5;
+        }else if(parentClassName.length != 0){
+            // right value
+            BOOL selfSyntax = rightChar == ':';
+            [resultString appendString:[script substringWithBeginIndex:lastFindIndex endIndex:beginIndex]];
+            [resultString appendFormat:@"getmetatable(%@)", parentClassName];
+            if(selfSyntax){
+                [resultString appendString:@"."];
+                NSInteger endIndex = [script find:@"(" fromIndex:beginIndex];
+                if(endIndex == -1){
+                    // error syntax
+                    return script;
+                }
+                NSString *invokeFuncName = [script substringWithBeginIndex:beginIndex + 6 endIndex:endIndex];
+                [resultString appendString:invokeFuncName];
+                NSInteger rightBracketIndex = [script find:@")" fromIndex:endIndex];
+                [resultString appendString:@"(self"];
+                NSString *innerParams = [self getFuncInnerParams:[script substringWithBeginIndex:beginIndex endIndex:rightBracketIndex + 1]];
+                BOOL hasParams = [innerParams stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length != 0;
+                if(hasParams){
+                    [resultString appendString:@", "];
+                }
+                lastFindIndex = endIndex + 1;
+            }else{
+                lastFindIndex = beginIndex + 5;
+            }
         }
-        lastFindIndex = endIndex + 1;
     }
     if(lastFindIndex != -1 && lastFindIndex < script.length){
         [resultString appendString:[script substringWithBeginIndex:lastFindIndex endIndex:script.length]];

@@ -30,7 +30,7 @@ end
 
 function UITabBarController:delloc()
     UITabBarControllerEventProxyTable[self:id()] = nil;
-    UIViewController.dealloc(self);
+    super:dealloc();
 end
 
 function UITabBarController:setDelegate(delegate)

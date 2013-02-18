@@ -16,7 +16,7 @@ end
 
 function AppLoader:dealloc()
     AppLoaderEventProxyTable[self:id()] = nil;
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

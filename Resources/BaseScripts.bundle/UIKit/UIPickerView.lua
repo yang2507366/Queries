@@ -24,7 +24,7 @@ end
 
 function UIPickerView:dealloc()
     UIPickerViewEventProxyTable[self:id()] = nil;
-    UIView.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

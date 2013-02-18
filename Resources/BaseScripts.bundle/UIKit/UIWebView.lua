@@ -25,7 +25,7 @@ end
 
 function UIWebView:dealloc()
     UIWebViewEventProxyTable[self:id()] = nil;
-    UIView.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

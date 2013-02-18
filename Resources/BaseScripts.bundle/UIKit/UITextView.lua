@@ -26,7 +26,7 @@ end
 -- deconstructor
 function UITextView:dealloc()
     UITextViewEventProxyTable[self:id()] = nil;
-    UIView.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

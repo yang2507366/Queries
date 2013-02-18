@@ -45,7 +45,7 @@ end
 function UITextField:dealloc()
     self:setDelegate(nil);
     UITextFieldEventProxyTable[self:id()] = nil;
-    UIView.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

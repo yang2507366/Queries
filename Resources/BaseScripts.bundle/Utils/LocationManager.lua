@@ -25,7 +25,7 @@ end
 function LocationManager:dealloc()
     runtime::invokeMethod(self:id(), "cancel");
     LocationManagerEventProxyTable[self:id()] = nil;
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 function LocationManager:startUpdatingLocation()

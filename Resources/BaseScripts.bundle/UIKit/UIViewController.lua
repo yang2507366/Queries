@@ -42,7 +42,7 @@ end
 
 function UIViewController:dealloc()
     UIViewControllerEventProxyTable[self:id()] = nil;
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 -- instance methods

@@ -24,7 +24,7 @@ end
 
 function Geocoder:dealloc()
     runtime::invokeMethod(self:id(), "cancel");
-    Object.dealloc(self);
+    super:dealloc();
 end
 
 function Geocoder:geocode(latitude, longitude)
