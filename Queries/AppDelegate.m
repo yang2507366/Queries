@@ -18,7 +18,6 @@
 #import "ApplicationScriptBundle.h"
 #import "LuaApp.h"
 #import "OnlineAppBundleLoader.h"
-#import "ZipArchive.h"
 #import "LocalAppBundle.h"
 #import "ProviderPool.h"
 #import "LINavigationController.h"

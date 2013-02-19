@@ -8,9 +8,10 @@
 
 #import "LIAppLoader.h"
 #import "OnlineAppBundleLoader.h"
-#import "ZipArchive.h"
 #import "ProviderPool.h"
 #import "LuaConstants.h"
+#import "ZipHandler.h"
+#import "ZipHandlerFactory.h"
 
 @implementation LIAppLoader
 
@@ -24,13 +25,11 @@
     OnlineAppBundleLoader *loader = [[[OnlineAppBundleLoader alloc] initWithURLString:urlString] autorelease];
     [loader loadWithCompletion:^(NSString *filePath) {
         if(filePath.length != 0){
-            ZipArchive *zipAr = [[[ZipArchive alloc] init] autorelease];
-            [zipAr UnzipOpenFile:filePath];
             NSString *bundleId = [filePath lastPathComponent];
             NSString *targetPath = [lua_app_bundle_dir stringByAppendingPathComponent:bundleId];
             [[NSFileManager defaultManager] createDirectoryAtPath:targetPath withIntermediateDirectories:NO attributes:nil error:nil];
-            [zipAr UnzipFileTo:targetPath overWrite:YES];
-            
+            id<ZipHandler> zipHandler = [ZipHandlerFactory defaultZipHandler];
+            [zipHandler unzipWithFilePath:filePath toDirectoryPath:targetPath];
             [si callFunction:completeFunc parameters:loaderId, @"1", bundleId, nil];
         }else{
             [si callFunction:completeFunc parameters:loaderId, @"0", nil];

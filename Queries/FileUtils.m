@@ -7,8 +7,9 @@
 //
 
 #import "FileUtils.h"
-#import "ZipArchive.h"
 #import "LuaAppManager.h"
+#import "ZipHandler.h"
+#import "ZipHandlerFactory.h"
 
 @implementation FileUtils
 
@@ -30,10 +31,23 @@
      completeFunc:(NSString *)completeFunc
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        ZipArchive *zip = [[ZipArchive new] autorelease];
-        [zip UnzipOpenFile:zipFilePath];
-        [zip UnzipFileTo:path overWrite:overWrite];
-        [zip UnzipCloseFile];
+        id<ZipHandler> zipHandler = [ZipHandlerFactory defaultZipHandler];
+        [zipHandler unzipWithFilePath:zipFilePath toDirectoryPath:path];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[LuaAppManager scriptInteractionWithAppId:appId] callFunction:completeFunc parameters:objId, nil];
+        });
+    });
+}
+
++ (void)zipDirectory:(NSString *)dirPath
+          toFilePath:(NSString *)toFilePath
+               appId:(NSString *)appId
+               objId:(NSString *)objId
+        completeFunc:(NSString *)completeFunc
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        id<ZipHandler> zipHandler = [ZipHandlerFactory defaultZipHandler];
+        [zipHandler zipWithDirectoryPath:dirPath toFilePath:toFilePath];
         dispatch_async(dispatch_get_main_queue(), ^{
             [[LuaAppManager scriptInteractionWithAppId:appId] callFunction:completeFunc parameters:objId, nil];
         });

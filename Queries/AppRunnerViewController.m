@@ -9,12 +9,13 @@
 #import "AppRunnerViewController.h"
 #import "OnlineAppBundleLoader.h"
 #import "LuaApp.h"
-#import "ZipArchive.h"
 #import "LocalAppBundle.h"
 #import "LuaAppManager.h"
 #import "AlertDialog.h"
 #import "Waiting.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ZipHandlerFactory.h"
+#import "ZipHandler.h"
 
 @interface AppRunnerViewController () <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
@@ -88,12 +89,11 @@
             [AlertDialog showWithTitle:@"" message:@"加载失败，请检查URL地址" completion:nil cancelButtonTitle:@"确定" otherButtonTitleList:nil];
             return;
         }
-        ZipArchive *zipAr = [[[ZipArchive alloc] init] autorelease];
-        [zipAr UnzipOpenFile:filePath];
         NSString *targetPath = [NSString stringWithFormat:@"%@/Documents/%@", NSHomeDirectory(), [filePath lastPathComponent]];
         [[NSFileManager defaultManager] createDirectoryAtPath:targetPath withIntermediateDirectories:NO attributes:nil error:nil];
-        [zipAr UnzipFileTo:targetPath overWrite:YES];
-        [zipAr UnzipCloseFile];
+        id<ZipHandler> zipHandler = [ZipHandlerFactory defaultZipHandler];
+        [zipHandler unzipWithFilePath:filePath toDirectoryPath:targetPath];
+        
         LocalAppBundle *appBundle = [[[LocalAppBundle alloc] initWithDirectory:targetPath] autorelease];
         LuaApp *app = [[[LuaApp alloc] initWithScriptBundle:appBundle baseWindow:nil] autorelease];
         app.relatedViewController = self;

@@ -57,6 +57,10 @@
 		3E11E80116D3466400CDD9E0 /* ZKLFHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DC16D3466400CDD9E0 /* ZKLFHeader.m */; };
 		3E11E80216D3466400CDD9E0 /* ZKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DE16D3466400CDD9E0 /* ZKLog.m */; };
 		3E11E80316D3466400CDD9E0 /* ZKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DE16D3466400CDD9E0 /* ZKLog.m */; };
+		3E11E80816D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E80716D34C0D00CDD9E0 /* ZipHandlerFactory.m */; };
+		3E11E80916D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E80716D34C0D00CDD9E0 /* ZipHandlerFactory.m */; };
+		3E11E80C16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E80B16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m */; };
+		3E11E80D16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E80B16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m */; };
 		3E23549C16BF4787006C00A8 /* BaseScripts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549B16BF4787006C00A8 /* BaseScripts.bundle */; };
 		3E2354A316BF47A6006C00A8 /* DictionaryViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */; };
 		3E2354A416BF47A6006C00A8 /* GecoderViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */; };
@@ -415,6 +419,11 @@
 		3E11E7DC16D3466400CDD9E0 /* ZKLFHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLFHeader.m; sourceTree = "<group>"; };
 		3E11E7DD16D3466400CDD9E0 /* ZKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKLog.h; sourceTree = "<group>"; };
 		3E11E7DE16D3466400CDD9E0 /* ZKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLog.m; sourceTree = "<group>"; };
+		3E11E80516D34B5C00CDD9E0 /* ZipHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipHandler.h; sourceTree = "<group>"; };
+		3E11E80616D34C0D00CDD9E0 /* ZipHandlerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipHandlerFactory.h; sourceTree = "<group>"; };
+		3E11E80716D34C0D00CDD9E0 /* ZipHandlerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipHandlerFactory.m; sourceTree = "<group>"; };
+		3E11E80A16D34C5800CDD9E0 /* ZKZipHandlerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKZipHandlerAdapter.h; sourceTree = "<group>"; };
+		3E11E80B16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKZipHandlerAdapter.m; sourceTree = "<group>"; };
 		3E23549B16BF4787006C00A8 /* BaseScripts.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BaseScripts.bundle; path = Resources/BaseScripts.bundle; sourceTree = "<group>"; };
 		3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DictionaryViewController.lua; path = Resources/Scripts/DictionaryViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GecoderViewController.lua; path = Resources/Scripts/GecoderViewController.lua; sourceTree = "<group>"; };
@@ -832,6 +841,18 @@
 			path = MacFUSE;
 			sourceTree = "<group>";
 		};
+		3E11E80416D34AE600CDD9E0 /* ZipHandler */ = {
+			isa = PBXGroup;
+			children = (
+				3E11E80516D34B5C00CDD9E0 /* ZipHandler.h */,
+				3E11E80616D34C0D00CDD9E0 /* ZipHandlerFactory.h */,
+				3E11E80716D34C0D00CDD9E0 /* ZipHandlerFactory.m */,
+				3E11E80A16D34C5800CDD9E0 /* ZKZipHandlerAdapter.h */,
+				3E11E80B16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m */,
+			);
+			name = ZipHandler;
+			sourceTree = "<group>";
+		};
 		3E23558316BF4813006C00A8 /* asi-http-request */ = {
 			isa = PBXGroup;
 			children = (
@@ -1183,6 +1204,7 @@
 		3E9D0C31163192EF00C3FDCE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3E11E80416D34AE600CDD9E0 /* ZipHandler */,
 				3E7DA4F71665D38F00B57296 /* AccurateLocationManager */,
 				3E7DA4E81665D37500B57296 /* Gecoder */,
 				3E094EFE1634E462006F90A9 /* RuntimeUtils */,
@@ -1670,6 +1692,8 @@
 				3E11E7FF16D3466400CDD9E0 /* ZKFileArchive.m in Sources */,
 				3E11E80116D3466400CDD9E0 /* ZKLFHeader.m in Sources */,
 				3E11E80316D3466400CDD9E0 /* ZKLog.m in Sources */,
+				3E11E80916D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
+				3E11E80D16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1828,6 +1852,8 @@
 				3E11E7FE16D3466400CDD9E0 /* ZKFileArchive.m in Sources */,
 				3E11E80016D3466400CDD9E0 /* ZKLFHeader.m in Sources */,
 				3E11E80216D3466400CDD9E0 /* ZKLog.m in Sources */,
+				3E11E80816D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
+				3E11E80C16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

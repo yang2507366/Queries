@@ -18,5 +18,10 @@
             appId:(NSString *)appId
             objId:(NSString *)objId
      completeFunc:(NSString *)completeFunc;
++ (void)zipDirectory:(NSString *)dirPath
+          toFilePath:(NSString *)toFilePath
+               appId:(NSString *)appId
+               objId:(NSString *)objId
+        completeFunc:(NSString *)completeFunc;
 
 @end
