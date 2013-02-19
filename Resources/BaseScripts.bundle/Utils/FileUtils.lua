@@ -39,7 +39,7 @@ function FileUtils.exists(path)
 end
 
 function FileUtils.readString(path)
-    return runtime::invokeClassMethod("FileUtils", "readString:", path);
+    return runtime::invokeClassMethod("LIFileUtils", "readString:", path);
 end
 
 function FileUtils.mainBundlePath()

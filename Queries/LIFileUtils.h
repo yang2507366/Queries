@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FileUtils : NSObject
+@interface LIFileUtils : NSObject
 
 + (void)moveFileWithSourcePath:(NSString *)srcPath destinationPath:(NSString *)desPath;
 + (NSString *)readString:(NSString *)path;

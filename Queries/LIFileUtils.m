@@ -6,12 +6,12 @@
 //  Copyright (c) 2013年 yangzexin. All rights reserved.
 //
 
-#import "FileUtils.h"
+#import "LIFileUtils.h"
 #import "LuaAppManager.h"
 #import "ZipHandler.h"
 #import "ZipHandlerFactory.h"
 
-@implementation FileUtils
+@implementation LIFileUtils
 
 + (void)moveFileWithSourcePath:(NSString *)srcPath destinationPath:(NSString *)desPath
 {
