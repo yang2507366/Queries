@@ -1,9 +1,9 @@
 //
-//  FiltUtils.m
+//  FileUtils.m
 //  Queries
 //
-//  Created by yangzexin on 13-2-5.
-//  Copyright (c) 2013年 yangzexin. All rights reserved.
+//  Created by yangzexin on 2/19/13.
+//  Copyright (c) 2013 yangzexin. All rights reserved.
 //
 
 #import "FileUtils.h"
@@ -13,6 +13,7 @@
 
 @implementation FileUtils
 
+<<<<<<< HEAD
 + (void)moveFileWithSourcePath:(NSString *)srcPath destinationPath:(NSString *)desPath
 {
     [[NSFileManager defaultManager] moveItemAtPath:srcPath toPath:desPath error:nil];
@@ -54,4 +55,6 @@
     });
 }
 
+=======
+>>>>>>> c
 @end

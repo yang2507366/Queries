@@ -38,8 +38,8 @@ function FileUtils.exists(path)
     return exists;
 end
 
-function FileUtils.readString(path)
-    return runtime::invokeClassMethod("FileUtils", "readString:", path);
+function FileUtils.readStringFromFile(path)
+    return runtime::invokeClassMethod("LIFileUtils", "readStringFromFile:", path);
 end
 
 function FileUtils.mainBundlePath()
