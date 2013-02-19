@@ -81,6 +81,7 @@
    approveButtonTitle:(NSString *)approveButtonTitle
            completion:(void(^)(NSString *input))completion
 {
+    [self showWithTitle:title message:message initText:@"" cancelButtonTitle:cancelButtonTitle approveButtonTitle:approveButtonTitle completion:completion];
 }
 
 + (void)showWithTitle:(NSString *)title
