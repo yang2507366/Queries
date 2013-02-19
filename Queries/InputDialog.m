@@ -26,6 +26,7 @@
 
 - (void)showWithTitle:(NSString *)title
               message:(NSString *)message
+             initText:(NSString *)initText
     cancelButtonTitle:(NSString *)cancelButtonTitle
    approveButtonTitle:(NSString *)approveButtonTitle
            completion:(void(^)(NSString *input))completion
@@ -40,6 +41,7 @@
     UITextField *textField = nil;
     if([self.alertView respondsToSelector:@selector(alertViewStyle)]){
         self.alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [[self.alertView textFieldAtIndex:0] setText:initText];
     }else{
         textField = [[[UITextField alloc] initWithFrame:CGRectMake(10, 42, 264, 35)] autorelease];
         textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -49,6 +51,7 @@
         textField.backgroundColor = [UIColor whiteColor];
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        textField.text = initText;
         [self.alertView addSubview:textField];
         self.alertView.message = @"\n\n";
     }
@@ -78,8 +81,22 @@
    approveButtonTitle:(NSString *)approveButtonTitle
            completion:(void(^)(NSString *input))completion
 {
+}
+
++ (void)showWithTitle:(NSString *)title
+              message:(NSString *)message
+             initText:(NSString *)initText
+    cancelButtonTitle:(NSString *)cancelButtonTitle
+   approveButtonTitle:(NSString *)approveButtonTitle
+           completion:(void(^)(NSString *input))completion
+{
     InputDialog *inputDialog = [[InputDialog new] autorelease];
-    [inputDialog showWithTitle:title message:message cancelButtonTitle:cancelButtonTitle approveButtonTitle:approveButtonTitle completion:completion];
+    [inputDialog showWithTitle:title
+                       message:message
+                      initText:initText
+             cancelButtonTitle:cancelButtonTitle
+            approveButtonTitle:approveButtonTitle
+                    completion:completion];
 }
 
 @end

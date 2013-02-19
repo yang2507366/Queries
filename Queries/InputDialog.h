@@ -15,5 +15,11 @@
     cancelButtonTitle:(NSString *)cancelButtonTitle
    approveButtonTitle:(NSString *)approveButtonTitle
            completion:(void(^)(NSString *input))completion;
++ (void)showWithTitle:(NSString *)title
+              message:(NSString *)message
+             initText:(NSString *)initText
+    cancelButtonTitle:(NSString *)cancelButtonTitle
+   approveButtonTitle:(NSString *)approveButtonTitle
+           completion:(void(^)(NSString *input))completion;
 
 @end
