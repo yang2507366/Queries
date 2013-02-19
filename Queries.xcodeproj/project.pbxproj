@@ -20,6 +20,43 @@
 		3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B316C0D0D80095031A /* LIStringUtils.m */; };
 		3E0B29B816C0DFD50095031A /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* FileUtils.m */; };
 		3E0B29B916C0DFD50095031A /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* FileUtils.m */; };
+		3E11E7DF16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */; };
+		3E11E7E016D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */; };
+		3E11E7E116D3466400CDD9E0 /* COPYING.TXT in Resources */ = {isa = PBXBuildFile; fileRef = 3E11E7BC16D3466400CDD9E0 /* COPYING.TXT */; };
+		3E11E7E216D3466400CDD9E0 /* GMAppleDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7BE16D3466400CDD9E0 /* GMAppleDouble.m */; };
+		3E11E7E316D3466400CDD9E0 /* GMAppleDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7BE16D3466400CDD9E0 /* GMAppleDouble.m */; };
+		3E11E7E416D3466400CDD9E0 /* NSData+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C016D3466400CDD9E0 /* NSData+ZKAdditions.m */; };
+		3E11E7E516D3466400CDD9E0 /* NSData+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C016D3466400CDD9E0 /* NSData+ZKAdditions.m */; };
+		3E11E7E616D3466400CDD9E0 /* NSDate+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C216D3466400CDD9E0 /* NSDate+ZKAdditions.m */; };
+		3E11E7E716D3466400CDD9E0 /* NSDate+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C216D3466400CDD9E0 /* NSDate+ZKAdditions.m */; };
+		3E11E7E816D3466400CDD9E0 /* NSDictionary+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C416D3466400CDD9E0 /* NSDictionary+ZKAdditions.m */; };
+		3E11E7E916D3466400CDD9E0 /* NSDictionary+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C416D3466400CDD9E0 /* NSDictionary+ZKAdditions.m */; };
+		3E11E7EA16D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C616D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m */; };
+		3E11E7EB16D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C616D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m */; };
+		3E11E7EC16D3466400CDD9E0 /* NSFileManager+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C816D3466400CDD9E0 /* NSFileManager+ZKAdditions.m */; };
+		3E11E7ED16D3466400CDD9E0 /* NSFileManager+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7C816D3466400CDD9E0 /* NSFileManager+ZKAdditions.m */; };
+		3E11E7EE16D3466400CDD9E0 /* NSString+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7CA16D3466400CDD9E0 /* NSString+ZKAdditions.m */; };
+		3E11E7EF16D3466400CDD9E0 /* NSString+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7CA16D3466400CDD9E0 /* NSString+ZKAdditions.m */; };
+		3E11E7F016D3466400CDD9E0 /* ZKArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7CC16D3466400CDD9E0 /* ZKArchive.m */; };
+		3E11E7F116D3466400CDD9E0 /* ZKArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7CC16D3466400CDD9E0 /* ZKArchive.m */; };
+		3E11E7F216D3466400CDD9E0 /* ZKCDHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7CE16D3466400CDD9E0 /* ZKCDHeader.m */; };
+		3E11E7F316D3466400CDD9E0 /* ZKCDHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7CE16D3466400CDD9E0 /* ZKCDHeader.m */; };
+		3E11E7F416D3466400CDD9E0 /* ZKCDTrailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D016D3466400CDD9E0 /* ZKCDTrailer.m */; };
+		3E11E7F516D3466400CDD9E0 /* ZKCDTrailer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D016D3466400CDD9E0 /* ZKCDTrailer.m */; };
+		3E11E7F616D3466400CDD9E0 /* ZKCDTrailer64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D216D3466400CDD9E0 /* ZKCDTrailer64.m */; };
+		3E11E7F716D3466400CDD9E0 /* ZKCDTrailer64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D216D3466400CDD9E0 /* ZKCDTrailer64.m */; };
+		3E11E7F816D3466400CDD9E0 /* ZKCDTrailer64Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D416D3466400CDD9E0 /* ZKCDTrailer64Locator.m */; };
+		3E11E7F916D3466400CDD9E0 /* ZKCDTrailer64Locator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D416D3466400CDD9E0 /* ZKCDTrailer64Locator.m */; };
+		3E11E7FA16D3466400CDD9E0 /* ZKDataArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D616D3466400CDD9E0 /* ZKDataArchive.m */; };
+		3E11E7FB16D3466400CDD9E0 /* ZKDataArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D616D3466400CDD9E0 /* ZKDataArchive.m */; };
+		3E11E7FC16D3466400CDD9E0 /* ZKDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D816D3466400CDD9E0 /* ZKDefs.m */; };
+		3E11E7FD16D3466400CDD9E0 /* ZKDefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7D816D3466400CDD9E0 /* ZKDefs.m */; };
+		3E11E7FE16D3466400CDD9E0 /* ZKFileArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DA16D3466400CDD9E0 /* ZKFileArchive.m */; };
+		3E11E7FF16D3466400CDD9E0 /* ZKFileArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DA16D3466400CDD9E0 /* ZKFileArchive.m */; };
+		3E11E80016D3466400CDD9E0 /* ZKLFHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DC16D3466400CDD9E0 /* ZKLFHeader.m */; };
+		3E11E80116D3466400CDD9E0 /* ZKLFHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DC16D3466400CDD9E0 /* ZKLFHeader.m */; };
+		3E11E80216D3466400CDD9E0 /* ZKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DE16D3466400CDD9E0 /* ZKLog.m */; };
+		3E11E80316D3466400CDD9E0 /* ZKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7DE16D3466400CDD9E0 /* ZKLog.m */; };
 		3E23549C16BF4787006C00A8 /* BaseScripts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549B16BF4787006C00A8 /* BaseScripts.bundle */; };
 		3E2354A316BF47A6006C00A8 /* DictionaryViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */; };
 		3E2354A416BF47A6006C00A8 /* GecoderViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */; };
@@ -341,6 +378,43 @@
 		3E0B29B316C0D0D80095031A /* LIStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIStringUtils.m; sourceTree = "<group>"; };
 		3E0B29B616C0DFD50095031A /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
 		3E0B29B716C0DFD50095031A /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtils.m; sourceTree = "<group>"; };
+		3E11E7B916D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMAppleDouble+ZKAdditions.h"; sourceTree = "<group>"; };
+		3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMAppleDouble+ZKAdditions.m"; sourceTree = "<group>"; };
+		3E11E7BC16D3466400CDD9E0 /* COPYING.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.TXT; sourceTree = "<group>"; };
+		3E11E7BD16D3466400CDD9E0 /* GMAppleDouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAppleDouble.h; sourceTree = "<group>"; };
+		3E11E7BE16D3466400CDD9E0 /* GMAppleDouble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAppleDouble.m; sourceTree = "<group>"; };
+		3E11E7BF16D3466400CDD9E0 /* NSData+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ZKAdditions.h"; sourceTree = "<group>"; };
+		3E11E7C016D3466400CDD9E0 /* NSData+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ZKAdditions.m"; sourceTree = "<group>"; };
+		3E11E7C116D3466400CDD9E0 /* NSDate+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ZKAdditions.h"; sourceTree = "<group>"; };
+		3E11E7C216D3466400CDD9E0 /* NSDate+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ZKAdditions.m"; sourceTree = "<group>"; };
+		3E11E7C316D3466400CDD9E0 /* NSDictionary+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZKAdditions.h"; sourceTree = "<group>"; };
+		3E11E7C416D3466400CDD9E0 /* NSDictionary+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ZKAdditions.m"; sourceTree = "<group>"; };
+		3E11E7C516D3466400CDD9E0 /* NSFileHandle+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileHandle+ZKAdditions.h"; sourceTree = "<group>"; };
+		3E11E7C616D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileHandle+ZKAdditions.m"; sourceTree = "<group>"; };
+		3E11E7C716D3466400CDD9E0 /* NSFileManager+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ZKAdditions.h"; sourceTree = "<group>"; };
+		3E11E7C816D3466400CDD9E0 /* NSFileManager+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ZKAdditions.m"; sourceTree = "<group>"; };
+		3E11E7C916D3466400CDD9E0 /* NSString+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZKAdditions.h"; sourceTree = "<group>"; };
+		3E11E7CA16D3466400CDD9E0 /* NSString+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZKAdditions.m"; sourceTree = "<group>"; };
+		3E11E7CB16D3466400CDD9E0 /* ZKArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKArchive.h; sourceTree = "<group>"; };
+		3E11E7CC16D3466400CDD9E0 /* ZKArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKArchive.m; sourceTree = "<group>"; };
+		3E11E7CD16D3466400CDD9E0 /* ZKCDHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKCDHeader.h; sourceTree = "<group>"; };
+		3E11E7CE16D3466400CDD9E0 /* ZKCDHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKCDHeader.m; sourceTree = "<group>"; };
+		3E11E7CF16D3466400CDD9E0 /* ZKCDTrailer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKCDTrailer.h; sourceTree = "<group>"; };
+		3E11E7D016D3466400CDD9E0 /* ZKCDTrailer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKCDTrailer.m; sourceTree = "<group>"; };
+		3E11E7D116D3466400CDD9E0 /* ZKCDTrailer64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKCDTrailer64.h; sourceTree = "<group>"; };
+		3E11E7D216D3466400CDD9E0 /* ZKCDTrailer64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKCDTrailer64.m; sourceTree = "<group>"; };
+		3E11E7D316D3466400CDD9E0 /* ZKCDTrailer64Locator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKCDTrailer64Locator.h; sourceTree = "<group>"; };
+		3E11E7D416D3466400CDD9E0 /* ZKCDTrailer64Locator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKCDTrailer64Locator.m; sourceTree = "<group>"; };
+		3E11E7D516D3466400CDD9E0 /* ZKDataArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKDataArchive.h; sourceTree = "<group>"; };
+		3E11E7D616D3466400CDD9E0 /* ZKDataArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKDataArchive.m; sourceTree = "<group>"; };
+		3E11E7D716D3466400CDD9E0 /* ZKDefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKDefs.h; sourceTree = "<group>"; };
+		3E11E7D816D3466400CDD9E0 /* ZKDefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKDefs.m; sourceTree = "<group>"; };
+		3E11E7D916D3466400CDD9E0 /* ZKFileArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKFileArchive.h; sourceTree = "<group>"; };
+		3E11E7DA16D3466400CDD9E0 /* ZKFileArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKFileArchive.m; sourceTree = "<group>"; };
+		3E11E7DB16D3466400CDD9E0 /* ZKLFHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKLFHeader.h; sourceTree = "<group>"; };
+		3E11E7DC16D3466400CDD9E0 /* ZKLFHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLFHeader.m; sourceTree = "<group>"; };
+		3E11E7DD16D3466400CDD9E0 /* ZKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKLog.h; sourceTree = "<group>"; };
+		3E11E7DE16D3466400CDD9E0 /* ZKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLog.m; sourceTree = "<group>"; };
 		3E23549B16BF4787006C00A8 /* BaseScripts.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BaseScripts.bundle; path = Resources/BaseScripts.bundle; sourceTree = "<group>"; };
 		3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DictionaryViewController.lua; path = Resources/Scripts/DictionaryViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GecoderViewController.lua; path = Resources/Scripts/GecoderViewController.lua; sourceTree = "<group>"; };
@@ -705,6 +779,59 @@
 			name = Media;
 			sourceTree = "<group>";
 		};
+		3E11E7B816D3466400CDD9E0 /* ZipKit */ = {
+			isa = PBXGroup;
+			children = (
+				3E11E7B916D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.h */,
+				3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */,
+				3E11E7BB16D3466400CDD9E0 /* MacFUSE */,
+				3E11E7BF16D3466400CDD9E0 /* NSData+ZKAdditions.h */,
+				3E11E7C016D3466400CDD9E0 /* NSData+ZKAdditions.m */,
+				3E11E7C116D3466400CDD9E0 /* NSDate+ZKAdditions.h */,
+				3E11E7C216D3466400CDD9E0 /* NSDate+ZKAdditions.m */,
+				3E11E7C316D3466400CDD9E0 /* NSDictionary+ZKAdditions.h */,
+				3E11E7C416D3466400CDD9E0 /* NSDictionary+ZKAdditions.m */,
+				3E11E7C516D3466400CDD9E0 /* NSFileHandle+ZKAdditions.h */,
+				3E11E7C616D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m */,
+				3E11E7C716D3466400CDD9E0 /* NSFileManager+ZKAdditions.h */,
+				3E11E7C816D3466400CDD9E0 /* NSFileManager+ZKAdditions.m */,
+				3E11E7C916D3466400CDD9E0 /* NSString+ZKAdditions.h */,
+				3E11E7CA16D3466400CDD9E0 /* NSString+ZKAdditions.m */,
+				3E11E7CB16D3466400CDD9E0 /* ZKArchive.h */,
+				3E11E7CC16D3466400CDD9E0 /* ZKArchive.m */,
+				3E11E7CD16D3466400CDD9E0 /* ZKCDHeader.h */,
+				3E11E7CE16D3466400CDD9E0 /* ZKCDHeader.m */,
+				3E11E7CF16D3466400CDD9E0 /* ZKCDTrailer.h */,
+				3E11E7D016D3466400CDD9E0 /* ZKCDTrailer.m */,
+				3E11E7D116D3466400CDD9E0 /* ZKCDTrailer64.h */,
+				3E11E7D216D3466400CDD9E0 /* ZKCDTrailer64.m */,
+				3E11E7D316D3466400CDD9E0 /* ZKCDTrailer64Locator.h */,
+				3E11E7D416D3466400CDD9E0 /* ZKCDTrailer64Locator.m */,
+				3E11E7D516D3466400CDD9E0 /* ZKDataArchive.h */,
+				3E11E7D616D3466400CDD9E0 /* ZKDataArchive.m */,
+				3E11E7D716D3466400CDD9E0 /* ZKDefs.h */,
+				3E11E7D816D3466400CDD9E0 /* ZKDefs.m */,
+				3E11E7D916D3466400CDD9E0 /* ZKFileArchive.h */,
+				3E11E7DA16D3466400CDD9E0 /* ZKFileArchive.m */,
+				3E11E7DB16D3466400CDD9E0 /* ZKLFHeader.h */,
+				3E11E7DC16D3466400CDD9E0 /* ZKLFHeader.m */,
+				3E11E7DD16D3466400CDD9E0 /* ZKLog.h */,
+				3E11E7DE16D3466400CDD9E0 /* ZKLog.m */,
+			);
+			name = ZipKit;
+			path = 3rdLibraries/ZipKit;
+			sourceTree = "<group>";
+		};
+		3E11E7BB16D3466400CDD9E0 /* MacFUSE */ = {
+			isa = PBXGroup;
+			children = (
+				3E11E7BC16D3466400CDD9E0 /* COPYING.TXT */,
+				3E11E7BD16D3466400CDD9E0 /* GMAppleDouble.h */,
+				3E11E7BE16D3466400CDD9E0 /* GMAppleDouble.m */,
+			);
+			path = MacFUSE;
+			sourceTree = "<group>";
+		};
 		3E23558316BF4813006C00A8 /* asi-http-request */ = {
 			isa = PBXGroup;
 			children = (
@@ -988,6 +1115,7 @@
 		3E6B95011646926F009B01AD /* 3rdLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				3E11E7B816D3466400CDD9E0 /* ZipKit */,
 				3E23558316BF4813006C00A8 /* asi-http-request */,
 				3E23559A16BF4813006C00A8 /* lua-5.1 */,
 				3E2355D016BF4813006C00A8 /* ZipArchive */,
@@ -1385,6 +1513,7 @@
 				3E23558116BF47E1006C00A8 /* translate.png in Resources */,
 				3E23558216BF47E1006C00A8 /* translate@2x.png in Resources */,
 				3E23563616BF4853006C00A8 /* doc.txt in Resources */,
+				3E11E7E116D3466400CDD9E0 /* COPYING.TXT in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1523,6 +1652,24 @@
 				3EF51BED16CF6B57004B6C74 /* InputDialog.m in Sources */,
 				3E6D22E916D1CCE40088288C /* UITools.m in Sources */,
 				3E27B0AF16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */,
+				3E11E7E016D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */,
+				3E11E7E316D3466400CDD9E0 /* GMAppleDouble.m in Sources */,
+				3E11E7E516D3466400CDD9E0 /* NSData+ZKAdditions.m in Sources */,
+				3E11E7E716D3466400CDD9E0 /* NSDate+ZKAdditions.m in Sources */,
+				3E11E7E916D3466400CDD9E0 /* NSDictionary+ZKAdditions.m in Sources */,
+				3E11E7EB16D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m in Sources */,
+				3E11E7ED16D3466400CDD9E0 /* NSFileManager+ZKAdditions.m in Sources */,
+				3E11E7EF16D3466400CDD9E0 /* NSString+ZKAdditions.m in Sources */,
+				3E11E7F116D3466400CDD9E0 /* ZKArchive.m in Sources */,
+				3E11E7F316D3466400CDD9E0 /* ZKCDHeader.m in Sources */,
+				3E11E7F516D3466400CDD9E0 /* ZKCDTrailer.m in Sources */,
+				3E11E7F716D3466400CDD9E0 /* ZKCDTrailer64.m in Sources */,
+				3E11E7F916D3466400CDD9E0 /* ZKCDTrailer64Locator.m in Sources */,
+				3E11E7FB16D3466400CDD9E0 /* ZKDataArchive.m in Sources */,
+				3E11E7FD16D3466400CDD9E0 /* ZKDefs.m in Sources */,
+				3E11E7FF16D3466400CDD9E0 /* ZKFileArchive.m in Sources */,
+				3E11E80116D3466400CDD9E0 /* ZKLFHeader.m in Sources */,
+				3E11E80316D3466400CDD9E0 /* ZKLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1663,6 +1810,24 @@
 				3EF51BEC16CF6B57004B6C74 /* InputDialog.m in Sources */,
 				3E6D22E816D1CCE40088288C /* UITools.m in Sources */,
 				3E27B0AE16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */,
+				3E11E7DF16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */,
+				3E11E7E216D3466400CDD9E0 /* GMAppleDouble.m in Sources */,
+				3E11E7E416D3466400CDD9E0 /* NSData+ZKAdditions.m in Sources */,
+				3E11E7E616D3466400CDD9E0 /* NSDate+ZKAdditions.m in Sources */,
+				3E11E7E816D3466400CDD9E0 /* NSDictionary+ZKAdditions.m in Sources */,
+				3E11E7EA16D3466400CDD9E0 /* NSFileHandle+ZKAdditions.m in Sources */,
+				3E11E7EC16D3466400CDD9E0 /* NSFileManager+ZKAdditions.m in Sources */,
+				3E11E7EE16D3466400CDD9E0 /* NSString+ZKAdditions.m in Sources */,
+				3E11E7F016D3466400CDD9E0 /* ZKArchive.m in Sources */,
+				3E11E7F216D3466400CDD9E0 /* ZKCDHeader.m in Sources */,
+				3E11E7F416D3466400CDD9E0 /* ZKCDTrailer.m in Sources */,
+				3E11E7F616D3466400CDD9E0 /* ZKCDTrailer64.m in Sources */,
+				3E11E7F816D3466400CDD9E0 /* ZKCDTrailer64Locator.m in Sources */,
+				3E11E7FA16D3466400CDD9E0 /* ZKDataArchive.m in Sources */,
+				3E11E7FC16D3466400CDD9E0 /* ZKDefs.m in Sources */,
+				3E11E7FE16D3466400CDD9E0 /* ZKFileArchive.m in Sources */,
+				3E11E80016D3466400CDD9E0 /* ZKLFHeader.m in Sources */,
+				3E11E80216D3466400CDD9E0 /* ZKLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

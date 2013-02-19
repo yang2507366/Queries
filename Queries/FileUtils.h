@@ -12,5 +12,11 @@
 
 + (void)moveFileWithSourcePath:(NSString *)srcPath destinationPath:(NSString *)desPath;
 + (NSString *)readString:(NSString *)path;
++ (void)upzipFile:(NSString *)zipFilePath
+           toPath:(NSString *)path
+        overWrite:(BOOL)overWrite
+            appId:(NSString *)appId
+            objId:(NSString *)objId
+     completeFunc:(NSString *)completeFunc;
 
 @end
