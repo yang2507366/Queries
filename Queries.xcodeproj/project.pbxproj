@@ -18,7 +18,6 @@
 		3E0B29B116C0A4830095031A /* LIAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29AF16C0A4830095031A /* LIAudioPlayer.m */; };
 		3E0B29B416C0D0D80095031A /* LIStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B316C0D0D80095031A /* LIStringUtils.m */; };
 		3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B316C0D0D80095031A /* LIStringUtils.m */; };
-<<<<<<< HEAD
 		3E0B29B816C0DFD50095031A /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* FileUtils.m */; };
 		3E0B29B916C0DFD50095031A /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* FileUtils.m */; };
 		3E11E7DF16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */; };
@@ -62,10 +61,6 @@
 		3E11E80916D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E80716D34C0D00CDD9E0 /* ZipHandlerFactory.m */; };
 		3E11E80C16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E80B16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m */; };
 		3E11E80D16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E80B16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m */; };
-=======
-		3E0B29B816C0DFD50095031A /* LIFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* LIFileUtils.m */; };
-		3E0B29B916C0DFD50095031A /* LIFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* LIFileUtils.m */; };
->>>>>>> c
 		3E23549C16BF4787006C00A8 /* BaseScripts.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549B16BF4787006C00A8 /* BaseScripts.bundle */; };
 		3E2354A316BF47A6006C00A8 /* DictionaryViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */; };
 		3E2354A416BF47A6006C00A8 /* GecoderViewController.lua in Resources */ = {isa = PBXBuildFile; fileRef = 3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */; };
@@ -187,8 +182,6 @@
 		3E48219A16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */; };
 		3E48219B16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */; };
 		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
-		3E59F59E16D396C900AAAB97 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59F59D16D396C900AAAB97 /* FileUtils.m */; };
-		3E59F59F16D396C900AAAB97 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59F59D16D396C900AAAB97 /* FileUtils.m */; };
 		3E5BBCD216A6ABA400C0E3C1 /* QueriesLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */; };
 		3E5BBCD416A6ABA400C0E3C1 /* QueriesLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BBCD316A6ABA400C0E3C1 /* QueriesLib.m */; };
 		3E5BBCD916A6ABE700C0E3C1 /* LIAppLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* LIAppLoader.m */; };
@@ -387,7 +380,6 @@
 		3E0B29AF16C0A4830095031A /* LIAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIAudioPlayer.m; sourceTree = "<group>"; };
 		3E0B29B216C0D0D80095031A /* LIStringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIStringUtils.h; sourceTree = "<group>"; };
 		3E0B29B316C0D0D80095031A /* LIStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIStringUtils.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		3E0B29B616C0DFD50095031A /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
 		3E0B29B716C0DFD50095031A /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtils.m; sourceTree = "<group>"; };
 		3E11E7B916D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMAppleDouble+ZKAdditions.h"; sourceTree = "<group>"; };
@@ -432,10 +424,6 @@
 		3E11E80716D34C0D00CDD9E0 /* ZipHandlerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipHandlerFactory.m; sourceTree = "<group>"; };
 		3E11E80A16D34C5800CDD9E0 /* ZKZipHandlerAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKZipHandlerAdapter.h; sourceTree = "<group>"; };
 		3E11E80B16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKZipHandlerAdapter.m; sourceTree = "<group>"; };
-=======
-		3E0B29B616C0DFD50095031A /* LIFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFileUtils.h; sourceTree = "<group>"; };
-		3E0B29B716C0DFD50095031A /* LIFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFileUtils.m; sourceTree = "<group>"; };
->>>>>>> c
 		3E23549B16BF4787006C00A8 /* BaseScripts.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BaseScripts.bundle; path = Resources/BaseScripts.bundle; sourceTree = "<group>"; };
 		3E23549D16BF47A6006C00A8 /* DictionaryViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DictionaryViewController.lua; path = Resources/Scripts/DictionaryViewController.lua; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.lua; };
 		3E23549E16BF47A6006C00A8 /* GecoderViewController.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GecoderViewController.lua; path = Resources/Scripts/GecoderViewController.lua; sourceTree = "<group>"; };
@@ -561,8 +549,6 @@
 		3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDownloader.m; sourceTree = "<group>"; };
 		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
 		3E4EBD28163814BD00629387 /* DotGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotGrammarChecker.m; sourceTree = "<group>"; };
-		3E59F59C16D396C900AAAB97 /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
-		3E59F59D16D396C900AAAB97 /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtils.m; sourceTree = "<group>"; };
 		3E5BBCCC16A6ABA400C0E3C1 /* libQueriesLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQueriesLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5BBCD016A6ABA400C0E3C1 /* QueriesLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QueriesLib-Prefix.pch"; sourceTree = "<group>"; };
 		3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueriesLib.h; sourceTree = "<group>"; };
@@ -1241,8 +1227,6 @@
 				3EE3B2A11631987F00C77F85 /* MemoryTracer.m */,
 				3EA5BF1B16BF4B3500BD81D4 /* NetworkManager.h */,
 				3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */,
-				3E59F59C16D396C900AAAB97 /* FileUtils.h */,
-				3E59F59D16D396C900AAAB97 /* FileUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1335,8 +1319,8 @@
 				3EA40CC21667A44B00978C91 /* LIGeocoder.m */,
 				3E0B29B216C0D0D80095031A /* LIStringUtils.h */,
 				3E0B29B316C0D0D80095031A /* LIStringUtils.m */,
-				3E0B29B616C0DFD50095031A /* LIFileUtils.h */,
-				3E0B29B716C0DFD50095031A /* LIFileUtils.m */,
+				3E0B29B616C0DFD50095031A /* FileUtils.h */,
+				3E0B29B716C0DFD50095031A /* FileUtils.m */,
 				3E69E31A16C645C300DC3BFD /* LISystemUtils.h */,
 				3E69E31B16C645C300DC3BFD /* LISystemUtils.m */,
 				3E2ABA2416C7650200254332 /* LIRuntimeUtils.h */,
@@ -1680,7 +1664,7 @@
 				3E48219B16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */,
 				3E0B29B116C0A4830095031A /* LIAudioPlayer.m in Sources */,
 				3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */,
-				3E0B29B916C0DFD50095031A /* LIFileUtils.m in Sources */,
+				3E0B29B916C0DFD50095031A /* FileUtils.m in Sources */,
 				3E2B383D16C140050034DB94 /* LIScrollView.m in Sources */,
 				3E69E31D16C645C300DC3BFD /* LISystemUtils.m in Sources */,
 				3E69E32116C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
@@ -1690,7 +1674,6 @@
 				3EF51BED16CF6B57004B6C74 /* InputDialog.m in Sources */,
 				3E6D22E916D1CCE40088288C /* UITools.m in Sources */,
 				3E27B0AF16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */,
-<<<<<<< HEAD
 				3E11E7E016D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */,
 				3E11E7E316D3466400CDD9E0 /* GMAppleDouble.m in Sources */,
 				3E11E7E516D3466400CDD9E0 /* NSData+ZKAdditions.m in Sources */,
@@ -1711,9 +1694,6 @@
 				3E11E80316D3466400CDD9E0 /* ZKLog.m in Sources */,
 				3E11E80916D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
 				3E11E80D16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
-=======
-				3E59F59F16D396C900AAAB97 /* FileUtils.m in Sources */,
->>>>>>> c
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1844,7 +1824,7 @@
 				3E48219A16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */,
 				3E0B29B016C0A4830095031A /* LIAudioPlayer.m in Sources */,
 				3E0B29B416C0D0D80095031A /* LIStringUtils.m in Sources */,
-				3E0B29B816C0DFD50095031A /* LIFileUtils.m in Sources */,
+				3E0B29B816C0DFD50095031A /* FileUtils.m in Sources */,
 				3E2B383C16C140050034DB94 /* LIScrollView.m in Sources */,
 				3E69E31C16C645C300DC3BFD /* LISystemUtils.m in Sources */,
 				3E69E32016C64D9F00DC3BFD /* LIPopoverController.m in Sources */,
@@ -1854,7 +1834,6 @@
 				3EF51BEC16CF6B57004B6C74 /* InputDialog.m in Sources */,
 				3E6D22E816D1CCE40088288C /* UITools.m in Sources */,
 				3E27B0AE16D209DF00E7EE0D /* TabCharReplaceChecker.m in Sources */,
-<<<<<<< HEAD
 				3E11E7DF16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */,
 				3E11E7E216D3466400CDD9E0 /* GMAppleDouble.m in Sources */,
 				3E11E7E416D3466400CDD9E0 /* NSData+ZKAdditions.m in Sources */,
@@ -1875,9 +1854,6 @@
 				3E11E80216D3466400CDD9E0 /* ZKLog.m in Sources */,
 				3E11E80816D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
 				3E11E80C16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
-=======
-				3E59F59E16D396C900AAAB97 /* FileUtils.m in Sources */,
->>>>>>> c
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

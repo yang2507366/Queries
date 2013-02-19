@@ -1,16 +1,15 @@
 //
-//  FileUtils.h
+//  FiltUtils.h
 //  Queries
 //
-//  Created by yangzexin on 2/19/13.
-//  Copyright (c) 2013 yangzexin. All rights reserved.
+//  Created by yangzexin on 13-2-5.
+//  Copyright (c) 2013年 yangzexin. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface FileUtils : NSObject
 
-<<<<<<< HEAD
 + (void)moveFileWithSourcePath:(NSString *)srcPath destinationPath:(NSString *)desPath;
 + (NSString *)readString:(NSString *)path;
 + (void)upzipFile:(NSString *)zipFilePath
@@ -25,6 +24,4 @@
                objId:(NSString *)objId
         completeFunc:(NSString *)completeFunc;
 
-=======
->>>>>>> c
 @end
