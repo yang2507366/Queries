@@ -182,6 +182,8 @@
 		3E48219A16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */; };
 		3E48219B16BFFA1100EE1E2A /* HTTPDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */; };
 		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
+		3E50681716D3A5E0000C1C93 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E50681616D3A5E0000C1C93 /* FileUtils.m */; };
+		3E50681816D3A5E0000C1C93 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E50681616D3A5E0000C1C93 /* FileUtils.m */; };
 		3E5BBCD216A6ABA400C0E3C1 /* QueriesLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */; };
 		3E5BBCD416A6ABA400C0E3C1 /* QueriesLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BBCD316A6ABA400C0E3C1 /* QueriesLib.m */; };
 		3E5BBCD916A6ABE700C0E3C1 /* LIAppLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* LIAppLoader.m */; };
@@ -549,6 +551,8 @@
 		3E48219916BFFA1100EE1E2A /* HTTPDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTTPDownloader.m; sourceTree = "<group>"; };
 		3E4EBD27163814BC00629387 /* DotGrammarChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotGrammarChecker.h; sourceTree = "<group>"; };
 		3E4EBD28163814BD00629387 /* DotGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotGrammarChecker.m; sourceTree = "<group>"; };
+		3E50681516D3A5E0000C1C93 /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
+		3E50681616D3A5E0000C1C93 /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtils.m; sourceTree = "<group>"; };
 		3E5BBCCC16A6ABA400C0E3C1 /* libQueriesLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQueriesLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5BBCD016A6ABA400C0E3C1 /* QueriesLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QueriesLib-Prefix.pch"; sourceTree = "<group>"; };
 		3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueriesLib.h; sourceTree = "<group>"; };
@@ -1227,6 +1231,8 @@
 				3EE3B2A11631987F00C77F85 /* MemoryTracer.m */,
 				3EA5BF1B16BF4B3500BD81D4 /* NetworkManager.h */,
 				3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */,
+				3E50681516D3A5E0000C1C93 /* FileUtils.h */,
+				3E50681616D3A5E0000C1C93 /* FileUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1694,6 +1700,7 @@
 				3E11E80316D3466400CDD9E0 /* ZKLog.m in Sources */,
 				3E11E80916D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
 				3E11E80D16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
+				3E50681816D3A5E0000C1C93 /* FileUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1854,6 +1861,7 @@
 				3E11E80216D3466400CDD9E0 /* ZKLog.m in Sources */,
 				3E11E80816D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
 				3E11E80C16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
+				3E50681716D3A5E0000C1C93 /* FileUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
