@@ -347,6 +347,8 @@
 		3EF51BEC16CF6B57004B6C74 /* InputDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF51BEB16CF6B57004B6C74 /* InputDialog.m */; };
 		3EF51BED16CF6B57004B6C74 /* InputDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF51BEB16CF6B57004B6C74 /* InputDialog.m */; };
 		3EF86915163ACC1700E41ED6 /* LuaRuntimeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF86914163ACC1700E41ED6 /* LuaRuntimeUtils.m */; };
+		3EFC28C616D4AAED00AB552C /* ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC28C516D4AAED00AB552C /* ImagePicker.m */; };
+		3EFC28C716D4AAED00AB552C /* ImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFC28C516D4AAED00AB552C /* ImagePicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -723,6 +725,8 @@
 		3EF51BEB16CF6B57004B6C74 /* InputDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDialog.m; sourceTree = "<group>"; };
 		3EF86913163ACC1700E41ED6 /* LuaRuntimeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaRuntimeUtils.h; sourceTree = "<group>"; };
 		3EF86914163ACC1700E41ED6 /* LuaRuntimeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LuaRuntimeUtils.m; sourceTree = "<group>"; };
+		3EFC28C416D4AAED00AB552C /* ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePicker.h; sourceTree = "<group>"; };
+		3EFC28C516D4AAED00AB552C /* ImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1233,6 +1237,8 @@
 				3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */,
 				3E50681516D3A5E0000C1C93 /* FileUtils.h */,
 				3E50681616D3A5E0000C1C93 /* FileUtils.m */,
+				3EFC28C416D4AAED00AB552C /* ImagePicker.h */,
+				3EFC28C516D4AAED00AB552C /* ImagePicker.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1701,6 +1707,7 @@
 				3E11E80916D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
 				3E11E80D16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
 				3E50681816D3A5E0000C1C93 /* FileUtils.m in Sources */,
+				3EFC28C716D4AAED00AB552C /* ImagePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1862,6 +1869,7 @@
 				3E11E80816D34C0D00CDD9E0 /* ZipHandlerFactory.m in Sources */,
 				3E11E80C16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
 				3E50681716D3A5E0000C1C93 /* FileUtils.m in Sources */,
+				3EFC28C616D4AAED00AB552C /* ImagePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

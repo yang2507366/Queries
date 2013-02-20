@@ -6,6 +6,12 @@ UIScrollView = {};
 UIScrollView.__index = UIScrollView;
 setmetatable(UIScrollView, UIView);
 
+function UIScrollView:create()
+    local objId = runtime::invokeClassMethod("UIScrollView", "new");
+    runtime::invokeMethod(objId, "autorelease");
+    return self:get(objId);
+end
+
 function UIScrollView:get(objId)
     local obj = UIView:new(objId);
     setmetatable(obj, self);
@@ -34,6 +40,16 @@ function UIScrollView:contentOffset()
     local offset = runtime::invokeMethod(self:id(), "contentOffset");
     local offsetTable = stringSplit(offset, ",");
     return unpack(stringTableToNumberTable(offsetTable));
+end
+
+function UIScrollView:contentSize()
+    local size = runtime::invokeMethod(self:id(), "contentSize");
+    local sizeTable = stringSplit(size, ",");
+    return unpack(stringTableToNumberTable(sizeTable));
+end
+
+function UIScrollView:setContentSize(width, height)
+    runtime::invokeMethod(self:id(), "setContentSize:", width..","..height);
 end
 
 function UIScrollView:scrollsToTop()
