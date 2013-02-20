@@ -36,3 +36,7 @@ function StringUtils.toString(str)
     end
     return runtime::invokeClassMethod("LIStringUtils", "objectToString:", str);
 end
+
+function StringUtils.UTF8StringFromData(data)
+    return runtime::invokeClassMethod("LIustring", "UTF8StringFromData:", data:id());
+end

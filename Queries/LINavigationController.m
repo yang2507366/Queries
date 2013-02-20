@@ -25,7 +25,15 @@
 {
     id viewController = [self.viewControllers objectAtIndex:self.viewControllers.count - 1];
     if([viewController respondsToSelector:@selector(viewDidPop)]){
-        [viewController performSelector:@selector(viewDidPop)];
+        if(animated){
+            double delayInSeconds = 0.25f;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [viewController performSelector:@selector(viewDidPop)];
+            });
+        }else{
+            [viewController performSelector:@selector(viewDidPop)];
+        }
     }
     return [super popViewControllerAnimated:animated];
 }

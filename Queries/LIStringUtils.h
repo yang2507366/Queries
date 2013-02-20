@@ -16,5 +16,6 @@
 + (NSString *)length:(NSString *)string;
 + (NSString *)equals:(NSString *)str with:(NSString *)str2;
 + (NSString *)objectToString:(id)obj;
++ (NSString *)UTF8StringFromData:(NSData *)data;
 
 @end

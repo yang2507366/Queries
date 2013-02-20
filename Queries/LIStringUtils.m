@@ -42,4 +42,9 @@
     return [NSString stringWithFormat:@"%@", obj];
 }
 
++ (NSString *)UTF8StringFromData:(NSData *)data
+{
+    return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+}
+
 @end

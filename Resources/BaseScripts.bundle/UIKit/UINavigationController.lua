@@ -40,16 +40,16 @@ function UINavigationController:toolbarHidden()
     return toLuaBool(runtime::invokeMethod(self:id(), "toolbarHidden"));
 end
 
-function UINavigationController:setToolbarHidden(hidden)
-    runtime::invokeMethod(self:id(), "setToolbarHidden:", toObjCBool(hidden));
+function UINavigationController:setToolbarHidden(hidden, animated)
+    runtime::invokeMethod(self:id(), "setToolbarHidden:animated:", toObjCBool(hidden), toObjCBool(animated));
 end
 
 function UINavigationController:navigationBarHidden()
     return toLuaBool(runtime::invokeMethod(self:id(), "navigationBarHidden"));
 end
 
-function UINavigationController:setNavigationBarHidden(hidden)
-    runtime::invokeMethod(self:id(), "setNavigationBarHidden:", toObjCBool(hidden));
+function UINavigationController:setNavigationBarHidden(hidden, animated)
+    runtime::invokeMethod(self:id(), "setNavigationBarHidden:animated", toObjCBool(hidden), toObjCBool(animated));
 end
 
 function UINavigationController:navigationBar()
