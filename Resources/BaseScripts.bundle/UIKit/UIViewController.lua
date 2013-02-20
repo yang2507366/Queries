@@ -53,7 +53,7 @@ function UIViewController:setAsRootViewController()
     end
 end
 
-function UIViewController:relatedNavigationController()
+function UIViewController.relatedNavigationController()
     local relatedVCId = ui::getRelatedViewController();
     if string.len(relatedVCId) ~= 0 then
         return UINavigationController:get(relatedVCId);
