@@ -61,6 +61,7 @@
 
 - (void)dealloc
 {
+    self.errorMsgThrowBlock = nil;
     self.script = nil;
     if(script_string){
         free(script_string);
@@ -254,6 +255,9 @@ void attachCFunctions(lua_State *L)
 #else
         errorMsg = [NSString stringWithFormat:@"%@\n", errorMsg];
 #endif
+        if(self.errorMsgThrowBlock){
+            self.errorMsgThrowBlock(errorMsg);
+        }
     }
 #ifdef DEBUG
     lua_pop(lua_state, 1);

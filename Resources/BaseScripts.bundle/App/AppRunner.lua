@@ -8,7 +8,3 @@ function AppRunner.run(appId, params, relatedVC)
     end
     app::runApp(appId, params, relatedVC:id());
 end
-
-function AppRunner.destroy(appId)
-    
-end

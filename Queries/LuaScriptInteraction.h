@@ -14,6 +14,7 @@
 
 @property(nonatomic, copy)NSString *script;
 @property(nonatomic, retain)id<LuaScriptInvokeFilter> scriptInvokeFilter;
+@property(nonatomic, copy)void(^errorMsgThrowBlock)(NSString *);
 
 - (id)initWithScript:(NSString *)script;
 

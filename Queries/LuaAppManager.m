@@ -117,11 +117,12 @@
                                       bundleId:appId];
     NSString *returnValue = nil;
     if(mainScript.length != 0){
-        id<ScriptInteraction> si = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
-        app.scriptInteraction = si;
-        returnValue = [si callFunction:lua_main_function errorBlock:^(NSString *error) {
-            [app consoleOutput:[NSString stringWithFormat:@"%@", error]];
-        } parameters:paramsId != nil ? paramsId : nil, nil];
+        LuaScriptInteraction *luaSI = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
+        [luaSI setErrorMsgThrowBlock:^(NSString *errorMsg) {
+            [app consoleOutput:[NSString stringWithFormat:@"%@", errorMsg]];
+        }];
+        app.scriptInteraction = luaSI;
+        returnValue = [luaSI callFunction:lua_main_function parameters:paramsId != nil ? paramsId : nil, nil];
     }else{
         NSLog(@"run app:%@ failed, main script cannot be found", appId);
         [app consoleOutput:[NSString stringWithFormat:@"run app:%@ failed, main script cannot be found", appId]];
@@ -135,12 +136,7 @@
 - (void)destoryAppWithAppId:(NSString *)appId
 {
     [self.appDict removeObjectForKey:appId];
-//    LuaApp *app = [self.appDict objectForKey:appId];
-//    if(app == self.rootApp){
-//        NSLog(@"root app cannot be destoryed");
-//    }else{
-//        [self.appDict removeObjectForKey:appId];
-//    }
+    [LuaObjectManager removeGroup:appId];
 }
 
 - (LuaApp *)appForId:(NSString *)appId

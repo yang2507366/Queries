@@ -539,9 +539,12 @@ int utils_log(lua_State *L)
 {
     NSString *bundleId = luaStringParam(L, 1);
     NSString *log = luaStringParam(L, 2);
-    
+    if([LuaCommonUtils isObjCObject:log]){
+        log = [LuaObjectManager objectWithId:log group:bundleId];
+    }
     LuaApp *app = [LuaAppManager appForId:bundleId];
-    [app consoleOutput:[NSString stringWithFormat:@"%@", log]];
+    NSString *output = [NSString stringWithFormat:@"%@", log];
+    [app consoleOutput:output];
     
     return 0;
 }

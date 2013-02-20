@@ -57,8 +57,9 @@ function UIImage:get(imgId)
 end
 
 function UIImage:size()
-    local imgSize = runtime::invokeMethod(self:id(), "size");
-    
+    local size = runtime::invokeMethod(self:id(), "size");
+    local sizeTable = stringSplit(size, ",");
+    return unpack(stringTableToNumberTable(sizeTable));
 end
 
 function UIImage:stretchableImage(leftWidth, topCapHeight)
