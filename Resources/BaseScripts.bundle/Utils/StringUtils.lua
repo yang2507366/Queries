@@ -1,4 +1,5 @@
 require "CommonUtils"
+require "NSData"
 
 StringUtils = {};
 
@@ -10,7 +11,7 @@ function StringUtils.md5(str)
     return runtime::invokeClassMethod("CodeUtils", "md5ForString", str);
 end
 
-function StringUtils.removeUnicode(str)
+function StringUtils.removeUnicodeCharsFromString(str)
     return runtime::invokeClassMethod("CodeUtils", "removeAllUnicode:", str);
 end
 
@@ -38,5 +39,24 @@ function StringUtils.toString(str)
 end
 
 function StringUtils.UTF8StringFromData(data)
-    return runtime::invokeClassMethod("LIustring", "UTF8StringFromData:", data:id());
+    return runtime::invokeClassMethod("LIStringUtils", "UTF8StringFromData:", data:id());
+end
+
+function StringUtils.dataFromUTF8String(str)
+    local dataId = runtime::invokeClassMethod("LIStringUtils", "dataFromUTF8String:", str);
+    return NSData:get(dataId);
+end
+
+function StringUtils.find(str, matching, fromIndex, reverse)
+    if fromIndex == nil then
+        fromIndex = 0;
+    end
+    if reverse == nil then
+        reverse = false;
+    end
+    return tonumber(runtime::invokeClassMethod("LIStringUtils", "find:matching:fromIndex:reverse", str, matching, fromIndex, toObjCBool(reverse)));
+end
+
+function StringUtils.substring(str, beginIndex, endIndex)
+    return runtime::invokeClassMethod("LIStringUtils", "substring:beginIndex:endIndex:", str, beginIndex, endIndex);
 end

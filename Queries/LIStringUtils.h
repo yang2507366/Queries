@@ -17,5 +17,8 @@
 + (NSString *)equals:(NSString *)str with:(NSString *)str2;
 + (NSString *)objectToString:(id)obj;
 + (NSString *)UTF8StringFromData:(NSData *)data;
++ (NSData *)dataFromUTF8String:(NSString *)str;
++ (NSInteger)find:(NSString *)str matching:(NSString *)matching fromIndex:(NSInteger)fromIndex reverse:(BOOL)reverse;
++ (NSString *)substring:(NSString *)str beginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex;
 
 @end

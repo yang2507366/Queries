@@ -8,6 +8,7 @@
 
 #import "LIStringUtils.h"
 #import "CommonUtils.h"
+#import "NSString+Substring.h"
 
 @implementation LIStringUtils
 
@@ -45,6 +46,21 @@
 + (NSString *)UTF8StringFromData:(NSData *)data
 {
     return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+}
+
++ (NSData *)dataFromUTF8String:(NSString *)str
+{
+    return [str dataUsingEncoding:NSUTF8StringEncoding];
+}
+
++ (NSInteger)find:(NSString *)str matching:(NSString *)matching fromIndex:(NSInteger)fromIndex reverse:(BOOL)reverse
+{
+    return [str find:matching fromIndex:fromIndex reverse:reverse];
+}
+
++ (NSString *)substring:(NSString *)str beginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex
+{
+    return [str substringWithBeginIndex:beginIndex endIndex:endIndex];
 }
 
 @end

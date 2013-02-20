@@ -109,7 +109,11 @@
     NSString *paramsId = nil;
     NSString *appId = [app.scriptBundle bundleId];
     if(params){
-        paramsId = [LuaObjectManager addObject:params group:appId];
+        if([params isKindOfClass:[NSString class]]){
+            paramsId = params;
+        }else{
+            paramsId = [LuaObjectManager addObject:params group:appId];
+        }
     }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
     NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
@@ -117,12 +121,12 @@
                                       bundleId:appId];
     NSString *returnValue = nil;
     if(mainScript.length != 0){
-        LuaScriptInteraction *luaSI = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
-        [luaSI setErrorMsgThrowBlock:^(NSString *errorMsg) {
+        LuaScriptInteraction *luaScriptInteraction = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];
+        [luaScriptInteraction setErrorMsgThrowBlock:^(NSString *errorMsg) {
             [app consoleOutput:[NSString stringWithFormat:@"%@", errorMsg]];
         }];
-        app.scriptInteraction = luaSI;
-        returnValue = [luaSI callFunction:lua_main_function parameters:paramsId != nil ? paramsId : nil, nil];
+        app.scriptInteraction = luaScriptInteraction;
+        returnValue = [luaScriptInteraction callFunction:lua_main_function parameters:paramsId != nil ? paramsId : nil, nil];
     }else{
         NSLog(@"run app:%@ failed, main script cannot be found", appId);
         [app consoleOutput:[NSString stringWithFormat:@"run app:%@ failed, main script cannot be found", appId]];
