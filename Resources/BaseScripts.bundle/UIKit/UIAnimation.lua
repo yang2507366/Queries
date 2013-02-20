@@ -69,15 +69,12 @@ end
 -- event proxy
 UIAnimationEventProxyTable = {};
 
-function UIAnimation:_complete()
-    self:complete();
-    self:dealloc();
-end
-
 function UIAnimation_animation(animId)
     UIAnimationEventProxyTable[animId]:animation();
 end
 
 function UIAnimation_complete(animId)
-    UIAnimationEventProxyTable[animId]:_complete();
+    local anim = UIAnimationEventProxyTable[animId];
+    anim:complete();
+    anim:dealloc();
 end
