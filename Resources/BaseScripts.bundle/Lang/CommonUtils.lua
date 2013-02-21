@@ -50,7 +50,7 @@ function isObjCObject(objId)
     return utils::isObjCObject(objId);
 end
 
-function tostruct(...)
+function toCStruct(...)
     local str = "";
     for i, v in pairs(arg) do
         if i ~= 'n' then
