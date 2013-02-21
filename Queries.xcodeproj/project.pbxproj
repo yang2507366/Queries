@@ -20,6 +20,16 @@
 		3E0B29B516C0D0D80095031A /* LIStringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B316C0D0D80095031A /* LIStringUtils.m */; };
 		3E0B29B816C0DFD50095031A /* LIFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* LIFileUtils.m */; };
 		3E0B29B916C0DFD50095031A /* LIFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0B29B716C0DFD50095031A /* LIFileUtils.m */; };
+		3E0DF7B916D5C19B00C7FC7A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B016D5C19B00C7FC7A /* FMDatabase.m */; };
+		3E0DF7BA16D5C19B00C7FC7A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B016D5C19B00C7FC7A /* FMDatabase.m */; };
+		3E0DF7BB16D5C19B00C7FC7A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B216D5C19B00C7FC7A /* FMDatabaseAdditions.m */; };
+		3E0DF7BC16D5C19B00C7FC7A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B216D5C19B00C7FC7A /* FMDatabaseAdditions.m */; };
+		3E0DF7BD16D5C19B00C7FC7A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B416D5C19B00C7FC7A /* FMDatabasePool.m */; };
+		3E0DF7BE16D5C19B00C7FC7A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B416D5C19B00C7FC7A /* FMDatabasePool.m */; };
+		3E0DF7BF16D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B616D5C19B00C7FC7A /* FMDatabaseQueue.m */; };
+		3E0DF7C016D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B616D5C19B00C7FC7A /* FMDatabaseQueue.m */; };
+		3E0DF7C116D5C19B00C7FC7A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B816D5C19B00C7FC7A /* FMResultSet.m */; };
+		3E0DF7C216D5C19B00C7FC7A /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0DF7B816D5C19B00C7FC7A /* FMResultSet.m */; };
 		3E11E7DF16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */; };
 		3E11E7E016D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */; };
 		3E11E7E116D3466400CDD9E0 /* COPYING.TXT in Resources */ = {isa = PBXBuildFile; fileRef = 3E11E7BC16D3466400CDD9E0 /* COPYING.TXT */; };
@@ -386,6 +396,16 @@
 		3E0B29B316C0D0D80095031A /* LIStringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIStringUtils.m; sourceTree = "<group>"; };
 		3E0B29B616C0DFD50095031A /* LIFileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIFileUtils.h; sourceTree = "<group>"; };
 		3E0B29B716C0DFD50095031A /* LIFileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIFileUtils.m; sourceTree = "<group>"; };
+		3E0DF7AF16D5C19B00C7FC7A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		3E0DF7B016D5C19B00C7FC7A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		3E0DF7B116D5C19B00C7FC7A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		3E0DF7B216D5C19B00C7FC7A /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		3E0DF7B316D5C19B00C7FC7A /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		3E0DF7B416D5C19B00C7FC7A /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		3E0DF7B516D5C19B00C7FC7A /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		3E0DF7B616D5C19B00C7FC7A /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		3E0DF7B716D5C19B00C7FC7A /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		3E0DF7B816D5C19B00C7FC7A /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		3E11E7B916D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GMAppleDouble+ZKAdditions.h"; sourceTree = "<group>"; };
 		3E11E7BA16D3466400CDD9E0 /* GMAppleDouble+ZKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GMAppleDouble+ZKAdditions.m"; sourceTree = "<group>"; };
 		3E11E7BC16D3466400CDD9E0 /* COPYING.TXT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING.TXT; sourceTree = "<group>"; };
@@ -796,6 +816,24 @@
 			name = Media;
 			sourceTree = "<group>";
 		};
+		3E0DF7AE16D5C19B00C7FC7A /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				3E0DF7AF16D5C19B00C7FC7A /* FMDatabase.h */,
+				3E0DF7B016D5C19B00C7FC7A /* FMDatabase.m */,
+				3E0DF7B116D5C19B00C7FC7A /* FMDatabaseAdditions.h */,
+				3E0DF7B216D5C19B00C7FC7A /* FMDatabaseAdditions.m */,
+				3E0DF7B316D5C19B00C7FC7A /* FMDatabasePool.h */,
+				3E0DF7B416D5C19B00C7FC7A /* FMDatabasePool.m */,
+				3E0DF7B516D5C19B00C7FC7A /* FMDatabaseQueue.h */,
+				3E0DF7B616D5C19B00C7FC7A /* FMDatabaseQueue.m */,
+				3E0DF7B716D5C19B00C7FC7A /* FMResultSet.h */,
+				3E0DF7B816D5C19B00C7FC7A /* FMResultSet.m */,
+			);
+			name = fmdb;
+			path = 3rdLibraries/fmdb;
+			sourceTree = "<group>";
+		};
 		3E11E7B816D3466400CDD9E0 /* ZipKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1144,10 +1182,11 @@
 		3E6B95011646926F009B01AD /* 3rdLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				3E11E7B816D3466400CDD9E0 /* ZipKit */,
 				3E23558316BF4813006C00A8 /* asi-http-request */,
+				3E0DF7AE16D5C19B00C7FC7A /* fmdb */,
 				3E23559A16BF4813006C00A8 /* lua-5.1 */,
 				3E2355D016BF4813006C00A8 /* ZipArchive */,
+				3E11E7B816D3466400CDD9E0 /* ZipKit */,
 			);
 			name = 3rdLibraries;
 			sourceTree = "<group>";
@@ -1708,6 +1747,11 @@
 				3E11E80D16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
 				3E50681816D3A5E0000C1C93 /* FileUtils.m in Sources */,
 				3EFC28C716D4AAED00AB552C /* ImagePicker.m in Sources */,
+				3E0DF7BA16D5C19B00C7FC7A /* FMDatabase.m in Sources */,
+				3E0DF7BC16D5C19B00C7FC7A /* FMDatabaseAdditions.m in Sources */,
+				3E0DF7BE16D5C19B00C7FC7A /* FMDatabasePool.m in Sources */,
+				3E0DF7C016D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */,
+				3E0DF7C216D5C19B00C7FC7A /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1870,6 +1914,11 @@
 				3E11E80C16D34C5800CDD9E0 /* ZKZipHandlerAdapter.m in Sources */,
 				3E50681716D3A5E0000C1C93 /* FileUtils.m in Sources */,
 				3EFC28C616D4AAED00AB552C /* ImagePicker.m in Sources */,
+				3E0DF7B916D5C19B00C7FC7A /* FMDatabase.m in Sources */,
+				3E0DF7BB16D5C19B00C7FC7A /* FMDatabaseAdditions.m in Sources */,
+				3E0DF7BD16D5C19B00C7FC7A /* FMDatabasePool.m in Sources */,
+				3E0DF7BF16D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */,
+				3E0DF7C116D5C19B00C7FC7A /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

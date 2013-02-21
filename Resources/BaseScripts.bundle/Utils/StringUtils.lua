@@ -60,3 +60,16 @@ end
 function StringUtils.substring(str, beginIndex, endIndex)
     return runtime::invokeClassMethod("LIStringUtils", "substring:beginIndex:endIndex:", str, beginIndex, endIndex);
 end
+
+function StringUtils.replace(str, matching, replacement, compareOptions--[[option]], beginIndex--[[option]], endIndex--[[option]])
+    if compareOptions == nil then
+        compareOptions = 1;
+    end
+    if beginIndex == nil then
+        beginIndex = 0;
+    end
+    if endIndex == nil then
+        endIndex = StringUtils.length(str);
+    end
+    return runtime::invokeClassMethod("LIStringUtils", "replace:matching:replacement:compareOptions:beginIndex:endIndex:", str, matching, replacement, compareOptions, beginIndex, endIndex);
+end

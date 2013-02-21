@@ -63,4 +63,9 @@
     return [str substringWithBeginIndex:beginIndex endIndex:endIndex];
 }
 
++ (NSString *)replace:(NSString *)str matching:(NSString *)matching replacement:(NSString *)replacement compareOptions:(NSInteger)compareOptions beginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex
+{
+    return [str stringByReplacingOccurrencesOfString:matching withString:replacement options:compareOptions range:NSMakeRange(beginIndex, endIndex - beginIndex)];
+}
+
 @end

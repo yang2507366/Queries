@@ -20,5 +20,6 @@
 + (NSData *)dataFromUTF8String:(NSString *)str;
 + (NSInteger)find:(NSString *)str matching:(NSString *)matching fromIndex:(NSInteger)fromIndex reverse:(BOOL)reverse;
 + (NSString *)substring:(NSString *)str beginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex;
++ (NSString *)replace:(NSString *)str matching:(NSString *)matching replacement:(NSString *)replacement compareOptions:(NSInteger)compareOptions beginIndex:(NSInteger)beginIndex endIndex:(NSInteger)endIndex;
 
 @end
