@@ -89,11 +89,6 @@
     return nil;
 }
 
-- (BOOL)isAlphbelt:(char)c
-{
-    return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) || c == '_';
-}
-
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
     NSInteger lastFindIndex = 0;
@@ -106,7 +101,7 @@
             leftChar = [script characterAtIndex:beginIndex - 1];
         }
         NSString *parentClassName = [self findSuperClassNameWithScript:script adIndex:beginIndex];
-        if([self isAlphbelt:leftChar] || [self isAlphbelt:rightChar]){
+        if([LuaCommonUtils isAlphbelt:leftChar] || [LuaCommonUtils isAlphbelt:rightChar]){
             [resultString appendString:[script substringWithBeginIndex:lastFindIndex endIndex:beginIndex + 5]];
             lastFindIndex = beginIndex + 5;
         }else if(parentClassName.length != 0){

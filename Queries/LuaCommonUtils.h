@@ -23,5 +23,7 @@
 + (UIOffset)UIOffsetWithString:(NSString *)str;
 + (CATransform3D)CATransform3DWithString:(NSString *)str;
 + (CGAffineTransform)CGAffineTransformWithString:(NSString *)str;
++ (BOOL)isAlphbelt:(char)c;
++ (BOOL)isAlphbelts:(NSString *)str;
 
 @end

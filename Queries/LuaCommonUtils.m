@@ -182,4 +182,19 @@
     return t;
 }
 
++ (BOOL)isAlphbelt:(char)c
+{
+    return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) || c == '_';
+}
+
++ (BOOL)isAlphbelts:(NSString *)str
+{
+    for(NSInteger i = 0; i < str.length; ++i){
+        if(![self.class isAlphbelt:[str characterAtIndex:i]]){
+            return NO;
+        }
+    }
+    return YES;
+}
+
 @end

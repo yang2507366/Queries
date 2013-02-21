@@ -325,6 +325,8 @@
 		3EB7935516761126004EB529 /* LIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB7935416761126004EB529 /* LIWebView.m */; };
 		3EB87B4616C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB87B4516C7E39700C94FF9 /* LIGestureRecognizer.m */; };
 		3EB87B4716C7E39700C94FF9 /* LIGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB87B4516C7E39700C94FF9 /* LIGestureRecognizer.m */; };
+		3EBDBF0E16D6088A004776C9 /* DelayControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EBDBF0D16D6088A004776C9 /* DelayControl.m */; };
+		3EBDBF0F16D6088A004776C9 /* DelayControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EBDBF0D16D6088A004776C9 /* DelayControl.m */; };
 		3EC0BA971633B1DA0074D22B /* UnicodeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA961633B1DA0074D22B /* UnicodeChecker.m */; };
 		3EC0BA9D1633BA4C0074D22B /* IdentitySupportChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC0BA9C1633BA4C0074D22B /* IdentitySupportChecker.m */; };
 		3EC357C31643E288009611C8 /* ApplicationScriptBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC357C21643E288009611C8 /* ApplicationScriptBundle.m */; };
@@ -677,6 +679,8 @@
 		3EB7935416761126004EB529 /* LIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIWebView.m; sourceTree = "<group>"; };
 		3EB87B4416C7E39700C94FF9 /* LIGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIGestureRecognizer.h; sourceTree = "<group>"; };
 		3EB87B4516C7E39700C94FF9 /* LIGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LIGestureRecognizer.m; sourceTree = "<group>"; };
+		3EBDBF0C16D6088A004776C9 /* DelayControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayControl.h; sourceTree = "<group>"; };
+		3EBDBF0D16D6088A004776C9 /* DelayControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayControl.m; sourceTree = "<group>"; };
 		3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaConstants.h; sourceTree = "<group>"; };
 		3EC0BA931633B17E0074D22B /* LuaScriptChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaScriptChecker.h; sourceTree = "<group>"; };
 		3EC0BA951633B1DA0074D22B /* UnicodeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnicodeChecker.h; sourceTree = "<group>"; };
@@ -1039,6 +1043,7 @@
 			isa = PBXGroup;
 			children = (
 				3E23563516BF4853006C00A8 /* doc.txt */,
+				3E23549B16BF4787006C00A8 /* BaseScripts.bundle */,
 				3E633961162D8C3900B63328 /* Queries */,
 				3E5BBCCE16A6ABA400C0E3C1 /* QueriesLib */,
 				3EE3B3281632326A00C77F85 /* Lua */,
@@ -1211,7 +1216,6 @@
 		3E77174E1649620D0077A1C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3E23549B16BF4787006C00A8 /* BaseScripts.bundle */,
 				3E6D22E516D1CC1D0088288C /* Images */,
 			);
 			name = Resources;
@@ -1260,6 +1264,8 @@
 				3EE3B2AE1631B5DA00C77F85 /* CodeUtils.m */,
 				3EE3B2AF1631B5DA00C77F85 /* CommonUtils.h */,
 				3EE3B2B01631B5DA00C77F85 /* CommonUtils.m */,
+				3EBDBF0C16D6088A004776C9 /* DelayControl.h */,
+				3EBDBF0D16D6088A004776C9 /* DelayControl.m */,
 				3EE3B2B11631B5DA00C77F85 /* DelayController.h */,
 				3EE3B2B21631B5DA00C77F85 /* DelayController.m */,
 				3EE3B2B31631B5DA00C77F85 /* KeyboardState.h */,
@@ -1752,6 +1758,7 @@
 				3E0DF7BE16D5C19B00C7FC7A /* FMDatabasePool.m in Sources */,
 				3E0DF7C016D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */,
 				3E0DF7C216D5C19B00C7FC7A /* FMResultSet.m in Sources */,
+				3EBDBF0F16D6088A004776C9 /* DelayControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1919,6 +1926,7 @@
 				3E0DF7BD16D5C19B00C7FC7A /* FMDatabasePool.m in Sources */,
 				3E0DF7BF16D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */,
 				3E0DF7C116D5C19B00C7FC7A /* FMResultSet.m in Sources */,
+				3EBDBF0E16D6088A004776C9 /* DelayControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
