@@ -22,7 +22,7 @@ function FileUtils.move(srcPath, desPath)
     runtime::releaseObject(fileMgrId);
 end
 
-function FileUtils.createDirectory(path, intermediate)
+function FileUtils.createDirectory(path, intermediate--[[option]])
     if not intermediate then
         intermediate = false;
     end

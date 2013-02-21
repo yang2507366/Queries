@@ -5,7 +5,7 @@ UIColor.__index = UIColor;
 setmetatable(UIColor, Object);
 
 -- constructor
-function UIColor:create(red, green, blue, alpha)
+function UIColor:create(red, green, blue, alpha--[[option]])
     if not alpha then
         alpha = 1;
     end

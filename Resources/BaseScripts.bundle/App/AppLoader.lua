@@ -42,8 +42,8 @@ function AppLoader:cancel()
 end
 
 -- global functions
-function runAppWithRelatedViewController(appId, relatedVC)
-    app::runApp(appId, relatedVC:id());
+function AppLoader.runApp(appId, relatedViewController)
+    app::runApp(appId, relatedViewController:id());
 end
 
 -- event proxy

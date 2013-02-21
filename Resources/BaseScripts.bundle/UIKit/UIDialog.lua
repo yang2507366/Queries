@@ -4,7 +4,7 @@ UIDialog = {};
 UIDialog.__index = UIDialog;
 setmetatable(UIDialog, Object);
 
-function UIDialog:create(title, message, cancelButtonTitle, ...)
+function UIDialog:create(title, message, cancelButtonTitle, ...--[[other titles]])
     local obj = Object:new(tostring(math::random()));
     setmetatable(obj, self);
     

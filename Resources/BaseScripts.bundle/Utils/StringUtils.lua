@@ -47,7 +47,7 @@ function StringUtils.dataFromUTF8String(str)
     return NSData:get(dataId);
 end
 
-function StringUtils.find(str, matching, fromIndex, reverse)
+function StringUtils.find(str, matching, fromIndex--[[option]], reverse--[[option]])
     if fromIndex == nil then
         fromIndex = 0;
     end

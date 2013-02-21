@@ -45,7 +45,7 @@ function NSMutableArray:addObjectsFromArray(arr)
     runtime::invokeMethod(self:id(), "addObjectsFromArray:", arr:id());
 end
 
-function NSMutableArray:insertObject(obj, index)
+function NSMutableArray:insertObject(obj, index--[[option]])
     if obj.id ~= nil then
         obj = obj:id();
     end

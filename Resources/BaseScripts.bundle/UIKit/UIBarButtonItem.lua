@@ -9,7 +9,7 @@ UIBarButtonItemStyleBordered = 1;
 UIBarButtonItemStyleDone = 2;
 
 -- constructor
-function UIBarButtonItem:create(title)
+function UIBarButtonItem:create(title--[[option]])
     if title == nil then
         title = "Untitled";
     end

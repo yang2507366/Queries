@@ -9,7 +9,7 @@ UINavigationController.__index = UINavigationController;
 setmetatable(UINavigationController, UIViewController);
 
 -- constructor
-function UINavigationController:create(rootVc)
+function UINavigationController:create(rootVc--[[option]])
     if rootVc ~= nil then
         local ncId = runtime::invokeClassMethod("LINavigationController", "create", AppContext.current());
         local nc = self:get(ncId);
@@ -29,7 +29,7 @@ function UINavigationController:get(ncId)
 end
 
 -- instance methods
-function UINavigationController:pushViewController(vc, animated)
+function UINavigationController:pushViewController(vc, animated--[[option]])
     if animated == nil then
         animated = true;
     end

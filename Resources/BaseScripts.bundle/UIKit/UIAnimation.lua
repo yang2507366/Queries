@@ -44,7 +44,7 @@ function UIAnimation:dealloc()
     super:dealloc();
 end
 
-function UIAnimation:start(duration, delay, options)
+function UIAnimation:start(duration--[[option]], delay--[[option]], options--[[option]])
     if duration == nil then
         duration = 0.25;
     end

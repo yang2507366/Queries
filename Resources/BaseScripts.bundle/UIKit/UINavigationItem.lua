@@ -36,7 +36,7 @@ function UINavigationItem:rightBarButtonItem()
     return bi;
 end
 
-function UINavigationItem:setRightBarButtonItem(buttonItem, animated)
+function UINavigationItem:setRightBarButtonItem(buttonItem, animated--[[option]])
     animated = toObjCBool(animated);
     if buttonItem then
         runtime::invokeMethod(self:id(), "setRightBarButtonItem:animated:", buttonItem:id(), animated);
@@ -45,7 +45,7 @@ function UINavigationItem:setRightBarButtonItem(buttonItem, animated)
     end
 end
 
-function UINavigationItem:setLeftBarButtonItem(buttonItem, animated)
+function UINavigationItem:setLeftBarButtonItem(buttonItem, animated--[[option]])
     animated = toObjCBool(animated);
     if buttonItem then
         runtime::invokeMethod(self:id(), "setLeftBarButtonItem:animated:", buttonItem:id(), animated);

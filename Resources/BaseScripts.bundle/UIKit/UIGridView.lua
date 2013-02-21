@@ -6,7 +6,7 @@ UIGridView = {};
 UIGridView.__index = UIGridView;
 setmetatable(UIGridView, UIView);
 
-function UIGridView:create(numberOfColumns)
+function UIGridView:create(numberOfColumns--[[option]])
     local gridView = self:get(runtime::invokeClassMethod("LIGridView", "create:", AppContext.current()));
     if numberOfColumns == nil then
         numberOfColumns = 3;

@@ -5,7 +5,7 @@ UIFont.__index = UIFont;
 setmetatable(UIFont, Object);
 
 -- constructor
-function UIFont:create(fontSize, bold)
+function UIFont:create(fontSize, bold--[[option]])
     local fontId = nil;
     if bold ~= nil and bold then
         fontId = runtime::invokeClassMethod("UIFont", "boldSystemFontOfSize:", fontSize);

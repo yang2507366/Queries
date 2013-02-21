@@ -18,7 +18,7 @@ UITableViewCellEditingStyleDelete = 1;
 UITableViewCellEditingStyleInsert = 2;
 
 -- constructor
-function UITableView:createWithStyle(style)
+function UITableView:createWithStyle(style--[[option]])
     if style == nil then
         style = UITableViewStylePlain;
     end
@@ -331,7 +331,7 @@ function UITableView:endUpdates()
     runtime::invokeMethod(self:id(), "endUpdates");
 end
 
-function UITableView:deleteRowsAtIndexPaths(indexPaths, rowAnimation)
+function UITableView:deleteRowsAtIndexPaths(indexPaths, rowAnimation--[[option]])
     if not rowAnimation then
         rowAnimation = 100;
     end

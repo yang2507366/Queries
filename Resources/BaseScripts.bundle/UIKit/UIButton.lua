@@ -16,7 +16,7 @@ UIButtonTypeInfoDark = 4;
 UIButtonTypeContactAdd = 5;
 
 -- constructor
-function UIButton:create(title, buttonType)
+function UIButton:create(title--[[option]], buttonType--[[option]])
     if title == nil then
         title = "";
     end
@@ -44,12 +44,12 @@ end
 -- deconstructor
 function UIButton:dealloc()
     UIButtonEventProxyTable[self:id()] = nil;
-    runtime::invokeClassMethod("Button", "remove:", self:id());
+    runtime::invokeClassMethod("LIButton", "remove:", self:id());
     super:dealloc();
 end
 
 -- instance methods
-function UIButton:setTitle(title, state)
+function UIButton:setTitle(title, state--[[option]])
     if state == nil then
         state = UIControlStateNormal;
     end
@@ -69,7 +69,7 @@ function UIButton:enabled()
     return toLuaBool(runtime::invokeMethod(self:id(), "enabled"));
 end
 
-function UIButton:setImage(img, state)
+function UIButton:setImage(img, state--[[option]])
     if not state then
         state = 0;
     end
@@ -94,14 +94,6 @@ end
 
 -- events
 function UIButton:tapped()
-end
-
-function UIButton:setGlobalCallbackFuncName(funcName, category)
-    if not category then
-        category = "default";
-    end
-    runtime::invokeMethod(self:id(), "setGlobalCallbackFuncCategory:", category);
-    runtime::invokeMethod(self:id(), "setGlobalCallbackFuncName:", funcName);
 end
 
 -- event proxy

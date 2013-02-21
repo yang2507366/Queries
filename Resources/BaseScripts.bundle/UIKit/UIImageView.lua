@@ -4,7 +4,7 @@ UIImageView = {};
 UIImageView.__index = UIImageView;
 setmetatable(UIImageView, UIView);
 
-function UIImageView:create(img)
+function UIImageView:create(img--[[option]])
     local imgViewId = runtime::createObject("UIImageView", "init");
     local imgView = self:get(imgViewId);
     if img then

@@ -12,7 +12,7 @@ function UIImage:imageNamed(imgName)
     return UIImage:get(imgId);
 end
 
-function UIImage:imageWithData(data, scale)
+function UIImage:imageWithData(data, scale--[[option]])
     if scale == nil then
         scale = 1.0;
     end
@@ -20,8 +20,8 @@ function UIImage:imageWithData(data, scale)
     return UIImage:get(imgId);
 end
 
-function UIImage:imageWithResName(resName, scale)
-    if not scale then
+function UIImage:imageWithResName(resName, scale--[[option]])
+    if scale == nil then
         local screen = Object:new(runtime::invokeClassMethod("UIScreen", "mainScreen"));
         local scaleString = runtime::invokeMethod(screen:id(), "scale");
         scale = tonumber(scaleString);

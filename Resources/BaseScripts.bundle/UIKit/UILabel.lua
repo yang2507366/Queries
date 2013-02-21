@@ -7,7 +7,7 @@ UILabel.__index = UILabel;
 setmetatable(UILabel, UIView);
 
 -- constructor
-function UILabel:create(text)
+function UILabel:create(text--[[option]])
     if text == nil then
         text = "";
     end

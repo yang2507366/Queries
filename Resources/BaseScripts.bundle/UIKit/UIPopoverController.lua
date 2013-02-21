@@ -27,11 +27,11 @@ function UIPopoverController:dealloc()
     super:dealloc();
 end
 
-function UIPopoverController:dismiss(animated)
+function UIPopoverController:dismiss(animated--[[option]])
     runtime::invokeMethod(self:id(), "dismissPopoverAnimated:", toObjCBool(animated));
 end
 
-function UIPopoverController:presentFromBarButtonItem(barButtonItem, arrowDirection, animated)
+function UIPopoverController:presentFromBarButtonItem(barButtonItem, arrowDirection, animated--[[option]])
     runtime::invokeMethod(self:id(), "presentPopoverFromBarButtonItem:permittedArrowDirections:animated:", barButtonItem:id(), arrowDirection, toObjCBool(animated));
 end
 
@@ -49,6 +49,10 @@ end
 
 function UIPopoverController:didDismiss()
 
+end
+
+function UIPopoverController:popoverVisible()
+    return toLuaBool(runtime::invokeMethod(self:id(), "isPopoverVisible"));
 end
 
 UIPopoverControllerEventProxyTable = {};

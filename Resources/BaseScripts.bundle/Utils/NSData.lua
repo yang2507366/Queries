@@ -35,7 +35,7 @@ function NSData:description()
     return runtime::invokeMethod(self:id(), "description");
 end
 
-function NSData:writeToFile(path, atomically)
+function NSData:writeToFile(path, atomically--[[option]])
     if atomically == nil then
         atomically = false;
     end
@@ -43,7 +43,7 @@ function NSData:writeToFile(path, atomically)
     runtime::invokeMethod(self:id(), "writeToFile:atomically:", path, toObjCBool(atomically));
 end
 
-function NSData:writeToURL(URL, atomically)
+function NSData:writeToURL(URL, atomically--[[option]])
     if atomically == nil then
         atomically = false;
     end

@@ -9,7 +9,10 @@ HTTPRequestEncodingUTF8     = "UTF8";
 HTTPRequestEncodingGBK      = "GBK";
 
 -- constructor
-function HTTPRequest:get(URLString, encoding)
+function HTTPRequest:get(URLString, encoding--[[option]])
+    if encoding == nil then
+        encoding = HTTPRequestEncodingUTF8;
+    end
     local requestId = http::get(URLString, "event_http_request_response", encoding);
     local request = Object:new(requestId);
     setmetatable(request, self);
@@ -19,12 +22,15 @@ function HTTPRequest:get(URLString, encoding)
     return request;
 end
 
-function HTTPRequest:post(URLString, params, encoding)
+function HTTPRequest:post(URLString, params, encoding--[[option]])
     if params == nil then
         params = "";
     end
     if params.id then
         params = params:id();
+    end
+    if encoding == nil then
+        encoding = HTTPRequestEncodingUTF8;
     end
     local requestId = http::post(URLString, params, "event_http_request_response", encoding);
     local req = Object:new(requestId);

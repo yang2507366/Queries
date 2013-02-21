@@ -34,10 +34,6 @@ function UITableViewCell:get(cellId)
     return cell;
 end
 
-function UITableViewCell:dealloc()
-    UIView.dealloc(self);
-end
-
 -- instance methods
 function UITableViewCell:textLabel()
     local labelId = runtime::invokeMethod(self:id(), "textLabel");
