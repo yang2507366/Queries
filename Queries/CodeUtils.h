@@ -15,9 +15,6 @@
 + (NSData *)dataDecodedWithString:(NSString *)string;
 + (NSString *)stringDecodedWithString:(NSString *)string;
 
-+ (NSString *)encodeAllChinese:(NSString *)string;
-+ (NSString *)decodeAllChinese:(NSString *)string;
-
 + (NSString *)encodeUnicode:(NSString *)string;
 + (NSString *)decodeUnicode:(NSString *)string;
 + (NSString *)removeAllUnicode:(NSString *)string;

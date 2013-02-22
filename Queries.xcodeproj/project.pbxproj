@@ -1436,7 +1436,7 @@
 				3EA27075165278AC0011C0D4 /* impl */,
 				3EE591BC1651423D00465C10 /* ScriptInteraction */,
 				3EE591BB165141F200465C10 /* ObjectManager */,
-				3EE591BA16513F8100465C10 /* AppBundle */,
+				3EE591BA16513F8100465C10 /* ScriptBundle */,
 				3EE591B616512B4400465C10 /* LuaImplentatable.h */,
 				3EC357C41643EDE7009611C8 /* LuaApp.h */,
 				3EC357C51643EDE7009611C8 /* LuaApp.m */,
@@ -1467,7 +1467,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		3EE591BA16513F8100465C10 /* AppBundle */ = {
+		3EE591BA16513F8100465C10 /* ScriptBundle */ = {
 			isa = PBXGroup;
 			children = (
 				3E6B94F31646814D009B01AD /* OnlineAppBundleLoader.h */,
@@ -1478,7 +1478,7 @@
 				3E6B94F716468F11009B01AD /* LocalAppBundle.m */,
 				3EC357BF1643E1BC009611C8 /* ScriptBundle.h */,
 			);
-			name = AppBundle;
+			name = ScriptBundle;
 			sourceTree = "<group>";
 		};
 		3EE591BB165141F200465C10 /* ObjectManager */ = {

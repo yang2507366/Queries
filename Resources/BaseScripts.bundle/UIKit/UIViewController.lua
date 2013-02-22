@@ -63,7 +63,9 @@ end
 
 function UIViewController:pushToRelatedViewController()
     local relatedVCId = ui::getRelatedViewController();
-    if string.len(relatedVCId) ~= 0 then
+    if self.relatedNavigationController() ~= nil then
+        self.relatedNavigationController():pushViewController(self, true);
+    elseif string.len(relatedVCId) ~= 0 then
         UIViewController:get(relatedVCId):navigationController():pushViewController(self, true);
     end
 end

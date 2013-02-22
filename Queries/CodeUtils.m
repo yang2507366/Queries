@@ -100,64 +100,36 @@ static char *customHexList = "0123456789abcdef";
     return resultString;
 }
 
-+ (NSString *)encodeAllChinese:(NSString *)string
++ (NSString *)encodeUnichar:(unichar)unich
 {
-    NSMutableString *allString = [NSMutableString string];
-    for(NSInteger i = 0; i < string.length; i++){
-        NSString *singleUnicodeChar = [string substringWithRange:NSMakeRange(i, 1)];
-        if([CommonUtils singleCharIsChinese:singleUnicodeChar]){
-            [allString appendFormat:@"[b;]%@[e;]", [CodeUtils encodeWithString:singleUnicodeChar]];
-        }else{
-            [allString appendString:singleUnicodeChar];
-        }
-    }
-    [CodeUtils decodeAllChinese:allString];
-    
-    return allString;
+    unsigned char low = unich & 0xFF;
+    unsigned char high = ((unich & 0xFF00) >> 8);
+    unsigned char bytes[] = {low, high};
+    NSData *data = [NSData dataWithBytes:bytes length:2];
+    NSString *str = [self.class encodeWithData:data];
+    return str;
 }
 
-+ (NSString *)decodeAllChinese:(NSString *)string
++ (NSString *)restoreUnichar:(NSString *)str
 {
-    if(string.length == 0){
-        return @"";
-    }
-    NSMutableString *allString = [NSMutableString string];
-    NSRange beginRange;
-    NSRange endRange = NSMakeRange(0, string.length);
-    while(true){
-        beginRange = [string rangeOfString:@"[b;]" options:NSCaseInsensitiveSearch range:endRange];
-        if(beginRange.location == NSNotFound){
-            if(endRange.location == 0){
-                [allString appendString:string];
-            }else if(endRange.location != string.length){
-                [allString appendString:[string substringFromIndex:endRange.location]];
-            }
-            break;
-        }
-        NSString *en = [string substringWithRange:NSMakeRange(endRange.location, beginRange.location - endRange.location)];
-        [allString appendString:en];
-        beginRange.location += 4;
-        beginRange.length = string.length - beginRange.location;
-        endRange = [string rangeOfString:@"[e;]" options:NSCaseInsensitiveSearch range:beginRange];
-        NSString *cn = [string substringWithRange:NSMakeRange(beginRange.location, endRange.location - beginRange.location)];
-        cn = [CodeUtils stringDecodedWithString:cn];
-        [allString appendString:cn];
-        endRange.location += 4;
-        endRange.length = string.length - endRange.location;
-    }
-    return allString;
+    NSData *data = [self.class dataDecodedWithString:str];
+    unsigned char bytes[2];
+    [data getBytes:bytes length:2];
+    unichar unich = bytes[0] + (bytes[1] << 8);
+    unichar unichars[1] = {unich};
+    return [NSString stringWithCharacters:unichars length:1];
 }
 
 + (NSString *)encodeUnicode:(NSString *)string
 {
     NSMutableString *allString = [NSMutableString string];
     for(NSInteger i = 0; i < string.length; i++){
-        const unsigned short ch = [string characterAtIndex:i];
-        NSString *chStr = [string substringWithRange:NSMakeRange(i, 1)];
+        const unichar ch = [string characterAtIndex:i];
         if(ch > 255){
-            [allString appendFormat:@"[u]%@[/u]", [CodeUtils encodeWithString:chStr]];
+            [allString appendFormat:@"[u]%@[/u]", [CodeUtils encodeUnichar:ch]];
         }else{
-            [allString appendString:chStr];
+            const unichar chs[1] = {ch};
+            [allString appendString:[NSString stringWithCharacters:chs length:1]];
         }
     }
     
@@ -168,12 +140,10 @@ static char *customHexList = "0123456789abcdef";
 {
     NSMutableString *allString = [NSMutableString string];
     for(NSInteger i = 0; i < string.length; i++){
-        const unsigned short ch = [string characterAtIndex:i];
-        NSString *chStr = [string substringWithRange:NSMakeRange(i, 1)];
-        if(ch > 255){
-//            [allString appendFormat:@"[u]%@[/u]", [CodeUtils encodeWithString:chStr]];
-        }else{
-            [allString appendString:chStr];
+        const unichar ch = [string characterAtIndex:i];
+        if(ch < 255){
+            const unichar chs[1] = {ch};
+            [allString appendString:[NSString stringWithCharacters:chs length:1]];
         }
     }
     
@@ -204,7 +174,7 @@ static char *customHexList = "0123456789abcdef";
         beginRange.length = string.length - beginRange.location;
         endRange = [string rangeOfString:@"[/u]" options:NSCaseInsensitiveSearch range:beginRange];
         NSString *cn = [string substringWithRange:NSMakeRange(beginRange.location, endRange.location - beginRange.location)];
-        cn = [CodeUtils stringDecodedWithString:cn];
+        cn = [CodeUtils restoreUnichar:cn];
         [allString appendString:cn];
         endRange.location += 4;
         endRange.length = string.length - endRange.location;

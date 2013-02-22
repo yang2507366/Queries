@@ -27,12 +27,29 @@
     [super dealloc];
 }
 
-- (id)initWithScriptBundle:(id<ScriptBundle>)scriptBundle baseWindow:(UIWindow *)window
+- (id)initWithScriptBundle:(id<ScriptBundle>)scriptBundle
 {
     self = [super init];
     
     _scriptBundle = [scriptBundle retain];
-    _baseWindow = [window retain];
+    
+    return self;
+}
+
+- (id)initWithScriptBundle:(id<ScriptBundle>)scriptBundle baseWindow:(UIWindow *)window
+{
+    self = [self initWithScriptBundle:scriptBundle];
+    
+    self.baseWindow = window;
+    
+    return self;
+}
+
+- (id)initWithScriptBundle:(id<ScriptBundle>)scriptBundle relatedViewController:(UIViewController *)relatedViewController
+{
+    self = [self initWithScriptBundle:scriptBundle];
+    
+    self.relatedViewController = relatedViewController;
     
     return self;
 }
