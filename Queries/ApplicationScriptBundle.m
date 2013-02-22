@@ -53,7 +53,7 @@
 
 - (NSString *)bundleId
 {
-    return @"Application Script Bundle";
+    return @"ApplicationScriptBundle";
 }
 
 - (NSString *)bundleVersion
