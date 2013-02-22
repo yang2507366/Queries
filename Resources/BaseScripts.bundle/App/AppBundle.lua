@@ -1,6 +1,7 @@
 require "Object"
 require "NSData"
 require "AppContext"
+require "CommonUtils"
 
 AppBundle = {};
 AppBundle.__index = AppBundle;
@@ -31,6 +32,10 @@ function AppBundle:dataFromResource(resName)
         return data;
     end
     return nil;
+end
+
+function AppBundle:resourceExists(resName)
+    return toLuaBool(runtime::invokeMethod(self:id(), "resourceExistsWithName:", resName));
 end
 
 function AppBundle:bundleVersion()

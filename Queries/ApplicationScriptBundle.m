@@ -104,4 +104,10 @@
     return [NSData dataWithContentsOfFile:filePath];
 }
 
+- (BOOL)resourceExistsWithName:(NSString *)resName
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:resName ofType:nil];
+    return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+}
+
 @end

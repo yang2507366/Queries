@@ -55,6 +55,12 @@
     return [NSData dataWithContentsOfFile:filePath];
 }
 
+- (BOOL)resourceExistsWithName:(NSString *)resName
+{
+    NSString *filePath = [[self.dirPath stringByAppendingPathComponent:@"res"] stringByAppendingPathComponent:resName];
+    return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+}
+
 - (NSArray *)allScriptFileNames
 {
     NSFileManager *fileMgr = [NSFileManager defaultManager];

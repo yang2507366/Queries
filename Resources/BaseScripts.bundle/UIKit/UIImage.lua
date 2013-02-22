@@ -1,7 +1,5 @@
 require "Object"
 require "AppBundle"
-require "FileUtils"
-require "StringUtils"
 
 UIImage = {};
 UIImage.__index = UIImage;
@@ -26,6 +24,9 @@ function UIImage:imageWithResName(resName, scale--[[option]])
         local scaleString = runtime::invokeMethod(screen:id(), "scale");
         scale = tonumber(scaleString);
     end
+    
+    local ab = AppBundle:current();
+    
     local beginIndex = string.find(resName, "@2x");
     if scale == 2.0 and beginIndex == nil then
         beginIndex = tonumber(ustring::find(resName, ".", ustring::length(resName) - 1, true));
@@ -35,13 +36,12 @@ function UIImage:imageWithResName(resName, scale--[[option]])
             else
             newResName = ustring::substring(resName, 0, beginIndex).."@2x"..ustring::substring(resName, beginIndex, ustring::length(resName));
         end
-        if FileUtils.exists(StringUtils.appendingPathComponent(FileUtils.mainBundlePath(), newResName)) then
+        if ab:resourceExists(newResName) then
             resName = newResName;
         else
             scale = 1.0;
         end
     end
-    local ab = AppBundle:current();
     local data = ab:dataFromResource(resName);
     if data then
         return UIImage:imageWithData(data, scale);
