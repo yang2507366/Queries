@@ -121,16 +121,18 @@
     return timeString;
 }
 
-+ (BOOL)stringIsPureAlphabet:(NSString *)string
++ (BOOL)isAlphbelt:(char)c
 {
-    const char *charArray = [string UTF8String];
-    for(int i = 0; i < string.length; ++i){
-        char ch = *(charArray + i);
-        if(ch < 48 || (ch > 57 && ch < 65) || (ch > 90 && ch <97) || ch > 122){
+    return (c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122) || c == '_';
+}
+
++ (BOOL)isAlphbelts:(NSString *)str
+{
+    for(NSInteger i = 0; i < str.length; ++i){
+        if(![self.class isAlphbelt:[str characterAtIndex:i]]){
             return NO;
         }
     }
-    
     return YES;
 }
 
@@ -140,6 +142,20 @@
         return @"";
     }
     return string;
+}
+
++ (NSString *)countableTempFileName:(NSString *)fileName atDirectory:(NSString *)directory
+{
+    NSString *fileExtension = [fileName pathExtension];
+    fileName = [fileName stringByDeletingPathExtension];
+    NSString *originalFileName = fileName;
+    NSString *filePath = [directory stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:fileExtension]];
+    NSInteger count = 0;
+    while([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+        fileName = [NSString stringWithFormat:@"%@ - %d", originalFileName, ++count];
+        filePath = [directory stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:fileExtension]];
+    }
+    return [fileName stringByAppendingPathExtension:fileExtension];
 }
 
 @end

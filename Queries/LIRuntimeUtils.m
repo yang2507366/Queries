@@ -39,4 +39,11 @@ static char *askey = "askey";
     objc_removeAssociatedObjects(object);
 }
 
++ (NSString *)object:(id)object isKindOfClass:(NSString *)className
+{
+    Class class = NSClassFromString(className);
+    NSString *result = [object isKindOfClass:class] ? @"YES" : @"NO";
+    return result;
+}
+
 @end

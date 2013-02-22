@@ -1,4 +1,5 @@
 require "AutoreleasePool"
+require "CommonUtils"
 
 Object = {};
 
@@ -77,6 +78,14 @@ function Object:objCClassName()
     return runtime::objectClassName(self:id());
 end
 
+function Object.objectIsKindOfClass(objId, className)
+    return toLuaBool(runtime::invokeClassMethod("LIRuntimeUtils", "object:isKindOfClass:", objId, className));
+end
+
+function Object:isKindOfClass(className)
+    return self.objectIsKindOfClass(self:id(), className);
+end
+
 function Object:objCDescription()
     return runtime::objectDescription(self:id());
 end
@@ -106,7 +115,7 @@ function Object:removeAssociatedObject()
 end
 
 -- object convert
-function oc(object, targetType)
+function object_covert(object, targetType)
     setmetatable(object, targetType);
 end
 

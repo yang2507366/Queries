@@ -16,13 +16,8 @@ function pd(object)
     end
 end
 
--- debug print
-function dp(str)
-    print(str);
-end
-
 -- safty release
-function srelease(obj)
+function safety_release(obj)
     if obj then
         obj:release();
     end

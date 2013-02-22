@@ -55,9 +55,10 @@ end
 
 function UIViewController.relatedNavigationController()
     local relatedVCId = ui::getRelatedViewController();
-    if string.len(relatedVCId) ~= 0 then
+    if string.len(relatedVCId) ~= 0 and Object.objectIsKindOfClass(relatedVCId, "UINavigationController") then
         return UINavigationController:get(relatedVCId);
     end
+    return nil;
 end
 
 function UIViewController:pushToRelatedViewController()

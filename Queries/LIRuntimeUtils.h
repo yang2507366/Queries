@@ -13,5 +13,6 @@
 + (void)setAssociatedObjectFor:(id)object key:(NSString *)key value:(id)value policy:(NSInteger)policy override:(BOOL)override;
 + (NSString *)getAssociatedObjectWithAppId:(NSString *)appId forObject:(id)object key:(NSString *)key;
 + (id)getAssociatedObjectForObject:(id)object key:(NSString *)key;
++ (NSString *)object:(id)object isKindOfClass:(NSString *)className;
 
 @end

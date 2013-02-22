@@ -26,7 +26,9 @@
 
 + (NSString *)timeStringWithDateString:(NSString *)dateString;
 
-+ (BOOL)stringIsPureAlphabet:(NSString *)string;
++ (BOOL)isAlphbelt:(char)c;
++ (BOOL)isAlphbelts:(NSString *)str;
 + (NSString *)filterNil:(NSString *)string;
++ (NSString *)countableTempFileName:(NSString *)fileName atDirectory:(NSString *)directory;
 
 @end
