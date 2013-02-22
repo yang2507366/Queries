@@ -20,6 +20,7 @@
 #import "LuaObjectManager.h"
 #import "RequireAutoreleasePoolChecker.h"
 #import "TabCharReplaceChecker.h"
+#import "ClassDefineReplaceChecker.h"
 
 @interface LuaAppManager ()
 
@@ -65,6 +66,7 @@
                            [[PrefixGrammarChecker new] autorelease],
                            [[IdentitySupportChecker new] autorelease],
                            [[SuperSupportChecker new] autorelease],
+                           [[ClassDefineReplaceChecker new] autorelease], 
 #ifndef __IPHONE_6_0
                            [[TabCharReplaceChecker new] autorelease],
 #endif

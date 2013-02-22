@@ -194,6 +194,8 @@
 		3E4EBD29163814BD00629387 /* DotGrammarChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EBD28163814BD00629387 /* DotGrammarChecker.m */; };
 		3E50681716D3A5E0000C1C93 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E50681616D3A5E0000C1C93 /* FileUtils.m */; };
 		3E50681816D3A5E0000C1C93 /* FileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E50681616D3A5E0000C1C93 /* FileUtils.m */; };
+		3E59B65116D716BE00DF05A7 /* ClassDefineReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59B65016D716BE00DF05A7 /* ClassDefineReplaceChecker.m */; };
+		3E59B65216D716BE00DF05A7 /* ClassDefineReplaceChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E59B65016D716BE00DF05A7 /* ClassDefineReplaceChecker.m */; };
 		3E5BBCD216A6ABA400C0E3C1 /* QueriesLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */; };
 		3E5BBCD416A6ABA400C0E3C1 /* QueriesLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E5BBCD316A6ABA400C0E3C1 /* QueriesLib.m */; };
 		3E5BBCD916A6ABE700C0E3C1 /* LIAppLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E867ADC1646A47A00650486 /* LIAppLoader.m */; };
@@ -577,6 +579,8 @@
 		3E4EBD28163814BD00629387 /* DotGrammarChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotGrammarChecker.m; sourceTree = "<group>"; };
 		3E50681516D3A5E0000C1C93 /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileUtils.h; sourceTree = "<group>"; };
 		3E50681616D3A5E0000C1C93 /* FileUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileUtils.m; sourceTree = "<group>"; };
+		3E59B64F16D716BE00DF05A7 /* ClassDefineReplaceChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDefineReplaceChecker.h; sourceTree = "<group>"; };
+		3E59B65016D716BE00DF05A7 /* ClassDefineReplaceChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassDefineReplaceChecker.m; sourceTree = "<group>"; };
 		3E5BBCCC16A6ABA400C0E3C1 /* libQueriesLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQueriesLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5BBCD016A6ABA400C0E3C1 /* QueriesLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QueriesLib-Prefix.pch"; sourceTree = "<group>"; };
 		3E5BBCD116A6ABA400C0E3C1 /* QueriesLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QueriesLib.h; sourceTree = "<group>"; };
@@ -1410,6 +1414,8 @@
 				3E30C70A16773B8C002E138F /* RequireAutoreleasePoolChecker.m */,
 				3E27B0AC16D209DE00E7EE0D /* TabCharReplaceChecker.h */,
 				3E27B0AD16D209DE00E7EE0D /* TabCharReplaceChecker.m */,
+				3E59B64F16D716BE00DF05A7 /* ClassDefineReplaceChecker.h */,
+				3E59B65016D716BE00DF05A7 /* ClassDefineReplaceChecker.m */,
 			);
 			name = ScriptChecker;
 			sourceTree = "<group>";
@@ -1759,6 +1765,7 @@
 				3E0DF7C016D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */,
 				3E0DF7C216D5C19B00C7FC7A /* FMResultSet.m in Sources */,
 				3EBDBF0F16D6088A004776C9 /* DelayControl.m in Sources */,
+				3E59B65216D716BE00DF05A7 /* ClassDefineReplaceChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1927,6 +1934,7 @@
 				3E0DF7BF16D5C19B00C7FC7A /* FMDatabaseQueue.m in Sources */,
 				3E0DF7C116D5C19B00C7FC7A /* FMResultSet.m in Sources */,
 				3EBDBF0E16D6088A004776C9 /* DelayControl.m in Sources */,
+				3E59B65116D716BE00DF05A7 /* ClassDefineReplaceChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
