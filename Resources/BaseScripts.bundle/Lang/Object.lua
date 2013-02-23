@@ -114,8 +114,8 @@ function Object:removeAssociatedObject()
     runtime::invokeClassMethod("LIRuntimeUtils", "removeAssociatedObjectsForObject:", self:id());
 end
 
--- object convert
-function object_covert(object, targetType)
+-- object type convert
+function object_type_covert(object, targetType)
     setmetatable(object, targetType);
 end
 
