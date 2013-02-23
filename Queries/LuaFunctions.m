@@ -428,6 +428,23 @@ int runtime_invokeMethod(lua_State *L)
     return 1;
 }
 
+int string_runtime_invokeMethod(lua_State *L)
+{
+    NSString *scriptId = luaStringParam(L, 1);
+    NSString *string = luaStringParam(L, 2);
+    NSString *methodName = luaStringParam(L, 3);
+    
+    int numOfArgs = lua_gettop(L);
+    NSMutableArray *params = [NSMutableArray array];
+    for(int i = 4; i <= numOfArgs; ++i){
+        [params addObject:luaStringParam(L, i)];
+    }
+    NSString *objectId = [LuaObjectManager addObject:string group:scriptId];
+    NSString *returnValue = [LuaRuntimeUtils invokeWithGroup:scriptId objectId:objectId methodName:methodName parameters:params];
+    pushString(L, returnValue);
+    return 1;
+}
+
 int runtime_createObject(lua_State *L)
 {
     NSString *scriptId = luaStringParam(L, 1);
@@ -620,6 +637,7 @@ void initFuntions(lua_State *L)
     pushFunctionToLua(L, "runtime_retainObject", runtime_retainObject);
     pushFunctionToLua(L, "runtime_releaseObject", runtime_releaseObject);
     pushFunctionToLua(L, "runtime_invokeMethod", runtime_invokeMethod);
+    pushFunctionToLua(L, "string_invokeMethod", string_runtime_invokeMethod);
     pushFunctionToLua(L, "runtime_objectRetainCount", runtime_objectRetainCount);
     pushFunctionToLua(L, "runtime_objectClassName", runtime_objectClassName);
     pushFunctionToLua(L, "runtime_objectDescription", runtime_objectDescription);
