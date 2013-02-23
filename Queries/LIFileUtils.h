@@ -23,5 +23,6 @@
                appId:(NSString *)appId
                objId:(NSString *)objId
         completeFunc:(NSString *)completeFunc;
++ (BOOL)isDirectory:(NSString *)path;
 
 @end

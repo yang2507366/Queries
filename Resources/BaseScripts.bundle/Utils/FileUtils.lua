@@ -1,3 +1,6 @@
+require "NSArray"
+require "CommonUtils"
+
 FileUtils = {};
 
 function FileUtils.documentPath()
@@ -14,6 +17,17 @@ end
 
 function FileUtils.homePath()
     return runtime::invokeClassMethod("CommonUtils", "homePath");
+end
+
+function FileUtils.contentsOfDirectoryAtPath(path)
+    local fileMgrId = runtime::invokeClassMethod("NSFileManager", "defaultManager");
+    local arrId = runtime::invokeMethod(fileMgrId, "contentsOfDirectoryAtPath:error:", path);
+    runtime::releaseObject(fileMgrId);
+    return NSArray:get(arrId);
+end
+
+function FileUtils.isDirectory(path)
+    return toLuaBool(runtime::invokeClassMethod("LIFileUtils", "isDirectory:", path));
 end
 
 function FileUtils.move(srcPath, desPath)

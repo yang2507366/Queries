@@ -54,4 +54,11 @@
     });
 }
 
++ (BOOL)isDirectory:(NSString *)path
+{
+    BOOL isDir;
+    [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+    return isDir;
+}
+
 @end
