@@ -80,7 +80,6 @@
             script = [self compileScript:script scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
         }
     }
-    NSLog(@"%@", scriptName);
     return script;
 }
 
@@ -132,6 +131,14 @@
 {
     [self.appDict removeObjectForKey:appId];
     [LuaObjectManager removeGroup:appId];
+}
+
+- (void)destoryAllApps
+{
+    NSArray *allAppIds = [self.appDict allKeys];
+    for(NSString *appId in allAppIds){
+        [self destoryAppWithAppId:appId];
+    }
 }
 
 - (LuaApp *)appForId:(NSString *)appId
@@ -199,6 +206,11 @@
 + (void)destoryAppWithAppId:(NSString *)appId
 {
     [[self sharedApplication] destoryAppWithAppId:appId];
+}
+
++ (void)destoryAllApps
+{
+    [[self sharedApplication] destoryAllApps];
 }
 
 + (NSBundle *)baseScriptsBundle

@@ -26,5 +26,6 @@
 + (id)runApp:(LuaApp *)app;
 + (id)runApp:(LuaApp *)app params:(id)params;
 + (void)destoryAppWithAppId:(NSString *)appId;
++ (void)destoryAllApps;
 
 @end
