@@ -11,7 +11,7 @@
 
 @implementation ClassDefineReplaceChecker
 
-- (BOOL)paramValid:(NSString *)param className:(NSString **)className baseClassName:(NSString **)baseClassName
++ (BOOL)paramValid:(NSString *)param className:(NSString **)className baseClassName:(NSString **)baseClassName
 {
     BOOL valid = NO;
     NSArray *arr = [param componentsSeparatedByString:@","];
@@ -47,7 +47,7 @@
             NSString *paramText = [script substringWithBeginIndex:leftBracketLocation + 1 endIndex:endIndex];
             NSString *className = nil;
             NSString *baseClassName = nil;
-            if(leftInnerText.length == 0 && [self paramValid:paramText className:&className baseClassName:&baseClassName]){
+            if(leftInnerText.length == 0 && [self.class paramValid:paramText className:&className baseClassName:&baseClassName]){
                 [resultString appendString:[script substringWithBeginIndex:lastEndIndex endIndex:beginIndex]];
                 NSString *tmpClassDefinition = [classDefinition stringByReplacingOccurrencesOfString:@"$class" withString:className];
                 tmpClassDefinition = [tmpClassDefinition stringByReplacingOccurrencesOfString:@"$baseClass" withString:baseClassName];

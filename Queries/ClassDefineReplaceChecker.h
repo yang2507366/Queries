@@ -11,4 +11,6 @@
 
 @interface ClassDefineReplaceChecker : NSObject <LuaScriptChecker>
 
++ (BOOL)paramValid:(NSString *)param className:(NSString **)className baseClassName:(NSString **)baseClassName;
+
 @end
