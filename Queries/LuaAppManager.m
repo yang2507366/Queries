@@ -65,8 +65,8 @@
                            [[RequireReplaceChecker new] autorelease],
                            [[PrefixGrammarChecker new] autorelease],
                            [[IdentitySupportChecker new] autorelease],
+                           [[ClassDefineReplaceChecker new] autorelease],
                            [[SuperSupportChecker new] autorelease],
-                           [[ClassDefineReplaceChecker new] autorelease], 
 #ifndef __IPHONE_6_0
                            [[TabCharReplaceChecker new] autorelease],
 #endif

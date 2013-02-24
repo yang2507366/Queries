@@ -2,18 +2,16 @@ require "AutoreleasePool"
 require "CommonUtils"
 
 Object = {};
+Object.__index = Object;
 
 function Object:new(objectId)
     local obj = {};
-    
     setmetatable(obj, self);
-    self.__index = self;
     
     if objectId ~= nil then
         obj.objectId = objectId;
     end
 --    obj:retain();
-    
     return obj:autorelease();
 end
 
