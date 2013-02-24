@@ -13,12 +13,22 @@
 
 - (BOOL)paramValid:(NSString *)param className:(NSString **)className baseClassName:(NSString **)baseClassName
 {
+    BOOL valid = NO;
     NSArray *arr = [param componentsSeparatedByString:@","];
     if(arr.count == 2){
+        valid = YES;
         *className = [[arr objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         *baseClassName = [[arr objectAtIndex:1] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    }else if(arr.count == 1){
+        NSString *tmpClassName = [arr objectAtIndex:0];
+        tmpClassName = [tmpClassName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        if(tmpClassName.length != 0){
+            valid = YES;
+            *className = tmpClassName;
+            *baseClassName = @"Object";
+        }
     }
-    return arr.count == 2;
+    return valid;
 }
 
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
