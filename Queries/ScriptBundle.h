@@ -16,5 +16,6 @@
 - (BOOL)resourceExistsWithName:(NSString *)resName;
 - (NSString *)bundleVersion;
 - (NSString *)mainScript;
+- (BOOL)compiled;
 
 @end

@@ -21,13 +21,14 @@
 #import "RequireAutoreleasePoolChecker.h"
 #import "TabCharReplaceChecker.h"
 #import "ClassDefineReplaceChecker.h"
+#import "ScriptCompiler.h"
+#import "LuaScriptCompiler.h"
 
 @interface LuaAppManager ()
 
-@property(nonatomic, retain)NSArray *scriptCheckers;
-
 @property(nonatomic, retain)LuaApp *rootApp;
 @property(nonatomic, retain)NSMutableDictionary *appDict;
+@property(nonatomic, retain)id<ScriptCompiler> scriptCompiler;
 
 @end
 
@@ -46,10 +47,9 @@
 
 - (void)dealloc
 {
-    self.scriptCheckers = nil;
-    
     self.rootApp = nil;
     self.appDict = nil;
+    self.scriptCompiler = nil;
     [super dealloc];
 }
 
@@ -58,45 +58,29 @@
     self = [super init];
     
     self.appDict = [NSMutableDictionary dictionary];
-    self.scriptCheckers = [NSArray arrayWithObjects:
-                           [[UnicodeChecker new] autorelease],
-//                           [[AddBaseScriptsChecker new] autorelease],
-                           [[RequireAutoreleasePoolChecker new] autorelease],
-                           [[RequireReplaceChecker new] autorelease],
-                           [[PrefixGrammarChecker new] autorelease],
-                           [[IdentitySupportChecker new] autorelease],
-                           [[ClassDefineReplaceChecker new] autorelease],
-                           [[SuperSupportChecker new] autorelease],
-#ifndef __IPHONE_6_0
-                           [[TabCharReplaceChecker new] autorelease],
-#endif
-                           nil];
+    self.scriptCompiler = [LuaScriptCompiler defaultScriptCompiler];
     
     return self;
 }
 
 - (NSString *)compileScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
-    for(NSInteger i = 0; i < self.scriptCheckers.count; ++i){
-        id<LuaScriptChecker> checker = [self.scriptCheckers objectAtIndex:i];
-        if(script){
-            script = [checker checkScript:script scriptName:scriptName bundleId:bundleId];
-        }else{
-            return nil;
-        }
-    }
-    return script;
+    return [self.scriptCompiler compileScript:script scriptName:scriptName bundleId:bundleId];
 }
 
 - (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId
 {
     LuaApp *targetApp = [self.appDict objectForKey:appId];
-    NSString *originalScript = [targetApp.scriptBundle scriptWithScriptName:scriptName];
-    if(originalScript.length == 0){
-        originalScript = [self.class baseScriptWithScriptName:scriptName];
+    NSString *script = [targetApp.scriptBundle scriptWithScriptName:scriptName];
+    if(script.length == 0){
+        script = [self.class baseScriptWithScriptName:scriptName];
+        script = [self compileScript:script scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
+    }else{
+        if(![targetApp.scriptBundle compiled]){
+            script = [self compileScript:script scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
+        }
     }
-    NSString *script = [self compileScript:originalScript scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
-
+    NSLog(@"%@", scriptName);
     return script;
 }
 
@@ -118,9 +102,14 @@
         }
     }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
-    NSString *mainScript = [self compileScript:[app.scriptBundle mainScript]
-                                    scriptName:lua_main_function
-                                      bundleId:appId];
+    NSString *mainScript = nil;
+    if([app.scriptBundle compiled]){
+        mainScript = [app.scriptBundle mainScript];
+    }else{
+        mainScript = [self compileScript:[app.scriptBundle mainScript]
+                              scriptName:lua_main_function
+                                bundleId:appId];
+    }
     NSString *returnValue = nil;
     if(mainScript.length != 0){
         LuaScriptInteraction *luaScriptInteraction = [[[LuaScriptInteraction alloc] initWithScript:mainScript] autorelease];

@@ -95,4 +95,16 @@
     return @"0.0.0";
 }
 
+- (BOOL)compiled
+{
+    NSString *projectInfoFile = @"project.plist";
+    if([self resourceExistsWithName:projectInfoFile]){
+        NSString *filePath = [[self.dirPath stringByAppendingPathComponent:@"res"] stringByAppendingPathComponent:projectInfoFile];
+        NSDictionary *projectInfo = [NSDictionary dictionaryWithContentsOfFile:filePath];
+        NSNumber *b = [projectInfo objectForKey:@"ProjectCompiled"];
+        return [b boolValue];
+    }
+    return NO;
+}
+
 @end
