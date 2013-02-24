@@ -52,6 +52,12 @@ function FileUtils.exists(path)
     return exists;
 end
 
+function FileUtils.removeItemAtPath(path)
+    local fileMgrId = runtime::invokeClassMethod("NSFileManager", "defaultManager");
+    runtime::invokeMethod(fileMgrId, "removeItemAtPath:error:", path);
+    runtime::releaseObject(fileMgrId);
+end
+
 function FileUtils.readStringFromFile(path)
     return runtime::invokeClassMethod("LIFileUtils", "readString:", path);
 end
