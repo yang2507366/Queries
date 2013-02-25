@@ -9,26 +9,19 @@
 #import "LuaAppManager.h"
 #import "LuaScriptInteraction.h"
 #import "LuaConstants.h"
-#import "UnicodeChecker.h"
-#import "IdentitySupportChecker.h"
-#import "PrefixGrammarChecker.h"
-#import "AutoreleasePoolChecker.h"
 #import "CodeUtils.h"
-#import "RequireReplaceChecker.h"
-#import "SuperSupportChecker.h"
-#import "AddBaseScriptsChecker.h"
 #import "LuaObjectManager.h"
-#import "RequireAutoreleasePoolChecker.h"
-#import "TabCharReplaceChecker.h"
-#import "ClassDefineReplaceChecker.h"
 #import "ScriptCompiler.h"
 #import "LuaScriptCompiler.h"
+#import "BaseScriptManager.h"
+#import "BaseScriptManagerFactory.h"
 
 @interface LuaAppManager ()
 
 @property(nonatomic, retain)LuaApp *rootApp;
 @property(nonatomic, retain)NSMutableDictionary *appDict;
 @property(nonatomic, retain)id<ScriptCompiler> scriptCompiler;
+@property(nonatomic, retain)id<BaseScriptManager> baseScriptManager;
 
 @end
 
@@ -59,6 +52,8 @@
     
     self.appDict = [NSMutableDictionary dictionary];
     self.scriptCompiler = [LuaScriptCompiler defaultScriptCompiler];
+    self.baseScriptManager = [BaseScriptManagerFactory defaultBaseScriptManagerWithBaseScriptsBundlePath:
+                              [[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BaseScripts.bundle" ofType:nil]] bundlePath]];
     
     return self;
 }
@@ -68,13 +63,12 @@
     return [self.scriptCompiler compileScript:script scriptName:scriptName bundleId:bundleId];
 }
 
-- (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId
+- (NSString *)scriptWithScriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
-    LuaApp *targetApp = [self.appDict objectForKey:appId];
+    LuaApp *targetApp = [self.appDict objectForKey:bundleId];
     NSString *script = [targetApp.scriptBundle scriptWithScriptName:scriptName];
     if(script.length == 0){
-        script = [self.class baseScriptWithScriptName:scriptName];
-        script = [self compileScript:script scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
+        script = [self.baseScriptManager compiledScriptWithScriptName:scriptName bundleId:bundleId];
     }else{
         if(![targetApp.scriptBundle isCompiled]){
             script = [self compileScript:script scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
@@ -178,7 +172,7 @@
 
 + (NSString *)scriptWithScriptName:(NSString *)scriptName appId:(NSString *)appId
 {
-    NSString *script = [[self sharedApplication] scriptWithScriptName:scriptName appId:appId];
+    NSString *script = [[self sharedApplication] scriptWithScriptName:scriptName bundleId:appId];
     
     return script;
 }
@@ -220,59 +214,6 @@
         baseScriptsBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BaseScripts" ofType:@".bundle"]];
     }
     return baseScriptsBundle;
-}
-
-+ (NSString *)generateUnitScriptWithFolderPath:(NSString *)folderPath
-{
-    NSArray *subFileNameList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:folderPath error:nil];
-    NSMutableString *requireString = [NSMutableString string];
-    for(NSString *subFileName in subFileNameList){
-        if([subFileName hasSuffix:@".lua"]){
-            [requireString appendFormat:@"require \"%@\"\n", subFileName];
-        }
-    }
-    NSString *tmpPath = [NSString stringWithFormat:@"%@/Library/tmpUnitScripts/", NSHomeDirectory()];
-    if(![[NSFileManager defaultManager] fileExistsAtPath:tmpPath]){
-        [[NSFileManager defaultManager] createDirectoryAtPath:tmpPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    NSString *tmpScriptPath = [tmpPath stringByAppendingPathComponent:[folderPath lastPathComponent]];
-    [requireString writeToFile:tmpScriptPath atomically:NO encoding:NSUTF8StringEncoding error:nil];
-    
-    return tmpScriptPath;
-}
-
-+ (NSString *)baseScriptWithScriptName:(NSString *)scriptName
-{
-    static NSDictionary *baseScriptFileDictionary = nil;
-    if(baseScriptFileDictionary == nil){
-        NSMutableDictionary *tmpDict = [NSMutableDictionary dictionary];
-        NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"BaseScripts.bundle" ofType:nil]];
-        NSString *bundleRootPath = [bundle bundlePath];
-        NSMutableArray *folderList = [NSMutableArray arrayWithObject:bundleRootPath];
-        while(folderList.count != 0){
-            NSString *lastFolder = [[[folderList lastObject] retain] autorelease];
-            [folderList removeLastObject];
-            
-            NSArray *subFileNameList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:lastFolder error:nil];
-            for(NSString *subFileName in subFileNameList){
-                NSString *subFilePath = [lastFolder stringByAppendingPathComponent:subFileName];
-                BOOL isDir = NO;
-                [[NSFileManager defaultManager] fileExistsAtPath:subFilePath isDirectory:&isDir];
-                if(isDir){
-                    [folderList addObject:subFilePath];
-                    if([lastFolder isEqualToString:bundleRootPath]){
-                        [tmpDict setObject:[self generateUnitScriptWithFolderPath:subFilePath]
-                                    forKey:[NSString stringWithFormat:@"%@.lua", subFileName]];
-                    }
-                }else{
-                    [tmpDict setObject:subFilePath forKey:[subFilePath lastPathComponent]];
-                }
-            }
-        }
-        baseScriptFileDictionary = [tmpDict retain];
-    }
-    
-    return [NSString stringWithContentsOfFile:[baseScriptFileDictionary objectForKey:scriptName] encoding:NSUTF8StringEncoding error:nil];
 }
 
 @end

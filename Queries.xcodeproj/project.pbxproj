@@ -343,6 +343,12 @@
 		3EA5BF1E16BF4B3500BD81D4 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */; };
 		3EAC7D6E16DB4AE40036BFAD /* TimeCostTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D6D16DB4AE40036BFAD /* TimeCostTracer.m */; };
 		3EAC7D6F16DB4AE40036BFAD /* TimeCostTracer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D6D16DB4AE40036BFAD /* TimeCostTracer.m */; };
+		3EAC7D7616DB4F870036BFAD /* BaseScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D7516DB4F870036BFAD /* BaseScriptManager.m */; };
+		3EAC7D7716DB4F870036BFAD /* BaseScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D7516DB4F870036BFAD /* BaseScriptManager.m */; };
+		3EAC7D7A16DB50540036BFAD /* MemoryBaseScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D7916DB50540036BFAD /* MemoryBaseScriptManager.m */; };
+		3EAC7D7B16DB50540036BFAD /* MemoryBaseScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D7916DB50540036BFAD /* MemoryBaseScriptManager.m */; };
+		3EAC7D7E16DB54670036BFAD /* BaseScriptManagerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D7D16DB54660036BFAD /* BaseScriptManagerFactory.m */; };
+		3EAC7D7F16DB54670036BFAD /* BaseScriptManagerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC7D7D16DB54660036BFAD /* BaseScriptManagerFactory.m */; };
 		3EB1E1D016A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
 		3EB1E1D116A8203500665B22 /* LITabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1E1CF16A8203500665B22 /* LITabBarController.m */; };
 		3EB7935516761126004EB529 /* LIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB7935416761126004EB529 /* LIWebView.m */; };
@@ -724,6 +730,12 @@
 		3EA5BF1C16BF4B3500BD81D4 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		3EAC7D6C16DB4AE40036BFAD /* TimeCostTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeCostTracer.h; sourceTree = "<group>"; };
 		3EAC7D6D16DB4AE40036BFAD /* TimeCostTracer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeCostTracer.m; sourceTree = "<group>"; };
+		3EAC7D7416DB4F870036BFAD /* BaseScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScriptManager.h; sourceTree = "<group>"; };
+		3EAC7D7516DB4F870036BFAD /* BaseScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScriptManager.m; sourceTree = "<group>"; };
+		3EAC7D7816DB50540036BFAD /* MemoryBaseScriptManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryBaseScriptManager.h; sourceTree = "<group>"; };
+		3EAC7D7916DB50540036BFAD /* MemoryBaseScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryBaseScriptManager.m; sourceTree = "<group>"; };
+		3EAC7D7C16DB54660036BFAD /* BaseScriptManagerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseScriptManagerFactory.h; sourceTree = "<group>"; };
+		3EAC7D7D16DB54660036BFAD /* BaseScriptManagerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseScriptManagerFactory.m; sourceTree = "<group>"; };
 		3EB1E1CE16A8203500665B22 /* LITabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LITabBarController.h; sourceTree = "<group>"; };
 		3EB1E1CF16A8203500665B22 /* LITabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LITabBarController.m; sourceTree = "<group>"; };
 		3EB7935316761126004EB529 /* LIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LIWebView.h; sourceTree = "<group>"; };
@@ -1480,6 +1492,19 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		3EAC7D7316DB4F6F0036BFAD /* BaseScriptManager */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC7D7416DB4F870036BFAD /* BaseScriptManager.h */,
+				3EAC7D7516DB4F870036BFAD /* BaseScriptManager.m */,
+				3EAC7D7816DB50540036BFAD /* MemoryBaseScriptManager.h */,
+				3EAC7D7916DB50540036BFAD /* MemoryBaseScriptManager.m */,
+				3EAC7D7C16DB54660036BFAD /* BaseScriptManagerFactory.h */,
+				3EAC7D7D16DB54660036BFAD /* BaseScriptManagerFactory.m */,
+			);
+			name = BaseScriptManager;
+			sourceTree = "<group>";
+		};
 		3EC0BA941633B1840074D22B /* ScriptChecker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1523,6 +1548,7 @@
 		3EE3B3281632326A00C77F85 /* Lua */ = {
 			isa = PBXGroup;
 			children = (
+				3EAC7D7316DB4F6F0036BFAD /* BaseScriptManager */,
 				3E21512B16DA390500B51984 /* ScriptCompiler */,
 				3EA27075165278AC0011C0D4 /* impl */,
 				3EE591BC1651423D00465C10 /* ScriptInteraction */,
@@ -1867,6 +1893,9 @@
 				3E24559A16D8EED3000802A8 /* UIImageView+WebCache.m in Sources */,
 				3E21513016DA395000B51984 /* LuaScriptCompiler.m in Sources */,
 				3EAC7D6F16DB4AE40036BFAD /* TimeCostTracer.m in Sources */,
+				3EAC7D7716DB4F870036BFAD /* BaseScriptManager.m in Sources */,
+				3EAC7D7B16DB50540036BFAD /* MemoryBaseScriptManager.m in Sources */,
+				3EAC7D7F16DB54670036BFAD /* BaseScriptManagerFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2046,6 +2075,9 @@
 				3E24559916D8EED3000802A8 /* UIImageView+WebCache.m in Sources */,
 				3E21512F16DA395000B51984 /* LuaScriptCompiler.m in Sources */,
 				3EAC7D6E16DB4AE40036BFAD /* TimeCostTracer.m in Sources */,
+				3EAC7D7616DB4F870036BFAD /* BaseScriptManager.m in Sources */,
+				3EAC7D7A16DB50540036BFAD /* MemoryBaseScriptManager.m in Sources */,
+				3EAC7D7E16DB54670036BFAD /* BaseScriptManagerFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
