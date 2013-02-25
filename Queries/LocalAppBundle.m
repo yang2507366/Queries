@@ -47,6 +47,9 @@
     if(tmpFileNameList.count == 1){
         NSString *fileName = [tmpFileNameList objectAtIndex:0];
         dirPath = [tmpDirPath stringByAppendingPathComponent:fileName];
+        BOOL isDir = NO;
+        [[NSFileManager defaultManager] fileExistsAtPath:dirPath isDirectory:&isDir];
+        dirPath = isDir ? dirPath : nil;
     }
     if(dirPath.length != 0){
         self = [self initWithDirectory:dirPath];
