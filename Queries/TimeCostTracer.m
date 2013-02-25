@@ -63,8 +63,9 @@
     NSNumber *num = [[[self sharedInstance] markDictionary] objectForKey:[self identifierForObject:identifier]];
     if(num){
         NSTimeInterval interval = [NSDate timeIntervalSinceReferenceDate] - [num doubleValue];
+        [[[self sharedInstance] markDictionary] removeObjectForKey:[self identifierForObject:identifier]];
         if(print){
-            NSLog(@"%@ cost:%f", identifier, interval);
+            NSLog(@"%@:%f", identifier, interval);
         }
         return interval;
     }
