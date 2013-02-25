@@ -9,6 +9,9 @@
 #import "LocalAppBundle.h"
 #import "NSString+Substring.h"
 #import "LuaCommonUtils.h"
+#import "ZipHandler.h"
+#import "ZipHandlerFactory.h"
+#import "CommonUtils.h"
 
 @interface LocalAppBundle ()
 
@@ -31,6 +34,25 @@
     self.dirPath = dirPath;
     
     return self;
+}
+
+- (id)initWithPackageFile:(NSString *)packageFile
+{
+    NSString *dirPath = nil;
+    id<ZipHandler> zip = [ZipHandlerFactory defaultZipHandler];
+    NSString *tmpFileName = [CommonUtils countableTempFileName:@"temp" atDirectory:[CommonUtils tmpPath]];
+    NSString *tmpDirPath = [[CommonUtils tmpPath] stringByAppendingPathComponent:tmpFileName];
+    [zip unzipWithFilePath:packageFile toDirectoryPath:tmpDirPath];
+    NSArray *tmpFileNameList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tmpDirPath error:nil];
+    if(tmpFileNameList.count == 1){
+        NSString *fileName = [tmpFileNameList objectAtIndex:0];
+        dirPath = [tmpDirPath stringByAppendingPathComponent:fileName];
+    }
+    if(dirPath.length != 0){
+        self = [self initWithDirectory:dirPath];
+        return self;
+    }
+    return nil;
 }
 
 - (id)objectFromAppConfigurationWithKey:(NSString *)key

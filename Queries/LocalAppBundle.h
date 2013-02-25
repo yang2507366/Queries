@@ -12,5 +12,6 @@
 @interface LocalAppBundle : NSObject <ScriptBundle>
 
 - (id)initWithDirectory:(NSString *)dirPath;
+- (id)initWithPackageFile:(NSString *)packageFile;
 
 @end

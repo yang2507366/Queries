@@ -155,7 +155,10 @@
         fileName = [NSString stringWithFormat:@"%@ - %d", originalFileName, ++count];
         filePath = [directory stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:fileExtension]];
     }
-    return [fileName stringByAppendingPathExtension:fileExtension];
+    if(fileExtension.length != 0){
+        fileName = [fileName stringByAppendingPathExtension:fileExtension];
+    }
+    return fileName;
 }
 
 @end
