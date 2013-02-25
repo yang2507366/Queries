@@ -37,17 +37,17 @@ function Object:setId(objectId)
 end
 
 function Object:release()
-    local objId = self:id();
-    if objId then
-        if self:retainCount() == 1 then
-            self:dealloc();
-        end
-        runtime::releaseObject(objId);
-    else
+    if self._retainCount then
         self._retainCount = self._retainCount - 1;
         if self._retainCount == 0 then
             self:dealloc();
         end
+    else
+        local objId = self:id();
+        if self:retainCount() == 1 then
+            self:dealloc();
+        end
+        runtime::releaseObject(objId);
     end
 end
 
