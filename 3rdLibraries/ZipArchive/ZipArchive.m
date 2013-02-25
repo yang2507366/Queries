@@ -206,7 +206,7 @@
 		if( unzGetGlobalInfo(_unzFile, &globalInfo )==UNZ_OK )
 		{
             _numFiles = globalInfo.number_entry;
-			NSLog(@"%lu entries in the zip file", globalInfo.number_entry);
+//			NSLog(@"%lu entries in the zip file", globalInfo.number_entry);
 		}
 	}
 	return _unzFile!=NULL;
