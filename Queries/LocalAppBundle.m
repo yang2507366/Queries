@@ -33,6 +33,17 @@
     return self;
 }
 
+- (id)objectFromAppConfigurationWithKey:(NSString *)key
+{
+    NSString *projectInfoFile = @"project.plist";
+    if([self resourceExistsWithName:projectInfoFile]){
+        NSString *filePath = [[self.dirPath stringByAppendingPathComponent:@"res"] stringByAppendingPathComponent:projectInfoFile];
+        NSDictionary *projectInfo = [NSDictionary dictionaryWithContentsOfFile:filePath];
+        return [projectInfo objectForKey:key];
+    }
+    return nil;
+}
+
 - (NSString *)bundleId
 {
     return [self.dirPath lastPathComponent];
@@ -76,15 +87,27 @@
 
 - (NSString *)mainScript
 {
-    NSArray *scriptList = [self allScriptFileNames];
-    for(NSString *file in scriptList){
-        NSString *filePath = [[self.dirPath stringByAppendingPathComponent:@"src"] stringByAppendingPathComponent:file];
-        NSString *script = [NSString stringWithContentsOfFile:filePath
+    NSString *srcPath = [self.dirPath stringByAppendingPathComponent:@"src"];
+    NSString *projectSpeacifiedMainScriptName = [self objectFromAppConfigurationWithKey:@"kProjectMainScriptNameKey"];
+    if(projectSpeacifiedMainScriptName.length != 0){
+        if(![[projectSpeacifiedMainScriptName lowercaseString] hasSuffix:@".lua"]){
+            projectSpeacifiedMainScriptName = [NSString stringWithFormat:@"%@.lua", projectSpeacifiedMainScriptName];
+        }
+        NSString *script = [NSString stringWithContentsOfFile:[srcPath stringByAppendingPathComponent:projectSpeacifiedMainScriptName]
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
-        if([LuaCommonUtils scriptIsMainScript:script]){
-            NSLog(@"%@ find main script in file:%@", self.bundleId, file);
-            return script;
+        return script;
+    }else{
+        NSArray *scriptList = [self allScriptFileNames];
+        for(NSString *file in scriptList){
+            NSString *filePath = [srcPath stringByAppendingPathComponent:file];
+            NSString *script = [NSString stringWithContentsOfFile:filePath
+                                                         encoding:NSUTF8StringEncoding
+                                                            error:nil];
+            if([LuaCommonUtils scriptIsMainScript:script]){
+                NSLog(@"%@ find main script in file:%@", self.bundleId, file);
+                return script;
+            }
         }
     }
     return nil;
@@ -95,13 +118,10 @@
     return @"0.0.0";
 }
 
-- (BOOL)compiled
+- (BOOL)isCompiled
 {
-    NSString *projectInfoFile = @"project.plist";
-    if([self resourceExistsWithName:projectInfoFile]){
-        NSString *filePath = [[self.dirPath stringByAppendingPathComponent:@"res"] stringByAppendingPathComponent:projectInfoFile];
-        NSDictionary *projectInfo = [NSDictionary dictionaryWithContentsOfFile:filePath];
-        NSNumber *b = [projectInfo objectForKey:@"ProjectCompiled"];
+    NSNumber *b = [self objectFromAppConfigurationWithKey:@"kProjectCompileStateKey"];
+    if(b){
         return [b boolValue];
     }
     return NO;

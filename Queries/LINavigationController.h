@@ -11,4 +11,7 @@
 
 @interface LINavigationController : UINavigationController <LuaImplentatable>
 
+@property(nonatomic, copy)void(^stopButtonTapBlock)();
+@property(nonatomic, copy)void(^consoleButtonTapBlock)();
+
 @end

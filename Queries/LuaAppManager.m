@@ -76,7 +76,7 @@
         script = [self.class baseScriptWithScriptName:scriptName];
         script = [self compileScript:script scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
     }else{
-        if(![targetApp.scriptBundle compiled]){
+        if(![targetApp.scriptBundle isCompiled]){
             script = [self compileScript:script scriptName:scriptName bundleId:[targetApp.scriptBundle bundleId]];
         }
     }
@@ -102,7 +102,7 @@
     }
     [self.appDict setObject:app forKey:[app.scriptBundle bundleId]];
     NSString *mainScript = nil;
-    if([app.scriptBundle compiled]){
+    if([app.scriptBundle isCompiled]){
         mainScript = [app.scriptBundle mainScript];
     }else{
         mainScript = [self compileScript:[app.scriptBundle mainScript]

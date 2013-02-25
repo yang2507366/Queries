@@ -110,7 +110,7 @@
     return [[NSFileManager defaultManager] fileExistsAtPath:filePath];
 }
 
-- (BOOL)compiled
+- (BOOL)isCompiled
 {
     return NO;
 }
