@@ -12,6 +12,7 @@
 #import "ZipHandler.h"
 #import "ZipHandlerFactory.h"
 #import "CommonUtils.h"
+#import "TimeCostTracer.h"
 
 @interface LocalAppBundle ()
 
@@ -38,11 +39,13 @@
 
 - (id)initWithPackageFile:(NSString *)packageFile
 {
+    [TimeCostTracer markWithIdentifier:@"unzip_package"];
     NSString *dirPath = nil;
     id<ZipHandler> zip = [ZipHandlerFactory defaultZipHandler];
     NSString *tmpFileName = [CommonUtils countableTempFileName:@"temp" atDirectory:[CommonUtils tmpPath]];
     NSString *tmpDirPath = [[CommonUtils tmpPath] stringByAppendingPathComponent:tmpFileName];
     [zip unzipWithFilePath:packageFile toDirectoryPath:tmpDirPath];
+    [TimeCostTracer timeCostWithIdentifier:@"unzip_package" print:YES];
     NSArray *tmpFileNameList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:tmpDirPath error:nil];
     if(tmpFileNameList.count == 1){
         NSString *fileName = [tmpFileNameList objectAtIndex:0];
