@@ -64,7 +64,7 @@ typedef enum{
 }
 
 @end
-
+/*
 @interface FunctionPosition : NSObject
 
 @property(nonatomic, assign)NSInteger beginIndex;
@@ -83,7 +83,7 @@ typedef enum{
 }
 
 @end
-
+*/
 @interface SeparatorInfo : NSObject
 
 @property(nonatomic, assign)NSInteger position;
@@ -126,7 +126,7 @@ typedef enum{
 
 - (NSString *)checkScript:(NSString *)script scriptName:(NSString *)scriptName bundleId:(NSString *)bundleId
 {
-    if(![LuaCommonUtils scriptIsMainScript:script]){
+    /*if(![LuaCommonUtils scriptIsMainScript:script]){
         return script;
     }
     //    NSLog(@"****************************%@", scriptId);
@@ -297,7 +297,7 @@ typedef enum{
 //    }else{
 //        [resultScript appendString:script];
 //    }
-    
+    */
     return script;
 }
 

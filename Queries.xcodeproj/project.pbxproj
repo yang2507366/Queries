@@ -970,6 +970,7 @@
 		3E21512B16DA390500B51984 /* ScriptCompiler */ = {
 			isa = PBXGroup;
 			children = (
+				3EC0BA941633B1840074D22B /* ScriptChecker */,
 				3E21512C16DA392000B51984 /* ScriptCompiler.h */,
 				3E21512D16DA395000B51984 /* LuaScriptCompiler.h */,
 				3E21512E16DA395000B51984 /* LuaScriptCompiler.m */,
@@ -1562,7 +1563,6 @@
 				3E4286151647518700B1451D /* LuaCommonUtils.h */,
 				3E4286161647518700B1451D /* LuaCommonUtils.m */,
 				3EC0BA8F1633AB2C0074D22B /* LuaConstants.h */,
-				3EC0BA941633B1840074D22B /* ScriptChecker */,
 				3EF86913163ACC1700E41ED6 /* LuaRuntimeUtils.h */,
 				3EF86914163ACC1700E41ED6 /* LuaRuntimeUtils.m */,
 			);

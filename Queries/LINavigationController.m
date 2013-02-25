@@ -68,7 +68,7 @@
     UINavigationBar *naviBar = navigationController.navigationBar;
     
     self.stopButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.stopButton.frame = CGRectMake(60, 0, 60, 35);
+    self.stopButton.frame = CGRectMake(60, 5, 60, 35);
     [self.stopButton setTitle:@"Stop" forState:UIControlStateNormal];
     [self.stopButton addTarget:self action:@selector(stopButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [naviBar addSubview:self.stopButton];
