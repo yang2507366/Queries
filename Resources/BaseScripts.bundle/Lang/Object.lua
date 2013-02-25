@@ -10,9 +10,16 @@ function Object:new(objectId)
     
     if objectId ~= nil then
         obj.objectId = objectId;
+    else
+        obj._retainCount = 1;
     end
 --    obj:retain();
+    obj:init();
     return obj:autorelease();
+end
+
+function Object:init()
+    
 end
 
 function Object:dealloc()
@@ -31,14 +38,25 @@ end
 
 function Object:release()
     local objId = self:id();
-    if self:retainCount() == 1 then
-        self:dealloc();
+    if objId then
+        if self:retainCount() == 1 then
+            self:dealloc();
+        end
+        runtime::releaseObject(objId);
+    else
+        self._retainCount = self._retainCount - 1;
+        if self._retainCount == 0 then
+            self:dealloc();
+        end
     end
-    runtime::releaseObject(objId);
 end
 
 function Object:retain()
-    runtime::retainObject(self:id());
+    if self:id() then
+        runtime::retainObject(self:id());
+    else
+        self._retainCount = self._retainCount + 1;
+    end
     return self;
 end
 
