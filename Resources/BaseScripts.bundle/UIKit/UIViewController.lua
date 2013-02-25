@@ -72,11 +72,24 @@ function UIViewController:pushToRelatedViewController()
 end
 
 function UIViewController:presentViewController(vc, animated)
-    runtime::invokeMethod(self:id(), "presentViewController:animated:completion:", vc:id(), toObjCBool(animated));
+    local currentDevice = runtime::invokeClassMethod("UIDevice", "currentDevice");
+    local systemVersion = runtime::invokeMethod(currentDevice, "systemVersion");
+    if tonumber(string::invokeMethod(systemVersion, "compare:", "5.0")) == -1 then
+        runtime::invokeMethod(self:id(), "presentModalViewController:animated:", vc:id(), toObjCBool(animated));
+    else
+        runtime::invokeMethod(self:id(), "presentViewController:animated:completion:", vc:id(), toObjCBool(animated));
+    end
+    runtime::releaseObject(currentDevice);
 end
 
 function UIViewController:dismissViewController(animated)
-    runtime::invokeMethod(self:id(), "dismissViewControllerAnimated:completion:", toObjCBool(animated));
+    local currentDevice = runtime::invokeClassMethod("UIDevice", "currentDevice");
+    local systemVersion = runtime::invokeMethod(currentDevice, "systemVersion");
+    if tonumber(string::invokeMethod(systemVersion, "compare:", "5.0")) == -1 then
+        runtime::invokeMethod(self:id(), "dismissModalViewControllerAnimated:", toObjCBool(animated));
+    else
+        runtime::invokeMethod(self:id(), "dismissViewControllerAnimated:completion:", toObjCBool(animated));
+    end
 end
 
 function UIViewController:view()
