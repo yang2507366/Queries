@@ -8,7 +8,7 @@ require "UINavigationBar"
 require "UIToolbar"
 
 class(UIViewController);
-class(UINavigationController);
+class(UINavigationController, UIViewController);
 
 -- constructor
 function UIViewController:create(title)
