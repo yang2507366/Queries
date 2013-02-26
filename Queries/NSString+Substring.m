@@ -20,9 +20,15 @@
 
 - (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex reverse:(BOOL)reverse
 {
+    
+    return [self find:str fromIndex:fromInex reverse:reverse isCaseSensitive:NO];
+}
+
+- (NSInteger)find:(NSString *)str fromIndex:(NSInteger)fromInex reverse:(BOOL)reverse isCaseSensitive:(BOOL)isCaseSensitive
+{
     if(fromInex < self.length){
         NSRange range = [self rangeOfString:str
-                                    options:reverse ? NSBackwardsSearch : NSCaseInsensitiveSearch
+                                    options:reverse ? NSBackwardsSearch : (isCaseSensitive ? NSLiteralSearch : NSCaseInsensitiveSearch)
                                       range:reverse ? NSMakeRange(0, fromInex) :NSMakeRange(fromInex, self.length - fromInex)];
         return range.location == NSNotFound ? -1 : range.location;
     }
