@@ -14,10 +14,27 @@
 @interface TableViewDataSourceProxy : NSObject <UITableViewDataSource>
 
 @property(nonatomic, assign)LITableView *targetTableView;
+@property(nonatomic, retain)UITableViewCell *nullTableViewCell;
 
 @end
 
 @implementation TableViewDataSourceProxy
+
+- (void)dealloc
+{
+    self.nullTableViewCell = nil;
+    [super dealloc];
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    self.nullTableViewCell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+    self.nullTableViewCell.textLabel.text = @"null";
+    
+    return self;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -41,7 +58,9 @@
     id cell = [LuaObjectManager objectWithId:cellId group:tmp.appId];
     [LuaObjectManager releaseObjectWithId:indexPathId group:tmp.appId];
     [LuaObjectManager releaseObjectWithId:cellId group:tmp.appId];
-    
+    if(!cell){
+        return self.nullTableViewCell;
+    }
     return cell;
 }
 
